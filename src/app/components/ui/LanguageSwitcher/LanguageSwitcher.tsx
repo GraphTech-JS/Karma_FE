@@ -1,40 +1,23 @@
 import Link from "next/link";
 import React from "react";
-import styled from "styled-components";
-
-const StyledLangSwitcherWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-left: 30px;
-`;
-
-const StyledLangLink = styled(Link)`
-  font-family: "Inter", sans-serif;
-  font-size: 20px;
-  color: #fff;
-
-  &:active,
-  &:focus,
-  &:focus-visible,
-  &:focus-within {
-    color: rgba(186, 1, 8, 1);
-    font-weight: bold;
-  }
-`;
-
-const StyledLine = styled.span`
-  color: #fff;
-  font-size: 20px;
-`;
 
 const LanguageSwitcher = () => {
   return (
-    <StyledLangSwitcherWrapper>
-      <StyledLangLink href="#">UA</StyledLangLink>
-      <StyledLine>|</StyledLine>
-      <StyledLangLink href="#">EN</StyledLangLink>
-    </StyledLangSwitcherWrapper>
+    <div className="flex items-center gap-2">
+      <Link 
+        href="#" 
+        className="font-inter text-xl text-white hover:text-[#ba0108] active:text-[#ba0108] focus:text-[#ba0108] focus-visible:text-[#ba0108] focus-within:text-[#ba0108] active:font-bold focus:font-bold focus-visible:font-bold focus-within:font-bold transition-colors"
+      >
+        UA
+      </Link>
+      <span className="text-white text-xl px-2">|</span>
+      <Link 
+        href="#" 
+        className="font-inter text-xl text-white hover:text-[#ba0108] active:text-[#ba0108] focus:text-[#ba0108] focus-visible:text-[#ba0108] focus-within:text-[#ba0108] active:font-bold focus:font-bold focus-visible:font-bold focus-within:font-bold transition-colors"
+      >
+        EN
+      </Link>
+    </div>
   );
 };
 

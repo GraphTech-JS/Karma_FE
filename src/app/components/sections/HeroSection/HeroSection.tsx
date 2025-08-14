@@ -1,183 +1,60 @@
 "use client";
 import React from "react";
-import styled from "styled-components";
 import Image from "next/image";
 import Stack from "../../../../../public/stack.png";
 import BgEl1 from "../../../../../public/bg-el-1.png";
 import BgEl2 from "../../../../../public/bg-el-2.png";
 
-const StyledHeroSection = styled.section`
-  background: #fff;
-  min-height: 485px;
-  position: relative;
-  overflow: hidden;
-  padding: 80px 0;
-  display: flex;
-  align-items: center;
-`;
-
-const StyledContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  position: relative;
-  z-index: 2;
-`;
-
-const StyledContentWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 80px;
-
-  @media (max-width: 968px) {
-    flex-direction: column;
-    gap: 60px;
-    text-align: center;
-  }
-`;
-
-const StyledTextContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-basis: 50%;
-  width: 100%;
-`;
-
-const StyledTitle = styled.h1`
-  font-family: "Unbounded", sans-serif;
-  font-size: 52px;
-  font-weight: 700;
-  line-height: 1.2;
-  color: #000;
-  margin-bottom: 20px;
-
-  @media (max-width: 768px) {
-    font-size: 48px;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 36px;
-  }
-`;
-
-const StyledHighlight = styled.span`
-  color: #ba0108;
-  font-size: 64px;
-`;
-
-const StyledSubtitle = styled.h2`
-  font-family: "Unbounded", sans-serif;
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 1.3;
-  color: #000;
-  margin-bottom: 30px;
-
-  @media (max-width: 768px) {
-    font-size: 28px;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 24px;
-  }
-`;
-
-const StyledButton = styled.button`
-  background-color: #ba0108;
-  color: #fff;
-  font-family: "Montserrat", sans-serif;
-  font-size: 24px;
-  font-weight: 400;
-  max-width: 387px;
-  padding: 16px 40px;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background-color: #9a0106;
-    transform: translateY(-2px);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-`;
-
-const StyledImageWrapper = styled.div`
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-`;
-
-const StyledProductImage = styled(Image)`
-  max-width: 100%;
-  height: auto;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
-`;
-
-const StyledBgElement = styled(Image)`
-  position: absolute;
-  z-index: 1;
-  opacity: 1;
-`;
-
-const StyledBgEl1 = styled(StyledBgElement)`
-  top: 0;
-  right: 0;
-  width: 290px;
-  height: auto;
-
-  @media (max-width: 768px) {
-    width: 150px;
-  }
-`;
-
-const StyledBgEl2 = styled(StyledBgElement)`
-  bottom: 0;
-  left: 0;
-  width: 270px;
-  height: auto;
-
-  @media (max-width: 768px) {
-    width: 100px;
-  }
-`;
-
 const HeroSection = () => {
   return (
-    <StyledHeroSection>
-      <StyledBgEl1 src={BgEl1} alt="" />
-      <StyledBgEl2 src={BgEl2} alt="" />
+    <section className="bg-white min-h-[600px] relative overflow-hidden py-16 flex justify-center items-center">
+      {/* Background decorative elements */}
+      <Image
+        src={BgEl1}
+        alt=""
+        className="absolute z-[1] top-0 right-0 w-[350px] h-auto"
+        width={350}
+        height={360}
+      />
+      <Image
+        src={BgEl2}
+        alt=""
+        className="absolute z-[1] bottom-0 left-0 w-[320px] h-auto"
+        width={320}
+        height={280}
+      />
 
-      <StyledContainer>
-        <StyledContentWrapper>
-          <StyledTextContent>
-            <StyledTitle>
-              <StyledHighlight>НОВИЙ СТЕК</StyledHighlight> KARMA FLIGHTS
-            </StyledTitle>
-            <StyledSubtitle>
+      <div className="max-w-[1237px] flex justify-center mx-auto px-5 relative z-[2] ">
+        <div className="flex items-center justify-between gap-16">
+          {/* Left Content */}
+          <div className="flex flex-col gap-5">
+            <h1 className="!font-family-unbounded font-bold leading-[1.1] text-black mb-6">
+              <span className="text-[#ba0108] block text-[64px] leading-[1.1] mb-2">
+                НОВИЙ СТЕК
+              </span>
+              <span className="text-black text-[52px] leading-[1.1]">
+                KARMA FLIGHTS
+              </span>
+            </h1>
+            <p className="font-family-unbounded text-xl font-[300]  text-black mb-8 ">
               Високотехнологічне українське виробництво
-            </StyledSubtitle>
-            <StyledButton>Докладніше</StyledButton>
-          </StyledTextContent>
+            </p>
+            <button className="bg-[#ba0108] text-white font-montserrat text-2xl font-normal w-[387px] px-12 !mt-[40px] h-[70px] border-none rounded-[25px] cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#9a0106] hover:-translate-y-1 active:translate-y-0 shadow-lg">
+              Докладніше
+            </button>
+          </div>
 
-          <StyledImageWrapper>
-            <StyledProductImage
-              src={Stack}
+          {/* Right Image */}
+          <div className="flex justify-center items-center relative flex-1 max-w-[600px]">
+            <img
+              src={Stack.src}
               alt="Karma Flights - високотехнологічне українське виробництво"
-              width={500}
-              height={400}
-              priority
+              className="w-full h-full"
             />
-          </StyledImageWrapper>
-        </StyledContentWrapper>
-      </StyledContainer>
-    </StyledHeroSection>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 

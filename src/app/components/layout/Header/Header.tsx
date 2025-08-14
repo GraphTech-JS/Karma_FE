@@ -1,74 +1,73 @@
 "use client";
 import React from "react";
-import styled from "styled-components";
-import Container from "../Container/Container";
 import Image from "next/image";
 import Logo from "../../../../../public/logo.png";
 import Link from "next/link";
 import LanguageSwitcher from "../../ui/LanguageSwitcher/LanguageSwitcher";
-
-const StyledHeader = styled.header`
-  background-color: rgba(2, 3, 3, 1);
-`;
-
-const StyledLink = styled(Link)`
-  font-family: "Inter", sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  color: #fff;
-
-  &[data-phone] {
-    font-family: "Montserrat", sans-serif;
-  }
-`;
-
-const StyledContentWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  align-items: center;
-  padding: 30px 0;
-`;
-
-const StyledImageWrapper = styled.div`
-  margin-right: 180px;
-`;
-
-const StyledAdditionalWrapper = styled.div`
-  margin-left: 180px;
-`;
+import styles from "./Header.module.css";
 
 const Header = () => {
   return (
-    <StyledHeader>
-      <Container variant="default">
-        <StyledContentWrapper>
-          <StyledImageWrapper>
-            <StyledLink href="#">
-              <Image src={Logo.src} alt="logo" width={149} height={34} />
-            </StyledLink>
-          </StyledImageWrapper>
-          <nav>
-            <StyledLink href="#">Каталог</StyledLink>
+    <header className="bg-[#020303] h-[82px] flex items-center justify-center">
+      <div className="flex gap-20 w-[1237px] justify-between items-center px-5">
+        {/* Logo */}
+
+        <div className="pl-12">
+          <Link href="#" className="font-inter text-xl font-normal text-white">
+            <Image src={Logo.src} alt="logo" width={149} height={34} />
+          </Link>
+        </div>
+        <div>
+          <nav className="flex items-center mr-[150px] gap-[50px] space-x-12">
+            <div className={styles.dropdown}>
+              <Link
+                href="#"
+                className="font-family-inter text-xl focus:font-bold text-[#ffffff] hover:text-[#ba0108] transition-colors"
+              >
+                Каталог
+              </Link>
+              <div className={styles.dropdownContent}>
+                <div className="flex w-full">
+                  <Link href="#">Політні стеки</Link>
+                  <Link href="#">Відеопередавачі VTX</Link>
+                  <Link href="#">ESC</Link>
+                </div>
+              </div>
+            </div>
+            <Link
+              href="#"
+              className="font-family-inter text-xl font-normal text-white hover:text-[#ba0108] transition-colors"
+            >
+              FAQ
+            </Link>
+            <Link
+              href="#"
+              className="font-family-inter text-xl font-normal text-white hover:text-[#ba0108] transition-colors"
+            >
+              База знань
+            </Link>
+            <Link
+              href="#"
+              className="font-family-inter text-xl font-normal text-white hover:text-[#ba0108] transition-colors"
+            >
+              Контакти
+            </Link>
           </nav>
-          <nav>
-            <StyledLink href="#">FAQ</StyledLink>
-          </nav>
-          <nav>
-            <StyledLink href="#">База знань</StyledLink>
-          </nav>
-          <nav>
-            <StyledLink href="#">Контакти</StyledLink>
-          </nav>
-          <StyledAdditionalWrapper>
-            <StyledLink data-phone href="tel:(067) 298-29-29">
+        </div>
+        {/* Navigation - centered with proper spacing */}
+        <div className="flex gap-[50px] justify-center">
+          <nav className="flex items-center pl-[180px] gap-[30px]">
+            <Link
+              href="tel:(067) 298-29-29"
+              className="font-montserrat text-xl font-normal text-white hover:text-[#ba0108] transition-colors"
+            >
               (067) 298-29-29
-            </StyledLink>
-          </StyledAdditionalWrapper>
-          <LanguageSwitcher />
-        </StyledContentWrapper>
-      </Container>
-    </StyledHeader>
+            </Link>
+            <LanguageSwitcher />
+          </nav>
+        </div>
+      </div>
+    </header>
   );
 };
 
