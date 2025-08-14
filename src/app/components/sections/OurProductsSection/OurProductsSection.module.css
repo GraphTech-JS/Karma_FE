@@ -112,27 +112,3 @@
 .button:hover {
   background-color: #9a0107;
 }
-
-/* Custom Navigation Arrows */
-:global(.swiper-button-prev-custom),
-:global(.swiper-button-next-custom) {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 90px;
-  height: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 10;
-  transition: background-color 0.3s ease;
-}
-
-:global(.swiper-button-prev-custom) {
-  left: -25px;
-}
-
-:global(.swiper-button-next-custom) {
-  right: -25px;
-}

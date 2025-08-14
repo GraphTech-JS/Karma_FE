@@ -8,7 +8,7 @@
 }
 
 .title {
-  font-family: 'Unbounded', sans-serif;
+  font-family: "Unbounded", sans-serif;
   font-size: 40px;
   font-weight: 600;
   color: #020303;
@@ -51,24 +51,3 @@
   font-weight: 600;
   color: #020303;
 }
-
-/* Custom Pagination Bullets */
-:global(.swiper-pagination-bullet-custom) {
-  width: 12px;
-  height: 12px;
-  background-color: #ccc;
-  border-radius: 50%;
-  margin: 0 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  opacity: 1;
-}
-
-:global(.swiper-pagination-bullet-active-custom) {
-  background-color: #ba0108;
-}
-
-:global(.swiper-pagination) {
-  bottom: 20px;
-}
-
