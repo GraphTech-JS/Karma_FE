@@ -1,15 +1,16 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --color-karma-red: #ba0108;
   --color-karma-red-hover: #9a0106;
+  --color-karma-black: #020303;
   --color-karma-dark: rgb(2 3 3);
   --color-karma-gray: rgb(146 146 146);
 
-  --font-family-inter: "Inter", sans-serif;
-  --font-family-montserrat: "Montserrat", sans-serif;
-  --font-family-unbounded: "Unbounded", sans-serif;
-  --font-family-wallpoet: "Wallpoet", sans-serif;
+  --font-family-inter: 'Inter', sans-serif;
+  --font-family-montserrat: 'Montserrat', sans-serif;
+  --font-family-unbounded: 'Unbounded', sans-serif;
+  --font-family-wallpoet: 'Wallpoet', sans-serif;
 }
 
 html,
@@ -21,15 +22,15 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 * {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 /* Custom Navigation Arrows */
@@ -75,3 +76,4 @@ body {
 .swiper-pagination {
   bottom: 20px;
 }
+
