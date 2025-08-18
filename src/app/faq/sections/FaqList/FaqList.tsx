@@ -7,7 +7,7 @@ import styles from './FaqList.module.css';
 const FaqList = () => {
   return (
     <section className='relative flex flex-col items-center  bg-white mt-[122px] mb-[134px] z-[10]'>
-      <div className='w-full mx-auto px-5 flex flex-col gap-[30px] max-w-[600px] md:max-w-[740px] lg:max-w-[970px] xl:max-w-[1148px]'>
+      <div className='w-full mx-auto flex flex-col gap-[30px] max-w-[600px] md:max-w-[740px] lg:max-w-[970px] xl:max-w-[1148px]'>
         <h3 className={styles.title}>Загальні питання</h3>
         <Accordion
           className={styles.question}

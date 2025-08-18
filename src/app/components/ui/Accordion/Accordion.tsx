@@ -2,7 +2,15 @@ import Image from 'next/image';
 import Arrow from '../../../../../public/arrow.svg';
 import styles from './Accordion.module.css';
 
-const Accordion = ({question,answer,className,} : {question:string; answer: string; className?: string;}) => {
+const Accordion = ({
+  question,
+  answer,
+  className,
+}: {
+  question: string;
+  answer: string;
+  className?: string;
+}) => {
   return (
     <div className={className}>
       <details className={`group  border-b border-[#303030] ${styles.root}`}>
