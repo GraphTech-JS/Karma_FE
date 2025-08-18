@@ -1,26 +1,28 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import BgEl5 from "../../../../../public/bg-el-5.png";
-import BgEl6 from "../../../../../public/bg-el-6.png";
-import styles from "./ContactFormSection.module.css";
+import Image from 'next/image';
+import BgEl5 from '../../../../../public/bg-el-5.png';
+import BgEl6 from '../../../../../public/bg-el-6.png';
+import styles from './ContactFormSection.module.css';
 
-const ContactFormSection = () => {
+const ContactFormSection = ({ hideBgImage = false }: { hideBgImage?: boolean }) => {
   return (
     <section className={styles.contactSection}>
       <div className={styles.backgroundElement1}>
-        <Image
-          src={BgEl6}
-          alt="bg element 6"
-          className={styles.bgImage}
-          width={400}
-          height={400}
-        />
+        {!hideBgImage && (
+          <Image
+            src={BgEl6}
+            alt='bg element 6'
+            className={styles.bgImage}
+            width={400}
+            height={400}
+          />
+        )}
       </div>
       <div className={styles.backgroundElement2}>
         <Image
           src={BgEl5}
-          alt=""
+          alt=''
           className={styles.bgImage}
           width={400}
           height={400}
@@ -38,18 +40,18 @@ const ContactFormSection = () => {
           <form className={styles.form}>
             <div className={styles.inputRow}>
               <input
-                type="text"
+                type='text'
                 placeholder="Ваше ім'я"
                 className={styles.input}
               />
-              <input type="tel" placeholder="+380" className={styles.input} />
+              <input type='tel' placeholder='+380' className={styles.input} />
             </div>
             <textarea
-              placeholder="Ваше повідомлення"
+              placeholder='Ваше повідомлення'
               className={styles.textarea}
               rows={5}
             />
-            <button type="submit" className={styles.button}>
+            <button type='submit' className={styles.button}>
               Відправити
             </button>
           </form>
@@ -57,10 +59,10 @@ const ContactFormSection = () => {
         <div className={styles.contactInfo}>
           <div className={styles.contactItem}>
             <h3>Контактний відділ</h3>
-            <a href="tel:+380956156713" className={styles.phone}>
+            <a href='tel:+380956156713' className={styles.phone}>
               +380 95 61 56713
             </a>
-            <a href="mailto:Info@karma.flights" className={styles.email}>
+            <a href='mailto:Info@karma.flights' className={styles.email}>
               Info@karma.flights
             </a>
           </div>

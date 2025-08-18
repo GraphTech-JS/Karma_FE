@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
-import Image from "next/image";
-import Product1 from "../../../../../public/our-product1.png";
-import Product2 from "../../../../../public/our-product2.png";
-import BgEl3 from "../../../../../public/bg-el-3.png";
-import styles from "./OurProductsSection.module.css";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
+import Image from 'next/image';
+import Product1 from '../../../../../public/our-product1.png';
+import Product2 from '../../../../../public/our-product2.png';
+import BgEl3 from '../../../../../public/bg-el-3.png';
+import styles from './OurProductsSection.module.css';
 
 const OurProductsSection = () => {
   return (
@@ -16,14 +16,14 @@ const OurProductsSection = () => {
       <div className={styles.backgroundElement}>
         <Image
           src={BgEl3}
-          alt=""
+          alt=''
           className={styles.bgImage}
           width={400}
           height={400}
         />
       </div>
-      <h2 className={styles.title}>
-        <span className={styles.titleHighlight}>Н</span>АШІ ТОВАРИ
+      <h2 className='title text-[40px] text-[#020303]'>
+        <span>Н</span>АШІ ТОВАРИ
       </h2>
       <div className={styles.swiperWrapper}>
         <Swiper
@@ -31,8 +31,8 @@ const OurProductsSection = () => {
           spaceBetween={10}
           slidesPerView={2}
           navigation={{
-            nextEl: ".swiper-button-next-custom",
-            prevEl: ".swiper-button-prev-custom",
+            nextEl: '.swiper-button-next-custom',
+            prevEl: '.swiper-button-prev-custom',
           }}
           loop={true}
           className={styles.swiperContainer}
@@ -41,7 +41,7 @@ const OurProductsSection = () => {
             <div className={styles.card}>
               <Image
                 src={Product1}
-                alt="Політний стек KARMA F405 V1"
+                alt='Політний стек KARMA F405 V1'
                 width={300}
                 height={200}
               />
@@ -77,7 +77,7 @@ const OurProductsSection = () => {
             <div className={styles.card}>
               <Image
                 src={Product2}
-                alt="Політний стек KARMA F405 V1"
+                alt='Політний стек KARMA F405 V1'
                 width={300}
                 height={200}
               />
@@ -113,7 +113,7 @@ const OurProductsSection = () => {
             <div className={styles.card}>
               <Image
                 src={Product1}
-                alt="Політний стек KARMA F405 V1"
+                alt='Політний стек KARMA F405 V1'
                 width={300}
                 height={200}
               />
@@ -146,25 +146,25 @@ const OurProductsSection = () => {
             </div>
           </SwiperSlide>
         </Swiper>
-        <div className="swiper-button-prev-custom">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <div className='swiper-button-prev-custom'>
+          <svg width='24' height='24' viewBox='0 0 24 24' fill='none'>
             <path
-              d="M15 18L9 12L15 6"
-              stroke="#ba0108"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              d='M15 18L9 12L15 6'
+              stroke='#ba0108'
+              strokeWidth='2'
+              strokeLinecap='round'
+              strokeLinejoin='round'
             />
           </svg>
         </div>
-        <div className="swiper-button-next-custom">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <div className='swiper-button-next-custom'>
+          <svg width='24' height='24' viewBox='0 0 24 24' fill='none'>
             <path
-              d="M9 18L15 12L9 6"
-              stroke="#ba0108"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              d='M9 18L15 12L9 6'
+              stroke='#ba0108'
+              strokeWidth='2'
+              strokeLinecap='round'
+              strokeLinejoin='round'
             />
           </svg>
         </div>
