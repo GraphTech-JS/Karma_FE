@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './styles/reset.css';
 
 @theme {
   --color-karma-red: #ba0108;
@@ -13,10 +14,9 @@
   --font-family-wallpoet: 'Wallpoet', sans-serif;
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body, h1, h2, h3, h4, h5, h6, p, figure, blockquote { margin: 0; }
 }
 
 body {
@@ -25,12 +25,6 @@ body {
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 /* Custom Navigation Arrows */
@@ -76,4 +70,14 @@ body {
 .swiper-pagination {
   bottom: 20px;
 }
+/* title - brought out as a separate class */
+.title {
+  font-family: var(--font-family-unbounded);
+  font-weight: 600;
+  margin-bottom: 40px;
+  span {
+    color: #ba0108;
+  }
+}
+
 

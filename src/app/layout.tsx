@@ -1,33 +1,33 @@
-import type { Metadata } from "next";
-import { Montserrat, Unbounded, Inter, Wallpoet } from "next/font/google";
-import "./globals.css";
-import Header from "./components/layout/Header/Header";
-import Footer from "./components/layout/Footer/Footer";
+import type { Metadata } from 'next';
+import { Montserrat, Unbounded, Inter, Wallpoet } from 'next/font/google';
+import './globals.css';
+import Header from './components/layout/Header/Header';
+import Footer from './components/layout/Footer/Footer';
 
 const montserrat = Montserrat({
-  variable: "--font-montserrat",
-  subsets: ["latin"],
+  variable: '--font-montserrat',
+  subsets: ['latin'],
 });
 
 const unbounded = Unbounded({
-  variable: "--font-unbounded",
-  subsets: ["latin"],
+  variable: '--font-unbounded',
+  subsets: ['latin'],
 });
 
 const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
+  variable: '--font-inter',
+  subsets: ['latin'],
 });
 
 const wallpoet = Wallpoet({
-  variable: "--font-wallpoet",
-  subsets: ["latin"],
-  weight: "400",
+  variable: '--font-wallpoet',
+  subsets: ['latin'],
+  weight: '400',
 });
 
 export const metadata: Metadata = {
-  title: "Karma",
-  description: "Karma - високотехнологічне українське виробництво",
+  title: 'Karma',
+  description: 'Karma - високотехнологічне українське виробництво',
 };
 
 export default function RootLayout({
@@ -36,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="uk">
+    <html lang='uk'>
       <body
         className={`${montserrat.variable} ${unbounded.variable} ${inter.variable} ${wallpoet.variable}`}
       >

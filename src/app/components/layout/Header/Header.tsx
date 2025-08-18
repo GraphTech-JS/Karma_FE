@@ -12,13 +12,14 @@ const Header = () => {
       <div className='flex gap-20 w-[1237px] justify-between items-center px-5'>
         {/* Logo */}
 
-        <div className='pl-12'>
+        <div className=''>
           <Link href='#' className='font-inter text-xl font-normal text-white'>
             <Image src={Logo.src} alt='logo' width={149} height={34} />
           </Link>
         </div>
+
         <div>
-          <nav className='flex items-center mr-[150px] gap-[50px] space-x-12'>
+          <nav className='flex items-center  gap-[50px] '>
             <div className={styles.dropdown}>
               <Link
                 href='#'
@@ -56,7 +57,7 @@ const Header = () => {
         </div>
         {/* Navigation - centered with proper spacing */}
         <div className='flex gap-[50px] justify-center'>
-          <nav className='flex items-center pl-[180px] gap-[30px]'>
+          <nav className='flex items-center gap-[30px]'>
             <Link
               href='tel:(067) 298-29-29'
               className='font-montserrat text-xl font-normal text-white hover:text-[#ba0108] transition-colors'
