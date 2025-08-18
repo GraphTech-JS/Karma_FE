@@ -16,7 +16,7 @@ const AboutSection = () => {
         height={270}
       />
 
-      <div className='w-[1237px]  relative z-[2]'>
+      <div className='w-[1237px] relative z-[2]'>
         <div className='flex items-center gap-5'>
           {/* Left Image */}
           <div className='flex flex-col h-[400px]'>
