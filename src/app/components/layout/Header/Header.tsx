@@ -36,7 +36,7 @@ const Header = () => {
               </div>
             </div>
             <Link
-              href='#'
+              href='/faq'
               className='font-family-inter text-xl font-normal text-white hover:text-[#ba0108] transition-colors'
             >
               FAQ
@@ -48,7 +48,7 @@ const Header = () => {
               База знань
             </Link>
             <Link
-              href='#'
+              href='/contacts'
               className='font-family-inter text-xl font-normal text-white hover:text-[#ba0108] transition-colors'
             >
               Контакти
