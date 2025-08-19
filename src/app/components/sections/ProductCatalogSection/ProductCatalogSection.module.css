@@ -1,0 +1,75 @@
+.catalogSection {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 522px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.backgroundElement {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.bgImage {
+  width: 320px;
+  height: auto;
+}
+
+.title {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  color: #020303;
+  margin-bottom: 40px;
+  z-index: 10;
+  position: relative;
+}
+
+.titleHighlight {
+  color: #ba0108;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 1237px;
+  z-index: 10;
+  position: relative;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 362px;
+  width: 100%;
+  max-width: 400px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.card:hover {
+  color: #ba0108;
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 24px;
+  margin-top: 15px;
+  text-align: center;
+}
+

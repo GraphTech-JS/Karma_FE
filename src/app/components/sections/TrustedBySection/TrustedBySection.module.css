@@ -1,0 +1,53 @@
+.trustedBySection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+  background-color: #eaeaea;
+  text-align: center;
+}
+
+.title {
+  font-family: "Unbounded", sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  color: #020303;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.titleHighlight {
+  color: #ba0108;
+}
+
+.container {
+  width: 100%;
+  max-width: 1237px;
+  margin: 0 auto;
+}
+
+.swiperContainer {
+  padding-bottom: 60px;
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoContainer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+}
+
+.logoContainer p {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #020303;
+}
