@@ -47,10 +47,9 @@ body {
 .swiper-button-prev-custom,
 .swiper-button-next-custom {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 90px;
-  height: 90px;
+  width: fit-content;
+  top: 40%;
+  height: fit-content;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,11 +59,11 @@ body {
 }
 
 .swiper-button-prev-custom {
-  left: -25px;
+  left: 105px;
 }
 
 .swiper-button-next-custom {
-  right: -25px;
+  right: 105px;
 }
 
 /* Custom Pagination Bullets */
