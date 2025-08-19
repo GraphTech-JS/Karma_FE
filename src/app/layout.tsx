@@ -3,6 +3,7 @@ import { Montserrat, Unbounded, Inter, Wallpoet } from 'next/font/google';
 import './globals.css';
 import Header from './components/layout/Header/Header';
 import Footer from './components/layout/Footer/Footer';
+import Container from './components/layout/Container/Container';
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -42,6 +43,7 @@ export default function RootLayout({
       >
         <Header />
         <main>{children}</main>
+
         <Footer />
       </body>
     </html>

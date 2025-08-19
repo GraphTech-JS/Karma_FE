@@ -10,17 +10,23 @@ import Product2 from '../../../../../public/our-product2.png';
 import BgEl3 from '../../../../../public/bg-el-3.png';
 import styles from './OurProductsSection.module.css';
 
-const OurProductsSection = () => {
+const OurProductsSection = ({
+  hideBgImage = false,
+}: {
+  hideBgImage?: boolean;
+}) => {
   return (
     <section className={styles.productsSection}>
       <div className={styles.backgroundElement}>
-        <Image
-          src={BgEl3}
-          alt=''
-          className={styles.bgImage}
-          width={400}
-          height={400}
-        />
+        {!hideBgImage && (
+          <Image
+            src={BgEl3}
+            alt=''
+            className={styles.bgImage}
+            width={400}
+            height={400}
+          />
+        )}
       </div>
       <h2 className='title text-[40px] text-[#020303]'>
         <span>Н</span>АШІ ТОВАРИ

@@ -4,7 +4,6 @@ import AccordionList from '../components/ui/AccordionList/AccordionList';
 export default function Contacts() {
   return (
     <>
-    
       <ContactFormSection hideBgImage />
       <AccordionList
         className='mt-[112px] mb-[80px]'
