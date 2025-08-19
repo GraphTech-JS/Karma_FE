@@ -15,7 +15,7 @@ const Accordion = ({
     <div className={className}>
       <details className={`group border-b border-[#303030]  ${styles.root}`}>
         <summary
-          className={` cursor-pointer  select-none ${styles.summary} py-4`}
+          className={` cursor-pointer  select-none ${styles.summary}`}
         >
           <h4 className={`font-montserrat text-2xl  ${styles.title}`}>
             {question}

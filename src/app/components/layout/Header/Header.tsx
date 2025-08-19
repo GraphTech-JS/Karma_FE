@@ -8,21 +8,19 @@ import styles from './Header.module.css';
 
 const Header = () => {
   return (
-    <header className='bg-[#020303] h-[82px] flex items-center justify-center'>
-      <div className='flex gap-20 w-[1237px] justify-between items-center px-5'>
+    <header className='bg-[#020303] px-[89px] py-[26px] flex items-center justify-center '>
+      <div className='flex w-full justify-around items-center gap-20'>
         {/* Logo */}
 
-        <div className=''>
-          <Link href='#' className='font-inter text-xl font-normal text-white'>
-            <Image src={Logo.src} alt='logo' width={149} height={34} />
-          </Link>
-        </div>
+        <Link href='#' className='font-inter text-xl font-normal text-white'>
+          <Image src={Logo.src} alt='logo' width={149} height={34} />
+        </Link>
 
         <div>
           <nav className='flex items-center  gap-[50px] '>
             <div className={styles.dropdown}>
               <Link
-                href='#'
+                href='/catalog'
                 className='font-family-inter text-xl focus:font-bold text-[#ffffff] hover:text-[#ba0108] transition-colors'
               >
                 Каталог

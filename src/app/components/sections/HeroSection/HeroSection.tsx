@@ -24,7 +24,7 @@ const HeroSection = () => {
         height={280}
       />
 
-      <div className="max-w-[1237px] flex justify-center mx-auto px-5 relative z-[2] ">
+      <div className=" flex justify-center mx-auto px-5 relative z-[2] ">
         <div className="flex items-center justify-between gap-16">
           {/* Left Content */}
           <div className="flex flex-col gap-5">

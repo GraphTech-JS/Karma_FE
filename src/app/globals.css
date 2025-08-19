@@ -15,8 +15,24 @@
 }
 
 @layer base {
-  *, *::before, *::after { box-sizing: border-box; }
-  html, body, h1, h2, h3, h4, h5, h6, p, figure, blockquote { margin: 0; }
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  html,
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  figure,
+  blockquote {
+    margin: 0;
+  }
 }
 
 body {
@@ -79,5 +95,6 @@ body {
     color: #ba0108;
   }
 }
+
 
 
