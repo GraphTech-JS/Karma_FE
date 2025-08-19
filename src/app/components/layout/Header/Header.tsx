@@ -22,7 +22,7 @@ const Header = () => {
           <nav className='flex items-center  gap-[50px] '>
             <div className={styles.dropdown}>
               <Link
-                href='#'
+                href='/catalog'
                 className='font-family-inter text-xl focus:font-bold text-[#ffffff] hover:text-[#ba0108] transition-colors'
               >
                 Каталог
