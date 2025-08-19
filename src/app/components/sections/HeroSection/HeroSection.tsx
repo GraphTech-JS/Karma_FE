@@ -4,6 +4,7 @@ import Image from "next/image";
 import Stack from "../../../../../public/stack.png";
 import BgEl1 from "../../../../../public/bg-el-1.png";
 import BgEl2 from "../../../../../public/bg-el-2.png";
+import AnimatedTitle from "../../ui/AnimatedTitle/AnimatedTitle";
 
 const HeroSection = () => {
   return (
@@ -24,18 +25,18 @@ const HeroSection = () => {
         height={280}
       />
 
-      <div className=" flex justify-center mx-auto px-5 relative z-[2] ">
+      <div className="flex justify-center mx-auto px-5 relative z-[2] ">
         <div className="flex items-center justify-between gap-16">
           {/* Left Content */}
           <div className="flex flex-col gap-5">
-            <h1 className="!font-family-unbounded font-bold leading-[1.1] text-black mb-6">
+            <AnimatedTitle className="!font-family-unbounded font-bold leading-[1.1] text-black mb-6">
               <span className="text-[#ba0108] block text-[64px] leading-[1.1] mb-2">
                 НОВИЙ СТЕК
               </span>
               <span className="text-black text-[52px] leading-[1.1]">
                 KARMA FLIGHTS
               </span>
-            </h1>
+            </AnimatedTitle>
             <p className="font-family-unbounded text-xl font-[300]  text-black mb-8 ">
               Високотехнологічне українське виробництво
             </p>

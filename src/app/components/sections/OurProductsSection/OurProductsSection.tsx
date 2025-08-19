@@ -8,7 +8,9 @@ import Image from 'next/image';
 import Product1 from '../../../../../public/our-product1.png';
 import Product2 from '../../../../../public/our-product2.png';
 import BgEl3 from '../../../../../public/bg-el-3.png';
+import Arrow from "../../../../../public/nav_arrow.svg";
 import styles from './OurProductsSection.module.css';
+import Link from 'next/link';
 
 const OurProductsSection = ({
   hideBgImage = false,
@@ -76,7 +78,9 @@ const OurProductsSection = ({
                   <span>Роз&apos;єм живлення</span> <span>XT-60</span>
                 </li>
               </ul>
+               <Link href={`/catalog/2233`}>
               <button className={styles.button}>Докладніше</button>
+             </Link>
             </div>
           </SwiperSlide>
           <SwiperSlide className={styles.slide}>
@@ -112,7 +116,9 @@ const OurProductsSection = ({
                   <span>Роз&apos;єм живлення</span> <span>XT-60</span>
                 </li>
               </ul>
+              <Link href={`/catalog/2233`}>
               <button className={styles.button}>Докладніше</button>
+             </Link>
             </div>
           </SwiperSlide>
           <SwiperSlide className={styles.slide}>
@@ -148,31 +154,17 @@ const OurProductsSection = ({
                   <span>Роз&apos;єм живлення</span> <span>XT-60</span>
                 </li>
               </ul>
+               <Link href={`/catalog/2233`}>
               <button className={styles.button}>Докладніше</button>
+             </Link>
             </div>
           </SwiperSlide>
         </Swiper>
-        <div className='swiper-button-prev-custom'>
-          <svg width='24' height='24' viewBox='0 0 24 24' fill='none'>
-            <path
-              d='M15 18L9 12L15 6'
-              stroke='#ba0108'
-              strokeWidth='2'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            />
-          </svg>
+        <div className='swiper-button-prev-custom rotate-180'>
+          <img src={Arrow.src} alt="navigation prev arrow" />
         </div>
         <div className='swiper-button-next-custom'>
-          <svg width='24' height='24' viewBox='0 0 24 24' fill='none'>
-            <path
-              d='M9 18L15 12L9 6'
-              stroke='#ba0108'
-              strokeWidth='2'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            />
-          </svg>
+          <img src={Arrow.src} alt="navigation next arrow" />
         </div>
       </div>
     </section>

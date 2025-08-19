@@ -4,6 +4,7 @@ import Image from 'next/image';
 import BgEl5 from '../../../../../public/bg-el-5.png';
 import BgEl6 from '../../../../../public/bg-el-6.png';
 import styles from './ContactFormSection.module.css';
+import AnimatedTitle from '../../ui/AnimatedTitle/AnimatedTitle';
 
 const ContactFormSection = ({ hideBgImage = false }: { hideBgImage?: boolean }) => {
   return (
@@ -30,10 +31,10 @@ const ContactFormSection = ({ hideBgImage = false }: { hideBgImage?: boolean }) 
       </div>
       <div className={styles.container}>
         <div className={styles.formContainer}>
-          <h2 className={styles.title}>
+          <AnimatedTitle className={styles.title}>
             <span className={styles.titleHighlight}>З</span>В&apos;ЯЖІТЬСЯ З
             НАМИ
-          </h2>
+          </AnimatedTitle>
           <p className={styles.subtitle}>
             Введіть будь-ласка Ваші данні і ми зв&apos;яжемось з Вами
           </p>

@@ -11,10 +11,11 @@ import ListTwo from '../../../public/list-two.png';
 import ListThree from '../../../public/list-three.png';
 import OurProductsSection from '../components/sections/OurProductsSection/OurProductsSection';
 import AccordionList from '../components/ui/AccordionList/AccordionList';
+import AnimatedTitle from '../components/ui/AnimatedTitle/AnimatedTitle';
 
 const CatalogPage = () => {
   return (
-    <section className=' bg-white min-h-[600px]    '>
+    <section className=' bg-white min-h-[600px]'>
       {/* Background decorative elements */}
       <div className='relative overflow-hidden'>
         <Image
@@ -32,20 +33,20 @@ const CatalogPage = () => {
           height={380}
         />
 
-        <div className='max-w-[1440px] w-full flex flex-col justify-center mx-auto pt-[40px] mb-[64px]  relative z-[2] '>
+        <div className='w-[1237px] flex flex-col items-start mx-auto justify-center pt-[40px] mb-[64px] relative z-[2] '>
           <div className='flex items-center gap-2 text-[var(--color-karma-red)] font-family-montserrat mb-[35px]'>
             <Link href='/'>Головна </Link>
             <span>&rarr;</span>
-            <Link href='/'>Політні стеки</Link>
+            <Link href='/catalog'>Політні стеки</Link>
           </div>
-          <div className='flex items-center justify-between '>
-            <div className='flex flex-col gap-5 max-w-[747px] w-full '>
-              <h1 className='!font-family-unbounded uppercase text-[var(--color-karma-red)] font-medium '>
-                <span className=' block text-[64px] leading-[1.1] mb-2'>
+          <div className='flex items-center justify-center mx-auto'>
+            <div className='flex flex-col gap-5 w-full '>
+              <AnimatedTitle className='!font-family-unbounded uppercase text-[var(--color-karma-red)] font-medium '>
+                <span className='block text-[64px] leading-[1.1] mb-2'>
                   Політні стеки
                 </span>
-              </h1>
-              <p className=' font-montserrat text-[20px] leading-[1.7] text-[#333333] mb-8'>
+              </AnimatedTitle>
+              <p className='font-family-montserrat text-[20px] leading-[1.7] text-[#333333] mb-8'>
                 Компактна та продуктивна інтегрована система для дронів, що
                 об&apos;єднує польотний контролер (FC) на базі потужного
                 мікроконтролера STM32F405 та регулятор швидкості (ESC) 4-в-1 з
@@ -57,18 +58,17 @@ const CatalogPage = () => {
                 ящик&quot;, він є ідеальним вибором для створення легких та
                 маневрених FPV-дронів
               </p>
-              <button className='bg-[#ba0108] text-white font-montserrat text-2xl font-normal w-[387px] py-[14px] px-[54px] mt-[60px]  h-[70px] border-none rounded-[25px] cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#9a0106] hover:-translate-y-1 active:translate-y-0 shadow-lg'>
+              <button className='bg-[#ba0108] text-white font-family-montserrat text-2xl font-normal w-[607px] py-[14px] px-[54px] mt-[60px]  h-[70px] border-none rounded-[25px] cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#9a0106] hover:-translate-y-1 active:translate-y-0 shadow-lg'>
                 Отримати пропозицію
               </button>
             </div>
 
             <div className='flex justify-center items-center relative '>
-              <Image
-                src={StackRotate}
-                width={602}
-                height={536}
-                alt='Karma Flights - високотехнологічне українське виробництво'
-              />
+               <img
+              src={StackRotate.src}
+              alt="Karma Flights - високотехнологічне українське виробництво"
+              className="w-full h-full"
+            />
               <div className='pointer-events-none absolute -bottom-3 left-1/2 -translate-x-1/2 w-[493px] h-[80px] rounded-full bg-black/35 blur-2xl' />
             </div>
           </div>

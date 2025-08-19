@@ -8,11 +8,11 @@ import styles from './Header.module.css';
 
 const Header = () => {
   return (
-    <header className='bg-[#020303] px-[89px] py-[26px] flex items-center justify-center '>
-      <div className='flex w-full justify-around items-center gap-20'>
+    <header className='bg-[#020303] py-[26px] flex justify-center mx-auto'>
+      <div className='flex w-[1237px] justify-between items-center gap-20'>
         {/* Logo */}
 
-        <Link href='#' className='font-inter text-xl font-normal text-white'>
+        <Link href='/' className='font-inter text-xl font-normal text-white'>
           <Image src={Logo.src} alt='logo' width={149} height={34} />
         </Link>
 
