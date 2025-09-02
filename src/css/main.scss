@@ -30,6 +30,9 @@
 @use './imports/_reset';
 /* Tailwind CSS */
 @use "tailwindcss";
+
+
+
 /* Importing here will allow you to override any variables in the modules */
 @use './imports/_colors';
 @use './imports/_media-queries';
@@ -67,7 +70,7 @@
   align-items: stretch;
   height: auto;
   transition: none;
-  max-width: 1200px;
+  flex-wrap: nowrap; 
 }
 
 .swiper-slide {
@@ -78,12 +81,34 @@
   justify-content: center;
 }
 
-.swiper-container-trusted .swiper-slide {
+.swiper-container-trusted-desktop .swiper-slide {
   min-height: 200px;
+  width: 25% !important;
+  flex-shrink: 0;
+  padding: 0 20px;
+  max-width: 25% !important;
+  min-width: 25% !important;
+}
+
+.swiper-container-trusted-mobile .swiper-slide {
+  min-height: auto;
+  width: 100% !important;
+  flex-shrink: 0;
+  padding: 0;
+  max-width: 100% !important;
+  min-width: 100% !important;
+}
+.swiper-pagination-trusted{
+  margin-bottom: 15px;
+}
+/* pagination bullets size for trusted slider */
+.swiper-pagination-trusted .swiper-pagination-bullet-custom {
+  width: 13px;
+  height: 13px;
 }
 
 .swiper-container-products .swiper-slide {
-  width: calc(50% - 15px) !important;
+  width: auto !important; 
   min-height: 400px;
 }
 
@@ -112,4 +137,121 @@
 .swiper-button-next-custom {
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+.swiper-container-trusted {
+  @media (min-width: 799px) {
+    .swiper-button-prev-custom {
+      position: absolute !important;
+      left: 100px !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+    }
+    
+    .swiper-button-next-custom {
+      position: absolute !important;
+      right: 100px !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+    }
+  }
+
+  @media (max-width: 798px) {
+    .swiper-button-prev-custom {
+      position: relative !important;
+      left: -3px !important;
+    }
+    
+    .swiper-button-next-custom {
+      position: relative !important;
+      right: -3px !important;
+    }
+  }
+}
+.products-slider {
+  .swiper-container-products {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-inline: auto !important;
+    overflow: hidden !important; 
+  }
+  
+  @media (min-width: 768px) {
+    .swiper-container-products {
+      width: 88% !important;
+      max-width: 1000px !important;
+    }
+  }
+  
+  @media (min-width: 982px) {
+    .swiper-container-products {
+      width: 82% !important;
+      max-width: 900px !important;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .swiper-container-products {
+      width: 81% !important;
+      max-width: 1200px !important;
+    }
+  }
+  
+  @media (min-width: 1100px) {
+    .swiper-container-products {
+      width: 70% !important;
+      max-width: 1200x !important;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .swiper-container-products {
+      width: 70% !important;
+      max-width: 1000px !important;
+    }
+  }
+
+  .swiper-container-products .swiper-wrapper {
+    width: auto !important;
+  }
+
+  .swiper-container-products .swiper-slide > div {
+    margin: 0 !important;
+  }
+
+  .swiper-button-prev-custom {
+    left: 0 !important;
+  }
+
+  .swiper-button-next-custom {
+    right: 0 !important;
+  }
+
+  @media (max-width: 1024px) {
+    .swiper-button-prev-custom {
+      left: 0 !important;
+    }
+    .swiper-button-next-custom {
+      right: 0 !important;
+    }
+  }
+}
+
+.swiper-container-trusted-desktop .swiper-wrapper {
+  display: flex;
+  align-items: stretch;
+  height: auto;
+  transition: none;
+  flex-wrap: nowrap;
+  width: 100% !important;
+  justify-content: space-between;
+}
+
+.swiper-container-trusted-mobile .swiper-wrapper {
+  display: flex;
+  align-items: stretch;
+  height: auto;
+  transition: none;
+  flex-wrap: nowrap;
+  width: 100% !important;
 }
