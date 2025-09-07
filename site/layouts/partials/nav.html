@@ -1,5 +1,10 @@
-<header class="bg-[#020303] h-[60px] md:h-[72px] lg:h-[82px] flex justify-center mx-auto" role="banner">
+<header class="bg-[#020303] h-[60px] md:h-[72px] lg:h-[82px] flex justify-center mx-auto " role="banner">
   <style>
+    header {
+      position: relative;
+      top: 0;
+      z-index: 1000;
+    }
     .nav-link {
       position: relative;
       display: inline-block;
@@ -213,7 +218,7 @@
           Каталог
         </button>
         <div class="dropdown-menu absolute left-[-50px] lg:left-[-80px] top-[30px] mt-3 bg-[#020303] rounded-b-[5px]" role="menu" aria-label="Підменю каталогу">
-          <div class="flex flex-row lg:flex-col w-full">
+          <div class="flex flex-row w-full lg:flex-col">
             <a href="/catalog/politni-steky/"
               class="dropdown-item flex-1 px-8 py-6 text-white lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap" role="menuitem">Політні
               стеки</a>
@@ -247,7 +252,7 @@
           aria-label="Зателефонувати за номером (067) 298-29-29">
           (067) 298-29-29
         </a>
-        <div class="flex gap-3 items-center text-xl language-switcher text-white/80">
+        <div class="flex items-center gap-3 text-xl language-switcher text-white/80">
           <button id="lang-ua"
             class="font-['Inter'] font-bold cursor-pointer text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold transition-colors"
             onclick="switchLanguage('ua')" aria-label="Перемкнути на українську мову" aria-pressed="true">UA</button>
@@ -260,7 +265,7 @@
     </div>
 
     <!-- Mobile Navigation -->
-    <div class="flex gap-4 items-center mobile-nav">
+    <div class="flex items-center gap-4 mobile-nav">
       <!-- Search Icon -->
       <button class="text-white hover:text-[#ba0108] transition-colors cursor-pointer" onclick="toggleMobileSearch()" aria-label="Відкрити пошук">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -271,7 +276,7 @@
       </button>
 
       <!-- Hamburger Menu Button -->
-      <button class="flex flex-col justify-center items-center space-y-1 w-8 h-8 cursor-pointer hamburger"
+      <button class="flex flex-col items-center justify-center w-8 h-8 space-y-1 cursor-pointer hamburger"
         onclick="toggleMobileMenu()" aria-label="Відкрити мобільне меню" aria-expanded="false">
         <span class="block w-6 h-0.5 bg-white" aria-hidden="true"></span>
         <span class="block w-6 h-0.5 bg-white" aria-hidden="true"></span>
@@ -281,9 +286,9 @@
   </div>
 
   <!-- Mobile Search Overlay -->
-  <div id="mobile-search-overlay" class="hidden fixed inset-0 z-50 mobile-search-overlay bg-black/80">
+  <div id="mobile-search-overlay" class="fixed inset-0 z-50 hidden mobile-search-overlay bg-black/80">
     <div class="bg-[#020303] p-6 rounded-b-3xl">
-      <div class="flex justify-between items-center mb-4">
+      <div class="flex items-center justify-between mb-4">
         <a href="/" class="text-xl font-normal text-white font-inter">
           {{ $logoMobile := resources.Get "logo.png" }}
           {{ if $logoMobile }}
@@ -330,7 +335,7 @@
       </a>
       
       <!-- Close Button -->
-      <button class="flex relative flex-col justify-center items-center w-12 h-12 cursor-pointer hamburger"
+      <button class="relative flex flex-col items-center justify-center w-12 h-12 cursor-pointer hamburger"
         onclick="toggleMobileMenu()" aria-label="Закрити мобільне меню">
         <span class="block absolute w-6 h-0.5 bg-white rotate-45" aria-hidden="true"></span>
         <span class="block absolute w-6 h-0.5 bg-white -rotate-45" aria-hidden="true"></span>
@@ -348,7 +353,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
           </svg>
         </button>
-        <div class="overflow-hidden max-h-0 opacity-0 transition-all duration-300 ease-in-out mobile-catalog-menu" id="mobile-catalog-submenu">
+        <div class="overflow-hidden transition-all duration-300 ease-in-out opacity-0 max-h-0 mobile-catalog-menu" id="mobile-catalog-submenu">
           <div class="flex flex-col items-center pl-4 mt-2 space-y-2">
             <a href="/catalog/politni-steky/"
               class="block text-white/80 font-['Unbounded'] text-lg py-2 hover:text-[#ba0108] transition-colors">Політні
@@ -368,11 +373,11 @@
       <a href="/contact"
         class="text-white font-['Unbounded'] text-xl font-normal hover:text-[#ba0108] transition-colors">Контакти</a>
 
-      <div class="flex absolute bottom-10 flex-col items-center">
+      <div class="absolute flex flex-col items-center bottom-10">
         <a href="tel:(067) 298-29-29"
           class="block text-white font-['Montserrat'] text-xl font-normal mb-4 hover:text-[#ba0108] transition-colors">(067)
           298-29-29</a>
-        <div class="flex gap-3 items-center text-2xl text-white">
+        <div class="flex items-center gap-3 text-2xl text-white">
           <button id="mobile-lang-ua"
             class="!font-[Unbounded] font-[300] cursor-pointer text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] transition-colors"
             onclick="switchLanguage('ua')" aria-label="Перемкнути на українську мову" aria-pressed="true">
