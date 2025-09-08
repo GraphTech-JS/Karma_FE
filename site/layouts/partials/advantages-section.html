@@ -14,18 +14,18 @@
   <div class="flex flex-col lg:flex-row relative justify-center items-center lg:items-start mb-12 max-[450px]:mb-8">
     <div class="inline-block relative lg:absolute lg:-top-6 max-[450px]:relative">
       <h2
-        class="text-[clamp(28px,4vw,40px)] font-['Unbounded'] font-semibold text-white text-center hero-title z-10 px-8 py-4 max-[450px]:px-4 max-[450px]:py-2">
+        class="!text-[clamp(24px,4vw,40px)] font-['Unbounded'] font-semibold text-white text-center hero-title z-10 px-8 py-4 max-[450px]:px-4 max-[450px]:py-2">
         <span class="text-[#ba0108]">Ч</span>ОМУ МИ?
       </h2>
 
     </div>
 
-    <div class="hidden md:block lg:hidden absolute left-[20%] top-[40px]">
-      <img src="/img/line-left.svg" alt="" aria-hidden="true" class="w-[100px] h-auto" />
+    <div class="hidden md:block lg:hidden absolute left-[21%] top-[40px]">
+      <img src="/img/line-left-adv.svg" alt="" aria-hidden="true" class="w-[118px] h-auto" />
     </div>
 
-    <div class="hidden md:block lg:hidden absolute right-[20%] top-[40px]">
-      <img src="/img/line-right.svg" alt="" aria-hidden="true" class="w-[100px] h-auto" />
+    <div class="hidden md:block lg:hidden absolute right-[21%] top-[40px]">
+      <img src="/img/line-right-adv.svg" alt="" aria-hidden="true" class="w-[118px] h-auto" />
     </div>
   </div>
 
@@ -96,17 +96,30 @@
 
 
   <!-- Мобільна версія -->
-  <div
-    class="grid grid-cols-2 gap-[65px] max-[449px]:gap-[32px] justify-items-center px-4 mx-auto mt-8 md:mt-20 max-w-2xl lg:hidden">
+  <div class="grid grid-cols-2 
+     gap-x-[121px] 
+     gap-y-[65px] 
+     max-[449px]:gap-x-[45px]
+     max-[449px]:gap-y-[32px] 
+     justify-items-center 
+     items-start
+     mx-auto
+     mt-[42px]
+     px-4
+     md:mt-[50px] 
+     max-w-[800px]
+     lg:hidden">
     <!-- Advantage 1 -->
-    <div class="flex relative flex-col gap-4 items-center text-center w-full max-[450px]:w-[148px] md:w-[279px]">
+    <div
+      class="flex relative flex-col gap-4 max-[449px]:gap-0   items-center text-center w-full max-[450px]:w-[155px]   md:w-[279px] max-[449px]:order-1">
       <img src="/img/trust.svg" alt="Надійні постачальники" width="78" height="78"
-        class="w-[78px] h-[78px] max-[450px]:order-first md:order-last" />
+        class="w-[78px] h-[78px] max-[449px]:w-[74px] max-[449px]:h-[74px] max-[450px]:order-first md:order-last" />
       <h4
-        class="text-[clamp(16px,2.5vw,20px)] md:text-[20px] font-['Montserrat'] font-semibold text-white leading-tight">
+        class="text-[clamp(16px,2.5vw,20px)] md:text-[20px] max-[449px]:mt-[15px] font-['Montserrat'] font-semibold text-[#fefefe] leading-tight">
         Надійні постачальники
       </h4>
-      <p class="text-[clamp(16px,2vw,16px)] md:text-[14px] text-white font-normal font-['Montserrat']">
+      <p
+        class="text-[clamp(16px,2vw,16px)] md:text-[14px] max-[449px]:mt-[25px] text-[#fefefe] font-normal font-['Montserrat']">
         Постійний ланцюг постачання комплектуючих
       </p>
 
@@ -116,14 +129,17 @@
     </div>
 
     <!-- Advantage 2 -->
-    <div class="flex relative flex-col gap-4 items-center  text-center w-full max-[450px]:w-[148px] md:w-[279px]">
+    <div
+      class="flex relative flex-col gap-4 max-[449px]:gap-0 max-[449px]:mt-[3px]     items-center text-center w-full max-[450px]:w-[155px]  md:w-[279px] max-[449px]:order-3">
       <img src="/img/quality.svg" alt="Гарантована якість" width="78" height="78"
-        class="w-[78px] h-[78px] max-[450px]:order-first md:order-last" />
+        class="w-[78px] h-[78px] max-[449px]:w-[74px] max-[449px]:h-[74px] max-[450px]:order-first md:order-last" />
 
-      <h4 class="text-[clamp(16px,2vw,20px)] md:text-[20px] font-['Montserrat'] font-semibold text-white leading-tight">
+      <h4
+        class="text-[clamp(16px,2vw,20px)] md:text-[20px] max-[449px]:mt-[15px] font-['Montserrat'] font-semibold text-[#fefefe] leading-tight">
         Гарантована якість
       </h4>
-      <p class="text-[clamp(16px,2vw,16px)] md:text-[14px] text-white font-normal font-['Montserrat']">
+      <p
+        class="text-[clamp(16px,2vw,16px)] md:text-[14px] max-[449px]:mt-[25px] text-[#fefefe] font-normal font-['Montserrat']">
         Перевірено в екстремальних умовах
       </p>
       <div class="absolute hidden transform -translate-x-1/2 top-48 left-1/2 md:block lg:hidden">
@@ -132,27 +148,31 @@
     </div>
 
     <!-- Advantage 3 -->
-    <div class="flex flex-col gap-4 justify-start items-center text-center w-full max-[450px]:w-[148px] md:w-[279px]">
+    <div
+      class="flex flex-col gap-4 max-[449px]:gap-0 max-[449px]:mt-[8px]   justify-between items-center text-center w-full max-[450px]:w-[155px]  md:w-[279px] max-[449px]:order-2">
       <img src="/img/service.svg" alt="Сервіс та техпідтримка" width="78" height="78"
-        class="w-[78px] h-[78px] max-[450px]:order-first md:order-last" />
+        class="max-[449px]: w-[78px] h-[78px] max-[449px]:w-[75px] max-[449px]:h-[67px] max-[450px]:order-first md:order-last" />
       <h4
-        class="text-[clamp(16px,2.5vw,20px)] md:text-[20px] font-['Montserrat'] font-semibold text-white leading-tight">
+        class="text-[clamp(16px,2.5vw,20px)] md:text-[20px] max-[449px]:mt-[15px] font-['Montserrat'] font-semibold text-[#fefefe] leading-tight">
         Сервіс та техпідтримка
       </h4>
-      <p class="text-[clamp(16px,2vw,16px)] md:text-[14px] text-white font-normal font-['Montserrat']">
+      <p
+        class="text-[clamp(16px,2vw,16px)] md:text-[14px]  max-[449px]:mt-[25px] text-[#fefefe] font-normal font-['Montserrat']">
         Консультуємо та допомагаємо
       </p>
     </div>
 
     <!-- Advantage 4 -->
-    <div class="flex flex-col gap-4 items-center text-center w-full max-[450px]:w-[148px] md:w-[279px]">
+    <div
+      class="flex flex-col gap-4 max-[449px]:gap-0   items-center text-center w-full max-[450px]:w-[155px]  md:w-[279px] max-[449px]:order-4">
       <img src="/img/r&d.svg" alt="Свій R&D відділ" width="78" height="78"
-        class="w-[78px] h-[78px] max-[450px]:order-first md:order-last" />
+        class="w-[78px] h-[78px] max-[449px]:w-[75px] max-[449px]:h-[75px] max-[450px]:order-first md:order-last" />
       <h4
-        class="text-[clamp(16px,2.5vw,20px)] md:text-[20px] font-['Montserrat'] font-semibold text-white leading-tight">
-        Свій R&D відділ
+        class="text-[clamp(16px,2.5vw,20px)] md:text-[20px]  max-[449px]:mt-[15px] font-['Montserrat'] font-semibold text-[#fefefe] leading-tight">
+        Свій R&D<br>відділ
       </h4>
-      <p class="text-[clamp(16px,2vw,16px)] md:text-[14px] text-white font-normal font-['Montserrat']">
+      <p
+        class="text-[clamp(16px,2vw,16px)] md:text-[14px] max-[449px]:mt-[25px] text-[#fefefe] font-normal font-['Montserrat']">
         Постійне удосконалення, індивідуальні рішення
       </p>
     </div>
