@@ -1,5 +1,6 @@
 <section
-  class="relative bg-white min-[451px]:min-h-[180px] md:min-h-[220px] lg:min-h-[250px] xl:min-h-[280px] max-[450px]:pt-0 z-[10]">
+  class="relative bg-white min-[451px]:min-h-[180px] md:min-h-[220px] lg:min-h-[250px] xl:min-h-[280px] max-[450px]:pt-0 z-[10
+  ]">
   <!-- Background decorative elements -->
   {{ $bgEl3 := resources.Get "img/bg-el-3.png" }}
   {{ if $bgEl3 }}
@@ -16,17 +17,17 @@
 
 
   <!-- Mobile layout -->
-  <div class="max-[767px]:block min-[768px]:hidden relative z-[1]">
+  <div class="max-[767px]:block min-[768px]:hidden relative z-[22]">
     <!-- Mobile image -->
     {{ $aboutMobile := resources.Get "img/about-mob.png" }}
     {{ if $aboutMobile }}
     {{ $aboutMobileProcessed := $aboutMobile.Resize "572x400 webp q80" }}
     <img src="{{ $aboutMobileProcessed.RelPermalink }}"
       alt="Про нас - українська компанія високотехнологічного виробництва"
-      class="object-contain w-full h-auto mb-6 origin-left rounded-lg position-relative z-[1]" />
+      class="object-contain w-full h-auto mb-6 origin-left rounded-lg position-relative z-[1] about-mobile-img block md:hidden" />
     {{ else }}
     <img src="/img/about-mob.png" alt="Про нас - українська компанія високотехнологічного виробництва"
-      class="object-contain w-full h-auto mb-6 origin-left rounded-lg position-relative z-[1]" />
+      class="object-contain w-full h-auto mb-6 origin-left rounded-lg position-relative z-[1] about-mobile-img block md:hidden" />
     {{ end }}
 
     <!-- Mobile content -->
@@ -139,5 +140,10 @@
     .about-bg-el-2 {
       display: block !important;
     }
+  }
+
+  .about-mobile-img {
+    filter: brightness(1.1) contrast(1.1);
+    mix-blend-mode: multiply;
   }
 </style>

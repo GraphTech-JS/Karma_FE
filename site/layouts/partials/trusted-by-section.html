@@ -12,16 +12,16 @@
         {{ range $i, $c := $companies }}
         {{ if eq (mod $i 4) 0 }}
         <div class="swiper-slide">
-          <div class="grid grid-cols-2 place-items-center gap-[34px]">
+          <div class="grid grid-cols-2 place-items-center gap-[34px] text-center">
             {{ end }}
 
-            <div class="logo-container flex flex-col items-center justify-center h-[140px] gap-[34px]">
+            <div class="logo-container flex flex-col items-center justify-between h-[140px] gap-[15px]">
               {{ if eq $c.logo "/img/mriadrone.png" }}
               <img src="{{ $c.logo }}" alt="{{ $c.alt }}" class="object-contain w-[165px] h-[102px]" />
               {{ else if eq $c.logo "/img/magura.png" }}
               <img src="{{ $c.logo }}" alt="{{ $c.alt }}" class="object-contain w-[165px] h-[102px]" />
               {{ else if eq $c.logo "/img/toro.png" }}
-              <img src="{{ $c.logo }}" alt="{{ $c.alt }}" class="object-contain w-[147px] h-[71px]" />
+              <img src="{{ $c.logo }}" alt="{{ $c.alt }}" class="object-contain w-[165px] h-[71px]" />
               {{ else if eq $c.logo "/img/drone.png" }}
               <img src="{{ $c.logo }}" alt="{{ $c.alt }}" class="object-contain w-[169px] h-[91px]" />
               {{ else }}

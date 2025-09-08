@@ -313,7 +313,7 @@ class CustomSlider {
 document.addEventListener("DOMContentLoaded", () => {
   // Desktop/Tablet trusted companies slider (4 visible)
   new CustomSlider(".swiper-container-trusted-desktop", {
-    autoplay: false,
+    autoplay: true,
     loop: true,
     slidesPerView: 4,
     spaceBetween: 0,
@@ -337,7 +337,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Mobile trusted companies slider (1 slide showing 2x2 grid inside)
   new CustomSlider(".swiper-container-trusted-mobile", {
-    autoplay: false,
+    autoplay: true,
     loop: true,
     slidesPerView: 1,
     spaceBetween: 20,
@@ -346,7 +346,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize desktop products slider with responsive configuration (2 cards, 51 gap, move by 2)
   new CustomSlider(".swiper-container-products", {
-    autoplay: false,
+    autoplay: true,
     loop: true,
     slidesPerView: 1,
     slidesPerGroup: 1,

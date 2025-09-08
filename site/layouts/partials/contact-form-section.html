@@ -1,5 +1,8 @@
 <section id="contact-form-section"
   class="flex overflow-hidden relative justify-center items-center px-4 py-[60px] lg:py-[80px]">
+
+
+
   <div class="hidden background-element1 xl:block">
     {{ $bgEl8 := resources.Get "img/bg-el-8.png" }}
     {{ if $bgEl8 }}
@@ -16,6 +19,18 @@
     <img src="{{ $bgEl5Processed.RelPermalink }}" alt="" class="w-[250px] h-auto object-contain xl:w-[400px]" />
     {{ else }}
     <img src="/img/bg-el-5.png" alt="" class="w-[250px] h-auto object-contain xl:w-[400px]" />
+    {{ end }}
+  </div>
+
+  <!-- Mobile background element -->
+  <div
+    class="block absolute right-[calc(var(--spacing)*-14)] bottom-[calc(var(--spacing)*-14)] sm:hidden background-element2-mob">
+    {{ $bgEl2Mob := resources.Get "img/bg-el2-mob.png" }}
+    {{ if $bgEl2Mob }}
+    {{ $bgEl2MobProcessed := $bgEl2Mob.Resize "150x webp q80" }}
+    <img src="{{ $bgEl2MobProcessed.RelPermalink }}" alt="" class="w-[150px] h-auto object-contain" />
+    {{ else }}
+    <img src="/img/bg-el2-mob.png" alt="" class="w-[150px] h-auto object-contain" />
     {{ end }}
   </div>
 
@@ -69,6 +84,7 @@
   </div>
 </section>
 
+
 <style>
   .background-element1 {
     position: absolute;
@@ -94,6 +110,7 @@
       right: 0;
     }
   }
+
 
   #contact-form-section .contact-input,
   #contact-form-section .contact-textarea {
