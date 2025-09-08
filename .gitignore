@@ -1,8 +1,8 @@
 node_modules/
 dist/
 site/data/webpack.json
-site/public/
 site/resources/
+/public
 /npm-debug.log
 yarn-error.log
 .netlify/
