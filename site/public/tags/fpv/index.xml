@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>FPV on Karma - Електронні компоненти для дронів</title><link>http://localhost:1313/tags/fpv/</link><description>Recent content in FPV on Karma - Електронні компоненти для дронів</description><generator>Hugo</generator><language>uk-UA</language><lastBuildDate>Mon, 25 Aug 2025 14:20:59 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/fpv/index.xml" rel="self" type="application/rss+xml"/><item><title>Основи FPV польоту для початківців: частина 1</title><link>http://localhost:1313/guides/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-fpv-%D0%BF%D0%BE%D0%BB%D1%8C%D0%BE%D1%82%D1%83-%D0%B4%D0%BB%D1%8F-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D1%96%D0%B2%D1%86%D1%96%D0%B2-%D1%87%D0%B0%D1%81%D1%82%D0%B8%D0%BD%D0%B0-1/</link><pubDate>Sun, 21 Jan 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/guides/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-fpv-%D0%BF%D0%BE%D0%BB%D1%8C%D0%BE%D1%82%D1%83-%D0%B4%D0%BB%D1%8F-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D1%96%D0%B2%D1%86%D1%96%D0%B2-%D1%87%D0%B0%D1%81%D1%82%D0%B8%D0%BD%D0%B0-1/</guid><description>&lt;p&gt;FPV (First Person View) політ - це захоплюючий досвід, який дозволяє побачити світ з перспективи дрона. Цей посібник допоможе початківцям освоїти основи FPV польоту.&lt;/p&gt;
 &lt;section id="basics" class="mt-8 scroll-mt-24"&gt;
 &lt;h2 class="font-[Montserrat] text-[20px] lg:text-[24px] border-b border-[#ba0108] pb-3 font-normal mb-3"&gt;Основні принципи FPV польоту&lt;/h2&gt;
@@ -106,3 +107,113 @@ FPV політ базується на кількох ключових прин�
 &lt;p class="text-[16px] font-normal font-[Montserrat]"&gt;
 Перевірте локальні регуляції щодо частот
 &lt;/p&gt;</description></item></channel></rss>
+=======
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>FPV on Karma - Електронні компоненти для дронів</title><link>http://localhost:1313/tags/fpv/</link><description>Recent content in FPV on Karma - Електронні компоненти для дронів</description><generator>Hugo</generator><language>uk-UA</language><lastBuildDate>Mon, 25 Aug 2025 14:20:59 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/fpv/index.xml" rel="self" type="application/rss+xml"/><item><title>Основи FPV польоту для початківців: частина 1</title><link>http://localhost:1313/guides/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-fpv-%D0%BF%D0%BE%D0%BB%D1%8C%D0%BE%D1%82%D1%83-%D0%B4%D0%BB%D1%8F-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D1%96%D0%B2%D1%86%D1%96%D0%B2-%D1%87%D0%B0%D1%81%D1%82%D0%B8%D0%BD%D0%B0-1/</link><pubDate>Sun, 21 Jan 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/guides/%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B8-fpv-%D0%BF%D0%BE%D0%BB%D1%8C%D0%BE%D1%82%D1%83-%D0%B4%D0%BB%D1%8F-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%BA%D1%96%D0%B2%D1%86%D1%96%D0%B2-%D1%87%D0%B0%D1%81%D1%82%D0%B8%D0%BD%D0%B0-1/</guid><description>&lt;p>FPV (First Person View) політ - це захоплюючий досвід, який дозволяє побачити світ з перспективи дрона. Цей посібник допоможе початківцям освоїти основи FPV польоту.&lt;/p>
+&lt;section id="basics" class="mt-8 scroll-mt-24">
+&lt;h2 class="font-[Montserrat] text-[20px] lg:text-[24px] border-b border-[#ba0108] pb-3 font-normal mb-3">Основні принципи FPV польоту&lt;/h2>
+&lt;p class="text-[16px] font-normal font-[Montserrat]">
+FPV політ базується на кількох ключових принципах:
+&lt;br />
+&lt;br />
+&lt;strong>Орієнтація в просторі&lt;/strong> - розуміння позиції дрона
+&lt;br />
+&lt;br />
+&lt;strong>Контроль швидкості&lt;/strong> - плавне керування
+&lt;br />
+&lt;br />
+&lt;strong>Передбачення траєкторії&lt;/strong> - планування руху
+&lt;br />
+&lt;br />
+&lt;strong>Реакція на зміни&lt;/strong> - швидке реагування
+&lt;br />
+&lt;br />
+&lt;strong>Безпека польоту&lt;/strong> - уникнення небезпечних ситуацій
+&lt;/p></description></item><item><title>Повна інструкція зі збірки FPV дрона</title><link>http://localhost:1313/guides/%D0%BF%D0%BE%D0%B2%D0%BD%D0%B0-%D1%96%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D1%96%D1%8F-%D0%B7%D1%96-%D0%B7%D0%B1%D1%96%D1%80%D0%BA%D0%B8-fpv-%D0%B4%D1%80%D0%BE%D0%BD%D0%B0/</link><pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/guides/%D0%BF%D0%BE%D0%B2%D0%BD%D0%B0-%D1%96%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%86%D1%96%D1%8F-%D0%B7%D1%96-%D0%B7%D0%B1%D1%96%D1%80%D0%BA%D0%B8-fpv-%D0%B4%D1%80%D0%BE%D0%BD%D0%B0/</guid><description>&lt;p>Збірка FPV дрона - це захоплюючий процес, який вимагає уважності до деталей та правильного підходу. Цей посібник допоможе вам створити надійний та ефективний дрон з нуля.&lt;/p>
+&lt;section id="components" class="mt-8 scroll-mt-24">
+&lt;h2 class="font-[Montserrat] text-[20px] lg:text-[24px] border-b border-[#ba0108] pb-3 font-normal mb-3">Необхідні компоненти&lt;/h2>
+&lt;p class="text-[16px] font-normal font-[Montserrat]">
+Для збірки FPV дрона вам знадобиться:
+&lt;br />
+&lt;br />
+&lt;strong>Рама дрона&lt;/strong> - основа конструкції
+&lt;br />
+&lt;br />
+&lt;strong>Політний контролер&lt;/strong> - мозок дрона
+&lt;br />
+&lt;br />
+&lt;strong>ESC регулятори&lt;/strong> - керують моторами
+&lt;br />
+&lt;br />
+&lt;strong>Мотори&lt;/strong> - створюють тягу
+&lt;br />
+&lt;br />
+&lt;strong>Пропелери&lt;/strong> - перетворюють обертання в тягу
+&lt;br />
+&lt;br />
+&lt;strong>Акумулятор&lt;/strong> - джерело живлення
+&lt;br />
+&lt;br />
+&lt;strong>FPV камера&lt;/strong> - передає відео
+&lt;br />
+&lt;br />
+&lt;strong>Відеопередавач&lt;/strong> - передає сигнал
+&lt;br />
+&lt;br />
+&lt;strong>Антени&lt;/strong> - для прийому/передачі сигналу
+&lt;/p></description></item><item><title>Налаштування відеопередавача для FPV</title><link>http://localhost:1313/guides/%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-%D0%B2%D1%96%D0%B4%D0%B5%D0%BE%D0%BF%D0%B5%D1%80%D0%B5%D0%B4%D0%B0%D0%B2%D0%B0%D1%87%D0%B0-%D0%B4%D0%BB%D1%8F-fpv/</link><pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/guides/%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-%D0%B2%D1%96%D0%B4%D0%B5%D0%BE%D0%BF%D0%B5%D1%80%D0%B5%D0%B4%D0%B0%D0%B2%D0%B0%D1%87%D0%B0-%D0%B4%D0%BB%D1%8F-fpv/</guid><description>&lt;p>Правильне налаштування відеопередавача є критично важливим для якісного FPV польоту. Від цього залежить стабільність сигналу, якість зображення та дальність передачі.&lt;/p>
+&lt;section id="frequency" class="mt-8 scroll-mt-24">
+&lt;h2 class="font-[Montserrat] text-[20px] lg:text-[24px] border-b border-[#ba0108] pb-3 font-normal mb-3">Вибір частоти&lt;/h2>
+&lt;p class="text-[16px] font-normal font-[Montserrat]">
+Перш ніж розпочати налаштування, важливо обрати правильну частоту передачі:
+&lt;br />
+&lt;br />
+&lt;strong>5.8 GHz діапазон&lt;/strong> - найпопулярніший для FPV
+&lt;br />
+&lt;br />
+&lt;strong>Перевірте локальні регуляції&lt;/strong> щодо дозволених частот
+&lt;br />
+&lt;br />
+&lt;strong>Уникайте перетину з іншими пілотами&lt;/strong> на тому ж майданчику
+&lt;/p>
+&lt;/section>
+&lt;section id="power" class="mt-10 scroll-mt-24">
+&lt;h2 class="font-[Montserrat] text-[20px] lg:text-[24px] border-b border-[#ba0108] pb-3 font-normal mb-3">Налаштування потужності&lt;/h2>
+&lt;p class="text-[16px] font-normal font-[Montserrat]">
+Потужність передавача впливає на дальність та якість сигналу:
+&lt;br />
+&lt;br />
+&lt;strong>25mW&lt;/strong> - для польотів в приміщенні
+&lt;br />
+&lt;br />
+&lt;strong>200mW&lt;/strong> - стандартна потужність для більшості польотів
+&lt;br />
+&lt;br />
+&lt;strong>600mW+&lt;/strong> - для дальніх польотів (перевірте регуляції)
+&lt;/p></description></item><item><title>Налаштування VTX2</title><link>http://localhost:1313/guides/%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-vtx2/</link><pubDate>Wed, 03 Jan 2024 00:00:00 +0000</pubDate><guid>http://localhost:1313/guides/%D0%BD%D0%B0%D0%BB%D0%B0%D1%88%D1%82%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F-vtx2/</guid><description>&lt;p>Правильне налаштування відеопередавача (VTX) критично важливо для якісного FPV польоту.&lt;/p>
+&lt;section id="channels" class="mt-8 scroll-mt-24">
+&lt;h2 class="font-[Montserrat] text-[20px] lg:text-[24px] border-b border-[#ba0108] pb-3 font-normal mb-3">Вибір каналу&lt;/h2>
+&lt;ul class="list-disc pl-5 space-y-2 text-[#333]">
+&lt;li class="flex gap-3 items-center">
+&lt;img width="35" height="35" class="cursor-pointer" src="http://localhost:1313/img/list-guide-one.png" alt="" style="filter: none; box-shadow: none;"/>
+&lt;p class="text-[16px] font-normal font-[Montserrat]">
+Перевірте доступні канали у вашому регіоні
+&lt;/p>
+&lt;/li>
+&lt;li class="flex gap-3 items-center">
+&lt;img width="35" height="35" class="cursor-pointer" src="http://localhost:1313/img/list-guide-two.png" alt="" style="filter: none; box-shadow: none;"/>
+&lt;p class="text-[16px] font-normal font-[Montserrat]">
+Уникніть &lt;span class="text-[#ba0108] underline">завантажених&lt;/span> каналів
+&lt;/p>
+&lt;/li>
+&lt;li class="flex gap-3 items-center">
+&lt;img width="35" height="35" src="http://localhost:1313/img/list-guide-three.png" alt="" style="filter: none; box-shadow: none;" />
+&lt;p class="text-[16px] font-normal font-[Montserrat]">
+Використовуйте Race Band для змагань
+&lt;/p>
+&lt;/li>
+&lt;li class="flex gap-3 items-center">
+&lt;img width="35" height="35" src="http://localhost:1313/img/list-guide-four.png" alt="" style="filter: none; box-shadow: none;" />
+&lt;p class="text-[16px] font-normal font-[Montserrat]">
+Перевірте локальні регуляції щодо частот
+&lt;/p></description></item></channel></rss>
+>>>>>>> 4f6bded0b8c93c17a6124d580c6fbd0e16d23989

@@ -22,7 +22,7 @@
   <div
     class="w-full max-w-[1237px] mx-auto relative z-10 flex flex-col md:flex-col xl:flex-row xl:justify-between xl:items-center lg:gap-[clamp(20px,4vw,32px)]">
     <div class="flex flex-col gap-3 w-full text-center md:text-left">
-      <h2 class="text-[clamp(24px,3vw,40px)] font-medium font-['Unbounded']">
+      <h2 class="!text-[clamp(24px,3vw,40px)] font-medium font-['Unbounded'] hero-title">
         <span class="text-[#BA0108]">З</span>В'ЯЖІТЬСЯ З НАМИ
 
       </h2>
@@ -33,9 +33,9 @@
       <form class="flex flex-col gap-[clamp(20px,3vw,27px)] font-['Montserrat'] w-full">
         <div class="flex flex-col gap-[clamp(15px,2vw,23px)] md:flex-row xl:flex-row">
           <input type="text" placeholder="Ваше ім'я"
-            class="form-input w-full xl:w-[373px] flex-1 px-5 bg-white py-4 placeholder:text-[#999] border border-[#404040] rounded-md text-normal bg-white transition-all duration-300 ease-in-out" />
+            class="contact-input w-full max-[389px]:w-[350px] xl:w-[373px] xl:flex-none px-5 py-4 h-[65px] placeholder:text-[#999] border border-[#404040] rounded-md text-normal bg-white transition-all duration-300 ease-in-out" />
           <input type="tel" placeholder="+380"
-            class="form-input w-full xl:w-[373px] flex-1 px-5 bg-white py-4 placeholder:text-[#999] border border-[#404040] rounded-md text-normal bg-white transition-all duration-300 ease-in-out" />
+            class="contact-input w-full max-[389px]:w-[350px] xl:w-[373px] xl:flex-none px-5 py-4 h-[65px] placeholder:text-[#999] border border-[#404040] rounded-md text-normal bg-white transition-all duration-300 ease-in-out" />
         </div>
 
         <textarea placeholder="Ваше повідомлення" rows="5"
@@ -95,16 +95,19 @@
     }
   }
 
-  #contact-form-section .form-input {
+  #contact-form-section .contact-input,
+  #contact-form-section .contact-textarea {
     color: #999;
     border-color: #404040;
   }
 
-  #contact-form-section .form-input::placeholder {
+  #contact-form-section .contact-input::placeholder,
+  #contact-form-section .contact-textarea::placeholder {
     color: #999;
   }
 
-  #contact-form-section .form-input:focus {
+  #contact-form-section .contact-input:focus,
+  #contact-form-section .contact-textarea:focus {
     outline: none;
     border-color: #ba0108;
     box-shadow: 0 0 0 3px rgba(186, 1, 8, 0.1);

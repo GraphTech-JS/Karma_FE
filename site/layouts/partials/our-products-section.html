@@ -1,19 +1,11 @@
-{{ $category := "politni-steky" }}
-{{ $context := . }}
-{{ if isset . "category" }}
-{{ $category = .category }}
-{{ end }}
-{{ if isset . "context" }}
-{{ $context = .context }}
-{{ end }}
-{{ if isset $context.Params "category" }}
-{{ $category = $context.Params.category }}
-{{ end }}
-
-{{/* Get products from content files instead of data files */}}
-{{ $products := where $context.Site.RegularPages "Section" "catalog" }}
-{{ $categoryProducts := where $products ".Params.category" $category }}
-{{ $categoryData := index $context.Site.Data.products.categories $category }}
+{{ $category := "politni-steky" }} {{ $context := . }} {{ if isset . "category"
+}} {{ $category = .category }} {{ end }} {{ if isset . "context" }} {{ $context
+= .context }} {{ end }} {{ if isset $context.Params "category" }} {{ $category =
+$context.Params.category }} {{ end }} {{/* Get products from content files
+instead of data files */}} {{ $products := where $context.Site.RegularPages
+"Section" "catalog" }} {{ $categoryProducts := where $products
+".Params.category" $category }} {{ $categoryData := index
+$context.Site.Data.products.categories $category }}
 <section
   class="relative flex flex-col justify-center items-center gap-[20px] py-[60px] max-[450px]:pt-[90px] bg-[#f9f9f9] overflow-hidden">
   <div
@@ -33,7 +25,7 @@
 
   <div class="flex flex-col w-full max-w-[1200px] products-slider">
     <h2 class="font-['Unbounded'] text-[clamp(24px,4vw,40px)] font-medium mb-[40px] text-center hero-title">
-      <span class="text-[#ba0108]">Н</span>АШІ ТОВАРИ
+      <span class="text-[#ba0108]">Н</span>АШІ ТОВАРИ 
     </h2>
 
     <!-- Desktop & Tablet Layout (768px+) -->
@@ -54,19 +46,23 @@
                 class="w-full h-[300px] object-contain mb-[15px]" loading="lazy" />
               {{ end }}
               <h3
-                class="font-['Montserrat'] text-[clamp(18px,2.5vw,24px)] font-semibold mt-[15px] mx-[0] mb-[20px] text-[#020303] leading-[1.2]">
+                class="product-title font-['Montserrat'] text-[clamp(20px,2.5vw,24px)] uppercase font-bold mt-[15px] mx-[37px] mb-[20px] text-[#020303] leading-[1.2] text-center break-words">
                 {{ .Title }}
               </h3>
-              <ul class="text-left space-y-[8px]">
+              <div
+                class="text-left space-y-[8px] grid grid-cols-[auto_1fr] gap-x-[20px] max-[1000px]:gap-x-[16px] max-[940px]:gap-x-[14px] max-[768px]:gap-x-[12px] max-[480px]:gap-x-[8px] gap-y-[8px]">
                 {{ range .Params.specs }}
-                <li class="flex justify-between text-[clamp(14px,1.8vw,16px)] font-['Montserrat']">
-                  <span class="font-medium text-[#666]">{{ .label }}</span>
-                  <span class="text-[#333]">{{ .value }}</span>
-                </li>
+                <span class="text-[16px] font-['Montserrat'] font-semibold text-[#000] whitespace-nowrap">
+                  {{ .label }}
+                </span>
+                <span
+                  class="text-[16px] font-['Montserrat'] font-normal text-[#000] whitespace-nowrap overflow-hidden text-ellipsis">
+                  {{ .value }}
+                </span>
                 {{ end }}
-              </ul>
+              </div>
               <a href="{{ .Permalink }}"
-                class="inline-block bg-[#ba0108]  text-[#fff] border-[none] px-[30px] py-[15px] mt-5 rounded-[20px] cursor-pointer text-[clamp(16px,2.2vw,20px)] font-['Montserrat'] font-normal [transition:background-color_0.3s_ease] hover:bg-[#e39599] w-full">
+                class="inline-block bg-[#ba0108] text-[#fff] border-[none] px-[30px] py-[15px] mt-5 rounded-[20px] cursor-pointer text-[clamp(16px,2.2vw,20px)] font-['Montserrat'] font-normal [transition:background-color_0.3s_ease] hover:bg-[#e39599] w-full">
                 Детальніше
               </a>
             </div>
@@ -105,15 +101,18 @@
               class="w-full h-[240px] object-contain mb-[15px]" loading="lazy" />
             {{ end }}
             <h3
-              class="font-['Montserrat'] text-[clamp(16px,2.2vw,20px)] font-semibold mt-[15px] mx-[0] mb-[20px] text-[#020303] leading-[1.2]">
-              {{ $product.Title }}
+              class="font-['Unbounded'] text-[20px] font-medium mt-[15px] mx-[0] mb-[20px] text-[#020303] leading-[1.2]">
+              {{ .Title }}
             </h3>
-            <ul class="text-left space-y-[8px]">
-              {{ range $product.Params.specs }}
-              <li class="flex justify-between text-[clamp(12px,1.6vw,14px)] font-['Montserrat']">
-                <span class="font-medium text-[#666]">{{ .label }}</span>
-                <span class="text-[#333]">{{ .value }}</span>
-              </li>
+            <div
+              class="text-left space-y-[8px] grid grid-cols-[auto_1fr] gap-x-[12px] max-[480px]:gap-x-[18px] gap-y-[8px]">
+              {{ range .Params.specs }}
+              <span class="text-[15px] font-['Montserrat'] font-semibold text-[#000] whitespace-nowrap">
+                {{ .label }}
+              </span>
+              <span class="text-[14px] font-['Montserrat'] font-normal text-[#000] whitespace-nowrap">
+                {{ .value }}
+              </span>
               {{ end }}
             </ul>
             <a href="{{ $product.Permalink }}"
@@ -138,5 +137,13 @@
       </div>
     </div>
   </div>
-
 </section>
+
+<script>
+  document.querySelectorAll('.product-title').forEach(title => {
+    if (title.textContent.length > 32) {
+      title.classList.remove('mx-[37px]');
+      title.classList.add('px-2');
+    }
+  });
+</script>
