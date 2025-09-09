@@ -1,10 +1,10 @@
-{{ $catalogQuestions := slice (dict "question" "Для яких типів дронів найкраще підходить польотний стек KARMA F405 V1?"
-"answer" "Ідеально підходить для мікро- та невеликих FPV-дронів, а також для легких 3-дюймових або для деяких 4-дюймовихквадрокоптерів.")
-(dict "question" "Для яких типів дронів найкраще підходить польотний стек KARMA F405 V1?" "answer" "Ідеально підходитьдля мікро- та невеликих FPV-дронів, а також для легких 3-дюймових або деяки 4-дюймових квадрокоптерів.")
-(dict "question" "Для яких типів дронів найкраще підходить польотний стек KARMA F405 V1?" "answer" "Ідеально підходитьдля мікро- та невеликих FPV-дронів, а також для легких 3-дюймових або деяки 4-дюймових квадрокоптерів.")
+{{ $catalogQuestions := slice
+(dict "question" "Для яких типів дронів найкраще підходить польотний стек KARMA F405 V1?" "answer" "Ідеально підходить для мікро- та невеликих FPV-дронів, а також для легких 3-дюймових або для деяких 4-дюймових квадрокоптерів.")
+(dict "question" "Для яких типів дронів найкраще підходить польотний стек KARMA F405 V1?" "answer" "Ідеально підходить для мікро- та невеликих FPV-дронів, а також для легких 3-дюймових або деяки 4-дюймових квадрокоптерів.")
+(dict "question" "Для яких типів дронів найкраще підходить польотний стек KARMA F405 V1?" "answer" "Ідеально підходить для мікро- та невеликих FPV-дронів, а також для легких 3-дюймових або деяки 4-дюймових квадрокоптерів.")
 (dict "question" "Для яких типів дронів найкраще підходить польотний стек KARMA F405 V1?" "answer" "Ідеально підходить для мікро- та невеликих FPV-дронів, а також для легких 3-дюймових або деяки 4-дюймових квадрокоптерів.") }}
 
-<section class="relative flex flex-col items-center bg-white pb-[60px] lg:pb-[128px]">
+<section class="relative flex flex-col items-center bg-white pb-[60px] lg:pb-[128px] pl-[15px] pr-[20px] lg:px-[20px]">
   <div class="w-full max-w-[1280px] min-[1025px]:px-[20px] max-[450px]:px-[10px]">
     <h3
       class="hero-title font-[Unbounded] font-medium !text-[clamp(24px,3vw,48px)] text-center text-[#020303] mb-[clamp(20px,3vw,24px)] uppercase">
@@ -14,17 +14,22 @@
       {{ range $index, $item := $catalogQuestions }}
       <div class="faq-acc-wrapper">
         <details class="faq-acc-root group border-b border-[#303030]">
-          <summary class="flex !justify-center items-start md:items-center cursor-pointer select-none faq-acc-summary py-[18px] px-[15px] lg:px-[45px]"
-                   aria-label="Розгорнути відповідь на питання: {{ .question }}">
-            <h4 class="min-[1025px]:font-['Montserrat'] max-[450px]:font-['Unbounded'] text-[clamp(16px,2vw,24px)] font-medium catalog-accordion-question-text">
+          <summary
+            class="flex !justify-center items-start md:items-center cursor-pointer select-none faq-acc-summary py-[18px] px-[15px] lg:px-[45px]"
+            aria-label="Розгорнути відповідь на питання: {{ .question }}">
+            <h4
+              class="font-[Montserrat] max-[450px]:font-[Unbounded] text-[clamp(16px,2vw,24px)] font-medium catalog-accordion-question-text">
               {{ .question }}
             </h4>
-            <svg class="faq-acc-icon" width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 1L10 10L19 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <svg class="faq-acc-icon" width="20" height="12" viewBox="0 0 20 12" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1L10 10L19 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
             </svg>
           </summary>
           <div class="faq-acc-content-wrapper js-accordion-content">
-            <p class="min-[1025px]:font-['Montserrat'] max-[450px]:font-['Unbounded'] text-[clamp(16px,2vw,20px)] font-normal text-[#1f2937]">
+            <p
+              class="font-[Montserrat] max-[450px]:font-[Unbounded] py-[18px] px-[15px] lg:px-[45px] text-[clamp(16px,2vw,20px)] font-normal text-[#1f2937]">
               {{ .answer }}
             </p>
           </div>
@@ -41,17 +46,11 @@
     margin-bottom: clamp(15px, 2vw, 20px);
   }
 
-  .faq-acc-root {
-    max-width: 100%;
-    margin: 0 auto;
-  }
-
   .faq-acc-summary {
     position: relative !important;
     transition: background-color 400ms ease !important;
     background: #fff !important;
     color: #020303 !important;
-    cursor: pointer;
     min-height: clamp(60px, 8vw, 80px) !important;
   }
 
@@ -70,8 +69,10 @@
 
   .faq-acc-icon {
     margin-left: auto !important;
-    width: clamp(20px, 3vw, 33px) !important;
-    height: clamp(12px, 2vw, 18px) !important;
+    width: clamp(25px, 3vw, 33px) !important;
+
+    height: clamp(15px, 2vw, 18px) !important;
+
     transform: rotate(0deg) !important;
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     filter: brightness(0) !important;
@@ -84,278 +85,163 @@
     filter: brightness(0) invert(1) !important;
   }
 
-  .faq-acc-root:not(.is-open) .faq-acc-summary {
-    color: #020303 !important;
-    transition: color 0ms !important;
-  }
-
-  .faq-acc-root:not(.is-open) .faq-acc-icon {
-    filter: brightness(0) !important;
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-  }
-
-  .faq-acc-content {
-    overflow: visible !important;
-    max-height: none !important;
-    opacity: 1 !important;
-    transition: none !important;
-    width: 100% !important;
-  }
-
-  @media (max-width: 1240px) {
-    .faq-acc-summary {
-      padding-left: 24px !important;
-      padding-right: 24px !important;
-    }
-  }
-
-  @media (max-width: 960px) {
-    .faq-acc-summary {
-      padding-left: 20px !important;
-      padding-right: 20px !important;
-    }
-  }
-
-  @media (max-width: 800px) {
-    .faq-acc-summary {
-      padding-left: 16px !important;
-      padding-right: 16px !important;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    .faq-acc-summary {
-      padding-left: clamp(16px, 3vw, 20px) !important;
-      padding-right: clamp(16px, 3vw, 20px) !important;
-      min-height: clamp(60px, 8vw, 70px) !important;
-    }
-
-    .faq-acc-content {
-      padding: clamp(8px, 2vw, 10px) clamp(16px, 3vw, 20px) !important;
-    }
-
-    .faq-acc-icon {
-      width: clamp(20px, 3vw, 25px) !important;
-      height: clamp(12px, 2vw, 15px) !important;
-    }
-  }
-
   @media (max-width: 560px) {
-    .faq-acc-wrapper {
-      margin: 0 auto !important;
-    }
-
-    .faq-acc-root {
-      max-width: 100% !important;
-      padding-left: 0 !important;
-      padding-right: 0 !important;
-    }
-
-    .faq-acc-content {
-      padding: clamp(8px, 2vw, 10px) !important;
-    }
-
     .faq-acc-summary {
-      padding-left: clamp(12px, 3vw, 16px) !important;
-      padding-right: clamp(12px, 3vw, 16px) !important;
-      padding-block: clamp(12px, 3vw, 16px) !important;
+      padding: clamp(12px, 3vw, 16px) !important;
     }
 
     .faq-acc-icon {
       align-self: flex-start !important;
-      margin-top: 0 !important;
     }
 
     .catalog-accordion-question-text {
       text-align: left !important;
     }
   }
-
-  @media (max-width: 640px) {
-    .faq-acc-wrapper {
-      width: 100% !important;
-      margin: 0 auto !important;
-    }
-
-    .faq-acc-root {
-      max-width: 100% !important;
-      padding-left: 0 !important;
-      padding-right: 0 !important;
-    }
-
-    .faq-acc-content {
-      padding: clamp(8px, 2vw, 12px) !important;
-    }
-
-    .faq-acc-icon {
-      margin-top: 0 !important;
-    }
-  }
-
-  @keyframes fadeInUp {
-    0% {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .hero-title {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease-out;
-  }
-
-  .hero-title.animate {
-    animation: fadeInUp 0.8s ease-out forwards;
-  }
 </style>
 
+
 <script>
-(function () {
+  (function () {
     function initCatalogAccordion() {
-        var lists = document.querySelectorAll('[data-accordion-list]');
-        if (!lists || lists.length === 0) return;
-        lists.forEach(function (list) {
+      var lists = document.querySelectorAll('[data-accordion-list]');
+      if (!lists || lists.length === 0) return;
+      lists.forEach(function (list) {
         var items = Array.prototype.slice.call(
-            list.querySelectorAll('.faq-acc-root')
+          list.querySelectorAll('.faq-acc-root')
         );
         items.forEach(function (item) {
-            var contentWrapper = item.querySelector('.faq-acc-content-wrapper');
-            contentWrapper.style.overflow = "hidden";
-            contentWrapper.style.transition = "max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.1s";
-            if (item.open) {
-                contentWrapper.style.maxHeight = contentWrapper.scrollHeight + "px";
-                contentWrapper.style.opacity = "1";
-                item.classList.add('is-open');
-                requestAnimationFrame(function () {
-                    setTimeout(function () {
-                        if (item.open) contentWrapper.style.maxHeight = '';
-                    }, 50);
-                });
-            } else {
-                contentWrapper.style.maxHeight = "0px";
-                contentWrapper.style.opacity = "0";
-                item.classList.remove('is-open');
-            }
-            item._animating = false;
-            
-            function smoothClose() {
-                if (item._animating) return;
-                item._animating = true;
-                
-                var startHeight = contentWrapper.scrollHeight;
-                contentWrapper.style.maxHeight = startHeight + 'px';
-                contentWrapper.offsetHeight; // force reflow
-                
-                item.classList.remove('is-open');
-                requestAnimationFrame(function () {
-                    contentWrapper.style.maxHeight = '0px';
-                    contentWrapper.style.opacity = '0';
-                });
-                
-                setTimeout(function() {
-                    item.open = false;
-                    item._animating = false;
-                }, 400);
-            }
-            
-            function smoothOpen() {
-                if (item._animating) return;
-                item._animating = true;
-                
-                // Close all other accordions with animation
-                items.forEach(function(otherItem) {
-                    if (otherItem !== item && otherItem.classList.contains('is-open') && !otherItem._animating) {
-                        otherItem._animating = true;
-                        var otherWrapper = otherItem.querySelector('.faq-acc-content-wrapper');
-                        var otherHeight = otherWrapper.scrollHeight;
-                        otherWrapper.style.maxHeight = otherHeight + 'px';
-                        otherWrapper.offsetHeight; // force reflow
-                        
-                        otherItem.classList.remove('is-open');
-                        requestAnimationFrame(function() {
-                            otherWrapper.style.maxHeight = '0px';
-                            otherWrapper.style.opacity = '0';
-                        });
-                        
-                        setTimeout(function() {
-                            otherItem.open = false;
-                            otherItem._animating = false;
-                        }, 400);
-                    }
-                });
-                
-                item.open = true;
-                contentWrapper.style.maxHeight = '0px';
-                contentWrapper.style.opacity = '0';
-                
-                var full = contentWrapper.scrollHeight;
-                item.classList.add('is-open');
-                
-                requestAnimationFrame(function () {
-                    contentWrapper.style.maxHeight = full + 'px';
-                    contentWrapper.style.opacity = '1';
-                });
-                
-                setTimeout(function() {
-                    if (item.classList.contains('is-open')) {
-                        contentWrapper.style.maxHeight = 'auto';
-                    }
-                    item._animating = false;
-                }, 400);
-            }
+          var contentWrapper = item.querySelector('.faq-acc-content-wrapper');
+          contentWrapper.style.overflow = "hidden";
+          contentWrapper.style.transition = "max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.1s";
+          if (item.open) {
+            contentWrapper.style.maxHeight = contentWrapper.scrollHeight + "px";
+            contentWrapper.style.opacity = "1";
+            item.classList.add('is-open');
+            requestAnimationFrame(function () {
+              setTimeout(function () {
+                if (item.open) contentWrapper.style.maxHeight = '';
+              }, 50);
+            });
+          } else {
+            contentWrapper.style.maxHeight = "0px";
+            contentWrapper.style.opacity = "0";
+            item.classList.remove('is-open');
+          }
+          item._animating = false;
 
-            var summary = item.querySelector('summary');
-            if (summary) {
-                summary.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    if (item._animating) return;
-                    if (item.classList.contains('is-open')) {
-                        smoothClose();
-                    } else {
-                        smoothOpen();
-                    }
+          function smoothClose() {
+            if (item._animating) return;
+            item._animating = true;
+
+            var startHeight = contentWrapper.scrollHeight;
+            contentWrapper.style.maxHeight = startHeight + 'px';
+            contentWrapper.offsetHeight; // force reflow
+
+            item.classList.remove('is-open');
+            requestAnimationFrame(function () {
+              contentWrapper.style.maxHeight = '0px';
+              contentWrapper.style.opacity = '0';
+            });
+
+            setTimeout(function () {
+              item.open = false;
+              item._animating = false;
+            }, 400);
+          }
+
+          function smoothOpen() {
+            if (item._animating) return;
+            item._animating = true;
+
+            // Close all other accordions with animation
+            items.forEach(function (otherItem) {
+              if (otherItem !== item && otherItem.classList.contains('is-open') && !otherItem._animating) {
+                otherItem._animating = true;
+                var otherWrapper = otherItem.querySelector('.faq-acc-content-wrapper');
+                var otherHeight = otherWrapper.scrollHeight;
+                otherWrapper.style.maxHeight = otherHeight + 'px';
+                otherWrapper.offsetHeight; // force reflow
+
+                otherItem.classList.remove('is-open');
+                requestAnimationFrame(function () {
+                  otherWrapper.style.maxHeight = '0px';
+                  otherWrapper.style.opacity = '0';
                 });
-            }
+
+                setTimeout(function () {
+                  otherItem.open = false;
+                  otherItem._animating = false;
+                }, 400);
+              }
+            });
+
+            item.open = true;
+            contentWrapper.style.maxHeight = '0px';
+            contentWrapper.style.opacity = '0';
+
+            var full = contentWrapper.scrollHeight;
+            item.classList.add('is-open');
+
+            requestAnimationFrame(function () {
+              contentWrapper.style.maxHeight = full + 'px';
+              contentWrapper.style.opacity = '1';
+            });
+
+            setTimeout(function () {
+              if (item.classList.contains('is-open')) {
+                contentWrapper.style.maxHeight = 'auto';
+              }
+              item._animating = false;
+            }, 400);
+          }
+
+          var summary = item.querySelector('summary');
+          if (summary) {
+            summary.addEventListener('click', function (e) {
+              e.preventDefault();
+              if (item._animating) return;
+              if (item.classList.contains('is-open')) {
+                smoothClose();
+              } else {
+                smoothOpen();
+              }
+            });
+          }
         });
-        });
+      });
     }
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initCatalogAccordion);
+      document.addEventListener('DOMContentLoaded', initCatalogAccordion);
     } else {
-        initCatalogAccordion();
+      initCatalogAccordion();
     }
-})();
+  })();
 
-// Hero title animation
-function animateHeroTitle() {
-  const heroTitles = document.querySelectorAll('.hero-title');
+  // Hero title animation
+  function animateHeroTitle() {
+    const heroTitles = document.querySelectorAll('.hero-title');
 
-  const observerOptions = {
-    threshold: 0.3,
-    rootMargin: '0px 0px -50px 0px'
-  };
+    const observerOptions = {
+      threshold: 0.3,
+      rootMargin: '0px 0px -50px 0px'
+    };
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate');
-      } else {
-        entry.target.classList.remove('animate');
-      }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        } else {
+          entry.target.classList.remove('animate');
+        }
+      });
+    }, observerOptions);
+
+    heroTitles.forEach(title => {
+      observer.observe(title);
     });
-  }, observerOptions);
+  }
 
-  heroTitles.forEach(title => {
-    observer.observe(title);
-  });
-}
-
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', animateHeroTitle);
+  // Initialize when DOM is loaded
+  document.addEventListener('DOMContentLoaded', animateHeroTitle);
 </script>

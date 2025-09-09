@@ -1,4 +1,3 @@
-<!-- Contact Modal -->
 <div id="contactModal" class="hidden modal-overlay">
   <div class="modal-container">
     <div class="modal-content">
@@ -30,10 +29,24 @@
           </div>
         </div>
 
-        <div class="form-group">
-          <input type="number" id="quantity" name="quantity" placeholder="Кількість стеків, яку плануєте замовити"
-            class="form-input" required />
+        <div class="dropdown-group">
+          <div class="custom-dropdown form-input" id="quantityDropdown">
+            <div class="dropdown-selected" id="quantitySelected">
+              <span class="placeholder">Кількість стеків, яку плануєте замовити</span>
+            </div>
+
+          </div>
+          <input type="hidden" id="quantity" name="quantity" required />
         </div>
+
+        <div class="dropdown-options" id="quantityOptions">
+          <div class="dropdown-option" data-value="0-20">0 - 20</div>
+          <div class="dropdown-option" data-value="20-100">20 - 100</div>
+          <div class="dropdown-option" data-value="100-1000">100 - 1 000</div>
+          <div class="dropdown-option" data-value="3000-10000">3 000 - 10 000</div>
+          <div class="dropdown-option" data-value="10000+">>10 000</div>
+        </div>
+
         <div class="form-group">
           <textarea id="message" name="message" placeholder="Ваше повідомлення" class="form-textarea"
             rows="4"></textarea>
@@ -59,6 +72,106 @@
   </div>
 </div>
 
+<style>
+  .custom-dropdown {
+    position: relative;
+    width: 100%;
+    background: #eaeaec;
+  }
+
+  .dropdown-selected {
+    padding: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    align-items: center;
+    font-size: 14px;
+    color: #7e7e7e;
+    transition: all 0.2s ease;
+    width: 100%;
+
+  }
+
+  .dropdown-selected:hover {
+    border-color: #bbb;
+  }
+
+  .dropdown-selected .placeholder {
+    color: #999;
+    width: 100%;
+    text-align: left;
+  }
+
+  .dropdown-options {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    background: #f0f1f5;
+  }
+
+  .dropdown-options.show {
+    max-height: 280px;
+  }
+
+  .dropdown-option {
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    padding: 15px 34px !important;
+    text-align: center;
+    background: #f0f1f5;
+  }
+
+  .dropdown-option:hover {
+    background: #d8d8d8;
+  }
+
+
+
+  @media (max-width: 768px) {
+    .custom-dropdown {
+      display: flex;
+    }
+
+    .dropdown-selected {
+      font-size: 14px;
+      padding: 10px;
+    }
+
+    .dropdown-options {
+      padding: 12px 20px;
+    }
+
+    .dropdown-option {
+      font-size: 14px;
+      padding: 12px 16px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .dropdown-selected {
+      font-size: 16px;
+    }
+
+    .dropdown-option {
+      font-size: 16px;
+    }
+  }
+</style>
+
 <script>
   // Inline modal functionality to ensure it's always available
   (function () {
@@ -72,13 +185,18 @@
         this.form = document.getElementById('contactForm');
         this.scrollTop = 0;
 
+        // Dropdown elements
+        this.quantityDropdown = document.getElementById('quantityDropdown');
+        this.quantitySelected = document.getElementById('quantitySelected');
+        this.quantityOptions = document.getElementById('quantityOptions');
+        this.quantityInput = document.getElementById('quantity');
+
         this.init();
       }
 
       init() {
         if (!this.modal) return;
 
-        // Event listeners
         if (this.openBtn) {
           this.openBtn.addEventListener('click', () => this.open());
         }
@@ -87,42 +205,104 @@
           this.closeBtn.addEventListener('click', () => this.close());
         }
 
-        // Close on overlay click
         this.modal.addEventListener('click', (e) => {
           if (e.target === this.modal) {
             this.close();
           }
         });
 
-
-
-        // Close on Escape key
         document.addEventListener('keydown', (e) => {
           if (e.key === 'Escape' && !this.modal.classList.contains('hidden')) {
             this.close();
           }
         });
 
-        // Form submission
         if (this.form) {
           this.form.addEventListener('submit', (e) => this.handleSubmit(e));
         }
 
-        // Phone number formatting
         const phoneInput = document.getElementById('userPhone');
         if (phoneInput) {
           phoneInput.addEventListener('input', (e) =>
             this.formatPhoneNumber(e)
           );
         }
+
+        this.initDropdown();
+      }
+
+      initDropdown() {
+        if (!this.quantityDropdown) return;
+
+        this.quantitySelected.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.toggleDropdown();
+        });
+
+        this.quantityOptions.addEventListener('click', (e) => {
+          if (e.target.classList.contains('dropdown-option')) {
+            this.selectOption(e.target);
+          }
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!this.quantityDropdown.contains(e.target)) {
+            this.closeDropdown();
+          }
+        });
+      }
+
+      toggleDropdown() {
+        const isOpen = this.quantityOptions.classList.contains('show');
+        if (isOpen) {
+          this.closeDropdown();
+        } else {
+          this.openDropdown();
+        }
+      }
+
+      openDropdown() {
+        this.quantityOptions.classList.add('show');
+        this.quantitySelected.classList.add('active');
+      }
+
+      closeDropdown() {
+        this.quantityOptions.classList.remove('show');
+        this.quantitySelected.classList.remove('active');
+      }
+
+      selectOption(option) {
+        const value = option.dataset.value;
+        const text = option.textContent;
+
+        this.quantitySelected.querySelector('span').textContent = text;
+        this.quantitySelected.querySelector('span').classList.remove('placeholder');
+
+        this.quantityInput.value = value;
+
+        this.closeDropdown();
+
+        if (value === 'other') {
+          const customQuantity = prompt('Введіть бажану кількість стеків:');
+          if (customQuantity && !isNaN(customQuantity) && customQuantity > 0) {
+            this.quantityInput.value = customQuantity;
+            this.quantitySelected.querySelector('span').textContent = `${customQuantity} стеків`;
+          } else {
+            this.resetDropdown();
+          }
+        }
+      }
+
+      resetDropdown() {
+        this.quantitySelected.querySelector('span').textContent = 'Кількість стеків, яку плануєте замовити';
+        this.quantitySelected.querySelector('span').classList.add('placeholder');
+        this.quantityInput.value = '';
       }
 
       open() {
         this.scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
         document.documentElement.style.setProperty('--scroll-top', `-${this.scrollTop}px`);
 
-        // Блокуємо скрол сторінки
         this.modal.classList.remove('hidden');
         document.documentElement.classList.add('modal-open');
         document.body.classList.add('modal-open');
@@ -132,7 +312,6 @@
         document.addEventListener('scroll', this.preventScroll, { passive: false });
         document.addEventListener('keydown', this.preventScroll, { passive: false });
 
-        // Focus first input
         const firstInput = this.modal.querySelector('.form-input');
         if (firstInput) {
           setTimeout(() => firstInput.focus(), 100);
@@ -153,10 +332,12 @@
 
         window.scrollTo(0, this.scrollTop);
 
-        // Reset form
         if (this.form) {
           this.form.reset();
+          this.resetDropdown();
         }
+
+        this.closeDropdown();
       }
 
       preventScroll = (e) => {
@@ -168,7 +349,6 @@
       formatPhoneNumber(e) {
         let value = e.target.value.replace(/\D/g, '');
 
-        // Ensure it starts with 380 if user types numbers
         if (value && !value.startsWith('380')) {
           if (value.startsWith('0')) {
             value = '38' + value;
@@ -177,7 +357,6 @@
           }
         }
 
-        // Format as +380 XX XXX XX XX
         if (value.length >= 3) {
           let formatted = '+' + value.substring(0, 3);
           if (value.length > 3) {
@@ -208,8 +387,6 @@
           quantity: formData.get('quantity'),
           message: formData.get('message'),
         };
-
-        // Basic validation
         if (!data.name.trim()) {
           this.showError("Будь ласка, введіть ваше ім'я");
           return;
@@ -221,11 +398,10 @@
         }
 
         if (!data.quantity || data.quantity <= 0) {
-          this.showError('Будь ласка, введіть кількість стеків');
+          this.showError('Будь ласка, оберіть кількість стеків');
           return;
         }
 
-        // Simulate form submission
         this.submitForm(data);
       }
 
@@ -233,13 +409,10 @@
         const submitBtn = this.form.querySelector('.submit-button');
         const originalText = submitBtn.textContent;
 
-        // Show loading state
         submitBtn.textContent = 'Відправляємо...';
         submitBtn.disabled = true;
 
         try {
-          // Here you would typically send data to your server
-          // For now, we'll simulate a successful submission
           await new Promise((resolve) => setTimeout(resolve, 1500));
 
           this.showSuccess(
@@ -266,22 +439,18 @@
       }
 
       showMessage(message, type) {
-        // Remove existing messages
         const existingMessage = this.modal.querySelector('.form-message');
         if (existingMessage) {
           existingMessage.remove();
         }
 
-        // Create message element
         const messageEl = document.createElement('div');
         messageEl.className = `form-message form-message--${type}`;
         messageEl.textContent = message;
 
-        // Insert before submit button
         const submitBtn = this.form.querySelector('.submit-button');
         submitBtn.parentNode.insertBefore(messageEl, submitBtn);
 
-        // Auto remove after 5 seconds
         setTimeout(() => {
           if (messageEl.parentNode) {
             messageEl.remove();
@@ -290,7 +459,6 @@
       }
     }
 
-    // Global function to open modal
     window.openContactModal = function () {
       if (!modalInstance) {
         modalInstance = new ContactModal();
@@ -298,14 +466,12 @@
       modalInstance.open();
     };
 
-    // Initialize when DOM is ready
     function initModal() {
       if (!modalInstance && document.getElementById('contactModal')) {
         modalInstance = new ContactModal();
       }
     }
 
-    // Initialize based on document ready state
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initModal);
     } else {
