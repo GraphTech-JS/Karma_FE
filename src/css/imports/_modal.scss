@@ -50,7 +50,7 @@ body.modal-open {
 
 .modal-content {
   background: #F0F1F5;
-  border-radius: 12px;
+  border-radius: 5px;
   padding: 40px;
   padding-bottom: 60px;
   position: relative;
@@ -124,7 +124,7 @@ body.modal-open {
   font-size: clamp(16px, 2vw, 20px);
   font-weight: 400;
   color: black;
-  background: white;
+  background: #F0F1F5;
   box-sizing: border-box;
   transition: border-color 0.2s ease;
 }
@@ -326,7 +326,6 @@ body.modal-open {
   }
   
   .form-input {
-
     height: 65px;
   }
   
@@ -386,8 +385,6 @@ body.modal-open {
   .modal-content {
     padding: 48px;
   }
-  
-
   
   .form-input,
   .form-textarea {

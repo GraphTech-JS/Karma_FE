@@ -4,21 +4,24 @@
 
 
   <div class="hidden background-element1 xl:block">
-    {{ $bgEl8 := resources.Get "img/bg-el-8.png" }}
+    {{ $bgEl8 := resources.Get "img/bg-contact-form-one.png" }}
     {{ if $bgEl8 }}
-    {{ $bgEl8Processed := $bgEl8.Resize "299x webp q80" }}
-    <img src="{{ $bgEl8Processed.RelPermalink }}" alt="" class="w-[299px] h-auto object-contain" />
+    {{ $bgEl8Processed := $bgEl8.Resize "499x webp q80" }}
+    <img src="{{ $bgEl8Processed.RelPermalink }}" alt="background-element-one"
+      class="w-[499px] h-auto object-contain" />
     {{ else }}
-    <img src="/img/bg-el-8.png" alt="" class="w-[299px] h-auto object-contain" />
+      <img src="/img/bg-contact-form-one.png" alt="background-element-one" class="w-[499px] h-auto object-contain" />
     {{ end }}
   </div>
   <div class="hidden background-element2 sm:block">
-    {{ $bgEl5 := resources.Get "img/bg-el-5.png" }}
+    {{ $bgEl5 := resources.Get "img/bg-contact-form.png" }}
     {{ if $bgEl5 }}
-    {{ $bgEl5Processed := $bgEl5.Resize "400x webp q80" }}
-    <img src="{{ $bgEl5Processed.RelPermalink }}" alt="" class="w-[250px] h-auto object-contain xl:w-[400px]" />
+    {{ $bgEl5Processed := $bgEl5.Resize "600x webp q80" }}
+    <img src="{{ $bgEl5Processed.RelPermalink }}" alt="background-element-two"
+      class="w-[250px] h-auto object-contain xl:w-[600px]" />
     {{ else }}
-    <img src="/img/bg-el-5.png" alt="" class="w-[250px] h-auto object-contain xl:w-[400px]" />
+    <img src="/img/bg-contact-form.png" alt="background-element-two"
+      class="w-[250px] h-auto object-contain xl:w-[600px]" />
     {{ end }}
   </div>
 
@@ -88,15 +91,15 @@
 <style>
   .background-element1 {
     position: absolute;
-    top: -56px;
-    left: 0;
+    top: -107px;
+    left: -43px;
     z-index: 0;
   }
 
   .background-element2 {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: -135px;
+    right: -50px;
     z-index: 0;
   }
 
