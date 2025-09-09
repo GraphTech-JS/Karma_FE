@@ -3,6 +3,8 @@ dist/
 site/data/webpack.json
 site/resources/
 /public
+
+site/public/
 /npm-debug.log
 yarn-error.log
 .netlify/
