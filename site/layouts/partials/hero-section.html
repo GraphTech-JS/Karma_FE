@@ -20,30 +20,6 @@
 <img src="/img/bg-el-2.png" alt="Декоративний фоновий елемент" aria-hidden="true"
   class="absolute hidden md:block z-[1] hero-bg-el-2 bottom-[-40px] left-0 w-[171px] h-[199px] md:w-[217px] md:h-[253px] lg:w-[266px] lg:h-[310px] rotate-[40deg] md:rotate-0" />
 {{ end }}
-
-  <!-- Mobile stack elements -->
-  <div class="block sm:hidden lg:hidden">
-    {{ $stackLeft := resources.Get "img/stack-left.png" }}
-    {{ if $stackLeft }}
-    {{ $stackLeftProcessed := $stackLeft.Resize "247x257 webp q75" }}
-    <img src="{{ $stackLeftProcessed.RelPermalink }}" alt="Елемент стеку зліва" aria-hidden="true" width="247"
-      height="257" class="absolute top-[-15px] -left-[80px] w-[247px] h-[257px] z-[1]" loading="lazy" />
-    {{ else }}
-    <img src="/img/stack-left.png" alt="Елемент стеку зліва" aria-hidden="true" width="247" height="257"
-      class="absolute top-[-15px] -left-[80px] w-[247px] h-[257px] z-[1]" loading="lazy" />
-    {{ end }}
-
-    {{ $stackRight := resources.Get "img/stack-right.png" }}
-    {{ if $stackRight }}
-    {{ $stackRightProcessed := $stackRight.Resize "300x344 webp q75" }}
-    <img src="{{ $stackRightProcessed.RelPermalink }}" alt="Елемент стеку справа" aria-hidden="true" width="300"
-      height="344" class="absolute bottom-[-15px] right-[-16px] w-[300px] h-[344px] z-[1]" loading="lazy" />
-    {{ else }}
-    <img src="/img/stack-right.png" alt="Елемент стеку справа" aria-hidden="true" width="300" height="344"
-      class="absolute bottom-[-15px] right-[-16px] w-[300px] h-[344px] z-[1]" loading="lazy" />
-    {{ end }}
-  </div>
-
   <!-- Content (desktop + mobile як було) -->
   <div class="hidden md:block  mx-auto relative z-[2] pl-[40px]">
     <div class="flex justify-between items-center">
