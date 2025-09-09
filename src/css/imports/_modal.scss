@@ -11,6 +11,7 @@
   align-items: center;
   z-index: 9999;
   box-sizing: border-box;
+  padding: 20px;
 }
 
 html.modal-open,
@@ -49,13 +50,12 @@ body.modal-open {
 }
 
 .modal-content {
-  background: #F0F1F5;
+  background: #eaeaec;
   border-radius: 5px;
   padding: 40px;
   padding-bottom: 60px;
   position: relative;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-  border: 1px solid #e0e0e0;
   overscroll-behavior: contain;
 }
 
@@ -102,7 +102,13 @@ body.modal-open {
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+}
+
+.contact-form > *:not(.dropdown-group) {
+  margin-bottom: 20px;
+}
+.contact-form {
+  gap: 0; 
 }
 
 .form-row {
@@ -124,7 +130,7 @@ body.modal-open {
   font-size: clamp(16px, 2vw, 20px);
   font-weight: 400;
   color: black;
-  background: #F0F1F5;
+  background: #eaeaec;
   box-sizing: border-box;
   transition: border-color 0.2s ease;
 }
@@ -339,7 +345,6 @@ body.modal-open {
   }
 }
 
-/* Ensure modal is always 390px on very small screens */
 @media (max-width: 390px) {
   .modal-overlay {
     padding: 0px;
@@ -358,7 +363,6 @@ body.modal-open {
   }
 }
 
-/* Form message styles */
 .form-message {
   padding: 12px 16px;
   border-radius: 6px;
@@ -380,7 +384,6 @@ body.modal-open {
   border: 1px solid #9ae6b4;
 }
 
-/* iPad Pro specific styles */
 @media (min-width: 1024px) and (max-width: 1366px) {
   .modal-content {
     padding: 48px;
