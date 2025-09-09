@@ -1,76 +1,54 @@
 <section
-  class="bg-white min-h-[300px] relative  py-16 max-[1023px]:py-5 max-[450px]:py-0 flex justify-center items-center  z-[20] ">
+  class="bg-white min-h-[500px] relative overflow-hidden flex justify-center items-center">
   <!-- Background decorative elements -->
-  {{ $bgEl1 := resources.Get "img/bg-el-1.png" }}
-  {{ if $bgEl1 }}
-  {{ $bgEl1Processed := $bgEl1.Resize "201x185 webp q75" }}
-  <img src="{{ $bgEl1Processed.RelPermalink }}" alt="" aria-hidden="true"
-    class="absolute z-[1] overflow-hidden top-0 right-0 max-[450px]:top-[-57px] max-[450px]:right-[-61px] lg:w-[350px] md:w-[250px] sm:w-[150px] max-[450px]:w-[201px] max-[450px]:h-[185px] h-auto"
-    width="201" height="185" loading="lazy" />
-  {{ else }}
-  <img src="/img/bg-el-1.png" alt="" aria-hidden="true"
-    class="absolute z-[1] overflow-hidden top-0 right-0 max-[450px]:top-[-30px] max-[450px]:right-[-44px] lg:w-[350px] md:w-[250px] sm:w-[200px] max-[450px]:w-[201px] max-[450px]:h-[185px] h-auto"
-    width="201" height="185" loading="lazy" />
-  {{ end }}
+{{ $bgEl1 := resources.Get "img/bg-el-1.png" }}
+{{ if $bgEl1 }}
+{{ $bgEl1Processed := $bgEl1.Resize "420x webp q80" }}
+<img src="{{ $bgEl1Processed.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
+  class="absolute z-[1] right-[-66px] lg:right-[-14px] top-[-60px] md:top-[-24px] lg:top-[-60px] w-[201px] h-[185px] md:w-[325px] md:h-[298px] lg:w-[325px] lg:h-[298px]" />
+{{ else }}
+<img src="/img/bg-el-1.png" alt="Декоративний фоновий елемент" aria-hidden="true"
+  class="absolute z-[1] right-[-66px] lg:right-[-14px] top-[-60px] md:top-[-24px] lg:top-[-60px] w-[201px] h-[185px] md:w-[325px] md:h-[298px] lg:w-[325px] lg:h-[298px]" />
+{{ end }}
 
-  {{ $bgEl2 := resources.Get "img/bg-el-2.png" }}
-  {{ if $bgEl2 }}
-  {{ $bgEl2Processed := $bgEl2.Resize "400x webp q75" }}
-  <img src="{{ $bgEl2Processed.RelPermalink }}" alt="" aria-hidden="true"
-    class="hero-bg-el-2 absolute z-[10] bottom-0 left-0  hidden md:block  lg:w-[320px] md:w-[250px] sm:w-[150px] h-auto"
-    width="171" height="199" loading="lazy" />
-  {{ else }}
-  <img src="/img/bg-el-2.png" alt="" aria-hidden="true"
-    class="hero-bg-el-2 absolute z-[10] bottom-0 left-0  hidden md:block  lg:w-[320px] md:w-[250px] sm:w-[150px] h-auto"
-    width="171" height="199" loading="lazy" />
-  {{ end }}
-
-
-  <!-- bg-el-2: тільки mobile -->
-  {{ $bgEl2 := resources.Get "img/hero-bg-mob.png" }}
-  {{ if $bgEl2 }}
-  {{ $bgEl2Processed := $bgEl2.Resize "400x webp q95" }}
-  <img src="{{ $bgEl2Processed.RelPermalink }}" alt="" aria-hidden="true"
-    class="about-bg-el-2 absolute z-[21] left-[calc(var(--spacing)*-33)] bottom-[calc(var(--spacing)*-62)] min-[450px]:left-[calc(var(--spacing)*-25)] min-[450px]:bottom-[calc(var(--spacing)*-87)] sm:left-[calc(var(--spacing)*-17)] sm:bottom-[calc(var(--spacing)*-98)] rotate-20 hidden max-[767px]:block w-full h-full min-[450px]:w-[400px] min-[450px]:h-[400px] object-contain"
-    width="400" height="auto" loading="lazy" />
-  {{ else }}
-  <img src="/img/hero-bg-mob.png" alt="" aria-hidden="true" class="about-bg-el-2 absolute z-[21] left-[calc(var(--spacing)*-33)] bottom-[calc(var(--spacing)*-62)] min-[450px]:left-[calc(var(--spacing)*-25)] min-[450px]:bottom-[calc(var(--spacing)*-80)] sm:left-[calc(var(--spacing)*-17)] sm:bottom-[calc(var(--spacing)*-98)]
-    rotate-20 hidden max-[767px]:block w-full h-full min-[450px]:w-[400px] min-[450px]:h-[400px] object-contain"
-    width="400" height="auto" loading="lazy" />
-  {{ end }}
-
-
-
-  <!-- Content  -->
-  <div class="hidden lg:block max-w-[1440px] xl:max-w-[1600px] mx-auto  mb-[64px] relative z-[2] px-8">
-    <div class="flex gap-12 justify-between items-center xl:gap-16">
-      <div class="flex flex-col gap-5 flex-1 max-w-[600px] xl:max-w-[700px]">
+{{ $bgEl2 := resources.Get "img/bg-el-2.png" }}
+{{ if $bgEl2 }}
+{{ $bgEl2Processed := $bgEl2.Resize "420x webp q80" }}
+<img src="{{ $bgEl2Processed.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
+  class="absolute hidden md:block z-[1] hero-bg-el-2 bottom-[-40px] left-0 w-[171px] h-[199px] md:w-[217px] md:h-[253px] lg:w-[266px] lg:h-[310px]  rotate-[40deg] md:rotate-0" />
+{{ else }}
+<img src="/img/bg-el-2.png" alt="Декоративний фоновий елемент" aria-hidden="true"
+  class="absolute hidden md:block z-[1] hero-bg-el-2 bottom-[-40px] left-0 w-[171px] h-[199px] md:w-[217px] md:h-[253px] lg:w-[266px] lg:h-[310px] rotate-[40deg] md:rotate-0" />
+{{ end }}
+  <!-- Content (desktop + mobile як було) -->
+  <div class="hidden md:block  mx-auto relative z-[2] pl-[40px]">
+    <div class="flex justify-between items-center">
+      <div class="flex flex-col gap-[35px] flex-1">
         <div class="font-bold leading-[1.1] text-black mb-2 hero-title">
-          <span
-            class="font-['Unbounded'] text-[#ba0108] block text-[56px] xl:text-[64px] leading-[1.1] mb-2 whitespace-nowrap">
+          <span class="font-['Unbounded'] text-[#ba0108] block md:text-[48px] lg:text-[64px] leading-[1.1] mb-2">
             KARMA FLIGHTS
           </span>
-          <span class="font-['Unbounded'] text-black text-[36px] xl:text-[40px] leading-[1.1] whitespace-nowrap">
+          <span class="font-['Unbounded'] text-black text-[32px] ld:text-[40px] font-medium">
             НЕ ШУКАЙ КОМПРОМІСІВ
           </span>
         </div>
-        <p class="font-['Unbounded'] text-lg xl:text-xl font-[300] text-black mb-8">
+        <p class="font-['Unbounded'] text-[20px] font-light text-black mb-8">
           Високотехнологічне українське виробництво
         </p>
       </div>
 
-      <div class="hidden relative flex-shrink-0 justify-center items-center lg:flex">
+      <div class="hidden relative flex-shrink-0 justify-center  items-center md:flex">
         {{ $stackDesktop := resources.Get "img/stack.png" }}
         {{ if $stackDesktop }}
         {{ $stackDesktopProcessed := $stackDesktop.Resize "400x400 webp q85" }}
         <img src="{{ $stackDesktopProcessed.RelPermalink }}"
           alt="Karma Flights - високотехнологічне українське виробництво" width="400" height="400"
-          class="w-auto h-auto max-w-[400px] xl:max-w-[500px] max-h-[400px] xl:max-h-[500px] object-contain"
+             class="h-auto w-[400px] xl:w-[602px] object-contain"
           fetchpriority="high" />
         {{ else }}
         <img src="/img/stack.png" alt="Karma Flights - високотехнологічне українське виробництво" width="400"
           height="400"
-          class="w-auto h-auto max-w-[400px] xl:max-w-[500px] max-h-[400px] xl:max-h-[500px] object-contain"
+          class="h-auto w-[400px] xl:w-[602px] object-contain"
           fetchpriority="high" />
         {{ end }}
       </div>
@@ -78,7 +56,7 @@
   </div>
 
   <!-- Mobile & Tablet Layout -->
-  <div class="block lg:hidden mx-auto w-full relative z-[2]  max-[767px]:pt-50 max-[1023px]:pt-0 max-[449px]:pt-40">
+  <div class="block md:hidden mx-auto w-full relative z-[2] py-8">
     <div class="flex flex-col items-center text-center">
       <div class="font-bold leading-[1.1] text-black mb-6 hero-title">
         <span
@@ -118,11 +96,7 @@
     animation: fadeInUp 0.8s ease-out forwards;
   }
 
-  @media (max-width: 639px) {
-    .hero-bg-el-2 {
-      display: none !important;
-    }
-  }
+  /* Removed mobile hide rule so .hero-bg-el-2 can overlap following section on small screens */
 </style>
 
 <script>

@@ -7,7 +7,7 @@ instead of data files */}} {{ $products := where $context.Site.RegularPages
 ".Params.category" $category }} {{ $categoryData := index
 $context.Site.Data.products.categories $category }}
 <section
-  class="relative flex flex-col justify-center items-center gap-[20px] py-[60px] max-[450px]:pt-[90px] bg-[#f9f9f9] overflow-hidden">
+  class="relative flex flex-col justify-center items-center gap-[20px] pb-[80px] max-[450px]:pt-[90px] bg-[#f9f9f9] overflow-hidden">
 {{ if $context.IsHome }}
 <div
   class="absolute top-0 right-[-22px] max-[767px]:right-[-41px] max-[767px]:top-[calc(var(--spacing)*-32)] max-[450px]:right-[-15px] max-[450px]:top-[calc(var(--spacing)*-19)]">

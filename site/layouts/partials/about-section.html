@@ -1,15 +1,28 @@
 <section
-  class="relative bg-white min-[451px]:min-h-[180px] md:min-h-[220px] lg:min-h-[250px] xl:min-h-[280px] max-[450px]:pt-0">
-  <!-- Background decorative elements - desktop only -->
-  {{ $bgEl3 := resources.Get "img/bg-el-3.png" }}
-  {{ if $bgEl3 }}
-  {{ $bgEl3Processed := $bgEl3.Resize "200x270 webp q80" }}
-  <img src="{{ $bgEl3Processed.RelPermalink }}" alt=""
-    class="absolute z-[1] bottom-0 right-0 w-[200px] h-auto hidden lg:block" width="200" height="270" />
-  {{ else }}
-  <img src="/img/bg-el-3.png" alt="" class="absolute z-[1] bottom-0 right-0 w-[200px] h-auto hidden lg:block"
-    width="200" height="270" />
-  {{ end }}
+  class="relative bg-white min-[451px]:min-h-[180px] md:min-h-[220px] lg:min-h-[250px] xl:min-h-[280px] max-[450px]:pt-0 overflow-visible">
+  <!-- Background decorative elements -->
+{{ $bgEl3 := resources.Get "img/bg-el-3.png" }}
+{{ if $bgEl3 }}
+{{ $bgEl3Processed := $bgEl3.Resize "200x270 webp q80" }}
+<img src="{{ $bgEl3Processed.RelPermalink }}" alt="" class="absolute z-[1] bottom-0 right-0 w-[200px] h-auto"
+  width="200" height="270" />
+{{ else }}
+<img src="/img/bg-el-3.png" alt="" class="absolute z-[1] bottom-0 right-0 w-[200px] h-auto" width="200" height="270" />
+{{ end }}
+
+<!-- bg-el-2: тільки mobile -->
+{{ $bgEl2 := resources.Get "img/bg-el-2.png" }}
+{{ if $bgEl2 }}
+{{ $bgEl2Processed := $bgEl2.Resize "171x199 webp q75" }}
+<img src="{{ $bgEl2Processed.RelPermalink }}" alt="" aria-hidden="true"
+  class="about-bg-el-2 absolute z-[10] top-[calc(var(--spacing)*-31)] left-[-48px] hidden max-[640px]:block w-[171px] h-[199px] rotate-[30deg]"
+  width="171" height="199" loading="lazy" />
+{{ else }}
+<img src="/img/bg-el-2.png" alt="" aria-hidden="true"
+  class="about-bg-el-2 absolute z-[10] top-[calc(var(--spacing)*-31)] left-[-48px] hidden max-[640px]:block w-[171px] h-[199px] rotate-[30deg]"
+  width="171" height="199" loading="lazy" />
+{{ end }}
+
 
   <!-- Mobile layout -->
   <div class="max-[767px]:block min-[768px]:hidden relative z-[22]">
@@ -19,26 +32,60 @@
     {{ $aboutMobileProcessed := $aboutMobile.Resize "572x400 webp q80" }}
     <img src="{{ $aboutMobileProcessed.RelPermalink }}"
       alt="Про нас - українська компанія високотехнологічного виробництва"
-      class="object-contain w-full h-auto mb-6 origin-left rounded-lg position-relative z-[1] about-mobile-img block md:hidden" />
+      class=" mb-6 w-full h-[276px] origin-left" />
     {{ else }}
     <img src="/img/about-mob.png" alt="Про нас - українська компанія високотехнологічного виробництва"
-      class="object-contain w-full h-auto mb-6 origin-left rounded-lg position-relative z-[1] about-mobile-img block md:hidden" />
+      class=" mb-6 w-full h-[276px] origin-left" />
     {{ end }}
 
     <!-- Mobile content -->
     <div class="px-5">
-      <h2 class="text-[clamp(24px,3vw,40px)] font-['Unbounded'] text-[#020303] font-medium leading-[1.2] mb-4">
+      <h2 class="text-[24px] font-['Unbounded'] text-[#020303] font-medium leading-[120%] mb-4">
         <span class="text-[#ba0108]">П</span>РО НАС
       </h2>
-      <div class="space-y-6 mb-[65px]">
-        <p class="text-[clamp(16px,2vw,20px)] font-normal font-['Montserrat'] leading-[1.7] text-[#333333]">
+      <div class="space-y-6 mb-[60px]">
+        <p class="text-[16px] font-['Montserrat'] leading-[120%] ">
           Ми — українська компанія, що спеціалізується на розробці та
           виробництві високотехнологічної техніки для сучасного світу. Наше
           виробництво поєднує іновації, точну інженерію та найсучасніше
           обладнання, щоб створювати надійні рішення для промисловості,
           енергетики, агросектору та оборонної сфери.
         </p>
-        <p class="text-[clamp(16px,2vw,20px)] font-normal font-['Montserrat'] leading-[1.7] text-[#333333]">
+        <p class="text-[16px] font-['Montserrat'] leading-[120%] ">
+          Ми впроваджуємо повний цикл: від ідеї та прототипу — до серійного
+          виробництва. Усе — на українських потужностях, з дотриманням
+          міжнародних стандартів якості.
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- Tablet layout (768px+) -->
+   
+  <div class="hidden min-[768px]:block lg:hidden relative z-[2]">
+    {{ $aboutDesktop := resources.Get "img/about.png" }}
+    {{ if $aboutDesktop }}
+    {{ $aboutDesktopProcessed := $aboutDesktop.Resize "628x400 webp q80" }}
+    <img src="{{ $aboutDesktopProcessed.RelPermalink }}"
+      alt="Про нас - українська компанія високотехнологічного виробництва" width="628" height="400"
+      class="w-full max-w-[628px] h-[400px] rounded-t-[8px]  mb-8" />
+    {{ else }}
+    <img src="/img/about.png" alt="Про нас - українська компанія високотехнологічного виробництва" width="568"
+      height="400" class="w-full max-w-[628px] h-[400px] rounded-t-[8px]  mb-8" />
+    {{ end }}
+    <div class="max-w-[649px] mx-auto px-5">
+      <h2
+        class="text-[clamp(24px,3vw,40px)] font-['Unbounded'] text-[#020303] font-medium leading-[1.2] mb-4 text-left">
+        <span class="text-[#ba0108]">П</span>РО НАС
+      </h2>
+      <div class="space-y-6 mb-[60px]">
+        <p class="text-[clamp(16px,2vw,20px)] font-normal font-['Montserrat'] leading-[1.7]  text-left">
+          Ми — українська компанія, що спеціалізується на розробці та
+          виробництві високотехнологічної техніки для сучасного світу. Наше
+          виробництво поєднує іновації, точну інженерію та найсучасніше
+          обладнання, щоб створювати надійні рішення для промисловості,
+          енергетики, агросектору та оборонної сфери.
+        </p>
+        <p class="text-[clamp(16px,2vw,20px)] font-normal font-['Montserrat'] leading-[1.7]  text-left">
           Ми впроваджуємо повний цикл: від ідеї та прототипу — до серійного
           виробництва. Усе — на українських потужностях, з дотриманням
           міжнародних стандартів якості.
@@ -47,46 +94,42 @@
     </div>
   </div>
 
-  <!-- Tablet and Desktop layout (768px+) -->
-  <div class="hidden min-[768px]:block relative z-[2]">
-    <div class="grid grid-cols-[42%_1fr] h-full">
-      <!-- Image section -->
-      <div class="relative">
-        {{ $aboutDesktop := resources.Get "img/about.png" }}
-        {{ if $aboutDesktop }}
-        {{ $aboutDesktopProcessed := $aboutDesktop.Resize "568x400 webp q80" }}
-        <img src="{{ $aboutDesktopProcessed.RelPermalink }}"
-          alt="Про нас - українська компанія високотехнологічного виробництва" width="568" height="400"
-          class="w-full h-full rounded-l-[8px] object-cover shadow-lg relative z-[11]" />
-        {{ else }}
-        <img src="/img/about.png" alt="Про нас - українська компанія високотехнологічного виробництва" width="568"
-          height="400" class="w-full h-full rounded-l-[8px] object-cover shadow-lg relative z-[11]" />
-        {{ end }}
-      </div>
+  <!-- Desktop layout (lg+) -->
+  <div class="hidden lg:grid lg:grid-cols-[45%_1fr] h-[400px] relative z-[2]">
+    <!-- Desktop image -->
+    <div class="relative">
+      {{ $aboutDesktop := resources.Get "img/about.png" }}
+      {{ if $aboutDesktop }}
+      {{ $aboutDesktopProcessed := $aboutDesktop.Resize "568x400 webp q80" }}
+      <img src="{{ $aboutDesktopProcessed.RelPermalink }}"
+        alt="Про нас - українська компанія високотехнологічного виробництва" width="568" height="400"
+        class="w-full h-[400px] rounded-tr-[8px] object-cover shadow-lg" />
+      {{ else }}
+      <img src="/img/about.png" alt="Про нас - українська компанія високотехнологічного виробництва" width="568"
+        height="400" class="w-full h-[400px] rounded-t-[8px] object-cover shadow-lg" />
+      {{ end }}
+    </div>
 
-      <!-- Content section -->
-      <div class="flex items-center px-8">
-        <div class="max-w-[649px]">
-          <h2
-            class="text-[clamp(32px,4vw,32px)] font-['Unbounded'] text-[#020303] font-medium leading-[1.2] mb-4 text-left">
-            <span class="text-[#ba0108]">П</span>РО НАС
-          </h2>
-          <div class="space-y-6 mb-[65px]">
-            <p
-              class="text-[clamp(16px,2vw,16px)] font-normal font-['Montserrat'] leading-[1.7] text-[#333333] text-left">
-              Ми — українська компанія, що спеціалізується на розробці та
-              виробництві високотехнологічної техніки для сучасного світу. Наше
-              виробництво поєднує іновації, точну інженерію та найсучасніше
-              обладнання, щоб створювати надійні рішення для промисловості,
-              енергетики, агросектору та оборонної сфери.
-            </p>
-            <p
-              class="text-[clamp(16px,2vw,16px)] font-normal font-['Montserrat'] leading-[1.7] text-[#333333] text-left">
-              Ми впроваджуємо повний цикл: від ідеї та прототипу — до серійного
-              виробництва. Усе — на українських потужностях, з дотриманням
-              міжнародних стандартів якості.
-            </p>
-          </div>
+    <!-- Desktop content -->
+    <div class="flex items-center px-8">
+      <div class="max-w-[649px]">
+        <h2
+          class="text-[24px] md:text-[32px] lg:text-[40px] font-['Unbounded'] text-[#020303] font-medium mb-[10px] text-left">
+          <span class="text-[#ba0108]">П</span>РО НАС
+        </h2>
+        <div class="space-y-6 mb-[60px]">
+          <p class="text-[clamp(16px,2vw,20px)] font-normal font-['Montserrat'] leading-[120%]  text-left">
+            Ми — українська компанія, що спеціалізується на розробці та
+            виробництві високотехнологічної техніки для сучасного світу. Наше
+            виробництво поєднує іновації, точну інженерію та найсучасніше
+            обладнання, щоб створювати надійні рішення для промисловості,
+            енергетики, агросектору та оборонної сфери.
+          </p>
+          <p class="text-[clamp(16px,2vw,20px)] font-normal font-['Montserrat'] leading-[120%]  text-left">
+            Ми впроваджуємо повний цикл: від ідеї та прототипу — до серійного
+            виробництва. Усе — на українських потужностях, з дотриманням
+            міжнародних стандартів якості.
+          </p>
         </div>
       </div>
     </div>
