@@ -7,26 +7,27 @@ instead of data files */}} {{ $products := where $context.Site.RegularPages
 ".Params.category" $category }} {{ $categoryData := index
 $context.Site.Data.products.categories $category }}
 <section
-  class="relative flex flex-col justify-center items-center gap-[20px] pb-[80px] max-[450px]:pt-[90px] bg-[#f9f9f9] overflow-hidden">
-{{ if $context.IsHome }}
-<div
-  class="absolute top-0 right-[-22px] max-[767px]:right-[-41px] max-[767px]:top-[calc(var(--spacing)*-32)] max-[450px]:right-[-15px] max-[450px]:top-[calc(var(--spacing)*-19)]">
-  {{ $bgEl1 := resources.Get "img/bg-el-slider.png" }} {{ if $bgEl1 }} {{
-  $bgEl1Processed := $bgEl1.Resize "455x417 webp q75" }}
-  <img src="{{ $bgEl1Processed.RelPermalink }}" alt="" aria-hidden="true" width="455" height="417"
-    class="w-[455px] h-[417px] max-[1199px]:w-[313px] max-[1199px]:h-[287px] max-[1100px]:w-[350px] max-[1100px]:h-[330px] max-[900px]:w-[300px] max-[900px]:h-[280px] max-[768px]:w-[313px] max-[768px]:h-[387px] max-[450px]:w-[200px] max-[450px]:h-[200px] object-contain"
-    loading="lazy" />
-  {{ else }}
-  <img src="/img/bg-el-slider.png" alt="" aria-hidden="true" width="455" height="417"
-    class="w-[455px] h-[417px] max-[1199px]:w-[313px] max-[1199px]:h-[287px] max-[1100px]:w-[350px] max-[1100px]:h-[330px] max-[900px]:w-[300px] max-[900px]:h-[280px] max-[768px]:w-[313px] max-[768px]:h-[387px] max-[450px]:w-[200px] max-[450px]:h-[200px] object-contain"
-    loading="lazy" />
+  class="relative flex flex-col justify-center items-center gap-[20px]  max-[450px]:pt-[90px] bg-[#f9f9f9] overflow-hidden">
+  {{ if $context.IsHome }}
+  <div
+    class="absolute top-0 right-[-22px] max-[767px]:right-[-41px] max-[767px]:top-[calc(var(--spacing)*-32)] max-[450px]:right-[-15px] max-[450px]:top-[calc(var(--spacing)*-19)]">
+    {{ $bgEl1 := resources.Get "img/bg-el-slider.png" }} {{ if $bgEl1 }} {{
+    $bgEl1Processed := $bgEl1.Resize "455x417 webp q75" }}
+    <img src="{{ $bgEl1Processed.RelPermalink }}" alt="" aria-hidden="true" width="455" height="417"
+      class="w-[455px] h-[417px] max-[1199px]:w-[313px] max-[1199px]:h-[287px] max-[1100px]:w-[350px] max-[1100px]:h-[330px] max-[900px]:w-[300px] max-[900px]:h-[280px] max-[768px]:w-[313px] max-[768px]:h-[387px] max-[450px]:w-[200px] max-[450px]:h-[200px] object-contain"
+      loading="lazy" />
+    {{ else }}
+    <img src="/img/bg-el-slider.png" alt="" aria-hidden="true" width="455" height="417"
+      class="w-[455px] h-[417px] max-[1199px]:w-[313px] max-[1199px]:h-[287px] max-[1100px]:w-[350px] max-[1100px]:h-[330px] max-[900px]:w-[300px] max-[900px]:h-[280px] max-[768px]:w-[313px] max-[768px]:h-[387px] max-[450px]:w-[200px] max-[450px]:h-[200px] object-contain"
+      loading="lazy" />
+    {{ end }}
+  </div>
   {{ end }}
-</div>
-{{ end }}
 
-  <div class="flex flex-col w-full max-w-[1200px] products-slider">
-    <h2 class="font-['Unbounded'] text-[clamp(24px,4vw,40px)] font-medium mb-[40px] text-center hero-title">
-      <span class="text-[#ba0108]">Н</span>АШІ ТОВАРИ 
+  <div class="flex flex-col w-full max-w-[1200px] products-slider mt-[60px] lg:mt-[80px] mb-[60px] lg:mb-[80px]">
+    <h2
+      class="font-['Unbounded'] text-[clamp(24px,4vw,40px)] font-medium  mb-[40px] text-center hero-title">
+      <span class="text-[#ba0108]">Н</span>АШІ ТОВАРИ
     </h2>
 
     <!-- Desktop & Tablet Layout (768px+) -->

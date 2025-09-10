@@ -114,10 +114,10 @@
     visibility: hidden;
     transform: translateY(-10px);
     transition:
-      max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-      opacity 0.3s ease,
-      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-      visibility 0.3s ease;
+      max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      visibility 0.5s ease;
     width: calc(100% + 2px);
   }
 
@@ -316,6 +316,7 @@
 
         this.quantityOptions.addEventListener('click', (e) => {
           if (e.target.classList.contains('dropdown-option')) {
+            e.stopPropagation(); // Запобігаємо спливанню події
             this.selectOption(e.target);
           }
         });
@@ -352,27 +353,36 @@
         const optionsCount = this.quantityOptions.children.length;
         const totalHeight = optionHeight * optionsCount;
 
-        this.quantityOptions.style.maxHeight = totalHeight + 'px';
         this.quantityDropdown.classList.add('dropdown-open');
-        this.quantityOptions.classList.add('show');
         this.quantitySelected.classList.add('active');
+
+        // Використовуємо requestAnimationFrame для плавної анімації
+        requestAnimationFrame(() => {
+          this.quantityOptions.style.maxHeight = totalHeight + 'px';
+          this.quantityOptions.classList.add('show');
+        });
 
         const firstOption = this.quantityOptions.querySelector('.dropdown-option');
         if (firstOption) {
           setTimeout(() => {
             firstOption.focus();
-          }, 100);
+          }, 200);
         }
       }
 
       closeDropdown() {
-        this.quantityDropdown.classList.remove('dropdown-open');
         this.quantityOptions.classList.remove('show');
         this.quantitySelected.classList.remove('active');
 
-        setTimeout(() => {
+        // Використовуємо requestAnimationFrame для плавної анімації
+        requestAnimationFrame(() => {
           this.quantityOptions.style.maxHeight = '0px';
-        }, 10);
+        });
+
+        // Прибираємо dropdown-open клас з затримкою після завершення анімації
+        setTimeout(() => {
+          this.quantityDropdown.classList.remove('dropdown-open');
+        }, 350); // 350ms = тривалість transition
       }
 
       getOptionHeight() {
