@@ -1,6 +1,6 @@
 <section class="flex flex-col items-center  py-[60px] bg-[#eaeaea] text-center">
   <div class="flex flex-col w-full max-w-[1280px] px-[20px]">
-    <h2 class="text-[clamp(24px,3vw,40px)] font-['Unbounded'] mb-[40px] hero-title">
+    <h2 class="!text-[clamp(24px,3vw,40px)] font-['Unbounded'] font-medium mb-[40px] hero-title">
       <span class="text-[#ba0108]">Н</span>АМ ДОВІРЯЮТЬ
     </h2>
 
@@ -56,7 +56,7 @@
         {{ range .Site.Data.trusted_companies.companies }}
         <div class="swiper-slide">
           <div
-            class="logo-container flex flex-col items-center justify-center md:h-[193px] lg:h-[232px] gap-[46px] px-[20px]">
+            class="logo-container flex flex-col items-center justify-center md:h-[193px] lg:h-[232px] gap-[46px] ">
             {{ if eq .logo "/img/mriadrone.png" }}
             <img src="{{ .logo }}" alt="{{ .alt }}"
               class="object-contain md:w-[153px] md:h-[118px] lg:w-[203px] lg:h-[157px]" />

@@ -50,10 +50,10 @@ body.modal-open {
 }
 
 .modal-content {
-  background: #eaeaec;
+  background: #f0f1f5;
   border-radius: 5px;
-  padding: 40px;
-  padding-bottom: 60px;
+  padding: 55px;
+  padding-bottom: 104px;
   position: relative;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
   overscroll-behavior: contain;
@@ -102,13 +102,7 @@ body.modal-open {
 .contact-form {
   display: flex;
   flex-direction: column;
-}
-
-.contact-form > *:not(.dropdown-group) {
-  margin-bottom: 20px;
-}
-.contact-form {
-  gap: 0; 
+  gap: 20px;
 }
 
 .form-row {
@@ -125,20 +119,28 @@ body.modal-open {
   width: 100%;
   padding: 16px 20px;
   border: 1px solid #404040;
-  border-radius: 8px;
+  border-radius: 5px;
   font-family: 'Montserrat', sans-serif;
   font-size: clamp(16px, 2vw, 20px);
   font-weight: 400;
   color: black;
-  background: #eaeaec;
+  background: #f0f1f5;
   box-sizing: border-box;
+  
   transition: border-color 0.2s ease;
+}
+.form-input:not(.form-textarea) {
+  height: 65px;
 }
 
 .form-input::placeholder,
 .form-textarea::placeholder {
   color: #999;
   font-weight: 400;
+}
+
+.form-input .custom-dropdown.open {
+  border-radius: 8px 8px 0 0;
 }
 
 .form-input:focus,
@@ -190,7 +192,7 @@ body.modal-open {
   font-weight: 400;
   transition: color 0.2s ease;
 }
-.contact-phone{
+.contact-phone {
   display: inline-block;
 }
 
@@ -215,7 +217,7 @@ body.modal-open {
 }
 
 .submit-button:hover {
-  background: #8b0106;
+  background: #e39599;
 }
 
 .submit-button:active {
@@ -246,9 +248,8 @@ body.modal-open {
   .modal-container {
     width: 944px;
   }
-  
 
-    .modal-overlay {
+  .modal-overlay {
     padding: 20px;
   }
 }
@@ -256,37 +257,37 @@ body.modal-open {
   .modal-overlay {
     padding: 20px;
   }
-  
+
   .modal-container {
     max-height: 100vh;
   }
-  
+
   .modal-content {
     padding: 24px;
     padding-bottom: 40px;
   }
-  
+
   .modal-title {
     font-size: 20px;
   }
-  
+
   .form-row {
     flex-direction: column;
     gap: 20px;
   }
-  
+
   .contact-info {
     flex-direction: column;
     align-items: center;
     gap: 15px;
   }
-  
+
   .contact-details {
     flex-direction: column;
     gap: 8px;
     justify-content: flex-start;
   }
-  
+
   .modal-close {
     top: 16px;
     right: 16px;
@@ -298,43 +299,42 @@ body.modal-open {
     padding: 0px;
     align-items: flex-start;
   }
-  
+
   .modal-container {
     max-height: 100vh;
   }
-  
+
   .modal-content {
     padding: 60px 20px 20px 20px;
     padding-bottom: 30px;
     border-radius: 0;
   }
-  
+
   .modal-header {
     display: flex;
     justify-content: center;
   }
-  
+
   .modal-title {
     width: 352px;
   }
-  
+
   .modal-close {
     top: 20px;
     right: 20px;
   }
-  
+
   .form-input,
   .form-textarea {
     padding: 14px 16px;
     font-size: 14px;
     border-radius: 5px;
-
   }
-  
+
   .form-input {
     height: 65px;
   }
-  
+
   .submit-button {
     padding: 0;
     height: 65px;
@@ -350,13 +350,13 @@ body.modal-open {
     padding: 0px;
     align-items: flex-start;
   }
-  
+
   .modal-content {
     border-radius: 0;
     padding: 50px 20px 20px 20px;
     padding-bottom: 25px;
   }
-  
+
   .modal-close {
     top: 15px;
     right: 15px;
@@ -385,16 +385,13 @@ body.modal-open {
 }
 
 @media (min-width: 1024px) and (max-width: 1366px) {
-  .modal-content {
-    padding: 48px;
-  }
-  
+  // .modal-content {
+  //   padding: 48px;
+  // }
+
   .form-input,
   .form-textarea {
     padding: 18px 22px;
     font-size: 16px;
   }
-  
-
- 
 }

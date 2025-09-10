@@ -2,81 +2,76 @@
   <div class="modal-container">
     <div class="modal-content">
       <!-- Close Button -->
-      <button class="cursor-pointer modal-close" id="closeModal" aria-label="Close modal">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <button class="cursor-pointer modal-close" id="closeModal" aria-label="Close modal"> <svg width="24" height="24"
+          viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round" />
-        </svg>
-      </button>
-
+        </svg> </button>
       <!-- Modal Header -->
       <div class="modal-header">
-        <h2 class="modal-title font-['Unbounded']">
-          <span class="title-highlight">З</span>алиште свій запит і ми зв'яжемось з Вами
-          <br />
-          та повідомимо про актуальні ціни
-        </h2>
+        <h2 class="modal-title font-['Unbounded']"> <span class="title-highlight">З</span>алиште свій запит і ми
+          зв'яжемось з Вами <br /> та повідомимо про актуальні ціни </h2>
       </div>
-
       <!-- Contact Form -->
       <form class="contact-form" id="contactForm">
         <div class="form-row">
-          <div class="form-group">
-            <input type="text" id="userName" name="userName" placeholder="Ваше ім'я" class="form-input" required />
-          </div>
-          <div class="form-group">
-            <input type="tel" id="userPhone" name="userPhone" placeholder="+380" class="form-input" required />
-          </div>
+          <div class="form-group"> <input type="text" id="userName" name="userName" placeholder="Ваше ім'я"
+              class="form-input" required /> </div>
+          <div class="form-group"> <input type="tel" id="userPhone" name="userPhone" placeholder="+380"
+              class="form-input" required /> </div>
         </div>
-
-        <div class="dropdown-group">
-          <div class="custom-dropdown form-input" id="quantityDropdown">
-            <div class="dropdown-selected" id="quantitySelected">
-              <span class="placeholder">Кількість стеків, яку плануєте замовити</span>
-            </div>
-
-          </div>
-          <input type="hidden" id="quantity" name="quantity" required />
-        </div>
-
-        <div class="dropdown-options" id="quantityOptions">
-          <div class="dropdown-option" data-value="0-20">0 - 20</div>
-          <div class="dropdown-option" data-value="20-100">20 - 100</div>
-          <div class="dropdown-option" data-value="100-1000">100 - 1 000</div>
-          <div class="dropdown-option" data-value="3000-10000">3 000 - 10 000</div>
-          <div class="dropdown-option" data-value="10000+">>10 000</div>
-        </div>
-
         <div class="form-group">
-          <textarea id="message" name="message" placeholder="Ваше повідомлення" class="form-textarea"
-            rows="4"></textarea>
+          <div class="custom-dropdown" id="quantityDropdown">
+            <div class="dropdown-selected" id="quantitySelected"> <span class="placeholder">Кількість стеків, яку
+                плануєте замовити</span> </div>
+            <div class="dropdown-options" id="quantityOptions">
+              <div class="dropdown-option" data-value="0-20">0 - 20</div>
+              <div class="dropdown-option" data-value="20-100">20 - 100</div>
+              <div class="dropdown-option" data-value="100-1000">100 - 1 000</div>
+              <div class="dropdown-option" data-value="3000-10000">3 000 - 10 000</div>
+              <div class="dropdown-option" data-value="10000+">>10 000</div>
+            </div>
+            <input type="hidden" id="quantity" name="quantity" required />
+          </div>
         </div>
+
+        <div class="form-group"> <textarea id="message" name="message" placeholder="Ваше повідомлення"
+            class="form-textarea" rows="4"></textarea> </div>
         <div class="contact-info">
           <div class="contact-wrapper">
             <p class="contact-label">Наші контакти для зв'язку:</p>
-            <div class="contact-details">
-              <a href="tel:+380956156713" class="contact-phone">
-                +380 95 61 56713
-              </a>
-              <a href="mailto:info@karma.flights" class="contact-email">
-                info@karma.flights
-              </a>
-            </div>
-          </div>
-          <button type="submit" class="cursor-pointer submit-button">
-            Відправити
-          </button>
+            <div class="contact-details"> <a href="tel:+380956156713" class="contact-phone"> +380 95 61 56713 </a> <a
+                href="mailto:info@karma.flights" class="contact-email"> info@karma.flights </a> </div>
+          </div> <button type="submit" class="cursor-pointer submit-button"> Відправити </button>
         </div>
       </form>
     </div>
   </div>
 </div>
-
 <style>
+  /* Custom Dropdown Styles */
   .custom-dropdown {
     position: relative;
+    display: flex;
     width: 100%;
-    background: #eaeaec;
+    padding: 16px 20px !important;
+    border: 1px solid #404040 !important;
+    border-radius: 5px !important;
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 400;
+    color: black;
+    background: #f0f1f5;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, border-radius 0.3s ease;
+    cursor: pointer;
+    height: 65px;
+  }
+
+  /* Dropdown open state - remove bottom border radius */
+  .custom-dropdown.dropdown-open {
+    border-radius: 5px 5px 0 0 !important;
+    border-bottom-color: transparent;
   }
 
   .dropdown-selected {
@@ -91,7 +86,7 @@
     color: #7e7e7e;
     transition: all 0.2s ease;
     width: 100%;
-
+    pointer-events: none;
   }
 
   .dropdown-selected:hover {
@@ -105,62 +100,126 @@
   }
 
   .dropdown-options {
-    position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    transform: none;
-    opacity: 1;
-    visibility: visible;
+    position: absolute;
+    top: 102%;
+    left: -1px;
+    right: -1px;
+    background: #eaeaec;
+    border: 1px solid #404040;
+    border-top: none;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-    background: #f0f1f5;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition:
+      max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      visibility 0.5s ease;
+    width: calc(100% + 2px);
   }
 
   .dropdown-options.show {
-    max-height: 280px;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
 
   .dropdown-option {
-    padding: 16px 20px;
     cursor: pointer;
     transition: background-color 0.2s ease;
     font-size: 14px;
     font-weight: 400;
     font-family: 'Montserrat', sans-serif;
     color: #333;
-    padding: 15px 34px !important;
+    padding: 20px 34px !important;
     text-align: center;
-    background: #f0f1f5;
+    background: #eaeaec;
+    border-bottom: 1px solid rgba(64, 64, 64, 0.1);
   }
 
   .dropdown-option:hover {
     background: #d8d8d8;
   }
 
+  /* Animation improvements */
+  .custom-dropdown:hover {
+    border-color: #666;
+  }
 
+  .custom-dropdown.dropdown-open:hover {
+    border-color: #404040;
+  }
+
+  /* Form message styles for better UX */
+  .form-message {
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin: 10px 0;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    animation: slideIn 0.3s ease;
+  }
+
+  .form-message--error {
+    background-color: #fee;
+    color: #c33;
+    border: 1px solid #fcc;
+  }
+
+  .form-message--success {
+    background-color: #efe;
+    color: #363;
+    border: 1px solid #cfc;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
   @media (max-width: 768px) {
     .custom-dropdown {
       display: flex;
+      padding: 14px 16px !important;
     }
 
     .dropdown-selected {
       font-size: 14px;
-      padding: 10px;
+      padding: 8px;
     }
 
     .dropdown-options {
-      padding: 12px 20px;
+      max-height: 0;
+    }
+
+    .dropdown-options.show {
+      max-height: 320px;
     }
 
     .dropdown-option {
       font-size: 14px;
-      padding: 12px 16px;
+      padding: 12px 16px !important;
     }
   }
 
+  /* Tablet styles */
+  @media (min-width: 769px) and (max-width: 1023px) {
+    .dropdown-options.show {
+      max-height: 340px;
+    }
+  }
+
+  /* Desktop styles */
   @media (min-width: 1024px) {
     .dropdown-selected {
       font-size: 16px;
@@ -169,6 +228,21 @@
     .dropdown-option {
       font-size: 16px;
     }
+
+    .dropdown-options.show {
+      max-height: 360px;
+    }
+  }
+
+  /* Focus and accessibility improvements */
+  .custom-dropdown:focus-within {
+    outline: 2px solid #4A90E2;
+    outline-offset: 2px;
+  }
+
+  .dropdown-option:focus {
+    background: #d0d0d0;
+    outline: none;
   }
 </style>
 
@@ -234,13 +308,15 @@
       initDropdown() {
         if (!this.quantityDropdown) return;
 
-        this.quantitySelected.addEventListener('click', (e) => {
+        // Click handler for entire dropdown container
+        this.quantityDropdown.addEventListener('click', (e) => {
           e.stopPropagation();
           this.toggleDropdown();
         });
 
         this.quantityOptions.addEventListener('click', (e) => {
           if (e.target.classList.contains('dropdown-option')) {
+            e.stopPropagation(); // Запобігаємо спливанню події
             this.selectOption(e.target);
           }
         });
@@ -250,6 +326,17 @@
             this.closeDropdown();
           }
         });
+
+        this.quantityDropdown.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.toggleDropdown();
+          } else if (e.key === 'Escape') {
+            this.closeDropdown();
+          }
+        });
+
+        this.quantityDropdown.setAttribute('tabindex', '0');
       }
 
       toggleDropdown() {
@@ -262,13 +349,50 @@
       }
 
       openDropdown() {
-        this.quantityOptions.classList.add('show');
+        const optionHeight = this.getOptionHeight();
+        const optionsCount = this.quantityOptions.children.length;
+        const totalHeight = optionHeight * optionsCount;
+
+        this.quantityDropdown.classList.add('dropdown-open');
         this.quantitySelected.classList.add('active');
+
+        // Використовуємо requestAnimationFrame для плавної анімації
+        requestAnimationFrame(() => {
+          this.quantityOptions.style.maxHeight = totalHeight + 'px';
+          this.quantityOptions.classList.add('show');
+        });
+
+        const firstOption = this.quantityOptions.querySelector('.dropdown-option');
+        if (firstOption) {
+          setTimeout(() => {
+            firstOption.focus();
+          }, 200);
+        }
       }
 
       closeDropdown() {
         this.quantityOptions.classList.remove('show');
         this.quantitySelected.classList.remove('active');
+
+        // Використовуємо requestAnimationFrame для плавної анімації
+        requestAnimationFrame(() => {
+          this.quantityOptions.style.maxHeight = '0px';
+        });
+
+        // Прибираємо dropdown-open клас з затримкою після завершення анімації
+        setTimeout(() => {
+          this.quantityDropdown.classList.remove('dropdown-open');
+        }, 350); // 350ms = тривалість transition
+      }
+
+      getOptionHeight() {
+        if (window.innerWidth <= 768) {
+          return 64;
+        } else if (window.innerWidth <= 1023) {
+          return 68;
+        } else {
+          return 72;
+        }
       }
 
       selectOption(option) {
@@ -277,7 +401,6 @@
 
         this.quantitySelected.querySelector('span').textContent = text;
         this.quantitySelected.querySelector('span').classList.remove('placeholder');
-
         this.quantityInput.value = value;
 
         this.closeDropdown();
@@ -291,12 +414,17 @@
             this.resetDropdown();
           }
         }
+
+        setTimeout(() => {
+          this.quantityDropdown.focus();
+        }, 300);
       }
 
       resetDropdown() {
         this.quantitySelected.querySelector('span').textContent = 'Кількість стеків, яку плануєте замовити';
         this.quantitySelected.querySelector('span').classList.add('placeholder');
         this.quantityInput.value = '';
+        this.closeDropdown();
       }
 
       open() {
@@ -387,6 +515,7 @@
           quantity: formData.get('quantity'),
           message: formData.get('message'),
         };
+
         if (!data.name.trim()) {
           this.showError("Будь ласка, введіть ваше ім'я");
           return;
