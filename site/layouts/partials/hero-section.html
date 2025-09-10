@@ -1,5 +1,5 @@
 <section
-  class="bg-white min-h-[500px] relative overflow-hidden flex justify-center items-center">
+  class="bg-white min-h-[300px]  md:min-h-[500px] relative overflow-hidden flex justify-center items-center">
   <!-- Background decorative elements -->
 {{ $bgEl1 := resources.Get "img/bg-el-1.png" }}
 {{ if $bgEl1 }}
@@ -56,18 +56,18 @@
   </div>
 
   <!-- Mobile & Tablet Layout -->
-  <div class="block md:hidden mx-auto w-full relative z-[2] py-8">
+  <div class="block md:hidden mx-auto w-full relative z-[2] mt-auto">
     <div class="flex flex-col items-center text-center">
-      <div class="font-bold leading-[1.1] text-black mb-6 hero-title">
+      <div class="font-bold leading-[1.1] text-black hero-title mb-[10px]">
         <span
-          class="font-['Unbounded'] text-[#ba0108] block text-[32px] sm:text-[40px] md:text-[48px] leading-[1.1] mb-2">
+          class="font-['Unbounded'] text-[#ba0108] block text-[32px] sm:text-[40px] md:text-[48px] leading-[100%]">
           KARMA FLIGHTS
         </span>
-        <span class="font-['Unbounded'] text-black text-[20px] sm:text-[24px] md:text-[32px] leading-[1.1]">
+        <span class="font-['Unbounded'] text-black text-[20px] sm:text-[24px] md:text-[32px] leading-[100%]">
           НЕ ШУКАЙ КОМПРОМІСІВ
         </span>
       </div>
-      <p class="font-['Unbounded'] text-[16px] sm:text-[18px] md:text-[20px] font-[300] text-black mb-8">
+      <p class="font-['Unbounded'] text-[16px] sm:text-[18px] md:text-[20px] font-[300] text-black mb-8 px-[50px]">
         Високотехнологічне українське виробництво
       </p>
     </div>
