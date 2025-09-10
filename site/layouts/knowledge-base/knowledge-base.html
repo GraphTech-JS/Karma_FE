@@ -1,6 +1,6 @@
 {{ define "main" }}
 <section class="relative z-10 bg-white">
-  <div class="py-8 pb-40 w-full">
+  <div class="py-8 pb-[60px] w-full">
     <!-- Header with Breadcrumbs and Search -->
     <div class="flex flex-col gap-4 mb-8 lg:flex-row lg:items-center lg:justify-between px-8 max-[450px]:px-5">
       <!-- Breadcrumbs -->
@@ -34,10 +34,10 @@
       {{ $guides := where .Site.RegularPages "Section" "guides" }}
       {{ range $index, $category := $categories }}
       {{ $categoryGuides := where $guides ".Params.category" $category }}
-      <details class="overflow-visible relative z-30 mb-0 border-0 knowledge-section group">
+  <details {{ if eq $index 0 }}open{{ end }} class="overflow-visible relative z-30 mb-0 border-0 knowledge-section group">
         <summary
-          class="section-header bg-[#4a4a4a] text-white rounded-none cursor-pointer list-none group-open:bg-[#ba0108]">
-          <div class="flex justify-between items-center px-6 py-4 w-full lg:px-8 lg:py-6">
+          class="section-header bg-[#4a4a4a] text-white rounded-none cursor-pointer list-none group-open:bg-[#ba0108] mt-[40px]">
+          <div class="flex justify-between items-center w-full h-[67px] md:h-[71px] lg:h-[86px] max-w-[1280px] px-[20px] mx-auto">
             <h2 class="text-[clamp(24px,3vw,40px)] font-bold font-['Unbounded'] tracking-wide">{{ $category
               }}</h2>
             <svg class="w-6 h-6 transition-transform duration-300 transform lg:w-8 lg:h-8 group-open:rotate-180"
@@ -52,17 +52,17 @@
           {{ if $categoryGuides }}
           <div class="accordion-items">
             {{ range $categoryGuides }}
-            <div class="border-b border-gray-200 knowledge-item last:border-b-0">
+            <div class="knowledge-item  mx-auto max-w-[1280px] px-[20px]">
               <div
-                class="flex items-start px-6 py-4 transition-colors cursor-pointer select-none lg:px-8 lg:py-6 hover:bg-gray-50"
-                onclick="window.location.href='{{ .Permalink }}'">
+                class="flex items-start py-4 transition-colors cursor-pointer select-none lg:px-8 lg:py-6 hover:bg-gray-50">
+                <a href="{{ .Permalink }}">
                 <div class="flex flex-1 gap-4 items-start space-x-4">
                   <img src="/img/point.svg" />
                   <div class="flex-1">
-                    <h3 class="text-[clamp(16px,2vw,24px)] font-medium text-gray-900 font-['Montserrat'] mb-2">
+                    <h3 class="text-[16px] md:text-[24px] font-semibold  font-['Montserrat'] mb-[10px]">
                       {{ .Title }}</h3>
                     {{ if .Params.description }}
-                    <p class="text-[clamp(14px,1.5vw,16px)] text-black leading-relaxed font-['Montserrat']">{{
+                    <p class="text-[16px] leading-relaxed font-['Montserrat']">{{
                       .Params.description }} <span
                         class="text-[#ba0108] no-underline cursor-pointer text-[clamp(14px,1.5vw,16px)]">&gt;&gt;</span>
                     </p>
@@ -70,6 +70,7 @@
                     {{ end }}
                   </div>
                 </div>
+                </a>
               </div>
             </div>
             {{ end }}
