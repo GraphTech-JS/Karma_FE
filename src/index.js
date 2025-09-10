@@ -346,28 +346,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize desktop products slider with responsive configuration (2 cards, 51 gap, move by 2)
   new CustomSlider(".swiper-container-products", {
-    autoplay: true,
+    autoplay: false,
     loop: true,
     slidesPerView: 1,
     slidesPerGroup: 1,
     spaceBetween: 16,
     fixedSlideWidth: null,
     responsive: {
-      // Планшет - показуємо 2 картки
       768: {
         slidesPerView: 2,
         slidesPerGroup: 2,
         spaceBetween: 20,
         fixedSlideWidth: null,
       },
-      // Десктоп - показуємо 2 картки з трохи більшим відступом
       1024: {
         slidesPerView: 2,
         slidesPerGroup: 2,
         spaceBetween: 25,
         fixedSlideWidth: null,
       },
-      // Великі екрани - показуємо 2 картки
       1200: {
         slidesPerView: 2,
         slidesPerGroup: 2,
