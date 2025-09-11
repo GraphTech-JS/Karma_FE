@@ -93,61 +93,51 @@
             </div>
           </div>
         </div>
+{{ if .Params.image }}
+<div class="relative overflow-hidden rounded-xl border border-[#E5E5E5]">
+  {{/* --- ДЕСКТОПНЕ ЗОБРАЖЕННЯ (з front matter) --- */}}
+  {{ $customImage := resources.Get .Params.image }}
+  {{ if $customImage }}
+  {{ $desktop1x := $customImage.Resize "900x webp q80" }}
+  {{ $desktop2x := $customImage.Resize "1800x webp q80" }}
+  <img src="{{ $desktop1x.RelPermalink }}" srcset="{{ $desktop1x.RelPermalink }} 1x, {{ $desktop2x.RelPermalink }} 2x"
+    alt="{{ .Title }}" class="hidden w-full h-auto sm:block" {{/* <-- ОСНОВНА ЗМІНА: h-auto */}}
+    width="{{ $customImage.Width }}" height="{{ $customImage.Height }}" loading="lazy" decoding="async" />
+  {{ end }}
 
-        {{ if .Params.image }}
-        <div class="relative overflow-hidden rounded-xl border border-[#E5E5E5]">
-          {{ $droneManMobile := resources.Get "img/drone-man-mobile.png" }}
-          {{ if $droneManMobile }}
-          {{ $droneManMobileProcessed := $droneManMobile.Resize "900x238 webp q80" }}
-          <img src="{{ $droneManMobileProcessed.RelPermalink }}" alt="{{ .Title }}" class="w-full h-[238px] sm:hidden"
-            width="900" height="238" />
-          {{ else }}
-          <img src="/img/drone-man-mobile.png" alt="{{ .Title }}" class="w-full h-[238px] sm:hidden" width="900"
-            height="238" />
-          {{ end }}
+  {{/* --- МОБІЛЬНЕ ЗОБРАЖЕННЯ (використовуємо спеціальний мобільний файл) --- */}}
+  {{ $droneManMobile := resources.Get "img/drone-man-mobile.png" }}
+  {{ if $droneManMobile }}
+  {{ $mobile1x := $droneManMobile.Resize "480x webp q80" }}
+  {{ $mobile2x := $droneManMobile.Resize "960x webp q80" }}
+  <img src="{{ $mobile1x.RelPermalink }}" srcset="{{ $mobile1x.RelPermalink }} 1x, {{ $mobile2x.RelPermalink }} 2x"
+    alt="{{ .Title }}" class="w-full h-auto sm:hidden" {{/* <-- ОСНОВНА ЗМІНА: h-auto */}}
+    width="{{ $droneManMobile.Width }}" height="{{ $droneManMobile.Height }}" decoding="async" />
+  {{ end }}
+</div>
+{{ else }}
+<div class="relative overflow-hidden rounded-xl border border-[#E5E5E5]">
+  {{/* --- ДЕСКТОПНЕ ЗОБРАЖЕННЯ (за замовчуванням) --- */}}
+  {{ $droneMan := resources.Get "img/drone-man.png" }}
+  {{ if $droneMan }}
+  {{ $desktop1x := $droneMan.Resize "900x webp q80" }}
+  {{ $desktop2x := $droneMan.Resize "1800x webp q80" }}
+  <img src="{{ $desktop1x.RelPermalink }}" srcset="{{ $desktop1x.RelPermalink }} 1x, {{ $desktop2x.RelPermalink }} 2x"
+    alt="Drone Man" class="hidden w-full h-auto sm:block" {{/* <-- ОСНОВНА ЗМІНА: h-auto */}}
+    width="{{ $droneMan.Width }}" height="{{ $droneMan.Height }}" loading="lazy" decoding="async" />
+  {{ end }}
 
-          {{ $customImage := resources.Get .Params.image }}
-          {{ if $customImage }}
-          {{ $customImageProcessed := $customImage.Resize "900x238 webp q80" }}
-          <img src="{{ $customImageProcessed.RelPermalink }}" alt="{{ .Title }}" class="hidden w-full h-[238px] sm:block"
-            width="900" height="238" />
-          {{ else }}
-          <img src="{{ .Params.image }}" alt="{{ .Title }}" class="hidden w-full h-[238px] sm:block" width="900"
-            height="238" />
-          {{ end }}
-        </div>
-        {{ else }}
-        <div class="relative overflow-hidden rounded-xl border border-[#E5E5E5]">
-          {{ $droneManMobile := resources.Get "img/drone-man-mobile.png" }}
-          {{ if $droneManMobile }}
-          {{ $droneManMobileProcessed := $droneManMobile.Resize "900x238 webp q80" }}
-          <img src="{{ $droneManMobileProcessed.RelPermalink }}" alt="Drone Man" class="w-full h-[238px] sm:hidden"
-            width="900" height="238" />
-          {{ else }}
-          <img src="/img/drone-man-mobile.png" alt="Drone Man" class="w-full h-[238px] sm:hidden" width="900"
-            height="238" />
-          {{ end }}
-
-          {{ $droneMan := resources.Get "img/drone-man.png" }}
-          {{ if $droneMan }}
-          {{ $droneManProcessed := $droneMan.Resize "900x400 webp q80" }}
-          <img src="{{ $droneManProcessed.RelPermalink }}" alt="Drone Man" class="hidden w-full h-[238px] sm:block"
-            width="900" height="238" />
-          {{ else }}
-          <img src="/img/drone-man.png" alt="Drone Man" class="hidden w-full h-[238px] sm:block" width="900"
-            height="238" />
-          {{ end }}
-        </div>
-        {{ end }}
-
-        <h1 class="mt-[10px] font-[Montserrat] text-[20px] md:text-[24px] font-medium text-black">
-          {{ .Title }}
-        </h1>
-        {{ if .Params.description }}
-        <p class="mt-[10px] font-[Montserrat] text-[15px] md:text-[16px] font-normal leading-[120%]">
-          {{ .Params.description }}
-        </p>
-        {{ end }}
+  {{/* --- МОБІЛЬНЕ ЗОБРАЖЕННЯ (за замовчуванням) --- */}}
+  {{ $droneManMobile := resources.Get "img/drone-man-mobile.png" }}
+  {{ if $droneManMobile }}
+  {{ $mobile1x := $droneManMobile.Resize "480x webp q80" }}
+  {{ $mobile2x := $droneManMobile.Resize "960x webp q80" }}
+  <img src="{{ $mobile1x.RelPermalink }}" srcset="{{ $mobile1x.RelPermalink }} 1x, {{ $mobile2x.RelPermalink }} 2x"
+    alt="Drone Man" class="w-full h-auto sm:hidden" {{/* <-- ОСНОВНА ЗМІНА: h-auto */}}
+    width="{{ $droneManMobile.Width }}" height="{{ $droneManMobile.Height }}" decoding="async" />
+  {{ end }}
+</div>
+{{ end }}
 
         <div class="mt-[30px] markdown-content">
           {{ .Content }}
@@ -161,7 +151,7 @@
               <h4 class="font-[Montserrat] text-[16px] font-medium text-[#ba0108] mb-[20px]">
                 На цій сторінці
               </h4>
-              <ul class="space-y-[20px] text-[clamp(16px,2vw,18px)] font-normal font-[Montserrat]" id="page-toc">
+              <ul class="space-y-[20px] text-[16px] font-normal font-[Montserrat]" id="page-toc">
                 <!-- Table of contents will be generated by JavaScript -->
               </ul>
             </nav>

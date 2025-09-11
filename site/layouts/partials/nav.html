@@ -200,13 +200,15 @@
     style="padding-top: 20px; padding-bottom: 20px;">
     <!-- Logo -->
     <a href="/" class="relative z-[10] text-xl font-normal text-white font-inter" aria-label="Karma - головна сторінка">
-      {{ $logo := resources.Get "logo.png" }}
-      {{ if $logo }}
-      {{ $logoProcessed := $logo.Resize "149x34 webp q80" }}
-      <img src="{{ $logoProcessed.RelPermalink }}" alt="logo" width="149" height="34" />
-      {{ else }}
-      <img src="/logo.png" alt="logo" width="149" height="34" />
-      {{ end }}
+    {{ $logo := resources.Get "logo.png" }}
+    {{ if $logo }}
+    {{ $logo1x := $logo.Resize "149x34 webp q80" }}
+    {{ $logo2x := $logo.Resize "298x68 webp q80" }}
+    <img src="{{ $logo1x.RelPermalink }}" srcset="{{ $logo1x.RelPermalink }} 1x, {{ $logo2x.RelPermalink }} 2x" width="149"
+      height="34" alt="logo" />
+    {{ else }}
+    <img src="/logo.png" alt="logo" width="149" height="34" class="w-[108px] h-[25px] md:w-[149px] md:h-[34px]" />
+    {{ end }}
     </a>
 
     <!-- Desktop Navigation -->
@@ -290,13 +292,16 @@
     <div class="bg-[#020303] p-6 rounded-b-3xl">
       <div class="flex items-center justify-between mb-4">
         <a href="/" class="text-xl font-normal text-white font-inter">
-          {{ $logoMobile := resources.Get "logo.png" }}
-          {{ if $logoMobile }}
-          {{ $logoMobileProcessed := $logoMobile.Resize "149x34 webp q80" }}
-          <img src="{{ $logoMobileProcessed.RelPermalink }}" alt="logo" width="149" height="34" />
-          {{ else }}
-          <img src="/logo.png" alt="logo" width="149" height="34" />
-          {{ end }}
+        {{ $logoMobile := resources.Get "logo.png" }}
+        {{ if $logoMobile }}
+        {{ $logoMobile1x := $logoMobile.Resize "108x25 webp q80" }}
+        {{ $logoMobile2x := $logoMobile.Resize "216x50 webp q80" }}
+        <img src="{{ $logoMobile1x.RelPermalink }}"
+          srcset="{{ $logoMobile1x.RelPermalink }} 1x, {{ $logoMobile2x.RelPermalink }} 2x" width="108" height="25"
+          alt="logo" />
+        {{ else }}
+        <img src="/logo.png" alt="logo" width="108" height="25" />
+        {{ end }}
         </a>
         <button class="text-white hover:text-[#ba0108] transition-colors cursor-pointer" onclick="toggleMobileSearch()" aria-label="Закрити пошук">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -322,16 +327,19 @@
   <!-- Mobile Menu Overlay -->
   <div id="mobileMenu" class="mobile-menu fixed inset-0 bg-[#020303] z-40 flex flex-col" role="dialog" aria-modal="true" aria-label="Мобільне меню">
     <!-- Fixed Header with Logo and Close Button -->
-    <div class="flex relative z-[12] justify-between items-center p-4 shadow-[0_2px_8px_rgba(255,255,255,0.4)] bg-[#020303] relative z-50">
+    <div class="flex relative z-[12] justify-between items-center p-4 shadow-[0_2px_8px_rgba(255,255,255,0.4)] bg-[#020303]">
       <!-- Logo -->
       <a href="/" class="text-xl font-normal text-white font-inter" aria-label="Karma - головна сторінка">
-        {{ $logo := resources.Get "logo.png" }}
-        {{ if $logo }}
-        {{ $logoProcessed := $logo.Resize "149x34 webp q80" }}
-        <img src="{{ $logoProcessed.RelPermalink }}" alt="logo" class="w-[120px] h-[34px] object-contain" />
-        {{ else }}
-        <img src="/logo.png" alt="logo" class="w-[120px] h-[34px] object-contain" />
-        {{ end }}
+    {{ $logoMobile := resources.Get "logo.png" }}
+    {{ if $logoMobile }}
+    {{ $logoMobile1x := $logoMobile.Resize "108x25 webp q80" }}
+    {{ $logoMobile2x := $logoMobile.Resize "216x50 webp q80" }}
+    <img src="{{ $logoMobile1x.RelPermalink }}"
+      srcset="{{ $logoMobile1x.RelPermalink }} 1x, {{ $logoMobile2x.RelPermalink }} 2x" width="108" height="25"
+      alt="logo" />
+    {{ else }}
+    <img src="/logo.png" alt="logo" width="108" height="25" />
+    {{ end }}
       </a>
       
       <!-- Close Button -->
