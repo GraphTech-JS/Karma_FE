@@ -1,19 +1,19 @@
 {{ define "main" }}
-<section class="py-[40px] bg-white">
+<section class="pt-[20px] md:pt-[25px] lg:pt-[40px] bg-white">
   <div class="max-w-[1280px] mx-auto px-[20px]">
     <div
-      class="mb-[clamp(20px,4vw,20px)] flex flex-col sm:flex-row sm:items-center sm:justify-between font-[Montserrat] gap-[clamp(12px,2vw,12px)]">
-      <div class="flex flex-wrap gap-[clamp(8px,2vw,8px)] items-center sm:gap-[clamp(8px,2vw,8px)]">
-        <a class="font-[Montserrat] text-[16px] lg:text-[20px] font-normal text-[#ba0108] hover:underline" href="/">
+      class="mb-[15px] md:mb-[33px] flex flex-col sm:flex-row sm:items-center sm:justify-between font-[Montserrat] gap-[7px]">
+      <div class="flex flex-wrap items-center">
+        <a class="font-[Montserrat] text-[16px] lg:text-[20px] font-normal text-[#ba0108] hover:underline leading-[120%]" href="/">
           Головна
         </a>
-        <span class="text-[#ba0108] sm:inline">&rarr;</span>
-        <a class="font-[Montserrat] text-[16px] lg:text-[20px]  font-normal text-[#ba0108] hover:underline"
+        <span class="text-[#ba0108] sm:inline px-[5px]">&rarr;</span>
+        <a class="font-[Montserrat] text-[16px] lg:text-[20px]  font-normal text-[#ba0108] hover:underline leading-[120%]"
           href="/knowledge-base">
           База знань
         </a>
-        <span class="text-[#ba0108] sm:inline">&rarr;</span>
-        <a class="font-[Montserrat] text-[16px] lg:text-[20px] font-light md:font-normal text-[#ba0108] hover:underline break-words hyphens-auto"
+        <span class="text-[#ba0108] sm:inline px-[5px]">&rarr;</span>
+        <a class="font-[Montserrat] text-[16px] lg:text-[20px] font-light md:font-normal text-[#ba0108] hover:underline break-words hyphens-auto leading-[120%]"
           href="#">
           {{ .Title }}
         </a>
@@ -33,9 +33,9 @@
         <div class="flex flex-1 items-center">
           <div class="relative flex-1 rounded-[20px]">
             <input type="text" placeholder="Введіть текст"
-              class="h-[clamp(40px,6vw,47px)] w-full !rounded-[20px] border border-black pl-[clamp(12px,2vw,16px)] pr-[clamp(100px,15vw,120px)] text-[clamp(14px,2vw,16px)] outline-none focus:border-[#ba0108] bg-white" />
+              class="h-[41px] w-full !rounded-[20px] border border-black pl-[clamp(12px,2vw,16px)] pr-[clamp(100px,15vw,120px)] text-[clamp(14px,2vw,16px)] outline-none focus:border-[#ba0108] bg-white" />
             <button
-              class="absolute z-10 right-0 top-1/2 -translate-y-1/2 w-[clamp(80px,12vw,99px)] h-[clamp(40px,6vw,47px)] rounded-[20px] bg-[#ba0108] flex items-center justify-center cursor-pointer hover:bg-[#a00007] transition-colors">
+              class="absolute z-10 right-0 top-1/2 -translate-y-1/2 w-[70px] h-[41px] rounded-[20px] bg-[#ba0108] flex items-center justify-center cursor-pointer hover:bg-[#a00007] transition-colors">
               <img src="/img/search-icon.svg" alt="search" width="30" height="30" class="filter brightness-0 invert" />
             </button>
           </div>
@@ -47,7 +47,7 @@
       <div class="bg-[#F6F6F6] max-w-[285px] h-full rounded-[5px] hidden lg:block">
         <aside class="relative pt-0 pr-0 pl-0">
           <div class="p-0">
-            <nav class="pt-[8px] fixed space-y-[20px]" style="width: 285px; max-height: calc(100vh - 200px); overflow-y: auto;">
+            <nav id="left-category-nav" class="pt-[8px] fixed space-y-[20px]" style="width: 285px; max-height: calc(100vh - 200px); overflow-y: auto;">
               {{ $categories := slice "БПЛА" "Політні стеки" "Відеопередавачі" "ESC" }}
               {{ $guides := where .Site.RegularPages "Section" "guides" }}
               {{ range $index, $category := $categories }}
@@ -79,15 +79,15 @@
         </aside>
       </div>
 
-      <div class="max-w-[min(693px,90vw)] min-h-0 pr-[clamp(8px,2vw,16px)]">
-        <div class="hidden lg:flex relative max-w-[min(691px,90vw)] justify-center items-center mb-5">
+      <div class="max-w-[min(693px,90vw)] min-h-0  pb-[40px] pt-0 lg:pt-[27px]">
+        <div class="hidden lg:flex relative max-w-[min(691px,90vw)] justify-center items-center mb-[28px]">
           <div class="flex flex-1 items-center">
             <div class="relative flex-1 rounded-[20px]">
               <input type="text" placeholder="Введіть текст"
                 class="h-[clamp(40px,6vw,47px)] w-full !rounded-[20px] border border-black pl-[clamp(12px,2vw,16px)] pr-[clamp(100px,15vw,120px)] text-[16px] outline-none focus:border-[#ba0108] bg-white" />
               <button
                 class="absolute z-10 right-0 top-1/2 -translate-y-1/2 w-[clamp(80px,12vw,99px)] h-[clamp(40px,6vw,47px)] rounded-[20px] bg-[#ba0108] flex items-center justify-center cursor-pointer hover:bg-[#a00007] transition-colors">
-                <img src="/img/search-icon.svg" alt="search" width="30" height="30"
+                <img src="/img/search-icon.svg" alt="search" width="48" height="48"
                   class="filter brightness-0 invert" />
               </button>
             </div>
@@ -98,67 +98,67 @@
         <div class="relative overflow-hidden rounded-xl border border-[#E5E5E5]">
           {{ $droneManMobile := resources.Get "img/drone-man-mobile.png" }}
           {{ if $droneManMobile }}
-          {{ $droneManMobileProcessed := $droneManMobile.Resize "900x400 webp q80" }}
-          <img src="{{ $droneManMobileProcessed.RelPermalink }}" alt="{{ .Title }}" class="w-full h-auto sm:hidden"
-            width="900" height="400" />
+          {{ $droneManMobileProcessed := $droneManMobile.Resize "900x238 webp q80" }}
+          <img src="{{ $droneManMobileProcessed.RelPermalink }}" alt="{{ .Title }}" class="w-full h-[238px] sm:hidden"
+            width="900" height="238" />
           {{ else }}
-          <img src="/img/drone-man-mobile.png" alt="{{ .Title }}" class="w-full h-auto sm:hidden" width="900"
-            height="400" />
+          <img src="/img/drone-man-mobile.png" alt="{{ .Title }}" class="w-full h-[238px] sm:hidden" width="900"
+            height="238" />
           {{ end }}
 
           {{ $customImage := resources.Get .Params.image }}
           {{ if $customImage }}
-          {{ $customImageProcessed := $customImage.Resize "900x400 webp q80" }}
-          <img src="{{ $customImageProcessed.RelPermalink }}" alt="{{ .Title }}" class="hidden w-full h-auto sm:block"
-            width="900" height="400" />
+          {{ $customImageProcessed := $customImage.Resize "900x238 webp q80" }}
+          <img src="{{ $customImageProcessed.RelPermalink }}" alt="{{ .Title }}" class="hidden w-full h-[238px] sm:block"
+            width="900" height="238" />
           {{ else }}
-          <img src="{{ .Params.image }}" alt="{{ .Title }}" class="hidden w-full h-auto sm:block" width="900"
-            height="400" />
+          <img src="{{ .Params.image }}" alt="{{ .Title }}" class="hidden w-full h-[238px] sm:block" width="900"
+            height="238" />
           {{ end }}
         </div>
         {{ else }}
         <div class="relative overflow-hidden rounded-xl border border-[#E5E5E5]">
           {{ $droneManMobile := resources.Get "img/drone-man-mobile.png" }}
           {{ if $droneManMobile }}
-          {{ $droneManMobileProcessed := $droneManMobile.Resize "900x400 webp q80" }}
-          <img src="{{ $droneManMobileProcessed.RelPermalink }}" alt="Drone Man" class="w-full h-auto sm:hidden"
-            width="900" height="400" />
+          {{ $droneManMobileProcessed := $droneManMobile.Resize "900x238 webp q80" }}
+          <img src="{{ $droneManMobileProcessed.RelPermalink }}" alt="Drone Man" class="w-full h-[238px] sm:hidden"
+            width="900" height="238" />
           {{ else }}
-          <img src="/img/drone-man-mobile.png" alt="Drone Man" class="w-full h-auto sm:hidden" width="900"
-            height="400" />
+          <img src="/img/drone-man-mobile.png" alt="Drone Man" class="w-full h-[238px] sm:hidden" width="900"
+            height="238" />
           {{ end }}
 
           {{ $droneMan := resources.Get "img/drone-man.png" }}
           {{ if $droneMan }}
           {{ $droneManProcessed := $droneMan.Resize "900x400 webp q80" }}
-          <img src="{{ $droneManProcessed.RelPermalink }}" alt="Drone Man" class="hidden w-full h-auto sm:block"
-            width="900" height="400" />
+          <img src="{{ $droneManProcessed.RelPermalink }}" alt="Drone Man" class="hidden w-full h-[238px] sm:block"
+            width="900" height="238" />
           {{ else }}
-          <img src="/img/drone-man.png" alt="Drone Man" class="hidden w-full h-auto sm:block" width="900"
-            height="400" />
+          <img src="/img/drone-man.png" alt="Drone Man" class="hidden w-full h-[238px] sm:block" width="900"
+            height="238" />
           {{ end }}
         </div>
         {{ end }}
 
-        <h2 class="mt-[clamp(8px,2vw,10px)] font-[Montserrat] text-[clamp(18px,3vw,24px)] font-medium text-black">
+        <h1 class="mt-[10px] font-[Montserrat] text-[20px] md:text-[24px] font-medium text-black">
           {{ .Title }}
-        </h2>
+        </h1>
         {{ if .Params.description }}
-        <p class="mt-2 font-[Montserrat] text-[clamp(16px,2vw,18px)] font-normal">
+        <p class="mt-[10px] font-[Montserrat] text-[15px] md:text-[16px] font-normal leading-[120%]">
           {{ .Params.description }}
         </p>
         {{ end }}
 
-        <div class="mt-[clamp(20px,4vw,32px)] markdown-content">
+        <div class="mt-[30px] markdown-content">
           {{ .Content }}
         </div>
       </div>
 
-      <aside class="hidden relative md:block">
+      <aside class="hidden relative md:block pt-0 lg:pt-[27px]">
         <nav>
-          <div class="pt-0 h-full">
+          <div class="h-full">
             <nav  id="right-toc-nav" class="fixed" style="width: 200px; max-height: calc(100vh - 200px); overflow-y: auto;">
-              <h4 class="font-[Montserrat] text-[clamp(16px,2vw,18px)] font-medium text-[#ba0108] mb-[20px]">
+              <h4 class="font-[Montserrat] text-[16px] font-medium text-[#ba0108] mb-[20px]">
                 На цій сторінці
               </h4>
               <ul class="space-y-[20px] text-[clamp(16px,2vw,18px)] font-normal font-[Montserrat]" id="page-toc">
@@ -421,28 +421,43 @@
     // Generate table of contents
     const headings = document.querySelectorAll('.markdown-content h2, .markdown-content h3');
     const tocList = document.getElementById('page-toc');
-     const sidebar = document.getElementById('right-toc-nav');
+    const leftSidebar = document.getElementById('left-category-nav');
+    const rightSidebar = document.getElementById('right-toc-nav');
     const footer = document.getElementById('footer');
 
-    if (sidebar && footer) {
-      const initialTopOffset = sidebar.getBoundingClientRect().top;
-      const handleSidebarPosition = () => {
+    if (footer && (leftSidebar || rightSidebar)) {
+      const sidebarsToManage = [];
+
+      if (leftSidebar) {
+        sidebarsToManage.push({
+          element: leftSidebar,
+          initialTop: leftSidebar.getBoundingClientRect().top
+        });
+      }
+      if (rightSidebar) {
+        sidebarsToManage.push({
+          element: rightSidebar,
+          initialTop: rightSidebar.getBoundingClientRect().top
+        });
+      }
+      const updateAllSidebarPositions = () => {
         const footerRect = footer.getBoundingClientRect();
         const viewportHeight = window.innerHeight;
-        if (footerRect.top < viewportHeight) {
-          const overlap = viewportHeight - footerRect.top;
-          sidebar.style.top = `${initialTopOffset - overlap}px`;
-        } else {
-          sidebar.style.top = `${initialTopOffset}px`;
-        }
+        sidebarsToManage.forEach(sidebarData => {
+          const { element, initialTop } = sidebarData; 
+          if (footerRect.top < viewportHeight) {
+            const overlap = viewportHeight - footerRect.top;
+            element.style.top = `${initialTop - overlap}px`;
+          } else {
+            element.style.top = `${initialTop}px`;
+          }
+        });
       };
-
-      window.addEventListener('scroll', handleSidebarPosition);
-      window.addEventListener('resize', handleSidebarPosition);
-
-      // Викликаємо функцію один раз, щоб задати початковий 'top' для меню
-      handleSidebarPosition();
+      window.addEventListener('scroll', updateAllSidebarPositions);
+      window.addEventListener('resize', updateAllSidebarPositions);
+      updateAllSidebarPositions();
     }
+
 
     if (tocList && headings.length > 0) {
       headings.forEach((heading, index) => {
@@ -456,7 +471,7 @@
         const a = document.createElement('a');
         a.href = '#' + heading.id;
         a.textContent = heading.textContent;
-        a.className = 'block hover:text-[#ba0108] transition-colors text-[clamp(16px,2vw,18px)]';
+        a.className = 'block hover:text-[#ba0108] transition-colors text-[16px] font-medium text-[#404040]';
 
         li.appendChild(a);
         tocList.appendChild(li);
