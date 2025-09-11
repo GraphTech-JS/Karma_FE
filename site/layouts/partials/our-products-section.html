@@ -6,8 +6,7 @@ instead of data files */}} {{ $products := where $context.Site.RegularPages
 "Section" "catalog" }} {{ $categoryProducts := where $products
 ".Params.category" $category }} {{ $categoryData := index
 $context.Site.Data.products.categories $category }}
-<section
-  class="relative flex flex-col justify-center items-center gap-[20px]   bg-[#f9f9f9] overflow-hidden">
+<section class="relative flex flex-col justify-center items-center gap-[20px]   bg-[#f9f9f9] overflow-hidden">
   {{ if $context.IsHome }}
   <div
     class="absolute top-0 right-[-22px] max-[767px]:right-[-41px] max-[767px]:top-[calc(var(--spacing)*-32)] max-[450px]:right-[-15px] max-[450px]:top-[calc(var(--spacing)*-19)]">
@@ -25,8 +24,7 @@ $context.Site.Data.products.categories $category }}
   {{ end }}
 
   <div class="flex flex-col w-full max-w-[1200px] products-slider mt-[60px] lg:mt-[80px] mb-[60px] lg:mb-[80px]">
-    <h2
-      class="font-['Unbounded'] text-[clamp(24px,4vw,40px)] font-medium  mb-[40px] text-center hero-title">
+    <h2 class="font-['Unbounded'] text-[clamp(24px,4vw,40px)] font-medium  mb-[40px] text-center hero-title">
       <span class="text-[#ba0108]">Н</span>АШІ ТОВАРИ
     </h2>
 
@@ -63,9 +61,11 @@ $context.Site.Data.products.categories $category }}
                 </span>
                 {{ end }}
               </div>
-              <a href="{{ .Permalink }}"
-                class="inline-block bg-[#ba0108] text-[#fff] border-[none] px-[30px] py-[15px] mt-5 rounded-[20px] cursor-pointer text-[clamp(16px,2.2vw,20px)] font-['Montserrat'] font-normal [transition:background-color_0.3s_ease] hover:bg-[#e39599] w-full">
-                Детальніше
+              <a href="{{ .RelPermalink }}">
+                <button
+                  class="bg-[#ba0108] text-[#fff] border-[none] px-[30px] py-[15px] mt-5 rounded-[20px] cursor-pointer text-[clamp(16px,2.2vw,20px)] font-['Montserrat'] font-normal [transition:background-color_0.3s_ease] hover:bg-[#e39599] w-full">
+                  Детальніше
+                </button>
               </a>
             </div>
           </div>
@@ -115,9 +115,10 @@ $context.Site.Data.products.categories $category }}
               </span>
               {{ end }}
             </div>
-            <a href="{{ .Permalink }}"
-              class="inline-block bg-[#ba0108] text-[#fff] border-[none] px-[30px] py-[15px] mt-5 rounded-[20px] cursor-pointer text-[clamp(14px,1.8vw,16px)] font-['Montserrat'] font-normal [transition:background-color_0.3s_ease] hover:bg-[#e39599] w-full">
-              Детальніше
+            <a href="{{ .RelPermalink }}">
+              <button class="inline-block bg-[#ba0108] text-[#fff] border-[none] px-[30px] py-[15px] mt-5 rounded-[20px] cursor-pointer text-[clamp(14px,1.8vw,16px)] font-['Montserrat'] font-normal [transition:background-color_0.3s_ease] hover:bg-[#e39599] w-full">
+                Детальніше
+              </button>
             </a>
           </div>
         </div>
