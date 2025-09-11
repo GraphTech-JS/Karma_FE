@@ -1,0 +1,13 @@
+  <!-- Tablet layout (768px+) -->
+   
+  <div class="hidden min-[768px]:block lg:hidden relative z-[2]">
+    {{ $aboutDesktop := resources.Get "img/about.png" }}
+    {{ if $aboutDesktop }}
+    {{ $aboutDesktopProcessed := $aboutDesktop.Resize "628x400 webp q80" }}
+    <img src="{{ $aboutDesktopProcessed.RelPermalink }}"
+      alt="Про нас - українська компанія високотехнологічного виробництва" width="628" height="400"
+      class="w-full max-w-[628px] h-[400px] rounded-t-[8px] mb-8" loading="lazy" decoding="async" />
+    {{ else }}
+    <img src="/img/about.png" alt="Про нас - українська компанія високотехнологічного виробництва" width="568"
+      height="400" class="w-full max-w-[628px] h-[400px] rounded-t-[8px] mb-8" loading="lazy" decoding="async" />
+    {{ end }}

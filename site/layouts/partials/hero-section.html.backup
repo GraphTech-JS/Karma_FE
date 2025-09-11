@@ -65,11 +65,11 @@
           <source media="(min-width: 1280px)" srcset="{{ $stackLarge.RelPermalink }}" type="image/webp">
           <img src="{{ $stackDesktopProcessed.RelPermalink }}"
             alt="Karma Flights - високотехнологічне українське виробництво" width="400" height="400"
-            class="h-auto w-[400px] xl:w-[602px] object-contain" loading="lazy" decoding="async" />
+            class="h-auto w-[400px] xl:w-[602px] object-contain" fetchpriority="high" />
         </picture>
         {{ else }}
         <img src="/img/stack.png" alt="Karma Flights - високотехнологічне українське виробництво" width="400"
-          height="400" class="h-auto w-[400px] xl:w-[602px] object-contain" loading="lazy" decoding="async" />
+          height="400" class="h-auto w-[400px] xl:w-[602px] object-contain" fetchpriority="high" />
         {{ end }}
       </div>
     </div>

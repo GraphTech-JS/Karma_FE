@@ -10,11 +10,22 @@ $context.Site.Data.products.categories $category }}
   {{ if $context.IsHome }}
   <div
     class="absolute top-0 right-[-22px] max-[767px]:right-[-41px] max-[767px]:top-[calc(var(--spacing)*-32)] max-[450px]:right-[-15px] max-[450px]:top-[calc(var(--spacing)*-19)]">
-    {{ $bgEl1 := resources.Get "img/bg-el-slider.png" }} {{ if $bgEl1 }} {{
-    $bgEl1Processed := $bgEl1.Resize "455x417 webp q75" }}
-    <img src="{{ $bgEl1Processed.RelPermalink }}" alt="" aria-hidden="true" width="455" height="417"
-      class="w-[455px] h-[417px] max-[1199px]:w-[313px] max-[1199px]:h-[287px] max-[1100px]:w-[350px] max-[1100px]:h-[330px] max-[900px]:w-[300px] max-[900px]:h-[280px] max-[768px]:w-[313px] max-[768px]:h-[387px] max-[450px]:w-[200px] max-[450px]:h-[200px] object-contain"
-      loading="lazy" />
+    {{ $bgEl1 := resources.Get "img/bg-el-slider.png" }}
+    {{ if $bgEl1 }}
+    {{/* Mobile optimized */}}
+    {{ $bgEl1Mobile := $bgEl1.Resize "200x200 webp q70" }}
+    {{/* Tablet optimized */}}
+    {{ $bgEl1Tablet := $bgEl1.Resize "313x287 webp q75" }}
+    {{/* Desktop optimized */}}
+    {{ $bgEl1Desktop := $bgEl1.Resize "455x417 webp q80" }}
+    <picture>
+      <source media="(max-width: 450px)" srcset="{{ $bgEl1Mobile.RelPermalink }}" type="image/webp">
+      <source media="(max-width: 768px)" srcset="{{ $bgEl1Tablet.RelPermalink }}" type="image/webp">
+      <source media="(min-width: 769px)" srcset="{{ $bgEl1Desktop.RelPermalink }}" type="image/webp">
+      <img src="{{ $bgEl1Desktop.RelPermalink }}" alt="" aria-hidden="true" width="455" height="417"
+        class="w-[455px] h-[417px] max-[1199px]:w-[313px] max-[1199px]:h-[287px] max-[1100px]:w-[350px] max-[1100px]:h-[330px] max-[900px]:w-[300px] max-[900px]:h-[280px] max-[768px]:w-[313px] max-[768px]:h-[387px] max-[450px]:w-[200px] max-[450px]:h-[200px] object-contain"
+        loading="lazy" />
+    </picture>
     {{ else }}
     <img src="/img/bg-el-slider.png" alt="" aria-hidden="true" width="455" height="417"
       class="w-[455px] h-[417px] max-[1199px]:w-[313px] max-[1199px]:h-[287px] max-[1100px]:w-[350px] max-[1100px]:h-[330px] max-[900px]:w-[300px] max-[900px]:h-[280px] max-[768px]:w-[313px] max-[768px]:h-[387px] max-[450px]:w-[200px] max-[450px]:h-[200px] object-contain"
@@ -116,7 +127,8 @@ $context.Site.Data.products.categories $category }}
               {{ end }}
             </div>
             <a href="{{ .RelPermalink }}">
-              <button class="inline-block bg-[#ba0108] text-[#fff] border-[none] px-[30px] py-[15px] mt-5 rounded-[20px] cursor-pointer text-[clamp(14px,1.8vw,16px)] font-['Montserrat'] font-normal [transition:background-color_0.3s_ease] hover:bg-[#e39599] w-full">
+              <button
+                class="inline-block bg-[#ba0108] text-[#fff] border-[none] px-[30px] py-[15px] mt-5 rounded-[20px] cursor-pointer text-[clamp(14px,1.8vw,16px)] font-['Montserrat'] font-normal [transition:background-color_0.3s_ease] hover:bg-[#e39599] w-full">
                 Детальніше
               </button>
             </a>
