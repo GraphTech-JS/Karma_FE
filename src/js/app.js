@@ -4,14 +4,16 @@ import "../index.js";
 // Load lazy image loader immediately for better performance
 import "./lazy-images.js";
 
-// Aggressive lazy loadin for non-critical JavaScript
-const loadNonCriticalJS = () => {
-  // Load full sliders only when needed
+document.addEventListener("DOMContentLoaded", () => {
   const hasSliders = document.querySelector(".swiper-container-trusted-desktop, .swiper-container-trusted-mobile");
   if (hasSliders) {
     import("./sliders-init.js");
   }
-  
+});
+
+// Aggressive lazy loadin for non-critical JavaScript
+const loadNonCriticalJS = () => {
+
   // Load modal only when user interacts
   const modalTrigger = document.querySelector("[onclick*='openContactModal']");
   if (modalTrigger) {

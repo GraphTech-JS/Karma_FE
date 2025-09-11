@@ -13,7 +13,8 @@ if (mobileMenu) {
   mobileMenu.addEventListener("click", toggleMobileMenu);
 }
 
-// Initialize sliders when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
-  initializeSliders();
+  setTimeout(() => {
+    initializeSliders();
+  }, 100);
 });
