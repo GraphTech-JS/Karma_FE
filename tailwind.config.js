@@ -16,6 +16,17 @@ module.exports = {
         wallpoet: ["Wallpoet", "sans-serif"],
       },
     },
+    safelist: [
+      "swiper-container",
+      "swiper-wrapper",
+
+      "swiper-slide",
+      "swiper-pagination-trusted",
+      "swiper-pagination-bullet-custom",
+      "swiper-pagination-bullet-active-custom",
+      "swiper-button-next-custom",
+      "swiper-button-prev-custom",
+    ],
     fontFamily: {
       sans: ["Montserrat", "sans-serif"],
     },

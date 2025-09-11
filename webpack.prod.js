@@ -36,35 +36,35 @@ module.exports = merge(common, {
         slider: {
           test: /[\\/]src[\\/]js[\\/]slider\.js$/,
           name: "slider",
-          chunks: "async",
+          chunks: "all",
           priority: 20,
           enforce: true
         },
         slidersInit: {
           test: /[\\/]src[\\/]js[\\/]sliders-init\.js$/,
           name: "sliders-init",
-          chunks: "async",
+          chunks: "all",
           priority: 20,
           enforce: true
         },
         modal: {
           test: /[\\/]src[\\/]js[\\/]modal\.js$/,
           name: "modal",
-          chunks: "async",
+          chunks: "all",
           priority: 20,
           enforce: true
         },
         performance: {
           test: /[\\/]src[\\/]js[\\/]performance\.js$/,
           name: "performance",
-          chunks: "async",
+          chunks: "all",
           priority: 20,
           enforce: true
         },
         accessibility: {
           test: /[\\/]src[\\/]js[\\/]accessibility\.js$/,
           name: "accessibility",
-          chunks: "async",
+          chunks: "all",
           priority: 20,
           enforce: true
         }
