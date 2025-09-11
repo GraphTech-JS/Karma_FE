@@ -6,44 +6,47 @@
     {{ if $bgEl1 }}
     {{ $bgEl1Processed := $bgEl1.Resize "420x webp q80" }}
     <img src="{{ $bgEl1Processed.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
-        class="absolute z-[1] right-[-40px] lg:right-[-14px] xl:right-0 top-[-42px] md:top-[-65px] lg:top-[-60px] xl:top-0 w-[201px] h-[185px] md:w-[325px] md:h-[298px] lg:w-[325px] lg:h-[298px]" />
+        class="absolute z-[1] right-[-40px] lg:right-[-14px] xl:right-0 top-[-42px] md:top-[-65px] lg:top-[-60px] xl:top-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto" />
     {{ else }}
     <img src="/img/bg-el-1.png" alt="Декоративний фоновий елемент" aria-hidden="true"
-        class="absolute z-[1] right-[-40px] lg:right-[-14px] xl:right-0 top-[-42px] md:top-[-65px] lg:top-[-60px] xl:top-0 w-[201px] h-[185px] md:w-[325px] md:h-[298px] lg:w-[325px] lg:h-[298px]" />
+        class="absolute z-[1] right-[-40px] lg:right-[-14px] xl:right-0 top-[-42px] md:top-[-65px] lg:top-[-60px] xl:top-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto" />
     {{ end }}
 
     {{ $bgEl2 := resources.Get "img/bg-el-2.png" }}
     {{ if $bgEl2 }}
     {{ $bgEl2Processed := $bgEl2.Resize "420x webp q80" }}
     <img src="{{ $bgEl2Processed.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
-        class="absolute z-[1]   bottom-0 left-0 w-[171px] h-[199px] md:w-[217px] md:h-[253px] lg:w-[266px] lg:h-[310px] xl:w-[340px] xl:h-[360px]" />
+        class="absolute z-[1]   bottom-0 left-0 w-[171px] md:w-[217px]  lg:w-[266px] xl:w-[340px] h-auto" />
     {{ else }}
     <img src="/img/bg-el-2.png" alt="Декоративний фоновий елемент" aria-hidden="true"
-        class="absolute z-[1]  bottom-0 left-0 w-[171px] h-[199px] md:w-[217px] md:h-[253px] lg:w-[266px] lg:h-[310px] xl:w-[340px] xl:h-[360px]" />
+        class="absolute z-[1]  bottom-0 left-0 w-[171px] md:w-[217px] lg:w-[266px]  xl:w-[340px] h-auto" />
     {{ end }}
 
     <!-- Stack elements for mobile -->
-    <div class="block sm:hidden lg:hidden">
-        {{ $stackLeft := resources.Get "img/stack-left.png" }}
-        {{ if $stackLeft }}
-        {{ $stackLeftProcessed := $stackLeft.Resize "100x webp q80" }}
-        <img src="{{ $stackLeftProcessed.RelPermalink }}" alt="Елемент стеку зліва" aria-hidden="true"
-            class="absolute top-0 left-0 w-[100px] z-[1]" />
-        {{ else }}
-        <img src="/img/stack-left.png" alt="Елемент стеку зліва" aria-hidden="true"
-            class="absolute top-0 left-0 w-[100px] z-[1]" />
-        {{ end }}
-
-        {{ $stackRight := resources.Get "img/stack-right.png" }}
-        {{ if $stackRight }}
-        {{ $stackRightProcessed := $stackRight.Resize "100x webp q80" }}
-        <img src="{{ $stackRightProcessed.RelPermalink }}" alt="Елемент стеку справа" aria-hidden="true"
-            class="absolute bottom-3 right-0 w-[100px] z-[1]" />
-        {{ else }}
-        <img src="/img/stack-right.png" alt="Елемент стеку справа" aria-hidden="true"
-            class="absolute bottom-3 right-0 w-[100px] z-[1]" />
-        {{ end }}
-    </div>
+<div class="block sm:hidden lg:hidden">
+    {{ $stackLeft := resources.Get "img/stack-left.png" }}
+    {{ if $stackLeft }}
+    {{ $stackLeft1x := $stackLeft.Resize "100x webp q80" }}
+    {{ $stackLeft2x := $stackLeft.Resize "200x webp q80" }}
+    <img src="{{ $stackLeft1x.RelPermalink }}"
+        srcset="{{ $stackLeft1x.RelPermalink }} 1x, {{ $stackLeft2x.RelPermalink }} 2x" width="100" alt="Елемент стеку зліва" aria-hidden="true"
+        class="absolute top-0 left-0 w-[100px] h-auto z-[1]" />
+    {{ else }}
+    <img src="/img/stack-left.png" alt="Елемент стеку зліва" aria-hidden="true"
+        class="absolute top-0 left-0 w-[100px] h-auto z-[1]" />
+    {{ end }}
+    {{ $stackRight := resources.Get "img/stack-right.png" }}
+    {{ if $stackRight }}
+    {{ $stackRight1x := $stackRight.Resize "100x webp q80" }}
+    {{ $stackRight2x := $stackRight.Resize "200x webp q80" }}
+    <img src="{{ $stackRight1x.RelPermalink }}"
+        srcset="{{ $stackRight1x.RelPermalink }} 1x, {{ $stackRight2x.RelPermalink }} 2x" width="100" alt="Елемент стеку справа" aria-hidden="true"
+        class="absolute bottom-3 right-0 w-[100px] h-auto z-[1]" />
+    {{ else }}
+    <img src="/img/stack-right.png" alt="Елемент стеку справа" aria-hidden="true"
+        class="absolute bottom-3 right-0 w-[100px] h-auto z-[1]" />
+    {{ end }}
+</div>
 
     <div
         class="w-full max-w-[1280px]  flex flex-col  mx-auto  px-[30px] pt-[40px] max-[450px]:pt-[20px] lg:mb-[113px] md:mb-[60px] mb-[101px] relative z-[2]">
