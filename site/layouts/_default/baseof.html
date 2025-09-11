@@ -67,21 +67,21 @@
       box-sizing: border-box;
       overflow-x: hidden;
     }
-  
+
     .hero-section {
       contain: layout style paint;
     }
-  
+
     .swiper-container-products {
       overflow: hidden;
       position: relative;
     }
-  
+
     .swiper-wrapper {
       display: flex;
       transition: transform 0.3s ease;
     }
-  
+
     .swiper-slide {
       flex-shrink: 0;
     }
@@ -360,20 +360,20 @@
 
   <script>
 
-        function loadNonCriticalCSS() {
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = '/css/non-critical.css';
-            document.head.appendChild(link);
-          }
+    function loadNonCriticalCSS() {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = '/css/non-critical.css';
+      document.head.appendChild(link);
+    }
 
-          if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-              setTimeout(loadNonCriticalCSS, 100);
-            });
-          } else {
-            setTimeout(loadNonCriticalCSS, 100);
-          }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(loadNonCriticalCSS, 100);
+      });
+    } else {
+      setTimeout(loadNonCriticalCSS, 100);
+    }
     // Global function for opening contact modal
     window.openContactModal = function () {
       const modal = document.getElementById('contactModal');
@@ -487,6 +487,7 @@
       });
     }
   </script>
+
 </body>
 
 </html>

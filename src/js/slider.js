@@ -1,10 +1,28 @@
 export class CustomSlider {
   constructor(container, options = {}) {
     this.container = document.querySelector(container);
-    if (!this.container) return;
+    if (!this.container) {
+      console.warn(`Slider container not found: ${container}`);
+      return;
+    }
 
     this.wrapper = this.container.querySelector(".swiper-wrapper");
     this.slides = this.container.querySelectorAll(".swiper-slide");
+
+    if (!this.wrapper) {
+      console.warn(`Slider wrapper not found in: ${container}`);
+      return;
+    }
+
+    if (this.slides.length === 0) {
+      console.warn(`No slides found in: ${container}`);
+      return;
+    }
+
+    console.log(
+      `Initializing slider: ${container} with ${this.slides.length} slides`
+    );
+
     this.currentIndex = 0;
     this.autoplayInterval = null;
     this.isTransitioning = false;
@@ -46,7 +64,8 @@ export class CustomSlider {
     this.wrapper.style.display = "flex";
     this.wrapper.style.width = "fit-content";
     this.wrapper.style.height = "auto";
-    this.wrapper.style.transition = "transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    this.wrapper.style.transition =
+      "transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
     this.wrapper.style.flexWrap = "nowrap";
 
     this.updateSlideStyles();
@@ -294,4 +313,3 @@ export class CustomSlider {
     return currentSpaceBetween;
   }
 }
-
