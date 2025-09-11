@@ -28,9 +28,21 @@ module.exports = merge(common, {
     proxy: {
       "/": {
         target: "http://localhost:1313",
-        changeOrigin: true,
-        logLevel: "debug"
+        changeOrigin: false,
+        logLevel: "debug",
+        onProxyRes(proxyRes) {
+          const loc = proxyRes.headers.location;
+          if (loc) {
+            proxyRes.headers.location = loc
+              .replace("http://localhost:1313", "http://localhost:3000")
+              .replace("https://localhost:1313", "http://localhost:3000");
+          }
+        }
       }
+    },
+    // щоб Hugo бачив маніфест у dev (якщо ти його генеруєш через AssetsWebpackPlugin)
+    devMiddleware: {
+      writeToDisk: (filePath) => /site[\\/]+data[\\/]+webpack\.json$/.test(filePath)
     },
     hot: true,
     liveReload: true,
@@ -45,8 +57,8 @@ module.exports = merge(common, {
       cleanOnceBeforeBuildPatterns: [
         "dist/**/*.js",
         "dist/**/*.css",
-        "site/data/webpack.json"
-      ]}),
+      ]
+    }),
 
     new MiniCssExtractPlugin({
       filename: "[name].css",

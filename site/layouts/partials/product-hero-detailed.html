@@ -9,25 +9,25 @@
 
 <section class="overflow-hidden relative bg-white">
     <!-- Background decorative elements -->
-{{ $bgEl1 := resources.Get "img/bg-el-1.png" }}
-{{ if $bgEl1 }}
-{{ $bgEl1Processed := $bgEl1.Resize "420x webp q80" }}
-<img src="{{ $bgEl1Processed.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
-    class="absolute z-[1] right-[-40px] lg:right-[-14px] xl:right-0 top-[-42px] md:top-[-65px] lg:top-[-60px] xl:top-0 w-[201px] h-[185px] md:w-[325px] md:h-[298px] lg:w-[325px] lg:h-[298px]" />
-{{ else }}
-<img src="/img/bg-el-1.png" alt="Декоративний фоновий елемент" aria-hidden="true"
-    class="absolute z-[1] right-[-40px] lg:right-[-14px] xl:right-0 top-[-42px] md:top-[-65px] lg:top-[-60px] xl:top-0 w-[201px] h-[185px] md:w-[325px] md:h-[298px] lg:w-[325px] lg:h-[298px]" />
-{{ end }}
+    {{ $bgEl1 := resources.Get "img/bg-el-1.png" }}
+    {{ if $bgEl1 }}
+    {{ $bgEl1Processed := $bgEl1.Resize "420x webp q80" }}
+    <img src="{{ $bgEl1Processed.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
+        class="absolute z-[1] right-[-40px] lg:right-[-14px] xl:right-0 top-[-42px] md:top-[-65px] lg:top-[-60px] xl:top-0 w-[201px] h-[185px] md:w-[325px] md:h-[298px] lg:w-[325px] lg:h-[298px]" />
+    {{ else }}
+    <img src="/img/bg-el-1.png" alt="Декоративний фоновий елемент" aria-hidden="true"
+        class="absolute z-[1] right-[-40px] lg:right-[-14px] xl:right-0 top-[-42px] md:top-[-65px] lg:top-[-60px] xl:top-0 w-[201px] h-[185px] md:w-[325px] md:h-[298px] lg:w-[325px] lg:h-[298px]" />
+    {{ end }}
 
-{{ $bgEl2 := resources.Get "img/bg-el-2.png" }}
-{{ if $bgEl2 }}
-{{ $bgEl2Processed := $bgEl2.Resize "420x webp q80" }}
-<img src="{{ $bgEl2Processed.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
-    class="absolute z-[1] hidden md:block  bottom-0 left-0 w-[171px] h-[199px] md:w-[217px] md:h-[253px] lg:w-[266px] lg:h-[310px] xl:w-[340px] xl:h-[360px]" />
-{{ else }}
-<img src="/img/bg-el-2.png" alt="Декоративний фоновий елемент" aria-hidden="true"
-    class="absolute z-[1] hidden md:block  bottom-0 left-0 w-[171px] h-[199px] md:w-[217px] md:h-[253px] lg:w-[266px] lg:h-[310px] xl:w-[340px] xl:h-[360px]" />
-{{ end }}
+    {{ $bgEl2 := resources.Get "img/bg-el-2.png" }}
+    {{ if $bgEl2 }}
+    {{ $bgEl2Processed := $bgEl2.Resize "420x webp q80" }}
+    <img src="{{ $bgEl2Processed.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
+        class="absolute z-[1] hidden md:block  bottom-0 left-0 w-[171px] h-[199px] md:w-[217px] md:h-[253px] lg:w-[266px] lg:h-[310px] xl:w-[340px] xl:h-[360px]" />
+    {{ else }}
+    <img src="/img/bg-el-2.png" alt="Декоративний фоновий елемент" aria-hidden="true"
+        class="absolute z-[1] hidden md:block  bottom-0 left-0 w-[171px] h-[199px] md:w-[217px] md:h-[253px] lg:w-[266px] lg:h-[310px] xl:w-[340px] xl:h-[360px]" />
+    {{ end }}
     <div
         class="w-full max-w-[1280px] flex flex-col mx-auto px-[clamp(20px,4vw,40px)] pt-[20px] md:pt-[40px] relative z-[2]">
         <nav aria-label="Breadcrumb navigation"
@@ -48,7 +48,8 @@
                 </li>
                 <li class="text-[#ba0108] sm:inline px-[5px]" aria-hidden="true">&rarr;</li>
                 <li>
-                    <span class="font-[Montserrat] text-[clamp(16px,2vw,20px)] font-normal text-[#ba0108] text-normal leading-[120%]">
+                    <span
+                        class="font-[Montserrat] text-[clamp(16px,2vw,20px)] font-normal text-[#ba0108] text-normal leading-[120%]">
                         {{ $productName }}
                     </span>
                 </li>
@@ -56,8 +57,8 @@
         </nav>
 
         <div
-            class="flex flex-col gap-[clamp(24px,4vw,48px)] justify-between items-center mx-0 sm:flex-row md:items-start w-full">
-            <div class="flex relative flex-col justify-between items-center w-full md:flex-row">
+            class="flex flex-col gap-[clamp(24px,4vw,48px)] justify-between  items-center mx-0 sm:flex-row md:items-start w-full">
+            <div class="flex relative flex-col justify-between items-center mb-[20px] w-full md:flex-row">
                 {{ $productImageResource := resources.Get $productImage }}
                 {{ if $productImageResource }}
                 {{ $productImageProcessed := $productImageResource.Resize "502x367 webp q80" }}
@@ -72,13 +73,12 @@
                     class="pointer-events-none absolute bottom-19 left-[20%] sm:left-[22%] md:left-[8%] lg:left-[4%] xl:left-[4%] w-[clamp(120px,15vw,410px)] h-[clamp(15px,2vw,80px)] rounded-full bg-[#020303] opacity-15 blur-[33.65px] z-0 hidden sm:block" />
             </div>
             <div
-                class="flex flex-col items-center w-full md:items-start lg:items-start pt-[43px] sm:mt-[20px] md:mt-0 max-w-full md:max-w-[531px] lg:max-w-[578px]">
+                class="flex flex-col items-center  w-full md:items-start lg:items-start pt-[43px] sm:mt-[20px] md:mt-0 max-w-full md:max-w-[531px] lg:max-w-[578px]">
                 <h1
                     class="font-[Unbounded] text-[#ba0108] uppercase leading-[1.1] sm:text-left !mb-[10px]  text-[32px] md:text-[48px] w-full font-medium text-center lg:text-left">
                     ПОЛІТНИЙ СТЕК<br><span class="text-black">KARMA F405 V1</span>
                 </h1>
-                <p
-                    class="font-[Montserrat] text-[16px] lg:text-[20px] text-[#020303]  text-left leading-[120%]">
+                <p class="font-[Montserrat] text-[16px] lg:text-[20px] text-[#020303]  text-left leading-[120%]">
                     {{ $context.Params.description | default "Політний стек спрощує монтаж та підключення електроніки в дроні, роблячи його ідеальним рішенням як для досвідчених пілотів, так і для початківців." }}
                 </p>
                 <p
@@ -87,7 +87,7 @@
                 </p>
                 <button onclick="window.openContactModal()"
                     aria-label="Отримати комерційну пропозицію для {{ $productName }}"
-                    class="product-hero-button cursor-pointer !font-[Montserrat] text-[16px] md:text-[24px] font-light md:font-normal text-white bg-[#ba0108] hover:bg-[#e39599] transition-colors w-full max-w-[542px] h-[70px] rounded-[20px]">
+                    class="product-hero-button !font-[Montserrat] cursor-pointer text-[16px] md:text-[24px] font-medium text-white bg-[#ba0108] hover:bg-[#e39599] transition-colors w-full max-w-[458px] py-[15px]  h-[58px] md:h-[70px] font-light md:font-normal shadow-[0_4px_16px_0_rgba(0,0,0,0.4)] rounded-[20px]">
                     Отримати пропозицію
                 </button>
             </div>

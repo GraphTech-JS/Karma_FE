@@ -227,13 +227,13 @@
     }
 
     @media(max-width:799px) {
-      .min-\[800px\]\:block {
+      .min-800px\:block {
         display: none
       }
     }
 
     @media(min-width:800px) {
-      .min-\[800px\]\:block {
+      .min-800px\:block {
         display: block
       }
     }
@@ -251,15 +251,19 @@
   </style>
 
   <!-- Preload critical resources -->
-  {{- with $assets.css }}
-  <link rel="preload" href="{{ relURL . }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  {{- if and $assets $assets.css -}}
+  <link rel="preload" href="{{ relURL $assets.css }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
-    <link rel="stylesheet" href="{{ relURL . }}">
+    <link rel="stylesheet" href="{{ relURL $assets.css }}">
   </noscript>
-  {{ end -}}
-  {{- with $assets.js }}
-  <link rel="preload" href="{{ relURL . }}" as="script">
-  {{ end -}}
+  {{- else if .Site.IsServer -}}
+  <!-- DEV fallback CSS -->
+  <link rel="stylesheet" href="http://localhost:3000/main.css">
+  {{- end -}}
+
+  {{- if and $assets $assets.js -}}
+  <link rel="preload" href="{{ relURL $assets.js }}" as="script">
+  {{- end -}}
 
   <!-- Preload LCP image -->
   <link rel="preload" as="image" href="/img/stack.png" media="(min-width: 1024px)">
@@ -283,9 +287,13 @@
       rel="stylesheet" />
   </noscript>
 
-  {{- with $assets.css }} {{ $css := resources.Get "css/main.css" }}
-  <link rel="stylesheet" href="{{ relURL . }}" />
-  {{ end -}}
+  <!-- Final stylesheet include (dup із preload для надійності) -->
+  {{- if and $assets $assets.css -}}
+  <link rel="stylesheet" href="{{ relURL $assets.css }}" />
+  {{- else if .Site.IsServer -}}
+  <!-- DEV fallback CSS -->
+  <link rel="stylesheet" href="http://localhost:3000/main.css" />
+  {{- end -}}
 
   <!-- Netlify Identity Widget - loaded asynchronously -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" async></script>
@@ -351,8 +359,6 @@
   }
   </script>
   {{ end }}
-
-
 </head>
 
 <body class="font-sans" itemscope itemtype="https://schema.org/WebPage">
@@ -367,9 +373,13 @@
   </main>
   {{ block "footer" . }}{{ partial "footer" . }}{{end}}
   {{ partial "contact-modal" . }}
+
   {{ $script := .Site.Data.webpack.main }}
-  {{ with $script.js }}
-  <script src="{{ relURL . }}"></script>
+  {{ if and $script $script.js }}
+  <script src="{{ relURL $script.js }}"></script>
+  {{ else if .Site.IsServer }}
+  <!-- DEV fallback JS -->
+  <script src="http://localhost:3000/main.js"></script>
   {{ end }}
 
   <script>
@@ -385,14 +395,14 @@
     // Copy button functionality - reliable approach
     function addCopyButtons() {
       const preElements = document.querySelectorAll('pre');
-      
-      preElements.forEach(function(pre) {
+
+      preElements.forEach(function (pre) {
         const code = pre.querySelector('code');
         if (!code) return;
-        
+
         // Skip if button already exists
         if (pre.querySelector('.copy-btn')) return;
-        
+
         // Create copy button
         const button = document.createElement('button');
         button.className = 'copy-btn';
@@ -416,26 +426,24 @@
           padding: 6px;
           box-sizing: border-box;
         `;
-        
-        // No additional styling needed for img
-        
+
         // Ensure pre has relative positioning
         pre.style.position = 'relative';
-        
+
         // Add hover effect
         button.onmouseenter = () => button.style.opacity = '1';
         button.onmouseleave = () => button.style.opacity = '0.7';
-        
+
         // Copy functionality
-        button.onclick = async function(e) {
+        button.onclick = async function (e) {
           e.preventDefault();
           try {
             const text = code.textContent;
             await navigator.clipboard.writeText(text);
-            
+
             // Success feedback
             this.innerHTML = '<img src="/img/copy-success.svg" alt="Copied" style="width: 32px; height: 32px; pointer-events: none;" />';
-            
+
             setTimeout(() => {
               this.innerHTML = '<img src="/img/copy.svg" alt="Copy" style="width: 32px; height: 32px; pointer-events: none;" />';
               this.style.background = '';
@@ -450,10 +458,10 @@
             textArea.select();
             document.execCommand('copy');
             document.body.removeChild(textArea);
-            
+
             // Success feedback
             this.innerHTML = '<img src="/img/copy-success.svg" alt="Copied" style="width: 32px; height: 32px; pointer-events: none;" />';
-            
+
             setTimeout(() => {
               this.innerHTML = '<img src="/img/copy.svg" alt="Copy" style="width: 32px; height: 32px; pointer-events: none;" />';
               this.style.background = '';
@@ -462,18 +470,18 @@
             }, 1000);
           }
         };
-        
+
         pre.appendChild(button);
       });
     }
-    
+
     // Run when DOM is ready
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', addCopyButtons);
     } else {
       addCopyButtons();
     }
-    
+
     // Also run after a short delay to catch dynamically loaded content
     setTimeout(addCopyButtons, 500);
 
