@@ -16,7 +16,6 @@
 <!-- FAQ Section -->
 {{ partial "catalog-faq" . }}
 
-
 <style>
   @keyframes fadeInUp {
     0% {
@@ -66,8 +65,32 @@
     });
   }
 
-  // Initialize when DOM is loaded
   document.addEventListener('DOMContentLoaded', animateHeroTitle);
 </script>
 
+{{ end }}
+
+{{ define "additional-meta" }}
+{{- $categorySlug := .File.BaseFileName -}}
+{{- $categoryData := index .Site.Data.products.categories $categorySlug -}}
+{{ if $categoryData }}
+<meta name="description" content="{{ $categoryData.description | default (printf " Купити %s від Karma Flights - високотехнологічне українське виробництво електронних компонентів для дронів. Якісні політні стеки, ESC та відеопередавачі." $categoryData.name) }}">
+<meta name="keywords"
+  content="{{ $categoryData.name }}, політні стеки, ESC, відеопередавачі, FPV дрони, Karma Flights, українське виробництво">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "{{ $categoryData.name | default "Каталог продуктів" }}",
+  "description": "{{ $categoryData.description | default "Високотехнологічні електронні компоненти для дронів від Karma Flights" }}",
+  "url": "{{ .Permalink | absURL }}",
+  "mainEntity": {
+    "@type": "ItemList",
+    "name": "{{ $categoryData.name | default "Продукти" }}",
+    "numberOfItems": "{{ len (where .Site.RegularPages "Section" "catalog") }}"
+  }
+}
+</script>
+{{ end }}
 {{ end }}

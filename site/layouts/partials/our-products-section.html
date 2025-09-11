@@ -24,9 +24,9 @@ $context.Site.Data.products.categories $category }}
   {{ end }}
 
   <div class="flex flex-col w-full max-w-[1200px] products-slider mt-[60px] lg:mt-[80px] mb-[60px] lg:mb-[80px]">
-    <h2 class="font-['Unbounded'] text-[clamp(24px,4vw,40px)] font-medium  mb-[40px] text-center hero-title">
+    <h3 class="font-['Unbounded'] text-[clamp(24px,4vw,40px)] font-medium  mb-[40px] text-center hero-title">
       <span class="text-[#ba0108]">Н</span>АШІ ТОВАРИ
-    </h2>
+    </h3>
 
     <!-- Desktop & Tablet Layout (768px+) -->
     <div class="hidden min-[768px]:block relative">
@@ -45,10 +45,10 @@ $context.Site.Data.products.categories $category }}
               <img src="{{ .Params.image }}" alt="{{ .Title }}" width="400" height="300"
                 class="w-full h-[300px] object-contain" loading="lazy" />
               {{ end }}
-              <h3
+              <h4
                 class="product-title font-['Montserrat'] text-[clamp(20px,2.5vw,24px)] uppercase font-bold mt-[15px] mx-[37px] mb-[20px] text-[#020303] leading-[1.2] text-center break-words">
                 {{ .Title }}
-              </h3>
+              </h4>
               <div
                 class="text-left space-y-[8px] grid grid-cols-[auto_1fr] gap-x-[20px] max-[1000px]:gap-x-[16px] max-[940px]:gap-x-[14px] max-[768px]:gap-x-[12px] max-[480px]:gap-x-[8px] gap-y-[8px]">
                 {{ range .Params.specs }}
@@ -100,10 +100,10 @@ $context.Site.Data.products.categories $category }}
             <img src="{{ .Params.image }}" alt="{{ .Title }}" width="350" height="262"
               class="w-full h-[262px] object-contain mb-[15px]" loading="lazy" />
             {{ end }}
-            <h3
+            <h4
               class="font-['Unbounded'] text-[20px] font-medium mt-[15px] mx-[0] mb-[20px] text-[#020303] leading-[1.2]">
               {{ .Title }}
-            </h3>
+            </h4>
             <div
               class="text-left space-y-[8px] grid grid-cols-[auto_1fr] gap-x-[12px] max-[480px]:gap-x-[18px] gap-y-[8px]">
               {{ range .Params.specs }}
