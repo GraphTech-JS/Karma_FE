@@ -1,15 +1,20 @@
 node_modules/
 dist/
-site/data/webpack.json
-site/resources/
-/public
+npm-debug.log*
+yarn-error.log*
 
+/public/
 site/public/
-/npm-debug.log
-yarn-error.log
-.netlify/
 .hugo_build.lock
 
-cypress/videos
-cypress/screenshots
-.vercel
+resources/_gen/
+site/resources/_gen/
+
+
+.netlify/
+.vercel/
+
+cypress/videos/
+cypress/screenshots/
+
+site/data/webpack.json
