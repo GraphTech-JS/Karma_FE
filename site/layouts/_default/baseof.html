@@ -16,6 +16,9 @@
   <meta name="robots" content="{{ with .Params.robots }}{{ . }}{{ else }}index, follow{{ end }}">
   <link rel="canonical" href="{{ .Permalink | absURL }}">
 
+  <!-- Additional meta tags for specific pages -->
+  {{ block "additional-meta" . }}{{ end }}
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
   <meta property="og:url" content="{{ .Permalink | absURL }}">

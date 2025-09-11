@@ -47,21 +47,23 @@
 
     <div
         class="w-full max-w-[1280px]  flex flex-col  mx-auto  px-[30px] pt-[40px] max-[450px]:pt-[20px] lg:mb-[113px] md:mb-[60px] mb-[101px] relative z-[2]">
-        <nav aria-label="Breadcrumb navigation"
-            class="flex items-center gap-6 text-[#ba0108] mb-[75px] md:mb-[35px] w-full">
-            <ol class="flex gap-2 items-center max-[450px]:justify-start">
-                <li>
-                    <a class="font-[Montserrat] text-[clamp(16px,2vw,20px)] font-normal text-[#ba0108] hover:underline"
-                        href="/">
-                        Головна
+        <nav aria-label="Breadcrumb navigation" class="flex items-center gap-6 text-[#ba0108] mb-[75px] md:mb-[35px] w-full">
+            <ol class="flex gap-2 items-center max-[450px]:justify-start" itemscope
+                itemtype="https://schema.org/BreadcrumbList">
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a class="font-[Montserrat] text-[clamp(16px,2vw,20px)] font-normal text-[#ba0108] hover:underline" href="/"
+                        itemprop="item">
+                        <span itemprop="name">Головна</span>
                     </a>
+                    <meta itemprop="position" content="1" />
                 </li>
                 <li class="text-[#ba0108]" aria-hidden="true">&rarr;</li>
-                <li>
-                    <span
-                        class="font-[Montserrat] text-[clamp(16px,2vw,20px)] font-normal text-[#ba0108] hover:underline">
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span class="font-[Montserrat] text-[clamp(16px,2vw,20px)] font-normal text-[#ba0108] hover:underline"
+                        itemprop="name">
                         {{ $categoryData.name }}
                     </span>
+                    <meta itemprop="position" content="2" />
                 </li>
             </ol>
         </nav>
@@ -96,7 +98,7 @@
                     швидкістю з високою точністю та надійністю. {{ end }}
                 </p>
                 <button onclick="window.openContactModal()"
-                    aria-label="Get commercial offer for {{ $categoryData.name }}"
+                    aria-label="Отримати комерційну пропозицію для {{ $categoryData.name }}"
                     class="!font-[Montserrat] cursor-pointer text-[16px] md:text-[24px] font-medium text-white bg-[#ba0108] hover:bg-[#e39599] transition-colors w-full max-w-[458px] py-[15px]  h-[58px] md:h-[70px] font-light md:font-normal shadow-[0_4px_16px_0_rgba(0,0,0,0.4)] rounded-[20px]">
                     Отримати пропозицію
                 </button>

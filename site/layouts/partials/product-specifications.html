@@ -3,24 +3,24 @@
   aria-labelledby="specifications-heading"
 >
   <!-- Background Element -->
-  <div class="absolute bottom-0 right-0 z-[1] hidden md:block">
-    {{ $bgEl7 := resources.Get "img/bg-el-7.png" }} {{ if $bgEl7 }} {{
-    $bgEl7Processed := $bgEl7.Resize "250x298 webp q80" }}
-    <img
-      src="{{ $bgEl7Processed.RelPermalink }}"
-      alt=""
-      aria-hidden="true"
-      class="w-[clamp(200px,25vw,250px)] h-[clamp(80px,12vw,298px)] opacity-60"
-    />
-    {{ else }}
-    <img
-      src="/img/bg-el-7.png"
-      alt=""
-      aria-hidden="true"
-      class="w-[clamp(200px,25vw,250px)] h-[clamp(80px,12vw,298px)] opacity-60"
-    />
-    {{ end }}
-  </div>
+<div class="absolute bottom-0 right-0 z-[1] hidden md:block">
+  {{ $bgEl7 := resources.Get "img/bg-el-7.png" }}
+  {{ if $bgEl7 }}
+  {{ $bgEl7Mobile := $bgEl7.Resize "200x240 webp q70" }}
+  {{ $bgEl7Desktop := $bgEl7.Resize "250x298 webp q80" }}
+  <picture>
+    <source media="(max-width: 767px)" srcset="{{ $bgEl7Mobile.RelPermalink }}" type="image/webp">
+    <source media="(min-width: 768px)" srcset="{{ $bgEl7Desktop.RelPermalink }}" type="image/webp">
+    <img src="{{ $bgEl7Desktop.RelPermalink }}" alt="" aria-hidden="true"
+      class="w-[clamp(200px,25vw,250px)] h-[clamp(80px,12vw,298px)] opacity-60" loading="lazy" decoding="async"
+      width="250" height="298" />
+  </picture>
+  {{ else }}
+  <img src="/img/bg-el-7.png" alt="" aria-hidden="true"
+    class="w-[clamp(200px,25vw,250px)] h-[clamp(80px,12vw,298px)] opacity-60" loading="lazy" decoding="async"
+    width="250" height="298" />
+  {{ end }}
+</div>
 
   <div
     class="w-full max-w-[1280px] mx-auto relative z-[2] px-[20px]"
@@ -191,25 +191,24 @@
 
       <!-- Mobile Product Image -->
       <div class="flex justify-center">
-        {{ $productDetailsMobile := resources.Get "img/product-details-v2.png"
-        }} {{ if $productDetailsMobile }} {{ $productDetailsMobileProcessed :=
-        $productDetailsMobile.Resize "500x webp q80" }}
-        <img
-          src="{{ $productDetailsMobileProcessed.RelPermalink }}"
-          alt="Детальний вигляд політного стеку KARMA F405 V1 з технічними характеристиками"
-          loading="lazy"
-          class="object-contain"
-        />
+        {{ $productDetailsMobile := resources.Get "img/product-details-v2.png" }}
+        {{ if $productDetailsMobile }}
+        {{ $mob := $productDetailsMobile.Resize "372x211 webp q75" }}
+        {{ $tab := $productDetailsMobile.Resize "480x270 webp q80" }}
+        <picture>
+          <source media="(max-width: 480px)" srcset="{{ $mob.RelPermalink }}" type="image/webp">
+          <source media="(min-width: 481px)" srcset="{{ $tab.RelPermalink }}" type="image/webp">
+          <img src="{{ $tab.RelPermalink }}"
+            alt="Детальний вигляд політного стеку KARMA F405 V1 з технічними характеристиками" class="object-contain"
+            loading="lazy" decoding="async" width="480" height="270" />
+        </picture>
         {{ else }}
-        <img
-          src="/img/product-details-v2.png"
-          alt="Детальний вигляд політного стеку KARMA F405 V1 з технічними характеристиками"
-          loading="lazy"
-          class="object-contain"
-        />
+        <img src="/img/product-details-v2.png"
+          alt="Детальний вигляд політного стеку KARMA F405 V1 з технічними характеристиками" class="object-contain"
+          loading="lazy" decoding="async" width="480" height="270" />
         {{ end }}
       </div>
-    </div>
+      </div>
 
     <!-- Desktop Layout -->
     <div
@@ -414,24 +413,27 @@
 
         <!-- Product Image -->
         <div class="flex justify-center">
-          {{ $productDetailsDesktop := resources.Get
-          "img/product-details-v2.png" }} {{ if $productDetailsDesktop }} {{
-          $productDetailsDesktopProcessed := $productDetailsDesktop.Resize "576x webp q80" }}
-          <img
-            src="{{ $productDetailsDesktopProcessed.RelPermalink }}"
-            alt="Детальний вигляд політного стеку KARMA F405 V1 з технічними характеристиками"
-            loading="lazy"
-            class="object-contain w-full h-auto"
-          />
-          {{ else }}
-          <img
-            src="/img/product-details-v2.png"
-            alt="Детальний вигляд політного стеку KARMA F405 V1 з технічними характеристиками"
-            loading="lazy"
-            class="object-contain w-full h-auto"
-          />
-          {{ end }}
-        </div>
+        {{ $productDetailsDesktop := resources.Get "img/product-details-v2.png" }}
+        {{ if $productDetailsDesktop }}
+          {{ $desktop := $productDetailsDesktop.Resize "576x324 webp q80" }}
+          {{ $large   := $productDetailsDesktop.Resize "768x432 webp q85" }}
+          <picture>
+            <source media="(max-width: 1199px)" srcset="{{ $desktop.RelPermalink }}" type="image/webp">
+            <source media="(min-width: 1200px)" srcset="{{ $large.RelPermalink }}" type="image/webp">
+            <img src="{{ $large.RelPermalink }}"
+                 alt="Детальний вигляд політного стеку KARMA F405 V1 з технічними характеристиками"
+                 class="object-contain w-full h-auto"
+                 loading="lazy" decoding="async"
+                 width="768" height="432"/>
+          </picture>
+        {{ else }}
+          <img src="/img/product-details-v2.png"
+               alt="Детальний вигляд політного стеку KARMA F405 V1 з технічними характеристиками"
+               class="object-contain w-full h-auto"
+               loading="lazy" decoding="async"
+               width="768" height="432"/>
+        {{ end }}
+      </div>
       </div>
     </div>
   </div>
