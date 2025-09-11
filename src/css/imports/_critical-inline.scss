@@ -1,0 +1,40 @@
+/* Critical above-the-fold styles - inline in head */
+@layer critical {
+  /* Base reset */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  /* Hero section - above the fold */
+  .hero-section {
+    contain: layout style paint;
+    min-height: 300px;
+  }
+  
+  /* Basic slider structure */
+  .swiper-container-products {
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .swiper-wrapper {
+    display: flex;
+    transition: transform 0.3s ease;
+  }
+  
+  .swiper-slide {
+    flex-shrink: 0;
+  }
+  
+  /* Mobile menu */
+  [data-mobile-menu] {
+    cursor: pointer;
+  }
+}

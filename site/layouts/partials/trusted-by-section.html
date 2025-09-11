@@ -17,18 +17,23 @@
 
             <div class="logo-container flex flex-col items-center justify-between h-[140px] gap-[15px]">
               {{ if eq $c.logo "/img/mriadrone.png" }}
-              <img src="{{ $c.logo }}" alt="{{ $c.alt }}" class="object-contain w-[165px] h-[102px]" />
+              <img src="{{ $c.logo }}" alt="{{ $c.alt }}" class="object-contain w-[165px] h-[102px]" loading="lazy"
+                width="165" height="102" />
               {{ else if eq $c.logo "/img/magura.png" }}
-              <img src="{{ $c.logo }}" alt="{{ $c.alt }}" class="object-contain w-[165px] h-[102px]" />
+              <img src="{{ $c.logo }}" alt="{{ $c.alt }}" class="object-contain w-[165px] h-[102px]" loading="lazy"
+                width="165" height="102" />
               {{ else if eq $c.logo "/img/toro.png" }}
-              <img src="{{ $c.logo }}" alt="{{ $c.alt }}" class="object-contain w-[165px] h-[71px]" />
+              <img src="{{ $c.logo }}" alt="{{ $c.alt }}" class="object-contain w-[165px] h-[71px]" loading="lazy"
+                width="165" height="71" />
               {{ else if eq $c.logo "/img/drone.png" }}
-              <img src="{{ $c.logo }}" alt="{{ $c.alt }}" class="object-contain w-[169px] h-[91px]" />
+              <img src="{{ $c.logo }}" alt="{{ $c.alt }}" class="object-contain w-[169px] h-[91px]" loading="lazy"
+                width="169" height="91" />
               {{ else }}
-              <img src="{{ $c.logo }}" alt="{{ $c.alt }}" class="object-contain max-w-[160px]" />
+              <img src="{{ $c.logo }}" alt="{{ $c.alt }}" class="object-contain max-w-[160px]" loading="lazy" />
               {{ end }}
-              <p class="text-[16px] font-['Montserrat'] font-medium text-[#020303] uppercase whitespace-nowrap">{{
-                $c.name }}</p>
+              <p class="text-[16px] font-['Montserrat'] font-medium text-[#020303] uppercase whitespace-nowrap">
+                {{ $c.name }}
+              </p>
             </div>
 
             {{ $close := or (eq (mod (add $i 1) 4) 0) (eq (add $i 1) $count) }}
@@ -55,8 +60,7 @@
       <div class="swiper-wrapper">
         {{ range .Site.Data.trusted_companies.companies }}
         <div class="swiper-slide">
-          <div
-            class="logo-container flex flex-col items-center justify-center md:h-[193px] lg:h-[232px] gap-[46px] ">
+          <div class="logo-container flex flex-col items-center justify-center md:h-[193px] lg:h-[232px] gap-[46px] ">
             {{ if eq .logo "/img/mriadrone.png" }}
             <img src="{{ .logo }}" alt="{{ .alt }}"
               class="object-contain md:w-[153px] md:h-[118px] lg:w-[203px] lg:h-[157px]" />

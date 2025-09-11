@@ -12,8 +12,56 @@
 
 {{ partial "our-products-section" . }}
 
-{{ partial "trusted-by-section" . }}
+<!-- Lazy load trusted section -->
+<div class="lazy-section" data-section="trusted">
+    {{ partial "trusted-by-section" . }}
+</div>
 
-{{ partial "contact-form-section" . }}
+<!-- Lazy load contact form -->
+<div class="lazy-section" data-section="contact">
+    {{ partial "contact-form-section" . }}
+</div>
+
+<script>
+    // Lazy load sections when they come into view
+    document.addEventListener('DOMContentLoaded', function () {
+        const lazySections = document.querySelectorAll('.lazy-section');
+
+        if ('IntersectionObserver' in window) {
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const section = entry.target;
+                        const sectionType = section.dataset.section;
+
+                        // Load section content
+                        section.style.opacity = '1';
+                        section.style.transform = 'translateY(0)';
+
+                        // Initialize sliders if needed
+                        if (sectionType === 'trusted') {
+                            // Initialize trusted sliders
+                            if (window.initializeTrustedSliders) {
+                                window.initializeTrustedSliders();
+                            }
+                        }
+
+                        sectionObserver.unobserve(section);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.1
+            });
+
+            lazySections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                sectionObserver.observe(section);
+            });
+        }
+    });
+</script>
 
 {{ end }}

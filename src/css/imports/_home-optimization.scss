@@ -1,0 +1,42 @@
+// Home page optimizations
+.lazy-section {
+  will-change: opacity, transform;
+}
+
+// Optimize hero section
+.hero-section {
+  contain: layout style paint;
+}
+
+// Optimize product sections
+.products-slider {
+  contain: layout style paint;
+}
+
+// Optimize trusted section
+.swiper-container-trusted {
+  contain: layout style paint;
+}
+
+// Reduce motion for better performance
+@media (prefers-reduced-motion: reduce) {
+  .lazy-section {
+    transition: none !important;
+  }
+  
+  .swiper-wrapper {
+    transition: none !important;
+  }
+}
+
+// Mobile optimizations
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 300px !important;
+  }
+  
+  .products-slider {
+    margin-top: 40px !important;
+    margin-bottom: 40px !important;
+  }
+} 

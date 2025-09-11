@@ -1,0 +1,54 @@
+// Critical performance optimizations
+* {
+  box-sizing: border-box;
+}
+
+// Reduce layout thrashing
+.hero-section,
+.products-slider,
+.swiper-container {
+  contain: layout style paint;
+}
+
+// Optimize animations
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// Mobile optimizations
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 300px !important;
+  }
+  
+  .products-slider {
+    margin-top: 40px !important;
+    margin-bottom: 40px !important;
+  }
+  
+  // Reduce complex animations on mobile
+  .swiper-wrapper {
+    will-change: transform;
+  }
+  
+  .swiper-slide {
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+}
+
+// Optimize for low-end devices
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: clamp(20px, 4vw, 32px) !important;
+  }
+  
+  .products-slider {
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+  }
+} 

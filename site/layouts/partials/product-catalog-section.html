@@ -4,11 +4,11 @@
   {{ $bgEl4Processed := $bgEl4.Resize "570x522 webp q80" }}
   <img src="{{ $bgEl4Processed.RelPermalink }}"
     class="absolute bottom-0 left-0 max-[767px]:hidden w-[377px] h-[346px] lg:w-[570px] lg:h-[522px]"
-    alt="bg element decoration" />
+    alt="bg element decoration" loading="lazy" decoding="async" />
   {{ else }}
   <img src="/img/bg-el-catalog.png"
     class="absolute bottom-0 left-0 max-[767px]:hidden w-[377px] h-[346px] lg:w-[570px] lg:h-[522px]"
-    alt="bg element decoration" />
+    alt="bg element decoration" loading="lazy" decoding="async" />
   {{ end }}
   <div class="w-full max-w-[1620px] mx-auto px-5">
     <h3
@@ -23,9 +23,11 @@
         {{ $product1 := resources.Get "img/catalog_product1.png" }}
         {{ if $product1 }}
         {{ $product1Processed := $product1.Resize "351x301 webp q80" }}
-        <img src="{{ $product1Processed.RelPermalink }}" alt="Продукт 1" class="object-contain px-[24px]" />
+        <img src="{{ $product1Processed.RelPermalink }}" alt="Продукт 1" class="object-contain px-[24px]" 
+             loading="lazy" decoding="async" width="351" height="301" />
         {{ else }}
-        <img src="/img/catalog_product1.png" alt="Продукт 1" class="object-contain px-[24px]" />
+        <img src="/img/catalog_product1.png" alt="Продукт 1" class="object-contain px-[24px]" 
+             loading="lazy" decoding="async" width="351" height="301" />
         {{ end }}
         <h4
           class="min-[1200px]:text-[24px] max-[1199px]:text-[20px] pb-6 text-center font-bold font-[Unbounded] text-black  whitespace-nowrap">
@@ -38,9 +40,11 @@
         {{ $product2 := resources.Get "img/catalog_product2.png" }}
         {{ if $product2 }}
         {{ $product2Processed := $product2.Resize "351x301 webp q80" }}
-        <img src="{{ $product2Processed.RelPermalink }}" alt="Продукт 2" class="object-contain px-[24px]" />
+        <img src="{{ $product2Processed.RelPermalink }}" alt="Продукт 2" class="object-contain px-[24px]" 
+             loading="lazy" decoding="async" width="351" height="301" />
         {{ else }}
-        <img src="/img/catalog_product2.png" alt="Продукт 2" class="object-contain px-[24px]" />
+        <img src="/img/catalog_product2.png" alt="Продукт 2" class="object-contain px-[24px]" 
+             loading="lazy" decoding="async" width="351" height="301" />
         {{ end }}
         <h4
           class="min-[1200px]:text-[24px] max-[1199px]:text-[20px] pb-6 text-center font-bold font-[Unbounded] text-black  ">
@@ -53,9 +57,11 @@
         {{ $product3 := resources.Get "img/catalog_product3.png" }}
         {{ if $product3 }}
         {{ $product3Processed := $product3.Resize "351x301 webp q80" }}
-        <img src="{{ $product3Processed.RelPermalink }}" alt="Продукт 3" class="object-contain px-[24px]" />
+        <img src="{{ $product3Processed.RelPermalink }}" alt="Продукт 3" class="object-contain px-[24px]" 
+             loading="lazy" decoding="async" width="351" height="301" />
         {{ else }}
-        <img src="/img/catalog_product3.png" alt="Продукт 3" class="object-contain px-[24px]" />
+        <img src="/img/catalog_product3.png" alt="Продукт 3" class="object-contain px-[24px]" 
+             loading="lazy" decoding="async" width="351" height="301" />
         {{ end }}
         <h4
           class="min-[1200px]:text-[24px] max-[1199px]:text-[20px] pb-6 text-center font-bold font-[Unbounded] text-black  whitespace-nowrap">
