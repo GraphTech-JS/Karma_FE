@@ -1,18 +1,6 @@
 <section id="contact-form-section"
   class="flex overflow-hidden relative justify-center items-center px-4 py-[60px] lg:py-[80px]">
 
-
-
-  <div class="hidden background-element1 xl:block">
-    {{ $bgEl8 := resources.Get "img/bg-contact-form-one.png" }}
-    {{ if $bgEl8 }}
-    {{ $bgEl8Processed := $bgEl8.Resize "499x webp q80" }}
-    <img src="{{ $bgEl8Processed.RelPermalink }}" alt="background-element-one"
-      class="w-[499px] h-auto object-contain" />
-    {{ else }}
-      <img src="/img/bg-contact-form-one.png" alt="background-element-one" class="w-[499px] h-auto object-contain" />
-    {{ end }}
-  </div>
   <div class="hidden background-element2 sm:block">
     {{ $bgEl5 := resources.Get "img/bg-contact-form.png" }}
     {{ if $bgEl5 }}
@@ -44,7 +32,7 @@
         <span class="text-[#BA0108]">З</span>В'ЯЖІТЬСЯ З НАМИ
 
       </h3>
-      <p class="mb-[23px] text-[16px] md:text-[20px] font-medium text-black font-['Montserrat'] ">
+      <p class="mb-[23px] text-[16px] md:text-[20px] font-normal text-black font-['Montserrat'] ">
         Введіть будь-ласка Ваші данні і ми зв'яжемось з Вами
       </p>
 
@@ -60,7 +48,7 @@
           class="contact-textarea w-full max-[389px]:w-[350px] xl:w-[770px] px-5 py-4 placeholder:text-[#999] border border-[#404040] rounded-[5px] text-normal bg-white resize-y min-h-[120px] transition-all duration-300 ease-in-out font-['Montserrat']"></textarea>
 
         <button type="submit"
-          class="contact-button  !mt-[50px] md:!mt-[27px] w-full max-[389px]:w-[350px] xl:w-[770px] bg-[#ba0108] hover:bg-[#e39599] transition-colors text-white border-none px-10 h-[65px] md:h-[70px] lg:h-auto lg:py-5 rounded-2xl cursor-pointer text-[clamp(16px,2vw,24px)] font-light lg:font-medium font-['Montserrat'] duration-300 ease-in-out">
+          class="contact-button !mt-[50px] md:!mt-[27px] w-full max-[389px]:w-[350px] xl:w-[770px] bg-[#ba0108] hover:bg-[#e39599] transition-colors text-white border-none px-10 h-[65px] md:h-[70px] lg:h-auto lg:py-5 rounded-2xl cursor-pointer text-[clamp(16px,2vw,24px)] font-light lg:font-normal font-['Montserrat'] duration-300 ease-in-out">
           Відправити
         </button>
       </form>

@@ -1,57 +1,124 @@
-<div id="contactModal" class="hidden modal-overlay">
+<div id="contactModal" class="hidden modal-overlay" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
   <div class="modal-container">
     <div class="modal-content">
       <!-- Close Button -->
-      <button class="cursor-pointer modal-close" id="closeModal" aria-label="Close modal"> <svg width="24" height="24"
-          viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <button class="cursor-pointer modal-close" id="closeModal" aria-label="Close modal">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round" />
-        </svg> </button>
+        </svg>
+      </button>
+
       <!-- Modal Header -->
       <div class="modal-header">
-        <h2 class="modal-title font-['Unbounded']"> <span class="title-highlight">З</span>алиште свій запит і ми
-          зв'яжемось з Вами <br /> та повідомимо про актуальні ціни </h2>
+        <h2 id="contactModalTitle" class="modal-title font-['Unbounded']">
+          <span class="title-highlight">З</span>алиште свій запит і ми
+          зв'яжемось з Вами <br /> та повідомимо про актуальні ціни
+        </h2>
       </div>
+
+      <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
+
       <!-- Contact Form -->
-      <form class="contact-form" id="contactForm">
+      <form class="contact-form" id="contactForm" novalidate>
         <div class="form-row">
-          <div class="form-group"> <input type="text" id="userName" name="userName" placeholder="Ваше ім'я"
-              class="form-input" required /> </div>
-          <div class="form-group"> <input type="tel" id="userPhone" name="userPhone" placeholder="+380"
-              class="form-input" required /> </div>
+          <div class="form-group">
+            <input type="text" id="userName" name="userName" placeholder="Ваше ім'я" class="form-input" required />
+          </div>
+          <div class="form-group">
+            <input type="tel" id="userPhone" name="userPhone" placeholder="+380" class="form-input" inputmode="tel"
+              autocomplete="tel" required />
+          </div>
         </div>
+
         <div class="form-group">
-          <div class="custom-dropdown" id="quantityDropdown">
+          <div class="custom-dropdown" id="quantityDropdown" role="button" aria-haspopup="listbox" aria-expanded="false"
+            tabindex="0">
             <div class="dropdown-selected" id="quantitySelected">
               <span class="placeholder">Кількість стеків, яку плануєте замовити</span>
             </div>
-            <div class="dropdown-options" id="quantityOptions">
-              <div class="dropdown-option" data-value="0-20">0 - 20</div>
-              <div class="dropdown-option" data-value="20-100">20 - 100</div>
-              <div class="dropdown-option" data-value="100-1000">100 - 1 000</div>
-              <div class="dropdown-option" data-value="3000-10000">3 000 - 10 000</div>
-              <div class="dropdown-option" data-value="10000+">>10 000</div>
+            <div class="dropdown-options" id="quantityOptions" role="listbox" tabindex="-1">
+              <div class="dropdown-option" role="option" data-value="0-20">0 - 20</div>
+              <div class="dropdown-option" role="option" data-value="20-100">20 - 100</div>
+              <div class="dropdown-option" role="option" data-value="100-1000">100 - 1 000</div>
+              <div class="dropdown-option" role="option" data-value="3000-10000">3 000 - 10 000</div>
+              <div class="dropdown-option" role="option" data-value="10000+">>10 000</div>
             </div>
             <input type="hidden" id="quantity" name="quantity" required />
           </div>
         </div>
 
-        <div class="form-group"> <textarea id="message" name="message" placeholder="Ваше повідомлення"
-            class="form-textarea" rows="4"></textarea>
+        <div class="form-group">
+          <textarea id="message" name="message" placeholder="Ваше повідомлення" class="form-textarea"
+            rows="4"></textarea>
         </div>
+
         <div class="contact-info">
           <div class="contact-wrapper">
             <p class="contact-label">Наші контакти для зв'язку:</p>
-            <div class="contact-details"> <a href="tel:+380956156713" class="contact-phone"> +380 95 61 56713 </a> <a
-                href="mailto:info@karma.flights" class="contact-email"> info@karma.flights </a> </div>
+            <div class="contact-details">
+              <a href="tel:+380956156713" class="contact-phone"> +380 95 61 56713 </a>
+              <a href="mailto:info@karma.flights" class="contact-email"> info@karma.flights </a>
+            </div>
           </div>
-          <button type="submit" class="cursor-pointer submit-button-modal"> Відправити </button>
+          <button type="submit" class="cursor-pointer submit-button-modal">Відправити</button>
         </div>
       </form>
     </div>
   </div>
 </div>
+
 <style>
+  .toast-stack {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    width: min(92%, 560px);
+    pointer-events: none;
+
+  }
+
+  .toast {
+    pointer-events: auto;
+    border-radius: 10px;
+    padding: 12px 16px !important;
+    border: 1px solid;
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(14px, 1.6vw, 16px);
+    font-weight: 400;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    opacity: 0;
+    max-width: 400px !important;
+    width: 100% !important;
+    transform: translateY(-8px) !important;
+    text-align: center !important;
+    transition: opacity 200ms ease, transform 200ms ease;
+    white-space: pre-line !important;
+  }
+
+  .toast--show {
+    opacity: 1;
+    transform: translateY(0) !important;
+  }
+
+  .toast--error {
+    background: #fee;
+    color: #c33;
+    border-color: #fcc;
+  }
+
+  .toast--success {
+    background: #f0fff4;
+    color: #22543d;
+    border-color: #9ae6b4;
+  }
+
   /* Custom Dropdown Styles */
   .custom-dropdown {
     position: relative;
@@ -68,13 +135,12 @@
     transition: border-color 0.3s ease, border-radius 0.3s ease;
     cursor: pointer;
     height: 65px;
-
-    span {
-      font-size: clamp(16px, 2vw, 20px);
-    }
   }
 
-  /* Dropdown open state - remove bottom border radius */
+  .custom-dropdown span {
+    font-size: clamp(16px, 2vw, 20px);
+  }
+
   .custom-dropdown.dropdown-open {
     border-radius: 5px 5px 0 0 !important;
     border-bottom-color: transparent;
@@ -92,14 +158,19 @@
     cursor: pointer !important;
     border-radius: 20px !important;
     transition: background-color 0.2s ease !important;
+  }
 
-    &:hover {
-      background: #e39599 !important;
-    }
+  .submit-button-modal:hover {
+    background: #e39599 !important;
+  }
 
-    &:active {
-      transform: translateY(1px) !important;
-    }
+  .submit-button-modal:active {
+    transform: translateY(1px) !important;
+  }
+
+  .submit-button-modal:disabled {
+    opacity: 0.7;
+    cursor: not-allowed !important;
   }
 
   .dropdown-selected {
@@ -115,10 +186,6 @@
     transition: all 0.2s ease;
     width: 100%;
     pointer-events: none;
-  }
-
-  .dropdown-selected:hover {
-    border-color: #bbb;
   }
 
   .dropdown-selected .placeholder {
@@ -172,7 +239,6 @@
     background: #d8d8d8;
   }
 
-  /* Animation improvements */
   .custom-dropdown:hover {
     border-color: #666;
   }
@@ -181,38 +247,12 @@
     border-color: #404040;
   }
 
-  /* Form message styles for better UX */
-  .form-message {
-    padding: 12px 16px;
-    border-radius: 6px;
-    margin: 10px 0;
-    font-size: 14px;
-    font-family: 'Montserrat', sans-serif;
-    animation: slideIn 0.3s ease;
-  }
-
-  .form-message--error {
-    background-color: #fee;
-    color: #c33;
-    border: 1px solid #fcc;
-  }
-
-  .form-message--success {
-    background-color: #efe;
-    color: #363;
-    border: 1px solid #cfc;
-  }
-
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .form-input.input-error,
+  .custom-dropdown.input-error,
+  .form-textarea.input-error {
+    border-color: #ba0108 !important;
+    box-shadow: 0 0 0 2px rgba(195, 51, 51, 0.08);
+    background: #fff6f6;
   }
 
   @media (max-width: 1100px) {
@@ -257,14 +297,12 @@
     }
   }
 
-  /* Tablet styles */
   @media (min-width: 769px) and (max-width: 1023px) {
     .dropdown-options.show {
       max-height: 340px;
     }
   }
 
-  /* Desktop styles */
   @media (min-width: 1024px) {
     .dropdown-selected {
       font-size: 16px;
@@ -287,10 +325,10 @@
 
     .dropdown-selected {
       padding: 8px;
+    }
 
-      span {
-        font-size: 14px;
-      }
+    .dropdown-selected span {
+      font-size: 14px;
     }
 
     .dropdown-options {
@@ -327,7 +365,6 @@
 </style>
 
 <script>
-  // Inline modal functionality to ensure it's always available
   (function () {
     let modalInstance = null;
 
@@ -337,13 +374,15 @@
         this.openBtn = document.getElementById('openModal');
         this.closeBtn = document.getElementById('closeModal');
         this.form = document.getElementById('contactForm');
-        this.scrollTop = 0;
 
-        // Dropdown elements
         this.quantityDropdown = document.getElementById('quantityDropdown');
         this.quantitySelected = document.getElementById('quantitySelected');
         this.quantityOptions = document.getElementById('quantityOptions');
         this.quantityInput = document.getElementById('quantity');
+
+        this.toastStack = document.getElementById('toastStack');
+
+        this.phoneInput = document.getElementById('userPhone');
 
         this.init();
       }
@@ -351,40 +390,31 @@
       init() {
         if (!this.modal) return;
 
-        if (this.openBtn) {
-          this.openBtn.addEventListener('click', () => this.open());
-        }
-
-        if (this.closeBtn) {
-          this.closeBtn.addEventListener('click', () => this.close());
-        }
+        if (this.openBtn) this.openBtn.addEventListener('click', () => this.open());
+        if (this.closeBtn) this.closeBtn.addEventListener('click', () => this.close());
 
         this.modal.addEventListener('click', (e) => {
-          if (e.target === this.modal) {
-            this.close();
-          }
+          if (e.target === this.modal) this.close();
         });
 
         document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' && !this.modal.classList.contains('hidden')) {
-            this.close();
-          }
+          if (e.key === 'Escape' && !this.modal.classList.contains('hidden')) this.close();
         });
 
         if (this.form) {
           this.form.addEventListener('submit', (e) => this.handleSubmit(e));
         }
 
-        const phoneInput = document.getElementById('userPhone');
-        if (phoneInput) {
-          phoneInput.addEventListener('input', (e) =>
-            this.formatPhoneNumber(e)
-          );
+        if (this.phoneInput) {
+          this.phoneInput.addEventListener('input', (e) => this.formatPhoneInput(e));
+          this.phoneInput.addEventListener('focus', (e) => this.onPhoneFocus(e));
+          this.phoneInput.addEventListener('blur', (e) => this.onPhoneBlur(e));
         }
 
         this.initDropdown();
       }
 
+      /* ========== Dropdown ========== */
       initDropdown() {
         if (!this.quantityDropdown) return;
 
@@ -401,9 +431,7 @@
         });
 
         document.addEventListener('click', (e) => {
-          if (!this.quantityDropdown.contains(e.target)) {
-            this.closeDropdown();
-          }
+          if (!this.quantityDropdown.contains(e.target)) this.closeDropdown();
         });
 
         this.quantityDropdown.addEventListener('keydown', (e) => {
@@ -420,11 +448,8 @@
 
       toggleDropdown() {
         const isOpen = this.quantityOptions.classList.contains('show');
-        if (isOpen) {
-          this.closeDropdown();
-        } else {
-          this.openDropdown();
-        }
+        if (isOpen) this.closeDropdown();
+        else this.openDropdown();
       }
 
       openDropdown() {
@@ -433,7 +458,7 @@
         const totalHeight = optionHeight * optionsCount;
 
         this.quantityDropdown.classList.add('dropdown-open');
-        this.quantitySelected.classList.add('active');
+        this.quantityDropdown.setAttribute('aria-expanded', 'true');
 
         requestAnimationFrame(() => {
           this.quantityOptions.style.maxHeight = totalHeight + 'px';
@@ -441,16 +466,12 @@
         });
 
         const firstOption = this.quantityOptions.querySelector('.dropdown-option');
-        if (firstOption) {
-          setTimeout(() => {
-            firstOption.focus();
-          }, 200);
-        }
+        if (firstOption) setTimeout(() => firstOption.focus(), 150);
       }
 
       closeDropdown() {
         this.quantityOptions.classList.remove('show');
-        this.quantitySelected.classList.remove('active');
+        this.quantityDropdown.setAttribute('aria-expanded', 'false');
 
         requestAnimationFrame(() => {
           this.quantityOptions.style.maxHeight = '0px';
@@ -458,17 +479,13 @@
 
         setTimeout(() => {
           this.quantityDropdown.classList.remove('dropdown-open');
-        }, 350);
+        }, 300);
       }
 
       getOptionHeight() {
-        if (window.innerWidth <= 768) {
-          return 64;
-        } else if (window.innerWidth <= 1023) {
-          return 68;
-        } else {
-          return 72;
-        }
+        if (window.innerWidth <= 768) return 64;
+        else if (window.innerWidth <= 1023) return 68;
+        else return 72;
       }
 
       selectOption(option) {
@@ -481,19 +498,7 @@
 
         this.closeDropdown();
 
-        if (value === 'other') {
-          const customQuantity = prompt('Введіть бажану кількість стеків:');
-          if (customQuantity && !isNaN(customQuantity) && customQuantity > 0) {
-            this.quantityInput.value = customQuantity;
-            this.quantitySelected.querySelector('span').textContent = `${customQuantity} стеків`;
-          } else {
-            this.resetDropdown();
-          }
-        }
-
-        setTimeout(() => {
-          this.quantityDropdown.focus();
-        }, 300);
+        setTimeout(() => this.quantityDropdown.focus(), 250);
       }
 
       resetDropdown() {
@@ -504,129 +509,183 @@
       }
 
       open() {
-        this.scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        document.documentElement.style.setProperty('--scroll-top', `-${this.scrollTop}px`);
-
         this.modal.classList.remove('hidden');
-        document.documentElement.classList.add('modal-open');
         document.body.classList.add('modal-open');
 
-        document.addEventListener('wheel', this.preventScroll, { passive: false });
-        document.addEventListener('touchmove', this.preventScroll, { passive: false });
-        document.addEventListener('scroll', this.preventScroll, { passive: false });
-        document.addEventListener('keydown', this.preventScroll, { passive: false });
-
         const firstInput = this.modal.querySelector('.form-input');
-        if (firstInput) {
-          setTimeout(() => firstInput.focus(), 100);
-        }
+        if (firstInput) setTimeout(() => firstInput.focus(), 100);
       }
 
       close() {
+        this.clearToasts();
         this.modal.classList.add('hidden');
-        document.documentElement.classList.remove('modal-open');
         document.body.classList.remove('modal-open');
-
-        document.documentElement.style.removeProperty('--scroll-top');
-
-        document.removeEventListener('wheel', this.preventScroll, { passive: false });
-        document.removeEventListener('touchmove', this.preventScroll, { passive: false });
-        document.removeEventListener('scroll', this.preventScroll, { passive: false });
-        document.removeEventListener('keydown', this.preventScroll, { passive: false });
-
-        window.scrollTo(0, this.scrollTop);
 
         if (this.form) {
           this.form.reset();
           this.resetDropdown();
+          this.clearFieldErrors();
         }
-
-        this.closeDropdown();
       }
 
-      preventScroll = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
+      formatPhoneInput(e) {
+        const input = e.target;
+        const raw = input.value || '';
+        const trimmed = raw.trim();
+        const hasLeadingPlus = trimmed.startsWith('+');
+
+        let digits = raw.replace(/\D/g, '');
+
+        if (digits.length === 0) {
+          input.value = hasLeadingPlus ? '' : '';
+          return;
+        }
+
+        if (hasLeadingPlus) {
+          if (digits.startsWith('380')) {
+            const d = digits.slice(0, 12);
+            const rest = d.slice(3);
+
+            let formatted = '+380';
+            if (rest.length > 0) {
+              const a = rest.slice(0, 2);
+              const b = rest.slice(2, 5);
+              const c = rest.slice(5, 7);
+              const d4 = rest.slice(7, 9);
+              if (a) formatted += ' ' + a;
+              if (b) formatted += ' ' + b;
+              if (c) formatted += ' ' + c;
+              if (d4) formatted += ' ' + d4;
+            }
+            input.value = formatted;
+          } else {
+            input.value = '+' + digits.slice(0, 15);
+          }
+          return;
+        }
+
+        if (digits.startsWith('0')) {
+          const d = digits.slice(0, 10);
+          const first = d.charAt(0);
+          const rest = d.slice(1);
+          let formatted = first;
+          if (rest.length > 0) {
+            const a = rest.slice(0, 2);
+            const b = rest.slice(2, 5);
+            const c = rest.slice(5, 7);
+            const d4 = rest.slice(7, 9);
+            if (a) formatted += a;
+            if (b) formatted += ' ' + b;
+            if (c) formatted += ' ' + c;
+            if (d4) formatted += ' ' + d4;
+          }
+          input.value = formatted;
+          return;
+        }
+
+        input.value = digits.slice(0, 12);
       }
 
-      formatPhoneNumber(e) {
-        let value = e.target.value.replace(/\D/g, '');
+      onPhoneFocus(e) {
+        const input = e.target;
+        if ((input.value || '').trim() === '') {
+          input.value = '+380 ';
+          try {
+            const pos = input.value.length;
+            input.setSelectionRange(pos, pos);
+          } catch (_) { }
+        }
+      }
 
-        if (value && !value.startsWith('380')) {
-          if (value.startsWith('0')) {
-            value = '38' + value;
-          } else if (value.length > 0) {
-            value = '380' + value;
+      onPhoneBlur(e) {
+        const input = e.target;
+        const raw = (input.value || '').trim();
+        const digits = raw.replace(/\D/g, '');
+        const startsWithPlus = raw.startsWith('+');
+
+
+        if (startsWithPlus) {
+          if (digits.length < 4 || (digits.startsWith('380') && digits.length === 3)) {
+            input.value = '';
+            return;
           }
         }
 
-        if (value.length >= 3) {
-          let formatted = '+' + value.substring(0, 3);
-          if (value.length > 3) {
-            formatted += ' ' + value.substring(3, 5);
-          }
-          if (value.length > 5) {
-            formatted += ' ' + value.substring(5, 8);
-          }
-          if (value.length > 8) {
-            formatted += ' ' + value.substring(8, 10);
-          }
-          if (value.length > 10) {
-            formatted += ' ' + value.substring(10, 12);
-          }
-          e.target.value = formatted;
-        } else if (value.length === 0) {
-          e.target.value = '+380';
+        this.formatPhoneInput({ target: input });
+      }
+
+      normalizePhoneToUA(value) {
+        const digits = (value || '').replace(/\D/g, '');
+
+        if (digits.length === 12 && digits.startsWith('380')) {
+          return '+' + digits;
         }
+
+        if (digits.length === 10 && digits.startsWith('0')) {
+          return '+38' + digits;
+        }
+
+        return null;
       }
 
       handleSubmit(e) {
         e.preventDefault();
+        this.clearFieldErrors();
 
         const formData = new FormData(this.form);
         const data = {
-          name: formData.get('userName'),
-          phone: formData.get('userPhone'),
-          quantity: formData.get('quantity'),
-          message: formData.get('message'),
+          name: (formData.get('userName') || '').trim(),
+          phoneRaw: (formData.get('userPhone') || '').trim(),
+          quantity: (formData.get('quantity') || '').trim(),
+          message: (formData.get('message') || '').trim(),
         };
 
-        if (!data.name.trim()) {
+        let hasError = false;
+        if (!data.name) {
+          this.markFieldError('#userName');
           this.showError("Будь ласка, введіть ваше ім'я");
-          return;
+          hasError = true;
         }
 
-        if (!data.phone.trim() || data.phone.length < 13) {
+        const normalizedPhone = this.normalizePhoneToUA(data.phoneRaw);
+        if (!normalizedPhone) {
+          this.markFieldError('#userPhone');
           this.showError('Будь ласка, введіть коректний номер телефону');
-          return;
+          hasError = true;
         }
 
-        if (!data.quantity || data.quantity <= 0) {
+        if (!data.quantity) {
+          this.markDropdownError();
           this.showError('Будь ласка, оберіть кількість стеків');
-          return;
+          hasError = true;
         }
 
-        this.submitForm(data);
+        if (hasError) return;
+
+        const payload = {
+          name: data.name,
+          phone: normalizedPhone,
+          quantity: data.quantity,
+          message: data.message,
+        };
+
+        this.submitForm(payload);
       }
 
       async submitForm(data) {
-        const submitBtn = this.form.querySelector('.submit-button');
+        const submitBtn = this.form.querySelector('.submit-button-modal');
         const originalText = submitBtn.textContent;
 
         submitBtn.textContent = 'Відправляємо...';
         submitBtn.disabled = true;
 
         try {
-          await new Promise((resolve) => setTimeout(resolve, 1500));
+          await new Promise((resolve) => setTimeout(resolve, 1200));
 
-          this.showSuccess(
-            "Дякуємо! Ваш запит успішно відправлено. Ми зв'яжемось з вами найближчим часом."
-          );
+          await this.showSuccess(
+            "Дякуємо! Ваш запит успішно відправлено. Ми зв'яжемось з вами найближчим часом.");
 
-          setTimeout(() => {
-            this.close();
-          }, 2000);
+          this.close();
         } catch (error) {
           this.showError('Виникла помилка при відправці. Спробуйте ще раз.');
         } finally {
@@ -635,32 +694,51 @@
         }
       }
 
+      clearToasts() {
+        if (!this.toastStack) return;
+        this.toastStack.innerHTML = '';
+      }
+
+      showToast(message, type = 'success', autoHideMs = 2000) {
+        if (!this.toastStack) return Promise.resolve();
+
+        const toast = document.createElement('div');
+        toast.className = `toast toast--${type}`;
+        toast.textContent = message;
+        this.toastStack.appendChild(toast);
+
+        requestAnimationFrame(() => toast.classList.add('toast--show'));
+
+        const wait = Math.max(1200, autoHideMs);
+
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            toast.classList.remove('toast--show');
+            setTimeout(() => {
+              toast.remove();
+              resolve();
+            }, 220);
+          }, wait);
+        });
+      }
+
       showError(message) {
-        this.showMessage(message, 'error');
+        return this.showToast(message, 'error', 4000);
       }
 
       showSuccess(message) {
-        this.showMessage(message, 'success');
+        return this.showToast(message, 'success', 2000);
       }
 
-      showMessage(message, type) {
-        const existingMessage = this.modal.querySelector('.form-message');
-        if (existingMessage) {
-          existingMessage.remove();
-        }
-
-        const messageEl = document.createElement('div');
-        messageEl.className = `form-message form-message--${type}`;
-        messageEl.textContent = message;
-
-        const submitBtn = this.form.querySelector('.submit-button');
-        submitBtn.parentNode.insertBefore(messageEl, submitBtn);
-
-        setTimeout(() => {
-          if (messageEl.parentNode) {
-            messageEl.remove();
-          }
-        }, 5000);
+      markFieldError(selector) {
+        const el = this.form.querySelector(selector);
+        if (el) el.classList.add('input-error');
+      }
+      markDropdownError() {
+        this.quantityDropdown.classList.add('input-error');
+      }
+      clearFieldErrors() {
+        this.form.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
       }
     }
 
