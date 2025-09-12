@@ -1,56 +1,25 @@
-// Critical JavaScript only
-import "../index.js";
+// JS Goes here - ES6 supported
+import "./css/main.scss";
 
-// Load lazy image loader immediately for better performance
-import "./lazy-images.js";
-
-
-// Aggressive lazy loadin for non-critical JavaScript
+// Lazy load non-critical JavaScript for better mobile performance
 const loadNonCriticalJS = () => {
-
-  // Load modal only when user interacts
-  const modalTrigger = document.querySelector("[onclick*='openContactModal']");
-  if (modalTrigger) {
-    // Load modal on first interaction
-    const loadModal = () => {
-      import("./modal.js");
-      modalTrigger.removeEventListener("click", loadModal);
-    };
-    modalTrigger.addEventListener("click", loadModal, { once: true });
-  }
-
-  // Load performance monitoring only on mobile and only if needed
-  if (window.innerWidth <= 768 && "requestIdleCallback" in window) {
-    requestIdleCallback(() => {
-      import("./performance.js");
-    }, { timeout: 5000 });
-  }
-
-  // Load accessibility features only if needed
-  if (window.innerWidth > 768) {
-    import("./accessibility.js");
-  }
+  import("./modal.js");
+  import("./performance.js");
+  import("./accessibility.js");
+  import("./lazy-images.js");
 };
 
-// Load non-critical JS with aggressive delays
-const loadWhenIdle = () => {
-  if ("requestIdleCallback" in window) {
-    requestIdleCallback(loadNonCriticalJS, { timeout: 3000 });
-  } else {
-    setTimeout(loadNonCriticalJS, 500);
-  }
-};
-
-// Load after DOM is ready with delay
+// Load non-critical JS after page load
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(loadWhenIdle, 100);
+    // Load after a short delay to prioritize critical rendering
+    setTimeout(loadNonCriticalJS, 100);
   });
 } else {
-  setTimeout(loadWhenIdle, 100);
+  setTimeout(loadNonCriticalJS, 100);
 }
 
-// Netlify Identity - only load if needed
+
 if (window.netlifyIdentity) {
   window.netlifyIdentity.on("init", (user) => {
     if (!user) {

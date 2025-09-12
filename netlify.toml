@@ -27,7 +27,8 @@
     # Performance headers - optimized for mobile
     Cache-Control = "public, max-age=1800"
     
-
+    # Preload critical resources
+    Link = "</main.*.css>; rel=preload; as=style, </main.*.js>; rel=preload; as=script"
 
 # Static assets caching - mobile optimized
 [[headers]]
