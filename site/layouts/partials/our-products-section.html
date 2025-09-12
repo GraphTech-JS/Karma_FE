@@ -61,7 +61,7 @@ $context.Site.Data.products.categories $category }}
                 {{ .Title }}
               </h4>
               <div
-                class="text-left space-y-[8px] grid grid-cols-[auto_1fr] gap-x-[20px] max-[1000px]:gap-x-[16px] max-[940px]:gap-x-[14px] max-[768px]:gap-x-[12px] max-[480px]:gap-x-[8px] gap-y-[8px]">
+                class="text-left space-y-[8px] mb-[36px] grid grid-cols-[auto_1fr] gap-x-[15px] max-[1000px]:gap-x-[14px] max-[940px]:gap-x-[13px] max-[768px]:gap-x-[12px] max-[480px]:gap-x-[8px] gap-y-[8px]">
                 {{ range .Params.specs }}
                 <span class="text-[16px] font-['Montserrat'] font-semibold text-[#000] whitespace-nowrap">
                   {{ .label }}
@@ -74,7 +74,7 @@ $context.Site.Data.products.categories $category }}
               </div>
               <a href="{{ .RelPermalink }}">
                 <button
-                  class="bg-[#ba0108] text-[#fff] border-[none] px-[30px] py-[15px] mt-5 rounded-[20px] cursor-pointer text-[clamp(16px,2.2vw,20px)] font-['Montserrat'] font-normal [transition:background-color_0.3s_ease] hover:bg-[#e39599] w-full">
+                  class="bg-[#ba0108] text-[#fff] border-[none]  px-[30px] py-[15px] mt-5 rounded-[20px] cursor-pointer text-[clamp(16px,2.2vw,20px)] font-['Montserrat'] font-normal [transition:background-color_0.3s_ease] hover:bg-[#e39599] w-full">
                   Детальніше
                 </button>
               </a>
@@ -97,7 +97,7 @@ $context.Site.Data.products.categories $category }}
 
     <!-- Mobile Layout (767px and below) -->
     <div class="block min-[768px]:hidden relative">
-      <div class="flex flex-col gap-[20px] items-center">
+      <div class="flex flex-col gap-[15px] items-center">
         {{ range first 2 $categoryProducts }}
         <div class="w-full max-w-[350px]">
           <div
@@ -116,7 +116,7 @@ $context.Site.Data.products.categories $category }}
               {{ .Title }}
             </h4>
             <div
-              class="text-left space-y-[8px] grid grid-cols-[auto_1fr] gap-x-[12px] max-[480px]:gap-x-[18px] gap-y-[8px]">
+              class="text-left space-y-[8px] mb-[36px] grid grid-cols-[auto_1fr] gap-x-[12px] max-[480px]:gap-x-[18px] gap-y-[8px]">
               {{ range .Params.specs }}
               <span class="text-[15px] font-['Montserrat'] font-semibold text-[#000] whitespace-nowrap">
                 {{ .label }}
@@ -126,9 +126,9 @@ $context.Site.Data.products.categories $category }}
               </span>
               {{ end }}
             </div>
-            <a href="{{ .RelPermalink }}">
+            <a class="pt-[36px]" href="{{ .RelPermalink }}">
               <button
-                class="inline-block bg-[#ba0108] text-[#fff] border-[none] px-[30px] py-[15px] mt-5 rounded-[20px] cursor-pointer text-[clamp(14px,1.8vw,16px)] font-['Montserrat'] font-normal [transition:background-color_0.3s_ease] hover:bg-[#e39599] w-full">
+                class="inline-block bg-[#ba0108] text-[#fff] border-[none]  px-[30px] py-[15px] mt-5 rounded-[20px] cursor-pointer text-[clamp(14px,1.8vw,16px)] font-['Montserrat'] font-normal [transition:background-color_0.3s_ease] hover:bg-[#e39599] w-full">
                 Детальніше
               </button>
             </a>
