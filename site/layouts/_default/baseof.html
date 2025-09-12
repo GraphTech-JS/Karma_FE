@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="{{ $.Site.Language.Lang }}">
-{{- $assets := .Site.Data.webpack.main -}}
 
 <head>
   <meta charset="utf-8" />
@@ -44,15 +43,19 @@
   </style>
 
   <!-- Preload hashed build assets -->
-  {{ if $assets }}
-  <link rel="preload" href="{{ relURL $assets.css }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  {{ if .Site.Data.webpack.main }}
+  {{ $assets := .Site.Data.webpack.main }}
+  <link rel="preload" href="{{ $assets.css | relURL }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
-    <link rel="stylesheet" href="{{ relURL $assets.css }}">
+    <link rel="stylesheet" href="{{ $assets.css | relURL }}">
   </noscript>
-  <link rel="preload" href="{{ relURL $assets.js }}" as="script">
+  <link rel="preload" href="{{ $assets.js | relURL }}" as="script">
   {{ else if hugo.IsServer }}
   <!-- DEV fallback -->
   <link rel="stylesheet" href="http://localhost:3000/main.css">
+  {{ else }}
+  <!-- PRODUCTION fallback якщо webpack.json не знайдено -->
+  <link rel="stylesheet" href="{{ " main.css" | relURL }}">
   {{ end }}
 
   <!-- Google Fonts -->
@@ -100,7 +103,7 @@
       "contactPoint": { "@type": "ContactPoint", "telephone": "+380672982929", "contactType": "Customer Service", "availableLanguage": ["Ukrainian","English"] },
       "sameAs": ["https://t.me/karma_flights","https://instagram.com/karma_flights"]
     }
-    </script>
+  </script>
   {{ end }}
 </head>
 
@@ -114,10 +117,15 @@
   {{ block "footer" . }}{{ partial "footer" . }}{{end}}
   {{ partial "contact-modal" . }}
 
-  {{ if $assets }}
-  <script src="{{ relURL $assets.js }}" defer></script>
-  {{ else if hugo.IsServer}}
+  <!-- JavaScript Loading -->
+  {{ if .Site.Data.webpack.main }}
+  {{ $assets := .Site.Data.webpack.main }}
+  <script src="{{ $assets.js | relURL }}" defer></script>
+  {{ else if hugo.IsServer }}
   <script src="http://localhost:3000/main.js"></script>
+  {{ else }}
+  <!-- PRODUCTION fallback -->
+  <script src="{{ " main.js" | relURL }}" defer></script>
   {{ end }}
 
   <script>
