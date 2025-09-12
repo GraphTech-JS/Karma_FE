@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ $.Site.Language.Lang }}">
-{{- $assets := .Site.Data.webpack.main -}}
+{{- $webpack := resources.Get "data/webpack.json" | transform.Unmarshal -}}
+{{- $assets := $webpack.main -}}
 
 <head>
   <meta charset="utf-8" />

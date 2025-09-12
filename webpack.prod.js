@@ -2,15 +2,15 @@ const {merge} = require("webpack-merge");
 const path = require("path");
 
 const TerserPlugin = require("terser-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 const common = require("./webpack.common.js");
 
 module.exports = merge(common, {
   mode: "production",
 
   output: {
-    publicPath: "",
     filename: "[name].[contenthash:8].js",
     chunkFilename: "[name].[contenthash:8].js",
     path: path.resolve(__dirname, "dist"),
