@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
-  <meta name="title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
   <meta name="description"
     content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.defaultDescription }}{{ end }}">
   <meta name="keywords"
@@ -16,65 +15,22 @@
   <meta name="robots" content="{{ with .Params.robots }}{{ . }}{{ else }}index, follow{{ end }}">
   <link rel="canonical" href="{{ .Permalink | absURL }}">
 
-  <!-- Preload critical resources for better mobile performance -->
-  {{ $assets := .Site.Data.webpack.main }}
-  {{ if $assets }}
-  <link rel="preload" href="{{ $assets.css }}" as="style">
-  <link rel="preload" href="{{ $assets.js }}" as="script">
-  {{ end }}
-
-  <!-- Preload critical fonts -->
-  <link rel="preload" href="/fonts/Unbounded-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="preload" href="/fonts/Montserrat-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
-
-  <!-- Additional meta tags for specific pages -->
-  {{ block "additional-meta" . }}{{ end }}
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
-  <meta property="og:url" content="{{ .Permalink | absURL }}">
-  <meta property="og:title"
-    content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ if and .IsPage (eq .Section " catalog") }},
-    Karma{{ end }}{{ end }}">
-  <meta property="og:description"
-    content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.defaultDescription }}{{ end }}">
-  <meta property="og:image"
-    content="{{ with .Params.ogImage }}{{ . | absURL }}{{ else }}{{ .Site.Params.ogImage | absURL }}{{ end }}">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:site_name" content="{{ .Site.Title }}">
-  <meta property="og:locale" content="{{ .Site.Language.Lang }}">
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="{{ .Permalink | absURL }}">
-  <meta property="twitter:title"
-    content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
-  <meta property="twitter:description"
-    content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.defaultDescription }}{{ end }}">
-  <meta property="twitter:image"
-    content="{{ with .Params.ogImage }}{{ . | absURL }}{{ else }}{{ .Site.Params.ogImage | absURL }}{{ end }}">
-
-  <!-- Additional Meta Tags -->
-  <meta name="theme-color" content="{{ .Site.Params.themeColor }}">
-  <meta name="msapplication-TileColor" content="{{ .Site.Params.themeColor }}">
-
-  <!-- Critical CSS inline for faster rendering -->
+  <!-- Critical CSS inline -->
   <style>
     html,
     body {
       font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
       box-sizing: border-box;
       overflow-x: hidden;
+      margin: 0;
     }
 
     .hero-section {
       contain: layout style paint;
     }
 
-    .swiper-container-products {
+    .swiper-container {
       overflow: hidden;
-      position: relative;
     }
 
     .swiper-wrapper {
@@ -86,263 +42,71 @@
       flex-shrink: 0;
     }
   </style>
-  <!-- Critical CSS inlined for LCP optimization -->
-  <style>
-    /* Critical above-the-fold styles */
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      color: #1f2937;
-      font-display: swap
-    }
 
-    .hero-section {
-      min-height: 600px;
-      background: #fff;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center
-    }
-
-    .hero-title {
-      font-family: 'Unbounded', system-ui;
-      font-weight: 700;
-      line-height: 1.1;
-      color: #000;
-      font-display: swap
-    }
-
-    .hero-title .text-red {
-      color: #ba0108
-    }
-
-    .container {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 2rem
-    }
-
-    .flex {
-      display: flex
-    }
-
-    .items-center {
-      align-items: center
-    }
-
-    .justify-center {
-      justify-content: center
-    }
-
-    .text-center {
-      text-align: center
-    }
-
-    .relative {
-      position: relative
-    }
-
-    .absolute {
-      position: absolute
-    }
-
-    .z-10 {
-      z-index: 10
-    }
-
-    .hidden {
-      display: none
-    }
-
-    .block {
-      display: block
-    }
-
-    /* Mobile-specific optimizations */
-    @media(max-width:768px) {
-      .hero-section {
-        min-height: 400px;
-        padding: 1rem
-      }
-
-      .hero-title {
-        font-size: clamp(32px, 4vw, 64px) !important
-      }
-
-      img {
-        max-width: 100%;
-        height: auto
-      }
-
-      .reduce-motion * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important
-      }
-    }
-
-    @media(min-width:1024px) {
-      .lg\:block {
-        display: block
-      }
-
-      .lg\:hidden {
-        display: none
-      }
-
-      .lg\:flex {
-        display: flex
-      }
-    }
-
-    @media(max-width:1023px) {
-      .lg\:hidden {
-        display: none
-      }
-    }
-
-    @media(max-width:799px) {
-      .min-800px\:block {
-        display: none
-      }
-    }
-
-    @media(min-width:800px) {
-      .min-800px\:block {
-        display: block
-      }
-    }
-
-    /* Prevent layout shifts */
-    img {
-      display: block;
-      max-width: 100%;
-      height: auto
-    }
-
-    .swiper-container {
-      overflow: hidden
-    }
-  </style>
-
-  <!-- Preload critical resources -->
-  {{- if and $assets $assets.css -}}
+  <!-- Preload hashed build assets -->
+  {{ if $assets }}
   <link rel="preload" href="{{ relURL $assets.css }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
     <link rel="stylesheet" href="{{ relURL $assets.css }}">
   </noscript>
-  {{- else if .Site.IsServer -}}
-  <!-- DEV fallback CSS -->
-  <link rel="stylesheet" href="http://localhost:3000/main.css">
-  {{- end -}}
-
-  {{- if and $assets $assets.js -}}
   <link rel="preload" href="{{ relURL $assets.js }}" as="script">
-  {{- end -}}
+  {{ else if .Site.IsServer }}
+  <!-- DEV fallback -->
+  <link rel="stylesheet" href="http://localhost:3000/main.css">
+  {{ end }}
 
-  <link rel="preload" href="/fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
-
-  <!-- DNS prefetch for external domains -->
-  <link rel="dns-prefetch" href="//fonts.googleapis.com">
-  <link rel="dns-prefetch" href="//www.google-analytics.com">
-  <link rel="preconnect" href="https://www.google-analytics.com" />
-  <link rel="dns-prefetch" href="https://identity.netlify.com" />
-
-  <!-- Optimized Google Fonts loading -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Unbounded:wght@300;400;500;600;700&family=Wallpoet&display=swap"
-    rel="stylesheet" media="print" onload="this.media='all'" />
+    rel="stylesheet" media="print" onload="this.media='all'">
   <noscript>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Unbounded:wght@300;400;500;600;700&family=Wallpoet&display=swap"
-      rel="stylesheet" />
+      rel="stylesheet">
   </noscript>
 
-  <!-- Final stylesheet include (dup із preload для надійності) -->
-  {{- if and $assets $assets.css -}}
-  <link rel="stylesheet" href="{{ relURL $assets.css }}" />
-  {{- else if .Site.IsServer -}}
-  <!-- DEV fallback CSS -->
-  <link rel="stylesheet" href="http://localhost:3000/main.css" />
-  {{- end -}}
+  <!-- Social Meta (Open Graph + Twitter) -->
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+  <meta property="og:url" content="{{ .Permalink | absURL }}">
+  <meta property="og:title"
+    content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
+  <meta property="og:description"
+    content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.defaultDescription }}{{ end }}">
+  <meta property="og:image"
+    content="{{ with .Params.ogImage }}{{ . | absURL }}{{ else }}{{ .Site.Params.ogImage | absURL }}{{ end }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="{{ .Site.Title }}">
+  <meta property="og:locale" content="{{ .Site.Language.Lang }}">
 
-  <!-- Netlify Identity Widget - loaded asynchronously -->
+  <meta name="theme-color" content="{{ .Site.Params.themeColor }}">
+
+  <!-- Netlify Identity Widget (async) -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" async></script>
 
-  <!-- Enhanced Structured Data for SEO -->
+  <!-- Structured Data -->
   {{ if .IsHome }}
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "{{ .Site.Title }}",
-    "url": "{{ .Site.BaseURL }}",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "{{ .Site.BaseURL }}img/logo.svg",
-      "width": 200,
-      "height": 60
-    },
-    "description": "{{ .Site.Params.description }}",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "UA",
-      "addressLocality": "Україна"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+380672982929",
-      "contactType": "Customer Service",
-      "availableLanguage": ["Ukrainian", "English"]
-    },
-    "sameAs": [
-      "https://t.me/karma_flights",
-      "https://instagram.com/karma_flights"
-    ],
-    "foundingDate": "2020",
-    "numberOfEmployees": "10-50",
-    "industry": "Electronics Manufacturing",
-    "keywords": "{{ .Site.Params.keywords }}"
-  }
-  </script>
-  {{ end }}
-
-  {{ if eq .Type "catalog" }}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "{{ .Title }}",
-    "description": "{{ .Params.description }}",
-    "image": "{{ .Params.image | absURL }}",
-    "sku": "{{ .Params.product_id }}",
-    "category": "{{ .Params.category }}",
-    "offers": {
-      "@type": "Offer",
-      "price": "{{ .Params.price }}",
-      "priceCurrency": "UAH",
-      "availability": "{{ if .Params.in_stock }}https://schema.org/InStock{{ else }}https://schema.org/OutOfStock{{ end }}",
-      "seller": {
-        "@type": "Organization",
-        "name": "{{ .Site.Title }}"
-      }
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "{{ .Site.Title }}",
+      "url": "{{ .Site.BaseURL }}",
+      "logo": "{{ .Site.BaseURL }}img/logo.svg",
+      "description": "{{ .Site.Params.description }}",
+      "address": { "@type": "PostalAddress", "addressCountry": "UA", "addressLocality": "Україна" },
+      "contactPoint": { "@type": "ContactPoint", "telephone": "+380672982929", "contactType": "Customer Service", "availableLanguage": ["Ukrainian","English"] },
+      "sameAs": ["https://t.me/karma_flights","https://instagram.com/karma_flights"]
     }
-  }
-  </script>
+    </script>
   {{ end }}
 </head>
 
 <body class="font-sans" itemscope itemtype="https://schema.org/WebPage">
-  <!-- Skip to main content link -->
-  <a href="#main-content"
-    class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-[#ba0108] focus:text-white focus:px-4 focus:py-2 focus:rounded focus:no-underline">
-    Перейти до основного контенту
-  </a>
+  <a href="#main-content" class="sr-only focus:not-sr-only ...">Перейти до основного контенту</a>
+
   {{ block "header" . }}{{ partial "nav" . }}{{end}}
   <main id="main-content" role="main" tabindex="-1">
     {{ block "main" . }}{{ end }}
@@ -350,18 +114,14 @@
   {{ block "footer" . }}{{ partial "footer" . }}{{end}}
   {{ partial "contact-modal" . }}
 
-  {{ $script := .Site.Data.webpack.main }}
-  {{ if and $script $script.js }}
-  <script src="{{ relURL $script.js }}"></script>
+  {{ if $assets }}
+  <script src="{{ relURL $assets.js }}" defer></script>
   {{ else if .Site.IsServer }}
-  <!-- DEV fallback JS -->
   <script src="http://localhost:3000/main.js"></script>
   {{ end }}
 
   <script>
-
-    
-    // Global function for opening contact modal
+    // Global function for contact modal
     window.openContactModal = function () {
       const modal = document.getElementById('contactModal');
       if (modal) {
@@ -370,111 +130,31 @@
       }
     };
 
-    // Copy button functionality - reliable approach
+    // Copy-to-clipboard buttons
     function addCopyButtons() {
-      const preElements = document.querySelectorAll('pre');
-
-      preElements.forEach(function (pre) {
+      document.querySelectorAll('pre').forEach(function (pre) {
         const code = pre.querySelector('code');
-        if (!code) return;
+        if (!code || pre.querySelector('.copy-btn')) return;
 
-        // Skip if button already exists
-        if (pre.querySelector('.copy-btn')) return;
-
-        // Create copy button
         const button = document.createElement('button');
         button.className = 'copy-btn';
-        button.innerHTML = '<img src="/img/copy.svg" alt="Copy" style="width: 32px; height: 32px; pointer-events: none;" />';
-        button.title = 'Copy code';
-        button.style.cssText = `
-          position: absolute;
-          top: 8px;
-          right: 8px;
-          width: 44px;
-          height: 44px;
-          border-radius: 4px;
-          cursor: pointer;
-          font-size: 16px;
-          z-index: 1000;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          opacity: 1;
-          transition: opacity 0.2s;
-          padding: 6px;
-          box-sizing: border-box;
-        `;
-
-        // Ensure pre has relative positioning
+        button.innerHTML = '<img src="/img/copy.svg" alt="Copy" style="width:32px;height:32px;" />';
+        button.style.cssText = 'position:absolute;top:8px;right:8px;...';
         pre.style.position = 'relative';
-
-        // Add hover effect
-        button.onmouseenter = () => button.style.opacity = '1';
-        button.onmouseleave = () => button.style.opacity = '0.7';
-
-        // Copy functionality
-        button.onclick = async function (e) {
+        button.onclick = async (e) => {
           e.preventDefault();
           try {
-            const text = code.textContent;
-            await navigator.clipboard.writeText(text);
-
-            // Success feedback
-            this.innerHTML = '<img src="/img/copy-success.svg" alt="Copied" style="width: 32px; height: 32px; pointer-events: none;" />';
-
-            setTimeout(() => {
-              this.innerHTML = '<img src="/img/copy.svg" alt="Copy" style="width: 32px; height: 32px; pointer-events: none;" />';
-              this.style.background = '';
-              this.style.color = 'initial';
-              this.style.fontSize = '16px';
-            }, 1000);
-          } catch (err) {
-            // Fallback for older browsers
-            const textArea = document.createElement('textarea');
-            textArea.value = text;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-
-            // Success feedback
-            this.innerHTML = '<img src="/img/copy-success.svg" alt="Copied" style="width: 32px; height: 32px; pointer-events: none;" />';
-
-            setTimeout(() => {
-              this.innerHTML = '<img src="/img/copy.svg" alt="Copy" style="width: 32px; height: 32px; pointer-events: none;" />';
-              this.style.background = '';
-              this.style.color = 'initial';
-              this.style.fontSize = '16px';
-            }, 1000);
-          }
+            await navigator.clipboard.writeText(code.textContent);
+            button.innerHTML = '<img src="/img/copy-success.svg" alt="Copied" style="width:32px;height:32px;" />';
+            setTimeout(() => button.innerHTML = '<img src="/img/copy.svg" alt="Copy"/>', 1000);
+          } catch (err) { console.error(err); }
         };
-
         pre.appendChild(button);
       });
     }
-
-    // Run when DOM is ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', addCopyButtons);
-    } else {
-      addCopyButtons();
-    }
-
-    // Also run after a short delay to catch dynamically loaded content
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', addCopyButtons); } else { addCopyButtons(); }
     setTimeout(addCopyButtons, 500);
-
-    // Netlify Identity Widget initialization
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
   </script>
-
 </body>
 
 </html>
