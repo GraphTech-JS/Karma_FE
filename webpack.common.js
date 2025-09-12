@@ -34,7 +34,6 @@ module.exports = {
         test: /\.(sa|sc|c)ss$/,
         exclude: /node_modules/,
         use: [
-          "style-loader",
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
@@ -63,11 +62,11 @@ module.exports = {
     new AssetsPlugin({
       filename: "webpack.json",
       path: path.join(process.cwd(), "site/data"),
-      prettyPrint: true
+      prettyPrint: true,
+      fullPath: true
     }),
     new CopyWebpackPlugin({
       patterns: [
-        // Only copy the .keep file
         {
           from: "./src/fonts/.keep",
           to: "fonts/.keep"

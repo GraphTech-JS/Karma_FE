@@ -50,7 +50,7 @@
     <link rel="stylesheet" href="{{ relURL $assets.css }}">
   </noscript>
   <link rel="preload" href="{{ relURL $assets.js }}" as="script">
-  {{ else if .Site.IsServer }}
+  {{ else if hugo.IsServer }}
   <!-- DEV fallback -->
   <link rel="stylesheet" href="http://localhost:3000/main.css">
   {{ end }}
@@ -116,7 +116,7 @@
 
   {{ if $assets }}
   <script src="{{ relURL $assets.js }}" defer></script>
-  {{ else if .Site.IsServer }}
+  {{ else if hugo.IsServer}}
   <script src="http://localhost:3000/main.js"></script>
   {{ end }}
 
