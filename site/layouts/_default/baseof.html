@@ -16,17 +16,6 @@
   <meta name="robots" content="{{ with .Params.robots }}{{ . }}{{ else }}index, follow{{ end }}">
   <link rel="canonical" href="{{ .Permalink | absURL }}">
 
-  <!-- Preload critical resources for better mobile performance -->
-  {{ $assets := .Site.Data.webpack.main }}
-  {{ if $assets }}
-  <link rel="preload" href="{{ $assets.css }}" as="style">
-  <link rel="preload" href="{{ $assets.js }}" as="script">
-  {{ end }}
-
-  <!-- Preload critical fonts -->
-  <link rel="preload" href="/fonts/Unbounded-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="preload" href="/fonts/Montserrat-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
-
   <!-- Additional meta tags for specific pages -->
   {{ block "additional-meta" . }}{{ end }}
 
@@ -61,31 +50,67 @@
 
   <!-- Critical CSS inline for faster rendering -->
   <style>
-    html,
+    /* Critical above-the-fold styles */
     body {
-      font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
-      box-sizing: border-box;
-      overflow-x: hidden;
+      margin: 0;
+      font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      color: #1f2937
     }
 
-    .hero-section {
-      contain: layout style paint;
+    .header {
+      background: #1f2937;
+      position: sticky;
+      top: 0;
+      z-index: 100
     }
 
-    .swiper-container-products {
-      overflow: hidden;
-      position: relative;
-    }
-
-    .swiper-wrapper {
+    .nav {
       display: flex;
-      transition: transform 0.3s ease;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto
     }
 
-    .swiper-slide {
-      flex-shrink: 0;
+    .logo {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-decoration: none
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+      color: #fff;
+      padding: 4rem 2rem;
+      text-align: center
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin: 0 0 1rem;
+      font-weight: 700
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      margin: 0;
+      opacity: 0.9
+    }
+
+    @media(max-width:768px) {
+      .hero h1 {
+        font-size: 2rem
+      }
+
+      .nav {
+        padding: 1rem
+      }
     }
   </style>
+
   <!-- Critical CSS inlined for LCP optimization -->
   <style>
     /* Critical above-the-fold styles */
@@ -243,6 +268,8 @@
   <link rel="preload" href="{{ relURL $assets.js }}" as="script">
   {{- end -}}
 
+  <!-- Preload LCP image -->
+  <link rel="preload" as="image" href="/img/stack.png" media="(min-width: 1024px)">
   <link rel="preload" href="/fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
 
   <!-- DNS prefetch for external domains -->
@@ -359,21 +386,6 @@
   {{ end }}
 
   <script>
-
-    function loadNonCriticalCSS() {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = '/css/non-critical.css';
-      document.head.appendChild(link);
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(loadNonCriticalCSS, 100);
-      });
-    } else {
-      setTimeout(loadNonCriticalCSS, 100);
-    }
     // Global function for opening contact modal
     window.openContactModal = function () {
       const modal = document.getElementById('contactModal');
@@ -487,7 +499,6 @@
       });
     }
   </script>
-
 </body>
 
 </html>
