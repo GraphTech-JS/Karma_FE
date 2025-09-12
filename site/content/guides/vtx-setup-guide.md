@@ -11,10 +11,13 @@ tags:
 draft: false
 ---
 
-Правильне налаштування відеопередавача (VTX) критично важливо для якісного FPV польоту.
 
-<section id="channels" class="mt-8 scroll-mt-24">
-<h2 class="font-[Montserrat] text-[20px] lg:text-[24px] border-b border-[#ba0108] pb-3 font-normal mb-3">Вибір каналу</h2>
+
+<section id="channels" class="scroll-mt-24">
+<h1 class="text-[20px] md:text-[24px] font-[Montserrat] mb-[10px] font-medium">Налаштування VTX2</h1>
+<p class="text-[15px] md:text-[16px] font-[Montserrat]">Правильне налаштування відеопередавача (VTX) критично важливо для якісного FPV польоту.
+
+<h2 class="font-[Montserrat] text-[20px] lg:text-[24px] border-b border-[#ba0108] pb-3 font-normal mb-3 mt-[30px]">Вибір каналу</h2>
 <ul class="list-disc pl-5 space-y-2 text-[#333]">
 <li class="flex gap-3 items-center">
 <img width="35" height="35" class="cursor-pointer" src="/img/list-guide-one.png" alt="" style="filter: none; box-shadow: none;"/>

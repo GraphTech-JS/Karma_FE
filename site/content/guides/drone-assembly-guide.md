@@ -7,10 +7,13 @@ category: "БПЛА"
 tags: ["БПЛА", "збірка", "FPV", "дрон", "інструкція"]
 ---
 
-Збірка FPV дрона - це захоплюючий процес, який вимагає уважності до деталей та правильного підходу. Цей посібник допоможе вам створити надійний та ефективний дрон з нуля.
 
-<section id="components" class="mt-8 scroll-mt-24">
-<h2 class="font-[Montserrat] text-[20px] lg:text-[24px] border-b border-[#ba0108] pb-3 font-normal mb-3">Необхідні компоненти</h2>
+<section id="components" class="scroll-mt-24">
+
+<h1 class="text-[20px] md:text-[24px] font-[Montserrat] mb-[10px] font-medium">Повна інструкція зі збірки FPV дрона</h1>
+<p class="text-[15px] md:text-[16px] font-[Montserrat]">Збірка FPV дрона - це захоплюючий процес, який вимагає уважності до деталей та правильного підходу. Цей посібник допоможе вам створити надійний та ефективний дрон з нуля.
+</p>
+<h2 class="font-[Montserrat] text-[20px] lg:text-[24px] border-b border-[#ba0108] pb-3 font-normal mb-3 mt-[30px]">Необхідні компоненти</h2>
 <p class="text-[16px] font-normal font-[Montserrat]">
 Для збірки FPV дрона вам знадобиться:
 <br />

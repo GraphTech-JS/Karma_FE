@@ -95,51 +95,46 @@
         </div>
 {{ if .Params.image }}
 <div class="relative overflow-hidden rounded-xl border border-[#E5E5E5]">
-  {{/* --- ДЕСКТОПНЕ ЗОБРАЖЕННЯ (з front matter) --- */}}
   {{ $customImage := resources.Get .Params.image }}
   {{ if $customImage }}
   {{ $desktop1x := $customImage.Resize "900x webp q80" }}
   {{ $desktop2x := $customImage.Resize "1800x webp q80" }}
   <img src="{{ $desktop1x.RelPermalink }}" srcset="{{ $desktop1x.RelPermalink }} 1x, {{ $desktop2x.RelPermalink }} 2x"
-    alt="{{ .Title }}" class="hidden w-full h-auto sm:block" {{/* <-- ОСНОВНА ЗМІНА: h-auto */}}
+    alt="{{ .Title }}" class="hidden w-full h-auto sm:block"
     width="{{ $customImage.Width }}" height="{{ $customImage.Height }}" loading="lazy" decoding="async" />
   {{ end }}
 
-  {{/* --- МОБІЛЬНЕ ЗОБРАЖЕННЯ (використовуємо спеціальний мобільний файл) --- */}}
   {{ $droneManMobile := resources.Get "img/drone-man-mobile.png" }}
   {{ if $droneManMobile }}
   {{ $mobile1x := $droneManMobile.Resize "480x webp q80" }}
   {{ $mobile2x := $droneManMobile.Resize "960x webp q80" }}
   <img src="{{ $mobile1x.RelPermalink }}" srcset="{{ $mobile1x.RelPermalink }} 1x, {{ $mobile2x.RelPermalink }} 2x"
-    alt="{{ .Title }}" class="w-full h-auto sm:hidden" {{/* <-- ОСНОВНА ЗМІНА: h-auto */}}
+    alt="{{ .Title }}" class="w-full h-auto sm:hidden"
     width="{{ $droneManMobile.Width }}" height="{{ $droneManMobile.Height }}" decoding="async" />
   {{ end }}
 </div>
 {{ else }}
 <div class="relative overflow-hidden rounded-xl border border-[#E5E5E5]">
-  {{/* --- ДЕСКТОПНЕ ЗОБРАЖЕННЯ (за замовчуванням) --- */}}
   {{ $droneMan := resources.Get "img/drone-man.png" }}
   {{ if $droneMan }}
   {{ $desktop1x := $droneMan.Resize "900x webp q80" }}
   {{ $desktop2x := $droneMan.Resize "1800x webp q80" }}
   <img src="{{ $desktop1x.RelPermalink }}" srcset="{{ $desktop1x.RelPermalink }} 1x, {{ $desktop2x.RelPermalink }} 2x"
-    alt="Drone Man" class="hidden w-full h-auto sm:block" {{/* <-- ОСНОВНА ЗМІНА: h-auto */}}
+    alt="Drone Man" class="hidden w-full h-auto sm:block"
     width="{{ $droneMan.Width }}" height="{{ $droneMan.Height }}" loading="lazy" decoding="async" />
   {{ end }}
-
-  {{/* --- МОБІЛЬНЕ ЗОБРАЖЕННЯ (за замовчуванням) --- */}}
   {{ $droneManMobile := resources.Get "img/drone-man-mobile.png" }}
   {{ if $droneManMobile }}
   {{ $mobile1x := $droneManMobile.Resize "480x webp q80" }}
   {{ $mobile2x := $droneManMobile.Resize "960x webp q80" }}
   <img src="{{ $mobile1x.RelPermalink }}" srcset="{{ $mobile1x.RelPermalink }} 1x, {{ $mobile2x.RelPermalink }} 2x"
-    alt="Drone Man" class="w-full h-auto sm:hidden" {{/* <-- ОСНОВНА ЗМІНА: h-auto */}}
+    alt="Drone Man" class="w-full h-auto sm:hidden"
     width="{{ $droneManMobile.Width }}" height="{{ $droneManMobile.Height }}" decoding="async" />
   {{ end }}
 </div>
 {{ end }}
 
-        <div class="mt-[30px] markdown-content">
+        <div class="mt-[10px] markdown-content">
           {{ .Content }}
         </div>
       </div>
@@ -221,6 +216,8 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  
 
   #markdown {
     border-radius: 10px;
@@ -408,84 +405,84 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    // Generate table of contents
     const headings = document.querySelectorAll('.markdown-content h2, .markdown-content h3');
     const tocList = document.getElementById('page-toc');
-    const leftSidebar = document.getElementById('left-category-nav');
-    const rightSidebar = document.getElementById('right-toc-nav');
-    const footer = document.getElementById('footer');
-
-    if (footer && (leftSidebar || rightSidebar)) {
-      const sidebarsToManage = [];
-
-      if (leftSidebar) {
-        sidebarsToManage.push({
-          element: leftSidebar,
-          initialTop: leftSidebar.getBoundingClientRect().top
-        });
-      }
-      if (rightSidebar) {
-        sidebarsToManage.push({
-          element: rightSidebar,
-          initialTop: rightSidebar.getBoundingClientRect().top
-        });
-      }
-      const updateAllSidebarPositions = () => {
-        const footerRect = footer.getBoundingClientRect();
-        const viewportHeight = window.innerHeight;
-        sidebarsToManage.forEach(sidebarData => {
-          const { element, initialTop } = sidebarData; 
-          if (footerRect.top < viewportHeight) {
-            const overlap = viewportHeight - footerRect.top;
-            element.style.top = `${initialTop - overlap}px`;
-          } else {
-            element.style.top = `${initialTop}px`;
-          }
-        });
-      };
-      window.addEventListener('scroll', updateAllSidebarPositions);
-      window.addEventListener('resize', updateAllSidebarPositions);
-      updateAllSidebarPositions();
-    }
-
 
     if (tocList && headings.length > 0) {
       headings.forEach((heading, index) => {
-        // Create ID for heading if it doesn't exist
         if (!heading.id) {
           heading.id = 'heading-' + index;
         }
-
-        // Create TOC item
         const li = document.createElement('li');
         const a = document.createElement('a');
         a.href = '#' + heading.id;
         a.textContent = heading.textContent;
         a.className = 'block hover:text-[#ba0108] transition-colors text-[16px] font-medium text-[#404040]';
-
         li.appendChild(a);
         tocList.appendChild(li);
       });
     }
+   const leftSidebar = document.getElementById('left-category-nav');
+    const rightSidebar = document.getElementById('right-toc-nav');
+    const footer = document.querySelector('footer');
 
-    // Smooth scrolling for anchor links
+    if (footer && (leftSidebar || rightSidebar)) {
+      const sidebarsToManage = [];
+      if (leftSidebar) {
+        sidebarsToManage.push({
+          element: leftSidebar,
+          parent: leftSidebar.closest('aside'),
+          naturalTop: leftSidebar.getBoundingClientRect().top
+        });
+      }
+      if (rightSidebar) {
+        sidebarsToManage.push({
+          element: rightSidebar,
+          parent: rightSidebar.closest('aside'),
+          naturalTop: rightSidebar.getBoundingClientRect().top
+        });
+      }
+
+      if (sidebarsToManage.length === 0) return;
+
+      const bottomMargin = 40;
+
+      const updateSidebarPositions = () => {
+        const footerTop = footer.getBoundingClientRect().top;
+        sidebarsToManage.forEach(data => {
+          const { element, parent, naturalTop } = data;
+          if (!parent) return;
+          const sidebarHeight = element.offsetHeight;
+          if (footerTop < naturalTop + sidebarHeight + bottomMargin) {
+            element.style.position = 'absolute';
+            const parentTop = parent.getBoundingClientRect().top;
+            const newTop = footerTop - parentTop - sidebarHeight - bottomMargin;
+
+            element.style.top = `${newTop}px`;
+            element.style.bottom = 'auto';
+
+          } else {
+            element.style.position = 'fixed';
+            element.style.top = `${naturalTop}px`;
+            element.style.bottom = 'auto';
+          }
+        });
+      };
+      window.addEventListener('scroll', updateSidebarPositions);
+      window.addEventListener('resize', updateSidebarPositions);
+      updateSidebarPositions();
+    }
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
     anchorLinks.forEach((link) => {
       link.addEventListener('click', function (e) {
         e.preventDefault();
         const targetId = this.getAttribute('href').substring(1);
         const targetElement = document.getElementById(targetId);
-
         if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-          });
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
     });
-
-    // Highlight active section in TOC
     const sections = document.querySelectorAll('.markdown-content h2[id], .markdown-content h3[id]');
     const navLinks = document.querySelectorAll('#page-toc a[href^="#"]');
 
@@ -497,7 +494,6 @@
           current = section.getAttribute('id');
         }
       });
-
       navLinks.forEach((link) => {
         link.style.color = '';
         if (link.getAttribute('href') === '#' + current) {
@@ -508,7 +504,6 @@
 
     window.addEventListener('scroll', highlightActiveSection);
     highlightActiveSection();
-
   });
 </script>
 {{ end }}

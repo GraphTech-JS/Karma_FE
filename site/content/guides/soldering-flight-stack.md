@@ -1,5 +1,5 @@
 ---
-title: Як правильно паяти політний стек. Інструкція 1
+title: Як правильно паяти політний стек. Інструкція
 description: Детальна інструкція по правильному паянню політного стека з порадами експертів
 date: 2024-01-01
 category: Політні стеки
@@ -11,12 +11,12 @@ tags:
 draft: false
 ---
 
-Для успішного паяння політного стека, важливо знати правильну техніку, уникати
+<section id="errors" class="scroll-mt-24">
+<h1 class="text-[20px] md:text-[24px] font-[Montserrat] mb-[10px] font-medium">Як правильно паяти політний стек. Інструкція</h1>
+<p class="text-[15px] md:text-[16px] font-[Montserrat]">Для успішного паяння політного стека, важливо знати правильну техніку, уникати
 поширених помилок та дотримуватися певних рекомендацій. Цей процес вимагає
-точності та терпіння, щоб не пошкодити чутливі компоненти.
-
-<section id="errors" class="mt-8 scroll-mt-24">
-<h2 class="font-[Montserrat] text-[20px] lg:text-[24px] border-b border-[#ba0108] pb-3 font-normal mb-3">Опис помилок</h2>
+точності та терпіння, щоб не пошкодити чутливі компоненти.</p>
+<h2 class="font-[Montserrat] text-[20px] lg:text-[24px] border-b border-[#ba0108] pb-3 font-normal mb-3 mt-[30px]">Опис помилок</h2>
 <ul class="list-disc pl-5 space-y-2 text-[#333]">
 <li class="flex gap-3 items-center">
 <img width="35" height="35" class="cursor-pointer" src="/img/list-guide-one.png" alt="" style="filter: none; box-shadow: none;"/>

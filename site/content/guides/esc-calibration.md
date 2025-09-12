@@ -11,10 +11,14 @@ tags:
 draft: false
 ---
 
-Калібрування ESC (Electronic Speed Controller) є важливим кроком для забезпечення синхронної роботи всіх моторів дрона. Неправильно відкалібровані регулятори можуть призвести до вібрацій, нестабільного польоту та зниження ефективності.
 
-<section id="when" class="mt-8 scroll-mt-24">
-<h2 class="font-[Montserrat] text-[20px] lg:text-[24px] border-b border-[#ba0108] pb-3 font-normal mb-3">Коли потрібно калібрувати ESC</h2>
+
+<section id="when" class="scroll-mt-24">
+<h1 class="text-[20px] md:text-[24px] font-[Montserrat] mb-[10px] font-medium">Калібрування ESC регуляторів швидкості</h1>
+<p class="text-[15px] md:text-[16px] font-[Montserrat]">Калібрування ESC (Electronic Speed Controller) є важливим кроком для забезпечення синхронної роботи всіх моторів дрона. Неправильно відкалібровані регулятори можуть призвести до вібрацій, нестабільного польоту та зниження ефективності.
+</p>
+
+<h2 class="font-[Montserrat] text-[20px] lg:text-[24px] border-b border-[#ba0108] pb-3 font-normal mb-3 mt-[30px]">Коли потрібно калібрувати ESC</h2>
 <p class="text-[16px] font-normal font-[Montserrat]">
 Калібрування необхідне в наступних випадках:
 <br />

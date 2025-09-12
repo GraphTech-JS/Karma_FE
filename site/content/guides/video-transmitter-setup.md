@@ -7,10 +7,13 @@ category: "Відеопередавачі"
 tags: ["FPV", "відеопередавач", "налаштування", "частоти"]
 ---
 
-Правильне налаштування відеопередавача є критично важливим для якісного FPV польоту. Від цього залежить стабільність сигналу, якість зображення та дальність передачі.
 
-<section id="frequency" class="mt-8 scroll-mt-24">
-<h2 class="font-[Montserrat] text-[20px] lg:text-[24px] border-b border-[#ba0108] pb-3 font-normal mb-3">Вибір частоти</h2>
+
+<section id="frequency" class="scroll-mt-24">
+<h1 class="text-[20px] md:text-[24px] font-[Montserrat] mb-[10px] font-medium">Налаштування відеопередавача для FPV</h1>
+<p class="text-[15px] md:text-[16px] font-[Montserrat]">Правильне налаштування відеопередавача є критично важливим для якісного FPV польоту. Від цього залежить стабільність сигналу, якість зображення та дальність передачі.
+
+<h2 class="font-[Montserrat] text-[20px] lg:text-[24px] border-b border-[#ba0108] pb-3 font-normal mb-3 mt-[30px]">Вибір частоти</h2>
 <p class="text-[16px] font-normal font-[Montserrat]">
 Перш ніж розпочати налаштування, важливо обрати правильну частоту передачі:
 <br />

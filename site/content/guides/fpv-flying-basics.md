@@ -12,10 +12,15 @@ tags:
 draft: false
 ---
 
-FPV (First Person View) політ - це захоплюючий досвід, який дозволяє побачити світ з перспективи дрона. Цей посібник допоможе початківцям освоїти основи FPV польоту.
 
-<section id="basics" class="mt-8 scroll-mt-24">
-<h2 class="font-[Montserrat] text-[20px] lg:text-[24px] border-b border-[#ba0108] pb-3 font-normal mb-3">Основні принципи FPV польоту</h2>
+
+<section id="basics" class="scroll-mt-24">
+
+<h1 class="text-[20px] md:text-[24px] font-[Montserrat] mb-[10px] font-medium">Основи FPV польоту для початківців: частина 1</h1>
+<p class="text-[15px] md:text-[16px] font-[Montserrat]">FPV (First Person View) політ - це захоплюючий досвід, який дозволяє побачити світ з перспективи дрона. Цей посібник допоможе початківцям освоїти основи FPV польоту.
+</p>
+
+<h2 class="font-[Montserrat] text-[20px] lg:text-[24px] border-b border-[#ba0108] pb-3 font-normal mb-3 mt-[30px]">Основні принципи FPV польоту</h2>
 <p class="text-[16px] font-normal font-[Montserrat]">
 FPV політ базується на кількох ключових принципах:
 <br />
