@@ -12,17 +12,15 @@
   {{ end }}
 
   <!-- bg-el-2: тільки mobile -->
-  {{ $bgEl2 := resources.Get "img/bg-el-9.png" }}
-  {{ if $bgEl2 }}
-  {{ $bgEl2Processed := $bgEl2.Resize "171x199 webp q75" }}
-  <img src="{{ $bgEl2Processed.RelPermalink }}" alt="" aria-hidden="true"
-    class="about-bg-el-2 absolute z-[10] top-[calc(var(--spacing)*-3)] left-[-25px] hidden max-[640px]:block w-[171px] h-[199px]"
-    width="171" height="199" loading="lazy" />
-  {{ else }}
-  <img src="/img/bg-el-9.png" alt="" aria-hidden="true"
-    class="about-bg-el-2 absolute z-[10] top-[calc(var(--spacing)*-3)] left-[-25px] hidden max-[640px]:block w-[171px] h-[199px] "
-    width="171" height="199" loading="lazy" />
-  {{ end }}
+{{ $bgEl2 := resources.Get "img/bg-el-9.png" }}
+{{ if $bgEl2 }}
+{{ $bgEl2_1x := $bgEl2.Resize "171x webp q75" }}
+{{ $bgEl2_2x := $bgEl2.Resize "342x webp q75" }}
+<img srcset="{{ $bgEl2_1x.RelPermalink }} 1x, {{ $bgEl2_2x.RelPermalink }} 2x" src="{{ $bgEl2_1x.RelPermalink }}" alt=""
+  aria-hidden="true"
+  class="about-bg-el-2 absolute z-[10] top-[calc(var(--spacing)*-3)] left-[-25px] hidden max-[640px]:block w-[171px] h-auto"
+  width="{{ $bgEl2_1x.Width }}" height="{{ $bgEl2_1x.Height }}" loading="lazy" />
+{{ end }}
 
 
   <!-- Mobile layout -->
@@ -32,10 +30,12 @@
     {{ if $aboutMobile }}
     {{ $aboutMobileProcessed := $aboutMobile.Resize "572x400 webp q80" }}
     <img src="{{ $aboutMobileProcessed.RelPermalink }}"
-      alt="Про нас - українська компанія високотехнологічного виробництва" class=" mb-6 w-full h-[276px] origin-left" />
+      alt="Про нас - українська компанія високотехнологічного виробництва" class=" mb-6 w-full h-auto origin-left" width="{{ $aboutMobileProcessed.Width }}" 
+  height="{{ $aboutMobileProcessed.Height }}"/>
     {{ else }}
     <img src="/img/about-mob.png" alt="Про нас - українська компанія високотехнологічного виробництва"
-      class=" mb-6 w-full h-[276px] origin-left" />
+      class=" mb-6 w-full h-auto origin-left" width="{{ $aboutMobileProcessed.Width }}" 
+  height="{{ $aboutMobileProcessed.Height }}"/>
     {{ end }}
 
     <!-- Mobile content -->
@@ -67,10 +67,10 @@
     {{ $aboutDesktopProcessed := $aboutDesktop.Resize "628x400 webp q80" }}
     <img src="{{ $aboutDesktopProcessed.RelPermalink }}"
       alt="Про нас - українська компанія високотехнологічного виробництва" width="628" height="400"
-      class="w-full max-w-[628px] h-[400px] rounded-t-[8px]  mb-8" />
+      class="w-full max-w-[628px] h-[400px] rounded-t-[8px]  mb-8 object-cover" />
     {{ else }}
     <img src="/img/about.png" alt="Про нас - українська компанія високотехнологічного виробництва" width="568"
-      height="400" class="w-full max-w-[628px] h-[400px] rounded-t-[8px]  mb-8" />
+      height="400" class="w-full max-w-[628px] h-[400px] rounded-t-[8px]  mb-8 object-cover" />
     {{ end }}
     <div class="max-w-[649px] mx-auto px-5">
       <h3
