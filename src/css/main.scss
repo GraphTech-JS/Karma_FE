@@ -5,10 +5,12 @@
 
 /* Only essential imports */
 @use './imports/_reset';
+@use './imports/swiper';
 
 /* Essential components */
 @use './imports/_modal';
 @use './imports/_sliders-complete';
+
 
 /* Tailwind CSS - only if needed */
 @use "tailwindcss";

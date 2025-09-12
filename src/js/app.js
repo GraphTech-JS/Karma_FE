@@ -4,12 +4,6 @@ import "../index.js";
 // Load lazy image loader immediately for better performance
 import "./lazy-images.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-  const hasSliders = document.querySelector(".swiper-container-trusted-desktop, .swiper-container-trusted-mobile");
-  if (hasSliders) {
-    import("./sliders-init.js");
-  }
-});
 
 // Aggressive lazy loadin for non-critical JavaScript
 const loadNonCriticalJS = () => {
