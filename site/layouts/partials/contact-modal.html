@@ -22,8 +22,9 @@
         </div>
         <div class="form-group">
           <div class="custom-dropdown" id="quantityDropdown">
-            <div class="dropdown-selected" id="quantitySelected"> <span class="placeholder">Кількість стеків, яку
-                плануєте замовити</span> </div>
+            <div class="dropdown-selected" id="quantitySelected">
+              <span class="placeholder">Кількість стеків, яку плануєте замовити</span>
+            </div>
             <div class="dropdown-options" id="quantityOptions">
               <div class="dropdown-option" data-value="0-20">0 - 20</div>
               <div class="dropdown-option" data-value="20-100">20 - 100</div>
@@ -36,13 +37,15 @@
         </div>
 
         <div class="form-group"> <textarea id="message" name="message" placeholder="Ваше повідомлення"
-            class="form-textarea" rows="4"></textarea> </div>
+            class="form-textarea" rows="4"></textarea>
+        </div>
         <div class="contact-info">
           <div class="contact-wrapper">
             <p class="contact-label">Наші контакти для зв'язку:</p>
             <div class="contact-details"> <a href="tel:+380956156713" class="contact-phone"> +380 95 61 56713 </a> <a
                 href="mailto:info@karma.flights" class="contact-email"> info@karma.flights </a> </div>
-          </div> <button type="submit" class="cursor-pointer submit-button"> Відправити </button>
+          </div>
+          <button type="submit" class="cursor-pointer submit-button-modal"> Відправити </button>
         </div>
       </form>
     </div>
@@ -58,7 +61,6 @@
     border: 1px solid #404040 !important;
     border-radius: 5px !important;
     font-family: 'Montserrat', sans-serif;
-    font-size: clamp(16px, 2vw, 20px);
     font-weight: 400;
     color: black;
     background: #f0f1f5;
@@ -66,12 +68,38 @@
     transition: border-color 0.3s ease, border-radius 0.3s ease;
     cursor: pointer;
     height: 65px;
+
+    span {
+      font-size: clamp(16px, 2vw, 20px);
+    }
   }
 
   /* Dropdown open state - remove bottom border radius */
   .custom-dropdown.dropdown-open {
     border-radius: 5px 5px 0 0 !important;
     border-bottom-color: transparent;
+  }
+
+  .submit-button-modal {
+    background: #ba0108 !important;
+    font-size: clamp(16px, 2vw, 20px) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 400 !important;
+    color: #fefefe !important;
+    padding: 14px 54px !important;
+    height: 70px !important;
+    width: 465px !important;
+    cursor: pointer !important;
+    border-radius: 20px !important;
+    transition: background-color 0.2s ease !important;
+
+    &:hover {
+      background: #e39599 !important;
+    }
+
+    &:active {
+      transform: translateY(1px) !important;
+    }
   }
 
   .dropdown-selected {
@@ -187,6 +215,18 @@
     }
   }
 
+  @media (max-width: 1100px) {
+    .contact-info {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .submit-button-modal {
+      width: 100% !important;
+    }
+  }
+
   @media (max-width: 768px) {
     .custom-dropdown {
       display: flex;
@@ -210,6 +250,11 @@
       font-size: 14px;
       padding: 12px 16px !important;
     }
+
+    .submit-button-modal {
+      width: 400px !important;
+      height: 70px !important;
+    }
   }
 
   /* Tablet styles */
@@ -231,6 +276,41 @@
 
     .dropdown-options.show {
       max-height: 360px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .custom-dropdown {
+      display: flex;
+      padding: 14px 16px !important;
+    }
+
+    .dropdown-selected {
+      padding: 8px;
+
+      span {
+        font-size: 14px;
+      }
+    }
+
+    .dropdown-options {
+      max-height: 0;
+    }
+
+    .dropdown-options.show {
+      max-height: 320px;
+    }
+
+    .dropdown-option {
+      font-size: 14px;
+      padding: 12px 16px !important;
+    }
+
+    .submit-button-modal {
+      width: 350px !important;
+      height: 65px !important;
+      border-radius: 5px !important;
+      padding: 0 !important;
     }
   }
 
@@ -308,7 +388,6 @@
       initDropdown() {
         if (!this.quantityDropdown) return;
 
-        // Click handler for entire dropdown container
         this.quantityDropdown.addEventListener('click', (e) => {
           e.stopPropagation();
           this.toggleDropdown();
@@ -316,7 +395,7 @@
 
         this.quantityOptions.addEventListener('click', (e) => {
           if (e.target.classList.contains('dropdown-option')) {
-            e.stopPropagation(); // Запобігаємо спливанню події
+            e.stopPropagation();
             this.selectOption(e.target);
           }
         });
@@ -356,7 +435,6 @@
         this.quantityDropdown.classList.add('dropdown-open');
         this.quantitySelected.classList.add('active');
 
-        // Використовуємо requestAnimationFrame для плавної анімації
         requestAnimationFrame(() => {
           this.quantityOptions.style.maxHeight = totalHeight + 'px';
           this.quantityOptions.classList.add('show');
@@ -374,15 +452,13 @@
         this.quantityOptions.classList.remove('show');
         this.quantitySelected.classList.remove('active');
 
-        // Використовуємо requestAnimationFrame для плавної анімації
         requestAnimationFrame(() => {
           this.quantityOptions.style.maxHeight = '0px';
         });
 
-        // Прибираємо dropdown-open клас з затримкою після завершення анімації
         setTimeout(() => {
           this.quantityDropdown.classList.remove('dropdown-open');
-        }, 350); // 350ms = тривалість transition
+        }, 350);
       }
 
       getOptionHeight() {

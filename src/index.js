@@ -346,7 +346,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize desktop products slider with responsive configuration (2 cards, 51 gap, move by 2)
   new CustomSlider(".swiper-container-products", {
-    autoplay: false,
+    autoplay: true,
     loop: true,
     slidesPerView: 1,
     slidesPerGroup: 1,
