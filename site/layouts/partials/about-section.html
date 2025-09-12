@@ -31,11 +31,11 @@
     {{ $aboutMobileProcessed := $aboutMobile.Resize "572x400 webp q80" }}
     <img src="{{ $aboutMobileProcessed.RelPermalink }}"
       alt="Про нас - українська компанія високотехнологічного виробництва" class=" mb-6 w-full h-auto origin-left" width="{{ $aboutMobileProcessed.Width }}" 
-  height="{{ $aboutMobileProcessed.Height }}"/>
+  height="{{ $aboutMobileProcessed.Height }}" fetchpriority="high" />
     {{ else }}
     <img src="/img/about-mob.png" alt="Про нас - українська компанія високотехнологічного виробництва"
       class=" mb-6 w-full h-auto origin-left" width="{{ $aboutMobileProcessed.Width }}" 
-  height="{{ $aboutMobileProcessed.Height }}"/>
+  height="{{ $aboutMobileProcessed.Height }} " fetchpriority="high" />
     {{ end }}
 
     <!-- Mobile content -->
