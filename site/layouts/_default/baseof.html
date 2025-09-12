@@ -55,7 +55,7 @@
   <link rel="stylesheet" href="http://localhost:3000/main.css">
   {{ else }}
   <!-- PRODUCTION fallback якщо webpack.json не знайдено -->
-  <link rel="stylesheet" href="{{ " main.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "main.css" | relURL }}">
   {{ end }}
 
   <!-- Google Fonts -->
@@ -125,7 +125,7 @@
   <script src="http://localhost:3000/main.js"></script>
   {{ else }}
   <!-- PRODUCTION fallback -->
-  <script src="{{ " main.js" | relURL }}" defer></script>
+  <script src="{{ "main.js" | relURL }}" defer></script>
   {{ end }}
 
   <script>
