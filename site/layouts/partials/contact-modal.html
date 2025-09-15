@@ -8,7 +8,6 @@
             stroke-linejoin="round" />
         </svg>
       </button>
-
       <!-- Modal Header -->
       <div class="modal-header">
         <h2 id="contactModalTitle" class="modal-title font-['Unbounded']">
@@ -16,9 +15,7 @@
           зв'яжемось з Вами <br /> та повідомимо про актуальні ціни
         </h2>
       </div>
-
       <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
-
       <!-- Contact Form -->
       <form class="contact-form" id="contactForm" novalidate>
         <div class="form-row">
@@ -108,16 +105,16 @@
   }
 
   .toast--error {
-    background: #fee;
-    color: #c33;
-    border-color: #fcc;
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
+    color: #fff !important;
+    border-color: transparent !important;
   }
 
-  .toast--success {
-    background: #f0fff4;
-    color: #22543d;
-    border-color: #9ae6b4;
-  }
+ .toast--success {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+}
 
   /* Custom Dropdown Styles */
   .custom-dropdown {
