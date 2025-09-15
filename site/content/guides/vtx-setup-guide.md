@@ -9,6 +9,7 @@ tags:
   - налаштування
   - FPV
 draft: false
+slug: Vtx2 settings
 ---
 
 

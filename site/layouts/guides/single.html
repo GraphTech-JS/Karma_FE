@@ -4,7 +4,8 @@
     <div
       class="mb-[15px] md:mb-[33px] flex flex-col sm:flex-row sm:items-center sm:justify-between font-[Montserrat] gap-[7px]">
       <div class="flex flex-wrap items-center">
-        <a class="font-[Montserrat] text-[16px] lg:text-[20px] font-normal text-[#ba0108] hover:underline leading-[120%]" href="/">
+        <a class="font-[Montserrat] text-[16px] lg:text-[20px] font-normal text-[#ba0108] hover:underline leading-[120%]"
+          href="/">
           Головна
         </a>
         <span class="text-[#ba0108] sm:inline px-[5px]">&rarr;</span>
@@ -47,7 +48,8 @@
       <div class="bg-[#F6F6F6] max-w-[285px] h-full rounded-[5px] hidden lg:block">
         <aside class="relative pt-0 pr-0 pl-0">
           <div class="p-0">
-            <nav id="left-category-nav" class="pt-[8px] fixed space-y-[20px]" style="width: 285px; max-height: calc(100vh - 200px); overflow-y: auto;">
+            <nav id="left-category-nav" class="pt-[8px] fixed space-y-[20px]"
+              style="width: 285px; max-height: calc(100vh - 200px); overflow-y: auto;">
               {{ $categories := slice "БПЛА" "Політні стеки" "Відеопередавачі" "ESC" }}
               {{ $guides := where .Site.RegularPages "Section" "guides" }}
               {{ range $index, $category := $categories }}
@@ -64,7 +66,7 @@
                   style="border-left: 1px solid #e0e0e0; margin-left: 36px; padding-left: 16px;  padding-right: 10px; ">
                   {{ range $categoryGuides }}
                   <li>
-                    <a href="{{ .Permalink }}"
+                    <a href="{{ .RelPermalink }}"
                       class="block text-[16px] font-normal font-[Montserrat] {{ if eq .Title $.Title }}text-[#ba0108]{{ else }}hover:text-[#ba0108] transition-colors{{ end }}">
                       {{ .Title }}
                     </a>
@@ -93,46 +95,50 @@
             </div>
           </div>
         </div>
-{{ if .Params.image }}
-<div class="relative overflow-hidden rounded-xl border border-[#E5E5E5]">
-  {{ $customImage := resources.Get .Params.image }}
-  {{ if $customImage }}
-  {{ $desktop1x := $customImage.Resize "900x webp q80" }}
-  {{ $desktop2x := $customImage.Resize "1800x webp q80" }}
-  <img src="{{ $desktop1x.RelPermalink }}" srcset="{{ $desktop1x.RelPermalink }} 1x, {{ $desktop2x.RelPermalink }} 2x"
-    alt="{{ .Title }}" class="hidden w-full h-auto sm:block"
-    width="{{ $customImage.Width }}" height="{{ $customImage.Height }}" loading="lazy" decoding="async" />
-  {{ end }}
+        {{ if .Params.image }}
+        <div class="relative overflow-hidden rounded-xl border border-[#E5E5E5]">
+          {{ $customImage := resources.Get .Params.image }}
+          {{ if $customImage }}
+          {{ $desktop1x := $customImage.Resize "900x webp q80" }}
+          {{ $desktop2x := $customImage.Resize "1800x webp q80" }}
+          <img src="{{ $desktop1x.RelPermalink }}"
+            srcset="{{ $desktop1x.RelPermalink }} 1x, {{ $desktop2x.RelPermalink }} 2x" alt="{{ .Title }}"
+            class="hidden w-full h-auto sm:block" width="{{ $customImage.Width }}" height="{{ $customImage.Height }}"
+            loading="lazy" decoding="async" />
+          {{ end }}
 
-  {{ $droneManMobile := resources.Get "img/drone-man-mobile.png" }}
-  {{ if $droneManMobile }}
-  {{ $mobile1x := $droneManMobile.Resize "480x webp q80" }}
-  {{ $mobile2x := $droneManMobile.Resize "960x webp q80" }}
-  <img src="{{ $mobile1x.RelPermalink }}" srcset="{{ $mobile1x.RelPermalink }} 1x, {{ $mobile2x.RelPermalink }} 2x"
-    alt="{{ .Title }}" class="w-full h-auto sm:hidden"
-    width="{{ $droneManMobile.Width }}" height="{{ $droneManMobile.Height }}" decoding="async" />
-  {{ end }}
-</div>
-{{ else }}
-<div class="relative overflow-hidden rounded-xl border border-[#E5E5E5]">
-  {{ $droneMan := resources.Get "img/drone-man.png" }}
-  {{ if $droneMan }}
-  {{ $desktop1x := $droneMan.Resize "900x webp q80" }}
-  {{ $desktop2x := $droneMan.Resize "1800x webp q80" }}
-  <img src="{{ $desktop1x.RelPermalink }}" srcset="{{ $desktop1x.RelPermalink }} 1x, {{ $desktop2x.RelPermalink }} 2x"
-    alt="Drone Man" class="hidden w-full h-auto sm:block"
-    width="{{ $droneMan.Width }}" height="{{ $droneMan.Height }}" loading="lazy" decoding="async" />
-  {{ end }}
-  {{ $droneManMobile := resources.Get "img/drone-man-mobile.png" }}
-  {{ if $droneManMobile }}
-  {{ $mobile1x := $droneManMobile.Resize "480x webp q80" }}
-  {{ $mobile2x := $droneManMobile.Resize "960x webp q80" }}
-  <img src="{{ $mobile1x.RelPermalink }}" srcset="{{ $mobile1x.RelPermalink }} 1x, {{ $mobile2x.RelPermalink }} 2x"
-    alt="Drone Man" class="w-full h-auto sm:hidden"
-    width="{{ $droneManMobile.Width }}" height="{{ $droneManMobile.Height }}" decoding="async" />
-  {{ end }}
-</div>
-{{ end }}
+          {{ $droneManMobile := resources.Get "img/drone-man-mobile.png" }}
+          {{ if $droneManMobile }}
+          {{ $mobile1x := $droneManMobile.Resize "480x webp q80" }}
+          {{ $mobile2x := $droneManMobile.Resize "960x webp q80" }}
+          <img src="{{ $mobile1x.RelPermalink }}"
+            srcset="{{ $mobile1x.RelPermalink }} 1x, {{ $mobile2x.RelPermalink }} 2x" alt="{{ .Title }}"
+            class="w-full h-auto sm:hidden" width="{{ $droneManMobile.Width }}" height="{{ $droneManMobile.Height }}"
+            decoding="async" />
+          {{ end }}
+        </div>
+        {{ else }}
+        <div class="relative overflow-hidden rounded-xl border border-[#E5E5E5]">
+          {{ $droneMan := resources.Get "img/drone-man.png" }}
+          {{ if $droneMan }}
+          {{ $desktop1x := $droneMan.Resize "900x webp q80" }}
+          {{ $desktop2x := $droneMan.Resize "1800x webp q80" }}
+          <img src="{{ $desktop1x.RelPermalink }}"
+            srcset="{{ $desktop1x.RelPermalink }} 1x, {{ $desktop2x.RelPermalink }} 2x" alt="Drone Man"
+            class="hidden w-full h-auto sm:block" width="{{ $droneMan.Width }}" height="{{ $droneMan.Height }}"
+            loading="lazy" decoding="async" />
+          {{ end }}
+          {{ $droneManMobile := resources.Get "img/drone-man-mobile.png" }}
+          {{ if $droneManMobile }}
+          {{ $mobile1x := $droneManMobile.Resize "480x webp q80" }}
+          {{ $mobile2x := $droneManMobile.Resize "960x webp q80" }}
+          <img src="{{ $mobile1x.RelPermalink }}"
+            srcset="{{ $mobile1x.RelPermalink }} 1x, {{ $mobile2x.RelPermalink }} 2x" alt="Drone Man"
+            class="w-full h-auto sm:hidden" width="{{ $droneManMobile.Width }}" height="{{ $droneManMobile.Height }}"
+            decoding="async" />
+          {{ end }}
+        </div>
+        {{ end }}
 
         <div class="mt-[10px] markdown-content">
           {{ .Content }}
@@ -142,7 +148,8 @@
       <aside class="hidden relative md:block pt-0 lg:pt-[27px]">
         <nav>
           <div class="h-full">
-            <nav  id="right-toc-nav" class="fixed" style="width: 200px; max-height: calc(100vh - 200px); overflow-y: auto;">
+            <nav id="right-toc-nav" class="fixed"
+              style="width: 200px; max-height: calc(100vh - 200px); overflow-y: auto;">
               <h4 class="font-[Montserrat] text-[16px] font-medium text-[#ba0108] mb-[20px]">
                 На цій сторінці
               </h4>
@@ -217,7 +224,7 @@
     scrollbar-width: none;
   }
 
-  
+
 
   #markdown {
     border-radius: 10px;
@@ -422,7 +429,7 @@
         tocList.appendChild(li);
       });
     }
-   const leftSidebar = document.getElementById('left-category-nav');
+    const leftSidebar = document.getElementById('left-category-nav');
     const rightSidebar = document.getElementById('right-toc-nav');
     const footer = document.querySelector('footer');
 

@@ -3,8 +3,7 @@
 {{ $className := .className | default "" }}
 {{ $titleClassName := .titleClassName | default "" }}
 
-<section class="relative flex flex-col items-center {{ $className }}"
-    aria-labelledby="accordion-heading">
+<section class="relative flex flex-col items-center {{ $className }}" aria-labelledby="accordion-heading">
     <div class="w-full max-w-[1280px] px-[20px]">
         {{ if $title }}
         <h2 id="accordion-heading"
@@ -12,20 +11,25 @@
             {{ $title }}
         </h2>
         {{ end }}
-        <div class="w-full mx-auto flex flex-col gap-[clamp(20px,3vw,30px)]"
-            data-accordion-list role="list" aria-label="Список питань та відповідей">
+        <div class="w-full mx-auto flex flex-col gap-[clamp(20px,3vw,30px)]" data-accordion-list role="list"
+            aria-label="Список питань та відповідей">
             {{ range $index, $item := $items }}
             <div class="accordion-wrapper" role="listitem">
                 <details class="accordion-root group border-b border-[#303030]">
-                    <summary class="flex cursor-pointer select-none accordion-summary"
+                    <summary
+                        class="flex !justify-center items-start md:items-center cursor-pointer p-[15px] select-none accordion-summary"
                         aria-label="Розгорнути відповідь на питання: {{ .question }}">
-                        <h3 class="font-[Montserrat] text-[clamp(16px,2vw,24px)] font-medium ">
+                        <h3
+                            class="md:font-[Montserrat] font-[Unbounded] text-[16px] md:text-[20px] lg:text-[24px] leading-[120%] font-medium accordion-question-text">
                             {{ .question }}</h3>
-                        <img src="/img/arrow.svg" alt="Іконка розгортання" width="20" height="20"
-                            class="accordion-icon" />
+                        <svg class="accordion-icon" width="20" height="12" viewBox="0 0 20 12" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1L10 10L19 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
                     </summary>
-                    <div class="accordion-content">
-                        <p class="font-[Montserrat] text-[clamp(16px,2vw,20px)] font-normal text-[#1f2937]">
+                    <div class="accordion-content-wrapper js-accordion-content">
+                        <p class="md:font-[Montserrat] font-[Unbounded] py-[16px] px-[21px] text-[clamp(16px,2vw,20px)] text-[#000000]">
                             {{ .answer }}
                         </p>
                     </div>
@@ -39,26 +43,14 @@
 <style>
     .accordion-wrapper {
         width: 100%;
-    }
-
-  
-
-
-
-    .accordion-root {
-        max-width: 100%;
-        margin: 0 auto;
+        margin-bottom: clamp(15px, 2vw, 20px);
     }
 
     .accordion-summary {
         position: relative !important;
-        display: flex !important;
-        align-items: center !important;
-        padding: clamp(12px, 2vw, 19px) clamp(20px, 4vw, 45px) !important;
-        transition: background-color 400ms ease, color 400ms ease !important;
+        transition: background-color 400ms ease !important;
         background: #fff !important;
         color: #020303 !important;
-        cursor: pointer;
         min-height: clamp(60px, 8vw, 80px) !important;
     }
 
@@ -70,178 +62,179 @@
         content: '';
     }
 
-    .accordion-root[open] .accordion-summary {
+    .accordion-root.is-open .accordion-summary {
         background: #ba0108 !important;
         color: #fff !important;
     }
 
     .accordion-icon {
         margin-left: auto !important;
-        width: clamp(20px, 3vw, 33px) !important;
-        height: clamp(12px, 2vw, 18px) !important;
+        width: clamp(25px, 3vw, 33px) !important;
+        height: clamp(15px, 2vw, 18px) !important;
         transform: rotate(0deg) !important;
-        transition: transform 500ms ease-in-out, filter 300ms ease-in-out !important;
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
         filter: brightness(0) !important;
+        flex-shrink: 0 !important;
+        transform-origin: center !important;
     }
 
-    .accordion-root[open] .accordion-icon {
-        transform: rotate(-180deg) !important;
+    .accordion-root.is-open .accordion-icon {
+        transform: rotate(180deg) !important;
         filter: brightness(0) invert(1) !important;
     }
 
-    .accordion-root::details-content {
-        transition: block-size 600ms, content-visibility 600ms allow-discrete !important;
-        overflow: hidden !important;
-        block-size: 0 !important;
-        inline-size: 100% !important;
-        content-visibility: hidden !important;
-    }
-
-    .accordion-root[open]::details-content {
-        block-size: auto !important;
-        content-visibility: visible !important;
-    }
-
-    .accordion-content {
-        overflow: visible !important;
-        max-height: none !important;
-        opacity: 1 !important;
-        transition: none !important;
-        width: 100% !important;
-        padding: clamp(8px, 2vw, 12px) clamp(20px, 4vw, 46px) !important;
-    }
-
-
-
-    @media (max-width: 1240px) {
-        .accordion-summary {
-            padding-left: 24px !important;
-            padding-right: 24px !important;
-        }
-    }
-
-    @media (max-width: 960px) {
-        .accordion-summary {
-            padding-left: 20px !important;
-            padding-right: 20px !important;
-        }
-    }
-
-    @media (max-width: 800px) {
-        .accordion-summary {
-            padding-left: 16px !important;
-            padding-right: 16px !important;
-        }
-    }
-
-    @media (max-width: 1024px) {
-        .accordion-summary {
-            padding-left: clamp(16px, 3vw, 20px) !important;
-            padding-right: clamp(16px, 3vw, 20px) !important;
-            min-height: clamp(60px, 8vw, 70px) !important;
-        }
-
-        .accordion-content {
-            padding: clamp(8px, 2vw, 10px) clamp(16px, 3vw, 20px) !important;
-        }
-
-        .accordion-icon {
-            width: clamp(20px, 3vw, 25px) !important;
-            height: clamp(12px, 2vw, 15px) !important;
-        }
-    }
-
-    @media (max-width: 1240px) {
-        .accordion-summary {
-            padding-left: 24px !important;
-            padding-right: 24px !important;
-        }
-    }
-
-    @media (max-width: 960px) {
-        .accordion-summary {
-            padding-left: 20px !important;
-            padding-right: 20px !important;
-        }
-    }
-
-    @media (max-width: 800px) {
-        .accordion-summary {
-            padding-left: 16px !important;
-            padding-right: 16px !important;
-        }
-    }
-
     @media (max-width: 560px) {
-        .accordion-wrapper {
-            margin: 0 auto !important;
-        }
-
-        .accordion-root {
-            max-width: 100% !important;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-        }
-
-        .accordion-content {
-            padding: clamp(8px, 2vw, 10px) !important;
-        }
-
-        .accordion-summary {
-            padding-left: clamp(12px, 3vw, 16px) !important;
-            padding-right: clamp(12px, 3vw, 16px) !important;
-        }
-
         .accordion-icon {
             align-self: flex-start !important;
-            margin-top: 0 !important;
         }
 
         .accordion-question-text {
-            display: -webkit-box !important;
-            -webkit-line-clamp: 3 !important;
-            -webkit-box-orient: vertical !important;
-            overflow: hidden !important;
-            padding-right: 6px !important;
             text-align: left !important;
         }
     }
 </style>
 
 <script>
-(function () {
-    var lists = document.querySelectorAll('[data-accordion-list]');
-    lists.forEach(function (list) {
-        var items = Array.prototype.slice.call(
-            list.querySelectorAll('.faq-acc-root')
-        );
-        items.forEach(function (item) {
-            var contentWrapper = item.querySelector('.accordion-content');
-            contentWrapper.style.maxHeight = "0px";
-            contentWrapper.style.overflow = "hidden";
-            contentWrapper.style.transition = "max-height 0.5s ease, opacity 0.4s ease";
-            contentWrapper.style.opacity = "0";
+    (function () {
+        function initAccordion() {
+            var lists = document.querySelectorAll('[data-accordion-list]');
+            if (!lists || lists.length === 0) return;
+            lists.forEach(function (list) {
+                var items = Array.prototype.slice.call(
+                    list.querySelectorAll('.accordion-root')
+                );
+                items.forEach(function (item) {
+                    var contentWrapper = item.querySelector('.accordion-content-wrapper');
+                    contentWrapper.style.overflow = "hidden";
+                    contentWrapper.style.transition = "max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.1s";
+                    if (item.open) {
+                        contentWrapper.style.maxHeight = contentWrapper.scrollHeight + "px";
+                        contentWrapper.style.opacity = "1";
+                        item.classList.add('is-open');
+                        requestAnimationFrame(function () {
+                            setTimeout(function () {
+                                if (item.open) contentWrapper.style.maxHeight = '';
+                            }, 50);
+                        });
+                    } else {
+                        contentWrapper.style.maxHeight = "0px";
+                        contentWrapper.style.opacity = "0";
+                        item.classList.remove('is-open');
+                    }
+                    item._animating = false;
 
-            item.addEventListener('toggle', function () {
-                if (item.open) {
-                    items.forEach(function (other) {
-                        if (other !== item) {
-                            other.open = false;
-                            var otherContent = other.querySelector('.accordion-content');
-                            otherContent.style.maxHeight = "0px";
-                            otherContent.style.opacity = "0";
-                        }
-                    });
+                    function smoothClose() {
+                        if (item._animating) return;
+                        item._animating = true;
 
-                    contentWrapper.style.maxHeight = contentWrapper.scrollHeight + "px";
-                    contentWrapper.style.opacity = "1";
+                        var startHeight = contentWrapper.scrollHeight;
+                        contentWrapper.style.maxHeight = startHeight + 'px';
+                        contentWrapper.offsetHeight; // force reflow
+
+                        item.classList.remove('is-open');
+                        requestAnimationFrame(function () {
+                            contentWrapper.style.maxHeight = '0px';
+                            contentWrapper.style.opacity = '0';
+                        });
+
+                        setTimeout(function () {
+                            item.open = false;
+                            item._animating = false;
+                        }, 400);
+                    }
+
+                    function smoothOpen() {
+                        if (item._animating) return;
+                        item._animating = true;
+
+                        // Close all other accordions with animation
+                        items.forEach(function (otherItem) {
+                            if (otherItem !== item && otherItem.classList.contains('is-open') && !otherItem._animating) {
+                                otherItem._animating = true;
+                                var otherWrapper = otherItem.querySelector('.accordion-content-wrapper');
+                                var otherHeight = otherWrapper.scrollHeight;
+                                otherWrapper.style.maxHeight = otherHeight + 'px';
+                                otherWrapper.offsetHeight; // force reflow
+
+                                otherItem.classList.remove('is-open');
+                                requestAnimationFrame(function () {
+                                    otherWrapper.style.maxHeight = '0px';
+                                    otherWrapper.style.opacity = '0';
+                                });
+
+                                setTimeout(function () {
+                                    otherItem.open = false;
+                                    otherItem._animating = false;
+                                }, 400);
+                            }
+                        });
+
+                        item.open = true;
+                        contentWrapper.style.maxHeight = '0px';
+                        contentWrapper.style.opacity = '0';
+
+                        var full = contentWrapper.scrollHeight;
+                        item.classList.add('is-open');
+
+                        requestAnimationFrame(function () {
+                            contentWrapper.style.maxHeight = full + 'px';
+                            contentWrapper.style.opacity = '1';
+                        });
+
+                        setTimeout(function () {
+                            if (item.classList.contains('is-open')) {
+                                contentWrapper.style.maxHeight = 'auto';
+                            }
+                            item._animating = false;
+                        }, 400);
+                    }
+
+                    var summary = item.querySelector('summary');
+                    if (summary) {
+                        summary.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            if (item._animating) return;
+                            if (item.classList.contains('is-open')) {
+                                smoothClose();
+                            } else {
+                                smoothOpen();
+                            }
+                        });
+                    }
+                });
+            });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initAccordion);
+        } else {
+            initAccordion();
+        }
+    })();
+
+    // Hero title animation
+    function animateHeroTitle() {
+        const heroTitles = document.querySelectorAll('.hero-title');
+
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
                 } else {
-
-                    contentWrapper.style.maxHeight = "0px";
-                    contentWrapper.style.opacity = "0";
+                    entry.target.classList.remove('animate');
                 }
             });
+        }, observerOptions);
+
+        heroTitles.forEach(title => {
+            observer.observe(title);
         });
-    });
-})();
+    }
+
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', animateHeroTitle);
 </script>

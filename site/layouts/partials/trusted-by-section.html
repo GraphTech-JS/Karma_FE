@@ -17,17 +17,45 @@
 
             <div class="logo-container flex flex-col items-center justify-between h-[140px] gap-[15px]">
               {{ if eq $c.logo "/img/mriadrone.png" }}
+              {{ $mriadrone := resources.Get "img/mriadrone.png" }}
+              {{ if $mriadrone }}
+              {{ $mriadroneProcessed := $mriadrone.Resize "131x102 webp q85" }}
+              <img src="{{ $mriadroneProcessed.RelPermalink }}" alt="{{ $c.alt }}"
+                class="object-contain w-[165px] h-[102px]" loading="lazy" width="131" height="102" />
+              {{ else }}
               <img src="{{ $c.logo }}" alt="{{ $c.alt }}" class="object-contain w-[165px] h-[102px]" loading="lazy"
                 width="165" height="102" />
+              {{ end }}
               {{ else if eq $c.logo "/img/magura.png" }}
+              {{ $magura := resources.Get "img/magura.png" }}
+              {{ if $magura }}
+              {{ $maguraProcessed := $magura.Resize "165x57 webp q85" }}
+              <img src="{{ $maguraProcessed.RelPermalink }}" alt="{{ $c.alt }}"
+                class="object-contain w-[165px] h-[102px]" loading="lazy" width="165" height="57" />
+              {{ else }}
               <img src="{{ $c.logo }}" alt="{{ $c.alt }}" class="object-contain w-[165px] h-[102px]" loading="lazy"
                 width="165" height="102" />
+              {{ end }}
               {{ else if eq $c.logo "/img/toro.png" }}
+              {{ $toro := resources.Get "img/toro.png" }}
+              {{ if $toro }}
+              {{ $toroProcessed := $toro.Resize "165x26 webp q85" }}
+              <img src="{{ $toroProcessed.RelPermalink }}" alt="{{ $c.alt }}" class="object-contain w-[165px] h-[71px]"
+                loading="lazy" width="165" height="26" />
+              {{ else }}
               <img src="{{ $c.logo }}" alt="{{ $c.alt }}" class="object-contain w-[165px] h-[71px]" loading="lazy"
                 width="165" height="71" />
+              {{ end }}
               {{ else if eq $c.logo "/img/drone.png" }}
+              {{ $drone := resources.Get "img/drone.png" }}
+              {{ if $drone }}
+              {{ $droneProcessed := $drone.Resize "117x91 webp q85" }}
+              <img src="{{ $droneProcessed.RelPermalink }}" alt="{{ $c.alt }}" class="object-contain w-[169px] h-[91px]"
+                loading="lazy" width="117" height="91" />
+              {{ else }}
               <img src="{{ $c.logo }}" alt="{{ $c.alt }}" class="object-contain w-[169px] h-[91px]" loading="lazy"
                 width="169" height="91" />
+              {{ end }}
               {{ else }}
               <img src="{{ $c.logo }}" alt="{{ $c.alt }}" class="object-contain max-w-[160px]" loading="lazy" />
               {{ end }}
