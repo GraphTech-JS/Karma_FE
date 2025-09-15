@@ -10,6 +10,7 @@ tags:
   - навчання
   - початківці
 draft: false
+slug: "Basics of FPV flight for beginners: part 1"
 ---
 
 

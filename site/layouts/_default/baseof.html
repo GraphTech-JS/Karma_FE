@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ $.Site.Language.Lang }}">
+<html lang="{{ .Site.LanguageCode | default .Site.Language.Lang }}">
 {{- $assets := .Site.Data.webpack.main -}}
 
 <head>

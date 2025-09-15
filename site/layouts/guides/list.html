@@ -1,5 +1,4 @@
 {{ define "main" }}
-{{/* Get all guides and categories */}}
 {{ $guides := where .Site.RegularPages "Section" "guides" }}
 {{ $categories := slice "БПЛА" "Політні стеки" "Відеопередавачі" "ESC" }}
 
@@ -51,7 +50,7 @@
                   style="border-left: 1px solid #e0e0e0; margin-left: 36px; padding-left: 16px;  padding-right: 10px; ">
                   {{ range $categoryGuides }}
                   <li>
-                    <a href="{{ .Permalink }}"
+                    <a href="{{ .RelPermalink  }}"
                       class="block text-[16px] font-normal font-[Montserrat] hover:text-[#ba0108] transition-colors">
                       {{ .Title }}
                     </a>

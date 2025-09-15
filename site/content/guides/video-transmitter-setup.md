@@ -5,6 +5,7 @@ date: 2024-01-15
 draft: false
 category: "Відеопередавачі"
 tags: ["FPV", "відеопередавач", "налаштування", "частоти"]
+slug: "Video Transmitter Setup for FPV"
 ---
 
 

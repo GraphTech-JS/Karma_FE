@@ -1,29 +1,45 @@
 <section class="bg-white min-h-[300px] md:min-h-[500px] relative overflow-hidden flex justify-center items-center">
   <!-- Background decorative elements - optimized for mobile -->
-    {{ $bgEl1 := resources.Get "img/bg-el-1.png" }}
-    {{ if $bgEl1 }}
-    {{ $bgEl1Processed := $bgEl1.Resize "420x webp q80" }}
-    <img src="{{ $bgEl1Processed.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
+  {{ $bgEl1 := resources.Get "img/bg-el-1.png" }}
+  {{ if $bgEl1 }}
+  {{ $bgEl1Mobile := $bgEl1.Resize "171x webp q85" }}
+  {{ $bgEl1Tablet := $bgEl1.Resize "217x webp q85" }}
+  {{ $bgEl1Desktop := $bgEl1.Resize "266x webp q85" }}
+  {{ $bgEl1Large := $bgEl1.Resize "340x webp q85" }}
+  <picture>
+    <source media="(max-width: 767px)" srcset="{{ $bgEl1Mobile.RelPermalink }}" type="image/webp">
+    <source media="(max-width: 1023px)" srcset="{{ $bgEl1Tablet.RelPermalink }}" type="image/webp">
+    <source media="(max-width: 1279px)" srcset="{{ $bgEl1Desktop.RelPermalink }}" type="image/webp">
+    <source media="(min-width: 1280px)" srcset="{{ $bgEl1Large.RelPermalink }}" type="image/webp">
+    <img src="{{ $bgEl1Large.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
       class="absolute z-[1] right-[-40px] lg:right-[-14px] xl:right-0 top-[-42px] md:top-[-65px] lg:top-[-60px] xl:top-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto" />
-    {{ else }}
-    <img src="/img/bg-el-1.png" alt="Декоративний фоновий елемент" aria-hidden="true"
-      class="absolute z-[1] right-[-40px] lg:right-[-14px] xl:right-0 top-[-42px] md:top-[-65px] lg:top-[-60px] xl:top-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto" />
-    {{ end }}
-    
-    {{ $bgEl2 := resources.Get "img/bg-el-2.png" }}
-    {{ if $bgEl2 }}
-    {{ $bgEl2Processed := $bgEl2.Resize "420x webp q80" }}
-    <img src="{{ $bgEl2Processed.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
-      class="absolute z-[1] hidden md:block    bottom-0 left-0 w-[171px] md:w-[217px]  lg:w-[266px] xl:w-[340px] h-auto" />
-    {{ else }}
-    <img src="/img/bg-el-2.png" alt="Декоративний фоновий елемент" aria-hidden="true"
-      class="absolute z-[1] hidden md:block bottom-0 left-0 w-[171px] md:w-[217px] lg:w-[266px]  xl:w-[340px] h-auto" />
-    {{ end }}
+  </picture>
+  {{ else }}
+  <img src="/img/bg-el-1.png" alt="Декоративний фоновий елемент" aria-hidden="true"
+    class="absolute z-[1] right-[-40px] lg:right-[-14px] xl:right-0 top-[-42px] md:top-[-65px] lg:top-[-60px] xl:top-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto" />
+  {{ end }}
+
+  {{ $bgEl2 := resources.Get "img/bg-el-2.png" }}
+  {{ if $bgEl2 }}
+  {{ $bgEl2Tablet := $bgEl2.Resize "217x webp q85" }}
+  {{ $bgEl2Desktop := $bgEl2.Resize "266x webp q85" }}
+  {{ $bgEl2Large := $bgEl2.Resize "340x webp q85" }}
+  <picture>
+    <source media="(max-width: 1023px)" srcset="{{ $bgEl2Tablet.RelPermalink }}" type="image/webp">
+    <source media="(max-width: 1279px)" srcset="{{ $bgEl2Desktop.RelPermalink }}" type="image/webp">
+    <source media="(min-width: 1280px)" srcset="{{ $bgEl2Large.RelPermalink }}" type="image/webp">
+    <img src="{{ $bgEl2Large.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
+      class="absolute z-[1] hidden md:block bottom-0 left-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto" />
+  </picture>
+  {{ else }}
+  <img src="/img/bg-el-2.png" alt="Декоративний фоновий елемент" aria-hidden="true"
+    class="absolute z-[1] hidden md:block bottom-0 left-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto" />
+  {{ end }}
 
   <!-- Content (desktop + mobile як було) -->
   <div class="hidden md:block mx-auto relative z-[2] pl-[40px]">
     <div class="flex justify-between items-center">
-      <div class="flex flex-col gap-[35px] flex-1">
+      <div class="flex flex-col flex-1">
         <div class="flex flex-col">
           <h1
             class="font-['Unbounded'] font-bold text-[#ba0108] md:text-[48px] lg:text-[64px] leading-[1.1] mb-2 hero-title">

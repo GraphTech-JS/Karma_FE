@@ -5,11 +5,11 @@
     <div class="flex flex-col gap-4 mb-8 lg:flex-row lg:items-center lg:justify-between px-8 max-[450px]:px-5">
       <!-- Breadcrumbs -->
       <div class="flex items-center justify-start gap-2 text-[var(--color-karma-red)] font-[Montserrat]">
-        <a class="font-[Montserrat] text-[clamp(16px,2vw,20px)] font-normal text-[#ba0108]" href="/">
+        <a class="font-[Montserrat] text-[clamp(16px,2vw,20px)] font-normal text-[#ba0108]" href="{{ "/" | relLangURL }}">
           Головна
         </a>
         <span class="text-[#ba0108]">→</span>
-        <a class="font-[Montserrat] text-[clamp(16px,2vw,20px)] font-normal text-[#ba0108]" href="/knowledge-base">
+        <a class="font-[Montserrat] text-[clamp(16px,2vw,20px)] font-normal text-[#ba0108]" href="{{ "/knowledge-base/" | relLangURL }}">
           База знань
         </a>
       </div>
@@ -34,7 +34,7 @@
       {{ $guides := where .Site.RegularPages "Section" "guides" }}
       {{ range $index, $category := $categories }}
       {{ $categoryGuides := where $guides ".Params.category" $category }}
-  <details {{ if eq $index 0 }}open{{ end }} class="overflow-visible relative z-30 mb-0 border-0 knowledge-section group">
+      <details {{ if eq $index 0 }}open{{ end }} class="overflow-visible relative z-30 mb-0 border-0 knowledge-section group">
         <summary
           class="section-header bg-[#4a4a4a] text-white rounded-none cursor-pointer list-none group-open:bg-[#ba0108] mt-[40px]">
           <div class="flex justify-between items-center w-full h-[67px] md:h-[71px] lg:h-[86px] max-w-[1280px] px-[20px] mx-auto">
@@ -55,7 +55,7 @@
             <div class="knowledge-item  mx-auto max-w-[1280px] px-0 lg:px-[20px] pr-[20px]">
               <div
                 class="flex items-start py-4 transition-colors cursor-pointer select-none lg:px-8 lg:py-6 hover:bg-gray-50">
-                <a href="{{ .Permalink }}">
+                <a href="{{ .RelPermalink}}">
                 <div class="flex flex-1 gap-[11px] md:gap-[15px] items-start space-x-4">
                   <img src="/img/point.svg" alt="point" class="py-[5px] md:py-[10px]" />
                   <div class="flex-1">
@@ -66,7 +66,6 @@
                       .Params.description }} <span
                         class="text-[#ba0108] no-underline cursor-pointer text-[clamp(14px,1.5vw,16px)]">&gt;&gt;</span>
                     </p>
-
                     {{ end }}
                   </div>
                 </div>
