@@ -121,8 +121,8 @@
   to = "/guides/:splat"
   status = 301
 
-[[plugins]]
-  package = "netlify-plugin-cypress"
-
-  [plugins.inputs]
-    record = true
+# [[plugins]]
+#   package = "netlify-plugin-cypress"
+# 
+#   [plugins.inputs]
+#     record = true
