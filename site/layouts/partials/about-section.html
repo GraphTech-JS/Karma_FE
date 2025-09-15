@@ -11,16 +11,15 @@
     width="200" height="270" />
   {{ end }}
 
-  <!-- bg-el-2: тільки mobile -->
-{{ $bgEl2 := resources.Get "img/bg-el-9.png" }}
-{{ if $bgEl2 }}
-{{ $bgEl2_1x := $bgEl2.Resize "171x webp q75" }}
-{{ $bgEl2_2x := $bgEl2.Resize "342x webp q75" }}
-<img srcset="{{ $bgEl2_1x.RelPermalink }} 1x, {{ $bgEl2_2x.RelPermalink }} 2x" src="{{ $bgEl2_1x.RelPermalink }}" alt=""
-  aria-hidden="true"
-  class="about-bg-el-2 absolute z-[10] top-[calc(var(--spacing)*-3)] left-[-25px] hidden max-[640px]:block w-[171px] h-auto"
-  width="{{ $bgEl2_1x.Width }}" height="{{ $bgEl2_1x.Height }}" loading="lazy" />
-{{ end }}
+  {{ $bgEl2 := resources.Get "img/bg-el-9.png" }}
+  {{ if $bgEl2 }}
+  {{ $bgEl2_1x := $bgEl2.Resize "171x webp q75" }}
+  {{ $bgEl2_2x := $bgEl2.Resize "342x webp q75" }}
+  <img srcset="{{ $bgEl2_1x.RelPermalink }} 1x, {{ $bgEl2_2x.RelPermalink }} 2x" src="{{ $bgEl2_1x.RelPermalink }}"
+    alt="" aria-hidden="true"
+    class="about-bg-el-2 absolute z-[10] top-[calc(var(--spacing)*-3)] left-[-25px] hidden max-[640px]:block w-[171px] h-auto"
+    width="{{ $bgEl2_1x.Width }}" height="{{ $bgEl2_1x.Height }}" loading="lazy" />
+  {{ end }}
 
 
   <!-- Mobile layout -->
@@ -28,14 +27,18 @@
     <!-- Mobile image -->
     {{ $aboutMobile := resources.Get "img/about-mob.png" }}
     {{ if $aboutMobile }}
-    {{ $aboutMobileProcessed := $aboutMobile.Resize "572x400 webp q80" }}
-    <img src="{{ $aboutMobileProcessed.RelPermalink }}"
-      alt="Про нас - українська компанія високотехнологічного виробництва" class=" mb-6 w-full h-auto origin-left" width="{{ $aboutMobileProcessed.Width }}" 
-  height="{{ $aboutMobileProcessed.Height }}" fetchpriority="high" />
+    {{ $aboutMobileSmall := $aboutMobile.Resize "412x288 webp q85" }}
+    {{ $aboutMobileLarge := $aboutMobile.Resize "572x400 webp q85" }}
+    <picture>
+      <source media="(max-width: 767px)" srcset="{{ $aboutMobileSmall.RelPermalink }}" type="image/webp">
+      <source media="(min-width: 768px)" srcset="{{ $aboutMobileLarge.RelPermalink }}" type="image/webp">
+      <img src="{{ $aboutMobileLarge.RelPermalink }}"
+        alt="Про нас - українська компанія високотехнологічного виробництва" class="mb-6 w-full h-auto origin-left"
+        width="572" height="400" fetchpriority="high" />
+    </picture>
     {{ else }}
     <img src="/img/about-mob.png" alt="Про нас - українська компанія високотехнологічного виробництва"
-      class=" mb-6 w-full h-auto origin-left" width="{{ $aboutMobileProcessed.Width }}" 
-  height="{{ $aboutMobileProcessed.Height }} " fetchpriority="high" />
+      class="mb-6 w-full h-auto origin-left" width="572" height="400" fetchpriority="high" />
     {{ end }}
 
     <!-- Mobile content -->
