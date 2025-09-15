@@ -5,6 +5,7 @@ date: 2024-01-20
 draft: false
 category: "БПЛА"
 tags: ["БПЛА", "збірка", "FPV", "дрон", "інструкція"]
+slug: "Complete guide to assembling a FPV drone"
 ---
 
 

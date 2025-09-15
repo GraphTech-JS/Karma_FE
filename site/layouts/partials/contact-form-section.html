@@ -1,6 +1,18 @@
 <section id="contact-form-section"
   class="flex overflow-hidden relative justify-center items-center px-4 py-[60px] lg:py-[80px]">
 
+  {{ if .IsHome }}
+  <div class="hidden background-element1 xl:block">
+    {{ $bgEl8 := resources.Get "img/bg-contact-form-one.png" }}
+    {{ if $bgEl8 }}
+    {{ $bgEl8Processed := $bgEl8.Resize "499x webp q80" }}
+    <img src="{{ $bgEl8Processed.RelPermalink }}" alt="background-element-one" class="w-[499px] h-auto object-contain" />
+    {{ else }}
+    <img src="/img/bg-contact-form-one.png" alt="background-element-one" class="w-[499px] h-auto object-contain" />
+    {{ end }}
+  </div>
+  {{ end }}
+
   <div class="hidden background-element2 sm:block">
     {{ $bgEl5 := resources.Get "img/bg-contact-form.png" }}
     {{ if $bgEl5 }}
@@ -55,10 +67,10 @@
     </div>
     <div
       class="flex flex-col max-[640px]:gap-0 max-[1025px]:gap-5 justify-center items-center mt-8 text-center sm:flex-row sm:items-center sm:text-left md:flex-row lg:flex-row lg:items-center lg:justify-center lg:text-center xl:flex-col xl:items-start xl:text-left xl:mt-0">
-      <h5
+      <h4
         class="text-[clamp(16px,2vw,20px)] font-light sm:font-normal text-[#000] font-['Montserrat'] mb-3 sm:mb-0 lg:mb-0 xl:mb-3 leading-[120%]">
         Контактний відділ
-      </h5>
+      </h4>
       <div class="flex flex-col gap-[10px] max-[450px]:gap-1 lg:gap-0 xl:gap-0">
         <a href="tel:+380956156713" class="block text-[clamp(24px,3vw,36px)] font-normal text-[#ba0108] 
              no-underline transition-colors duration-300 ease-in-out font-['Unbounded'] 
@@ -116,9 +128,8 @@
 
   #contact-form-section .contact-input:focus,
   #contact-form-section .contact-textarea:focus {
-    outline: none;
-    border-color: #ba0108;
-    box-shadow: 0 0 0 3px rgba(186, 1, 8, 0.1);
+    outline: none !important;
+    border-color: #ba0108 !important;
   }
 
   .contact-button:hover {

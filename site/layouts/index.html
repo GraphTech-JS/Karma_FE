@@ -12,18 +12,15 @@
 
 {{ partial "our-products-section" . }}
 
-<!-- Lazy load trusted section -->
 <div class="lazy-section" data-section="trusted">
     {{ partial "trusted-by-section" . }}
 </div>
 
-<!-- Lazy load contact form -->
 <div class="lazy-section" data-section="contact">
     {{ partial "contact-form-section" . }}
 </div>
 
 <script>
-    // Lazy load sections when they come into view
     document.addEventListener('DOMContentLoaded', function () {
         const lazySections = document.querySelectorAll('.lazy-section');
 
@@ -34,13 +31,10 @@
                         const section = entry.target;
                         const sectionType = section.dataset.section;
 
-                        // Load section content
                         section.style.opacity = '1';
                         section.style.transform = 'translateY(0)';
 
-                        // Initialize sliders if needed
                         if (sectionType === 'trusted') {
-                            // Initialize trusted sliders
                             if (window.initializeTrustedSliders) {
                                 window.initializeTrustedSliders();
                             }

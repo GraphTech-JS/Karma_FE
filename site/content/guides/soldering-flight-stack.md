@@ -9,6 +9,7 @@ tags:
   - інструкція
   - поради
 draft: false
+slug: "How to properly solder a flight stack. Instructions"
 ---
 
 <section id="errors" class="scroll-mt-24">
