@@ -27,33 +27,48 @@ collections:
     i18n: true
     slug: "{{slug}}"
     fields:
-      - { label: "Назва товару", name: "title", widget: "string" , i18n: true }
-      - { label: "Опис", name: "description", widget: "text" , i18n: true }
-      - { label: "Дата створення", name: "date", widget: "datetime", i18n: "duplicate"  }
+      - { label: "Назва товару", name: "title", widget: "string", i18n: true }
+      - { label: "Опис", name: "description", widget: "text", i18n: true }
+      - {
+          label: "Дата створення",
+          name: "date",
+          widget: "datetime",
+          i18n: "duplicate",
+        }
       - {
           label: "Категорія",
           name: "category",
           widget: "select",
           options: ["politni-steky", "videoperedavachi-vtx", "esc"],
-          i18n: true
+          i18n: true,
         }
-      - { label: "ID товару", name: "product_id", widget: "string", i18n: "duplicate"  }
-      - { label: "Зображення", name: "image", widget: "image", i18n: "duplicate"  }
-      - { label: "Ціна", name: "price", widget: "number", i18n: "duplicate"  }
+      - {
+          label: "ID товару",
+          name: "product_id",
+          widget: "string",
+          i18n: "duplicate",
+        }
+      - {
+          label: "Зображення",
+          name: "image",
+          widget: "image",
+          i18n: "duplicate",
+        }
+      - { label: "Ціна", name: "price", widget: "number", i18n: "duplicate" }
       - {
           label: "Валюта",
           name: "currency",
           widget: "select",
           options: ["грн", "USD", "EUR"],
           default: "грн",
-          i18n: "duplicate" 
+          i18n: "duplicate",
         }
       - {
           label: "В наявності",
           name: "in_stock",
           widget: "boolean",
           default: true,
-          i18n: "duplicate"
+          i18n: "duplicate",
         }
       - label: "Характеристики"
         name: "specs"
@@ -62,8 +77,19 @@ collections:
         fields:
           - { label: "Назва", name: "label", widget: "string", i18n: true }
           - { label: "Значення", name: "value", widget: "string", i18n: true }
-      - { label: "Детальний опис", name: "body", widget: "markdown", i18n: true }
-      - { label: "Чернетка", name: "draft", widget: "boolean", default: false, i18n: true }
+      - {
+          label: "Детальний опис",
+          name: "body",
+          widget: "markdown",
+          i18n: true,
+        }
+      - {
+          label: "Чернетка",
+          name: "draft",
+          widget: "boolean",
+          default: false,
+          i18n: true,
+        }
   - name: "knowledge-base"
     label: "База знань"
     folder: "site/content/guides"
@@ -73,23 +99,40 @@ collections:
     fields:
       - { label: "Назва", name: "title", widget: "string", i18n: true }
       - { label: "Опис", name: "description", widget: "text", i18n: true }
-      - { label: "Дата публікації", name: "date", widget: "datetime", i18n: "duplicate" }
+      - {
+          label: "Дата публікації",
+          name: "date",
+          widget: "datetime",
+          i18n: "duplicate",
+        }
       - {
           label: "Категорія",
           name: "category",
           widget: "select",
           options: ["БПЛА", "Політні стеки", "Відеопередавачі", "ESC"],
-          i18n: true
+          i18n: true,
         }
       - label: "Теги"
         name: "tags"
         widget: "list"
         i18n: true
         required: false
-        field: { label: "Тег", name: "tag", widget: "string", i18n: true  }
-      - { label: "Зображення", name: "image", widget: "image", required: false, i18n: true  }
-      - { label: "Чернетка", name: "draft", widget: "boolean", default: false, i18n: true  }
-      - { label: "Контент", name: "body", widget: "markdown", i18n: true  }
+        field: { label: "Тег", name: "tag", widget: "string", i18n: true }
+      - {
+          label: "Зображення",
+          name: "image",
+          widget: "image",
+          required: false,
+          i18n: true,
+        }
+      - {
+          label: "Чернетка",
+          name: "draft",
+          widget: "boolean",
+          default: false,
+          i18n: true,
+        }
+      - { label: "Контент", name: "body", widget: "markdown", i18n: true }
   - name: "post"
     label: "Post"
     folder: "site/content/post"
@@ -97,11 +140,22 @@ collections:
     create: true
     i18n: true
     fields:
-      - { label: "Title", name: "title", widget: "string", i18n: true  }
-      - { label: "Publish Date", name: "date", widget: "datetime", i18n: true  }
-      - { label: "Intro Blurb", name: "description", widget: "text", i18n: true  }
-      - { label: "Image", name: "image", widget: "image", required: false, i18n: "duplicate"}
-      - { label: "Body", name: "body", widget: "markdown", i18n: true  }
+      - { label: "Title", name: "title", widget: "string", i18n: true }
+      - { label: "Publish Date", name: "date", widget: "datetime", i18n: true }
+      - {
+          label: "Intro Blurb",
+          name: "description",
+          widget: "text",
+          i18n: true,
+        }
+      - {
+          label: "Image",
+          name: "image",
+          widget: "image",
+          required: false,
+          i18n: "duplicate",
+        }
+      - { label: "Body", name: "body", widget: "markdown", i18n: true }
   - name: "pages"
     label: "Pages"
     files:
@@ -109,50 +163,70 @@ collections:
         label: "Home Page"
         name: "home"
         fields:
-          - { label: Title, name: title, widget: string, i18n: true  }
-          - { label: Subtitle, name: subtitle, widget: string, i18n: true  }
+          - { label: Title, name: title, widget: string, i18n: true }
+          - { label: Subtitle, name: subtitle, widget: string, i18n: true }
           - { label: Image, name: image, widget: image, i18n: "duplicate" }
           - {
               label: "Blurb",
               name: blurb,
               widget: object,
-              i18n: true
+              i18n: true,
               fields:
                 [
-                  { label: "Heading", name: "heading", widget: string, i18n: true  },
-                  { label: "Text", name: "text", widget: "text", i18n: true  },
+                  {
+                    label: "Heading",
+                    name: "heading",
+                    widget: string,
+                    i18n: true,
+                  },
+                  { label: "Text", name: "text", widget: "text", i18n: true },
                 ],
             }
           - {
               label: "Intro",
               name: intro,
               widget: object,
-              i18n: true
+              i18n: true,
               fields:
                 [
-                  { label: "Heading", name: "heading", widget: string, i18n: true  },
-                  { label: "Text", name: "text", widget: "text", i18n: true  },
+                  {
+                    label: "Heading",
+                    name: "heading",
+                    widget: string,
+                    i18n: true,
+                  },
+                  { label: "Text", name: "text", widget: "text", i18n: true },
                 ],
             }
           - {
               label: "Products",
               name: products,
               widget: list,
-              i18n: true
+              i18n: true,
               fields:
                 [
-                  { label: "Image", name: "image", widget: "image" , i18n: "duplicate"},
-                  { label: "Text", name: "text", widget: "text", i18n: true  },
+                  {
+                    label: "Image",
+                    name: "image",
+                    widget: "image",
+                    i18n: "duplicate",
+                  },
+                  { label: "Text", name: "text", widget: "text", i18n: true },
                 ],
             }
           - {
               label: "Values",
               name: "values",
               widget: "object",
-              i18n: true
+              i18n: true,
               fields:
                 [
-                  { label: "Heading", name: "heading", widget: string , i18n: true },
+                  {
+                    label: "Heading",
+                    name: "heading",
+                    widget: string,
+                    i18n: true,
+                  },
                   { label: "Text", name: "text", widget: "text", i18n: true },
                 ],
             }
