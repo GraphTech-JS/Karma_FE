@@ -2,7 +2,9 @@
   <div class="px-4 py-8 pb-40 w-full sm:px-6 lg:px-8">
     <!-- Breadcrumbs -->
     <div class="flex items-center mb-8 text-sm">
-      <a href="/" class="text-[#ba0108] hover:text-[#9a0106] transition-colors">Головна</a>
+      <a href="/" class="text-[#ba0108] hover:text-[#9a0106] transition-colors"
+        >Головна</a
+      >
       <span class="mx-2 text-[#ba0108]">→</span>
       <span class="text-[#ba0108]">База знань</span>
     </div>
@@ -11,14 +13,27 @@
     <div class="mb-12">
       <div class="flex items-center mx-auto max-w-2xl">
         <div class="relative flex-1">
-          <input type="text" placeholder="Введіть текст"
-            class="w-full px-6 py-4 text-lg border-2 border-gray-300 rounded-l-lg focus:outline-none focus:border-[#ba0108] bg-white text-gray-800 placeholder-gray-500" />
+          <input
+            type="text"
+            placeholder="Введіть текст"
+            class="w-full px-6 py-4 text-lg border-2 border-gray-300 rounded-l-lg focus:outline-none focus:border-[#ba0108] bg-white text-gray-800 placeholder-gray-500"
+          />
         </div>
         <button
-          class="bg-[#ba0108] hover:bg-[#e39599] text-white px-8 py-4 rounded-r-lg transition-colors duration-200 flex items-center justify-center">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          class="bg-[#ba0108] hover:bg-[#e39599] text-white px-8 py-4 rounded-r-lg transition-colors duration-200 flex items-center justify-center"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            ></path>
           </svg>
         </button>
       </div>
@@ -26,319 +41,339 @@
     <!-- Simple Accordion -->
     <div class="relative z-20 space-y-4 w-full">
       {{ $categories := slice "БПЛА" "Відеопередавачі" "ESC" "Політні стеки" }}
-      {{ $guides := where .Site.RegularPages "Section" "guides" }}
-      
-      {{ range $index, $category := $categories }}
-      {{ $categoryGuides := where $guides ".Params.category" $category }}
-      <div class="overflow-hidden relative z-30 rounded-lg border border-gray-200">
+      {{ $guides := where .Site.RegularPages "Section" "guides" }} {{ range
+      $index, $category := $categories }} {{ $categoryGuides := where $guides
+      ".Params.category" $category }}
+      <div
+        class="overflow-hidden relative z-30 rounded-lg border border-gray-200"
+      >
         <!-- Header -->
-        <button 
+        <button
           class="w-full flex items-center justify-between px-6 py-4 text-left bg-[#ba0108] hover:bg-[#e39599] text-white transition-colors"
           onclick="toggleAccordion(this)"
           aria-expanded="{{ if eq $index 0 }}true{{ else }}false{{ end }}"
           aria-controls="section-{{ $index }}"
         >
           <h2 class="text-xl font-bold">{{ $category }}</h2>
-           <img src="/img/arrow.svg" alt="Іконка розгортання" width="20" height="20"
-            class="accordion-icon" />
+          <img
+            src="/img/arrow.svg"
+            alt="Іконка розгортання"
+            width="20"
+            height="20"
+            class="accordion-icon"
+          />
         </button>
-        
+
         <!-- Content -->
-        <div 
-          id="section-{{ $index }}" 
+        <div
+          id="section-{{ $index }}"
           class="bg-white overflow-hidden transition-all duration-300 relative z-40 {{ if ne $index 0 }}max-h-0{{ else }}max-h-none{{ end }}"
         >
           <div class="p-6">
-            {{ if $categoryGuides }}
-              {{ range $categoryGuides }}
-              <a 
-                href="{{ .RelPermalink }}" 
-                class="block px-4 py-3 mb-2 rounded-lg transition-colors hover:bg-gray-50 last:mb-0"
-              >
-                <div class="flex items-center">
-                  <span class="text-[#ba0108] mr-3">›</span>
-                  <div>
-                    <h3 class="font-medium text-gray-900">{{ .Title }}</h3>
-                    {{ if .Params.description }}
-                    <p class="mt-1 text-sm text-gray-600">{{ .Params.description }}</p>
-                    {{ end }}
-                  </div>
-                  <span class="ml-auto text-[#ba0108]">→</span>
+            {{ if $categoryGuides }} {{ range $categoryGuides }}
+            <a
+              href="{{ .RelPermalink }}"
+              class="block px-4 py-3 mb-2 rounded-lg transition-colors hover:bg-gray-50 last:mb-0"
+            >
+              <div class="flex items-center">
+                <span class="text-[#ba0108] mr-3">›</span>
+                <div>
+                  <h3 class="font-medium text-gray-900">{{ .Title }}</h3>
+                  {{ if .Params.description }}
+                  <p class="mt-1 text-sm text-gray-600">
+                    {{ .Params.description }}
+                  </p>
+                  {{ end }}
                 </div>
-              </a>
-              {{ end }}
-            {{ else }}
-              <p class="py-4 text-center text-gray-500">Контент скоро буде додано</p>
+                <span class="ml-auto text-[#ba0108]">→</span>
+              </div>
+            </a>
+            {{ end }} {{ else }}
+            <p class="py-4 text-center text-gray-500">
+              Контент скоро буде додано
+            </p>
             {{ end }}
           </div>
         </div>
       </div>
       {{ end }}
     </div>
-
   </div>
 </section>
 
 <style>
- .accordion-icon {
-  transition: transform 0.3s ease-in-out;
-}
+  .accordion-icon {
+    transform: rotate(-90deg);
+    transition: transform 200ms ease;
+    cursor: pointer;
+  }
 
-button[aria-expanded="true"] .accordion-icon {
-  transform: rotate(180deg);
-}
-.transition-all {
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-}
+  button[aria-expanded="true"] .accordion-icon {
+    transform: rotate(0deg);
+  }
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
 
-/* Focus styles for better accessibility */
-button:focus {
-  outline: 2px solid #ba0108;
-  outline-offset: 2px;
-}
+  /* Focus styles for better accessibility */
+  button:focus {
+    outline: 2px solid #ba0108;
+    outline-offset: 2px;
+  }
 
-/* Hover effect for accordion headers */
-[aria-expanded] {
-  transition: background-color 0.2s ease;
-}
-
-[aria-expanded]:hover {
-  background-color: #e39599 !important;
-}
-
-/* Z-index layering to prevent footer overlap */
-.knowledge-base-section {
-  position: relative;
-  z-index: 10;
-}
-
-.accordion-container {
-  position: relative;
-  z-index: 20;
-}
-
-.accordion-item {
-  position: relative;
-  z-index: 30;
-}
-
-.accordion-content {
-  position: relative;
-  z-index: 40;
-}
-
-/* Force accordion content above footer */
-.max-h-none {
-  position: relative !important;
-  z-index: 9999 !important;
-  overflow: visible !important;
-  max-height: none !important;
-}
-
-/* Ensure proper spacing from footer */
-.knowledge-base-section::after {
-  content: '';
-  display: block;
-  height: 300px;
-  width: 100%;
-}
-
-/* Mobile styles */
-@media (max-width: 640px) {
+  /* Hover effect for accordion headers */
   [aria-expanded] {
-    padding: 0.75rem 1rem;
+    transition: background-color 0.2s ease;
   }
-  
-  .p-6 {
-    padding: 1rem;
+
+  [aria-expanded]:hover {
+    background-color: #e39599 !important;
   }
-  
-  .px-4 {
-    padding-left: 1rem;
-    padding-right: 1rem;
+
+  /* Z-index layering to prevent footer overlap */
+  .knowledge-base-section {
+    position: relative;
+    z-index: 10;
   }
-  
-  .py-3 {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+
+  .accordion-container {
+    position: relative;
+    z-index: 20;
   }
-}
 
-/* Section Header Styles */
-.section-header {
-  border: none;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.section-header button:hover {
-  opacity: 0.95;
-}
-
-.section-content {
-  border-left: 1px solid #e5e7eb;
-  border-right: 1px solid #e5e7eb;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-/* Knowledge Accordion Styles */
-.knowledge-accordion summary {
-  list-style: none;
-}
-
-.knowledge-accordion summary::-webkit-details-marker {
-  display: none;
-}
-
-.knowledge-accordion[open] summary {
-  background-color: #fef2f2;
-}
-
-.knowledge-accordion[open] summary h3 {
-  color: #ba0108;
-}
-
-.knowledge-accordion[open] summary svg:first-of-type {
-  transform: rotate(90deg);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .section-header button {
-    padding: 1rem;
+  .accordion-item {
+    position: relative;
+    z-index: 30;
   }
-  .p-6 {
-    padding: 1rem;
-  }
-  
-  .px-4 {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  .py-3 {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
-}
 
-/* Additional responsive styles */
-@media (max-width: 768px) {
-  h2 {
-    font-size: 1.25rem;
+  .accordion-content {
+    position: relative;
+    z-index: 40;
   }
-}
 
-@media (max-width: 480px) {
-  button {
-    padding: 0.75rem;
+  /* Force accordion content above footer */
+  .max-h-none {
+    position: relative !important;
+    z-index: 9999 !important;
+    overflow: visible !important;
+    max-height: none !important;
   }
-}
+
+  /* Ensure proper spacing from footer */
+  .knowledge-base-section::after {
+    content: "";
+    display: block;
+    height: 300px;
+    width: 100%;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 640px) {
+    [aria-expanded] {
+      padding: 0.75rem 1rem;
+    }
+
+    .p-6 {
+      padding: 1rem;
+    }
+
+    .px-4 {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .py-3 {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+  }
+
+  /* Section Header Styles */
+  .section-header {
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .section-header button:hover {
+    opacity: 0.95;
+  }
+
+  .section-content {
+    border-left: 1px solid #e5e7eb;
+    border-right: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  /* Knowledge Accordion Styles */
+  .knowledge-accordion summary {
+    list-style: none;
+  }
+
+  .knowledge-accordion summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .knowledge-accordion[open] summary {
+    background-color: #fef2f2;
+  }
+
+  .knowledge-accordion[open] summary h3 {
+    color: #ba0108;
+  }
+
+  .knowledge-accordion[open] summary svg:first-of-type {
+    transform: rotate(90deg);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .section-header button {
+      padding: 1rem;
+    }
+    .p-6 {
+      padding: 1rem;
+    }
+
+    .px-4 {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .py-3 {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+  }
+
+  /* Additional responsive styles */
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 1.25rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    button {
+      padding: 0.75rem;
+    }
+  }
 </style>
 
 <script>
-// Simple accordion functionality for guide categories
-function toggleAccordion(button) {
-  const content = document.getElementById(button.getAttribute('aria-controls'));
-  const isExpanded = button.getAttribute('aria-expanded') === 'true';
-  
-  // Close all other accordions
-  document.querySelectorAll('[aria-expanded]').forEach(btn => {
-    if (btn !== button) {
-      btn.setAttribute('aria-expanded', 'false');
-      const otherContent = document.getElementById(btn.getAttribute('aria-controls'));
-      if (otherContent) {
-        otherContent.style.maxHeight = '0px';
-        otherContent.classList.remove('max-h-none');
-      }
-    }
-  });
-  
-  if (isExpanded) {
-    // Close current accordion
-    button.setAttribute('aria-expanded', 'false');
-    content.style.maxHeight = '0px';
-    content.classList.remove('max-h-none');
-  } else {
-    // Open current accordion
-    button.setAttribute('aria-expanded', 'true');
-    content.style.maxHeight = content.scrollHeight + 'px';
-    content.classList.add('max-h-none');
-    
-    // Set to none after transition for unlimited height
-    setTimeout(() => {
-      content.style.maxHeight = 'none';
-    }, 300);
-  }
-}
+  // Simple accordion functionality for guide categories
+  function toggleAccordion(button) {
+    const content = document.getElementById(
+      button.getAttribute("aria-controls")
+    );
+    const isExpanded = button.getAttribute("aria-expanded") === "true";
 
-// Search functionality
-document.addEventListener('DOMContentLoaded', function() {
-  const searchInput = document.querySelector('input[placeholder="Введіть текст"]');
-  const searchButton = document.querySelector('button svg').closest('button');
-  
-  if (searchInput && searchButton) {
-    searchButton.addEventListener('click', function() {
-      const query = searchInput.value.trim();
-      if (query) {
-        searchInContent(query);
+    // Close all other accordions
+    document.querySelectorAll("[aria-expanded]").forEach((btn) => {
+      if (btn !== button) {
+        btn.setAttribute("aria-expanded", "false");
+        const otherContent = document.getElementById(
+          btn.getAttribute("aria-controls")
+        );
+        if (otherContent) {
+          otherContent.style.maxHeight = "0px";
+          otherContent.classList.remove("max-h-none");
+        }
       }
     });
-    
-    searchInput.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
+
+    if (isExpanded) {
+      // Close current accordion
+      button.setAttribute("aria-expanded", "false");
+      content.style.maxHeight = "0px";
+      content.classList.remove("max-h-none");
+    } else {
+      // Open current accordion
+      button.setAttribute("aria-expanded", "true");
+      content.style.maxHeight = content.scrollHeight + "px";
+      content.classList.add("max-h-none");
+
+      // Set to none after transition for unlimited height
+      setTimeout(() => {
+        content.style.maxHeight = "none";
+      }, 300);
+    }
+  }
+
+  // Search functionality
+  document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.querySelector(
+      'input[placeholder="Введіть текст"]'
+    );
+    const searchButton = document.querySelector("button svg").closest("button");
+
+    if (searchInput && searchButton) {
+      searchButton.addEventListener("click", function () {
         const query = searchInput.value.trim();
         if (query) {
           searchInContent(query);
         }
-      }
-    });
-  }
-});
+      });
 
-function searchInContent(query) {
-  const accordions = document.querySelectorAll('[aria-controls]');
-  const links = document.querySelectorAll('a[href*="/guides/"]');
-  let found = false;
-  
-  links.forEach(function(link) {
-    const title = link.querySelector('h3').textContent.toLowerCase();
-    const description = link.querySelector('p');
-    const descText = description ? description.textContent.toLowerCase() : '';
-    
-    if (title.includes(query.toLowerCase()) || descText.includes(query.toLowerCase())) {
-      link.style.display = 'block';
-      link.style.backgroundColor = '#fef2f2';
-      found = true;
-      
-      // Open the parent accordion
-      const accordion = link.closest('[id^="section-"]');
-      if (accordion) {
-        const button = document.querySelector(`[aria-controls="${accordion.id}"]`);
-        if (button) {
-          button.setAttribute('aria-expanded', 'true');
-          accordion.style.maxHeight = 'none';
-          accordion.classList.add('max-h-none');
+      searchInput.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          const query = searchInput.value.trim();
+          if (query) {
+            searchInContent(query);
+          }
         }
-      }
-    } else {
-      link.style.display = 'none';
-      link.style.backgroundColor = '';
+      });
     }
   });
-  
-  if (!found) {
-    alert('Нічого не знайдено за запитом: ' + query);
-    resetSearch();
-  }
-}
 
-function resetSearch() {
-  const links = document.querySelectorAll('a[href*="/guides/"]');
-  links.forEach(function(link) {
-    link.style.display = 'block';
-    link.style.backgroundColor = '';
-  });
-}
+  function searchInContent(query) {
+    const accordions = document.querySelectorAll("[aria-controls]");
+    const links = document.querySelectorAll('a[href*="/guides/"]');
+    let found = false;
+
+    links.forEach(function (link) {
+      const title = link.querySelector("h3").textContent.toLowerCase();
+      const description = link.querySelector("p");
+      const descText = description ? description.textContent.toLowerCase() : "";
+
+      if (
+        title.includes(query.toLowerCase()) ||
+        descText.includes(query.toLowerCase())
+      ) {
+        link.style.display = "block";
+        link.style.backgroundColor = "#fef2f2";
+        found = true;
+
+        // Open the parent accordion
+        const accordion = link.closest('[id^="section-"]');
+        if (accordion) {
+          const button = document.querySelector(
+            `[aria-controls="${accordion.id}"]`
+          );
+          if (button) {
+            button.setAttribute("aria-expanded", "true");
+            accordion.style.maxHeight = "none";
+            accordion.classList.add("max-h-none");
+          }
+        }
+      } else {
+        link.style.display = "none";
+        link.style.backgroundColor = "";
+      }
+    });
+
+    if (!found) {
+      alert("Нічого не знайдено за запитом: " + query);
+      resetSearch();
+    }
+  }
+
+  function resetSearch() {
+    const links = document.querySelectorAll('a[href*="/guides/"]');
+    links.forEach(function (link) {
+      link.style.display = "block";
+      link.style.backgroundColor = "";
+    });
+  }
 </script>

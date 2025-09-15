@@ -36,14 +36,14 @@
       {{ $categoryGuides := where $guides ".Params.category" $category }}
       <details {{ if eq $index 0 }}open{{ end }} class="overflow-visible relative z-30 mb-0 border-0 knowledge-section group">
         <summary
-          class="section-header bg-[#4a4a4a] text-white rounded-none cursor-pointer list-none group-open:bg-[#ba0108] mt-[40px]">
+          class="section-header bg-[#4a4a4a] text-white rounded-none cursor-pointer list-none group-open:bg-[#ba0108] mt-[40px] outline-none select-none"  >
           <div class="flex justify-between items-center w-full h-[67px] md:h-[71px] lg:h-[86px] max-w-[1280px] px-[20px] mx-auto">
             <h2 class="text-[clamp(24px,3vw,40px)] font-bold font-['Unbounded'] tracking-wide">{{ $category
               }}</h2>
-            <svg class="w-6 h-6 transition-transform duration-300 transform lg:w-8 lg:h-8 group-open:rotate-180"
-              fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
+          <svg class="accordion-arrow w-6 h-6 transition-transform duration-300 transform rotate-0 lg:w-8 lg:h-8" 
+      fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+</svg>
           </div>
         </summary>
 
@@ -253,6 +253,33 @@
 </style>
 
 <script>
+
+const sections = document.querySelectorAll('.knowledge-section');
+
+  sections.forEach(section => {
+    const summary = section.querySelector('summary');
+    const arrow = summary.querySelector('.accordion-arrow');
+
+    summary.addEventListener('click', () => {
+      // `hasAttribute('open')` проверяет состояние ДО клика.
+      // Если он был открыт, значит после клика он закроется.
+      if (section.hasAttribute('open')) {
+        // Мы используем setTimeout, чтобы анимация сработала ПЕРЕД закрытием.
+        setTimeout(() => {
+          arrow.classList.remove('rotate-90');
+        }, 0);
+      } else {
+        // Если он был закрыт, значит сейчас он откроется.
+        arrow.classList.add('rotate-90');
+      }
+    });
+
+    // Также нужно обработать начальное состояние для уже открытых секций
+    if (section.hasAttribute('open')) {
+        arrow.classList.add('rotate-90');
+    }
+  });
+
   // Simple initialization for native details elements
   document.addEventListener('DOMContentLoaded', function () {
     // Search functionality
