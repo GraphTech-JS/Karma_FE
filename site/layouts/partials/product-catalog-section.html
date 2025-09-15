@@ -1,78 +1,91 @@
-<section class="relative py-16 bg-white">
-  {{ $bgEl4 := resources.Get "img/bg-el-catalog.png" }}
-  {{ if $bgEl4 }}
-  {{ $bgEl4Processed := $bgEl4.Resize "570x522 webp q80" }}
-  <img src="{{ $bgEl4Processed.RelPermalink }}"
-    class="absolute bottom-0 left-0 max-[767px]:hidden w-[377px] h-[346px] lg:w-[570px] lg:h-[522px]"
-    alt="bg element decoration" loading="lazy" decoding="async" />
-  {{ else }}
-  <img src="/img/bg-el-catalog.png"
-    class="absolute bottom-0 left-0 max-[767px]:hidden w-[377px] h-[346px] lg:w-[570px] lg:h-[522px]"
-    alt="bg element decoration" loading="lazy" decoding="async" />
-  {{ end }}
-  <div class="w-full max-w-[1620px] mx-auto px-5">
-    <h3
-      class="!text-[clamp(24px,4vw,40px)] font-['Unbounded'] text-center text-[#020303] font-semibold mb-16 hero-title">
-      <span class="text-[#ba0108]">К</span>АТАЛОГ
-    </h3>
+{{ $bgEl4 := resources.Get "img/bg-el-catalog.png" }}
+{{ if $bgEl4 }}
+{{ $bgEl4Processed := $bgEl4.Resize "570x522 webp q80" }}
+<img src="{{ $bgEl4Processed.RelPermalink }}"
+  class="absolute bottom-0 left-0 max-[767px]:hidden w-[377px] h-[346px] lg:w-[570px] lg:h-[522px]"
+  alt="bg element decoration" loading="lazy" decoding="async" />
+{{ else }}
+<img src="/img/bg-el-catalog.png"
+  class="absolute bottom-0 left-0 max-[767px]:hidden w-[377px] h-[346px] lg:w-[570px] lg:h-[522px]"
+  alt="bg element decoration" loading="lazy" decoding="async" />
+{{ end }}
+<div class="w-full max-w-[1620px] mx-auto px-5">
+  <h3 class="!text-[clamp(24px,4vw,40px)] font-['Unbounded'] text-center text-[#020303] font-semibold mb-16 hero-title">
+    <span class="text-[#ba0108]">К</span>АТАЛОГ
+  </h3>
 
-    <div class="flex flex-col min-[800px]:flex-row justify-center items-center gap-[20px]">
-      <!-- Product Card 1  -->
-      <div
-        class="product-card bg-white position-relative z-1 flex flex-col justify-around w-[clamp(350px,45vw,400px)] h-[411px] md:h-[312px] lg:h-[362px] cursor-pointer shadow-lg rounded-[5px] overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl">
-        {{ $product1 := resources.Get "img/catalog_product1.png" }}
-        {{ if $product1 }}
-        {{ $product1Processed := $product1.Resize "351x301 webp q80" }}
-        <img src="{{ $product1Processed.RelPermalink }}" alt="Продукт 1" class="object-contain px-[24px]" loading="lazy"
-          decoding="async" width="351" height="301" />
-        {{ else }}
-        <img src="/img/catalog_product1.png" alt="Продукт 1" class="object-contain px-[24px]" loading="lazy"
-          decoding="async" width="351" height="301" />
-        {{ end }}
-        <a href="/catalog/politni-steky"
-          class="product-title min-[1200px]:text-[24px] max-[1199px]:text-[20px] pb-6 text-center font-bold font-[Unbounded] text-black  whitespace-nowrap transition-all duration-300 ease-in-out">
-          Політні стеки</a>
-      </div>
+  <div class="flex flex-col min-[800px]:flex-row justify-center items-center gap-[20px]">
+    <!-- Product Card 1  -->
+    <a href="/catalog/politni-steky"
+      class="product-card bg-white position-relative z-1 flex flex-col justify-around w-[clamp(350px,45vw,400px)] h-[411px] md:h-[312px] lg:h-[362px] cursor-pointer shadow-lg rounded-[5px] overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl block">
+      {{ $product1 := resources.Get "img/catalog_product1.png" }}
+      {{ if $product1 }}
+      {{ $product1Processed := $product1.Resize "351x301 webp q80" }}
+      <img src="{{ $product1Processed.RelPermalink }}" alt="Продукт 1" class="object-contain px-[24px]" loading="lazy"
+        decoding="async" width="351" height="301" />
+      {{ else }}
+      <img src="/img/catalog_product1.png" alt="Продукт 1" class="object-contain px-[24px]" loading="lazy"
+        decoding="async" width="351" height="301" />
+      {{ end }}
+      <span
+        class="product-title min-[1200px]:text-[24px] max-[1199px]:text-[20px] pb-6 text-center font-bold font-[Unbounded] text-black whitespace-nowrap transition-all duration-300 ease-in-out">
+        Політні стеки</span>
+    </a>
 
-      <!-- Product Card 2 -->
-      <div
-        class="product-card bg-white position-relative z-1 flex flex-col justify-around w-[clamp(350px,45vw,400px)] h-[411px] md:h-[312px] lg:h-[362px] cursor-pointer shadow-lg rounded-[5px] overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl">
-        {{ $product2 := resources.Get "img/catalog_product2.png" }}
-        {{ if $product2 }}
-        {{ $product2Processed := $product2.Resize "351x301 webp q80" }}
-        <img src="{{ $product2Processed.RelPermalink }}" alt="Продукт 2" class="object-contain px-[24px]" loading="lazy"
-          decoding="async" width="351" height="301" />
-        {{ else }}
-        <img src="/img/catalog_product2.png" alt="Продукт 2" class="object-contain px-[24px]" loading="lazy"
-          decoding="async" width="351" height="301" />
-        {{ end }}
-        <a href="/catalog/videoperedavachi-vtx"
-          class="product-title min-[1200px]:text-[24px] max-[1199px]:text-[20px] pb-6 text-center font-bold font-[Unbounded] text-black  transition-all duration-300 ease-in-out">
-          Відеопередавачі VTX</a>
-      </div>
+    <!-- Product Card 2 -->
+    <a href="/catalog/videoperedavachi-vtx"
+      class="product-card bg-white position-relative z-1 flex flex-col justify-around w-[clamp(350px,45vw,400px)] h-[411px] md:h-[312px] lg:h-[362px] cursor-pointer shadow-lg rounded-[5px] overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl block">
+      {{ $product2 := resources.Get "img/catalog_product2.png" }}
+      {{ if $product2 }}
+      {{ $product2Processed := $product2.Resize "351x301 webp q80" }}
+      <img src="{{ $product2Processed.RelPermalink }}" alt="Продукт 2" class="object-contain px-[24px]" loading="lazy"
+        decoding="async" width="351" height="301" />
+      {{ else }}
+      <img src="/img/catalog_product2.png" alt="Продукт 2" class="object-contain px-[24px]" loading="lazy"
+        decoding="async" width="351" height="301" />
+      {{ end }}
+      <span
+        class="product-title min-[1200px]:text-[24px] max-[1199px]:text-[20px] pb-6 text-center font-bold font-[Unbounded] text-black transition-all duration-300 ease-in-out">
+        Відеопередавачі VTX</span>
+    </a>
 
-      <!-- Product Card 3 -->
-      <div
-        class="product-card  bg-white position-relative z-1 flex flex-col justify-around w-[clamp(350px,45vw,400px)] h-[411px] md:h-[312px] lg:h-[362px] cursor-pointer shadow-lg rounded-[5px] overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl">
-        {{ $product3 := resources.Get "img/catalog_product3.png" }}
-        {{ if $product3 }}
-        {{ $product3Processed := $product3.Resize "351x301 webp q80" }}
-        <img src="{{ $product3Processed.RelPermalink }}" alt="Продукт 3" class="object-contain px-[24px]" loading="lazy"
-          decoding="async" width="351" height="301" />
-        {{ else }}
-        <img src="/img/catalog_product3.png" alt="Продукт 3" class="object-contain px-[24px]" loading="lazy"
-          decoding="async" width="351" height="301" />
-        {{ end }}
-        <a href="/catalog/esc"
-          class="product-title min-[1200px]:text-[24px] max-[1199px]:text-[20px] pb-6 text-center font-bold font-[Unbounded] text-black  whitespace-nowrap transition-all duration-300 ease-in-out">
-          ESC</a>
-      </div>
-    </div>
+    <!-- Product Card 3 -->
+    <a href="/catalog/esc"
+      class="product-card bg-white position-relative z-1 flex flex-col justify-around w-[clamp(350px,45vw,400px)] h-[411px] md:h-[312px] lg:h-[362px] cursor-pointer shadow-lg rounded-[5px] overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl block">
+      {{ $product3 := resources.Get "img/catalog_product3.png" }}
+      {{ if $product3 }}
+      {{ $product3Processed := $product3.Resize "351x301 webp q80" }}
+      <img src="{{ $product3Processed.RelPermalink }}" alt="Продукт 3" class="object-contain px-[24px]" loading="lazy"
+        decoding="async" width="351" height="301" />
+      {{ else }}
+      <img src="/img/catalog_product3.png" alt="Продукт 3" class="object-contain px-[24px]" loading="lazy"
+        decoding="async" width="351" height="301" />
+      {{ end }}
+      <span
+        class="product-title min-[1200px]:text-[24px] max-[1199px]:text-[20px] pb-6 text-center font-bold font-[Unbounded] text-black whitespace-nowrap transition-all duration-300 ease-in-out">
+        ESC</span>
+    </a>
   </div>
+</div>
 </section>
 
 <style>
   .product-card:hover .product-title {
     color: #ba0108 !important;
+  }
+
+  .product-card {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .product-card:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .product-card:focus {
+    outline: 2px solid #ba0108;
+    outline-offset: 2px;
   }
 </style>

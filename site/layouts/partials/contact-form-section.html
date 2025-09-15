@@ -6,7 +6,8 @@
     {{ $bgEl8 := resources.Get "img/bg-contact-form-one.png" }}
     {{ if $bgEl8 }}
     {{ $bgEl8Processed := $bgEl8.Resize "499x webp q80" }}
-    <img src="{{ $bgEl8Processed.RelPermalink }}" alt="background-element-one" class="w-[499px] h-auto object-contain" />
+    <img src="{{ $bgEl8Processed.RelPermalink }}" alt="background-element-one"
+      class="w-[499px] h-auto object-contain" />
     {{ else }}
     <img src="/img/bg-contact-form-one.png" alt="background-element-one" class="w-[499px] h-auto object-contain" />
     {{ end }}
@@ -25,41 +26,31 @@
     {{ end }}
   </div>
 
-  <!-- Mobile background element -->
-  <div
-    class="block absolute right-[calc(var(--spacing)*-14)] bottom-[calc(var(--spacing)*-14)] sm:hidden background-element2-mob">
-    {{ $bgEl2Mob := resources.Get "img/bg-el2-mob.png" }}
-    {{ if $bgEl2Mob }}
-    {{ $bgEl2MobProcessed := $bgEl2Mob.Resize "150x webp q80" }}
-    <img src="{{ $bgEl2MobProcessed.RelPermalink }}" alt="" class="w-[150px] h-auto object-contain" />
-    {{ else }}
-    <img src="/img/bg-el2-mob.png" alt="" class="w-[150px] h-auto object-contain" />
-    {{ end }}
-  </div>
+  <div id="toast-container"
+    class="absolute top-8 left-1/2 z-50 px-4 space-y-2 w-full max-w-md transform -translate-x-1/2"></div>
 
   <div
     class="w-full max-w-[1237px] mx-auto relative z-10 flex flex-col md:flex-col xl:flex-row xl:justify-between xl:items-center lg:gap-[clamp(20px,4vw,32px)]">
     <div class="flex flex-col w-full text-center md:text-left">
       <h3 class=" !text-[24px] md:!text-[32px] lg:!text-[40px] font-medium font-['Unbounded'] hero-title mb-[10px]">
         <span class="text-[#BA0108]">З</span>В'ЯЖІТЬСЯ З НАМИ
-
       </h3>
       <p class="mb-[23px] text-[16px] md:text-[20px] font-normal text-black font-['Montserrat'] ">
         Введіть будь-ласка Ваші данні і ми зв'яжемось з Вами
       </p>
 
-      <form class="flex flex-col font-['Montserrat'] w-full">
+      <form id="contact-form" class="flex flex-col font-['Montserrat'] w-full" novalidate>
         <div class="flex flex-col gap-[23px]  md:flex-row xl:flex-row mb-[23px]">
-          <input type="text" placeholder="Ваше ім'я"
+          <input type="text" id="name" placeholder="Ваше ім'я" required name="name"
             class="contact-input w-full max-[389px]:w-[350px] xl:w-[373px] xl:flex-none px-5 py-4 h-[65px] placeholder:text-[#999] border border-[#404040] rounded-[5px] text-normal bg-white transition-all duration-300 ease-in-out" />
-          <input type="tel" placeholder="+380"
+          <input type="tel" id="phone" placeholder="+380" required name="phone"
             class="contact-input w-full max-[389px]:w-[350px] xl:w-[373px] xl:flex-none px-5 py-4 h-[65px] placeholder:text-[#999] border border-[#404040] rounded-[5px] text-normal bg-white transition-all duration-300 ease-in-out" />
         </div>
 
-        <textarea placeholder="Ваше повідомлення" rows="5"
+        <textarea id="message" name="message" placeholder="Ваше повідомлення" rows="5"
           class="contact-textarea w-full max-[389px]:w-[350px] xl:w-[770px] px-5 py-4 placeholder:text-[#999] border border-[#404040] rounded-[5px] text-normal bg-white resize-y min-h-[120px] transition-all duration-300 ease-in-out font-['Montserrat']"></textarea>
 
-        <button type="submit"
+        <button type="submit" id="submit-btn"
           class="contact-button !mt-[50px] md:!mt-[27px] w-full max-[389px]:w-[350px] xl:w-[770px] bg-[#ba0108] hover:bg-[#e39599] transition-colors text-white border-none px-10 h-[65px] md:h-[70px] lg:h-auto lg:py-5 rounded-2xl cursor-pointer text-[clamp(16px,2vw,24px)] font-light lg:font-normal font-['Montserrat'] duration-300 ease-in-out">
           Відправити
         </button>
@@ -87,7 +78,6 @@
   </div>
 </section>
 
-
 <style>
   .background-element1 {
     position: absolute;
@@ -114,7 +104,6 @@
     }
   }
 
-
   #contact-form-section .contact-input,
   #contact-form-section .contact-textarea {
     color: #999;
@@ -135,4 +124,241 @@
   .contact-button:hover {
     background-color: #e39599;
   }
+
+  .contact-input.error,
+  .contact-textarea.error {
+    border-color: #dc2626 !important;
+    background-color: #fef2f2;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+  }
+
+  .contact-input.success,
+  .contact-textarea.success {
+    border-color: #16a34a !important;
+    background-color: #f0fdf4;
+  }
+
+  .contact-button:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+  }
+
+  .toast {
+    padding: 12px 16px  !important;
+    border-radius: clamp(10px, 1.5vw, 12px) !important;
+    color: #fff !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: clamp(14px, 1.6vw, 16px) !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    transform: translateY(-20px) !important;
+    opacity: 0 !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    max-width: 400px !important;
+    width: 100% !important;
+    text-align: center !important;
+    position: relative !important;
+    white-space: pre-line !important;
+  }
+
+  .toast.show {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+  }
+
+  .toast.error {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
+  }
+
+  .toast.success {
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%) !important;
+  }
+
+  .toast.warning {
+    background: linear-gradient(135deg, #d97706 0%, #c2410c 100%) !important;
+  }
+
+  .toast::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+  }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('contact-form');
+      const nameInput = document.getElementById('name');
+      const phoneInput = document.getElementById('phone');
+      const messageInput = document.getElementById('message');
+      const submitBtn = document.getElementById('submit-btn');
+      const toastContainer = document.getElementById('toast-container');
+
+      function showToast(message, type = 'error', hideMs = 4000) {
+        if (!toastContainer) return;
+
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        toast.textContent = message;
+        toastContainer.appendChild(toast);
+
+        requestAnimationFrame(() => toast.classList.add('show'));
+
+        setTimeout(() => {
+          toast.classList.remove('show');
+          setTimeout(() => toast.remove(), 350);
+        }, hideMs);
+      }
+
+      function normalizePhoneToUA(value) {
+        const digits = (value || '').replace(/\D/g, '');
+        if (digits.length === 12 && digits.startsWith('380')) return '+' + digits;
+        if (digits.length === 10 && digits.startsWith('0')) return '+38' + digits;
+        return null;
+      }
+
+      function formatPhoneInput(e) {
+        const input = e.target;
+        const raw = input.value || '';
+        const trimmed = raw.trim();
+        const hasLeadingPlus = trimmed.startsWith('+');
+        let digits = raw.replace(/\D/g, '');
+
+        if (digits.length === 0) {
+          input.value = hasLeadingPlus ? '' : '';
+          return;
+        }
+
+        if (hasLeadingPlus) {
+          if (digits.startsWith('380')) {
+            const d = digits.slice(0, 12);
+            const rest = d.slice(3);
+            let formatted = '+380';
+            if (rest.length > 0) {
+              const a = rest.slice(0, 2);
+              const b = rest.slice(2, 5);
+              const c = rest.slice(5, 7);
+              const d4 = rest.slice(7, 9);
+              if (a) formatted += ' ' + a;
+              if (b) formatted += ' ' + b;
+              if (c) formatted += ' ' + c;
+              if (d4) formatted += ' ' + d4;
+            }
+            input.value = formatted;
+          } else {
+            input.value = '+' + digits.slice(0, 15);
+          }
+          return;
+        }
+
+        if (digits.startsWith('0')) {
+          const d = digits.slice(0, 10);
+          const first = d.charAt(0);
+          const rest = d.slice(1);
+          let formatted = first;
+          if (rest.length > 0) {
+            const a = rest.slice(0, 2);
+            const b = rest.slice(2, 5);
+            const c = rest.slice(5, 7);
+            const d4 = rest.slice(7, 9);
+            if (a) formatted += a;
+            if (b) formatted += ' ' + b;
+            if (c) formatted += ' ' + c;
+            if (d4) formatted += ' ' + d4;
+          }
+          input.value = formatted;
+          return;
+        }
+
+        input.value = digits.slice(0, 12);
+      }
+
+      function onPhoneFocus(e) {
+        const input = e.target;
+        if ((input.value || '').trim() === '') {
+          input.value = '+380 ';
+          try {
+            input.setSelectionRange(input.value.length, input.value.length);
+          } catch (_) { }
+        }
+      }
+
+      function onPhoneBlur(e) {
+        const input = e.target;
+        const raw = (input.value || '').trim();
+        const digits = raw.replace(/\D/g, '');
+        const startsWithPlus = raw.startsWith('+');
+        if (startsWithPlus) {
+          if (digits.length < 4 || (digits.startsWith('380') && digits.length === 3)) {
+            input.value = '';
+            return;
+          }
+        }
+        formatPhoneInput({ target: input });
+      }
+
+      if (phoneInput) {
+        phoneInput.addEventListener('input', formatPhoneInput);
+        phoneInput.addEventListener('focus', onPhoneFocus);
+        phoneInput.addEventListener('blur', onPhoneBlur);
+      }
+
+      function validateForm() {
+        let valid = true;
+
+        [nameInput, phoneInput].forEach(el => el && el.classList.remove('error', 'success'));
+
+        // Ім'
+        const nameVal = (nameInput.value || '').trim();
+        if (!nameVal) {
+          nameInput.classList.add('error');
+          showToast("Будь ласка, введіть ваше ім'я", 'error', 4000);
+          valid = false;
+        } else {
+          nameInput.classList.add('success');
+        }
+
+        const normalizedPhone = normalizePhoneToUA(phoneInput.value);
+        if (!normalizedPhone) {
+          phoneInput.classList.add('error');
+          showToast('Будь ласка, введіть коректний номер телефону', 'error', 4000);
+          valid = false;
+        } else {
+          phoneInput.classList.add('success');
+        }
+
+        return valid;
+      }
+
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          if (!validateForm()) {
+            const firstInvalid = form.querySelector('.error');
+            if (firstInvalid) firstInvalid.focus();
+            return;
+          }
+
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Відправляємо...';
+
+          setTimeout(() => {
+            form.reset();
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Відправити';
+
+            showToast("Повідомлення успішно відправлено!\n Ми зв'яжемося з вами найближчим часом.", 'success', 5000);
+
+            [nameInput, phoneInput, messageInput].forEach(el => el && el.classList.remove('error', 'success'));
+          }, 2000);
+        });
+      }
+    });
+</script>

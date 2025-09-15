@@ -5,6 +5,7 @@
       top: 0;
       z-index: 1000;
     }
+
     .nav-link {
       position: relative;
       display: inline-block;
@@ -105,7 +106,7 @@
         left: 50%;
         transform: translateX(-50%);
         height: 2px;
-        width: 58px; 
+        width: 58px;
         background-color: #ba0108;
       }
     }
@@ -195,40 +196,43 @@
   </style>
 
   <!-- Responsive container with breakpoint-specific widths -->
-  <div
-    class="flex w-full max-w-[1280px] px-[20px] justify-between items-center nav-container"
+  <div class="flex w-full max-w-[1280px] px-[20px] justify-between items-center nav-container"
     style="padding-top: 20px; padding-bottom: 20px;">
     <!-- Logo -->
     <a href="/" class="relative z-[10] text-xl font-normal text-white font-inter" aria-label="Karma - головна сторінка">
-    {{ $logo := resources.Get "logo.png" }}
-    {{ if $logo }}
-    {{ $logo1x := $logo.Resize "149x34 webp q80" }}
-    {{ $logo2x := $logo.Resize "298x68 webp q80" }}
-    <img src="{{ $logo1x.RelPermalink }}" srcset="{{ $logo1x.RelPermalink }} 1x, {{ $logo2x.RelPermalink }} 2x" width="149"
-      height="34" alt="logo" />
-    {{ else }}
-    <img src="/logo.png" alt="logo" width="149" height="34" class="w-[108px] h-[25px] md:w-[149px] md:h-[34px]" />
-    {{ end }}
+      {{ $logo := resources.Get "logo.png" }}
+      {{ if $logo }}
+      {{ $logo1x := $logo.Resize "149x34 webp q80" }}
+      {{ $logo2x := $logo.Resize "298x68 webp q80" }}
+      <img src="{{ $logo1x.RelPermalink }}" srcset="{{ $logo1x.RelPermalink }} 1x, {{ $logo2x.RelPermalink }} 2x"
+        width="149" height="34" alt="logo" />
+      {{ else }}
+      <img src="/logo.png" alt="logo" width="149" height="34" class="w-[108px] h-[25px] md:w-[149px] md:h-[34px]" />
+      {{ end }}
     </a>
 
     <!-- Desktop Navigation -->
     <nav class="nav-container desktop-nav flex items-center gap-[50px]" role="navigation" aria-label="Головне меню">
       <div class="relative dropdown-parent">
-        <button onclick="toggleDropdown(event)" 
-          class="nav-link lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-xl focus:font-bold text-white hover:text-[#ba0108] transition-colors {{ if or (eq .Page.Section "catalog") (hasPrefix .Page.RelPermalink "/catalog/" ) }}active{{ end }}"
-          aria-expanded="false" aria-haspopup="true" aria-label="Каталог товарів">
+        <button onclick="toggleDropdown(event)"
+          class="nav-link lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-xl focus:font-bold text-white hover:text-[#ba0108] transition-colors {{ if or (eq .Page.Section "catalog") (hasPrefix .Page.RelPermalink "/catalog/" ) }}active{{ end }}" aria-expanded="false"
+          aria-haspopup="true" aria-label="Каталог товарів">
           Каталог
         </button>
-        <div class="dropdown-menu absolute left-[-50px] lg:left-[-80px] top-[30px] mt-3 bg-[#020303] rounded-b-[5px]" role="menu" aria-label="Підменю каталогу">
+        <div class="dropdown-menu absolute left-[-50px] lg:left-[-80px] top-[30px] mt-3 bg-[#020303] rounded-b-[5px]"
+          role="menu" aria-label="Підменю каталогу">
           <div class="flex flex-row w-full lg:flex-col">
             <a href="/catalog/politni-steky/"
-              class="dropdown-item flex-1 px-8 py-6 text-white lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap" role="menuitem">Політні
+              class="dropdown-item flex-1 px-8 py-6 text-white lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap"
+              role="menuitem">Політні
               стеки</a>
             <a href="/catalog/videoperedavachi-vtx/"
-              class="dropdown-item flex-1 px-8 py-6 text-white lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap" role="menuitem">Відеопередавачі
+              class="dropdown-item flex-1 px-8 py-6 text-white lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap"
+              role="menuitem">Відеопередавачі
               VTX</a>
             <a href="/catalog/esc/"
-              class="dropdown-item flex-1 px-8 py-6 text-white lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap" role="menuitem">ESC</a>
+              class="dropdown-item flex-1 px-8 py-6 text-white lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap"
+              role="menuitem">ESC</a>
           </div>
         </div>
       </div>
@@ -254,7 +258,7 @@
           aria-label="Зателефонувати за номером (067) 298-29-29">
           (067) 298-29-29
         </a>
-        <div class="flex items-center gap-3 text-xl language-switcher text-white/80">
+        <div class="flex gap-3 items-center text-xl language-switcher text-white/80">
           <button id="lang-ua"
             class="font-['Inter'] font-bold cursor-pointer text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold transition-colors"
             onclick="switchLanguage('ua')" aria-label="Перемкнути на українську мову" aria-pressed="true">UA</button>
@@ -267,10 +271,12 @@
     </div>
 
     <!-- Mobile Navigation -->
-    <div class="flex items-center gap-4 mobile-nav">
+    <div class="flex gap-4 items-center mobile-nav">
       <!-- Search Icon -->
-      <button class="text-white hover:text-[#ba0108] transition-colors cursor-pointer" onclick="toggleMobileSearch()" aria-label="Відкрити пошук">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <button class="text-white hover:text-[#ba0108] transition-colors cursor-pointer" onclick="toggleMobileSearch()"
+        aria-label="Відкрити пошук">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true">
           <path
             d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -278,7 +284,7 @@
       </button>
 
       <!-- Hamburger Menu Button -->
-      <button class="flex flex-col items-center justify-center w-8 h-8 space-y-1 cursor-pointer hamburger"
+      <button class="flex flex-col justify-center items-center space-y-1 w-8 h-8 cursor-pointer hamburger"
         onclick="toggleMobileMenu()" aria-label="Відкрити мобільне меню" aria-expanded="false">
         <span class="block w-6 h-0.5 bg-white" aria-hidden="true"></span>
         <span class="block w-6 h-0.5 bg-white" aria-hidden="true"></span>
@@ -288,23 +294,25 @@
   </div>
 
   <!-- Mobile Search Overlay -->
-  <div id="mobile-search-overlay" class="fixed inset-0 z-50 hidden mobile-search-overlay bg-black/80">
+  <div id="mobile-search-overlay" class="hidden fixed inset-0 z-50 mobile-search-overlay bg-black/80">
     <div class="bg-[#020303] p-6 rounded-b-3xl">
-      <div class="flex items-center justify-between mb-4">
+      <div class="flex justify-between items-center mb-4">
         <a href="/" class="text-xl font-normal text-white font-inter">
-        {{ $logoMobile := resources.Get "logo.png" }}
-        {{ if $logoMobile }}
-        {{ $logoMobile1x := $logoMobile.Resize "108x25 webp q80" }}
-        {{ $logoMobile2x := $logoMobile.Resize "216x50 webp q80" }}
-        <img src="{{ $logoMobile1x.RelPermalink }}"
-          srcset="{{ $logoMobile1x.RelPermalink }} 1x, {{ $logoMobile2x.RelPermalink }} 2x" width="108" height="25"
-          alt="logo" />
-        {{ else }}
-        <img src="/logo.png" alt="logo" width="108" height="25" />
-        {{ end }}
+          {{ $logoMobile := resources.Get "logo.png" }}
+          {{ if $logoMobile }}
+          {{ $logoMobile1x := $logoMobile.Resize "108x25 webp q80" }}
+          {{ $logoMobile2x := $logoMobile.Resize "216x50 webp q80" }}
+          <img src="{{ $logoMobile1x.RelPermalink }}"
+            srcset="{{ $logoMobile1x.RelPermalink }} 1x, {{ $logoMobile2x.RelPermalink }} 2x" width="108" height="25"
+            alt="logo" />
+          {{ else }}
+          <img src="/logo.png" alt="logo" width="108" height="25" />
+          {{ end }}
         </a>
-        <button class="text-white hover:text-[#ba0108] transition-colors cursor-pointer" onclick="toggleMobileSearch()" aria-label="Закрити пошук">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <button class="text-white hover:text-[#ba0108] transition-colors cursor-pointer" onclick="toggleMobileSearch()"
+          aria-label="Закрити пошук">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true">
             <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
               stroke-linejoin="round" />
           </svg>
@@ -325,32 +333,35 @@
   </div>
 
   <!-- Mobile Menu Overlay -->
-  <div id="mobileMenu" class="mobile-menu fixed inset-0 bg-[#020303] z-40 flex flex-col" role="dialog" aria-modal="true" aria-label="Мобільне меню">
+  <div id="mobileMenu" class="mobile-menu fixed inset-0 bg-[#020303] z-40 flex flex-col" role="dialog" aria-modal="true"
+    aria-label="Мобільне меню">
     <!-- Fixed Header with Logo and Close Button -->
-    <div class="flex relative z-[12] justify-between items-center p-4 shadow-[0_2px_8px_rgba(255,255,255,0.4)] bg-[#020303]">
+    <div
+      class="flex relative z-[12] justify-between items-center p-4 shadow-[0_2px_8px_rgba(255,255,255,0.4)] bg-[#020303]">
       <!-- Logo -->
       <a href="/" class="text-xl font-normal text-white font-inter" aria-label="Karma - головна сторінка">
-    {{ $logoMobile := resources.Get "logo.png" }}
-    {{ if $logoMobile }}
-    {{ $logoMobile1x := $logoMobile.Resize "108x25 webp q80" }}
-    {{ $logoMobile2x := $logoMobile.Resize "216x50 webp q80" }}
-    <img src="{{ $logoMobile1x.RelPermalink }}"
-      srcset="{{ $logoMobile1x.RelPermalink }} 1x, {{ $logoMobile2x.RelPermalink }} 2x" width="108" height="25"
-      alt="logo" />
-    {{ else }}
-    <img src="/logo.png" alt="logo" width="108" height="25" />
-    {{ end }}
+        {{ $logoMobile := resources.Get "logo.png" }}
+        {{ if $logoMobile }}
+        {{ $logoMobile1x := $logoMobile.Resize "108x25 webp q80" }}
+        {{ $logoMobile2x := $logoMobile.Resize "216x50 webp q80" }}
+        <img src="{{ $logoMobile1x.RelPermalink }}"
+          srcset="{{ $logoMobile1x.RelPermalink }} 1x, {{ $logoMobile2x.RelPermalink }} 2x" width="108" height="25"
+          alt="logo" />
+        {{ else }}
+        <img src="/logo.png" alt="logo" width="108" height="25" />
+        {{ end }}
       </a>
-      
+
       <!-- Close Button -->
-      <button class="relative flex flex-col items-center justify-center w-12 h-12 cursor-pointer hamburger"
+      <button class="flex relative flex-col justify-center items-center w-12 h-12 cursor-pointer hamburger"
         onclick="toggleMobileMenu()" aria-label="Закрити мобільне меню">
         <span class="block absolute w-6 h-0.5 bg-white rotate-45" aria-hidden="true"></span>
         <span class="block absolute w-6 h-0.5 bg-white -rotate-45" aria-hidden="true"></span>
       </button>
     </div>
 
-    <nav class="flex flex-col flex-1 items-center px-6 pt-[119px] space-y-6" role="navigation" aria-label="Мобільне меню">
+    <nav class="flex flex-col flex-1 items-center px-6 pt-[119px] space-y-6" role="navigation"
+      aria-label="Мобільне меню">
       <div class="relative">
         <button onclick="toggleMobileCatalog()"
           class="w-full flex justify-center items-center text-white font-['Unbounded'] text-xl font-normal py-2 cursor-pointer"
@@ -361,7 +372,8 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
           </svg>
         </button>
-        <div class="overflow-hidden transition-all duration-300 ease-in-out opacity-0 max-h-0 mobile-catalog-menu" id="mobile-catalog-submenu">
+        <div class="overflow-hidden max-h-0 opacity-0 transition-all duration-300 ease-in-out mobile-catalog-menu"
+          id="mobile-catalog-submenu">
           <div class="flex flex-col items-center pl-4 mt-2 space-y-2">
             <a href="/catalog/politni-steky/"
               class="block text-white/80 font-['Unbounded'] text-lg py-2 hover:text-[#ba0108] transition-colors">Політні
@@ -381,11 +393,11 @@
       <a href="/contact"
         class="text-white font-['Unbounded'] text-xl font-normal hover:text-[#ba0108] transition-colors">Контакти</a>
 
-      <div class="absolute flex flex-col items-center bottom-10">
+      <div class="flex absolute bottom-10 flex-col items-center">
         <a href="tel:(067) 298-29-29"
           class="block text-white font-['Montserrat'] text-xl font-normal mb-4 hover:text-[#ba0108] transition-colors">(067)
           298-29-29</a>
-        <div class="flex items-center gap-3 text-2xl text-white">
+        <div class="flex gap-3 items-center text-2xl text-white">
           <button id="mobile-lang-ua"
             class="!font-[Unbounded] font-[300] cursor-pointer text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] transition-colors"
             onclick="switchLanguage('ua')" aria-label="Перемкнути на українську мову" aria-pressed="true">
@@ -410,10 +422,10 @@
 
       mobileMenu.classList.toggle('open');
       hamburger.classList.toggle('open');
-      
+
       // Update ARIA attributes
       hamburger.setAttribute('aria-expanded', !isOpen);
-      
+
       // Manage focus and body scroll
       if (!isOpen) {
         document.body.style.overflow = 'hidden';
@@ -433,7 +445,7 @@
       const dropdownParent = event.target.closest('.dropdown-parent');
       const button = event.target;
       const isOpen = dropdownParent.classList.contains('active');
-      
+
       dropdownParent.classList.toggle('active');
       button.setAttribute('aria-expanded', !isOpen);
     }
@@ -486,7 +498,7 @@
         enDesktop.className = "font-['Inter'] font-[300] cursor-pointer text-white/80 hover:text-[#ba0108] focus:text-[#ba0108] transition-colors";
         uaMobile.className = "!font-[Unbounded] font-[300] cursor-pointer text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] transition-colors";
         enMobile.className = "!font-[Unbounded] font-[300] cursor-pointer text-white/80 hover:text-[#ba0108] focus:text-[#ba0108] transition-colors";
-        
+
         // Update ARIA pressed states
         uaDesktop.setAttribute('aria-pressed', 'true');
         enDesktop.setAttribute('aria-pressed', 'false');
@@ -498,7 +510,7 @@
         enDesktop.className = "font-['Inter'] font-bold cursor-pointer text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold transition-colors";
         uaMobile.className = "!font-[Unbounded] font-[300] cursor-pointer text-white/80 hover:text-[#ba0108] focus:text-[#ba0108] transition-colors";
         enMobile.className = "!font-[Unbounded] font-[300] cursor-pointer text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] transition-colors";
-        
+
         // Update ARIA pressed states
         uaDesktop.setAttribute('aria-pressed', 'false');
         enDesktop.setAttribute('aria-pressed', 'true');
@@ -560,7 +572,7 @@
       dropdownParent.addEventListener('mouseleave', () => {
         hoverTimeout = setTimeout(() => {
           dropdownParent.classList.remove('active');
-        }, 300); // 300ms delay before hiding
+        }, 300); 
       });
 
       dropdownMenu.addEventListener('mouseenter', () => {
