@@ -35,7 +35,7 @@ collections:
           name: "category",
           widget: "select",
           options: ["politni-steky", "videoperedavachi-vtx", "esc"],
-          , i18n: true
+          i18n: true
         }
       - { label: "ID товару", name: "product_id", widget: "string", i18n: "duplicate"  }
       - { label: "Зображення", name: "image", widget: "image", i18n: "duplicate"  }
