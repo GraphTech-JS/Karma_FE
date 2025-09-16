@@ -42,11 +42,11 @@
     <nav aria-label="Breadcrumb navigation"
          class="flex flex-row items-start font-[Montserrat] gap-[clamp(8px,2vw,16px)] mb-[40px]">
       <ol class="flex flex-wrap items-center">
-        <li><a href="/" class="text-[#ba0108] hover:underline">Головна</a></li>
-        <li class="text-[#ba0108] px-2" aria-hidden="true">&rarr;</li>
-        <li><a href="/catalog/{{ $context.Params.category | default "politni-steky" }}/" class="text-[#ba0108] hover:underline">{{ $categoryName }}</a></li>
-        <li class="text-[#ba0108] px-2" aria-hidden="true">&rarr;</li>
-        <li><span class="text-[#ba0108]">{{ $productName }}</span></li>
+        <li><a href="/" class="font-[Montserrat] text-[16px] lg:text-[20px] font-normal text-[#ba0108] leading-[120%]">Головна</a></li>
+        <li class="text-[#ba0108] px-[5px]" aria-hidden="true">&rarr;</li>
+        <li><a href="/catalog/{{ $context.Params.category | default "politni-steky" }}/" class="font-[Montserrat] text-[16px] lg:text-[20px] font-normal text-[#ba0108] leading-[120%]">{{ $categoryName }}</a></li>
+        <li class="text-[#ba0108] px-[5px]" aria-hidden="true">&rarr;</li>
+        <li><span class="font-[Montserrat] text-[16px] lg:text-[20px] font-normal text-[#ba0108] leading-[120%]">{{ $productName }}</span></li>
       </ol>
     </nav>
 
