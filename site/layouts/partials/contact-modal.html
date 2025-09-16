@@ -110,11 +110,11 @@
     border-color: transparent !important;
   }
 
- .toast--success {
-  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%) !important;
-  color: #fff !important;
-  border-color: transparent !important;
-}
+  .toast--success {
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%) !important;
+    color: #fff !important;
+    border-color: transparent !important;
+  }
 
   /* Custom Dropdown Styles */
   .custom-dropdown {
@@ -145,7 +145,7 @@
 
   .submit-button-modal {
     background: #ba0108 !important;
-    font-size: clamp(16px, 2vw, 20px) !important;
+    font-size: 20px!important;
     font-family: 'Montserrat', sans-serif !important;
     font-weight: 400 !important;
     color: #fefefe !important;
@@ -252,21 +252,16 @@
     background: #fff6f6;
   }
 
-   @media (max-width: 1200px) {
+  @media (max-width: 1200px) {
     .submit-button-modal {
       width: 322px !important;
     }
   }
 
   @media (max-width: 1000px) {
-    .contact-info {
-      flex-direction: column;
-      align-items: flex-start;
-    }
+    
 
-    .submit-button-modal {
-      width: 100% !important;
-    }
+
   }
 
   @media (max-width: 768px) {
@@ -320,6 +315,9 @@
   }
 
   @media (max-width: 480px) {
+    .contact-info {
+     padding-bottom: 40px !important;
+    }
     .custom-dropdown {
       display: flex;
       padding: 14px 16px !important;
@@ -347,7 +345,7 @@
     }
 
     .submit-button-modal {
-      width: 350px !important;
+      width: 100% !important;
       height: 65px !important;
       border-radius: 5px !important;
       padding: 0 !important;
