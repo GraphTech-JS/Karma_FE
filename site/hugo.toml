@@ -1,7 +1,33 @@
 baseurl = "https://karma-fe.netlify.app/"
 languageCode = "uk-UA"
-languageLang = "uk"
 title = "Karma - Електронні компоненти для дронів"
+
+defaultContentLanguage = "uk"
+
+
+[languages]
+  [languages.uk]
+    title = "Karma - Електронні компоненти для дронів"
+    languageName = "Українська"
+    languageCode = "uk-UA"
+    weight = 1
+    # Эта настройка уберет `/uk/` из URL для украинской версии (по вашему желанию)
+    defaultContentLanguageInSubdir = false
+    # Параметры для украинской версии
+    [languages.uk.params]
+      description = "Karma - провідний постачальник електронних компонентів для дронів в Україні. ESC, відеопередавачі, політні стеки та інші компоненти."
+      keywords = "дрони, ESC, відеопередавачі, політні стеки, електронні компоненти, FPV, безпілотники, Україна"
+
+  [languages.en]
+    title = "Karma - Electronic Components for Drones"
+    languageName = "English"
+    languageCode = "en-US"
+    weight = 2
+    # Параметры для английской версии
+    [languages.en.params]
+      description = "Karma - a leading supplier of electronic components for drones in Ukraine. ESCs, video transmitters, flight stacks and other components."
+      keywords = "drones, ESC, video transmitters, flight stacks, electronic components, FPV, UAVs, Ukraine"
+
 
 # Enable RSS for better SEO
 enableRobotsTXT = true
@@ -43,12 +69,8 @@ enableGitInfo = true
   getenv = ['^HUGO_', '^CI$', '^CONTEXT$', '^NETLIFY']
 
 [params]
-  description = "Karma - провідний постачальник електронних компонентів для дронів в Україні. ESC, відеопередавачі, політні стеки та інші компоненти."
-  keywords = "дрони, ESC, відеопередавачі, політні стеки, електронні компоненти, FPV, безпілотники, Україна"
   author = "Karma"
   images = ["img/og-image.jpg"]
-  defaultDescription = "Karma - провідний постачальник електронних компонентів для дронів в Україні"
-  defaultKeywords = "дрони, ESC, відеопередавачі, політні стеки, електронні компоненти"
   ogImage = "img/og-image.jpg"
   themeColor = "#1f2937"
   favicon = "img/favicon.ico"
