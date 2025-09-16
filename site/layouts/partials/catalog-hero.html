@@ -23,30 +23,30 @@
     {{ end }}
 
     <!-- Stack elements for mobile -->
-<div class="block sm:hidden lg:hidden">
-    {{ $stackLeft := resources.Get "img/stack-left.png" }}
-    {{ if $stackLeft }}
-    {{ $stackLeft1x := $stackLeft.Resize "100x webp q80" }}
-    {{ $stackLeft2x := $stackLeft.Resize "200x webp q80" }}
-    <img src="{{ $stackLeft1x.RelPermalink }}"
-        srcset="{{ $stackLeft1x.RelPermalink }} 1x, {{ $stackLeft2x.RelPermalink }} 2x" width="100" alt="Елемент стеку зліва" aria-hidden="true"
-        class="absolute top-0 left-0 w-[100px] h-auto z-[1]" />
-    {{ else }}
-    <img src="/img/stack-left.png" alt="Елемент стеку зліва" aria-hidden="true"
-        class="absolute top-0 left-0 w-[100px] h-auto z-[1]" />
-    {{ end }}
-    {{ $stackRight := resources.Get "img/stack-right.png" }}
-    {{ if $stackRight }}
-    {{ $stackRight1x := $stackRight.Resize "100x webp q80" }}
-    {{ $stackRight2x := $stackRight.Resize "200x webp q80" }}
-    <img src="{{ $stackRight1x.RelPermalink }}"
-        srcset="{{ $stackRight1x.RelPermalink }} 1x, {{ $stackRight2x.RelPermalink }} 2x" width="100" alt="Елемент стеку справа" aria-hidden="true"
-        class="absolute bottom-3 right-0 w-[100px] h-auto z-[1]" />
-    {{ else }}
-    <img src="/img/stack-right.png" alt="Елемент стеку справа" aria-hidden="true"
-        class="absolute bottom-3 right-0 w-[100px] h-auto z-[1]" />
-    {{ end }}
-</div>
+    <div class="block sm:hidden lg:hidden">
+        {{ $stackLeft := resources.Get "img/stack-left.png" }}
+        {{ if $stackLeft }}
+        {{ $stackLeft1x := $stackLeft.Resize "100x webp q80" }}
+        {{ $stackLeft2x := $stackLeft.Resize "200x webp q80" }}
+        <img src="{{ $stackLeft1x.RelPermalink }}"
+            srcset="{{ $stackLeft1x.RelPermalink }} 1x, {{ $stackLeft2x.RelPermalink }} 2x" width="100"
+            alt="Елемент стеку зліва" aria-hidden="true" class="absolute top-0 left-0 w-[100px] h-auto z-[1]" />
+        {{ else }}
+        <img src="/img/stack-left.png" alt="Елемент стеку зліва" aria-hidden="true"
+            class="absolute top-0 left-0 w-[100px] h-auto z-[1]" />
+        {{ end }}
+        {{ $stackRight := resources.Get "img/stack-right.png" }}
+        {{ if $stackRight }}
+        {{ $stackRight1x := $stackRight.Resize "100x webp q80" }}
+        {{ $stackRight2x := $stackRight.Resize "200x webp q80" }}
+        <img src="{{ $stackRight1x.RelPermalink }}"
+            srcset="{{ $stackRight1x.RelPermalink }} 1x, {{ $stackRight2x.RelPermalink }} 2x" width="100"
+            alt="Елемент стеку справа" aria-hidden="true" class="absolute bottom-3 right-0 w-[100px] h-auto z-[1]" />
+        {{ else }}
+        <img src="/img/stack-right.png" alt="Елемент стеку справа" aria-hidden="true"
+            class="absolute bottom-3 right-0 w-[100px] h-auto z-[1]" />
+        {{ end }}
+    </div>
 
     <div
         class="w-full max-w-[1280px]  flex flex-col  mx-auto  px-[30px] pt-[40px] max-[450px]:pt-[20px] lg:mb-[113px] md:mb-[60px] mb-[101px] relative z-[2]">
@@ -71,16 +71,15 @@
             </ol>
         </nav>
 
-        <div
-            class="flex flex-col gap-0 justify-between mx-0 md:flex-row">
+        <div class="flex flex-col gap-0 justify-between mx-0 md:flex-row">
             <div
-                class="flex flex-col gap-[10px] shrink-0 items-center max-w-full md:items-start lg:items-start md:w-[548px] lg:w-[749px] w-full">
+                class="flex flex-col gap-[10px] shrink-0 items-center max-w-full md:items-start lg:items-start xl:items-start  md:w-[448px] lg:w-[548px] xl:w-[749px] w-full">
                 <h1 id="catalog-hero-heading"
-                    class="font-[Unbounded] uppercase leading-[1.1] text-[32px] md:text-[48px] lg:text-[64px]  text-[#ba0108] font-medium hero-title whitespace-normal break-words max-sm:text-center">
+                    class="font-[Unbounded] uppercase leading-[1.1] text-[32px] lg:text-[48px] xl:text-[64px]  text-[#ba0108] font-medium hero-title whitespace-normal break-words max-sm:text-center">
                     {{ $categoryData.name }}
                 </h1>
                 <p
-                    class="font-[Montserrat]   text-[16px] lg:text-[20px] text-[#020303] max-sm:mb-[20px] leading-[120%] ">
+                    class="font-[Montserrat]   text-[16px] xl:text-[20px] text-[#020303]  max-sm:mb-[40px] md:mb-[60px] leading-[120%] ">
                     {{ if eq $category "politni-steky" }} Компактна та продуктивна
                     інтегрована система для дронів, що об'єднує польотний контролер (FC)
                     на базі потужного мікроконтролера STM32F405 та регулятор швидкості
@@ -102,7 +101,7 @@
                 </p>
                 <button onclick="window.openContactModal()"
                     aria-label="Отримати комерційну пропозицію для {{ $categoryData.name }}"
-                    class="!font-[Montserrat] cursor-pointer text-[16px] md:text-[24px] font-medium text-white bg-[#ba0108] hover:bg-[#e39599] transition-colors w-full max-w-[458px] py-[15px]  h-[58px] md:h-[70px] font-light md:font-normal shadow-[0_4px_16px_0_rgba(0,0,0,0.4)] rounded-[20px]">
+                    class="!font-[Montserrat] cursor-pointer text-[16px] sm:text-[20px] md:text-[24px] lg:text-[24px] font-medium text-white bg-[#ba0108] hover:bg-[#e39599] transition-colors w-[354px]  sm:max-w-full sm:w-full md:max-w-[458px] lg:max-w-[458px] xl:max-w-[458px] py-[15px]  h-[58px] md:h-[70px] font-light md:font-normal shadow-[0_4px_16px_0_rgba(0,0,0,0.4)] rounded-[20px]">
                     Отримати пропозицію
                 </button>
             </div>
@@ -111,13 +110,11 @@
                 {{ if $stackRotate }}
                 {{ $stackRotateProcessed := $stackRotate.Resize "550x webp q80" }}
                 <img src="{{ $stackRotateProcessed.RelPermalink }}"
-                    alt="Karma Flights - високотехнологічне українське виробництво" loading="lazy"
-                    class="hidden md:block object-contain
+                    alt="Karma Flights - високотехнологічне українське виробництво" loading="lazy" class="hidden md:block object-contain
                               max-w-[400px] h-[400px] lg:max-w-[450px] lg:h-[400px] w-full" />
                 {{ else }}
                 <img src="/img/stack-rotate.png" alt="Karma Flights - високотехнологічне українське виробництво"
-                    loading="lazy"
-                    class="hidden md:block object-contain
+                    loading="lazy" class="hidden md:block object-contain
                     max-w-[400px] h-[400px] lg:max-w-[450px] lg:h-[400px] w-full" />
                 {{ end }}
 
