@@ -860,6 +860,7 @@
       "pr-[clamp(8px,2vw,16px)]",
       "primary",
       "product-card",
+      "product-catalog-section",
       "product-hero-button",
       "product-title",
       "products-slider",
