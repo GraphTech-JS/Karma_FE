@@ -1,25 +1,49 @@
-{{ $title := .title }} {{ $subtitle := .subtitle }}
+{{ $title := .title }}
+{{ $subtitle := .subtitle }}
 
 {{ $droneLeft := resources.Get "img/drone-left.png" }}
 {{ $droneRight := resources.Get "img/drone-right.png" }}
 {{ $faqBg := resources.Get "img/faq-hero-bg.png" }}
 
+{{ if $faqBg }}
+{{ $faqBgWebp := $faqBg.Resize "2110x webp q80" }}
+<link rel="preload" as="image" href="{{ $faqBgWebp.RelPermalink }}" fetchpriority="high" type="image/webp">
+{{ end }}
+
 {{ if and $droneLeft $droneRight $faqBg }}
-{{ $droneLeftWebp := $droneLeft.Resize "680x webp q80" }}
-{{ $droneRightWebp := $droneRight.Resize "680x webp q80" }}
+
+{{ $droneLeftSmall := $droneLeft.Resize "162x webp q70" }}
+{{ $droneLeftMed := $droneLeft.Resize "260x webp q70" }}
+{{ $droneLeftLarge := $droneLeft.Resize "306x webp q70" }}
+
+{{ $droneRightSmall := $droneRight.Resize "92x webp q70" }}
+{{ $droneRightMed := $droneRight.Resize "238x webp q70" }}
+{{ $droneRightLarge := $droneRight.Resize "282x webp q70" }}
+
 {{ $faqBgWebp := $faqBg.Resize "2110x webp q80" }}
 
-<section class="faq-hero h-[363px] md:h-[350px]" style="--faq-bg: url('{{ $faqBgWebp.RelPermalink }}')" aria-labelledby="faq-hero-heading">
+<section class="faq-hero h-[363px] md:h-[350px]" style="--faq-bg: url('{{ $faqBgWebp.RelPermalink }}')"
+  aria-labelledby="faq-hero-heading">
   <div class="absolute bottom-0 left-0 z-[2]">
-    <img src="{{ $droneLeftWebp.RelPermalink }}" alt="Декоративний дрон зліва" aria-hidden="true"
-      class="w-[162px] h-[104px] md:w-[260px] md:h-[167px] lg:w-[306px] lg:h-[197px]" loading="lazy" />
+    <img src="{{ $droneLeftMed.RelPermalink }}" srcset="{{ $droneLeftSmall.RelPermalink }} 162w,
+              {{ $droneLeftMed.RelPermalink }} 260w,
+              {{ $droneLeftLarge.RelPermalink }} 306w" sizes="(max-width: 768px) 162px,
+             (max-width: 1024px) 260px,
+             306px" alt="Декоративний дрон зліва" aria-hidden="true" loading="lazy"
+      class="w-[162px] h-[104px] md:w-[260px] md:h-[167px] lg:w-[306px] lg:h-[197px]" />
   </div>
+
   <div class="absolute top-0 right-0 md:bottom-0 md:top-auto z-[2]">
-    <img src="{{ $droneRightWebp.RelPermalink }}" alt="Декоративний дрон справа" aria-hidden="true"
-      class="w-[92px] h-[64px] md:w-[238px] md:h-[167px] lg:w-[282px] lg:h-[197px]" loading="lazy" />
+    <img src="{{ $droneRightMed.RelPermalink }}" srcset="{{ $droneRightSmall.RelPermalink }} 92w,
+              {{ $droneRightMed.RelPermalink }} 238w,
+              {{ $droneRightLarge.RelPermalink }} 282w" sizes="(max-width: 768px) 92px,
+             (max-width: 1024px) 238px,
+             282px" alt="Декоративний дрон справа" aria-hidden="true" loading="lazy"
+      class="w-[92px] h-[64px] md:w-[238px] md:h-[167px] lg:w-[282px] lg:h-[197px]" />
   </div>
   {{ else }}
-  <section class="faq-hero h-[363px] md:h-[350px]" style="--faq-bg: url('/img/faq-hero-bg.png')" aria-labelledby="faq-hero-heading">
+  <section class="faq-hero h-[363px] md:h-[350px]" style="--faq-bg: url('/img/faq-hero-bg.png')"
+    aria-labelledby="faq-hero-heading">
     <div class="absolute bottom-0 left-0 z-[2]">
       <img src="/img/drone-left.png" alt="Декоративний дрон зліва" aria-hidden="true"
         class="w-[162px] h-[104px] md:w-[260px] md:h-[167px] lg:w-[306px] lg:h-[197px]" loading="lazy" />
@@ -29,8 +53,8 @@
         class="w-[92px] h-[64px] md:w-[238px] md:h-[167px] lg:w-[282px] lg:h-[197px]" loading="lazy" />
     </div>
     {{ end }}
-    <div
-      class="max-w-[1055px] w-full mx-auto pt-[100px] md:pt-[80px] px-[20px]">
+
+    <div class="max-w-[1055px] w-full mx-auto pt-[100px] md:pt-[80px] px-[20px]">
       <h1 id="faq-hero-heading"
         class="title hero-title !text-[clamp(24px,4vw,48px)] font-medium font-[Unbounded] text-[#fefefe] !mb-[30px] !md:mb-[35px] !lg:mb-[15px]">
         <span>П</span>{{ $title }}
