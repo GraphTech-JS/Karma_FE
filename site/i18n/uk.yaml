@@ -1,0 +1,25 @@
+- id: nav.catalog
+  translation: "Каталог"
+- id: nav.faq
+  translation: "FAQ"
+- id: nav.knowledge
+  translation: "База знань"
+- id: nav.contacts
+  translation: "Контакти"
+- id: search.placeholder
+  translation: "Пошук по сайту"
+- id: search.start
+  translation: "Почати пошук"
+- id: catalog.stacks
+  translation: "Політні стеки"
+- id: catalog.vtx
+  translation: "Відеопередавачі VTX"
+- id: catalog.esc
+  translation: "ESC"
+
+- id: hero.brand
+  translation: "KARMA FLIGHTS"
+- id: hero.subtitle
+  translation: "НЕ ШУКАЙ КОМПРОМІСІВ"
+- id: hero.tagline
+  translation: "Високотехнологічне українське виробництво"
