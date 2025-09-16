@@ -32,29 +32,25 @@ module.exports = {
       },
       {
         test: /\.(sa|sc|c)ss$/,
-        exclude: /node_modules/,
         use: [
-          "style-loader",
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              esModule: false
-            }
-          },
-          {
-            loader: "css-loader",
-            options: {url: false}
-          },
-          "postcss-loader",
-          {
-            loader: "sass-loader",
-            options: {
-              sassOptions: {
-                outputStyle: "expanded",
-              },
-            },
-          }
-        ]
+    MiniCssExtractPlugin.loader,
+    {
+      loader: 'css-loader',
+      options: { url: false },
+    },{
+      loader: 'postcss-loader',
+      options: {
+        postcssOptions: {
+          plugins: [
+            'postcss-import',
+            '@tailwindcss/postcss',
+            'autoprefixer',
+          ],
+        },
+      },
+    },
+    'sass-loader',
+  ]
       }
     ]
   },
