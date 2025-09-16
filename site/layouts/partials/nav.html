@@ -166,7 +166,7 @@
 
       .language-switcher {
         gap: 8px;
-        font-size: 16px;
+        font-size: 20px !important;
       }
     }
 
@@ -199,7 +199,8 @@
   <div class="flex w-full max-w-[1280px] px-[20px] justify-between items-center nav-container"
     style="padding-top: 20px; padding-bottom: 20px;">
     <!-- Logo -->
-    <a href="/" class="relative z-[10] text-xl font-normal text-white font-inter" aria-label="Karma - головна сторінка">
+    <a href="/" class="relative z-[10] text-xl font-normal text-[#fefefe] font-inter"
+      aria-label="Karma - головна сторінка">
       {{ $logo := resources.Get "logo.png" }}
       {{ if $logo }}
       {{ $logo1x := $logo.Resize "149x34 webp q80" }}
@@ -215,7 +216,7 @@
     <nav class="nav-container desktop-nav flex items-center gap-[50px]" role="navigation" aria-label="Головне меню">
       <div class="relative dropdown-parent">
         <button onclick="toggleDropdown(event)"
-          class="nav-link lg:!font-['Inter'] max-[450px]:font-['Unbounded'] cursor-pointer font-normal text-xl focus:font-bold text-white hover:text-[#ba0108] transition-colors {{ if or (eq .Page.Section "catalog") (hasPrefix .Page.RelPermalink "/catalog/" ) }}active{{ end }}" aria-expanded="false"
+          class="nav-link lg:!font-['Inter'] max-[450px]:font-['Unbounded'] cursor-pointer font-normal text-xl focus:font-bold text-[#fefefe] hover:text-[#ba0108] transition-colors {{ if or (eq .Page.Section "catalog") (hasPrefix .Page.RelPermalink "/catalog/" ) }}active{{ end }}" aria-expanded="false"
           aria-haspopup="true" aria-label="Каталог товарів">
           Каталог
         </button>
@@ -223,29 +224,29 @@
           role="menu" aria-label="Підменю каталогу">
           <div class="flex flex-row w-full lg:flex-col">
             <a href="/catalog/politni-steky/"
-              class="dropdown-item flex-1 px-8 py-6 text-white lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap"
+              class="dropdown-item flex-1 px-8 py-6 text-[#fefefe] lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap"
               role="menuitem">Політні
               стеки</a>
             <a href="/catalog/videoperedavachi-vtx/"
-              class="dropdown-item flex-1 px-8 py-6 text-white lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap"
+              class="dropdown-item flex-1 px-8 py-6 text-[#fefefe] lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap"
               role="menuitem">Відеопередавачі
               VTX</a>
             <a href="/catalog/esc/"
-              class="dropdown-item flex-1 px-8 py-6 text-white lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap"
+              class="dropdown-item flex-1 px-8 py-6 text-[#fefefe] lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap"
               role="menuitem">ESC</a>
           </div>
         </div>
       </div>
       <a href="/faq"
-        class="nav-link lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-xl font-normal text-white hover:text-[#ba0108] transition-colors {{ if eq .Page.Section "faq" }}active{{ end }}">
+        class="nav-link lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors {{ if eq .Page.Section "faq" }}active{{ end }}">
         FAQ
       </a>
       <a href="/knowledge-base"
-        class="nav-link lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-xl font-normal text-white hover:text-[#ba0108] transition-colors {{ if eq .Page.Section "knowledge-base" }}active{{ end }}">
+        class="nav-link lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors {{ if eq .Page.Section "knowledge-base" }}active{{ end }}">
         База знань
       </a>
       <a href="/contact"
-        class="nav-link lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-xl font-normal text-white hover:text-[#ba0108] transition-colors {{ if eq .Page.Section "contact" }}active{{ end }}">
+        class="nav-link lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors {{ if eq .Page.Section "contact" }}active{{ end }}">
         Контакти
       </a>
     </nav>
@@ -254,17 +255,17 @@
     <div class="desktop-nav flex gap-[50px] justify-center items-center">
       <nav class="flex items-center gap-[30px]">
         <a href="tel:(067) 298-29-29"
-          class=" font-['Montserrat'] text-xl font-normal text-white hover:text-[#ba0108] transition-colors hidden lg:block"
+          class=" font-['Montserrat'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors hidden lg:block"
           aria-label="Зателефонувати за номером (067) 298-29-29">
           (067) 298-29-29
         </a>
-        <div class="flex gap-3 items-center text-xl language-switcher text-white/80">
+        <div class="flex gap-3 items-center text-xl language-switcher text-[#fefefe]">
           <button id="lang-ua"
-            class="font-['Inter'] font-bold cursor-pointer text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold transition-colors"
+            class="font-['Montserrat'] text-xl font-normal cursor-pointer text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold focus:font-['Inter'] transition-colors"
             onclick="switchLanguage('ua')" aria-label="Перемкнути на українську мову" aria-pressed="true">UA</button>
-          <span aria-hidden="true">|</span>
+          <span class="text-[#fefefe] font-[300]" aria-hidden="true">|</span>
           <button id="lang-en"
-            class="font-['Inter'] font-[300] cursor-pointer text-white/80 hover:text-[#ba0108] focus:text-[#ba0108] transition-colors"
+            class="font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#fefefe] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold focus:font-['Inter'] transition-colors"
             onclick="switchLanguage('en')" aria-label="Switch to English" aria-pressed="false">EN</button>
         </div>
       </nav>
@@ -273,8 +274,8 @@
     <!-- Mobile Navigation -->
     <div class="flex gap-4 items-center mobile-nav">
       <!-- Search Icon -->
-      <button class="text-white hover:text-[#ba0108] transition-colors cursor-pointer" onclick="toggleMobileSearch()"
-        aria-label="Відкрити пошук">
+      <button class="text-[#fefefe] hover:text-[#ba0108] transition-colors cursor-pointer"
+        onclick="toggleMobileSearch()" aria-label="Відкрити пошук">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
           aria-hidden="true">
           <path
@@ -297,7 +298,7 @@
   <div id="mobile-search-overlay" class="hidden fixed inset-0 z-50 mobile-search-overlay bg-black/80">
     <div class="bg-[#020303] p-6 rounded-b-3xl">
       <div class="flex justify-between items-center mb-4">
-        <a href="/" class="text-xl font-normal text-white font-inter">
+        <a href="/" class="text-xl font-normal text-[#fefefe] font-inter">
           {{ $logoMobile := resources.Get "logo.png" }}
           {{ if $logoMobile }}
           {{ $logoMobile1x := $logoMobile.Resize "108x25 webp q80" }}
@@ -309,8 +310,8 @@
           <img src="/logo.png" alt="logo" width="108" height="25" />
           {{ end }}
         </a>
-        <button class="text-white hover:text-[#ba0108] transition-colors cursor-pointer" onclick="toggleMobileSearch()"
-          aria-label="Закрити пошук">
+        <button class="text-[#fefefe] hover:text-[#ba0108] transition-colors cursor-pointer"
+          onclick="toggleMobileSearch()" aria-label="Закрити пошук">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true">
             <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -326,7 +327,7 @@
         <button
           class="absolute right-0 top-0 h-[60px] w-[120px] rounded-full bg-[#ba0108] flex items-center justify-center cursor-pointer hover:bg-[#a00007] transition-colors"
           aria-label="Почати пошук">
-          <span class="text-white font-['Montserrat'] text-lg font-medium">Пошук</span>
+          <span class="text-[#fefefe] font-['Montserrat'] text-lg font-medium">Пошук</span>
         </button>
       </div>
     </div>
@@ -339,7 +340,7 @@
     <div
       class="flex relative z-[12] justify-between items-center p-4 shadow-[0_2px_8px_rgba(255,255,255,0.4)] bg-[#020303]">
       <!-- Logo -->
-      <a href="/" class="text-xl font-normal text-white font-inter" aria-label="Karma - головна сторінка">
+      <a href="/" class="text-xl font-normal text-[#fefefe] font-inter" aria-label="Karma - головна сторінка">
         {{ $logoMobile := resources.Get "logo.png" }}
         {{ if $logoMobile }}
         {{ $logoMobile1x := $logoMobile.Resize "108x25 webp q80" }}
@@ -364,9 +365,9 @@
       aria-label="Мобільне меню">
       <div class="relative">
         <button onclick="toggleMobileCatalog()"
-          class="w-full flex justify-center items-center text-white font-['Unbounded'] text-xl font-normal py-2 cursor-pointer"
+          class="w-full flex justify-center items-center text-[#fefefe] font-['Unbounded'] text-xl font-normal py-2 cursor-pointer"
           aria-expanded="false" aria-controls="mobile-catalog-submenu" aria-label="Каталог товарів">
-          <span class="font-['Unbounded'] text-xl font-normal text-white">Каталог</span>
+          <span class="font-['Unbounded'] text-xl font-normal text-[#fefefe]">Каталог</span>
           <svg class="w-5 h-5 transition-transform transform mobile-catalog-arrow" fill="none" stroke="currentColor"
             viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -376,36 +377,37 @@
           id="mobile-catalog-submenu">
           <div class="flex flex-col items-center pl-4 mt-2 space-y-2">
             <a href="/catalog/politni-steky/"
-              class="block text-white/80 font-['Unbounded'] text-lg py-2 hover:text-[#ba0108] transition-colors">Політні
+              class="block text-[#fefefe]/80 font-['Unbounded'] text-lg py-2 hover:text-[#ba0108] transition-colors">Політні
               стеки</a>
             <a href="/catalog/videoperedavachi-vtx/"
-              class="block text-white/80 font-['Unbounded'] text-lg py-2 hover:text-[#ba0108] transition-colors">Відеопередавачі
+              class="block text-[#fefefe]/80 font-['Unbounded'] text-lg py-2 hover:text-[#ba0108] transition-colors">Відеопередавачі
               VTX</a>
             <a href="/catalog/esc/"
-              class="block text-white/80 font-['Unbounded'] text-lg py-2 hover:text-[#ba0108] transition-colors">ESC</a>
+              class="block text-[#fefefe]/80 font-['Unbounded'] text-lg py-2 hover:text-[#ba0108] transition-colors">ESC</a>
           </div>
         </div>
       </div>
       <a href="/faq"
-        class="text-white font-['Unbounded'] text-xl font-normal hover:text-[#ba0108] transition-colors">FAQ</a>
+        class="text-[#fefefe] font-['Unbounded'] text-xl font-normal hover:text-[#ba0108] transition-colors">FAQ</a>
       <a href="/knowledge-base"
-        class="text-white font-['Unbounded'] text-xl font-normal hover:text-[#ba0108] transition-colors">База знань</a>
+        class="text-[#fefefe] font-['Unbounded'] text-xl font-normal hover:text-[#ba0108] transition-colors">База
+        знань</a>
       <a href="/contact"
-        class="text-white font-['Unbounded'] text-xl font-normal hover:text-[#ba0108] transition-colors">Контакти</a>
+        class="text-[#fefefe] font-['Unbounded'] text-xl font-normal hover:text-[#ba0108] transition-colors">Контакти</a>
 
       <div class="flex absolute bottom-10 flex-col items-center">
         <a href="tel:(067) 298-29-29"
-          class="block text-white font-['Montserrat'] text-xl font-normal mb-4 hover:text-[#ba0108] transition-colors">(067)
+          class="block text-[#fefefe] font-['Montserrat'] text-xl font-normal mb-4 hover:text-[#ba0108] transition-colors">(067)
           298-29-29</a>
-        <div class="flex gap-3 items-center text-2xl text-white">
+        <div class="flex gap-3 items-center text-2xl text-[#fefefe]">
           <button id="mobile-lang-ua"
-            class="!font-[Unbounded] font-[300] cursor-pointer text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] transition-colors"
+            class="font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold focus:font-['Inter'] transition-colors"
             onclick="switchLanguage('ua')" aria-label="Перемкнути на українську мову" aria-pressed="true">
             UA
           </button>
           <span aria-hidden="true">|</span>
           <button id="mobile-lang-en"
-            class="!font-[Unbounded] font-[300] cursor-pointer text-white/80 hover:text-[#ba0108] focus:text-[#ba0108] transition-colors"
+            class="font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#fefefe] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold focus:font-['Inter'] transition-colors"
             onclick="switchLanguage('en')" aria-label="Switch to English" aria-pressed="false">
             EN
           </button>
@@ -490,11 +492,11 @@
       const enMobile = document.getElementById('mobile-lang-en');
 
       if (lang === 'ua') {
-        // Set UA as active (red)
-        uaDesktop.className = "font-['Inter'] font-bold cursor-pointer text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold transition-colors";
-        enDesktop.className = "font-['Inter'] font-[300] cursor-pointer text-white/80 hover:text-[#ba0108] focus:text-[#ba0108] transition-colors";
-        uaMobile.className = "!font-[Unbounded] font-[300] cursor-pointer text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] transition-colors";
-        enMobile.className = "!font-[Unbounded] font-[300] cursor-pointer text-white/80 hover:text-[#ba0108] focus:text-[#ba0108] transition-colors";
+        // Set UA as active (red + bold + Inter)
+        uaDesktop.className = "font-['Inter'] text-xl !font-bold cursor-pointer !text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold focus:font-['Inter'] transition-colors";
+        enDesktop.className = "font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#fefefe] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold focus:font-['Inter'] transition-colors"
+        uaMobile.className = "!font-[Inter] font-bold cursor-pointer text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] transition-colors";
+        enMobile.className = "!font-[Montserrat] font-normal cursor-pointer text-[#fefefe]/80 hover:text-[#ba0108] focus:text-[#ba0108] transition-colors";
 
         // Update ARIA pressed states
         uaDesktop.setAttribute('aria-pressed', 'true');
@@ -502,11 +504,11 @@
         uaMobile.setAttribute('aria-pressed', 'true');
         enMobile.setAttribute('aria-pressed', 'false');
       } else if (lang === 'en') {
-        // Set EN as active (red)
-        uaDesktop.className = "font-['Inter'] font-[300] cursor-pointer text-white/80 hover:text-[#ba0108] focus:text-[#ba0108] transition-colors";
-        enDesktop.className = "font-['Inter'] font-bold cursor-pointer text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold transition-colors";
-        uaMobile.className = "!font-[Unbounded] font-[300] cursor-pointer text-white/80 hover:text-[#ba0108] focus:text-[#ba0108] transition-colors";
-        enMobile.className = "!font-[Unbounded] font-[300] cursor-pointer text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] transition-colors";
+        // Set EN as active (red + bold + Inter)
+        uaDesktop.className = "font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#fefefe] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold focus:font-['Inter'] transition-colors";
+        enDesktop.className = "font-['Inter'] text-xl !font-bold cursor-pointer !text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold focus:font-['Inter'] transition-colors";
+        uaMobile.className = "!font-[Montserrat] font-normal cursor-pointer text-[#fefefe]/80 hover:text-[#ba0108] focus:text-[#ba0108] transition-colors";
+        enMobile.className = "!font-[Inter] font-bold cursor-pointer text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] transition-colors";
 
         // Update ARIA pressed states
         uaDesktop.setAttribute('aria-pressed', 'false');
@@ -517,10 +519,6 @@
 
       // Store the selected language in localStorage
       localStorage.setItem('selectedLanguage', lang);
-
-      // Here you can add actual language switching logic
-      // For example, reload the page with a different language parameter
-      // window.location.href = window.location.pathname + '?lang=' + lang;
     }
 
     // Initialize language on page load
@@ -569,7 +567,7 @@
       dropdownParent.addEventListener('mouseleave', () => {
         hoverTimeout = setTimeout(() => {
           dropdownParent.classList.remove('active');
-        }, 300); 
+        }, 300);
       });
 
       dropdownMenu.addEventListener('mouseenter', () => {

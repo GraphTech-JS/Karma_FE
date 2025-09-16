@@ -142,7 +142,7 @@
   }
 
   .toast {
-    padding: 12px 16px  !important;
+    padding: 12px 16px !important;
     border-radius: clamp(10px, 1.5vw, 12px) !important;
     color: #fff !important;
     font-family: 'Montserrat', sans-serif !important;
@@ -191,172 +191,172 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-      const form = document.getElementById('contact-form');
-      const nameInput = document.getElementById('name');
-      const phoneInput = document.getElementById('phone');
-      const messageInput = document.getElementById('message');
-      const submitBtn = document.getElementById('submit-btn');
-      const toastContainer = document.getElementById('toast-container');
+    const form = document.getElementById('contact-form');
+    const nameInput = document.getElementById('name');
+    const phoneInput = document.getElementById('phone');
+    const messageInput = document.getElementById('message');
+    const submitBtn = document.getElementById('submit-btn');
+    const toastContainer = document.getElementById('toast-container');
 
-      function showToast(message, type = 'error', hideMs = 4000) {
-        if (!toastContainer) return;
+    function showToast(message, type = 'error', hideMs = 4000) {
+      if (!toastContainer) return;
 
-        const toast = document.createElement('div');
-        toast.className = `toast ${type}`;
-        toast.textContent = message;
-        toastContainer.appendChild(toast);
+      const toast = document.createElement('div');
+      toast.className = `toast ${type}`;
+      toast.textContent = message;
+      toastContainer.appendChild(toast);
 
-        requestAnimationFrame(() => toast.classList.add('show'));
+      requestAnimationFrame(() => toast.classList.add('show'));
 
-        setTimeout(() => {
-          toast.classList.remove('show');
-          setTimeout(() => toast.remove(), 350);
-        }, hideMs);
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 350);
+      }, hideMs);
+    }
+
+    function normalizePhoneToUA(value) {
+      const digits = (value || '').replace(/\D/g, '');
+      if (digits.length === 12 && digits.startsWith('380')) return '+' + digits;
+      if (digits.length === 10 && digits.startsWith('0')) return '+38' + digits;
+      return null;
+    }
+
+    function formatPhoneInput(e) {
+      const input = e.target;
+      const raw = input.value || '';
+      const trimmed = raw.trim();
+      const hasLeadingPlus = trimmed.startsWith('+');
+      let digits = raw.replace(/\D/g, '');
+
+      if (digits.length === 0) {
+        input.value = hasLeadingPlus ? '' : '';
+        return;
       }
 
-      function normalizePhoneToUA(value) {
-        const digits = (value || '').replace(/\D/g, '');
-        if (digits.length === 12 && digits.startsWith('380')) return '+' + digits;
-        if (digits.length === 10 && digits.startsWith('0')) return '+38' + digits;
-        return null;
-      }
-
-      function formatPhoneInput(e) {
-        const input = e.target;
-        const raw = input.value || '';
-        const trimmed = raw.trim();
-        const hasLeadingPlus = trimmed.startsWith('+');
-        let digits = raw.replace(/\D/g, '');
-
-        if (digits.length === 0) {
-          input.value = hasLeadingPlus ? '' : '';
-          return;
-        }
-
-        if (hasLeadingPlus) {
-          if (digits.startsWith('380')) {
-            const d = digits.slice(0, 12);
-            const rest = d.slice(3);
-            let formatted = '+380';
-            if (rest.length > 0) {
-              const a = rest.slice(0, 2);
-              const b = rest.slice(2, 5);
-              const c = rest.slice(5, 7);
-              const d4 = rest.slice(7, 9);
-              if (a) formatted += ' ' + a;
-              if (b) formatted += ' ' + b;
-              if (c) formatted += ' ' + c;
-              if (d4) formatted += ' ' + d4;
-            }
-            input.value = formatted;
-          } else {
-            input.value = '+' + digits.slice(0, 15);
-          }
-          return;
-        }
-
-        if (digits.startsWith('0')) {
-          const d = digits.slice(0, 10);
-          const first = d.charAt(0);
-          const rest = d.slice(1);
-          let formatted = first;
+      if (hasLeadingPlus) {
+        if (digits.startsWith('380')) {
+          const d = digits.slice(0, 12);
+          const rest = d.slice(3);
+          let formatted = '+380';
           if (rest.length > 0) {
             const a = rest.slice(0, 2);
             const b = rest.slice(2, 5);
             const c = rest.slice(5, 7);
             const d4 = rest.slice(7, 9);
-            if (a) formatted += a;
+            if (a) formatted += ' ' + a;
             if (b) formatted += ' ' + b;
             if (c) formatted += ' ' + c;
             if (d4) formatted += ' ' + d4;
           }
           input.value = formatted;
+        } else {
+          input.value = '+' + digits.slice(0, 15);
+        }
+        return;
+      }
+
+      if (digits.startsWith('0')) {
+        const d = digits.slice(0, 10);
+        const first = d.charAt(0);
+        const rest = d.slice(1);
+        let formatted = first;
+        if (rest.length > 0) {
+          const a = rest.slice(0, 2);
+          const b = rest.slice(2, 5);
+          const c = rest.slice(5, 7);
+          const d4 = rest.slice(7, 9);
+          if (a) formatted += a;
+          if (b) formatted += ' ' + b;
+          if (c) formatted += ' ' + c;
+          if (d4) formatted += ' ' + d4;
+        }
+        input.value = formatted;
+        return;
+      }
+
+      input.value = digits.slice(0, 12);
+    }
+
+    function onPhoneFocus(e) {
+      const input = e.target;
+      if ((input.value || '').trim() === '') {
+        input.value = '+380 ';
+        try {
+          input.setSelectionRange(input.value.length, input.value.length);
+        } catch (_) { }
+      }
+    }
+
+    function onPhoneBlur(e) {
+      const input = e.target;
+      const raw = (input.value || '').trim();
+      const digits = raw.replace(/\D/g, '');
+      const startsWithPlus = raw.startsWith('+');
+      if (startsWithPlus) {
+        if (digits.length < 4 || (digits.startsWith('380') && digits.length === 3)) {
+          input.value = '';
+          return;
+        }
+      }
+      formatPhoneInput({ target: input });
+    }
+
+    if (phoneInput) {
+      phoneInput.addEventListener('input', formatPhoneInput);
+      phoneInput.addEventListener('focus', onPhoneFocus);
+      phoneInput.addEventListener('blur', onPhoneBlur);
+    }
+
+    function validateForm() {
+      let valid = true;
+
+      [nameInput, phoneInput].forEach(el => el && el.classList.remove('error', 'success'));
+
+      // Ім'
+      const nameVal = (nameInput.value || '').trim();
+      if (!nameVal) {
+        nameInput.classList.add('error');
+        showToast("Будь ласка, введіть ваше ім'я", 'error', 4000);
+        valid = false;
+      } else {
+        nameInput.classList.add('success');
+      }
+
+      const normalizedPhone = normalizePhoneToUA(phoneInput.value);
+      if (!normalizedPhone) {
+        phoneInput.classList.add('error');
+        showToast('Будь ласка, введіть коректний номер телефону', 'error', 4000);
+        valid = false;
+      } else {
+        phoneInput.classList.add('success');
+      }
+
+      return valid;
+    }
+
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        if (!validateForm()) {
+          const firstInvalid = form.querySelector('.error');
+          if (firstInvalid) firstInvalid.focus();
           return;
         }
 
-        input.value = digits.slice(0, 12);
-      }
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Відправляємо...';
 
-      function onPhoneFocus(e) {
-        const input = e.target;
-        if ((input.value || '').trim() === '') {
-          input.value = '+380 ';
-          try {
-            input.setSelectionRange(input.value.length, input.value.length);
-          } catch (_) { }
-        }
-      }
+        setTimeout(() => {
+          form.reset();
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Відправити';
 
-      function onPhoneBlur(e) {
-        const input = e.target;
-        const raw = (input.value || '').trim();
-        const digits = raw.replace(/\D/g, '');
-        const startsWithPlus = raw.startsWith('+');
-        if (startsWithPlus) {
-          if (digits.length < 4 || (digits.startsWith('380') && digits.length === 3)) {
-            input.value = '';
-            return;
-          }
-        }
-        formatPhoneInput({ target: input });
-      }
+          showToast("Повідомлення успішно відправлено!\n Ми зв'яжемося з вами найближчим часом.", 'success', 5000);
 
-      if (phoneInput) {
-        phoneInput.addEventListener('input', formatPhoneInput);
-        phoneInput.addEventListener('focus', onPhoneFocus);
-        phoneInput.addEventListener('blur', onPhoneBlur);
-      }
-
-      function validateForm() {
-        let valid = true;
-
-        [nameInput, phoneInput].forEach(el => el && el.classList.remove('error', 'success'));
-
-        // Ім'
-        const nameVal = (nameInput.value || '').trim();
-        if (!nameVal) {
-          nameInput.classList.add('error');
-          showToast("Будь ласка, введіть ваше ім'я", 'error', 4000);
-          valid = false;
-        } else {
-          nameInput.classList.add('success');
-        }
-
-        const normalizedPhone = normalizePhoneToUA(phoneInput.value);
-        if (!normalizedPhone) {
-          phoneInput.classList.add('error');
-          showToast('Будь ласка, введіть коректний номер телефону', 'error', 4000);
-          valid = false;
-        } else {
-          phoneInput.classList.add('success');
-        }
-
-        return valid;
-      }
-
-      if (form) {
-        form.addEventListener('submit', function (e) {
-          e.preventDefault();
-
-          if (!validateForm()) {
-            const firstInvalid = form.querySelector('.error');
-            if (firstInvalid) firstInvalid.focus();
-            return;
-          }
-
-          submitBtn.disabled = true;
-          submitBtn.textContent = 'Відправляємо...';
-
-          setTimeout(() => {
-            form.reset();
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Відправити';
-
-            showToast("Повідомлення успішно відправлено!\n Ми зв'яжемося з вами найближчим часом.", 'success', 5000);
-
-            [nameInput, phoneInput, messageInput].forEach(el => el && el.classList.remove('error', 'success'));
-          }, 2000);
-        });
-      }
-    });
+          [nameInput, phoneInput, messageInput].forEach(el => el && el.classList.remove('error', 'success'));
+        }, 2000);
+      });
+    }
+  });
 </script>
