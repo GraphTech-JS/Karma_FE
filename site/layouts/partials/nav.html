@@ -216,7 +216,7 @@
     <nav class="nav-container desktop-nav flex items-center gap-[50px]" role="navigation" aria-label="Головне меню">
       <div class="relative dropdown-parent">
         <button onclick="toggleDropdown(event)"
-          class="nav-link lg:!font-['Inter'] max-[450px]:font-['Unbounded'] cursor-pointer font-normal text-xl focus:font-bold text-[#fefefe] hover:text-[#ba0108] transition-colors {{ if or (eq .Page.Section "catalog") (hasPrefix .Page.RelPermalink "/catalog/" ) }}active{{ end }}" aria-expanded="false"
+          class="nav-link lg:!font-['Inter'] max-[450px]:font-['Unbounded'] cursor-pointer font-normal text-xl  text-[#fefefe] hover:text-[#ba0108] transition-colors {{ if or (eq .Page.Section "catalog") (hasPrefix .Page.RelPermalink "/catalog/" ) }}active{{ end }}" aria-expanded="false"
           aria-haspopup="true" aria-label="Каталог товарів">
           Каталог
         </button>
