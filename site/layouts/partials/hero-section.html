@@ -11,11 +11,11 @@
     <source media="(max-width: 1279px)" srcset="{{ $bgEl1Desktop.RelPermalink }}" type="image/webp">
     <source media="(min-width: 1280px)" srcset="{{ $bgEl1Large.RelPermalink }}" type="image/webp">
     <img src="{{ $bgEl1Large.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
-      class="absolute z-[1] right-[-40px] lg:right-[-14px] xl:right-0 top-[-42px] md:top-[-65px] lg:top-[-60px] xl:top-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto" />
+      class="absolute z-[1] right-[-40px] lg:right-[-14px] xl:right-0 top-[-42px] md:top-[-65px] lg:top-[-60px] xl:top-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto" loading="lazy" decoding="async"/>
   </picture>
   {{ else }}
   <img src="/img/bg-el-1.png" alt="Декоративний фоновий елемент" aria-hidden="true"
-    class="absolute z-[1] right-[-40px] lg:right-[-14px] xl:right-0 top-[-42px] md:top-[-65px] lg:top-[-60px] xl:top-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto" />
+    class="absolute z-[1] right-[-40px] lg:right-[-14px] xl:right-0 top-[-42px] md:top-[-65px] lg:top-[-60px] xl:top-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto" loading="lazy" decoding="async"/>
   {{ end }}
 
   {{ $bgEl2 := resources.Get "img/bg-el-2.png" }}
@@ -28,11 +28,11 @@
     <source media="(max-width: 1279px)" srcset="{{ $bgEl2Desktop.RelPermalink }}" type="image/webp">
     <source media="(min-width: 1280px)" srcset="{{ $bgEl2Large.RelPermalink }}" type="image/webp">
     <img src="{{ $bgEl2Large.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
-      class="absolute z-[1] hidden md:block bottom-0 left-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto" />
+      class="absolute z-[1] hidden md:block bottom-0 left-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto" loading="lazy" decoding="async"/>
   </picture>
   {{ else }}
   <img src="/img/bg-el-2.png" alt="Декоративний фоновий елемент" aria-hidden="true"
-    class="absolute z-[1] hidden md:block bottom-0 left-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto" />
+    class="absolute z-[1] hidden md:block bottom-0 left-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto" loading="lazy" decoding="async" />
   {{ end }}
 
   <!-- Content -->
@@ -66,11 +66,11 @@
           <source media="(min-width: 1280px)" srcset="{{ $stackLarge.RelPermalink }}" type="image/webp">
           <img src="{{ $stackDesktopProcessed.RelPermalink }}"
             alt="Karma Flights - високотехнологічне українське виробництво" width="400" height="400"
-            class="h-auto w-[400px] xl:w-[602px] object-contain" loading="lazy" decoding="async" />
+            class="h-auto w-[400px] xl:w-[602px] object-contain" />
         </picture>
         {{ else }}
         <img src="/img/stack.png" alt="Karma Flights - високотехнологічне українське виробництво" width="400"
-          height="400" class="h-auto w-[400px] xl:w-[602px] object-contain" loading="lazy" decoding="async" />
+          height="400" class="h-auto w-[400px] xl:w-[602px] object-contain"  />
         {{ end }}
       </div>
     </div>
