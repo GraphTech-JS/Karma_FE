@@ -1,35 +1,37 @@
-const {merge} = require("webpack-merge");
-const path = require("path");
+const { merge } = require('webpack-merge');
+const path = require('path');
 
-const TerserPlugin = require("terser-webpack-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const common = require("./webpack.common.js");
+const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
-  mode: "production",
+  mode: 'production',
 
   output: {
-    filename: "[name].[hash:5].js",
-    chunkFilename: "[id].[hash:5].css",
-    path: path.resolve(__dirname, "dist")
+    filename: '[name].[contenthash:8].js', 
+    chunkFilename: '[id].[contenthash:8].css',
+    path: path.resolve(__dirname, 'dist'),
   },
+
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash:8].css',
+      chunkFilename: '[id].[contenthash:8].css',
+    }),
+  ],
 
   optimization: {
     minimize: true,
     minimizer: [
       new TerserPlugin({
         terserOptions: {
-          sourceMap: true,
         },
         exclude: /\/node_modules\//,
       }),
-      new MiniCssExtractPlugin({
-        filename: "[name].[hash:5].css",
-        chunkFilename: "[id].[hash:5].css"
-      }),
       new CssMinimizerPlugin(),
-    ]
-  }
+    ],
+  },
 });
