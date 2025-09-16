@@ -15,22 +15,26 @@
 {{ $categoryGuides = $guides }}
 {{ end }}
 
-<div
-    class="flex justify-center items-center flex-col max-w-[1280px] w-full mx-auto my-[60px] lg:my-[80px]  px-[20px]">
+<div class="flex justify-center items-center flex-col max-w-[1280px] w-full mx-auto my-[60px] lg:my-[80px]  px-[20px]">
     <h3
         class="title hero-title text-black !text-[clamp(24px,3vw,40px)] text-center font-[Unbounded] font-medium mb-[20px] md:mb-[30px]">
         <span class="text-[#ba0108]">Б</span>аза знань. {{ $categoryData.name }}
     </h3>
 
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-[20px] md:gap-[24px] lg:gap-[21px] ">
-    {{ range $categoryGuides | first 3 }}
+        {{ range $categoryGuides | first 3 }}
         <div class="flex flex-col  gap-[clamp(5px,2vw,10px)] w-full">
             {{ if .Params.image }}
             {{ $guideImage := resources.Get .Params.image }}
             {{ if $guideImage }}
-            {{ $guideImageProcessed := $guideImage.Resize "400x238 webp q80" }}
-            <img src="{{ $guideImageProcessed.RelPermalink }}" alt="{{ .Title }}" width="400"
-                class="rounded-lg  md:w-[300px] lg:w-[400px] w-full h-[238px]  object-contain" />
+            {{ $guideImg200 := $guideImage.Resize "200x webp q65" }}
+            {{ $guideImg300 := $guideImage.Resize "300x webp q65" }}
+            {{ $guideImg400 := $guideImage.Resize "400x webp q65" }}
+            <img src="{{ $guideImg300.RelPermalink }}" srcset="{{ $guideImg200.RelPermalink }} 200w,
+                      {{ $guideImg300.RelPermalink }} 300w,
+                      {{ $guideImg400.RelPermalink }} 400w" sizes="(max-width: 480px) 200px,
+                     (max-width: 768px) 300px,
+                     400px" alt="{{ .Title }}" class="rounded-lg w-full h-[238px] object-contain" loading="lazy" />
             {{ else }}
             <img src="{{ .Params.image }}" alt="{{ .Title }}" width="400"
                 class="rounded-lg  md:w-[300px] lg:w-[400px] w-full h-[238px]  object-contain" />
@@ -38,16 +42,20 @@
             {{ else }}
             {{ $defaultImage := resources.Get "img/card-img-1.png" }}
             {{ if $defaultImage }}
-            {{ $defaultImageProcessed := $defaultImage.Resize "400x238 webp q80" }}
-            <img src="{{ $defaultImageProcessed.RelPermalink }}" alt="{{ .Title }}" width="400"
-                class="rounded-lg  md:w-[300px] lg:w-[400px] w-full h-[238px]  object-contain" />
+            {{ $defaultImg200 := $defaultImage.Resize "200x webp q65" }}
+            {{ $defaultImg300 := $defaultImage.Resize "300x webp q65" }}
+            {{ $defaultImg400 := $defaultImage.Resize "400x webp q65" }}
+            <img src="{{ $defaultImg300.RelPermalink }}" srcset="{{ $defaultImg200.RelPermalink }} 200w,
+                      {{ $defaultImg300.RelPermalink }} 300w,
+                      {{ $defaultImg400.RelPermalink }} 400w" sizes="(max-width: 480px) 200px,
+                     (max-width: 768px) 300px,
+                     400px" alt="{{ .Title }}" class="rounded-lg w-full h-[238px] object-contain" loading="lazy" />
             {{ else }}
             <img src="/img/card-img-1.png" alt="{{ .Title }}" width="400"
                 class="rounded-lg md:w-[300px] lg:w-[400px] w-full h-[238px]  object-contain" />
             {{ end }}
             {{ end }}
-            <div
-                class="flex flex-col gap-[10px]  max-[450px]:h-auto justify-between">
+            <div class="flex flex-col gap-[10px]  max-[450px]:h-auto justify-between">
                 <h4
                     class="text-[clamp(20px,2vw,24px)] max-[450px]:text-[18px] font-[Montserrat] font-medium max-[450px]:leading-tight">
                     {{ .Title }}
