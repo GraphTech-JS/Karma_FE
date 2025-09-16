@@ -247,10 +247,12 @@ body.modal-open {
     .contact-info {
       flex-direction: column;
       align-items: flex-start;
-      gap: 20px;
+      gap: 10px;
     }
-
-   
+    .modal-content {
+      padding: 40px;
+      padding-bottom: 40px;
+    }
   }
 
 /* Responsive Design */
@@ -262,6 +264,8 @@ body.modal-open {
   .modal-overlay {
     padding: 20px;
   }
+
+ 
 }
 @media (max-width: 768px) {
   .modal-overlay {
