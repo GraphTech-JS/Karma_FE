@@ -48,6 +48,8 @@
       </div>
     </div>
 
+    <div id="search-message-container" class="max-w-[1280px] mx-auto px-[20px]"></div>
+
     <!-- Accordion Sections -->
     <div class="relative z-20 space-y-0 w-full max-w-[1600px] mx-auto">
       {{ $categories := slice "БПЛА" "Відеопередавачі" "ESC" "Політні стеки" }}
@@ -390,9 +392,8 @@ const sections = document.querySelectorAll('.knowledge-section');
     if (!messageEl) {
       messageEl = document.createElement('div');
       messageEl.id = 'search-message';
-      messageEl.className = 'text-center py-8 text-gray-500 font-[Montserrat]';
-
-      const container = document.querySelector('.w-full');
+      messageEl.className = 'text-center pb-[20px] text-gray-500 font-[Montserrat]';
+      const container = document.getElementById('search-message-container');
       if (container) {
         container.appendChild(messageEl);
       }

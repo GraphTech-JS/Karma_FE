@@ -1,30 +1,39 @@
 <section id="contact-form-section"
-  class="flex overflow-hidden relative justify-center items-center px-4 py-[60px] lg:py-[80px]">
+  class=" relative flex justify-center items-center px-4 pt-[100px] md:pt-[60px] lg:pt-[80px] {{ if not (eq .RelPermalink "/contact/") }}pb-[60px] lg:pb-[80px]{{ end }}">
 
-  {{ if .IsHome }}
-  <div class="hidden background-element1 xl:block">
-    {{ $bgEl8 := resources.Get "img/bg-contact-form-one.png" }}
-    {{ if $bgEl8 }}
-    {{ $bgEl8Processed := $bgEl8.Resize "499x webp q80" }}
-    <img src="{{ $bgEl8Processed.RelPermalink }}" alt="background-element-one"
-      class="w-[499px] h-auto object-contain" />
-    {{ else }}
-    <img src="/img/bg-contact-form-one.png" alt="background-element-one" class="w-[499px] h-auto object-contain" />
-    {{ end }}
-  </div>
+{{ if eq .RelPermalink "/contact/" }}
+  {{ $bgEl1 := resources.Get "img/bg-el-1.png" }}
+  {{ if $bgEl1 }}
+  {{ $bgEl1Processed := $bgEl1.Resize "420x webp q80" }}
+  <img src="{{ $bgEl1Processed.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
+    class="absolute md:hidden block  z-[1] right-[-45px] top-[-70px] w-[201px] h-auto" />
+  {{ else }}
+  <img src="/img/bg-el-1.png" alt="Декоративний фоновий елемент" aria-hidden="true"
+    class="absolute md:hidden block  z-[1] right-[-45px] top-[-70px] w-[201px] h-auto" />
+  {{ end }}
+{{ $bgEl2 := resources.Get "img/bg-el-1.png" }}
+{{ if $bgEl2 }}
+{{ $bgEl2Processed := $bgEl2.Resize "420x webp q80" }}
+<img src="{{ $bgEl2Processed.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
+  class="absolute md:hidden block  z-[1] left-[-45px] top-[-70px]  w-[201px] h-auto -scale-x-100" />
+{{ else }}
+<img src="/img/bg-el-2.png" alt="Декоративний фоновий елемент" aria-hidden="true"
+  class="absolute md:hidden block z-[1] left-[-45px] top-[-70px] w-[201px] h-auto -scale-x-100" />
+{{ end }}
   {{ end }}
 
-  <div class="hidden background-element2 sm:block">
+  <div class="hidden lg:block absolute right-[-12%]  top-0">
     {{ $bgEl5 := resources.Get "img/bg-contact-form.png" }}
     {{ if $bgEl5 }}
-    {{ $bgEl5Processed := $bgEl5.Resize "600x webp q80" }}
+    {{ $bgEl5Processed := $bgEl5.Resize "627x webp q80" }}
     <img src="{{ $bgEl5Processed.RelPermalink }}" alt="background-element-two"
-      class="w-[250px] h-auto object-contain xl:w-[600px]" />
+      class=" w-[250px] object-contain  h-[627px] lg:w-[417px]" />
     {{ else }}
     <img src="/img/bg-contact-form.png" alt="background-element-two"
-      class="w-[250px] h-auto object-contain xl:w-[600px]" />
+      class="w-[250px] object-contain h-[627px] lg:w-[417px]" />
     {{ end }}
   </div>
+
 
   <div id="toast-container"
     class="absolute top-8 left-1/2 z-50 px-4 space-y-2 w-full max-w-md transform -translate-x-1/2"></div>
@@ -86,21 +95,10 @@
     z-index: 0;
   }
 
-  .background-element2 {
-    position: absolute;
-    bottom: -135px;
-    right: -50px;
-    z-index: 0;
-  }
 
   @media (max-width: 1279px) {
     .background-element1 {
       display: none;
-    }
-
-    .background-element2 {
-      bottom: 55%;
-      right: 0;
     }
   }
 
