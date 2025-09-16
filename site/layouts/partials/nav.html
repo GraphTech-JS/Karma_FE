@@ -252,24 +252,26 @@
     </nav>
 
     <!-- Desktop Contact & Language -->
-    <div class="desktop-nav flex gap-[50px] justify-center items-center">
-      <nav class="flex items-center gap-[30px]">
-        <a href="tel:(067) 298-29-29"
-          class=" font-['Montserrat'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors hidden lg:block"
-          aria-label="Зателефонувати за номером (067) 298-29-29">
-          (067) 298-29-29
-        </a>
-        <div class="flex gap-3 items-center text-xl language-switcher text-[#fefefe]">
-          <button id="lang-ua"
-            class="font-['Montserrat'] text-xl font-normal cursor-pointer text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold focus:font-['Inter'] transition-colors"
-            onclick="switchLanguage('ua')" aria-label="Перемкнути на українську мову" aria-pressed="true">UA</button>
-          <span class="text-[#fefefe] font-[300]" aria-hidden="true">|</span>
-          <button id="lang-en"
-            class="font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#fefefe] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold focus:font-['Inter'] transition-colors"
-            onclick="switchLanguage('en')" aria-label="Switch to English" aria-pressed="false">EN</button>
-        </div>
-      </nav>
-    </div>
+    <nav class="desktop-nav flex items-baseline justify-center gap-[30px]">
+      <a href="tel:(067) 298-29-29"
+        class="flex items-center font-['Montserrat'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors hidden lg:block"
+        aria-label="Зателефонувати за номером (067) 298-29-29">
+        (067) 298-29-29
+      </a>
+      <div class="flex gap-3 items-center justify-center text-xl language-switcher text-[#fefefe]">
+        <button id="lang-ua"
+          class="font-['Montserrat'] text-xl font-normal cursor-pointer text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold focus:font-['Inter'] transition-colors"
+          onclick="switchLanguage('ua')" aria-label="Перемкнути на українську мову" aria-pressed="true">UA</button>
+    
+        <div class="h-6 w-px bg-white/50" aria-hidden="true"></div>
+    
+        <button id="lang-en"
+          class="font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#fefefe] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold focus:font-['Inter'] transition-colors"
+          onclick="switchLanguage('en')" aria-label="Switch to English" aria-pressed="false">EN</button>
+      </div>
+    </nav>
+
+    
 
     <!-- Mobile Navigation -->
     <div class="flex gap-4 items-center mobile-nav">
