@@ -261,14 +261,46 @@ class CustomSlider {
   }
 
   setupResponsive() {
-    const handleResize = () => {
-      this.updateSlideStyles();
-      // Use animate=false to prevent transition during resize
-      this.showSlide(this.currentIndex, false);
-    };
+  let resizeTimeout;
 
-    window.addEventListener("resize", handleResize);
-  }
+  const handleResize = () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const containerWidth = this.container.offsetWidth;
+      const currentSlidesPerView = this.getCurrentSlidesPerView();
+      const currentSpaceBetween = this.getCurrentSpaceBetween();
+      
+      let slideWidth;
+      if (this.options.fixedSlideWidth) {
+        slideWidth = this.options.fixedSlideWidth;
+      } else {
+        const totalSpacing = currentSpaceBetween * (currentSlidesPerView - 1);
+        slideWidth = Math.floor((containerWidth - totalSpacing) / currentSlidesPerView);
+      }
+      
+      const wrapperWidth = slideWidth * this.slides.length + currentSpaceBetween * (this.slides.length - 1);
+      const translateX = -(this.currentIndex * (slideWidth + currentSpaceBetween));
+      requestAnimationFrame(() => {
+        this.wrapper.style.transition = 'none';
+
+        this.slides.forEach((slide, index) => {
+          slide.style.width = `${slideWidth}px`;
+          slide.style.marginRight = index < this.slides.length - 1 ? `${currentSpaceBetween}px` : '0';
+        });
+
+        if (this.options.fixedWrapperWidth) {
+            this.wrapper.style.width = `${this.options.fixedWrapperWidth}px`;
+        } else {
+            this.wrapper.style.width = `${wrapperWidth}px`;
+        }
+
+        this.wrapper.style.transform = `translateX(${translateX}px)`;
+      });
+    }, 150);
+  };
+
+  window.addEventListener('resize', handleResize);
+}
 
   getCurrentSlidesPerView() {
     const width = window.innerWidth;
