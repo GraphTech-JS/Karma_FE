@@ -4,15 +4,19 @@
     <!-- Background decorative elements -->
     {{ $bgEl1 := resources.Get "img/bg-el-1.png" }}
     {{ if $bgEl1 }}
-    {{ $bgEl1Mobile := $bgEl1.Resize "150x webp q55" }}
-    {{ $bgEl1MobileMd := $bgEl1.Resize "180x webp q55" }}
-    {{ $bgEl1Tablet := $bgEl1.Resize "200x webp q55" }}
-    {{ $bgEl1Desktop := $bgEl1.Resize "240x webp q55" }}
-    {{ $bgEl1Large := $bgEl1.Resize "300x webp q55" }}
-    {{ $bgEl1XLarge := $bgEl1.Resize "360x webp q55" }}
+     {{ $bgEl1Mobile := $bgEl1.Resize "150x webp q45" }}
+     {{ $bgEl1Tablet := $bgEl1.Resize "200x webp q45" }}
+     {{ $bgEl1Desktop := $bgEl1.Resize "266x webp q45" }}
+     {{ $bgEl1XLarge := $bgEl1.Resize "340x webp q45" }}
     <img src="{{ $bgEl1Mobile.RelPermalink }}"
-        srcset="{{ $bgEl1Mobile.RelPermalink }} 150w, {{ $bgEl1MobileMd.RelPermalink }} 180w, {{ $bgEl1Tablet.RelPermalink }} 200w, {{ $bgEl1Desktop.RelPermalink }} 240w, {{ $bgEl1Large.RelPermalink }} 300w, {{ $bgEl1XLarge.RelPermalink }} 360w"
-        sizes="(max-width: 480px) 150px, (max-width: 768px) 180px, (max-width: 1024px) 200px, (max-width: 1280px) 240px, (max-width: 1536px) 300px, 360px"
+      srcset="{{ $bgEl1Mobile.RelPermalink }} 150w,
+        {{ $bgEl1Tablet.RelPermalink }} 200w,
+        {{ $bgEl1Desktop.RelPermalink }} 266w,
+        {{ $bgEl1XLarge.RelPermalink }} 340w"
+       sizes="(max-width: 768px) 150px,
+       (max-width: 1024px) 200px,
+       (max-width: 1536px) 266px,
+       340px"
         alt="Декоративний фоновий елемент" aria-hidden="true" loading="lazy"
         class="absolute z-[1] right-[-40px] lg:right-[-14px] xl:right-0 top-[-42px] md:top-[-65px] lg:top-[-60px] xl:top-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto" />
     {{ else }}
@@ -45,6 +49,7 @@
         {{ $stackLeft1x := $stackLeft.Resize "80x webp q60" }}
         {{ $stackLeft15x := $stackLeft.Resize "120x webp q60" }}
         {{ $stackLeft2x := $stackLeft.Resize "160x webp q60" }}
+        
         <img src="{{ $stackLeft1x.RelPermalink }}"
             srcset="{{ $stackLeft1x.RelPermalink }} 80w, {{ $stackLeft15x.RelPermalink }} 120w, {{ $stackLeft2x.RelPermalink }} 160w"
             sizes="(max-width: 400px) 80px, (max-width: 600px) 120px, 160px" width="80" alt="Елемент стеку зліва"

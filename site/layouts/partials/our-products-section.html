@@ -12,11 +12,8 @@ $context.Site.Data.products.categories $category }}
     class="absolute top-0 right-[-22px] max-[767px]:right-[-41px] max-[767px]:top-[calc(var(--spacing)*-32)] max-[450px]:right-[-15px] max-[450px]:top-[calc(var(--spacing)*-19)]">
     {{ $bgEl1 := resources.Get "img/bg-el-slider.png" }}
     {{ if $bgEl1 }}
-    {{/* Mobile optimized */}}
     {{ $bgEl1Mobile := $bgEl1.Resize "200x200 webp q70" }}
-    {{/* Tablet optimized */}}
     {{ $bgEl1Tablet := $bgEl1.Resize "313x287 webp q75" }}
-    {{/* Desktop optimized */}}
     {{ $bgEl1Desktop := $bgEl1.Resize "455x417 webp q80" }}
     <picture>
       <source media="(max-width: 450px)" srcset="{{ $bgEl1Mobile.RelPermalink }}" type="image/webp">
@@ -48,10 +45,17 @@ $context.Site.Data.products.categories $category }}
             <div
               class="bg-[#fff] rounded-[10px] p-[20px] [box-shadow:0_4px_16px_rgba(0,_0,_0,_0.1)] w-full max-w-[400px] text-center mx-0">
               {{ $productImage := resources.Get .Params.image }} {{ if
-              $productImage }} {{ $productImageProcessed := $productImage.Resize
-              "400x300 webp q85" }}
-              <img src="{{ $productImageProcessed.RelPermalink }}" alt="{{ .Title }}" width="400" height="300"
-                class="w-full h-[300px] object-contain" loading="lazy" />
+              $productImage }}
+              {{ $prodSmall := $productImage.Resize "300x webp q60" }}
+              {{ $prodMed := $productImage.Resize "350x webp q60" }}
+              {{ $prodLarge := $productImage.Resize "400x webp q60" }}
+
+              <img src="{{ $prodMed.RelPermalink }}" srcset="{{ $prodSmall.RelPermalink }} 300w,
+                      {{ $prodMed.RelPermalink }} 350w,
+                      {{ $prodLarge.RelPermalink }} 400w" sizes="(max-width: 768px) 300px,
+                     (max-width: 1024px) 350px,
+                     400px" alt="{{ .Title }}" width="400" height="300" class="w-full h-[300px] object-contain"
+                loading="lazy" />
               {{ else }}
               <img src="{{ .Params.image }}" alt="{{ .Title }}" width="400" height="300"
                 class="w-full h-[300px] object-contain" loading="lazy" />
@@ -103,10 +107,16 @@ $context.Site.Data.products.categories $category }}
           <div
             class="bg-[#fff] rounded-[10px] p-[20px] [box-shadow:0_4px_16px_rgba(0,_0,_0,_0.1)] w-full text-center mx-auto">
             {{ $productImageMobile := resources.Get .Params.image }} {{ if
-            $productImageMobile }} {{ $productImageMobileProcessed :=
-            $productImageMobile.Resize "350x262 webp q85" }}
-            <img src="{{ $productImageMobileProcessed.RelPermalink }}" alt="{{ .Title }}" width="350" height="262"
-              class="w-full h-[262px] object-contain mb-[15px]" loading="lazy" />
+            $productImageMobile }} {{ $prodMobSmall := $productImageMobile.Resize "232x webp q70" }}
+            {{ $prodMobMed := $productImageMobile.Resize "310x webp q60" }}
+            {{ $prodMobLarge := $productImageMobile.Resize "350x webp q60" }}
+            
+            <img src="{{ $prodMobMed.RelPermalink }}" srcset="{{ $prodMobSmall.RelPermalink }} 232w,
+                      {{ $prodMobMed.RelPermalink }} 310w,
+                      {{ $prodMobLarge.RelPermalink }} 350w" sizes="(max-width: 480px) 232px,
+                     (max-width: 768px) 310px,
+                     350px" alt="{{ .Title }}" width="350" height="262" class="w-full h-[262px] object-contain mb-[15px]"
+              loading="lazy" />
             {{ else }}
             <img src="{{ .Params.image }}" alt="{{ .Title }}" width="350" height="262"
               class="w-full h-[262px] object-contain mb-[15px]" loading="lazy" />
