@@ -1,5 +1,4 @@
 <section class="bg-white min-h-[300px] md:min-h-[500px] relative overflow-hidden flex justify-center items-center">
-  <!-- Background decorative elements - optimized for mobile -->
   {{ $bgEl1 := resources.Get "img/bg-el-1.png" }}
   {{ if $bgEl1 }}
   {{ $bgEl1Mobile := $bgEl1.Resize "171x webp q85" }}
@@ -36,21 +35,21 @@
     class="absolute z-[1] hidden md:block bottom-0 left-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto" />
   {{ end }}
 
-  <!-- Content (desktop + mobile як було) -->
+  <!-- Content -->
   <div class="hidden md:block mx-auto relative z-[2] pl-[40px]">
     <div class="flex justify-between items-center">
       <div class="flex flex-col flex-1">
         <div class="flex flex-col">
           <h1
             class="font-['Unbounded'] font-bold text-[#ba0108] md:text-[48px] lg:text-[64px] leading-[1.1] mb-2 hero-title">
-            KARMA FLIGHTS
+            {{ i18n "hero.brand" }}
           </h1>
           <h2 class="font-['Unbounded'] text-black text-[32px] lg:text-[40px] font-medium leading-[1.1] mb-4">
-            НЕ ШУКАЙ КОМПРОМІСІВ
+            {{ i18n "hero.subtitle" }}
           </h2>
         </div>
         <p class="font-['Unbounded'] text-[20px] font-light text-black mb-8">
-          Високотехнологічне українське виробництво
+          {{ i18n "hero.tagline" }}
         </p>
       </div>
 
@@ -87,7 +86,7 @@
           НЕ ШУКАЙ КОМПРОМІСІВ
         </span>
       </div>
-      <p class="font-['Unbounded'] text-[16px] sm:text-[18px] md:text-[20px] font-[300] text-black mb-8 px-[50px]">
+      <p class="font-['Unbounded'] mt-[14px] text-[16px] sm:text-[18px] md:text-[20px] font-[300] text-black mb-8">
         Високотехнологічне українське виробництво
       </p>
     </div>

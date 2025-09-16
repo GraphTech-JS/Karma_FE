@@ -215,7 +215,7 @@
     <nav class="nav-container desktop-nav flex items-center gap-[50px]" role="navigation" aria-label="Головне меню">
       <div class="relative dropdown-parent">
         <button onclick="toggleDropdown(event)"
-          class="nav-link lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-xl focus:font-bold text-white hover:text-[#ba0108] transition-colors {{ if or (eq .Page.Section "catalog") (hasPrefix .Page.RelPermalink "/catalog/" ) }}active{{ end }}" aria-expanded="false"
+          class="nav-link lg:!font-['Inter'] max-[450px]:font-['Unbounded'] font-normal text-xl focus:font-bold text-white hover:text-[#ba0108] transition-colors {{ if or (eq .Page.Section "catalog") (hasPrefix .Page.RelPermalink "/catalog/" ) }}active{{ end }}" aria-expanded="false"
           aria-haspopup="true" aria-label="Каталог товарів">
           Каталог
         </button>
@@ -423,13 +423,10 @@
       mobileMenu.classList.toggle('open');
       hamburger.classList.toggle('open');
 
-      // Update ARIA attributes
       hamburger.setAttribute('aria-expanded', !isOpen);
 
-      // Manage focus and body scroll
       if (!isOpen) {
         document.body.style.overflow = 'hidden';
-        // Focus first focusable element in menu
         setTimeout(() => {
           const firstFocusable = mobileMenu.querySelector('button, a');
           if (firstFocusable) firstFocusable.focus();

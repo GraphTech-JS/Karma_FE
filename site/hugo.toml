@@ -3,6 +3,7 @@ languageCode = "uk-UA"
 title = "Karma - Електронні компоненти для дронів"
 
 defaultContentLanguage = "uk"
+defaultContentLanguageInSubdir = false
 
 
 [languages]
@@ -12,7 +13,6 @@ defaultContentLanguage = "uk"
     languageCode = "uk-UA"
     weight = 1
     # Эта настройка уберет `/uk/` из URL для украинской версии (по вашему желанию)
-    defaultContentLanguageInSubdir = false
     # Параметры для украинской версии
     [languages.uk.params]
       description = "Karma - провідний постачальник електронних компонентів для дронів в Україні. ESC, відеопередавачі, політні стеки та інші компоненти."
