@@ -1,15 +1,35 @@
 {{ define "main" }}
 <section class="relative z-10 bg-white">
-  <div class="py-8 pb-[60px] w-full">
+  {{ $bgEl1 := resources.Get "img/bg-el-10.png" }}
+  {{ if $bgEl1 }}
+  {{ $bgEl1Desktop := $bgEl1.Resize "295x270 webp q80" }}
+  <img src="{{ $bgEl1Desktop.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
+    class="absolute hidden md:block z-[1] top-[-4%] lg:top-[-13%] left-[-2%] w-[191px] lg:w-[295px] h-auto" />
+  {{ else }}
+  <img src="/img/bg-el-1.png" alt="Декоративний фоновий елемент" aria-hidden="true"
+    class="absolute hidden md:block z-[1] top-[-4%] lg:top-[-13%] left-[-2%] w-[191px] lg:w-[295px] h-auto" />
+  {{ end }}
+
+  {{ $bgEl1 := resources.Get "img/bg-el-1.png" }}
+  {{ if $bgEl1 }}
+  {{ $bgEl1Processed := $bgEl1.Resize "420x webp q80" }}
+  <img src="{{ $bgEl1Processed.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
+    class="absolute block  md:hidden  z-[1] right-[-40px]  top-[-42px] w-[171px] h-auto" />
+  {{ else }}
+  <img src="/img/bg-el-1.png" alt="Декоративний фоновий елемент" aria-hidden="true"
+    class="absolute block md:hidden  z-[1] right-[-40px]  top-[-42px] w-[171px]  h-auto" />
+  {{ end }}
+
+  <div class="py-[36px] md:py-8 pb-[60px] w-full">
     <!-- Header with Breadcrumbs and Search -->
-    <div class="flex flex-col gap-4 mb-8 lg:flex-row lg:items-center lg:justify-between px-8 max-[450px]:px-5">
+    <div class="flex flex-col gap-4 mb-[25px] md:mb-[35px] lg:mb-[50px] lg:flex-row lg:items-center lg:justify-between max-w-[1280px] mx-auto px-[20px]">
       <!-- Breadcrumbs -->
-      <div class="flex items-center justify-start gap-2 text-[var(--color-karma-red)] font-[Montserrat]">
-        <a class="font-[Montserrat] text-[clamp(16px,2vw,20px)] font-normal text-[#ba0108]" href="{{ "/" | relLangURL }}">
+      <div class="flex items-center justify-start text-[var(--color-karma-red)] font-[Montserrat]">
+        <a class="font-[Montserrat] text-[16px] lg:text-[20px] font-normal text-[#ba0108]" href="{{ "/" | relLangURL }}">
           Головна
         </a>
-        <span class="text-[#ba0108]">→</span>
-        <a class="font-[Montserrat] text-[clamp(16px,2vw,20px)] font-normal text-[#ba0108]" href="{{ "/knowledge-base/" | relLangURL }}">
+        <span class="text-[#ba0108] px-[5px]">→</span>
+        <a class="font-[Montserrat] text-[16px] lg:text-[20px] font-normal text-[#ba0108]" href="{{ "/knowledge-base/" | relLangURL }}">
           База знань
         </a>
       </div>
@@ -29,14 +49,14 @@
     </div>
 
     <!-- Accordion Sections -->
-    <div class="relative z-20 space-y-0 w-full">
+    <div class="relative z-20 space-y-0 w-full max-w-[1600px] mx-auto">
       {{ $categories := slice "БПЛА" "Відеопередавачі" "ESC" "Політні стеки" }}
       {{ $guides := where .Site.RegularPages "Section" "guides" }}
       {{ range $index, $category := $categories }}
       {{ $categoryGuides := where $guides ".Params.category" $category }}
       <details {{ if eq $index 0 }}open{{ end }} class="overflow-visible relative z-30 mb-0 border-0 knowledge-section group">
         <summary
-          class="section-header bg-[#4a4a4a] text-white rounded-none cursor-pointer list-none group-open:bg-[#ba0108] mt-[40px] outline-none select-none"  >
+          class="section-header bg-[#4a4a4a] text-white rounded-none cursor-pointer list-none group-open:bg-[#ba0108]  outline-none select-none"  >
           <div class="flex justify-between items-center w-full h-[67px] md:h-[71px] lg:h-[86px] max-w-[1280px] px-[20px] mx-auto">
             <h2 class="text-[clamp(24px,3vw,40px)] font-bold font-['Unbounded'] tracking-wide">{{ $category
               }}</h2>
