@@ -71,6 +71,7 @@
       "!text-[clamp(24px,3vw,40px)]",
       "!text-[clamp(24px,4vw,40px)]",
       "!text-[clamp(24px,4vw,48px)]",
+      "!text-white",
       "-bottom-3",
       "-left-7",
       "-right-7",
