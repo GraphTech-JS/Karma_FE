@@ -12,7 +12,6 @@ if (mobileMenu) {
   mobileMenu.addEventListener("click", toggleMobileMenu);
 }
 
-// Custom Slider Implementation
 class CustomSlider {
   constructor(container, options = {}) {
     this.container = document.querySelector(container);
@@ -198,50 +197,34 @@ class CustomSlider {
   }
 
   showSlide(index, animate = true) {
-    if (index < 0 || index >= this.slides.length) return;
+  if (index < 0 || index >= this.slides.length) return;
 
-    this.isTransitioning = true;
-    this.currentIndex = index;
-
-    const currentSlidesPerView = this.getCurrentSlidesPerView();
-    const currentSpaceBetween = this.getCurrentSpaceBetween();
-    const containerWidth = this.container.offsetWidth;
-    const computedWidth =
-      (containerWidth - currentSpaceBetween * (currentSlidesPerView - 1)) /
-      currentSlidesPerView;
-    const slideWidth = this.options.fixedSlideWidth
-      ? this.options.fixedSlideWidth
-      : computedWidth;
-    const translateX = -(index * (slideWidth + currentSpaceBetween));
-
-    if (animate) {
-      this.wrapper.style.transition =
-        "transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
-    } else {
-      this.wrapper.style.transition = "none";
-    }
-
-    this.wrapper.style.transform = `translateX(${translateX}px)`;
-
-    if (this.bullets) {
-      const bulletIndex = this.options.paginationCount
-        ? index % this.options.paginationCount
-        : index;
-      this.bullets.forEach((bullet, i) => {
-        bullet.classList.toggle(
-          "swiper-pagination-bullet-active-custom",
-          i === bulletIndex
-        );
-      });
-    }
-
-    setTimeout(
-      () => {
-        this.isTransitioning = false;
-      },
-      animate ? 500 : 0
-    );
+  this.isTransitioning = true;
+  this.currentIndex = index;
+  const currentSlidesPerView = this.getCurrentSlidesPerView();
+  const currentSpaceBetween = this.getCurrentSpaceBetween();
+  const containerWidth = this.container.offsetWidth;
+  const computedWidth = (containerWidth - currentSpaceBetween * (currentSlidesPerView - 1)) / currentSlidesPerView;
+  const slideWidth = this.options.fixedSlideWidth ? this.options.fixedSlideWidth : computedWidth;
+  const translateX = -(index * (slideWidth + currentSpaceBetween));
+  if (animate) {
+    this.wrapper.style.transition = "transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+  } else {
+    this.wrapper.style.transition = "none";
   }
+  this.wrapper.style.transform = `translateX(${translateX}px)`;
+  if (this.bullets) {
+    const bulletIndex = this.options.paginationCount
+      ? index % this.options.paginationCount
+      : index;
+    this.bullets.forEach((bullet, i) => {
+      bullet.classList.toggle("swiper-pagination-bullet-active-custom", i === bulletIndex);
+    });
+  }
+  setTimeout(() => {
+    this.isTransitioning = false;
+  }, animate ? 500 : 0);
+}
 
   nextSlide() {
     if (this.isTransitioning) return;
@@ -377,67 +360,47 @@ class CustomSlider {
 
 // Initialize sliders when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
-  // Desktop/Tablet trusted companies slider (4 visible)
-  new CustomSlider(".swiper-container-trusted-desktop", {
-    autoplay: true,
-    loop: true,
-    slidesPerView: 4,
-    spaceBetween: 0,
-    paginationCount: 4,
-    fixedSlideWidth: null,
-    responsive: {
-      768: {
-        slidesPerView: 4,
-        spaceBetween: 0,
+  // Оборачиваем каждую "тяжелую" инициализацию, чтобы разделить их
+  requestAnimationFrame(() => {
+    new CustomSlider(".swiper-container-trusted-desktop", {
+      autoplay: true,
+      loop: true,
+      slidesPerView: 4,
+      spaceBetween: 0,
+      paginationCount: 4,
+      fixedSlideWidth: null,
+      responsive: {
+        768: { slidesPerView: 4, spaceBetween: 0 },
+        1024: { slidesPerView: 4, spaceBetween: 0 },
+        1440: { slidesPerView: 4, spaceBetween: 0 },
       },
-      1024: {
-        slidesPerView: 4,
-        spaceBetween: 0,
-      },
-      1440: {
-        slidesPerView: 4,
-        spaceBetween: 0,
-      },
-    },
+    });
   });
 
-  // Mobile trusted companies slider (1 slide showing 2x2 grid inside)
-  new CustomSlider(".swiper-container-trusted-mobile", {
-    autoplay: true,
-    loop: true,
-    slidesPerView: 1,
-    spaceBetween: 20,
-    paginationCount: 4,
+  requestAnimationFrame(() => {
+    new CustomSlider(".swiper-container-trusted-mobile", {
+      autoplay: true,
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 20,
+      paginationCount: 4,
+    });
   });
 
-  // Initialize desktop products slider with responsive configuration (2 cards, 51 gap, move by 2)
-  new CustomSlider(".swiper-container-products", {
-    autoplay: true,
-    loop: true,
-    slidesPerView: 1,
-    slidesPerGroup: 1,
-    spaceBetween: 16,
-    fixedSlideWidth: null,
-    responsive: {
-      768: {
-        slidesPerView: 2,
-        slidesPerGroup: 2,
-        spaceBetween: 28,
-        fixedSlideWidth: null,
+  requestAnimationFrame(() => {
+    new CustomSlider(".swiper-container-products", {
+      autoplay: true,
+      loop: true,
+      slidesPerView: 1,
+      slidesPerGroup: 1,
+      spaceBetween: 16,
+      fixedSlideWidth: null,
+      responsive: {
+        768: { slidesPerView: 2, slidesPerGroup: 2, spaceBetween: 28, fixedSlideWidth: null },
+        1024: { slidesPerView: 2, slidesPerGroup: 2, spaceBetween: 25, fixedSlideWidth: null },
+        1200: { slidesPerView: 2, slidesPerGroup: 2, spaceBetween: 40, fixedSlideWidth: null },
       },
-      1024: {
-        slidesPerView: 2,
-        slidesPerGroup: 2,
-        spaceBetween: 25,
-        fixedSlideWidth: null,
-      },
-      1200: {
-        slidesPerView: 2,
-        slidesPerGroup: 2,
-        spaceBetween: 40,
-        fixedSlideWidth: null,
-      },
-    },
+    });
   });
 
   // Initialize simple mobile slider
