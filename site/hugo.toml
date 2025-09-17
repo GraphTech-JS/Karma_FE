@@ -1,4 +1,4 @@
-baseurl = "https://karma-fe.netlify.app/"
+baseurl = "https://karma-fe.vercel.app/"
 languageCode = "uk-UA"
 title = "Karma - Електронні компоненти для дронів"
 
