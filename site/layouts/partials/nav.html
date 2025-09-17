@@ -22,7 +22,6 @@
       background-color: #ba0108;
     }
 
-    /* Mobile menu styles */
     .mobile-menu {
       transform: translateX(100%);
       transition: transform 0.3s ease-in-out;
@@ -33,7 +32,6 @@
       transform: translateX(0);
     }
 
-    /* Hamburger animation */
     .hamburger span {
       transition: all 0.3s ease;
     }
@@ -50,22 +48,20 @@
       transform: rotate(-45deg) translate(7px, -6px);
     }
 
-    /* Dropdown menu positioning */
     .dropdown-menu {
       width: 237px;
       z-index: 1000;
       display: none;
+      /* Меню по умолчанию скрыто */
       transition: all 0.3s ease-in-out;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     }
 
-    .dropdown-parent:hover .dropdown-menu,
-    .dropdown-menu:hover,
+    /* Показываем меню ТОЛЬКО когда у родителя есть класс .active */
     .dropdown-parent.active .dropdown-menu {
       display: block;
     }
 
-    /* Add gap between parent and dropdown to prevent flickering */
     .dropdown-parent::before {
       content: '';
       position: absolute;
@@ -76,7 +72,6 @@
       z-index: 999;
     }
 
-    /* Dropdown item styling */
     .dropdown-item {
       position: relative;
       cursor: pointer;
@@ -98,6 +93,29 @@
       background-color: #ba0108;
     }
 
+    #mobile-search-panel {
+      position: absolute;
+      top: 100%;
+      left: 5%;
+      /* добавлено для центрирования */
+      width: 90%;
+      background-color: #050505;
+      border-bottom-right-radius: 8px;
+      border-bottom-left-radius: 8px;
+      z-index: 999;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(-10px);
+      visibility: hidden;
+      transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0.3s;
+    }
+
+    #mobile-search-panel.open {
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+    }
+
     @media (min-width: 1024px) {
       .dropdown-item:not(:last-child)::after {
         right: auto;
@@ -111,7 +129,6 @@
       }
     }
 
-    /* Responsive breakpoints */
     @media (max-width: 809px) {
       .desktop-nav {
         display: none !important;
@@ -141,228 +158,137 @@
       }
     }
 
-    /* Tablet specific adjustments */
     @media (max-width: 1024px) and (min-width: 769px) {
-      .nav-container {
-        gap: 10px;
-      }
+  .nav-container {
+    gap: 10px;
+  }
 
-      .nav-link {
-        font-size: 16px;
-      }
+  .nav-link {
+    font-size: 16px;
+  }
 
-      .dropdown-menu {
-        min-width: 506px;
-      }
+  .dropdown-menu {
+    min-width: 506px;
+  }
 
-      .dropdown-item {
-        padding: 12px 16px;
-        font-size: 14px;
-      }
+  .dropdown-item {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
 
-      .contact-phone {
-        display: none;
-      }
+  .contact-phone {
+    display: none;
+  }
 
-      .language-switcher {
-        gap: 8px;
-        font-size: 20px !important;
-      }
-    }
-
-    @media (max-width: 900px) and (min-width: 769px) {
-      .nav-link {
-        font-size: 14px;
-      }
-
-      .nav-container {
-        gap: 8px;
-      }
-    }
-
-    @media (min-width: 768px) and (max-width: 1023px) {
-      .nav-container {
-        padding-top: 15px !important;
-        padding-bottom: 15px !important;
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .nav-container {
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
-      }
-    }
+  .language-switcher {
+    gap: 8px;
+    font-size: 20px !important;
+  }
+}
   </style>
 
-  <!-- Responsive container with breakpoint-specific widths -->
-  <div class="flex w-full max-w-[1280px] px-[20px] justify-between items-center nav-container"
-    style="padding-top: 20px; padding-bottom: 20px;">
+  <!-- Responsive container -->
+  <div class="flex w-full max-w-[1280px] px-[20px] justify-between items-center nav-container py-5">
     <!-- Logo -->
-    <a href="/" class="relative z-[10] text-xl font-normal text-[#fefefe] font-inter"
-      aria-label="Karma - головна сторінка">
-      {{ $logo := resources.Get "logo.png" }}
-      {{ if $logo }}
-      {{ $logo1x := $logo.Resize "149x34 webp q80" }}
-      {{ $logo2x := $logo.Resize "298x68 webp q80" }}
-      <img src="{{ $logo1x.RelPermalink }}" srcset="{{ $logo1x.RelPermalink }} 1x, {{ $logo2x.RelPermalink }} 2x"
-        width="149" height="34" alt="logo" />
-      {{ else }}
+    <a href="/" class="relative z-[10]" aria-label="Karma - головна сторінка">
       <img src="/logo.png" alt="logo" width="149" height="34" class="w-[108px] h-[25px] md:w-[149px] md:h-[34px]" />
-      {{ end }}
     </a>
 
     <!-- Desktop Navigation -->
-    <nav class="nav-container desktop-nav flex items-center gap-[50px]" role="navigation" aria-label="Головне меню">
+    <nav class="nav-container desktop-nav hidden items-center gap-[50px]" role="navigation" aria-label="Головне меню">
       <div class="relative dropdown-parent">
-        <button onclick="toggleDropdown(event)"
-          class="nav-link lg:!font-['Inter'] max-[450px]:font-['Unbounded'] cursor-pointer font-normal text-xl  text-[#fefefe] hover:text-[#ba0108] transition-colors {{ if or (eq .Page.Section "catalog") (hasPrefix .Page.RelPermalink "/catalog/" ) }}active{{ end }}" aria-expanded="false"
-          aria-haspopup="true" aria-label="Каталог товарів">
+        <!-- УБРАН onclick="toggleDropdown(event)" -->
+        <button
+          class="nav-link lg:!font-['Inter'] cursor-pointer font-normal text-xl text-[#fefefe] hover:text-[#ba0108] transition-colors"
+          aria-expanded="false" aria-haspopup="true" aria-label="Каталог товарів">
           Каталог
         </button>
         <div class="dropdown-menu absolute left-[-50px] lg:left-[-80px] top-[30px] mt-3 bg-[#020303] rounded-b-[5px]"
           role="menu" aria-label="Підменю каталогу">
           <div class="flex flex-row w-full lg:flex-col">
             <a href="/catalog/politni-steky/"
-              class="dropdown-item flex-1 px-8 py-6 text-[#fefefe] lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap"
-              role="menuitem">Політні
-              стеки</a>
+              class="dropdown-item flex-1 px-8 py-6 text-[#fefefe] lg:font-['Inter'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap"
+              role="menuitem">Політні стеки</a>
             <a href="/catalog/videoperedavachi-vtx/"
-              class="dropdown-item flex-1 px-8 py-6 text-[#fefefe] lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap"
-              role="menuitem">Відеопередавачі
-              VTX</a>
+              class="dropdown-item flex-1 px-8 py-6 text-[#fefefe] lg:font-['Inter'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap"
+              role="menuitem">Відеопередавачі VTX</a>
             <a href="/catalog/esc/"
-              class="dropdown-item flex-1 px-8 py-6 text-[#fefefe] lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap"
+              class="dropdown-item flex-1 px-8 py-6 text-[#fefefe] lg:font-['Inter'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap"
               role="menuitem">ESC</a>
           </div>
         </div>
       </div>
       <a href="/faq"
-        class="nav-link lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors {{ if eq .Page.Section "faq" }}active{{ end }}">
-        FAQ
-      </a>
+        class="nav-link lg:font-['Inter'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors">FAQ</a>
       <a href="/knowledge-base"
-        class="nav-link lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors {{ if eq .Page.Section "knowledge-base" }}active{{ end }}">
-        База знань
-      </a>
+        class="nav-link lg:font-['Inter'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors">База
+        знань</a>
       <a href="/contact"
-        class="nav-link lg:font-['Inter'] max-[450px]:font-['Unbounded'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors {{ if eq .Page.Section "contact" }}active{{ end }}">
-        Контакти
-      </a>
+        class="nav-link lg:font-['Inter'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors">Контакти</a>
     </nav>
-
-    <!-- Desktop Contact & Language -->
-    <nav class="desktop-nav flex items-baseline justify-center gap-[30px]">
+    <nav class="desktop-nav hidden items-baseline justify-center gap-[30px]">
       <a href="tel:(067) 298-29-29"
         class="flex items-center font-['Montserrat'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors hidden lg:block"
-        aria-label="Зателефонувати за номером (067) 298-29-29">
-        (067) 298-29-29
-      </a>
+        aria-label="Зателефонувати за номером (067) 298-29-29">(067) 298-29-29</a>
       <div class="flex gap-3 items-center justify-center text-xl language-switcher text-[#fefefe]">
         <button id="lang-ua"
-          class="font-['Montserrat'] text-xl font-normal cursor-pointer text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold focus:font-['Inter'] transition-colors"
+          class="font-['Montserrat'] text-xl font-normal cursor-pointer text-[#ba0108] hover:text-[#ba0108]"
           onclick="switchLanguage('ua')" aria-label="Перемкнути на українську мову" aria-pressed="true">UA</button>
-    
         <div class="h-6 w-px bg-white/50" aria-hidden="true"></div>
-    
         <button id="lang-en"
-          class="font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#fefefe] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold focus:font-['Inter'] transition-colors"
+          class="font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#fefefe] hover:text-[#ba0108]"
           onclick="switchLanguage('en')" aria-label="Switch to English" aria-pressed="false">EN</button>
       </div>
     </nav>
 
-    
-
     <!-- Mobile Navigation -->
     <div class="flex gap-4 items-center mobile-nav">
-      <!-- Search Icon -->
-      <button class="text-[#fefefe] hover:text-[#ba0108] transition-colors cursor-pointer"
-        onclick="toggleMobileSearch()" aria-label="Відкрити пошук">
+      <button id="search-toggle-button" class="text-[#fefefe] hover:text-[#ba0108] transition-colors"
+        aria-label="Відкрити пошук" aria-haspopup="true" aria-expanded="false">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
           aria-hidden="true">
           <path
-            d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z"
+            d="M21 21L16.514 16.506M19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </button>
-
-      <!-- Hamburger Menu Button -->
-      <button class="flex flex-col justify-center items-center space-y-1 w-8 h-8 cursor-pointer hamburger"
-        onclick="toggleMobileMenu()" aria-label="Відкрити мобільне меню" aria-expanded="false">
-        <span class="block w-6 h-0.5 bg-white" aria-hidden="true"></span>
-        <span class="block w-6 h-0.5 bg-white" aria-hidden="true"></span>
-        <span class="block w-6 h-0.5 bg-white" aria-hidden="true"></span>
+      <button class="hamburger flex flex-col justify-center items-center w-8 h-8 space-y-1" onclick="toggleMobileMenu()"
+        aria-label="Відкрити мобільне меню" aria-expanded="false">
+        <span class="block w-6 h-0.5 bg-white"></span>
+        <span class="block w-6 h-0.5 bg-white"></span>
+        <span class="block w-6 h-0.5 bg-white"></span>
       </button>
     </div>
   </div>
 
-  <!-- Mobile Search Overlay -->
-  <div id="mobile-search-overlay" class="hidden fixed inset-0 z-50 mobile-search-overlay bg-black/80">
-    <div class="bg-[#020303] p-6 rounded-b-3xl">
-      <div class="flex justify-between items-center mb-4">
-        <a href="/" class="text-xl font-normal text-[#fefefe] font-inter">
-          {{ $logoMobile := resources.Get "logo.png" }}
-          {{ if $logoMobile }}
-          {{ $logoMobile1x := $logoMobile.Resize "108x25 webp q80" }}
-          {{ $logoMobile2x := $logoMobile.Resize "216x50 webp q80" }}
-          <img src="{{ $logoMobile1x.RelPermalink }}"
-            srcset="{{ $logoMobile1x.RelPermalink }} 1x, {{ $logoMobile2x.RelPermalink }} 2x" width="108" height="25"
-            alt="logo" />
-          {{ else }}
-          <img src="/logo.png" alt="logo" width="108" height="25" />
-          {{ end }}
-        </a>
-        <button class="text-[#fefefe] hover:text-[#ba0108] transition-colors cursor-pointer"
-          onclick="toggleMobileSearch()" aria-label="Закрити пошук">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true">
-            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </svg>
-        </button>
-      </div>
-
-      <div class="relative">
-        <input type="text" placeholder="Пошук по сайту"
-          class="w-full h-[60px] rounded-full font-['Montserrat'] border-0 pl-6 pr-[140px] text-lg outline-none bg-white text-black placeholder-gray-500"
-          id="mobile-search-input" aria-label="Поле для пошуку" />
-        <button
-          class="absolute right-0 top-0 h-[60px] w-[120px] rounded-full bg-[#ba0108] flex items-center justify-center cursor-pointer hover:bg-[#a00007] transition-colors"
-          aria-label="Почати пошук">
-          <span class="text-[#fefefe] font-['Montserrat'] text-lg font-medium">Пошук</span>
-        </button>
-      </div>
+  <!-- Mobile Search Panel -->
+  <div id="mobile-search-panel" class="py-[13px] px-[24px]" role="search">
+    <div class="relative">
+      <input type="text" placeholder="Пошук по сайту"
+        class="w-full h-[41px] rounded-full font-['Montserrat'] border-0 pl-6 pr-[110px] text-lg outline-none bg-white text-black placeholder-gray-500"
+        id="mobile-search-input" aria-label="Поле для пошуку" autocomplete="off" />
+      <button
+        class="absolute right-0 top-0 h-[41px] w-[100px] rounded-full bg-[#ba0108] flex items-center justify-center hover:bg-[#a00007]"
+        aria-label="Почати пошук" id="mobile-search-button">
+        <span class="text-[#fefefe] font-['Montserrat'] text-[13px]">Пошук</span>
+      </button>
     </div>
+    <div id="mobile-search-results" class="max-h-[60vh] overflow-y-auto mt-2"></div>
   </div>
 
   <!-- Mobile Menu Overlay -->
   <div id="mobileMenu" class="mobile-menu fixed inset-0 bg-[#020303] z-40 flex flex-col" role="dialog" aria-modal="true"
     aria-label="Мобільне меню">
-    <!-- Fixed Header with Logo and Close Button -->
     <div
       class="flex relative z-[12] justify-between items-center p-4 shadow-[0_2px_8px_rgba(255,255,255,0.4)] bg-[#020303]">
-      <!-- Logo -->
-      <a href="/" class="text-xl font-normal text-[#fefefe] font-inter" aria-label="Karma - головна сторінка">
-        {{ $logoMobile := resources.Get "logo.png" }}
-        {{ if $logoMobile }}
-        {{ $logoMobile1x := $logoMobile.Resize "108x25 webp q80" }}
-        {{ $logoMobile2x := $logoMobile.Resize "216x50 webp q80" }}
-        <img src="{{ $logoMobile1x.RelPermalink }}"
-          srcset="{{ $logoMobile1x.RelPermalink }} 1x, {{ $logoMobile2x.RelPermalink }} 2x" width="108" height="25"
-          alt="logo" />
-        {{ else }}
-        <img src="/logo.png" alt="logo" width="108" height="25" />
-        {{ end }}
-      </a>
-
-      <!-- Close Button -->
+      <a href="/" class="text-xl font-normal text-[#fefefe] font-inter" aria-label="Karma - головна сторінка"><img
+          src="/logo.png" alt="logo" width="108" height="25"></a>
       <button class="flex relative flex-col justify-center items-center w-12 h-12 cursor-pointer hamburger"
         onclick="toggleMobileMenu()" aria-label="Закрити мобільне меню">
         <span class="block absolute w-6 h-0.5 bg-white rotate-45" aria-hidden="true"></span>
         <span class="block absolute w-6 h-0.5 bg-white -rotate-45" aria-hidden="true"></span>
       </button>
     </div>
-
     <nav class="flex flex-col flex-1 items-center px-6 pt-[119px] space-y-6" role="navigation"
       aria-label="Мобільне меню">
       <div class="relative">
@@ -396,191 +322,242 @@
         знань</a>
       <a href="/contact"
         class="text-[#fefefe] font-['Unbounded'] text-xl font-normal hover:text-[#ba0108] transition-colors">Контакти</a>
-
       <div class="flex absolute bottom-10 flex-col items-center">
         <a href="tel:(067) 298-29-29"
           class="block text-[#fefefe] font-['Montserrat'] text-xl font-normal mb-4 hover:text-[#ba0108] transition-colors">(067)
           298-29-29</a>
         <div class="flex gap-3 items-center text-2xl text-[#fefefe]">
           <button id="mobile-lang-ua"
-            class="font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold focus:font-['Inter'] transition-colors"
-            onclick="switchLanguage('ua')" aria-label="Перемкнути на українську мову" aria-pressed="true">
-            UA
-          </button>
+            class="font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#ba0108] hover:text-[#ba0108]"
+            onclick="switchLanguage('ua')" aria-label="Перемкнути на українську мову" aria-pressed="true">UA</button>
           <span aria-hidden="true">|</span>
           <button id="mobile-lang-en"
-            class="font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#fefefe] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold focus:font-['Inter'] transition-colors"
-            onclick="switchLanguage('en')" aria-label="Switch to English" aria-pressed="false">
-            EN
-          </button>
+            class="font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#fefefe] hover:text-[#ba0108]"
+            onclick="switchLanguage('en')" aria-label="Switch to English" aria-pressed="false">EN</button>
         </div>
       </div>
     </nav>
   </div>
+</header>
 
-  <script>
-    function toggleMobileMenu() {
-      const mobileMenu = document.getElementById('mobileMenu');
-      const hamburger = document.querySelector('.hamburger');
-      const isOpen = mobileMenu.classList.contains('open');
+<script>
+  // --- ОБЩИЕ ФУНКЦИИ УПРАВЛЕНИЯ ИНТЕРФЕЙСОМ ---
+  function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    const hamburger = document.querySelector('.hamburger');
+    const isOpen = mobileMenu.classList.contains('open');
+    mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', String(!isOpen));
+    document.body.style.overflow = isOpen ? '' : 'hidden';
+  }
 
-      mobileMenu.classList.toggle('open');
-      hamburger.classList.toggle('open');
-
-      hamburger.setAttribute('aria-expanded', !isOpen);
-
-      if (!isOpen) {
-        document.body.style.overflow = 'hidden';
-        setTimeout(() => {
-          const firstFocusable = mobileMenu.querySelector('button, a');
-          if (firstFocusable) firstFocusable.focus();
-        }, 100);
-      } else {
-        document.body.style.overflow = '';
-        hamburger.focus();
-      }
+  function toggleMobileCatalog() {
+    const catalogMenu = document.querySelector('.mobile-catalog-menu');
+    const arrow = document.querySelector('.mobile-catalog-arrow');
+    const button = document.querySelector('[aria-controls="mobile-catalog-submenu"]');
+    if (!catalogMenu || !arrow || !button) return;
+    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+    if (isExpanded) {
+      catalogMenu.classList.add('max-h-0', 'opacity-0');
+      catalogMenu.classList.remove('max-h-96', 'opacity-100');
+      arrow.classList.remove('rotate-180');
+      button.setAttribute('aria-expanded', 'false');
+    } else {
+      catalogMenu.classList.remove('max-h-0', 'opacity-0');
+      catalogMenu.classList.add('max-h-96', 'opacity-100');
+      arrow.classList.add('rotate-180');
+      button.setAttribute('aria-expanded', 'true');
     }
+  }
 
-    function toggleDropdown(event) {
-      event.preventDefault();
-      const dropdownParent = event.target.closest('.dropdown-parent');
-      const button = event.target;
-      const isOpen = dropdownParent.classList.contains('active');
+  function switchLanguage(lang) {
+    const uaDesktop = document.getElementById('lang-ua');
+    const enDesktop = document.getElementById('lang-en');
+    const uaMobile = document.getElementById('mobile-lang-ua');
+    const enMobile = document.getElementById('mobile-lang-en');
+    if (!uaDesktop || !enDesktop || !uaMobile || !enMobile) return;
+    const isUa = lang === 'ua';
+    uaDesktop.className = isUa ? "font-['Inter'] text-xl !font-bold cursor-pointer !text-[#ba0108] hover:text-[#ba0108]" : "font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#fefefe] hover:text-[#ba0108]";
+    enDesktop.className = !isUa ? "font-['Inter'] text-xl !font-bold cursor-pointer !text-[#ba0108] hover:text-[#ba0108]" : "font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#fefefe] hover:text-[#ba0108]";
+    uaMobile.className = isUa ? "!font-[Inter] font-bold cursor-pointer text-[#ba0108] hover:text-[#ba0108]" : "!font-[Montserrat] font-normal cursor-pointer text-[#fefefe]/80 hover:text-[#ba0108]";
+    enMobile.className = !isUa ? "!font-[Inter] font-bold cursor-pointer text-[#ba0108] hover:text-[#ba0108]" : "!font-[Montserrat] font-normal cursor-pointer text-[#fefefe]/80 hover:text-[#ba0108]";
+    uaDesktop.setAttribute('aria-pressed', String(isUa));
+    enDesktop.setAttribute('aria-pressed', String(!isUa));
+    uaMobile.setAttribute('aria-pressed', String(isUa));
+    enMobile.setAttribute('aria-pressed', String(!isUa));
+    localStorage.setItem('selectedLanguage', lang);
+  }
 
-      dropdownParent.classList.toggle('active');
-      button.setAttribute('aria-expanded', !isOpen);
-    }
+  // --- ГЛАВНЫЙ ОБРАБОТЧИК СОБЫТИЙ ПОСЛЕ ЗАГРУЗКИ СТРАНИЦЫ ---
+  document.addEventListener('DOMContentLoaded', function () {
 
-    function toggleMobileCatalog() {
-      const catalogMenu = document.querySelector('.mobile-catalog-menu');
-      const arrow = document.querySelector('.mobile-catalog-arrow');
-      const button = document.querySelector('[aria-controls="mobile-catalog-submenu"]');
-      const isOpen = !catalogMenu.classList.contains('max-h-0');
-
-      if (catalogMenu.classList.contains('max-h-0')) {
-        catalogMenu.classList.remove('max-h-0', 'opacity-0');
-        catalogMenu.classList.add('max-h-96', 'opacity-100');
-        arrow.classList.add('rotate-180');
-        button.setAttribute('aria-expanded', 'true');
-      } else {
-        catalogMenu.classList.add('max-h-0', 'opacity-0');
-        catalogMenu.classList.remove('max-h-96', 'opacity-100');
-        arrow.classList.remove('rotate-180');
-        button.setAttribute('aria-expanded', 'false');
-      }
-    }
-
-    function toggleMobileSearch() {
-      const searchOverlay = document.getElementById('mobile-search-overlay');
-      const body = document.body;
-
-      if (searchOverlay.classList.contains('hidden')) {
-        searchOverlay.classList.remove('hidden');
-        body.style.overflow = 'hidden';
-        // Focus on search input after animation
-        setTimeout(() => {
-          document.getElementById('mobile-search-input').focus();
-        }, 100);
-      } else {
-        searchOverlay.classList.add('hidden');
-        body.style.overflow = '';
-      }
-    }
-
-    function switchLanguage(lang) {
-      const uaDesktop = document.getElementById('lang-ua');
-      const enDesktop = document.getElementById('lang-en');
-      const uaMobile = document.getElementById('mobile-lang-ua');
-      const enMobile = document.getElementById('mobile-lang-en');
-
-      if (lang === 'ua') {
-        // Set UA as active (red + bold + Inter)
-        uaDesktop.className = "font-['Inter'] text-xl !font-bold cursor-pointer !text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold focus:font-['Inter'] transition-colors";
-        enDesktop.className = "font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#fefefe] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold focus:font-['Inter'] transition-colors"
-        uaMobile.className = "!font-[Inter] font-bold cursor-pointer text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] transition-colors";
-        enMobile.className = "!font-[Montserrat] font-normal cursor-pointer text-[#fefefe]/80 hover:text-[#ba0108] focus:text-[#ba0108] transition-colors";
-
-        // Update ARIA pressed states
-        uaDesktop.setAttribute('aria-pressed', 'true');
-        enDesktop.setAttribute('aria-pressed', 'false');
-        uaMobile.setAttribute('aria-pressed', 'true');
-        enMobile.setAttribute('aria-pressed', 'false');
-      } else if (lang === 'en') {
-        // Set EN as active (red + bold + Inter)
-        uaDesktop.className = "font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#fefefe] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold focus:font-['Inter'] transition-colors";
-        enDesktop.className = "font-['Inter'] text-xl !font-bold cursor-pointer !text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] focus:font-bold focus:font-['Inter'] transition-colors";
-        uaMobile.className = "!font-[Montserrat] font-normal cursor-pointer text-[#fefefe]/80 hover:text-[#ba0108] focus:text-[#ba0108] transition-colors";
-        enMobile.className = "!font-[Inter] font-bold cursor-pointer text-[#ba0108] hover:text-[#ba0108] focus:text-[#ba0108] transition-colors";
-
-        // Update ARIA pressed states
-        uaDesktop.setAttribute('aria-pressed', 'false');
-        enDesktop.setAttribute('aria-pressed', 'true');
-        uaMobile.setAttribute('aria-pressed', 'false');
-        enMobile.setAttribute('aria-pressed', 'true');
-      }
-
-      // Store the selected language in localStorage
-      localStorage.setItem('selectedLanguage', lang);
-    }
-
-    // Initialize language on page load
-    document.addEventListener('DOMContentLoaded', function () {
-      const savedLang = localStorage.getItem('selectedLanguage') || 'ua';
-      switchLanguage(savedLang);
-    });
-
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('#mobileMenu a').forEach(link => {
-      link.addEventListener('click', () => {
-        toggleMobileMenu();
-      });
-    });
-
-    // Close mobile menu and dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-      const mobileMenu = document.getElementById('mobileMenu');
-      const hamburger = document.querySelector('.hamburger');
-      const dropdownParent = document.querySelector('.dropdown-parent');
-
-      // Close mobile menu
-      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
-        mobileMenu.classList.remove('open');
-        hamburger.classList.remove('open');
-      }
-
-      // Close dropdown menu
-      if (!dropdownParent.contains(e.target)) {
-        dropdownParent.classList.remove('active');
-      }
-    });
-
-    // Keep dropdown open when hovering over it
-    document.addEventListener('DOMContentLoaded', () => {
-      const dropdownParent = document.querySelector('.dropdown-parent');
-      const dropdownMenu = document.querySelector('.dropdown-menu');
-
+    // --- ИСПРАВЛЕННАЯ ЛОГИКА ДЛЯ ВЫПАДАЮЩЕГО МЕНЮ "КАТАЛОГ" ---
+    const dropdownParents = document.querySelectorAll('.dropdown-parent');
+    dropdownParents.forEach(parent => {
+      const dropdownMenu = parent.querySelector('.dropdown-menu');
       let hoverTimeout;
 
-      dropdownParent.addEventListener('mouseenter', () => {
-        clearTimeout(hoverTimeout);
-        dropdownParent.classList.add('active');
+      parent.addEventListener('mouseenter', () => {
+        clearTimeout(hoverTimeout); // Отменяем таймер, если он был
+        parent.classList.add('active'); // Сразу показываем меню
       });
 
-      dropdownParent.addEventListener('mouseleave', () => {
+      parent.addEventListener('mouseleave', () => {
+        // Устанавливаем таймер на скрытие меню
         hoverTimeout = setTimeout(() => {
-          dropdownParent.classList.remove('active');
-        }, 300);
+          parent.classList.remove('active');
+        }, 300); // 300 мс задержка
       });
 
-      dropdownMenu.addEventListener('mouseenter', () => {
-        clearTimeout(hoverTimeout);
-      });
-
-      dropdownMenu.addEventListener('mouseleave', () => {
-        hoverTimeout = setTimeout(() => {
-          dropdownParent.classList.remove('active');
-        }, 300);
-      });
+      // Если курсор перешел на само меню, отменяем таймер скрытия
+      if (dropdownMenu) {
+        dropdownMenu.addEventListener('mouseenter', () => {
+          clearTimeout(hoverTimeout);
+        });
+        // Когда курсор покидает и само меню, ставим таймер на скрытие
+        dropdownMenu.addEventListener('mouseleave', () => {
+          hoverTimeout = setTimeout(() => {
+            parent.classList.remove('active');
+          }, 300);
+        });
+      }
     });
-  </script>
-</header>
+
+
+    // --- ЛОГИКА ПОИСКА (осталась без изменений) ---
+    const searchPanel = document.getElementById('mobile-search-panel');
+    const searchInput = document.getElementById('mobile-search-input');
+    const searchResults = document.getElementById('mobile-search-results');
+    const searchButton = document.getElementById('mobile-search-button');
+    const searchToggleButton = document.getElementById('search-toggle-button');
+    const contentArea = document.querySelector('main, article, .content, .page-content, body');
+
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes searchFocusAnimation {
+            from { background-color: rgba(186, 1, 8, 0.25); }
+            to { background-color: transparent; }
+        }
+        .search-result-focus {
+            animation: searchFocusAnimation 1.5s ease-in-out;
+            scroll-margin-top: 100px;
+        }
+    `;
+    document.head.appendChild(style);
+
+    let searchResultsData = [];
+
+    function clearSearch() {
+      if (searchResults) searchResults.innerHTML = '';
+      searchResultsData = [];
+      document.querySelectorAll('span[id^="temp-search-result-"]').forEach(marker => {
+        if (marker.parentNode) marker.replaceWith(document.createTextNode(marker.textContent));
+      });
+      if (contentArea) contentArea.normalize();
+    }
+
+    function executeSearch() {
+      clearSearch();
+      if (!contentArea) return;
+      const query = searchInput.value.trim();
+      if (query.length < 2) return;
+      const regex = new RegExp(`(${query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
+      let resultIndex = 0;
+      const walker = document.createTreeWalker(contentArea, NodeFilter.SHOW_TEXT, {
+        acceptNode: node => (node.parentNode.closest('script, style, header, #mobile-search-panel') || !node.textContent.trim() || !regex.test(node.textContent)) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+      });
+      const nodesToProcess = [];
+      while (walker.nextNode()) nodesToProcess.push(walker.currentNode);
+      nodesToProcess.forEach(textNode => {
+        const fragment = document.createDocumentFragment();
+        let lastIndex = 0;
+        textNode.textContent.replace(regex, (match, ...args) => {
+          const offset = args[args.length - 2];
+          if (offset > lastIndex) fragment.appendChild(document.createTextNode(textNode.textContent.substring(lastIndex, offset)));
+          const markerSpan = document.createElement('span');
+          const resultId = `temp-search-result-${resultIndex++}`;
+          markerSpan.id = resultId;
+          markerSpan.textContent = match;
+          fragment.appendChild(markerSpan);
+          searchResultsData.push({ id: resultId, context: getContext(textNode.textContent, match, offset) });
+          lastIndex = offset + match.length;
+        });
+        if (lastIndex < textNode.textContent.length) fragment.appendChild(document.createTextNode(textNode.textContent.substring(lastIndex)));
+        textNode.parentNode.replaceChild(fragment, textNode);
+      });
+      displayResults();
+    }
+
+    function getContext(fullText, match, matchIndex) {
+      const contextLength = 60;
+      const start = Math.max(0, matchIndex - contextLength);
+      const end = Math.min(fullText.length, matchIndex + match.length + contextLength);
+      let context = (start > 0 ? '...' : '') + fullText.substring(start, end) + (end < fullText.length ? '...' : '');
+      return context.replace(new RegExp(`(${match})`, 'gi'), '<span class="text-[#ba0108] font-semibold">$1</span>');
+    }
+
+    function displayResults() {
+      if (!searchResults) return;
+      searchResults.innerHTML = '';
+      if (searchResultsData.length > 0) {
+        searchResultsData.forEach(result => {
+          const resultElement = document.createElement('div');
+          resultElement.className = 'block p-3 text-white/90 bg-[#1a1a1a] hover:bg-[#2a2a2a] rounded-md my-1 text-sm cursor-pointer';
+          resultElement.innerHTML = `<div>${result.context}</div>`;
+          resultElement.addEventListener('click', () => scrollToResult(result.id));
+          searchResults.appendChild(resultElement);
+        });
+      } else {
+        searchResults.innerHTML = `<div class="p-3 text-white/60 text-center">Ничего не найдено</div>`;
+      }
+    }
+
+    function scrollToResult(resultId) {
+      const element = document.getElementById(resultId);
+      if (element) {
+        searchPanel.classList.remove('open');
+        searchToggleButton.setAttribute('aria-expanded', 'false');
+        const parentBlock = element.closest('p, li, h1, h2, h3, h4, td, th, div:not(:empty)');
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (parentBlock) {
+          parentBlock.classList.add('search-result-focus');
+          setTimeout(() => {
+            parentBlock.classList.remove('search-result-focus');
+            clearSearch();
+            searchInput.value = '';
+          }, 1500);
+        } else {
+          clearSearch();
+          searchInput.value = '';
+        }
+      }
+    }
+
+    function closeSearchPanel() {
+      searchPanel.classList.remove('open');
+      searchToggleButton.setAttribute('aria-expanded', 'false');
+      searchInput.value = '';
+      clearSearch();
+    }
+
+    function toggleSearchPanel() {
+      if (searchPanel.classList.contains('open')) {
+        closeSearchPanel();
+      } else {
+        if (document.getElementById('mobileMenu')?.classList.contains('open')) toggleMobileMenu();
+        searchPanel.classList.add('open');
+        searchToggleButton.setAttribute('aria-expanded', 'true');
+        setTimeout(() => searchInput.focus(), 300);
+      }
+    }
+
+    searchToggleButton.addEventListener('click', toggleSearchPanel);
+    searchButton.addEventListener('click', executeSearch);
+    searchInput.addEventListener('keydown', (event) => { if (event.key === 'Enter') executeSearch(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && searchPanel.classList.contains('open')) closeSearchPanel(); });
+    if (typeof switchLanguage === 'function') {
+      switchLanguage(localStorage.getItem('selectedLanguage') || 'ua');
+    }
+  });
+</script>
