@@ -6,9 +6,9 @@ class LazyImageLoader {
   }
 
   init() {
-    if ('IntersectionObserver' in window) {
+    if ("IntersectionObserver" in window) {
       this.observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const img = entry.target;
             this.loadImage(img);
@@ -16,17 +16,17 @@ class LazyImageLoader {
           }
         });
       }, {
-        rootMargin: '50px 0px',
+        rootMargin: "50px 0px",
         threshold: 0.1
       });
 
       // Observe all images with loading="lazy"
-      document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+      document.querySelectorAll('img[loading="lazy"]').forEach((img) => {
         this.observer.observe(img);
       });
     } else {
       // Fallback for older browsers
-      document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+      document.querySelectorAll('img[loading="lazy"]').forEach((img) => {
         this.loadImage(img);
       });
     }
@@ -35,22 +35,22 @@ class LazyImageLoader {
   loadImage(img) {
     if (img.dataset.src) {
       img.src = img.dataset.src;
-      img.removeAttribute('data-src');
+      img.removeAttribute("data-src");
     }
-    
+    // eslint-disable-next-line no-unused-vars
     // Add fade-in effect
-    img.style.opacity = '0';
-    img.style.transition = 'opacity 0.3s ease';
-    
+    img.style.opacity = "0";
+    img.style.transition = "opacity 0.3s ease";
+    // eslint-disable-next-line no-unused-vars
     img.onload = () => {
-      img.style.opacity = '1';
+      img.style.opacity = "1";
     };
   }
 }
 
 // Initialize when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => {
     new LazyImageLoader();
   });
 } else {
