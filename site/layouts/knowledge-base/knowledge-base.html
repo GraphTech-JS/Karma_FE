@@ -4,20 +4,20 @@
   {{ $bgEl10 := resources.Get "img/bg-el-10.png" }}
   {{ if $bgEl10 }}
   {{ $bgEl10Desktop := $bgEl10.Resize "295x270 webp q80" }}
-  <img src="{{ $bgEl10Desktop.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
+  <img fetchpriority="high" src="{{ $bgEl10Desktop.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
     class="fixed hidden md:block z-[1] top-0 lg:top-[-2%] left-0 w-[191px] lg:w-[295px] h-auto" />
   {{ else }}
-  <img src="/img/bg-el-1.png" alt="Декоративний фоновий елемент" aria-hidden="true"
+  <img fetchpriority="high" src="/img/bg-el-1.png" alt="Декоративний фоновий елемент" aria-hidden="true"
     class="fixed hidden md:block z-[1] top-0 lg:top-[-2%] left-0 w-[191px] lg:w-[295px] h-auto" />
   {{ end }}
 
   {{ $bgEl1 := resources.Get "img/bg-el-1.png" }}
   {{ if $bgEl1 }}
   {{ $bgEl1Processed := $bgEl1.Resize "201x webp q80" }}
-  <img src="{{ $bgEl1Processed.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
+  <img fetchpriority="high" src="{{ $bgEl1Processed.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
     class="fixed block md:hidden z-[1] right-[-20%] top-0 w-[201px] h-auto opacity-50" />
   {{ else }}
-  <img src="/img/bg-el-1.png" alt="Декоративний фоновий елемент" aria-hidden="true"
+  <img fetchpriority="high" src="/img/bg-el-1.png" alt="Декоративний фоновий елемент" aria-hidden="true"
     class="fixed block md:hidden z-[1] right-[-20%] top-0 w-[201px] h-auto opacity-50" />
   {{ end }}
 
