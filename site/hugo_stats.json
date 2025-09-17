@@ -370,6 +370,7 @@
       "justify-start",
       "knowledge-item",
       "knowledge-section",
+      "knowledge-title-link",
       "language-switcher",
       "lazy-section",
       "leading-[0.8]",
