@@ -24,21 +24,14 @@
 
   <!-- Mobile layout -->
   <div class="max-[767px]:block min-[768px]:hidden relative z-[22]">
-    <!-- Mobile image -->
     {{ $aboutMobile := resources.Get "img/about-mob.png" }}
     {{ if $aboutMobile }}
-    {{ $aboutMobileSmall := $aboutMobile.Resize "412x288 webp q85" }}
-    {{ $aboutMobileLarge := $aboutMobile.Resize "572x400 webp q85" }}
-    <picture>
-      <source media="(max-width: 767px)" srcset="{{ $aboutMobileSmall.RelPermalink }}" type="image/webp">
-      <source media="(min-width: 768px)" srcset="{{ $aboutMobileLarge.RelPermalink }}" type="image/webp">
-      <img src="{{ $aboutMobileLarge.RelPermalink }}"
-        alt="Про нас - українська компанія високотехнологічного виробництва" class="mb-6 w-full h-auto origin-left"
-        width="572" height="400" fetchpriority="high" />
-    </picture>
+    {{ $aboutMobileProcessed := $aboutMobile.Resize " 572x webp q75" }}
+    <img src="{{ $aboutMobileProcessed.RelPermalink }}" alt="Про нас - українська компанія високотехнологічного виробництва"
+      class=" mb-6 w-full h-auto origin-left" />
     {{ else }}
     <img src="/img/about-mob.png" alt="Про нас - українська компанія високотехнологічного виробництва"
-      class="mb-6 w-full h-auto origin-left" width="572" height="400" fetchpriority="high" />
+      class=" mb-6 w-full h-auto origin-left" />
     {{ end }}
 
     <!-- Mobile content -->
