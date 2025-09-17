@@ -12,395 +12,99 @@ if (mobileMenu) {
   mobileMenu.addEventListener("click", toggleMobileMenu);
 }
 
-class CustomSlider {
-  constructor(container, options = {}) {
-    this.container = document.querySelector(container);
-    if (!this.container) return;
-
-    this.wrapper = this.container.querySelector(".swiper-wrapper");
-    this.slides = this.container.querySelectorAll(".swiper-slide");
-    this.currentIndex = 0;
-    this.autoplayInterval = null;
-    this.isTransitioning = false;
-
-    this.options = {
-      autoplay: options.autoplay || false,
-      delay: options.delay || 3000,
-      loop: options.loop || true,
-      slidesPerView: options.slidesPerView || 1,
-      slidesPerGroup: options.slidesPerGroup || 1,
-      spaceBetween: options.spaceBetween || 0,
-      responsive: options.responsive || {},
-      paginationCount: options.paginationCount || null,
-      fixedSlideWidth: options.fixedSlideWidth || null,
-      fixedWrapperWidth: options.fixedWrapperWidth || null,
-      ...options,
-    };
-
-    this.init();
-    this.setupResponsive();
-  }
-
-  init() {
-  if (this.slides.length === 0) return;
-  this.setupSlider();
-  const containerWidth = this.container.offsetWidth;
-  const slidesPerView = this.getCurrentSlidesPerView();
-  const spaceBetween = this.getCurrentSpaceBetween();
-  
-  let slideWidth;
-  if (this.options.fixedSlideWidth) {
-    slideWidth = this.options.fixedSlideWidth;
-  } else {
-    const totalSpacing = spaceBetween * (slidesPerView - 1);
-    slideWidth = Math.floor((containerWidth - totalSpacing) / slidesPerView);
-  }
-
-  const wrapperWidth = slideWidth * this.slides.length + spaceBetween * (this.slides.length - 1);
-  const translateX = 0;
-  this.slides.forEach((slide, index) => {
-    slide.style.flex = "0 0 auto";
-    slide.style.width = `${slideWidth}px`;
-    slide.style.display = "flex";
-    slide.style.alignItems = "center";
-    slide.style.justifyContent = "center";
-    slide.style.marginRight = index < this.slides.length - 1 ? `${spaceBetween}px` : "0";
-    slide.style.boxSizing = "border-box";
-  });
-  if (this.options.fixedWrapperWidth) {
-    this.wrapper.style.width = `${this.options.fixedWrapperWidth}px`;
-  } else {
-    this.wrapper.style.width = `${wrapperWidth}px`;
-  }
-  this.wrapper.style.transition = 'none';
-  this.wrapper.style.transform = `translateX(${translateX}px)`;
-  setTimeout(() => {
-    this.wrapper.style.transition = "transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
-  }, 0);
-  this.setupNavigation();
-  this.setupPagination();
-  if (this.bullets) {
-    this.bullets.forEach((bullet, i) => {
-      bullet.classList.toggle("swiper-pagination-bullet-active-custom", i === 0);
-    });
-  }
-
-  if (this.options.autoplay) {
-    this.startAutoplay();
-  }
-}
-
-  setupSlider() {
-  this.container.style.position = "relative";
-  this.container.style.overflow = "hidden";
-  this.wrapper.style.display = "flex";
-  this.wrapper.style.width = "fit-content";
-  this.wrapper.style.height = "auto";
-  this.wrapper.style.transition = "transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
-  this.wrapper.style.flexWrap = "nowrap";
-}
-
-  updateSlideStyles() {
-    const currentSlidesPerView = this.getCurrentSlidesPerView();
-    const currentSpaceBetween = this.getCurrentSpaceBetween();
-    const containerWidth = this.container.offsetWidth;
-
-    let slideWidth;
-
-    if (this.options.fixedSlideWidth) {
-      slideWidth = this.options.fixedSlideWidth;
-    } else {
-      const totalSpacing = currentSpaceBetween * (currentSlidesPerView - 1);
-      const availableWidth = containerWidth - totalSpacing;
-      slideWidth = Math.floor(availableWidth / currentSlidesPerView);
-
-      const minSlideWidth = currentSlidesPerView === 1 ? 280 : 380;
-      slideWidth = Math.max(slideWidth, minSlideWidth);
-
-      const maxSlideWidth =
-        currentSlidesPerView === 1 ? containerWidth - 20 : 500;
-      slideWidth = Math.min(slideWidth, maxSlideWidth);
-
-      if (currentSlidesPerView === 2) {
-        const totalSpacingCheck = currentSpaceBetween;
-        const maxPossibleWidth = (containerWidth - totalSpacingCheck) / 2;
-        slideWidth = Math.min(slideWidth, maxPossibleWidth);
-      }
-    }
-
-    this.slides.forEach((slide, index) => {
-      slide.style.flex = "0 0 auto";
-      slide.style.width = `${slideWidth}px`;
-      slide.style.display = "flex";
-      slide.style.alignItems = "center";
-      slide.style.justifyContent = "center";
-      slide.style.marginRight =
-        index < this.slides.length - 1 ? `${currentSpaceBetween}px` : "0";
-      slide.style.boxSizing = "border-box";
-    });
-
-    if (this.options.fixedWrapperWidth) {
-      this.wrapper.style.width = `${this.options.fixedWrapperWidth}px`;
-    } else {
-      const wrapperWidth =
-        slideWidth * this.slides.length +
-        currentSpaceBetween * (this.slides.length - 1);
-      this.wrapper.style.width = `${wrapperWidth}px`;
-    }
-  }
-  setupNavigation() {
-    const nextBtn =
-      this.container.querySelector(".swiper-button-next-custom") ||
-      this.container.parentElement.querySelector(".swiper-button-next-custom");
-    const prevBtn =
-      this.container.querySelector(".swiper-button-prev-custom") ||
-      this.container.parentElement.querySelector(".swiper-button-prev-custom");
-
-    if (nextBtn) {
-      nextBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        this.nextSlide();
-      });
-    }
-
-    if (prevBtn) {
-      prevBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        this.prevSlide();
-      });
-    }
-  }
-
-  setupPagination() {
-    const pagination = this.container.querySelector(
-      ".swiper-pagination-trusted"
-    );
-    if (!pagination) return;
-
-    pagination.innerHTML = "";
-
-    const bulletCount = this.options.paginationCount || this.slides.length;
-    for (let i = 0; i < bulletCount; i += 1) {
-      const bullet = document.createElement("span");
-      bullet.className = "swiper-pagination-bullet-custom";
-      bullet.addEventListener("click", (e) => {
-        e.preventDefault();
-        const targetIndex = this.slides.length > 0 ? i % this.slides.length : 0;
-        this.goToSlide(targetIndex);
-      });
-      pagination.appendChild(bullet);
-    }
-
-    this.bullets = pagination.querySelectorAll(
-      ".swiper-pagination-bullet-custom"
-    );
-  }
-
-  showSlide(index, animate = true) {
-  if (index < 0 || index >= this.slides.length) return;
-
-  this.isTransitioning = true;
-  this.currentIndex = index;
-  const currentSlidesPerView = this.getCurrentSlidesPerView();
-  const currentSpaceBetween = this.getCurrentSpaceBetween();
-  const containerWidth = this.container.offsetWidth;
-  const computedWidth = (containerWidth - currentSpaceBetween * (currentSlidesPerView - 1)) / currentSlidesPerView;
-  const slideWidth = this.options.fixedSlideWidth ? this.options.fixedSlideWidth : computedWidth;
-  const translateX = -(index * (slideWidth + currentSpaceBetween));
-  if (animate) {
-    this.wrapper.style.transition = "transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
-  } else {
-    this.wrapper.style.transition = "none";
-  }
-  this.wrapper.style.transform = `translateX(${translateX}px)`;
-  if (this.bullets) {
-    const bulletIndex = this.options.paginationCount
-      ? index % this.options.paginationCount
-      : index;
-    this.bullets.forEach((bullet, i) => {
-      bullet.classList.toggle("swiper-pagination-bullet-active-custom", i === bulletIndex);
-    });
-  }
-  setTimeout(() => {
-    this.isTransitioning = false;
-  }, animate ? 500 : 0);
-}
-
-  nextSlide() {
-    if (this.isTransitioning) return;
-
-    const step = this.options.slidesPerGroup || 1;
-    const maxStartIndex = Math.max(
-      0,
-      this.slides.length - this.getCurrentSlidesPerView()
-    );
-    const groups = Math.ceil((maxStartIndex + 1) / step) || 1;
-    const currentGroup = Math.floor(this.currentIndex / step);
-    const nextGroup = (currentGroup + 1) % groups;
-    const targetIndex = Math.min(nextGroup * step, maxStartIndex);
-    this.showSlide(targetIndex);
-  }
-
-  prevSlide() {
-    if (this.isTransitioning) return;
-
-    const step = this.options.slidesPerGroup || 1;
-    const maxStartIndex = Math.max(
-      0,
-      this.slides.length - this.getCurrentSlidesPerView()
-    );
-    const groups = Math.ceil((maxStartIndex + 1) / step) || 1;
-    const currentGroup = Math.floor(this.currentIndex / step);
-    const prevGroup = (currentGroup - 1 + groups) % groups;
-    const targetIndex = Math.min(prevGroup * step, maxStartIndex);
-    this.showSlide(targetIndex);
-  }
-
-  goToSlide(index) {
-    if (this.isTransitioning || index === this.currentIndex) return;
-    this.showSlide(index);
-  }
-
-  startAutoplay() {
-    this.stopAutoplay();
-    this.autoplayInterval = setInterval(() => {
-      if (!this.isTransitioning) {
-        this.nextSlide();
-      }
-    }, this.options.delay);
-  }
-
-  stopAutoplay() {
-    if (this.autoplayInterval) {
-      clearInterval(this.autoplayInterval);
-      this.autoplayInterval = null;
-    }
-  }
-
-  setupResponsive() {
-  let resizeTimeout;
-
-  const handleResize = () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      const containerWidth = this.container.offsetWidth;
-      const currentSlidesPerView = this.getCurrentSlidesPerView();
-      const currentSpaceBetween = this.getCurrentSpaceBetween();
-      
-      let slideWidth;
-      if (this.options.fixedSlideWidth) {
-        slideWidth = this.options.fixedSlideWidth;
-      } else {
-        const totalSpacing = currentSpaceBetween * (currentSlidesPerView - 1);
-        slideWidth = Math.floor((containerWidth - totalSpacing) / currentSlidesPerView);
-      }
-      
-      const wrapperWidth = slideWidth * this.slides.length + currentSpaceBetween * (this.slides.length - 1);
-      const translateX = -(this.currentIndex * (slideWidth + currentSpaceBetween));
-      requestAnimationFrame(() => {
-        this.wrapper.style.transition = 'none';
-
-        this.slides.forEach((slide, index) => {
-          slide.style.width = `${slideWidth}px`;
-          slide.style.marginRight = index < this.slides.length - 1 ? `${currentSpaceBetween}px` : '0';
-        });
-
-        if (this.options.fixedWrapperWidth) {
-            this.wrapper.style.width = `${this.options.fixedWrapperWidth}px`;
-        } else {
-            this.wrapper.style.width = `${wrapperWidth}px`;
-        }
-
-        this.wrapper.style.transform = `translateX(${translateX}px)`;
-      });
-    }, 150);
-  };
-
-  window.addEventListener('resize', handleResize);
-}
-
-  getCurrentSlidesPerView() {
-    const width = window.innerWidth;
-    const responsive = this.options.responsive;
-
-    let currentSlidesPerView = this.options.slidesPerView;
-
-    Object.keys(responsive)
-      .map(Number)
-      .sort((a, b) => a - b)
-      .forEach((breakpoint) => {
-        if (width >= breakpoint) {
-          currentSlidesPerView =
-            responsive[breakpoint].slidesPerView || currentSlidesPerView;
-        }
-      });
-
-    return currentSlidesPerView;
-  }
-
-  getCurrentSpaceBetween() {
-    const width = window.innerWidth;
-    const responsive = this.options.responsive;
-
-    let currentSpaceBetween = this.options.spaceBetween;
-
-    Object.keys(responsive)
-      .map(Number)
-      .sort((a, b) => a - b)
-      .forEach((breakpoint) => {
-        if (width >= breakpoint) {
-          currentSpaceBetween =
-            responsive[breakpoint].spaceBetween || currentSpaceBetween;
-        }
-      });
-
-    return currentSpaceBetween;
-  }
-}
-
 // Initialize sliders when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
-  // Оборачиваем каждую "тяжелую" инициализацию, чтобы разделить их
-  requestAnimationFrame(() => {
-    new CustomSlider(".swiper-container-trusted-desktop", {
-      autoplay: true,
+  function setupCustomDots(swiper, paginationEl, dotsCount = 4) {
+    if (!paginationEl) return;
+    paginationEl.innerHTML = "";
+    const dots = [];
+    for (let i = 0; i < dotsCount; i += 1) {
+      const dot = document.createElement("span");
+      dot.className = "swiper-pagination-bullet-custom";
+      dot.addEventListener("click", () => swiper.slideToLoop(i));
+      paginationEl.appendChild(dot);
+      dots.push(dot);
+    }
+    const update = () => {
+      const active = ((swiper.realIndex % dotsCount) + dotsCount) % dotsCount;
+      dots.forEach((d, i) => d.classList.toggle("swiper-pagination-bullet-active-custom", i === active));
+    };
+    swiper.on("slideChange", update);
+    update();
+  }
+
+  // Desktop trusted
+  const trustedDesktop = document.querySelector(".swiper-container-trusted-desktop");
+  if (trustedDesktop && window.Swiper) {
+    let desktopPagination = trustedDesktop.querySelector(".swiper-pagination-trusted");
+    if (!desktopPagination) {
+      desktopPagination = document.createElement("div");
+      desktopPagination.className = "swiper-pagination-trusted mt-[30px]";
+      trustedDesktop.appendChild(desktopPagination);
+    }
+
+    const desktopSwiper = new window.Swiper(trustedDesktop, {
       loop: true,
+      speed: 500,
+      autoplay: { delay: 2500, disableOnInteraction: false },
       slidesPerView: 4,
+      slidesPerGroup: 1,
       spaceBetween: 0,
-      paginationCount: 4,
-      fixedSlideWidth: null,
-      responsive: {
-        768: { slidesPerView: 4, spaceBetween: 0 },
-        1024: { slidesPerView: 4, spaceBetween: 0 },
-        1440: { slidesPerView: 4, spaceBetween: 0 },
+      navigation: {
+        nextEl: ".swiper-button-next-custom",
+        prevEl: ".swiper-button-prev-custom",
       },
     });
-  });
 
-  requestAnimationFrame(() => {
-    new CustomSlider(".swiper-container-trusted-mobile", {
-      autoplay: true,
-      loop: true,
-      slidesPerView: 1,
-      spaceBetween: 20,
-      paginationCount: 4,
-    });
-  });
+    setupCustomDots(desktopSwiper, desktopPagination, 4); // рівно 4 точки
+  }
 
-  requestAnimationFrame(() => {
-    new CustomSlider(".swiper-container-products", {
-      autoplay: true,
-      loop: true,
+  // Mobile trusted
+  const trustedMobile = document.querySelector(".swiper-container-trusted-mobile");
+  if (trustedMobile && window.Swiper) {
+    let mobilePagination = trustedMobile.querySelector(".swiper-pagination-trusted");
+    if (!mobilePagination) {
+      mobilePagination = document.createElement("div");
+      mobilePagination.className = "swiper-pagination-trusted mt-[30px]";
+      trustedMobile.appendChild(mobilePagination);
+    }
+
+    const mobileSwiper = new window.Swiper(trustedMobile, {
+      loop: false,
+      speed: 500,
+      autoplay: { delay: 2500, disableOnInteraction: false },
       slidesPerView: 1,
       slidesPerGroup: 1,
-      spaceBetween: 16,
-      fixedSlideWidth: null,
-      responsive: {
-        768: { slidesPerView: 2, slidesPerGroup: 2, spaceBetween: 28, fixedSlideWidth: null },
-        1024: { slidesPerView: 2, slidesPerGroup: 2, spaceBetween: 25, fixedSlideWidth: null },
-        1200: { slidesPerView: 2, slidesPerGroup: 2, spaceBetween: 40, fixedSlideWidth: null },
+      spaceBetween: 20,
+      navigation: {
+        nextEl: ".swiper-button-next-custom",
+        prevEl: ".swiper-button-prev-custom",
       },
     });
+
+    setupCustomDots(mobileSwiper, mobilePagination, 4);
+  }
+
+  requestAnimationFrame(() => {
+    const productsEl = document.querySelector(".swiper-container-products");
+    if (productsEl && window.Swiper) {
+      new window.Swiper(productsEl, {
+        loop: true,
+        speed: 500,
+        autoplay: {delay: 3000, disableOnInteraction: false},
+        slidesPerView: 1,
+        spaceBetween: 16,
+        navigation: {
+          nextEl: ".swiper-button-next-custom",
+          prevEl: ".swiper-button-prev-custom",
+        },
+        breakpoints: {
+          768: {slidesPerView: "auto", spaceBetween: 20},
+          1000: {slidesPerView: "auto", spaceBetween: 51},
+          1200: {slidesPerView: "auto", spaceBetween: 51},
+        },
+      });
+    }
   });
 
   // Initialize simple mobile slider
@@ -431,65 +135,5 @@ document.addEventListener("DOMContentLoaded", () => {
         updateSlider();
       });
     }
-  }
-
-  // Initialize trusted companies mobile slider (separate custom controls if needed)
-  const trustedMobileSlider = document.getElementById("trusted-mobile-slider");
-  const trustedMobileWrapper = document.getElementById(
-    "trusted-mobile-wrapper"
-  );
-  const trustedMobilePrev = document.querySelector(".trusted-mobile-prev");
-  const trustedMobileNext = document.querySelector(".trusted-mobile-next");
-  const trustedPaginationDots = document.querySelectorAll(
-    ".trusted-pagination-dot"
-  );
-
-  if (trustedMobileSlider && trustedMobileWrapper) {
-    let currentTrustedSlide = 0;
-    const totalTrustedSlides = trustedMobileWrapper.children.length;
-
-    function updateTrustedSlider() {
-      const translateX = -currentTrustedSlide * 100;
-      trustedMobileWrapper.style.transform = `translateX(${translateX}%)`;
-
-      // Update pagination dots
-      trustedPaginationDots.forEach((dot, index) => {
-        if (index === currentTrustedSlide) {
-          dot.classList.remove("bg-gray-400");
-          dot.classList.add("bg-[#ba0108]");
-        } else {
-          dot.classList.remove("bg-[#ba0108]");
-          dot.classList.add("bg-gray-400");
-        }
-      });
-    }
-
-    if (trustedMobilePrev) {
-      trustedMobilePrev.addEventListener("click", () => {
-        currentTrustedSlide =
-          currentTrustedSlide > 0
-            ? currentTrustedSlide - 1
-            : totalTrustedSlides - 1;
-        updateTrustedSlider();
-      });
-    }
-
-    if (trustedMobileNext) {
-      trustedMobileNext.addEventListener("click", () => {
-        currentTrustedSlide =
-          currentTrustedSlide < totalTrustedSlides - 1
-            ? currentTrustedSlide + 1
-            : 0;
-        updateTrustedSlider();
-      });
-    }
-
-    // Add click handlers for pagination dots
-    trustedPaginationDots.forEach((dot, index) => {
-      dot.addEventListener("click", () => {
-        currentTrustedSlide = index;
-        updateTrustedSlider();
-      });
-    });
   }
 });

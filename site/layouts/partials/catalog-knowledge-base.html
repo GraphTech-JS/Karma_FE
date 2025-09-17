@@ -58,7 +58,7 @@
             <div class="flex flex-col gap-[10px]  max-[450px]:h-auto justify-between">
                 <h4
                     class="text-[clamp(20px,2vw,24px)] max-[450px]:text-[18px] font-[Montserrat] font-medium max-[450px]:leading-tight">
-                    {{ .Title }}
+                    <a href="{{ .RelPermalink }}" class="hover:text-[#ba0108]">{{ .Title }}</a>
                 </h4>
                 <p
                     class="text-[clamp(16px,2vw,20px)] max-[450px]:text-[14px] font-[Montserrat] font-normal max-[450px]:leading-relaxed">
@@ -103,6 +103,8 @@
     .hero-title.animate {
         animation: fadeInUp 0.8s ease-out forwards;
     }
+
+   
 </style>
 
 <script>
