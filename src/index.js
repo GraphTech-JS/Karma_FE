@@ -1,16 +1,25 @@
 import "./css/main.scss";
 
+import Swiper from "swiper";
+import { Navigation, Autoplay, Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+// --- Mobile menu toggle ---
 const mobileMenu = document.querySelector("[data-mobile-menu]");
 const nav = document.querySelector("[data-nav]");
 
 function toggleMobileMenu() {
-  nav.classList.toggle("menu-open");
+  nav?.classList.toggle("menu-open");
 }
 
 if (mobileMenu) {
   mobileMenu.addEventListener("click", toggleMobileMenu);
 }
 
+// --- DOM Ready ---
 document.addEventListener("DOMContentLoaded", () => {
   // --------- Custom Dots ----------
   function setupCustomDots(swiper, paginationEl, dotsCount = 4) {
@@ -18,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     paginationEl.innerHTML = "";
 
     const dots = [];
-    for (let i = 0; i < dotsCount; i += 1) {
+    for (let i = 0; i < dotsCount; i++) {
       const dot = document.createElement("span");
       dot.className = "swiper-pagination-bullet-custom";
       dot.addEventListener("click", () => swiper.slideToLoop(i));
@@ -27,25 +36,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const update = () => {
-      requestAnimationFrame(() => {
-        const active = swiper.params.loop
-          ? ((swiper.realIndex % dotsCount) + dotsCount) % dotsCount
-          : swiper.activeIndex % dotsCount;
+      const active = swiper.params.loop
+        ? ((swiper.realIndex % dotsCount) + dotsCount) % dotsCount
+        : swiper.activeIndex % dotsCount;
 
-        dots.forEach((d, i) => {
-          const isActive = i === active;
-          if (
-            isActive &&
-            !d.classList.contains("swiper-pagination-bullet-active-custom")
-          ) {
-            d.classList.add("swiper-pagination-bullet-active-custom");
-          } else if (
-            !isActive &&
-            d.classList.contains("swiper-pagination-bullet-active-custom")
-          ) {
-            d.classList.remove("swiper-pagination-bullet-active-custom");
-          }
-        });
+      dots.forEach((d, j) => {
+        d.classList.toggle("swiper-pagination-bullet-active-custom", j === active);
       });
     };
 
@@ -53,33 +49,25 @@ document.addEventListener("DOMContentLoaded", () => {
     update();
   }
 
+  // Використовувані модулі
+  const swiperModules = [Navigation, Autoplay, Pagination];
+
   // --------- Desktop trusted ----------
-  const trustedDesktop = document.querySelector(
-    ".swiper-container-trusted-desktop"
-  );
-  if (
-    trustedDesktop &&
-    window.Swiper &&
-    trustedDesktop.querySelector(".swiper-wrapper")
-  ) {
-    let desktopPagination = trustedDesktop.querySelector(
-      ".swiper-pagination-trusted"
-    );
+  const trustedDesktop = document.querySelector(".swiper-container-trusted-desktop");
+  if (trustedDesktop && trustedDesktop.querySelector(".swiper-wrapper")) {
+    let desktopPagination = trustedDesktop.querySelector(".swiper-pagination-trusted");
     if (!desktopPagination) {
       desktopPagination = document.createElement("div");
       desktopPagination.className = "swiper-pagination-trusted mt-[30px]";
       trustedDesktop.appendChild(desktopPagination);
     }
 
-    const desktopSwiper = new window.Swiper(trustedDesktop, {
-      observer: false,
-      observeParents: false,
-      resizeObserver: false,
+    const desktopSwiper = new Swiper(trustedDesktop, {
+      modules: swiperModules,
       loop: true,
       speed: 500,
       autoplay: { delay: 2500, disableOnInteraction: false },
       slidesPerView: 4,
-      slidesPerGroup: 1,
       spaceBetween: 0,
       navigation: {
         nextEl: ".swiper-button-next-custom",
@@ -88,36 +76,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     setupCustomDots(desktopSwiper, desktopPagination, 4);
-    window.desktopSwiper = desktopSwiper;
   }
 
   // --------- Mobile trusted ----------
-  const trustedMobile = document.querySelector(
-    ".swiper-container-trusted-mobile"
-  );
-  if (
-    trustedMobile &&
-    window.Swiper &&
-    trustedMobile.querySelector(".swiper-wrapper")
-  ) {
-    let mobilePagination = trustedMobile.querySelector(
-      ".swiper-pagination-trusted"
-    );
+  const trustedMobile = document.querySelector(".swiper-container-trusted-mobile");
+  if (trustedMobile && trustedMobile.querySelector(".swiper-wrapper")) {
+    let mobilePagination = trustedMobile.querySelector(".swiper-pagination-trusted");
     if (!mobilePagination) {
       mobilePagination = document.createElement("div");
       mobilePagination.className = "swiper-pagination-trusted mt-[30px]";
       trustedMobile.appendChild(mobilePagination);
     }
 
-    const mobileSwiper = new window.Swiper(trustedMobile, {
-      observer: false,
-      observeParents: false,
-      resizeObserver: false,
+    const mobileSwiper = new Swiper(trustedMobile, {
+      modules: swiperModules,
       loop: false,
       speed: 500,
       autoplay: { delay: 2500, disableOnInteraction: false },
       slidesPerView: 1,
-      slidesPerGroup: 1,
       spaceBetween: 0,
       navigation: {
         nextEl: ".swiper-button-next-custom",
@@ -126,20 +102,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     setupCustomDots(mobileSwiper, mobilePagination, 4);
-    window.mobileSwiper = mobileSwiper;
   }
 
   // --------- Products swiper ----------
   const productsEl = document.querySelector(".swiper-container-products");
-  if (
-    productsEl &&
-    window.Swiper &&
-    productsEl.querySelector(".swiper-wrapper")
-  ) {
-    const productsSwiper = new window.Swiper(productsEl, {
-      observer: false,
-      observeParents: false,
-      resizeObserver: false,
+  if (productsEl && productsEl.querySelector(".swiper-wrapper")) {
+    const productsSwiper = new Swiper(productsEl, {
+      modules: swiperModules,
       loop: true,
       speed: 500,
       autoplay: { delay: 3000, disableOnInteraction: false },
@@ -155,10 +124,9 @@ document.addEventListener("DOMContentLoaded", () => {
         1200: { slidesPerView: "auto", spaceBetween: 51 },
       },
     });
-
-    window.productsSwiper = productsSwiper;
   }
 
+  // --------- Debounce & update ----------
   function debounce(fn, delay = 150) {
     let t;
     return (...args) => {
@@ -170,9 +138,9 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener(
     "resize",
     debounce(() => {
-      if (window.desktopSwiper) window.desktopSwiper.update();
-      if (window.mobileSwiper) window.mobileSwiper.update();
-      if (window.productsSwiper) window.productsSwiper.update();
+      document.querySelectorAll(".swiper-container").forEach((el) => {
+        if (el.swiper) el.swiper.update();
+      });
     }, 200)
   );
 });

@@ -474,6 +474,8 @@
   <link rel="preload" href="{{ relURL $assets.js }}" as="script">
   {{- end -}}
 
+
+
   <!-- Preload LCP image -->
   <link rel="preload" as="image" href="/img/stack.png" media="(min-width: 1024px)">
   <!-- DNS prefetch for external domains -->
@@ -565,11 +567,13 @@
   }
   </script>
 
-  <link rel="preload" href="{{ "js/swiper-bundle.min.css" | relURL }}" as="style"
+
+<!-- 
+  <link rel="preload" href="{{ " js/swiper-bundle.min.css" | relURL }}" as="style"
     onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
-    <link rel="stylesheet" href="{{ "js/swiper-bundle.min.css" | relURL }}">
-  </noscript>
+    <link rel="stylesheet" href="{{ " js/swiper-bundle.min.css" | relURL }}">
+  </noscript> -->
   {{ end }}
 </head>
 
@@ -593,6 +597,8 @@
   <!-- DEV fallback JS -->
   <script src="http://localhost:3000/main.js"></script>
   {{- end -}}
+
+
 
   <script>
     // Global function for opening contact modal
@@ -709,14 +715,14 @@
     }
   </script>
 
-  <script defer src="{{ "js/swiper-bundle.min.js" | relURL }}"></script>
+  <!-- <script defer src="{{ " js/swiper-bundle.min.js" | relURL }}"></script>
   <script>
     if (!window.Swiper) {
       var s = document.createElement('script');
       s.src = 'https://unpkg.com/swiper@9/swiper-bundle.min.js';
       document.head.appendChild(s);
     }
-  </script>
+  </script> -->
 
   <script>
     function toggleMobileMenu() {

@@ -33,6 +33,9 @@
 /* Modal Styles */
 @use './imports/_modal';
 
+@use './imports/accordion';
+
+
 @layer base {
   /* Set default fonts */
   html,

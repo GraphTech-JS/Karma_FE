@@ -26,7 +26,7 @@
 {{/* FAQ Section */}}
 <div class="bg-white py-[80px]">
   <div class="max-w-[1440px] mx-auto px-4">
-    {{ partial "accordion-list" (dict
+    {{ partial "accordion" (dict
       "context" .
       "className" "mb-[48px]"
       "title" "Найпоширеніші запитання про політні стеки"
@@ -53,7 +53,6 @@
   </div>
 </div>
 
-{{/* Contact Form Section */}}
 {{ partial "contact-form-section" . }}
 
 {{ end }}

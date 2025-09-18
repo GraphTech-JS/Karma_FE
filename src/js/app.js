@@ -19,7 +19,6 @@ if (document.readyState === "loading") {
   setTimeout(loadNonCriticalJS, 100);
 }
 
-
 if (window.netlifyIdentity) {
   window.netlifyIdentity.on("init", (user) => {
     if (!user) {
