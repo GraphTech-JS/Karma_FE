@@ -153,33 +153,36 @@ $context.Site.Data.products.categories $category }}
 
 <script>
   function fixTitlePadding() {
-      document.querySelectorAll('.product-title').forEach(title => {
-        if (title.textContent.trim().length > 32) {
-          title.classList.remove('mx-[37px]');
-          title.classList.add('px-2');
-        }
-      });
-    }
+    document.querySelectorAll('.product-title').forEach(title => {
+      if (title.textContent.trim().length > 32) {
+        title.classList.remove('mx-[37px]');
+        title.classList.add('px-2');
+      }
+    });
+  }
 
-    function equalizeProductTitles() {
-      const titles = document.querySelectorAll('.products-slider .product-title');
-      if (!titles.length) return;
+ function equalizeProductTitles() {
+    const titles = document.querySelectorAll('.products-slider .product-title');
+    if (!titles.length) return;
 
-      // спочатку скидаємо висоту, міряємо натуральну
-      titles.forEach(t => { t.style.minHeight = '0px'; });
-      let max = 0;
-      titles.forEach(t => { max = Math.max(max, t.offsetHeight); });
-      // задаємо однакову мінімальну висоту для всіх
-      titles.forEach(t => { t.style.minHeight = `${max}px`; });
-    }
+    requestAnimationFrame(() => {
+      titles.forEach(t => t.style.minHeight = "0px");
+      const heights = Array.from(titles, t => t.getBoundingClientRect().height);
+      const max = Math.max(...heights);
+      titles.forEach(t => t.style.minHeight = `${max}px`);
+    });
+  }
 
-    function debounce(fn, wait) {
-      let t;
-      return () => { clearTimeout(t); t = setTimeout(fn, wait); };
-    }
+  function debounce(fn, wait) {
+    let t;
+    return () => {
+      clearTimeout(t);
+      t = setTimeout(fn, wait);
+    };
+  }
 
-    fixTitlePadding();
-    equalizeProductTitles();
-    window.addEventListener('load', equalizeProductTitles);
-    window.addEventListener('resize', debounce(equalizeProductTitles, 150));
+  fixTitlePadding();
+  window.addEventListener("load", equalizeProductTitles);
+  window.addEventListener("resize", debounce(equalizeProductTitles, 150));
+
 </script>

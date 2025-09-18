@@ -12,10 +12,11 @@
         {{ range $i, $c := $companies }}
         {{ if eq (mod $i 4) 0 }}
         <div class="swiper-slide">
-          <div class="grid grid-cols-2 place-items-center gap-[34px] text-center">
+          <div class="grid grid-cols-2 place-items-center gap-[34px] text-center ">
             {{ end }}
 
-            <div class="logo-container flex flex-col items-center justify-between h-[140px] gap-[15px]">
+            <div
+              class="logo-container flex flex-col items-center justify-between h-[140px] gap-[15px] {{ if eq (add $i 1) $count }}ml-[40px]{{ else }}ml-[20px]{{ end }}">
               {{ if eq $c.logo "/img/mriadrone.png" }}
               {{ $mriadrone := resources.Get "img/mriadrone.png" }}
               {{ if $mriadrone }}
@@ -91,18 +92,18 @@
           <div class="logo-container flex flex-col items-center justify-center md:h-[193px] lg:h-[232px] gap-[46px] ">
             {{ if eq .logo "/img/mriadrone.png" }}
             <img src="{{ .logo }}" alt="{{ .alt }}"
-              class="object-contain md:w-[153px] md:h-[118px] lg:w-[203px] lg:h-[157px]" loading="lazy"/>
+              class="object-contain md:w-[153px] md:h-[118px] lg:w-[203px] lg:h-[157px]" loading="lazy" />
             {{ else if eq .logo "/img/magura.png" }}
             <img src="{{ .logo }}" alt="{{ .alt }}"
-              class="object-contain md:w-[242px] md:h-[118px] lg:w-[321px] lg:h-[157px]" loading="lazy"/>
+              class="object-contain md:w-[242px] md:h-[118px] lg:w-[321px] lg:h-[157px]" loading="lazy" />
             {{ else if eq .logo "/img/toro.png" }}
             <img src="{{ .logo }}" alt="{{ .alt }}"
-              class="object-contain md:w-[203px] md:h-[118px] lg:w-[271px] lg:h-[157px]" loading="lazy"/>
+              class="object-contain md:w-[203px] md:h-[118px] lg:w-[271px] lg:h-[157px]" loading="lazy" />
             {{ else if eq .logo "/img/drone.png" }}
             <img src="{{ .logo }}" alt="{{ .alt }}"
-              class="object-contain md:w-[153px] md:h-[118px] lg:w-[203px] lg:h-[157px]" loading="lazy"/>
+              class="object-contain md:w-[153px] md:h-[118px] lg:w-[203px] lg:h-[157px]" loading="lazy" />
             {{ else }}
-            <img src="{{ .logo }}" alt="{{ .alt }}" class="object-contain max-w-[160px]" loading="lazy"/>
+            <img src="{{ .logo }}" alt="{{ .alt }}" class="object-contain max-w-[160px]" loading="lazy" />
             {{ end }}
             <p class="text-[24px] font-['Montserrat'] font-medium text-[#020303] uppercase whitespace-nowrap">{{ .name
               }}</p>
