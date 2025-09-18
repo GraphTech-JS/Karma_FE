@@ -1,28 +1,28 @@
 ---
-title: "ПОЛІТНИЙ СТЕК KARMA F405 V2 (Dynamic)"
-description: "Удосконалена версія політного стеку з покращеними характеристиками"
-date: 2024-08-25T00:00:00Z
-layout: "catalog"
-category: "politni-steky"
+title: ПОЛІТНИЙ СТЕК KARMA F405 V1 (60A)
+description: Удосконалена версія політного стеку з покращеними характеристиками
+date: 2024-08-25T00:00:00.000Z
+category: politni-steky
 product_id: "2234"
-image: "/img/our-product2.png"
+image: /img/our-product2.png
 price: 2800
-currency: "грн"
-in_stock: true
 specs:
-  - label: "Гіроскоп/акселерометр"
-    value: "ICM-42688-P"
-  - label: "Робочий струм"
-    value: "55А"
-  - label: "Розмір"
-    value: "48.5 x 40 мм"
-  - label: "Монтажні отвори"
-    value: "30.5 x 30.5 мм"
-  - label: "Піковий струм"
-    value: "65А"
-  - label: "Роз'єм живлення"
-    value: "XT-60"
+  - label: Гіроскоп/акселерометр
+    value: ICM-42688-P
+  - label: Робочий струм
+    value: 55А
+  - label: Розмір
+    value: 48.5 x 40 мм
+  - label: Монтажні отвори
+    value: 30.5 x 30.5 мм
+  - label: Піковий струм
+    value: 65А
+  - label: Роз'єм живлення
+    value: XT-60
 draft: false
+layout: catalog
+currency: грн
+in_stock: true
 ---
 
 # ПОЛІТНИЙ СТЕК KARMA F405 V2
