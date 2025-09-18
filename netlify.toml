@@ -13,21 +13,7 @@
 [build.processing]
   skip_processing = false
 
-# Performance and Security Headers
-[[headers]]
-  for = "/*"
-  [headers.values]
-    # Security headers
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    X-XSS-Protection = "1; mode=block"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    
-    # Performance headers - optimized for mobile
-    Cache-Control = "public, max-age=1800"
-    
-    # Preload critical resources
+
 
 # Static assets caching - mobile optimized
 [[headers]]
@@ -81,6 +67,22 @@
   [headers.values]
     Content-Type = "font/woff2"
     Cache-Control = "public, max-age=31536000, immutable"
+
+    # Performance and Security Headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Security headers
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    
+    # Performance headers - optimized for mobile
+    Cache-Control = "public, max-age=1800"
+    
+    # Preload critical resources
 
 # Admin area security
 [[headers]]
