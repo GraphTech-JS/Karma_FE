@@ -585,13 +585,13 @@
   {{ block "footer" . }}{{ partial "footer" . }}{{end}}
   {{ partial "contact-modal" . }}
 
-  {{ $script := .Site.Data.webpack.main }}
-  {{ if and $script $script.js }}
-  <script defer src="{{ relURL $script.js }}"></script>
-  {{- else if .Site.IsServer -}}
-  <!-- DEV fallback JS -->
-  <script src="http://localhost:3000/main.js"></script>
-  {{- end -}}
+    {{ $script := .Site.Data.webpack.main }}
+    {{ if and $script $script.js }}
+    <script defer src="{{ relURL $script.js }}"></script>
+    {{- else if .Site.IsServer -}}
+    <!-- DEV fallback JS -->      
+    <script src="http://localhost:3000/main.js"></script>
+    {{- end -}}
 
   <script>
     // Global function for opening contact modal

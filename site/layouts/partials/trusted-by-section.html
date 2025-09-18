@@ -92,18 +92,18 @@
           <div class="logo-container flex flex-col items-center justify-center md:h-[193px] lg:h-[232px] gap-[46px] ">
             {{ if eq .logo "/img/mriadrone.png" }}
             <img src="{{ .logo }}" alt="{{ .alt }}"
-              class="object-contain md:w-[153px] md:h-[118px] lg:w-[203px] lg:h-[157px]" />
+              class="object-contain md:w-[153px] md:h-[118px] lg:w-[203px] lg:h-[157px]" loading="lazy" />
             {{ else if eq .logo "/img/magura.png" }}
             <img src="{{ .logo }}" alt="{{ .alt }}"
-              class="object-contain md:w-[242px] md:h-[118px] lg:w-[321px] lg:h-[157px]" />
+              class="object-contain md:w-[242px] md:h-[118px] lg:w-[321px] lg:h-[157px]" loading="lazy" />
             {{ else if eq .logo "/img/toro.png" }}
             <img src="{{ .logo }}" alt="{{ .alt }}"
-              class="object-contain md:w-[203px] md:h-[118px] lg:w-[271px] lg:h-[157px]" />
+              class="object-contain md:w-[203px] md:h-[118px] lg:w-[271px] lg:h-[157px]" loading="lazy" />
             {{ else if eq .logo "/img/drone.png" }}
             <img src="{{ .logo }}" alt="{{ .alt }}"
-              class="object-contain md:w-[153px] md:h-[118px] lg:w-[203px] lg:h-[157px]" />
+              class="object-contain md:w-[153px] md:h-[118px] lg:w-[203px] lg:h-[157px]" loading="lazy" />
             {{ else }}
-            <img src="{{ .logo }}" alt="{{ .alt }}" class="object-contain max-w-[160px]" />
+            <img src="{{ .logo }}" alt="{{ .alt }}" class="object-contain max-w-[160px]" loading="lazy" />
             {{ end }}
             <p class="text-[24px] font-['Montserrat'] font-medium text-[#020303] uppercase whitespace-nowrap">{{ .name
               }}</p>
