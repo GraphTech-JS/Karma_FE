@@ -9,7 +9,7 @@ description: >-
 date: 2025-09-18T16:58:00.000+03:00
 category: Політні стеки
 tags: []
-image: ""
+image: /img/polini-steki.png
 draft: false
 ---
 <section id="basics" class="scroll-mt-24">
