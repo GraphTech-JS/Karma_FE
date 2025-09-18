@@ -369,7 +369,6 @@
     position: absolute;
     top: 100%;
     left: 5%;
-    /* добавлено для центрирования */
     width: 90%;
     background-color: #050505;
     border-bottom-right-radius: 8px;
@@ -386,6 +385,15 @@
     opacity: 1;
     transform: translateY(0);
     visibility: visible;
+  }
+
+  #language-switcher-container {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  }
+
+  #language-switcher-container.loaded {
+  opacity: 1;
   }
 
   @media (min-width: 1024px) {
@@ -703,7 +711,7 @@
       });
     }
   </script>
-  <<link rel="stylesheet" href="{{ "js/swiper-bundle.min.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "js/swiper-bundle.min.css" | relURL }}">
 <script defer src="{{ "js/swiper-bundle.min.js" | relURL }}"></script>
 <script>
   if (!window.Swiper) {
@@ -945,6 +953,7 @@
       observer.observe(element);
     });
   }
+   document.getElementById('language-switcher-container')?.classList.add('loaded');
 </script>
 </body>
 
