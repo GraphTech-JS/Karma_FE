@@ -11,11 +11,12 @@
         {{ $count := len $companies }}
         {{ range $i, $c := $companies }}
         {{ if eq (mod $i 4) 0 }}
-        <div class="swiper-slide">
-          <div class="grid grid-cols-2 place-items-center gap-[34px] text-center">
+        <div class="swiper-slide ">
+          <div class="grid grid-cols-2 place-items-center gap-[34px] text-center ">
             {{ end }}
 
-            <div class="logo-container flex flex-col items-center justify-between h-[140px] gap-[15px]">
+            <div
+              class="logo-container flex flex-col items-center justify-between h-[140px] gap-[15px] {{ if eq (add $i 1) $count }}ml-[40px]{{ else }}ml-[23px]{{ end }}">
               {{ if eq $c.logo "/img/mriadrone.png" }}
               {{ $mriadrone := resources.Get "img/mriadrone.png" }}
               {{ if $mriadrone }}

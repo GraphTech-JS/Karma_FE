@@ -72,10 +72,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const mobileSwiper = new window.Swiper(trustedMobile, {
       loop: false,
       speed: 500,
-      autoplay: { delay: 2500, disableOnInteraction: false },
+      autoplay: { delay: 2500, disableOnInteraction: false, pauseOnMouseEnter: true},
       slidesPerView: 1,
       slidesPerGroup: 1,
-      spaceBetween: 20,
+      spaceBetween: 0,
       navigation: {
         nextEl: ".swiper-button-next-custom",
         prevEl: ".swiper-button-prev-custom",
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
       new window.Swiper(productsEl, {
         loop: true,
         speed: 500,
-        autoplay: {delay: 3000, disableOnInteraction: false},
+        autoplay: {delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true},
         slidesPerView: 1,
         spaceBetween: 16,
         navigation: {
@@ -106,34 +106,4 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   });
-
-  // Initialize simple mobile slider
-  const mobileSlider = document.getElementById("mobile-slider");
-  const mobileWrapper = document.getElementById("mobile-slider-wrapper");
-  const mobilePrev = document.querySelector(".mobile-prev");
-  const mobileNext = document.querySelector(".mobile-next");
-
-  if (mobileSlider && mobileWrapper) {
-    let currentSlide = 0;
-    const totalSlides = mobileWrapper.children.length;
-
-    function updateSlider() {
-      const translateX = -currentSlide * 100;
-      mobileWrapper.style.transform = `translateX(${translateX}%)`;
-    }
-
-    if (mobilePrev) {
-      mobilePrev.addEventListener("click", () => {
-        currentSlide = currentSlide > 0 ? currentSlide - 1 : totalSlides - 1;
-        updateSlider();
-      });
-    }
-
-    if (mobileNext) {
-      mobileNext.addEventListener("click", () => {
-        currentSlide = currentSlide < totalSlides - 1 ? currentSlide + 1 : 0;
-        updateSlider();
-      });
-    }
-  }
 });
