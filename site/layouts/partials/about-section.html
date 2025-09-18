@@ -17,22 +17,29 @@
   {{ $bgEl2_2x := $bgEl2.Resize "342x webp q75" }}
   <img srcset="{{ $bgEl2_1x.RelPermalink }} 1x, {{ $bgEl2_2x.RelPermalink }} 2x" src="{{ $bgEl2_1x.RelPermalink }}"
     alt="" aria-hidden="true"
-    class="about-bg-el-2 absolute z-[10] top-[calc(var(--spacing)*-3)] left-[-25px] hidden max-[640px]:block w-[171px] h-auto"
+    class="about-bg-el-2 absolute z-[10] top-[calc(var(--spacing)*6)] left-[-25px] hidden max-[640px]:block w-[171px] h-auto"
     width="{{ $bgEl2_1x.Width }}" height="{{ $bgEl2_1x.Height }}" loading="lazy" />
   {{ end }}
 
 
   <!-- Mobile layout -->
   <div class="max-[767px]:block min-[768px]:hidden relative z-[22]">
-    {{ $aboutMobile := resources.Get "img/about-mob.png" }}
-    {{ if $aboutMobile }}
-    {{ $aboutMobileProcessed := $aboutMobile.Resize " 572x webp q75" }}
-    <img src="{{ $aboutMobileProcessed.RelPermalink }}" alt="Про нас - українська компанія високотехнологічного виробництва"
-      class=" mb-6 w-full h-auto origin-left" />
-    {{ else }}
-    <img src="/img/about-mob.png" alt="Про нас - українська компанія високотехнологічного виробництва"
-      class=" mb-6 w-full h-auto origin-left" />
-    {{ end }}
+  {{ $aboutMobile := resources.Get "img/about-mob.png" }}
+  {{ if $aboutMobile }}
+  {{ $small := $aboutMobile.Resize "400x webp q85" }}
+  {{ $medium := $aboutMobile.Resize "800x webp q85" }}
+  {{ $large := $aboutMobile.Resize "1200x webp q85" }}
+  <img fetchpriority="high" src="{{ $medium.RelPermalink }}"
+   srcset="
+          {{ $small.RelPermalink }} 400w,
+          {{ $medium.RelPermalink }} 800w,
+          {{ $large.RelPermalink }} 1200w
+        " sizes="(max-width: 639px) 100vw,582px" alt="Про нас - українська компанія високотехнологічного виробництва" width="566" 
+    height="481" decoding="async" class="mb-6 w-full h-[350px] origin-left object-cover" />
+  {{ else }}
+  <img fetchpriority="high" src="/img/about-mob.png" alt="Про нас - українська компанія високотехнологічного виробництва"
+    class=" mb-6 w-full h-[350px] origin-left object-cover" />
+  {{ end }}
 
     <!-- Mobile content -->
     <div class="px-5">
