@@ -1,54 +1,57 @@
 <header class="bg-[#020303] h-[60px] md:h-[72px] lg:h-[82px] flex justify-center" role="banner">
   <!-- Responsive container -->
+  <!-- Responsive container -->
   <div class="flex w-full max-w-[1280px] px-[20px] justify-between items-center nav-container py-5">
     <!-- Logo -->
     <a href="/" class="relative z-[10]" aria-label="Karma - головна сторінка">
       <img src="/logo.png" alt="logo" width="149" height="34" class="w-[108px] h-[25px] md:w-[149px] md:h-[34px]" />
     </a>
-
+  
     <!-- Desktop Navigation -->
     <nav class="nav-container desktop-nav hidden items-center gap-[50px]" role="navigation" aria-label="Головне меню">
+      <!-- Каталог -->
       <div class="relative dropdown-parent">
         <button
-          class="nav-link lg:!font-['Inter'] cursor-pointer font-normal text-xl text-[#fefefe] hover:text-[#ba0108] transition-colors"
-          aria-expanded="false" aria-haspopup="true" aria-label="Каталог товарів">
+          class="nav-link lg:!font-['Inter'] cursor-pointer font-normal text-xl text-[#fefefe] hover:text-[#ba0108] transition-colors {{ if in .RelPermalink "/catalog" }}active{{ end }}" aria-expanded="false" aria-haspopup="true" aria-label="Каталог товарів">
           Каталог
         </button>
         <div class="dropdown-menu absolute left-[-50px] lg:left-[-80px] top-[30px] mt-3 bg-[#020303] rounded-b-[5px]"
           role="menu" aria-label="Підменю каталогу">
           <div class="flex flex-row w-full lg:flex-col">
             <a href="/catalog/politni-steky/"
-              class="dropdown-item flex-1 px-8 py-6 text-[#fefefe] lg:font-['Inter'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap"
-              role="menuitem">Політні стеки</a>
+              class="dropdown-item flex-1 px-8 py-6 text-[#fefefe] lg:font-['Inter'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap {{ if eq .RelPermalink "/catalog/politni-steky/" }}active{{ end }}" role="menuitem">Політні стеки</a>
             <a href="/catalog/videoperedavachi-vtx/"
-              class="dropdown-item flex-1 px-8 py-6 text-[#fefefe] lg:font-['Inter'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap"
-              role="menuitem">Відеопередавачі VTX</a>
+              class="dropdown-item flex-1 px-8 py-6 text-[#fefefe] lg:font-['Inter'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap {{ if eq .RelPermalink "/catalog/videoperedavachi-vtx/" }}active{{ end }}" role="menuitem">Відеопередавачі VTX</a>
             <a href="/catalog/esc/"
-              class="dropdown-item flex-1 px-8 py-6 text-[#fefefe] lg:font-['Inter'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap"
-              role="menuitem">ESC</a>
+              class="dropdown-item flex-1 px-8 py-6 text-[#fefefe] lg:font-['Inter'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap {{ if eq .RelPermalink "/catalog/esc/" }}active{{ end }}" role="menuitem">ESC</a>
           </div>
         </div>
       </div>
+  
+      <!-- FAQ -->
       <a href="/faq"
-        class="nav-link lg:font-['Inter'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors">FAQ</a>
+        class="nav-link lg:font-['Inter'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors {{ if in .RelPermalink "/faq" }}active{{ end }}">FAQ</a>
+  
+      <!-- Knowledge Base -->
       <a href="/knowledge-base"
-        class="nav-link lg:font-['Inter'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors">База
-        знань</a>
+        class="nav-link lg:font-['Inter'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors {{ if in .RelPermalink "/knowledge-base" }}active{{ end }}">База знань</a>
+  
+      <!-- Contact -->
       <a href="/contact"
-        class="nav-link lg:font-['Inter'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors">Контакти</a>
+        class="nav-link lg:font-['Inter'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors {{ if in .RelPermalink "/contact" }}active{{ end }}">Контакти</a>
     </nav>
+  
+    <!-- Desktop contacts/lang -->
     <nav class="desktop-nav hidden items-baseline justify-center gap-[30px]">
       <a href="tel:(067) 298-29-29"
         class="flex items-center font-['Montserrat'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors hidden lg:block"
         aria-label="Зателефонувати за номером (067) 298-29-29">(067) 298-29-29</a>
       <div class="flex gap-3 items-center justify-center text-xl language-switcher text-[#fefefe]">
-        <button id="lang-ua"
-          class="font-['Montserrat'] text-xl font-normal cursor-pointer text-[#ba0108] hover:text-[#ba0108]"
-          onclick="switchLanguage('ua')" aria-label="Перемкнути на українську мову" aria-pressed="true">UA</button>
-        <div class="h-6 w-px bg-white/50" aria-hidden="true"></div>
-        <button id="lang-en"
-          class="font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#fefefe] hover:text-[#ba0108]"
-          onclick="switchLanguage('en')" aria-label="Switch to English" aria-pressed="false">EN</button>
+        <button id="lang-ua" class="font-['Montserrat'] text-xl font-normal cursor-pointer {{ if eq .Site.Language.Lang "uk" }}text-[#ba0108] font-bold{{ else }}text-[#fefefe]{{ end }}" onclick="switchLanguage('ua')"
+          aria-label="Перемкнути на українську мову" aria-pressed="{{ eq .Site.Language.Lang " uk" }}">UA</button>
+        <div class="w-px h-6 bg-white/50" aria-hidden="true"></div>
+        <button id="lang-en" class="font-['Montserrat'] text-xl font-normal cursor-pointer {{ if eq .Site.Language.Lang "en" }}text-[#ba0108] font-bold{{ else }}text-[#fefefe]{{ end }}" onclick="switchLanguage('en')"
+          aria-label="Switch to English" aria-pressed="{{ eq .Site.Language.Lang " en" }}">EN</button>
       </div>
     </nav>
 
@@ -63,7 +66,7 @@
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </button>
-      <button class="hamburger flex flex-col justify-center items-center w-8 h-8 space-y-1" onclick="toggleMobileMenu()"
+      <button class="flex flex-col justify-center items-center space-y-1 w-8 h-8 hamburger" onclick="toggleMobileMenu()"
         aria-label="Відкрити мобільне меню" aria-expanded="false">
         <span class="block w-6 h-0.5 bg-white"></span>
         <span class="block w-6 h-0.5 bg-white"></span>
@@ -150,4 +153,3 @@
     </nav>
   </div>
 </header>
-
