@@ -709,7 +709,7 @@
     }
   </script>
 
-  <script defer src="{{ " js/swiper-bundle.min.js" | relURL }}"></script>
+  <script defer src="{{ "js/swiper-bundle.min.js" | relURL }}"></script>
   <script>
     if (!window.Swiper) {
       var s = document.createElement('script');
@@ -900,6 +900,17 @@
             clearSearch();
             searchInput.value = '';
           }
+        }
+      }
+
+      function toggleSearchPanel() {
+        if (searchPanel.classList.contains('open')) {
+          closeSearchPanel();
+        } else {
+          if (document.getElementById('mobileMenu')?.classList.contains('open')) toggleMobileMenu();
+          searchPanel.classList.add('open');
+          searchToggleButton.setAttribute('aria-expanded', 'true');
+          setTimeout(() => searchInput.focus(), 300);
         }
       }
 
