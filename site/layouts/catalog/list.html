@@ -16,58 +16,6 @@
 <!-- FAQ Section -->
 {{ partial "catalog-faq" . }}
 
-<style>
-  @keyframes fadeInUp {
-    0% {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .hero-title {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease-out;
-  }
-
-  .hero-title.animate {
-    animation: fadeInUp 0.8s ease-out forwards;
-  }
-</style>
-
-<script>
-  // Hero title animation
-  function animateHeroTitle() {
-    const heroTitles = document.querySelectorAll('.hero-title');
-
-    const observerOptions = {
-      threshold: 0.3,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate');
-        } else {
-          entry.target.classList.remove('animate');
-        }
-      });
-    }, observerOptions);
-
-    heroTitles.forEach(title => {
-      observer.observe(title);
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', animateHeroTitle);
-</script>
-
 {{ end }}
 
 {{ define "additional-meta" }}
