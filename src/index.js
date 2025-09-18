@@ -12,7 +12,6 @@ if (mobileMenu) {
   mobileMenu.addEventListener("click", toggleMobileMenu);
 }
 
-// Initialize sliders when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   function setupCustomDots(swiper, paginationEl, dotsCount = 4) {
     if (!paginationEl) return;
@@ -56,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
 
-    setupCustomDots(desktopSwiper, desktopPagination, 4); // рівно 4 точки
+    setupCustomDots(desktopSwiper, desktopPagination, 4); 
   }
 
   // Mobile trusted
