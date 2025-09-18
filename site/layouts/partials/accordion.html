@@ -210,31 +210,4 @@
             initAccordion();
         }
     })();
-
-    // Hero title animation
-    function animateHeroTitle() {
-        const heroTitles = document.querySelectorAll('.hero-title');
-
-        const observerOptions = {
-            threshold: 0.3,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                } else {
-                    entry.target.classList.remove('animate');
-                }
-            });
-        }, observerOptions);
-
-        heroTitles.forEach(title => {
-            observer.observe(title);
-        });
-    }
-
-    // Initialize when DOM is loaded
-    document.addEventListener('DOMContentLoaded', animateHeroTitle);
 </script>
