@@ -1,28 +1,29 @@
 ---
-title: "ПОЛІТНИЙ СТЕК KARMA F405 V1 (Dynamic)"
-description: "Компактна та продуктивна інтегрована система для дронів з мікроконтролером STM32F405"
-date: 2024-08-25T00:00:00Z
-layout: "catalog"
-category: "politni-steky"
+title: ПОЛІТНИЙ СТЕК KARMA F405 V1 (60A)
+description: Компактна та продуктивна інтегрована система для дронів з
+  мікроконтролером STM32F405
+date: 2024-08-25T00:00:00.000Z
+category: politni-steky
 product_id: "2233"
-image: "/img/our-product1.png"
+image: /img/our-product1.png
 price: 2500
-currency: "грн"
-in_stock: true
 specs:
-  - label: "Гіроскоп/акселерометр"
-    value: "ICM-42688-P"
-  - label: "Робочий струм"
-    value: "50А"
-  - label: "Розмір"
-    value: "48.5 x 40 мм"
-  - label: "Монтажні отвори"
-    value: "30.5 x 30.5 мм"
-  - label: "Піковий струм"
-    value: "60А"
-  - label: "Роз'єм живлення"
-    value: "XT-60"
+  - label: Гіроскоп/акселерометр
+    value: ICM-42688-P
+  - label: Робочий струм
+    value: 50А
+  - label: Розмір
+    value: 48.5 x 40 мм
+  - label: Монтажні отвори
+    value: 30.5 x 30.5 мм
+  - label: Піковий струм
+    value: 60А
+  - label: Роз'єм живлення
+    value: XT-60
 draft: false
+layout: catalog
+currency: грн
+in_stock: true
 ---
 
 # ПОЛІТНИЙ СТЕК KARMA F405 V1
