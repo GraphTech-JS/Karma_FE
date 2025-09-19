@@ -200,15 +200,21 @@
 
       <!-- Language Switcher -->
       <div class="flex gap-2 items-center mb-[28px]">
-        <span
-          class="font-['Unbounded'] text-[20px] text-[#ba0108] font-medium leading-[25px]"
-          >UA</span
-        >
+      
+        {{ $currentPageLang := .Site.Language.Lang }}
+      
+        {{ if .IsTranslated }}
+        {{ $numLangs := len .AllTranslations }}
+        {{ range $index, $translation := .AllTranslations }}
+        <a href="{{ .RelPermalink }}" lang="{{ .Language.Lang }}" hreflang="{{ .Language.Lang }}" class="font-['Unbounded'] text-[20px] font-medium leading-[25px]
+        {{ if eq .Language.Lang $currentPageLang }} text-[#ba0108] {{ else }} text-white {{ end }}"> {{ .Language.Lang | upper }} </a>
+        {{ if lt (add $index 1) $numLangs }}
         <span class="font-['Montserrat'] text-xl text-white">|</span>
-        <span
-          class="font-['Unbounded'] text-[20px] text-white font-medium leading-[25px]"
-          >EN</span
-        >
+        {{ end }}
+        {{ end }}
+        {{ else }}
+        <span class="font-['Unbounded'] text-[20px] text-[#ba0108] font-medium leading-[25px]">{{ $currentPageLang | upper }}</span>
+        {{ end }}
       </div>
 
       <!-- Contact Section -->

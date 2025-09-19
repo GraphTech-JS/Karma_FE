@@ -45,14 +45,21 @@
       <a href="tel:(067) 298-29-29"
         class="flex items-center font-['Montserrat'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors hidden lg:block"
         aria-label="Зателефонувати за номером (067) 298-29-29">(067) 298-29-29</a>
-      <div id="language-switcher-container" class="flex gap-3 items-center justify-center text-xl language-switcher text-[#fefefe]">
-        <button id="lang-ua"
-          class="font-['Montserrat'] text-xl font-normal cursor-pointer text-[#ba0108] hover:text-[#ba0108]"
-          onclick="switchLanguage('ua')" aria-label="Перемкнути на українську мову" aria-pressed="true">UA</button>
+      <div id="language-switcher-container"
+        class="flex gap-3 items-center justify-center text-xl language-switcher text-[#fefefe]">
+        {{ $currentPageLang := .Site.Language.Lang }}
+        {{ if .IsTranslated }}
+        {{ $numLangs := len .AllTranslations }}
+        {{ range $index, $translation := .AllTranslations }}
+        <a href="{{ .RelPermalink }}" lang="{{ .Language.Lang }}" hreflang="{{ .Language.Lang }}" class="font-['Montserrat'] text-xl font-normal cursor-pointer hover:text-[#ba0108] transition-colors
+            {{ if eq .Language.Lang $currentPageLang }} text-[#ba0108] font-bold {{ else }} text-[#fefefe]{{ end }}">{{ .Language.Lang | upper }}</a>
+        {{ if lt (add $index 1) $numLangs }}
         <div class="w-px h-6 bg-white/50" aria-hidden="true"></div>
-        <button id="lang-en"
-          class="font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#fefefe] hover:text-[#ba0108]"
-          onclick="switchLanguage('en')" aria-label="Switch to English" aria-pressed="false">EN</button>
+        {{ end }}
+        {{ end }}
+        {{ else }}
+        <span class="font-['Montserrat'] text-xl font-bold text-[#ba0108]">{{ $currentPageLang | upper }}</span>
+        {{ end }}
       </div>
     </nav>
 
@@ -141,15 +148,23 @@
         <a href="tel:(067) 298-29-29"
           class="block text-[#fefefe] font-['Montserrat'] text-xl font-normal mb-4 hover:text-[#ba0108] transition-colors">(067)
           298-29-29</a>
-        <div class="flex gap-3 items-center text-2xl text-[#fefefe]">
-          <button id="mobile-lang-ua"
-            class="font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#ba0108] hover:text-[#ba0108]"
-            onclick="switchLanguage('ua')" aria-label="Перемкнути на українську мову" aria-pressed="true">UA</button>
-          <span aria-hidden="true">|</span>
-          <button id="mobile-lang-en"
-            class="font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#fefefe] hover:text-[#ba0108]"
-            onclick="switchLanguage('en')" aria-label="Switch to English" aria-pressed="false">EN</button>
-        </div>
+      <div class="flex gap-3 items-center text-2xl text-[#fefefe]">
+      
+        {{ $currentPageLang := .Site.Language.Lang }}
+      
+        {{ if .IsTranslated }}
+        {{ $numLangs := len .AllTranslations }}
+        {{ range $index, $translation := .AllTranslations }}
+        <a href="{{ .RelPermalink }}" lang="{{ .Language.Lang }}" hreflang="{{ .Language.Lang }}" class="font-['Montserrat'] text-xl !font-normal cursor-pointer hover:text-[#ba0108]
+            {{ if eq .Language.Lang $currentPageLang }} !text-[#ba0108] font-bold {{ else }}!text-[#fefefe]{{ end }}"> {{ .Language.Lang | upper }} </a>
+        {{ if lt (add $index 1) $numLangs }}
+        <span aria-hidden="true">|</span>
+        {{ end }}
+        {{ end }}
+        {{ else }}
+        <span class="font-['Montserrat'] text-xl !font-normal !text-[#ba0108] font-bold"> {{ $currentPageLang | upper }}</span>
+        {{ end }}
+      </div>
       </div>
     </nav>
   </div>
