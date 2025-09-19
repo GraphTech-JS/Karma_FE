@@ -12,7 +12,31 @@ tags: []
 image: /img/product-details-v2.png
 draft: false
 ---
-![](/img/komplektacia.jpg)
+body{
+font-family: Montserrat;
+}
+.article h1{
+    font-size: 36px;
+    line-height: 32px;
+    font-family: Unbounded;
+}
+.article h2{
+font-size: 20px;
+border:1px solid #ba0108;
+margin-top: 30px;
+}
+
+.article h3{
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 700;
+    padding-top: 10px;
+    text-align:center;
+}
+.article a{
+text-decoration: underline;
+color: #ba0108;
+}
 ol {
     list-style-type: none;
     counter-reset: num;
@@ -41,7 +65,7 @@ ol li:before {
     line-height: 28px;
     font-size: 18px;
     border-radius: 50%;
-    border: 1px solid #00bff3;
+    border: 1px solid #ba0108;
 }
 <ol>
 
@@ -55,7 +79,7 @@ ol li:before {
 <li>Номер 5</li>
 </ol>
 
-
+<div class="article">
 
 <h1 class="font-[Unbounded] text-[clamp(24px,3vw,48px)]" style="font-size:36px; line-height:30px;">Політний стек KARMA F405 V1. Інструкція користувача. Тест</h1>
 <p class="text-[15px] md:text-[16px] font-[Montserrat]" style="padding-top:10px; padding-bottom:10px;">Польотний стек, розроблений з метою удосконалення,
@@ -74,20 +98,59 @@ KARMA F405V1 перший крок у пошуках досконалості.
 <h3 class="font-[Montserrat] text-[18px] md:text-[16px] lg:text-[18px] font-semibold text-[#404040] text-center mb-4 lg:mb-6"  style="font-size:18px; line-height:18px; font-weight:bold; margin-top:10px; margin-bottom:10px;">РЕГУЛЯТОР ОБЕРТІВ</h3>
 <table class="max-w-\\\\\\\\[500px] md:max-w-\\\\\\\\[410px] w-full border-separate border-spacing-0 border border-black rounded-\\\\\\\\[5px] overflow-hidden" role="table" aria-label="Технічні характеристики KARMA F405 V1 - живлення та кріплення"><caption class="sr-only">Параметри живлення та кріплення політного стеку KARMA F405 V1</caption><tbody><tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">Живлення</td><td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">4s-6s</td></tr><tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">Струм</td><td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">4x50A</td></tr><tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">MCU</td><td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">72Mhz 32Bit</td></tr><tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">Прошивка</td><td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">AM32</td></tr><tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">Кріплення</td><td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] w-[clamp(120px,35vw,175px)] text-start md:text-center">30.5 x 30.5</td></tr></tbody></table>
 
-<h3 class="font-[Montserrat] text-[18px] md:text-[16px] lg:text-[18px] font-semibold text-[#404040] text-center mb-4 lg:mb-6"  style="font-size:18px; line-height:18px; font-weight:bold; padding-top:10px;">РОЗМІРИ</h3>
+<h3>РОЗМІРИ</h3>
 
 ![розміри  політних стеків](/img/karma-f405-v1_2.jpg)
 
-<h2 class="font-[Montserrat] text-[20px] lg:text-[24px] border-b border-[#ba0108] pb-3 font-normal mb-3 mt-[30px]">КОМПЛЕКТАЦІЯ ПОЛІТНИХ СТЕКІВ</h2>
+<h2>КОМПЛЕКТАЦІЯ ПОЛІТНИХ СТЕКІВ</h2>
 
 ![Комплектація](/img/komplektacia.jpg)
 
 <table class="max-w-\\\\\\\\[500px] md:max-w-\\\\\\\\[410px] w-full border-separate border-spacing-0 border border-black rounded-\\\\\\\\[5px] overflow-hidden" role="table" aria-label="Технічні характеристики KARMA F405 V1 - живлення та кріплення"><caption class="sr-only">Параметри живлення та кріплення політного стеку KARMA F405 V1</caption><tbody><tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
 
 <img width="35" height="35" src="/img/list-guide-one.png" alt="" style="filter: none; box-shadow: none;" />
-Контролер польоту
+&nbsp;&nbsp;Контролер польоту
 
 </td><td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
 1 шт.
+</td></tr>
+<tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
+<img width="35" height="35" src="/img/list-guide-two.png" alt="" style="filter: none; box-shadow: none;" />
+&nbsp;&nbsp;
+Регулятор обертів</td>
+<td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">1 шт.</td></tr>
+<tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
+<img width="35" height="35" src="/img/list-guide-three.png" alt="" style="filter: none; box-shadow: none;" />
+&nbsp;&nbsp;Конденсатор 1500uF 35V</td>
+<td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">2 шт.</td></tr>
+<tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
+<img width="35" height="35" src="/img/list-guide-four.png" alt="" style="filter: none; box-shadow: none;" />
+&nbsp;&nbsp;Роз’єм XT60</td>
+<td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">1 шт.</td></tr>
+<tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
+<img width="35" height="35" src="/img/list-guide-one.png" alt="" style="filter: none; box-shadow: none;" />
+&nbsp;&nbsp;Проводи живлення 12AWG 10см</td>
+<td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">2 шт.</td></tr>
 
-</td></tr><tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">Струм</td><td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">4x50A</td></tr><tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">MCU</td><td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">72Mhz 32Bit</td></tr><tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">Прошивка</td><td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">AM32</td></tr><tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">Кріплення</td><td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] w-[clamp(120px,35vw,175px)] text-start md:text-center">30.5 x 30.5</td></tr></tbody></table>
+<tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
+<img width="35" height="35" src="/img/list-guide-one.png" alt="" style="filter: none; box-shadow: none;" />
+&nbsp;&nbsp;Провід сигнальний FC<>ESC (JST SH 8p)</td>
+<td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">1 шт.</td></tr>
+<tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
+<img width="35" height="35" src="/img/list-guide-one.png" alt="" style="filter: none; box-shadow: none;" />
+&nbsp;&nbsp;Провід надлишкового живлення FC<>ESC (JST SH 4p)</td>
+<td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">1 шт.</td></tr>
+<tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
+<img width="35" height="35" src="/img/list-guide-one.png" alt="" style="filter: none; box-shadow: none;" />
+&nbsp;&nbsp;Силіконові поглиначі вібрації</td>
+<td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">8 шт.</td></tr>
+<tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
+<img width="35" height="35" src="/img/list-guide-one.png" alt="" style="filter: none; box-shadow: none;" />
+&nbsp;&nbsp;Гайка</td>
+<td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">4 шт.</td></tr>
+<tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
+<img width="35" height="35" src="/img/list-guide-one.png" alt="" style="filter: none; box-shadow: none;" />
+&nbsp;&nbsp;Гвинт</td>
+<td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">4 шт.</td></tr>
+</tbody></table>
+</div>
