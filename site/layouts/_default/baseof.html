@@ -949,6 +949,33 @@
         observer.observe(element);
       });
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const codeGroups = document.querySelectorAll('.code-group');
+        codeGroups.forEach(group => {
+          const buttons = group.querySelectorAll('.code-tab-button');
+          const codeBlocks = group.querySelectorAll('.code-block');
+          const firstBlock = codeBlocks[0];
+          if (firstBlock) {
+            firstBlock.removeAttribute('hidden');
+          }
+          buttons.forEach(button => {
+            button.addEventListener('click', () => {
+              const language = button.dataset.language;
+              buttons.forEach(btn => btn.classList.remove('active'));
+              button.classList.add('active');
+              codeBlocks.forEach(block => {
+                if (block.dataset.language === language) {
+                  block.removeAttribute('hidden');
+                } else {
+                  block.setAttribute('hidden', '');
+                }
+              });
+            });
+          });
+        });
+
+      });
   </script>
 </body>
 

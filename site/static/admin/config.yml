@@ -230,3 +230,32 @@ collections:
                   { label: "Text", name: "text", widget: "text", i18n: true },
                 ],
             }
+  - name: "faq"
+    label: "FAQ"
+    folder: "site/content/faq"
+    create: true
+    i18n: true
+    fields:
+      - {
+          label: "Питання (Заголовок)",
+          name: "title",
+          widget: "string",
+          i18n: true,
+        }
+      - {
+          label: "Дата",
+          name: "date",
+          widget: "datetime",
+          required: false,
+          i18n: "duplicate",
+        }
+      - {
+          label: "Порядок сортування (Weight)",
+          name: "weight",
+          widget: "number",
+          min: 1,
+          default: 100,
+          i18n: "duplicate",
+          hint: "Чим менше число, тим вище питання буде у списку.",
+        }
+      - { label: "Відповідь", name: "body", widget: "markdown", i18n: true }

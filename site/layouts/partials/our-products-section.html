@@ -1,8 +1,7 @@
 {{ $category := "politni-steky" }} {{ $context := . }} {{ if isset . "category"
 }} {{ $category = .category }} {{ end }} {{ if isset . "context" }} {{ $context
 = .context }} {{ end }} {{ if isset $context.Params "category" }} {{ $category =
-$context.Params.category }} {{ end }} {{/* Get products from content files
-instead of data files */}} {{ $products := where $context.Site.RegularPages
+$context.Params.category }} {{ end }} {{ $products := where $context.Site.RegularPages
 "Section" "catalog" }} {{ $categoryProducts := where $products
 ".Params.category" $category }} {{ $categoryData := index
 $context.Site.Data.products.categories $category }}
