@@ -1,5 +1,5 @@
 {{ define "main" }}
-{{- $categorySlug := .File.BaseFileName -}}
+{{- $categorySlug := path.Base (strings.TrimSuffix "/" .RelPermalink) -}}
 {{- $categoryData := index .Site.Data.products.categories $categorySlug -}}
 
 {{ $catalogQuestions := slice
@@ -37,7 +37,7 @@
 {{ end }}
 
 {{ define "additional-meta" }}
-{{- $categorySlug := .File.BaseFileName -}}
+{{- $categorySlug := path.Base (strings.TrimSuffix "/" .RelPermalink) -}}
 {{- $categoryData := index .Site.Data.products.categories $categorySlug -}}
 {{ if $categoryData }}
 <meta name="description" content="{{ $categoryData.description | default (printf " Купити %s від Karma Flights - високотехнологічне українське виробництво електронних компонентів для дронів. Якісні політні стеки, ESC та відеопередавачі." $categoryData.name) }}">
