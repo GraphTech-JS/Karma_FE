@@ -57,7 +57,7 @@ ol li:before {
 
 
 
-<h1 class="font-[Unbounded] text-[clamp(24px,3vw,48px)]" style="font-size:36px; line-height:30px;">Політний стек KARMA F405 V1. Інструкція користувача.</h1>
+<h1 class="font-[Unbounded] text-[clamp(24px,3vw,48px)]" style="font-size:36px; line-height:30px;">Політний стек KARMA F405 V1. Інструкція користувача. Тест</h1>
 <p class="text-[15px] md:text-[16px] font-[Montserrat]" style="padding-top:10px; padding-bottom:10px;">Польотний стек, розроблений з метою удосконалення,
 де це можливо, від надійних і ефективних технічних
 рішень до покращеної ергономіки складання.
