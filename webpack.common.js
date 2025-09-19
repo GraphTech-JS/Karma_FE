@@ -31,26 +31,39 @@ module.exports = {
         options: {cacheDirectory: true}
       },
       {
-        test: /\.(sa|sc|c)ss$/,
+        test: /\.css$/,
+        include: /node_modules/,
         use: [
-    MiniCssExtractPlugin.loader,
-    {
-      loader: 'css-loader',
-      options: { url: false },
-    },{
-      loader: 'postcss-loader',
-      options: {
-        postcssOptions: {
-          plugins: [
-            'postcss-import',
-            '@tailwindcss/postcss',
-            'autoprefixer',
-          ],
-        },
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: { url: false },
+          }
+        ]
       },
-    },
-    'sass-loader',
-  ]
+      {
+        test: /\.(sa|sc|c)ss$/,
+        exclude: /node_modules/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: { url: false },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  'postcss-import',
+                  '@tailwindcss/postcss',
+                  'autoprefixer',
+                ],
+              },
+            },
+          },
+          'sass-loader',
+        ]
       }
     ]
   },

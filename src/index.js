@@ -1,41 +1,60 @@
 import "./css/main.scss";
 
-// Initialize mobile menu
+import Swiper from "swiper";
+import { Navigation, Autoplay, Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+// --- Mobile menu toggle ---
 const mobileMenu = document.querySelector("[data-mobile-menu]");
 const nav = document.querySelector("[data-nav]");
 
 function toggleMobileMenu() {
-  nav.classList.toggle("menu-open");
+  nav?.classList.toggle("menu-open");
 }
 
 if (mobileMenu) {
   mobileMenu.addEventListener("click", toggleMobileMenu);
 }
 
-// Initialize sliders when DOM is loaded
+// --- DOM Ready ---
 document.addEventListener("DOMContentLoaded", () => {
+  // --------- Custom Dots ----------
   function setupCustomDots(swiper, paginationEl, dotsCount = 4) {
     if (!paginationEl) return;
     paginationEl.innerHTML = "";
+
     const dots = [];
-    for (let i = 0; i < dotsCount; i += 1) {
+    for (let i = 0; i < dotsCount; i++) {
       const dot = document.createElement("span");
       dot.className = "swiper-pagination-bullet-custom";
       dot.addEventListener("click", () => swiper.slideToLoop(i));
       paginationEl.appendChild(dot);
       dots.push(dot);
     }
+
     const update = () => {
-      const active = ((swiper.realIndex % dotsCount) + dotsCount) % dotsCount;
-      dots.forEach((d, i) => d.classList.toggle("swiper-pagination-bullet-active-custom", i === active));
+      const active = swiper.params.loop
+        ? ((swiper.realIndex % dotsCount) + dotsCount) % dotsCount
+        : swiper.activeIndex % dotsCount;
+
+      dots.forEach((d, j) => {
+        d.classList.toggle("swiper-pagination-bullet-active-custom", j === active);
+      });
     };
+
     swiper.on("slideChange", update);
     update();
   }
 
-  // Desktop trusted
+  // Використовувані модулі
+  const swiperModules = [Navigation, Autoplay, Pagination];
+
+  // --------- Desktop trusted ----------
   const trustedDesktop = document.querySelector(".swiper-container-trusted-desktop");
-  if (trustedDesktop && window.Swiper) {
+  if (trustedDesktop && trustedDesktop.querySelector(".swiper-wrapper")) {
     let desktopPagination = trustedDesktop.querySelector(".swiper-pagination-trusted");
     if (!desktopPagination) {
       desktopPagination = document.createElement("div");
@@ -43,12 +62,12 @@ document.addEventListener("DOMContentLoaded", () => {
       trustedDesktop.appendChild(desktopPagination);
     }
 
-    const desktopSwiper = new window.Swiper(trustedDesktop, {
+    const desktopSwiper = new Swiper(trustedDesktop, {
+      modules: swiperModules,
       loop: true,
       speed: 500,
       autoplay: { delay: 2500, disableOnInteraction: false },
       slidesPerView: 4,
-      slidesPerGroup: 1,
       spaceBetween: 0,
       navigation: {
         nextEl: ".swiper-button-next-custom",
@@ -56,12 +75,12 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
 
-    setupCustomDots(desktopSwiper, desktopPagination, 4); // рівно 4 точки
+    setupCustomDots(desktopSwiper, desktopPagination, 4);
   }
 
-  // Mobile trusted
+  // --------- Mobile trusted ----------
   const trustedMobile = document.querySelector(".swiper-container-trusted-mobile");
-  if (trustedMobile && window.Swiper) {
+  if (trustedMobile && trustedMobile.querySelector(".swiper-wrapper")) {
     let mobilePagination = trustedMobile.querySelector(".swiper-pagination-trusted");
     if (!mobilePagination) {
       mobilePagination = document.createElement("div");
@@ -69,13 +88,13 @@ document.addEventListener("DOMContentLoaded", () => {
       trustedMobile.appendChild(mobilePagination);
     }
 
-    const mobileSwiper = new window.Swiper(trustedMobile, {
+    const mobileSwiper = new Swiper(trustedMobile, {
+      modules: swiperModules,
       loop: false,
       speed: 500,
       autoplay: { delay: 2500, disableOnInteraction: false },
       slidesPerView: 1,
-      slidesPerGroup: 1,
-      spaceBetween: 20,
+      spaceBetween: 0,
       navigation: {
         nextEl: ".swiper-button-next-custom",
         prevEl: ".swiper-button-prev-custom",
@@ -85,55 +104,43 @@ document.addEventListener("DOMContentLoaded", () => {
     setupCustomDots(mobileSwiper, mobilePagination, 4);
   }
 
-  requestAnimationFrame(() => {
-    const productsEl = document.querySelector(".swiper-container-products");
-    if (productsEl && window.Swiper) {
-      new window.Swiper(productsEl, {
-        loop: true,
-        speed: 500,
-        autoplay: {delay: 3000, disableOnInteraction: false},
-        slidesPerView: 1,
-        spaceBetween: 16,
-        navigation: {
-          nextEl: ".swiper-button-next-custom",
-          prevEl: ".swiper-button-prev-custom",
-        },
-        breakpoints: {
-          768: {slidesPerView: "auto", spaceBetween: 20},
-          1000: {slidesPerView: "auto", spaceBetween: 51},
-          1200: {slidesPerView: "auto", spaceBetween: 51},
-        },
-      });
-    }
-  });
-
-  // Initialize simple mobile slider
-  const mobileSlider = document.getElementById("mobile-slider");
-  const mobileWrapper = document.getElementById("mobile-slider-wrapper");
-  const mobilePrev = document.querySelector(".mobile-prev");
-  const mobileNext = document.querySelector(".mobile-next");
-
-  if (mobileSlider && mobileWrapper) {
-    let currentSlide = 0;
-    const totalSlides = mobileWrapper.children.length;
-
-    function updateSlider() {
-      const translateX = -currentSlide * 100;
-      mobileWrapper.style.transform = `translateX(${translateX}%)`;
-    }
-
-    if (mobilePrev) {
-      mobilePrev.addEventListener("click", () => {
-        currentSlide = currentSlide > 0 ? currentSlide - 1 : totalSlides - 1;
-        updateSlider();
-      });
-    }
-
-    if (mobileNext) {
-      mobileNext.addEventListener("click", () => {
-        currentSlide = currentSlide < totalSlides - 1 ? currentSlide + 1 : 0;
-        updateSlider();
-      });
-    }
+  // --------- Products swiper ----------
+  const productsEl = document.querySelector(".swiper-container-products");
+  if (productsEl && productsEl.querySelector(".swiper-wrapper")) {
+    const productsSwiper = new Swiper(productsEl, {
+      modules: swiperModules,
+      loop: true,
+      speed: 500,
+      autoplay: { delay: 3000, disableOnInteraction: false },
+      slidesPerView: 1,
+      spaceBetween: 16,
+      navigation: {
+        nextEl: ".swiper-button-next-custom",
+        prevEl: ".swiper-button-prev-custom",
+      },
+      breakpoints: {
+        768: { slidesPerView: "auto", spaceBetween: 20 },
+        1000: { slidesPerView: "auto", spaceBetween: 51 },
+        1200: { slidesPerView: "auto", spaceBetween: 51 },
+      },
+    });
   }
+
+  // --------- Debounce & update ----------
+  function debounce(fn, delay = 150) {
+    let t;
+    return (...args) => {
+      clearTimeout(t);
+      t = setTimeout(() => fn.apply(this, args), delay);
+    };
+  }
+
+  window.addEventListener(
+    "resize",
+    debounce(() => {
+      document.querySelectorAll(".swiper-container").forEach((el) => {
+        if (el.swiper) el.swiper.update();
+      });
+    }, 200)
+  );
 });

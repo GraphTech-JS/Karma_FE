@@ -1,38 +1,42 @@
 <section class="bg-white min-h-[300px] md:min-h-[500px] relative overflow-hidden flex justify-center items-center">
   {{ $bgEl1 := resources.Get "img/bg-el-1.png" }}
   {{ if $bgEl1 }}
-  {{ $bgEl1Mobile := $bgEl1.Resize "171x webp q75" }}
-  {{ $bgEl1Tablet := $bgEl1.Resize "217x webp q75" }}
-  {{ $bgEl1Desktop := $bgEl1.Resize "266x webp q85" }}
-  {{ $bgEl1Large := $bgEl1.Resize "340x webp q85" }}
+  {{ $bgEl1Mobile := $bgEl1.Resize "171x webp q70" }}
+  {{ $bgEl1Tablet := $bgEl1.Resize "217x webp q70" }}
+  {{ $bgEl1Desktop := $bgEl1.Resize "266x webp q70" }}
+  {{ $bgEl1Large := $bgEl1.Resize "340x webp q70" }}
   <picture>
     <source media="(max-width: 767px)" srcset="{{ $bgEl1Mobile.RelPermalink }}" type="image/webp">
     <source media="(max-width: 1023px)" srcset="{{ $bgEl1Tablet.RelPermalink }}" type="image/webp">
     <source media="(max-width: 1279px)" srcset="{{ $bgEl1Desktop.RelPermalink }}" type="image/webp">
     <source media="(min-width: 1280px)" srcset="{{ $bgEl1Large.RelPermalink }}" type="image/webp">
     <img src="{{ $bgEl1Large.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
-      class="absolute z-[1] right-[-40px] lg:right-[-14px] xl:right-0 top-[-42px] md:top-[-65px] lg:top-[-60px] xl:top-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto" loading="lazy" decoding="async"/>
+      class="absolute z-[1] right-[-40px] lg:right-[-14px] xl:right-0 top-[-42px] md:top-[-65px] lg:top-[-60px] xl:top-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto"
+      loading="lazy" decoding="async" />
   </picture>
   {{ else }}
   <img src="/img/bg-el-1.png" alt="Декоративний фоновий елемент" aria-hidden="true"
-    class="absolute z-[1] right-[-40px] lg:right-[-14px] xl:right-0 top-[-42px] md:top-[-65px] lg:top-[-60px] xl:top-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto" loading="lazy" decoding="async"/>
+    class="absolute z-[1] right-[-40px] lg:right-[-14px] xl:right-0 top-[-42px] md:top-[-65px] lg:top-[-60px] xl:top-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto"
+    loading="lazy" decoding="async" />
   {{ end }}
 
   {{ $bgEl2 := resources.Get "img/bg-el-2.png" }}
   {{ if $bgEl2 }}
-  {{ $bgEl2Tablet := $bgEl2.Resize "217x webp q75" }}
-  {{ $bgEl2Desktop := $bgEl2.Resize "266x webp q75" }}
-  {{ $bgEl2Large := $bgEl2.Resize "340x webp q85" }}
+  {{ $bgEl2Tablet := $bgEl2.Resize "217x webp q70" }}
+  {{ $bgEl2Desktop := $bgEl2.Resize "266x webp q70" }}
+  {{ $bgEl2Large := $bgEl2.Resize "340x webp q70" }}
   <picture>
     <source media="(max-width: 1023px)" srcset="{{ $bgEl2Tablet.RelPermalink }}" type="image/webp">
     <source media="(max-width: 1279px)" srcset="{{ $bgEl2Desktop.RelPermalink }}" type="image/webp">
     <source media="(min-width: 1280px)" srcset="{{ $bgEl2Large.RelPermalink }}" type="image/webp">
     <img src="{{ $bgEl2Large.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
-      class="absolute z-[1] hidden md:block bottom-0 left-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto" loading="lazy" decoding="async"/>
+      class="absolute z-[1] hidden md:block bottom-0 left-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto"
+      loading="lazy" decoding="async" />
   </picture>
   {{ else }}
   <img src="/img/bg-el-2.png" alt="Декоративний фоновий елемент" aria-hidden="true"
-    class="absolute z-[1] hidden md:block bottom-0 left-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto" loading="lazy" decoding="async" />
+    class="absolute z-[1] hidden md:block bottom-0 left-0 w-[171px] md:w-[217px] lg:w-[266px] xl:w-[340px] h-auto"
+    loading="lazy" decoding="async" />
   {{ end }}
 
   <!-- Content -->
@@ -44,8 +48,7 @@
             class="font-['Unbounded'] font-bold text-[#ba0108] md:text-[48px] lg:text-[64px] leading-[1.1] mb-2 hero-title ">
             {{ i18n "hero.brand" }}
           </h1>
-          <h2
-            class="font-['Unbounded'] text-black text-[32px] lg:text-[40px] font-medium leading-[1.1] mb-4 p">
+          <h2 class="font-['Unbounded'] text-black text-[32px] lg:text-[40px] font-medium leading-[1.1] mb-4 p">
             {{ i18n "hero.subtitle" }}
           </h2>
         </div>
@@ -57,20 +60,20 @@
       <div class="hidden relative flex-shrink-0 justify-center items-center md:flex">
         {{ $stackDesktop := resources.Get "img/stack.png" }}
         {{ if $stackDesktop }}
-        {{ $stackMobile := $stackDesktop.Resize "300x300 webp q75" }}
-        {{ $stackDesktopProcessed := $stackDesktop.Resize "400x400 webp q85" }}
-        {{ $stackLarge := $stackDesktop.Resize "602x webp q85" }}
+        {{ $stackMobile := $stackDesktop.Resize "300x300 webp q80" }}
+        {{ $stackDesktopProcessed := $stackDesktop.Resize "400x400 webp q80" }}
+        {{ $stackLarge := $stackDesktop.Resize "602x webp q80" }}
         <picture>
           <source media="(max-width: 1023px)" srcset="{{ $stackMobile.RelPermalink }}" type="image/webp">
           <source media="(max-width: 1279px)" srcset="{{ $stackDesktopProcessed.RelPermalink }}" type="image/webp">
           <source media="(min-width: 1280px)" srcset="{{ $stackLarge.RelPermalink }}" type="image/webp">
           <img src="{{ $stackDesktopProcessed.RelPermalink }}"
             alt="Karma Flights - високотехнологічне українське виробництво" width="400" height="400"
-            class="h-auto w-[400px] xl:w-[602px] object-contain" />
+            class="h-auto w-[400px] xl:w-[602px] object-contain" loading="lazy" />
         </picture>
         {{ else }}
         <img src="/img/stack.png" alt="Karma Flights - високотехнологічне українське виробництво" width="400"
-          height="400" class="h-auto w-[400px] xl:w-[602px] object-contain"  />
+          height="400" class="h-auto w-[400px] xl:w-[602px] object-contain" loading="lazy" />
         {{ end }}
       </div>
     </div>
@@ -93,56 +96,3 @@
     </div>
   </div>
 </section>
-<style>
-  @keyframes fadeInUp {
-    0% {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .hero-title {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease-out;
-  }
-
-  .hero-title.animate {
-    animation: fadeInUp 0.8s ease-out forwards;
-  }
-
-  /* Removed mobile hide rule so .hero-bg-el-2 can overlap following section on small screens */
-</style>
-
-<script>
-  // Hero title animation
-  function animateHeroTitle() {
-    const heroTitles = document.querySelectorAll('.hero-title');
-
-    const observerOptions = {
-      threshold: 0.3,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate');
-        } else {
-          entry.target.classList.remove('animate');
-        }
-      });
-    }, observerOptions);
-
-    heroTitles.forEach(title => {
-      observer.observe(title);
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', animateHeroTitle);
-</script>

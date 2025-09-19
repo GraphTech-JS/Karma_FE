@@ -2,6 +2,17 @@
 {{- $categorySlug := .File.BaseFileName -}}
 {{- $categoryData := index .Site.Data.products.categories $categorySlug -}}
 
+{{ $catalogQuestions := slice
+(dict "question" "Для яких типів дронів найкраще підходить польотний стек KARMA F405 V1?"
+"answer" "Ідеально підходить для мікро- та невеликих FPV-дронів, а також для легких 3-дюймових або для деяких 4-дюймових квадрокоптерів.")
+(dict "question" "Для яких типів дронів найкраще підходить польотний стек KARMA F405 V1?"
+"answer" "Ідеально підходить для мікро- та невеликих FPV-дронів, а також для легких 3-дюймових або для деяких 4-дюймових квадрокоптерів.")
+(dict "question" "Для яких типів дронів найкраще підходить польотний стек KARMA F405 V1?"
+"answer" "Ідеально підходить для мікро- та невеликих FPV-дронів, а також для легких 3-дюймових або для деяких 4-дюймових квадрокоптерів.")
+(dict "question" "Для яких типів дронів найкраще підходить польотний стек KARMA F405 V1?"
+"answer" "Ідеально підходить для мікро- та невеликих FPV-дронів, а також для легких 3-дюймових або для деяких 4-дюймових квадрокоптерів.")
+}}
+
 <!-- Hero Section -->
 {{ partial "catalog-hero" . }}
 
@@ -14,59 +25,14 @@
 {{ partial "catalog-knowledge-base" . }}
 
 <!-- FAQ Section -->
-{{ partial "catalog-faq" . }}
-
-<style>
-  @keyframes fadeInUp {
-    0% {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .hero-title {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease-out;
-  }
-
-  .hero-title.animate {
-    animation: fadeInUp 0.8s ease-out forwards;
-  }
-</style>
-
-<script>
-  // Hero title animation
-  function animateHeroTitle() {
-    const heroTitles = document.querySelectorAll('.hero-title');
-
-    const observerOptions = {
-      threshold: 0.3,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate');
-        } else {
-          entry.target.classList.remove('animate');
-        }
-      });
-    }, observerOptions);
-
-    heroTitles.forEach(title => {
-      observer.observe(title);
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', animateHeroTitle);
-</script>
+{{ partial "accordion.html" (dict
+"title" "Найпоширеніші запитання про політні стеки"
+"items" $catalogQuestions
+"className" "bg-white pb-[60px] lg:pb-[128px] pl-[15px] pr-[20px] lg:px-[20px]"
+"titleClassName" "hero-title font-[Unbounded] font-medium !text-[24px] md:!text-[32px] lg:!text-[48px] !text-center text-[#020303] mb-[clamp(20px,3vw,24px)] uppercase"
+"icon" "/img/arrow.svg"
+"titleAlign" "center"
+) }}
 
 {{ end }}
 

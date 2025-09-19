@@ -1,0 +1,97 @@
+
+[data-accordion-list] {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vw, 30px);
+}
+
+.accordion-wrapper,
+.faq-acc-wrapper {
+  width: 100%;
+  margin-bottom: clamp(15px, 2vw, 20px);
+}
+
+.accordion-root,
+.faq-acc-root {
+  border-bottom: 1px solid #303030;
+  overflow: hidden;
+}
+
+/* Summary */
+.accordion-summary,
+.faq-acc-summary {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 15px;
+  min-height: clamp(60px, 8vw, 80px);
+  font-weight: 500;
+  background: #fff;
+  color: #020303;
+  transition: background-color 0.4s ease, color 0.4s ease;
+
+  &::-webkit-details-marker,
+  &::marker {
+    display: none;
+    content: "";
+  }
+}
+
+/* відкритий стан */
+.accordion-root.is-open .accordion-summary,
+.faq-acc-root.is-open .faq-acc-summary {
+  background: #ba0108;
+  color: #fff;
+}
+
+/* Іконка */
+.accordion-icon,
+.faq-acc-icon {
+  margin-left: auto;
+  width: clamp(20px, 3vw, 33px);
+  height: clamp(12px, 2vw, 18px);
+  transform: rotate(0deg);
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: brightness(0);
+  flex-shrink: 0;
+  transform-origin: center;
+}
+
+.accordion-root.is-open .accordion-icon,
+.faq-acc-root.is-open .faq-acc-icon {
+  transform: rotate(180deg);
+  filter: brightness(0) invert(1);
+}
+
+.accordion-content-wrapper,
+.faq-acc-content-wrapper {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+}
+
+.accordion-root.is-open .accordion-content-wrapper,
+.faq-acc-root.is-open .faq-acc-content-wrapper {
+  opacity: 1;
+}
+
+
+
+
+@media (max-width: 560px) {
+  .accordion-icon,
+  .faq-acc-icon {
+    align-self: flex-start;
+  }
+
+  .accordion-question-text,
+  .faq-acc-question-text,
+  .catalog-accordion-question-text {
+    text-align: left;
+  }
+}

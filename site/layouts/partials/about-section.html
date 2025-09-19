@@ -3,9 +3,9 @@
   <!-- Background decorative elements -->
   {{ $bgEl3 := resources.Get "img/bg-el-3.png" }}
   {{ if $bgEl3 }}
-  {{ $bgEl3Processed := $bgEl3.Resize "200x270 webp q80" }}
+  {{ $bgEl3Processed := $bgEl3.Resize "200x270 webp q70" }}
   <img src="{{ $bgEl3Processed.RelPermalink }}" alt=""
-    class="absolute hidden lg:block  z-[1] bottom-0 right-0 w-[200px] h-auto" width="200" height="270" />
+    class="absolute hidden lg:block  z-[1] bottom-0 right-0 w-[200px] h-auto" width="200" height="270" loading="lazy" />
   {{ else }}
   <img src="/img/bg-el-3.png" alt="" class="absolute hidden lg:block z-[1] bottom-0 right-0 w-[200px] h-auto"
     width="200" height="270" />
@@ -13,8 +13,8 @@
 
   {{ $bgEl2 := resources.Get "img/bg-el-9.png" }}
   {{ if $bgEl2 }}
-  {{ $bgEl2_1x := $bgEl2.Resize "171x webp q75" }}
-  {{ $bgEl2_2x := $bgEl2.Resize "342x webp q75" }}
+  {{ $bgEl2_1x := $bgEl2.Resize "171x webp q70" }}
+  {{ $bgEl2_2x := $bgEl2.Resize "342x webp q70" }}
   <img srcset="{{ $bgEl2_1x.RelPermalink }} 1x, {{ $bgEl2_2x.RelPermalink }} 2x" src="{{ $bgEl2_1x.RelPermalink }}"
     alt="" aria-hidden="true"
     class="about-bg-el-2 absolute z-[10] top-[calc(var(--spacing)*6)] left-[-25px] hidden max-[640px]:block w-[171px] h-auto"
@@ -26,11 +26,16 @@
   <div class="max-[767px]:block min-[768px]:hidden relative z-[22]">
     {{ $aboutMobile := resources.Get "img/about-mob.png" }}
     {{ if $aboutMobile }}
-    {{ $aboutMobileProcessed := $aboutMobile.Resize " 1144x webp q90" }}
-    <img src="{{ $aboutMobileProcessed.RelPermalink }}" alt="Про нас - українська компанія високотехнологічного виробництва"
-      class=" mb-6 w-full h-[350px] origin-left object-cover" />
+    {{ $small := $aboutMobile.Resize "400x webp q80" }}
+    {{ $medium := $aboutMobile.Resize "800x webp q80" }}
+    <img fetchpriority="high" src="{{ $medium.RelPermalink }}" srcset="
+          {{ $small.RelPermalink }} 400w,
+          {{ $medium.RelPermalink }} 800w,
+        " sizes="(max-width: 639px) 100vw,582px" alt="Про нас - українська компанія високотехнологічного виробництва"
+      width="566" height="481" decoding="async" class="mb-6 w-full h-[350px] origin-left object-cover" />
     {{ else }}
-    <img src="/img/about-mob.png" alt="Про нас - українська компанія високотехнологічного виробництва"
+    <img fetchpriority="high" src="/img/about-mob.png"
+      alt="Про нас - українська компанія високотехнологічного виробництва"
       class=" mb-6 w-full h-[350px] origin-left object-cover" />
     {{ end }}
 
@@ -63,7 +68,7 @@
     {{ $aboutDesktopProcessed := $aboutDesktop.Resize "628x400 webp q80" }}
     <img src="{{ $aboutDesktopProcessed.RelPermalink }}"
       alt="Про нас - українська компанія високотехнологічного виробництва" width="628" height="400"
-      class="w-full max-w-[628px] h-[400px] rounded-t-[8px]  mb-8 object-cover" />
+      class="w-full max-w-[628px] h-[400px] rounded-t-[8px]  mb-8 object-cover" loading="lazy" />
     {{ else }}
     <img src="/img/about.png" alt="Про нас - українська компанія високотехнологічного виробництва" width="568"
       height="400" class="w-full max-w-[628px] h-[400px] rounded-t-[8px]  mb-8 object-cover" />
@@ -99,7 +104,7 @@
       {{ $aboutDesktopProcessed := $aboutDesktop.Resize "568x400 webp q80" }}
       <img src="{{ $aboutDesktopProcessed.RelPermalink }}"
         alt="Про нас - українська компанія високотехнологічного виробництва" width="568" height="400"
-        class="w-full h-[400px] rounded-tr-[8px] object-cover shadow-lg" />
+        class="w-full h-[400px] rounded-tr-[8px] object-cover shadow-lg" loading="lazy" />
       {{ else }}
       <img src="/img/about.png" alt="Про нас - українська компанія високотехнологічного виробництва" width="568"
         height="400" class="w-full h-[400px] rounded-t-[8px] object-cover shadow-lg" />

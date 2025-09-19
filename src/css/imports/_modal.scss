@@ -76,10 +76,7 @@ body.modal-open {
   transition: all 0.2s ease;
 }
 
-.modal-close:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-  color: #333;
-}
+
 
 .modal-header {
   margin-bottom: 32px; 
@@ -436,9 +433,6 @@ body.modal-open {
 }
 
 @media (min-width: 1024px) and (max-width: 1366px) {
-  // .modal-content {
-  //   padding: 48px;
-  // }
 
   .form-input,
   .form-textarea {
