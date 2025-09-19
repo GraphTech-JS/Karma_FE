@@ -929,8 +929,9 @@
           const { isIntersecting, boundingClientRect, rootBounds } = entry;
           if (isIntersecting && boundingClientRect.top > rootBounds.top + 50) {
             entry.target.classList.remove('animate');
-            void entry.target.offsetWidth;
-            entry.target.classList.add('animate');
+            requestAnimationFrame(() => {
+              entry.target.classList.add('animate');
+            });
           }
         });
       }, {
