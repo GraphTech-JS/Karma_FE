@@ -2,8 +2,8 @@
   <!-- Responsive container -->
   <div class="flex w-full max-w-[1280px] px-[20px] justify-between items-center nav-container py-0 md:py-5">
     <!-- Logo -->
-    <a href="/" class="relative z-[10]" aria-label="Karma - головна сторінка">
-      <img src="/logo.png" alt="logo" width="149" height="34" class="w-[108px] h-[25px] md:w-[149px] md:h-[34px]" />
+    <a href="/" class="relative z-[10]" aria-label="{{ i18n "aria.logo.alt" }}">
+      <img src="/logo.png" alt={{ i18n "aria.logo.alt" }} width="149" height="34" class="w-[108px] h-[25px] md:w-[149px] md:h-[34px]" />
     </a>
   
     <!-- Desktop Navigation -->
@@ -12,54 +12,54 @@
       <div class="relative dropdown-parent">
         <button
           class="nav-link lg:!font-['Inter'] cursor-pointer font-normal text-xl text-[#fefefe] hover:text-[#ba0108] transition-colors {{ if in .RelPermalink "/catalog" }}active{{ end }}" aria-expanded="false" aria-haspopup="true" aria-label="Каталог товарів">
-          Каталог
+          {{ i18n "nav.catalog" }}
         </button>
         <div class="dropdown-menu absolute left-[-50px] lg:left-[-80px] top-[30px] mt-3 bg-[#020303] rounded-b-[5px]"
-          role="menu" aria-label="Підменю каталогу">
+          role="menu" aria-label="{{ i18n "aria.catalog.submenu" }}">
           <div class="flex flex-row w-full lg:flex-col">
             <a href="/catalog/politni-steky/"
-              class="dropdown-item flex-1 px-8 py-6 text-[#fefefe] lg:font-['Inter'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap {{ if eq .RelPermalink "/catalog/politni-steky/" }}active{{ end }}" role="menuitem">Політні стеки</a>
+              class="dropdown-item flex-1 px-8 py-6 text-[#fefefe] lg:font-['Inter'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap {{ if eq .RelPermalink "/catalog/politni-steky/" }}active{{ end }}" role="menuitem">{{ i18n "catalog.stacks" }}</a>
             <a href="/catalog/videoperedavachi-vtx/"
-              class="dropdown-item flex-1 px-8 py-6 text-[#fefefe] lg:font-['Inter'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap {{ if eq .RelPermalink "/catalog/videoperedavachi-vtx/" }}active{{ end }}" role="menuitem">Відеопередавачі VTX</a>
+              class="dropdown-item flex-1 px-8 py-6 text-[#fefefe] lg:font-['Inter'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap {{ if eq .RelPermalink "/catalog/videoperedavachi-vtx/" }}active{{ end }}" role="menuitem">{{ i18n "catalog.vtx" }}</a>
             <a href="/catalog/esc/"
-              class="dropdown-item flex-1 px-8 py-6 text-[#fefefe] lg:font-['Inter'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap {{ if eq .RelPermalink "/catalog/esc/" }}active{{ end }}" role="menuitem">ESC</a>
+              class="dropdown-item flex-1 px-8 py-6 text-[#fefefe] lg:font-['Inter'] text-lg font-medium hover:text-[#ba0108] transition-all duration-300 whitespace-nowrap {{ if eq .RelPermalink "/catalog/esc/" }}active{{ end }}" role="menuitem">{{ i18n "catalog.esc" }}</a>
           </div>
         </div>
       </div>
   
       <!-- FAQ -->
       <a href="/faq"
-        class="nav-link lg:font-['Inter'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors {{ if in .RelPermalink "/faq" }}active{{ end }}">FAQ</a>
+        class="nav-link lg:font-['Inter'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors {{ if in .RelPermalink "/faq" }}active{{ end }}">{{ i18n "nav.faq" }}</a>
   
       <!-- Knowledge Base -->
       <a href="/knowledge-base"
-        class="nav-link lg:font-['Inter'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors {{ if in .RelPermalink "/knowledge-base" }}active{{ end }}">База знань</a>
+          class="nav-link lg:font-['Inter'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors {{ if in .RelPermalink "/knowledge-base" }}active{{ end }}">{{ i18n "nav.knowledge" }}</a>
   
       <!-- Contact -->
       <a href="/contact"
-        class="nav-link lg:font-['Inter'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors {{ if in .RelPermalink "/contact" }}active{{ end }}">Контакти</a>
+        class="nav-link lg:font-['Inter'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors {{ if in .RelPermalink "/contact" }}active{{ end }}">{{ i18n "nav.contacts" }}</a>
     </nav>
   
     <!-- Desktop contacts/lang -->
     <nav class="desktop-nav hidden items-baseline justify-center gap-[30px]">
       <a href="tel:(067) 298-29-29"
         class="flex items-center font-['Montserrat'] text-xl font-normal text-[#fefefe] hover:text-[#ba0108] transition-colors hidden lg:block"
-        aria-label="Зателефонувати за номером (067) 298-29-29">(067) 298-29-29</a>
+        aria-label="{{ i18n "aria.phone.alt" }}">(067) 298-29-29</a>
       <div id="language-switcher-container" class="flex gap-3 items-center justify-center text-xl language-switcher text-[#fefefe]">
         <button id="lang-ua"
           class="font-['Montserrat'] text-xl font-normal cursor-pointer text-[#ba0108] hover:text-[#ba0108]"
-          onclick="switchLanguage('ua')" aria-label="Перемкнути на українську мову" aria-pressed="true">UA</button>
+          onclick="switchLanguage('ua')" aria-label="{{ i18n "aria.lang.ua" }}" aria-pressed="true">UA</button>
         <div class="w-px h-6 bg-white/50" aria-hidden="true"></div>
         <button id="lang-en"
           class="font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#fefefe] hover:text-[#ba0108]"
-          onclick="switchLanguage('en')" aria-label="Switch to English" aria-pressed="false">EN</button>
+          onclick="switchLanguage('en')" aria-label="{{ i18n "aria.lang.en" }}" aria-pressed="false">EN</button>
       </div>
     </nav>
 
     <!-- Mobile Navigation -->
     <div class="flex gap-4 items-center mobile-nav">
       <button id="search-toggle-button" class="text-[#fefefe] hover:text-[#ba0108] transition-colors"
-        aria-label="Відкрити пошук" aria-haspopup="true" aria-expanded="false">
+        aria-label="{{ i18n "aria.search.toggle" }}" aria-haspopup="true" aria-expanded="false">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
           aria-hidden="true">
           <path
@@ -68,7 +68,7 @@
         </svg>
       </button>
       <button class="flex flex-col justify-center items-center space-y-1 w-8 h-8 hamburger" onclick="toggleMobileMenu()"
-        aria-label="Відкрити мобільне меню" aria-expanded="false">
+        aria-label="{{ i18n "aria.menu.toggle" }}" aria-expanded="false">
         <span class="block w-6 h-0.5 bg-white"></span>
         <span class="block w-6 h-0.5 bg-white"></span>
         <span class="block w-6 h-0.5 bg-white"></span>
@@ -79,13 +79,13 @@
   <!-- Mobile Search Panel -->
   <div id="mobile-search-panel" class="py-[13px] px-[24px]" role="search">
     <div class="relative">
-      <input type="text" placeholder="Пошук по сайту"
+      <input type="text" placeholder="{{ i18n "search.placeholder" }}"
         class="w-full h-[41px] rounded-full font-['Montserrat'] border-0 pl-6 pr-[110px] text-lg outline-none bg-white text-black placeholder-gray-500"
-        id="mobile-search-input" aria-label="Поле для пошуку" autocomplete="off" />
+        id="mobile-search-input" aria-label="{{ i18n "aria.search.field" }}" autocomplete="off" />
       <button
         class="absolute right-0 top-0 h-[41px] w-[100px] rounded-full bg-[#ba0108] flex items-center justify-center hover:bg-[#a00007]"
-        aria-label="Почати пошук" id="mobile-search-button">
-        <span class="text-[#fefefe] font-['Montserrat'] text-[13px]">Пошук</span>
+        aria-label="{{ i18n "aria.search.button" }}" id="mobile-search-button">
+        <span class="text-[#fefefe] font-['Montserrat'] text-[13px]">{{i18n "search.button"}}</span>
       </button>
     </div>
     <div id="mobile-search-results" class="max-h-[60vh] overflow-y-auto mt-2"></div>
@@ -93,24 +93,24 @@
 
   <!-- Mobile Menu Overlay -->
   <div id="mobileMenu" class="mobile-menu fixed inset-0 bg-[#020303] z-40 flex flex-col" role="dialog" aria-modal="true"
-    aria-label="Мобільне меню">
+    aria-label="{{ i18n "aria.menu.dialog" }}">
     <div
       class="flex relative z-[12] justify-between items-center p-4 shadow-[0_2px_8px_rgba(255,255,255,0.4)] bg-[#020303]">
-      <a href="/" class="text-xl font-normal text-[#fefefe] font-inter" aria-label="Karma - головна сторінка"><img
+      <a href="/" class="text-xl font-normal text-[#fefefe] font-inter" aria-label="{{ i18n "aria.logo.alt" }}"><img
           src="/logo.png" alt="logo" width="108" height="25"></a>
       <button class="flex relative flex-col justify-center items-center w-12 h-12 cursor-pointer hamburger"
-        onclick="toggleMobileMenu()" aria-label="Закрити мобільне меню">
+          onclick="toggleMobileMenu()" aria-label="{{ i18n "aria.menu.close" }}">
         <span class="block absolute w-6 h-0.5 bg-white rotate-45" aria-hidden="true"></span>
         <span class="block absolute w-6 h-0.5 bg-white -rotate-45" aria-hidden="true"></span>
       </button>
     </div>
     <nav class="flex flex-col flex-1 items-center px-6 pt-[119px] space-y-6" role="navigation"
-      aria-label="Мобільне меню">
+      aria-label="{{ i18n "aria.menu.mobile.dialog" }}">
       <div class="relative">
         <button onclick="toggleMobileCatalog()"
           class="w-full flex justify-center items-center text-[#fefefe] font-['Unbounded'] text-xl font-normal py-2 cursor-pointer"
-          aria-expanded="false" aria-controls="mobile-catalog-submenu" aria-label="Каталог товарів">
-          <span class="font-['Unbounded'] text-xl font-normal text-[#fefefe]">Каталог</span>
+          aria-expanded="false" aria-controls="{{ i18n "aria.catalog.mobile.submenu" }}" aria-label="{{ i18n "aria.catalog.mobile.toggle" }}">
+          <span class="font-['Unbounded'] text-xl font-normal text-[#fefefe]">{{ i18n "nav.catalog" }}</span>
           <svg class="w-5 h-5 transition-transform transform mobile-catalog-arrow" fill="none" stroke="currentColor"
             viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -120,23 +120,20 @@
           id="mobile-catalog-submenu">
           <div class="flex flex-col items-center pl-4 mt-2 space-y-2">
             <a href="/catalog/politni-steky/"
-              class="block text-[#fefefe]/80 font-['Unbounded'] text-lg py-2 hover:text-[#ba0108] transition-colors">Політні
-              стеки</a>
+                class="block text-[#fefefe]/80 font-['Unbounded'] text-lg py-2 hover:text-[#ba0108] transition-colors">{{ i18n "catalog.stacks.alt" }}</a>
             <a href="/catalog/videoperedavachi-vtx/"
-              class="block text-[#fefefe]/80 font-['Unbounded'] text-lg py-2 hover:text-[#ba0108] transition-colors">Відеопередавачі
-              VTX</a>
+              class="block text-[#fefefe]/80 font-['Unbounded'] text-lg py-2 hover:text-[#ba0108] transition-colors">{{ i18n "catalog.vtx.alt" }}</a>
             <a href="/catalog/esc/"
-              class="block text-[#fefefe]/80 font-['Unbounded'] text-lg py-2 hover:text-[#ba0108] transition-colors">ESC</a>
+              class="block text-[#fefefe]/80 font-['Unbounded'] text-lg py-2 hover:text-[#ba0108] transition-colors">{{ i18n "catalog.esc.alt" }}</a>
           </div>
         </div>
       </div>
       <a href="/faq"
-        class="text-[#fefefe] font-['Unbounded'] text-xl font-normal hover:text-[#ba0108] transition-colors">FAQ</a>
+        class="text-[#fefefe] font-['Unbounded'] text-xl font-normal hover:text-[#ba0108] transition-colors">{{ i18n "nav.faq" }}</a>
       <a href="/knowledge-base"
-        class="text-[#fefefe] font-['Unbounded'] text-xl font-normal hover:text-[#ba0108] transition-colors">База
-        знань</a>
+        class="text-[#fefefe] font-['Unbounded'] text-xl font-normal hover:text-[#ba0108] transition-colors">{{ i18n "nav.knowledge" }}</a>
       <a href="/contact"
-        class="text-[#fefefe] font-['Unbounded'] text-xl font-normal hover:text-[#ba0108] transition-colors">Контакти</a>
+        class="text-[#fefefe] font-['Unbounded'] text-xl font-normal hover:text-[#ba0108] transition-colors">{{ i18n "nav.contacts" }}</a>
       <div class="flex absolute bottom-10 flex-col items-center">
         <a href="tel:(067) 298-29-29"
           class="block text-[#fefefe] font-['Montserrat'] text-xl font-normal mb-4 hover:text-[#ba0108] transition-colors">(067)
@@ -144,11 +141,11 @@
         <div class="flex gap-3 items-center text-2xl text-[#fefefe]">
           <button id="mobile-lang-ua"
             class="font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#ba0108] hover:text-[#ba0108]"
-            onclick="switchLanguage('ua')" aria-label="Перемкнути на українську мову" aria-pressed="true">UA</button>
+            onclick="switchLanguage('ua')" aria-label="{{ i18n "aria.lang.ua" }}" aria-pressed="true">UA</button>
           <span aria-hidden="true">|</span>
           <button id="mobile-lang-en"
             class="font-['Montserrat'] text-xl !font-normal cursor-pointer !text-[#fefefe] hover:text-[#ba0108]"
-            onclick="switchLanguage('en')" aria-label="Switch to English" aria-pressed="false">EN</button>
+            onclick="switchLanguage('en')" aria-label="{{ i18n "aria.lang.en" }}" aria-pressed="false">EN</button>
         </div>
       </div>
     </nav>
