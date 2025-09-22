@@ -100,3 +100,4 @@ KARMA F405V1 перший крок у пошуках досконалості.
 <td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">4 шт.</td></tr>
 </tbody></table>
 </div>
+
