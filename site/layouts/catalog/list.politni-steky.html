@@ -19,7 +19,16 @@
 {{ partial "catalog-knowledge-base" . }}
 
 <!-- FAQ Section -->
-{{ partial "catalog-faq" . }}
+<div class="bg-white py-[80px]">
+    <div class="max-w-[1440px] mx-auto px-4">
+        {{ with site.GetPage "/faq" }}
+        {{ with .Params.stack_questions }}
+        {{ partial "accordion" (dict "context" $ "className" "mb-[48px]" "title" .title "items" .questions
+        "titleClassName" "!text-[48px] !text-center !uppercase !font-medium ![font-family:var(--font-unbounded)]") }}
+        {{ end }}
+        {{ end }}
+    </div>
+</div>
 
 
 {{ end }}
