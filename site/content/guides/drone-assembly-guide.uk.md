@@ -1,11 +1,16 @@
 ---
-title: "Повна інструкція зі збірки FPV дрона"
-description: "Детальний покроковий посібник зі збірки FPV дрона з нуля до першого польоту"
-date: 2024-01-20
+title: Повна інструкція зі збірки FPV дрона
+description: Детальний покроковий посібник зі збірки FPV дрона з нуля до першого польоту
+date: 2025-09-22T15:53:00.000+03:00
+category: БПЛА
+tags:
+  - БПЛА
+  - збірка
+  - FPV
+  - дрон
+  - інструкція
 draft: false
-category: "БПЛА"
-tags: ["БПЛА", "збірка", "FPV", "дрон", "інструкція"]
-slug: "Complete guide to assembling a FPV drone"
+slug: Complete guide to assembling a FPV drone
 ---
 
 
