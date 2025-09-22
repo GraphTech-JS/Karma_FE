@@ -10,7 +10,6 @@ image: "/img/Stack-product.png"
 price: 2500
 currency: "грн"
 in_stock: true
-featured: true
 weight: 10
 specs:
   - label: "Гіроскоп/акселерометр"

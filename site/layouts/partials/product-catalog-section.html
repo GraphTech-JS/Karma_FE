@@ -12,7 +12,7 @@
 {{ end }}
 <div class="w-full max-w-[1620px] mx-auto px-5">
   <h3 class="!text-[clamp(24px,4vw,40px)] font-['Unbounded'] text-center text-[#020303] font-semibold mb-16 hero-title">
-    <span class="text-[#ba0108]">К</span>АТАЛОГ
+    <span class="text-[#ba0108]">{{ i18n "catalog.brand" }}</span>{{ i18n "catalog.title" }}
   </h3>
 
   <div class="flex flex-col min-[800px]:flex-row justify-center items-center gap-[20px]">
@@ -30,7 +30,7 @@
       {{ end }}
       <span
         class="product-title min-[1200px]:text-[24px] max-[1199px]:text-[20px] pb-6 text-center font-bold font-[Unbounded] text-black whitespace-nowrap transition-all duration-300 ease-in-out">
-        Політні стеки</span>
+        {{ i18n "catalog.stacks" }}</span>
     </a>
 
     <!-- Product Card 2 -->
@@ -47,7 +47,7 @@
       {{ end }}
       <span
         class="product-title min-[1200px]:text-[24px] max-[1199px]:text-[20px] pb-6 text-center font-bold font-[Unbounded] text-black transition-all duration-300 ease-in-out">
-        Відеопередавачі VTX</span>
+        {{ i18n "catalog.vtx" }}</span>
     </a>
 
     <!-- Product Card 3 -->
@@ -64,7 +64,7 @@
       {{ end }}
       <span
         class="product-title min-[1200px]:text-[24px] max-[1199px]:text-[20px] pb-6 text-center font-bold font-[Unbounded] text-black whitespace-nowrap transition-all duration-300 ease-in-out">
-        ESC</span>
+        {{ i18n "catalog.esc" }}</span>
     </a>
   </div>
 </div>

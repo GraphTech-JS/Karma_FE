@@ -3,6 +3,7 @@ title: ПОЛІТНИЙ СТЕК KARMA F405 V1 (60A)
 description: Удосконалена версія політного стеку з покращеними характеристиками
 date: 2024-08-25T00:00:00.000Z
 category: politni-steky
+
 product_id: "2234"
 image: /img/our-product2.png
 price: 2800
