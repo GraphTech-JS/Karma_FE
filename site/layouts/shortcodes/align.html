@@ -1,0 +1,5 @@
+
+        {{ $position := .Get "pos" | default "left" }}
+        <div class="text-align-{{ $position }}">
+            {{ .Inner | markdownify }}
+        </div>

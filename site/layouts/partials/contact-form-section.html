@@ -36,32 +36,32 @@
 
 
   <div id="toast-container"
-    class="absolute top-8 left-1/2 z-50 px-4 space-y-2 w-full max-w-md transform -translate-x-1/2"></div>
+    class="absolute z-50 w-full max-w-md px-4 space-y-2 transform -translate-x-1/2 top-8 left-1/2"></div>
 
   <div
     class="w-full max-w-[1237px] mx-auto relative z-10 flex flex-col md:flex-col xl:flex-row xl:justify-between xl:items-center lg:gap-[clamp(20px,4vw,32px)]">
     <div class="flex flex-col w-full text-center md:text-left">
       <h3 class=" !text-[24px] md:!text-[32px] lg:!text-[40px] font-medium font-['Unbounded'] hero-title mb-[10px]">
-        <span class="text-[#BA0108]">З</span>В'ЯЖІТЬСЯ З НАМИ
+        <span class="text-[#BA0108]">{{ i18n "contact.title.brand" }}</span>{{ i18n "contact.title" }}
       </h3>
       <p class="mb-[23px] text-[16px] md:text-[20px] font-normal text-black font-['Montserrat'] ">
-        Введіть будь-ласка Ваші данні і ми зв'яжемось з Вами
+        {{ i18n "contact.subtitle" }}
       </p>
 
       <form id="contact-form" class="flex flex-col font-['Montserrat'] w-full" novalidate>
         <div class="flex flex-col gap-[23px]  md:flex-row xl:flex-row mb-[23px]">
-          <input type="text" id="name" placeholder="Ваше ім'я" required name="name"
+            <input type="text" id="name" placeholder="{{ i18n "contact.form.name.placeholder" }}" required name="name"
             class="contact-input w-full  xl:w-[373px] xl:flex-none px-5 py-4 h-[65px] placeholder:text-[#999] border border-[#404040] rounded-[5px] text-normal bg-white transition-all duration-300 ease-in-out" />
-          <input type="tel" id="phone" placeholder="+380" required name="phone"
+          <input type="tel" id="phone" placeholder="{{ i18n "contact.form.phone.placeholder" }}" required name="phone"
             class="contact-input w-full xl:w-[373px] xl:flex-none px-5 py-4 h-[65px] placeholder:text-[#999] border border-[#404040] rounded-[5px] text-normal bg-white transition-all duration-300 ease-in-out" />
         </div>
 
-        <textarea id="message" name="message" placeholder="Ваше повідомлення" rows="5"
+          <textarea id="message" name="message" placeholder="{{ i18n "contact.form.message.placeholder" }}" rows="5"
           class="contact-textarea w-full  xl:w-[770px] px-5 py-4 placeholder:text-[#999] border border-[#404040] rounded-[5px] text-normal bg-white resize-y min-h-[120px] transition-all duration-300 ease-in-out font-['Montserrat']"></textarea>
 
         <button type="submit" id="submit-btn"
           class="contact-button !mt-[50px] md:!mt-[27px] w-full  xl:w-[770px] bg-[#ba0108] hover:bg-[#e39599] transition-colors text-white border-none px-10 h-[65px] md:h-[70px] lg:h-auto lg:py-5 rounded-2xl cursor-pointer text-[clamp(16px,2vw,24px)] font-light lg:font-normal font-['Montserrat'] duration-300 ease-in-out">
-          Відправити
+          {{ i18n "contact.form.submit" }}
         </button>
       </form>
     </div>
@@ -69,18 +69,18 @@
       class="flex flex-col max-[640px]:gap-0 max-[1025px]:gap-5 justify-center items-center mt-8 text-center sm:flex-row sm:items-center sm:text-left md:flex-row lg:flex-row lg:items-center lg:justify-center lg:text-center xl:flex-col xl:items-start xl:text-left xl:mt-0">
       <h4
         class="text-[clamp(16px,2vw,20px)] font-light sm:font-normal text-[#000] font-['Montserrat'] mb-3 sm:mb-0 lg:mb-0 xl:mb-3 leading-[120%]">
-        Контактний відділ
+        {{ i18n   "contact.department" }}
       </h4>
       <div class="flex flex-col gap-[10px] max-[450px]:gap-1 lg:gap-0 xl:gap-0">
         <a href="tel:+380956156713" class="block text-[clamp(24px,3vw,36px)] font-normal text-[#ba0108] 
              no-underline transition-colors duration-300 ease-in-out font-['Unbounded'] 
              hover:text-red-800 leading-[120%]">
-          +380 95 61 56713
+          {{ i18n "contact.form.phone" }}
         </a>
         <a href="mailto:Info@karma.flights" class="block text-[clamp(24px,3vw,36px)] font-normal text-gray-900 
              no-underline transition-colors duration-300 ease-in-out font-['Unbounded'] 
              hover:text-gray-700 leading-[120%]">
-          Info@karma.flights
+          {{ i18n "contact.form.email" }}
         </a>
       </div>
     </div>
@@ -186,6 +186,7 @@
     border-radius: inherit;
     background: rgba(255, 255, 255, 0.08);
     pointer-events: none;
+    
   }
 </style>
 
@@ -316,7 +317,7 @@
       const nameVal = (nameInput.value || '').trim();
       if (!nameVal) {
         nameInput.classList.add('error');
-        showToast("Будь ласка, введіть ваше ім'я", 'error', 4000);
+        showToast('{{ i18n "contact.form.error.name" }}', 'error', 4000);
         valid = false;
       } else {
         nameInput.classList.add('success');
@@ -325,7 +326,7 @@
       const normalizedPhone = normalizePhoneToUA(phoneInput.value);
       if (!normalizedPhone) {
         phoneInput.classList.add('error');
-        showToast('Будь ласка, введіть коректний номер телефону', 'error', 4000);
+        showToast('{{ i18n "contact.form.error.phone" }}', 'error', 4000);
         valid = false;
       } else {
         phoneInput.classList.add('success');
@@ -345,14 +346,14 @@
         }
 
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Відправляємо...';
+        submitBtn.textContent = '{{ i18n "contact.form.submitting" }}';
 
         setTimeout(() => {
           form.reset();
           submitBtn.disabled = false;
-          submitBtn.textContent = 'Відправити';
+          submitBtn.textContent = '{{ i18n "contact.form.submit" }}';
 
-          showToast("Повідомлення успішно відправлено!\n Ми зв'яжемося з вами найближчим часом.", 'success', 5000);
+          showToast('{{ i18n "contact.form.success" }}', 'success', 5000);
 
           [nameInput, phoneInput, messageInput].forEach(el => el && el.classList.remove('error', 'success'));
         }, 2000);

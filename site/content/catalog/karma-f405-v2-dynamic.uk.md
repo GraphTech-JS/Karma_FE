@@ -3,6 +3,7 @@ title: ПОЛІТНИЙ СТЕК KARMA F405 V1 (60A)
 description: Удосконалена версія політного стеку з покращеними характеристиками
 date: 2024-08-25T00:00:00.000Z
 category: politni-steky
+
 product_id: "2234"
 image: /img/our-product2.png
 price: 2800
@@ -20,7 +21,7 @@ specs:
   - label: Роз'єм живлення
     value: XT-60
 draft: false
-layout: catalog
+layout: product
 currency: грн
 in_stock: true
 ---
@@ -48,6 +49,7 @@ in_stock: true
 ## Застосування
 
 Рекомендується для:
+
 - Професійних FPV дронів
 - Важких 5-7 дюймових квадрокоптерів
 - Дронів для змагань

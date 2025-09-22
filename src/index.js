@@ -1,7 +1,7 @@
 import "./css/main.scss";
 
 import Swiper from "swiper";
-import { Navigation, Autoplay, Pagination } from "swiper/modules";
+import {Navigation, Autoplay, Pagination} from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -19,7 +19,6 @@ if (mobileMenu) {
   mobileMenu.addEventListener("click", toggleMobileMenu);
 }
 
-// --- DOM Ready ---
 document.addEventListener("DOMContentLoaded", () => {
   // --------- Custom Dots ----------
   function setupCustomDots(swiper, paginationEl, dotsCount = 4) {
@@ -41,7 +40,10 @@ document.addEventListener("DOMContentLoaded", () => {
         : swiper.activeIndex % dotsCount;
 
       dots.forEach((d, j) => {
-        d.classList.toggle("swiper-pagination-bullet-active-custom", j === active);
+        d.classList.toggle(
+          "swiper-pagination-bullet-active-custom",
+          j === active
+        );
       });
     };
 
@@ -53,9 +55,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const swiperModules = [Navigation, Autoplay, Pagination];
 
   // --------- Desktop trusted ----------
-  const trustedDesktop = document.querySelector(".swiper-container-trusted-desktop");
+  const trustedDesktop = document.querySelector(
+    ".swiper-container-trusted-desktop"
+  );
   if (trustedDesktop && trustedDesktop.querySelector(".swiper-wrapper")) {
-    let desktopPagination = trustedDesktop.querySelector(".swiper-pagination-trusted");
+    let desktopPagination = trustedDesktop.querySelector(
+      ".swiper-pagination-trusted"
+    );
     if (!desktopPagination) {
       desktopPagination = document.createElement("div");
       desktopPagination.className = "swiper-pagination-trusted mt-[30px]";
@@ -66,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
       modules: swiperModules,
       loop: true,
       speed: 500,
-      autoplay: { delay: 2500, disableOnInteraction: false },
+      autoplay: {delay: 2500, disableOnInteraction: false},
       slidesPerView: 4,
       spaceBetween: 0,
       navigation: {
@@ -79,9 +85,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --------- Mobile trusted ----------
-  const trustedMobile = document.querySelector(".swiper-container-trusted-mobile");
+  const trustedMobile = document.querySelector(
+    ".swiper-container-trusted-mobile"
+  );
   if (trustedMobile && trustedMobile.querySelector(".swiper-wrapper")) {
-    let mobilePagination = trustedMobile.querySelector(".swiper-pagination-trusted");
+    let mobilePagination = trustedMobile.querySelector(
+      ".swiper-pagination-trusted"
+    );
     if (!mobilePagination) {
       mobilePagination = document.createElement("div");
       mobilePagination.className = "swiper-pagination-trusted mt-[30px]";
@@ -92,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
       modules: swiperModules,
       loop: false,
       speed: 500,
-      autoplay: { delay: 2500, disableOnInteraction: false },
+      autoplay: {delay: 2500, disableOnInteraction: false},
       slidesPerView: 1,
       spaceBetween: 0,
       navigation: {
@@ -104,34 +114,46 @@ document.addEventListener("DOMContentLoaded", () => {
     setupCustomDots(mobileSwiper, mobilePagination, 4);
   }
 
-  // --------- Products swiper ----------
+  // --------- Products swiper (lazy init через IntersectionObserver) ----------
   const productsEl = document.querySelector(".swiper-container-products");
   if (productsEl && productsEl.querySelector(".swiper-wrapper")) {
-    const productsSwiper = new Swiper(productsEl, {
-      modules: swiperModules,
-      loop: true,
-      speed: 500,
-      autoplay: { delay: 3000, disableOnInteraction: false },
-      slidesPerView: 1,
-      spaceBetween: 16,
-      navigation: {
-        nextEl: ".swiper-button-next-custom",
-        prevEl: ".swiper-button-prev-custom",
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          new Swiper(productsEl, {
+            modules: swiperModules,
+            loop: true,
+            speed: 500,
+            autoplay: {delay: 3000, disableOnInteraction: false},
+            slidesPerView: 1,
+            spaceBetween: 16,
+            navigation: {
+              nextEl: ".swiper-button-next-custom",
+              prevEl: ".swiper-button-prev-custom",
+            },
+            breakpoints: {
+              768: {slidesPerView: "auto", spaceBetween: 20},
+              1000: {slidesPerView: "auto", spaceBetween: 51},
+              1200: {slidesPerView: "auto", spaceBetween: 51},
+            },
+          });
+          observer.disconnect();
+        }
       },
-      breakpoints: {
-        768: { slidesPerView: "auto", spaceBetween: 20 },
-        1000: { slidesPerView: "auto", spaceBetween: 51 },
-        1200: { slidesPerView: "auto", spaceBetween: 51 },
-      },
-    });
+      {rootMargin: "0px 0px -50px 0px"}
+    );
+
+    observer.observe(productsEl);
   }
 
-  // --------- Debounce & update ----------
+  // --------- Debounce & safe resize ----------
   function debounce(fn, delay = 150) {
     let t;
     return (...args) => {
       clearTimeout(t);
-      t = setTimeout(() => fn.apply(this, args), delay);
+      t = setTimeout(() => {
+        requestAnimationFrame(() => fn.apply(this, args));
+      }, delay);
     };
   }
 
