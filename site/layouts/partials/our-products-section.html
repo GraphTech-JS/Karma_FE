@@ -1,11 +1,28 @@
-{{ $category := "politni-steky" }} {{ $context := . }} {{ if isset . "category"
-}} {{ $category = .category }} {{ end }} {{ if isset . "context" }} {{ $context
-= .context }} {{ end }} {{ if isset $context.Params "category" }} {{ $category =
-$context.Params.category }} {{ end }} {{/* Get products from content files
-instead of data files */}} {{ $products := where $context.Site.RegularPages
-"Section" "catalog" }} {{ $categoryProducts := where $products
-".Params.category" $category }} {{ $categoryData := index
-$context.Site.Data.products.categories $category }}
+{{ $context := . }}
+{{ if isset . "context" }}{{ $context = .context }}{{ end }}
+
+{{ $products := where $context.Site.RegularPages "Section" "catalog" }}
+{{ $categorySlug := path.Base (strings.TrimSuffix "/" $context.RelPermalink) }}
+
+{{ $categoryMapping := dict
+"politni-steky" (slice "politni-steky" "flight-stacks")
+"videoperedavachi-vtx" (slice "videoperedavachi-vtx" "video-transmitters")
+"esc" (slice "esc")
+}}
+
+{{ $categoryProducts := slice }}
+{{ $category := "" }}
+
+{{ if $context.IsHome }}
+{{ $possibleCategories := index $categoryMapping "politni-steky" }}
+{{ $categoryProducts = where $products "Params.category" "in" $possibleCategories }}
+{{ $category = "politni-steky" }}
+{{ else }}
+{{ $possibleCategories := index $categoryMapping $categorySlug | default (slice $categorySlug) }}
+{{ $categoryProducts = where $products "Params.category" "in" $possibleCategories }}
+{{ $category = $categorySlug }}
+{{ end }}
+
 <section class="relative flex flex-col justify-center items-center gap-[20px] overflow-hidden">
   {{ if $context.IsHome }}
   <div
