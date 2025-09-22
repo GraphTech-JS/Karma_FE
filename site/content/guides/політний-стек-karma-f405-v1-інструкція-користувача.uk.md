@@ -12,61 +12,7 @@ tags: []
 image: /img/product-details-v2.png
 draft: false
 ---
-body{
-font-family: Montserrat;
-}
-.article h1{
-    font-size: 36px;
-    line-height: 32px;
-    font-family: Unbounded;
-}
-.article h2{
-font-size: 20px;
-border:1px solid #ba0108;
-margin-top: 30px;
-}
 
-.article h3{
-    font-size: 18px;
-    line-height: 18px;
-    font-weight: 700;
-    padding-top: 10px;
-    text-align:center;
-}
-.article a{
-text-decoration: underline;
-color: #ba0108;
-}
-ol {
-    list-style-type: none;
-    counter-reset: num;
-    margin: 0 0 0 45px;
-    padding: 15px 0 5px 0;
-    font-size: 16px;
-}
-ol li {
-    position: relative;
-    margin: 0 0 0 0;
-    padding: 0 0 10px 0;
-    line-height: 1.4;
-}
-ol li:before {
-    content: counter(num);
-    counter-increment: num;
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: -38px;
-    width: 28px;
-    height: 28px;
-    background: #fff;
-    color: #000;
-    text-align: center;
-    line-height: 28px;
-    font-size: 18px;
-    border-radius: 50%;
-    border: 1px solid #ba0108;
-}
 <ol>
 
 <li>Номер 1</li>
