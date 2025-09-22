@@ -2,36 +2,33 @@
   <div class="w-full max-w-[1620px] mx-auto px-[20px] xl:px-[40px]">
     <div
       class="flex flex-col items-center md:flex-row justify-between  gap-[35px] md:gap-[14px]  lg:gap-[14px] xl:gap-[150px] text-center">
-      <!-- Result Item 1 -->
-      <div class="flex flex-col items-center w-[400px]">
-        <span class="text-[64px] md:text-[96px] leading-[1.1] font-['Wallpoet'] font-[400] text-[#ba0108] counter"
-          data-target="200">+0</span>
-        <span
-          class="text-[24px] text-[#fefefe] font-['Unbounded'] xl:font-['Montserrat'] font-normal xl:font-medium ">
-          Задоволених&nbsp;<br class="xl:hidden">клієнтів
-        </span>
-      </div>
-
-      <!-- Result Item 2 -->
-      <div class="flex flex-col items-center w-[400px]">
-        <span class="text-[64px] md:text-[96px] leading-[1.1] font-['Wallpoet']  font-[400] text-[#ba0108] counter"
-          data-target="10">+0</span>
-        <span
-          class="text-[24px] text-[#fefefe] font-['Unbounded'] xl:font-['Montserrat'] font-normal xl:font-medium break-words md:whitespace-nowrap xl:whitespace-nowrap">
-          Виробничих&nbsp;<br class="xl:hidden"> локацій
-        </span>
-      </div>
-
-      <!-- Result Item 3 -->
-      <div class="flex flex-col items-center w-[400px]">
-        <span class="text-[64px] md:text-[96px] leading-[1.1] font-['Wallpoet'] font-[400] text-[#ba0108] counter"
-          data-target="100">+0</span>
-        <span class="text-[24px] text-[#fefefe] font-['Unbounded'] xl:font-['Montserrat']  font-normal xl:font-medium">
-          <span class="block md:inline">Знищеної ворожої</span>
-          <br class="hidden md:block xl:block">
-          <span class="block md:inline md:pl-0">техніки</span>
-        </span>
-      </div>
+    <!-- Result Item 1 -->
+    <div class="flex flex-col items-center w-[400px]">
+      <span class="text-[64px] md:text-[96px] leading-[1.1] font-['Wallpoet'] font-[400] text-[#ba0108] counter"
+        data-target="200">+0</span>
+      <span class="text-[24px] text-[#fefefe] font-['Unbounded'] xl:font-['Montserrat'] font-normal xl:font-medium">
+        {{ i18n "results.customers" | safeHTML }}
+      </span>
+    </div>
+    
+    <!-- Result Item 2 -->
+    <div class="flex flex-col items-center w-[400px]">
+      <span class="text-[64px] md:text-[96px] leading-[1.1] font-['Wallpoet'] font-[400] text-[#ba0108] counter"
+        data-target="10">+0</span>
+      <span
+        class="text-[24px] text-[#fefefe] font-['Unbounded'] xl:font-['Montserrat'] font-normal xl:font-medium break-words md:whitespace-nowrap xl:whitespace-nowrap">
+        {{ i18n "results.locations" | safeHTML }}
+      </span>
+    </div>
+    
+    <!-- Result Item 3 -->
+    <div class="flex flex-col items-center w-[400px]">
+      <span class="text-[64px] md:text-[96px] leading-[1.1] font-['Wallpoet'] font-[400] text-[#ba0108] counter"
+        data-target="100">+0</span>
+      <span class="text-[24px] text-[#fefefe] font-['Unbounded'] xl:font-['Montserrat'] font-normal xl:font-medium">
+        {{ i18n "results.destroyed" | safeHTML }}
+      </span>
+    </div>
     </div>
   </div>
 </section>

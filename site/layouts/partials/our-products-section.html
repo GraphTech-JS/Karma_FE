@@ -1,7 +1,8 @@
 {{ $category := "politni-steky" }} {{ $context := . }} {{ if isset . "category"
 }} {{ $category = .category }} {{ end }} {{ if isset . "context" }} {{ $context
 = .context }} {{ end }} {{ if isset $context.Params "category" }} {{ $category =
-$context.Params.category }} {{ end }} {{ $products := where $context.Site.RegularPages
+$context.Params.category }} {{ end }} {{/* Get products from content files
+instead of data files */}} {{ $products := where $context.Site.RegularPages
 "Section" "catalog" }} {{ $categoryProducts := where $products
 ".Params.category" $category }} {{ $categoryData := index
 $context.Site.Data.products.categories $category }}
@@ -32,7 +33,7 @@ $context.Site.Data.products.categories $category }}
 
   <div class="flex flex-col w-full max-w-[1200px] products-slider mt-[60px] lg:mt-[80px] mb-[60px] lg:mb-[80px]">
     <h3 class="font-['Unbounded'] text-[clamp(24px,4vw,40px)] font-medium  mb-[40px] text-center hero-title">
-      <span class="text-[#ba0108]">Н</span>АШІ ТОВАРИ
+      <span class="text-[#ba0108]">{{ i18n "products.title.brand" }}</span>{{ i18n "products.title" }}
     </h3>
 
     <!-- Desktop & Tablet Layout (768px+) -->
@@ -78,7 +79,7 @@ $context.Site.Data.products.categories $category }}
               <a href="{{ .RelPermalink }}">
                 <button
                   class="bg-[#ba0108] text-[#fff] border-[none]  px-[30px] py-[15px] mt-5 rounded-[20px] cursor-pointer text-[clamp(16px,2.2vw,20px)] font-['Montserrat'] font-normal [transition:background-color_0.3s_ease] hover:bg-[#e39599] w-full">
-                  Детальніше
+                  {{ i18n "products.button.more" }}
                 </button>
               </a>
             </div>
@@ -139,7 +140,7 @@ $context.Site.Data.products.categories $category }}
             <a class="pt-[36px]" href="{{ .RelPermalink }}">
               <button
                 class="inline-block bg-[#ba0108] text-[#fff] border-[none]  px-[30px] py-[15px] mt-5 rounded-[20px] cursor-pointer text-[clamp(14px,1.8vw,16px)] font-['Montserrat'] font-normal [transition:background-color_0.3s_ease] hover:bg-[#e39599] w-full">
-                Детальніше
+                {{ i18n "products.button.more" }}
               </button>
             </a>
           </div>
@@ -160,15 +161,21 @@ $context.Site.Data.products.categories $category }}
     });
   }
 
- function equalizeProductTitles() {
+  function equalizeProductTitles() {
     const titles = document.querySelectorAll('.products-slider .product-title');
     if (!titles.length) return;
 
     requestAnimationFrame(() => {
       titles.forEach(t => t.style.minHeight = "0px");
-      const heights = Array.from(titles, t => t.getBoundingClientRect().height);
-      const max = Math.max(...heights);
-      titles.forEach(t => t.style.minHeight = `${max}px`);
+
+      requestAnimationFrame(() => {
+        const heights = Array.from(titles, t => t.getBoundingClientRect().height);
+        const max = Math.max(...heights);
+
+        requestAnimationFrame(() => {
+          titles.forEach(t => t.style.minHeight = `${max}px`);
+        });
+      });
     });
   }
 
@@ -183,5 +190,4 @@ $context.Site.Data.products.categories $category }}
   fixTitlePadding();
   window.addEventListener("load", equalizeProductTitles);
   window.addEventListener("resize", debounce(equalizeProductTitles, 150));
-
 </script>

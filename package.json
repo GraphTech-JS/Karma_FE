@@ -20,7 +20,13 @@
     "build:hugo:preview": "hugo --gc --minify -s site -d ../dist -D -F",
     "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
     "cypress:open": "cypress open --e2e",
-    "cypress:run": "cypress run --e2e"
+    "cypress:run": "cypress run --e2e",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "format:html": "prettier --write '**/*.html'",
+    "format:js": "prettier --write '**/*.js'",
+    "format:css": "prettier --write '**/*.{css,scss}'",
+    "format:yaml": "prettier --write '**/*.yaml'"
   },
   "author": "",
   "license": "MIT",
@@ -64,6 +70,7 @@
     "postcss-import": "^16.1.1",
     "postcss-loader": "^6.2.1",
     "postcss-preset-env": "^10.3.1",
+    "prettier": "^3.6.2",
     "sass": "^1.53.0",
     "sass-loader": "^12.6.0",
     "style-loader": "^3.3.4",

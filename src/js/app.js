@@ -4,9 +4,7 @@ import "./css/main.scss";
 // Lazy load non-critical JavaScript for better mobile performance
 const loadNonCriticalJS = () => {
   import("./modal.js");
-  import("./performance.js");
   import("./accessibility.js");
-  import("./lazy-images.js");
 };
 
 // Load non-critical JS after page load

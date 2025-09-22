@@ -1,26 +1,139 @@
-- id: nav.catalog
-  translation: "Catalog"
-- id: nav.faq
-  translation: "FAQ"
-- id: nav.knowledge
-  translation: "Knowledge base"
-- id: nav.contacts
-  translation: "Contacts"
-- id: search.placeholder
-  translation: "Site search"
-- id: search.start
-  translation: "Search"
-- id: catalog.stacks
-  translation: "Flight Stacks"
-- id: catalog.vtx
-  translation: "Video transmitters (VTX)"
-- id: catalog.esc
-  translation: "ESC"
+# -- Main page --
+# Navigation
+nav.catalog: "Catalog"
+nav.faq: "FAQ"
+nav.knowledge: "Knowledge base"
+nav.contacts: "Contacts"
+
+# Search
+search.placeholder: "Site search"
+search.start: "Search"
+
+# Catalog items
+catalog.stacks: "Flight Stacks"
+catalog.vtx: "Video transmitters VTX"
+catalog.esc: "ESC"
 
 
-- id: hero.brand
-  translation: "KARMA FLIGHTS"
-- id: hero.subtitle
-  translation: "NO COMPROMISES"
-- id: hero.tagline
-  translation: "High-tech Ukrainian manufacturing"
+# Accessibility nav
+aria.logo.alt: "Karma Flights logo - go to homepage"
+aria.nav.main: "Main navigation menu"
+aria.nav.mobile: "Mobile navigation menu"
+aria.catalog.toggle: "Product catalog"
+aria.catalog.submenu: "Catalog submenu"
+aria.search.toggle: "Open search"
+aria.search.field: "Search field"
+aria.search.button: "Start search"
+aria.menu.toggle: "Open mobile menu"
+aria.menu.close: "Close mobile menu"
+aria.phone.alt: "Call (067) 298-29-29"
+aria.lang.ua: "Switch to Ukrainian"
+aria.lang.en: "Switch to English"
+aria.menu.dialog: "Mobile menu"
+aria.catalog.mobile.toggle: "Product catalog"
+aria.catalog.mobile.submenu: "Product catalog submenu"
+aria.search.results: "Search results"
+aria.divider: "Divider"
+aria.search.mobile.toggle: "Open mobile search"
+aria.search.mobile.field: "Mobile search field"
+aria.search.mobile.button: "Start mobile search"
+aria.menu.mobile.close: "Close mobile menu"
+aria.menu.mobile.dialog: "Mobile menu"
+
+
+# Hero Section
+hero.brand: "KARMA FLIGHTS"
+hero.subtitle: "NO COMPROMISES"
+hero.tagline: "High-tech Ukrainian manufacturing"
+
+# About Section
+about.brand: "A"
+about.subtitle: "BOUT US"
+about.paragraph-one: "We are a Ukrainian company specializing in the development and production of high-tech equipment for the modern world. Our production combines innovation, precision engineering and the most modern equipment to create reliable solutions for industry, energy, agricultural sector and defense."
+about.paragraph-two: "We implement a full cycle: from idea and prototype - to serial production. Everything - on Ukrainian facilities, in compliance with international quality standards."
+about.alt: "About us - Ukrainian high-tech manufacturing company"
+
+
+# Results Section
+results.customers: Satisfied<br class=\"xl:hidden\">customers
+results.locations: Manufacturing<br class=\"xl:hidden\">locations
+results.destroyed: "<span class=\"block md:inline\">Destroyed enemy</span><br class=\"hidden md:block xl:block\"><span class=\"block md:inline md:pl-0\">equipment</span>"
+
+
+# Product catalog section
+catalog.brand: "С"
+catalog.title: "ATALOG"
+catalog.stacks: "Flight Stacks"
+catalog.vtx: "Video transmitters VTX"
+catalog.esc: "ESC" 
+
+# Advantages Section
+advantages.title: "HY US?"
+advantages.title.brand: "W"
+advantages.1.title: "Reliable<br>suppliers"
+advantages.1.text: "Continuous <br>supply chain <br>of components"
+advantages.2.title: "Guaranteed<br>quality"
+advantages.2.text: "Tested <br>in extreme conditions"
+advantages.3.title: "Service &<br>support"
+advantages.3.text: "We consult <br>and assist"
+advantages.4.title: "Own R&D department"
+advantages.4.text: "Continuous <br>improvement, <br>custom solutions"
+
+# Our Products Section
+products.title.brand: "O"
+products.title: "UR PRODUCTS"
+products.button.more: "Learn more"
+
+# Trusted by Section
+trusted.title: "RUSTED BY US"
+trusted.title.brand: "T"
+
+# Contact Form Section
+contact.title.brand: "C"
+contact.title: "ONTACT US"
+contact.subtitle: "Enter your data and we will contact you"
+contact.form.name.placeholder: "Your name"
+contact.form.phone.placeholder: "+380"
+contact.form.message.placeholder: "Your message"
+contact.form.submit: "Submit"
+contact.form.submitting: "Sending..."
+contact.form.success: "Message sent successfully!\nWe will contact you soon."
+contact.form.error.name: "Please enter your name"
+contact.form.error.phone: "Please enter a valid phone number"
+contact.department: "Contact department"
+
+# Footer
+footer.contact.title: "Contacts"
+footer.contact.phone: "+380 95 61 56713"
+footer.contact.phone.label: "Contact department"
+footer.menu.title: "Menu"
+footer.menu.catalog: "Catalog"
+footer.menu.faq: "FAQ"
+footer.menu.knowledge: "Knowledge base"
+footer.menu.contacts: "Contacts"
+footer.social.facebook: "Go to Karma Facebook page"
+footer.social.instagram: "Go to Karma Instagram page"
+footer.social.telegram: "Go to Karma Telegram channel"
+footer.social.whatsapp: "Write in WhatsApp"
+footer.privacy.title: "Privacy Policy"
+footer.feedback.title: "Feedback:"
+footer.logo.alt: "Karma Flights logo - go to homepage"
+footer.nav.aria: "Footer menu"
+footer.mobile.nav.aria: "Mobile footer menu"
+# -- Main page --
+
+# -- Catalog page --
+
+# Catalog Hero Section
+catalog.hero.breadcrumb.home: "Home"
+catalog.hero.button.proposal: "Get proposal"
+catalog.hero.description.stacks: "Compact and productive integrated system for drones that combines flight controller (FC) based on powerful STM32F405 microcontroller and 4-in-1 speed controller (ESC) with support up to 20A (25A peak).\n\nThanks to its small size and high functionality, including built-in OSD, and often also barometer and \"black box\", it is an ideal choice for creating light and maneuverable FPV drones"
+catalog.hero.description.vtx: "Professional video transmitters for FPV systems with support for different frequencies and power levels. Provide stable signal and high quality video transmission over long distances."
+catalog.hero.description.esc: "High-quality electronic speed controllers for brushless motors. Support various firmware and provide smooth speed control with high precision and reliability."
+catalog.hero.aria.breadcrumb: "Breadcrumb navigation"
+catalog.hero.aria.button: "Get commercial proposal for"
+catalog.hero.aria.bg1: "Decorative background element"
+catalog.hero.aria.bg2: "Decorative background element"
+catalog.hero.aria.stack.left: "Stack element left"
+catalog.hero.aria.stack.right: "Stack element right"
+catalog.hero.aria.stack.rotate: "Karma Flights - high-tech Ukrainian manufacturing"
