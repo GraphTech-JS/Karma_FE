@@ -82,7 +82,7 @@
                 <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                     <a class="font-[Montserrat] text-[16px] lg:text-[20px] font-normal text-[#ba0108] leading-[120%]"
                         href="/" itemprop="item">
-                        <span itemprop="name">Головна</span>
+                        <span itemprop="name">{{ i18n "catalog.hero.breadcrumb.home" }}</span>
                     </a>
                     <meta itemprop="position" content="1" />
                 </li>
@@ -91,7 +91,7 @@
                     <span
                         class="font-[Montserrat] text-[16px] lg:text-[20px] font-normal text-[#ba0108]  leading-[120%]"
                         itemprop="name">
-                        {{ $categoryData.name }}
+                        {{ .Title}}
                     </span>
                     <meta itemprop="position" content="2" />
                 </li>
@@ -103,33 +103,16 @@
                 class="flex flex-col gap-[10px] shrink-0 items-center max-w-full md:items-start lg:items-start xl:items-start  md:w-[448px] lg:w-[548px] xl:w-[749px] w-full">
                 <h1 id="catalog-hero-heading"
                     class="font-[Unbounded] uppercase leading-[1.1] text-[32px] lg:text-[48px] xl:text-[64px]  text-[#ba0108] font-medium hero-title whitespace-normal break-words max-sm:text-center">
-                    {{ $categoryData.name }}
+                    {{ .Title }}
                 </h1>
-                <p
-                    class="font-[Montserrat]   text-[16px] xl:text-[20px] text-[#020303]  max-sm:mb-[40px] md:mb-[60px] leading-[120%] ">
-                    {{ if eq $category "politni-steky" }} Компактна та продуктивна
-                    інтегрована система для дронів, що об'єднує польотний контролер (FC)
-                    на базі потужного мікроконтролера STM32F405 та регулятор швидкості
-                    (ESC) 4-в-1 з підтримкою до 20А (25А піково).
-                    <br />
-                    <br />
-                    Завдяки своїм невеликим розмірам та високій функціональності,
-                    включаючи вбудований OSD, а часто також барометр і "чорний ящик", він
-                    є ідеальним вибором для створення легких та маневрених FPV-дронів {{
-                    else if eq $category "videoperedavachi-vtx" }} Професійні
-                    відеопередавачі для FPV систем з підтримкою різних частот та
-                    потужностей. Забезпечують стабільний сигнал та високу якість
-                    відеопередачі на великі відстані. {{ else if eq $category "esc" }}
-                    <br />
-                    <br />
-                    Високоякісні електронні регулятори швидкості для безколекторних
-                    двигунів. Підтримують різні прошивки та забезпечують плавне керування
-                    швидкістю з високою точністю та надійністю. {{ end }}
-                </p>
+            <div class="font-[Montserrat] text-[16px] xl:text-[20px] text-[#020303] 
+                        max-sm:mb-[40px] md:mb-[60px] leading-[120%] space-y-4">
+                {{ .Content }}
+            </div>
                 <button onclick="window.openContactModal()"
-                    aria-label="Отримати комерційну пропозицію для {{ $categoryData.name }}"
+                    aria-label="{{ i18n "catalog.hero.aria.button" }} {{ .Title }}"
                     class="!font-[Montserrat] cursor-pointer text-[16px] sm:text-[20px] md:text-[24px] lg:text-[24px] font-medium text-white bg-[#ba0108] hover:bg-[#e39599] transition-colors w-[354px]  sm:max-w-full sm:w-full md:max-w-[458px] lg:max-w-[458px] xl:max-w-[458px] py-[15px]  h-[58px] md:h-[70px] font-light md:font-normal shadow-[0_4px_16px_0_rgba(0,0,0,0.4)] rounded-[20px]">
-                    Отримати пропозицію
+                    {{ i18n "catalog.hero.button.proposal" }}
                 </button>
             </div>
             <div class="flex relative justify-center items-center w-full md:flex-1">

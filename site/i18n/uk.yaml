@@ -1,0 +1,142 @@
+
+# -- Main page --
+# Navigation
+nav.catalog: "Каталог"
+nav.faq: "FAQ"
+nav.knowledge: "База знань"
+nav.contacts: "Контакти"
+
+
+# Search
+search.placeholder: "Пошук по сайту"
+search.start: "Пошук"
+
+# Catalog items
+catalog.stacks: "Політні стеки"
+catalog.vtx: "Відеопередавачі VTX"
+catalog.esc: "ESC"
+
+
+# Accessibility nav
+aria.logo.alt: "Логотип Karma Flights - перейти на головну сторінку"
+aria.nav.main: "Головне меню навігації"
+aria.nav.mobile: "Мобільне меню навігації"
+aria.catalog.toggle: "Каталог товарів"
+aria.catalog.submenu: "Підменю каталогу"
+aria.search.toggle: "Відкрити пошук"
+aria.search.field: "Поле для пошуку"
+aria.search.button: "Почати пошук"
+aria.menu.toggle: "Відкрити мобільне меню"
+aria.menu.close: "Закрити мобільне меню"
+aria.phone.alt: "Зателефонувати за номером (067) 298-29-29"
+aria.lang.ua: "Перемкнути на українську мову"
+aria.lang.en: "Перемкнути на англійську мову"
+aria.menu.dialog: "Мобільне меню"
+aria.catalog.mobile.toggle: "Каталог товарів"
+aria.catalog.mobile.submenu: "Підменю каталогу товарів"
+aria.search.results: "Результати пошуку"
+aria.divider: "Розділювач"
+aria.search.mobile.toggle: "Відкрити мобільний пошук"
+aria.search.mobile.field: "Мобільне поле для пошуку"
+aria.search.mobile.button: "Почати мобільний пошук"
+aria.menu.mobile.close: "Закрити мобільне меню"
+aria.menu.mobile.dialog: "Мобільне меню"
+
+# Hero Section
+hero.brand: "KARMA FLIGHTS"
+hero.subtitle: "НЕ ШУКАЙ КОМПРОМІСІВ"
+hero.tagline: "Високотехнологічне українське виробництво"
+
+# About Section
+about.brand: "П"
+about.subtitle: "РО НАС"
+about.paragraph-one: "Ми — українська компанія, що спеціалізується на розробці та виробництві високотехнологічної техніки для сучасного світу. Наше виробництво поєднує іновації, точну інженерію та найсучасніше обладнання, щоб створювати надійні рішення для промисловості, енергетики, агросектору та оборонної сфери."
+about.paragraph-two: "Ми впроваджуємо повний цикл: від ідеї та прототипу — до серійного виробництва. Усе — на українських потужностях, з дотриманням міжнародних стандартів якості."
+about.alt: "Про нас - українська компанія високотехнологічного виробництва"
+
+# Results Section
+results.customers: Задоволених<br class=\"xl:hidden\">клієнтів
+results.locations: Виробничих<br class=\"xl:hidden\">локацій
+results.destroyed: "<span class=\"block md:inline\">Знищеної ворожої</span><br class=\"hidden md:block xl:block\"><span class=\"block md:inline md:pl-0\">техніки</span>"
+
+# Product catalog section
+catalog.brand: "К"
+catalog.title: "АТАЛОГ"
+catalog.stacks: "Політні стеки"
+catalog.vtx: "Відеопередавачі VTX"
+catalog.esc: "ESC" 
+
+# Advantages Section
+advantages.title: "ОМУ МИ?"
+advantages.title.brand: "Ч"
+advantages.1.title: "Надійні<br>постачальники"
+advantages.1.text: "Постійний <br>ланцюг постачання <br>комплектуючих"
+advantages.2.title: "Гарантована<br>якість"
+advantages.2.text: "Перевірено <br>в екстремальних умовах"
+advantages.3.title: "Сервіс та<br>техпідтримка"
+advantages.3.text: "Консультуємо <br>та допомагаємо"
+advantages.4.title: "Свій R&D відділ"
+advantages.4.text: "Постійне <br>удосконалення, <br>індивідуальні рішення"
+
+# Our Products Section
+products.title: "АШІ ТОВАРИ"
+products.title.brand: "Н"
+products.button.more: "Детальніше"
+
+# Trusted by Section
+trusted.title: "АМ ДОВІРЯЮТЬ"
+trusted.title.brand: "Н"
+
+# Contact Form Section
+contact.title.brand: "З"
+contact.title: "В'ЯЖІТЬСЯ З НАМИ"
+contact.subtitle: "Введіть будь-ласка Ваші дані і ми зв'яжемось з Вами"
+contact.form.name.placeholder: "Ваше ім'я"
+contact.form.phone.placeholder: "+380"
+contact.form.message.placeholder: "Ваше повідомлення"
+contact.form.submit: "Відправити"
+contact.form.submitting: "Відправляємо..."
+contact.form.success: "Повідомлення успішно відправлено!\nМи зв'яжемося з вами найближчим часом."
+contact.form.error.name: "Будь ласка, введіть ваше ім'я"
+contact.form.error.phone: "Будь ласка, введіть коректний номер телефону"
+contact.department: "Контактний відділ"
+contact.form.phone: "+380 95 61 56713"
+contact.form.email: "Info@karma.flights"
+
+# Footer
+footer.contact.title: "Контакти"
+footer.contact.phone: "+380 95 61 56713"
+footer.contact.phone.label: "Контактний відділ"
+footer.menu.title: "Меню"
+footer.menu.catalog: "Каталог"
+footer.menu.faq: "FAQ"
+footer.menu.knowledge: "База знань"
+footer.menu.contacts: "Контакти"
+footer.social.facebook: "Перейти на Facebook сторінку Karma"
+footer.social.instagram: "Перейти на Instagram сторінку Karma"
+footer.social.telegram: "Перейти в Telegram канал Karma"
+footer.social.whatsapp: "Написати в WhatsApp"
+footer.privacy.title: "Політика конфіденційності"
+footer.feedback.title: "Зворотний зв'язок:"
+footer.logo.alt: "Логотип Karma Flights - перейти на головну сторінку"
+footer.nav.aria: "Меню футера"
+footer.mobile.nav.aria: "Мобільне меню футера"
+# -- Main page --
+
+# -- Catalog page --
+
+# Catalog Hero Section
+catalog.hero.breadcrumb.home: "Головна"
+catalog.hero.button.proposal: "Отримати пропозицію"
+catalog.hero.description.stacks: "Компактна та продуктивна інтегрована система для дронів, що об'єднує польотний контролер (FC) на базі потужного мікроконтролера STM32F405 та регулятор швидкості (ESC) 4-в-1 з підтримкою до 20А (25А піково).\n\nЗавдяки своїм невеликим розмірам та високій функціональності, включаючи вбудований OSD, а часто також барометр і \"чорний ящик\", він є ідеальним вибором для створення легких та маневрених FPV-дронів"
+catalog.hero.description.vtx: "Професійні відеопередавачі для FPV систем з підтримкою різних частот та потужностей. Забезпечують стабільний сигнал та високу якість відеопередачі на великі відстані."
+catalog.hero.description.esc: "Високоякісні електронні регулятори швидкості для безколекторних двигунів. Підтримують різні прошивки та забезпечують плавне керування швидкістю з високою точністю та надійністю."
+catalog.hero.aria.breadcrumb: "Навігація breadcrumb"
+catalog.hero.aria.button: "Отримати комерційну пропозицію для"
+catalog.hero.aria.bg1: "Декоративний фоновий елемент"
+catalog.hero.aria.bg2: "Декоративний фоновий елемент"
+catalog.hero.aria.stack.left: "Елемент стеку зліва"
+catalog.hero.aria.stack.right: "Елемент стеку справа"
+catalog.hero.aria.stack.rotate: "Karma Flights - високотехнологічне українське виробництво"
+
+

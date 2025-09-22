@@ -1,5 +1,10 @@
 {{ define "main" }}
-{{- $categorySlug := .File.BaseFileName -}}
+{{ $categorySlug := "" }}
+{{ if .File }}
+{{ $categorySlug = .File.BaseFileName }}
+{{ else }}
+{{ $categorySlug = .Section }}
+{{ end }}
 {{- $categoryData := index .Site.Data.products.categories $categorySlug -}}
 
 <!-- Hero Section -->

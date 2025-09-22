@@ -1,26 +1,90 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Content Manager</title>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  </head>
-  <body>
-    <!-- Include the script that builds the page and powers Decap CMS -->
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    
-    <!-- Netlify Identity Widget -->
-    <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Manager</title>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+
+<body>
+  <!-- Decap CMS -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+
+    CMS.registerEditorComponent({
+        // Унікальний ID
+        id: "figure",
+        // Назва у випадаючому меню
+        label: "Figure Image",
+        // Поля у формі в адмінці
+        fields: [
+          { name: "src", label: "Image", widget: "image" },
+          { name: "alt", label: "Alt Text", widget: "string" },
+          { name: "caption", label: "Caption", widget: "string", required: false },
+          { name: "align", label: "Align", widget: "select", options: ["left", "right", "center"], default: "right" },
+          { name: "width", label: "Container Width", widget: "string", required: false, default: "40%", hint: "e.g. 40%" },
+          { name: "img_width", label: "Image Width", widget: "string", required: false, default: "100%", hint: "e.g. 100%" },
+          { name: "class", label: "Extra CSS classes", widget: "string", required: false }
+        ],
+        // Як CMS розпізнає цей блок у Markdown файлі
+        pattern: /^\{\{< figure src="([^"]+)"(?: alt="([^"]*)")?(?: caption="([^"]*)")?(?: align="([^"]*)")?(?: width="([^"]*)")?(?: img_width="([^"]*)")?(?: class="([^"]*)")? >\}\}$/,
+        fromBlock: function (match) {
+          return {
+            src: match[1],
+            alt: match[2],
+            caption: match[3],
+            align: match[4],
+            width: match[5],
+            img_width: match[6],
+            class: match[7]
+          };
+        },
+        // Як CMS генерує Markdown
+        toBlock: function (obj) {
+          let shortcode = `{{< figure src="${obj.src}"`;
+          if (obj.alt) shortcode += ` alt="${obj.alt}"`;
+          if (obj.caption) shortcode += ` caption="${obj.caption}"`;
+          if (obj.align) shortcode += ` align="${obj.align}"`;
+          if (obj.width) shortcode += ` width="${obj.width}"`;
+          if (obj.img_width) shortcode += ` img_width="${obj.img_width}"`;
+          if (obj.class) shortcode += ` class="${obj.class}"`;
+          shortcode += " >}}";
+          return shortcode;
+        },
+        // Генерація прев'ю
+        toPreview: function (obj) {
+          let figureStyle = `margin: 10px; width: ${obj.width || '40%'};`;
+          if (obj.align === 'left' || obj.align === 'right') {
+            figureStyle += ` float: ${obj.align};`;
+          } else if (obj.align === 'center') {
+            figureStyle += ` display: block; margin-left: auto; margin-right: auto;`;
           }
-        });
-      }
-    </script>
-  </body>
+
+          const imgStyle = `max-width: 100%; width: ${obj.img_width || '100%'}; margin-bottom: 8px; object-fit: contain; display: inline-block;`;
+
+          return (
+            '<figure style="' + figureStyle + '">' +
+              '<img src="' + obj.src + '" alt="' + (obj.alt || '') + '" style="' + imgStyle + '">' +
+              (obj.caption ? '<figcaption style="margin-top: 4px; font-size: 0.875rem; text-align: center; color: #6b7280;">' + obj.caption + '</figcaption>' : '') +
+            '</figure>'
+          );
+        }
+      });
+  </script>
+
+
+</body>
+
 </html>

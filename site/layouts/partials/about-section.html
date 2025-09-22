@@ -21,7 +21,6 @@
     width="{{ $bgEl2_1x.Width }}" height="{{ $bgEl2_1x.Height }}" loading="lazy" />
   {{ end }}
 
-
   <!-- Mobile layout -->
   <div class="max-[767px]:block min-[768px]:hidden relative z-[22]">
     {{ $aboutMobile := resources.Get "img/about-mob.png" }}
@@ -31,11 +30,10 @@
     <img fetchpriority="high" src="{{ $medium.RelPermalink }}" srcset="
           {{ $small.RelPermalink }} 400w,
           {{ $medium.RelPermalink }} 800w,
-        " sizes="(max-width: 639px) 100vw,582px" alt="Про нас - українська компанія високотехнологічного виробництва"
-      width="566" height="481" decoding="async" class="mb-6 w-full h-[350px] origin-left object-cover" />
+        " sizes="(max-width: 639px) 100vw,582px" alt="{{ i18n " about.alt" }}" width="566" height="481"
+      decoding="async" class="mb-6 w-full h-[350px] origin-left object-cover" />
     {{ else }}
-    <img fetchpriority="high" src="/img/about-mob.png"
-      alt="Про нас - українська компанія високотехнологічного виробництва"
+    <img fetchpriority="high" src="/img/about-mob.png" alt="{{ i18n " about.alt" }}"
       class=" mb-6 w-full h-[350px] origin-left object-cover" />
     {{ end }}
 
@@ -46,16 +44,10 @@
       </h3>
       <div class="space-y-6 mb-[60px]">
         <p class="text-[16px] font-['Montserrat'] leading-[120%] ">
-          Ми — українська компанія, що спеціалізується на розробці та
-          виробництві високотехнологічної техніки для сучасного світу. Наше
-          виробництво поєднує іновації, точну інженерію та найсучасніше
-          обладнання, щоб створювати надійні рішення для промисловості,
-          енергетики, агросектору та оборонної сфери.
+          {{ i18n "about.paragraph-one" }}
         </p>
         <p class="text-[16px] font-['Montserrat'] leading-[120%] ">
-          Ми впроваджуємо повний цикл: від ідеї та прототипу — до серійного
-          виробництва. Усе — на українських потужностях, з дотриманням
-          міжнародних стандартів якості.
+          {{ i18n "about.paragraph-two" }}
         </p>
       </div>
     </div>
@@ -66,30 +58,23 @@
     {{ $aboutDesktop := resources.Get "img/about.png" }}
     {{ if $aboutDesktop }}
     {{ $aboutDesktopProcessed := $aboutDesktop.Resize "628x400 webp q80" }}
-    <img src="{{ $aboutDesktopProcessed.RelPermalink }}"
-      alt="Про нас - українська компанія високотехнологічного виробництва" width="628" height="400"
+    <img src="{{ $aboutDesktopProcessed.RelPermalink }}" alt="{{ i18n " about.alt" }}" width="628" height="400"
       class="w-full max-w-[628px] h-[400px] rounded-t-[8px]  mb-8 object-cover" loading="lazy" />
     {{ else }}
-    <img src="/img/about.png" alt="Про нас - українська компанія високотехнологічного виробництва" width="568"
-      height="400" class="w-full max-w-[628px] h-[400px] rounded-t-[8px]  mb-8 object-cover" />
+    <img src="/img/about.png" alt="{{ i18n " about.alt" }}" width="568" height="400"
+      class="w-full max-w-[628px] h-[400px] rounded-t-[8px]  mb-8 object-cover" />
     {{ end }}
     <div class="max-w-[649px] mx-auto px-5">
       <h3
         class="text-[clamp(24px,3vw,40px)] font-['Unbounded'] text-[#020303] font-medium leading-[1.2] mb-4 text-left">
-        <span class="text-[#ba0108]">П</span>РО НАС
+        <span class="text-[#ba0108]">{{ i18n "about.brand" }}</span>{{ i18n "about.subtitle" }}
       </h3>
       <div class="space-y-6 mb-[60px]">
         <p class="text-[clamp(16px,2vw,20px)] font-normal font-['Montserrat'] leading-[1.7]  text-left">
-          Ми — українська компанія, що спеціалізується на розробці та
-          виробництві високотехнологічної техніки для сучасного світу. Наше
-          виробництво поєднує іновації, точну інженерію та найсучасніше
-          обладнання, щоб створювати надійні рішення для промисловості,
-          енергетики, агросектору та оборонної сфери.
+          {{ i18n "about.paragraph-one" }}
         </p>
         <p class="text-[clamp(16px,2vw,20px)] font-normal font-['Montserrat'] leading-[1.7]  text-left">
-          Ми впроваджуємо повний цикл: від ідеї та прототипу — до серійного
-          виробництва. Усе — на українських потужностях, з дотриманням
-          міжнародних стандартів якості.
+          {{ i18n "about.paragraph-two" }}
         </p>
       </div>
     </div>
@@ -102,12 +87,11 @@
       {{ $aboutDesktop := resources.Get "img/about.png" }}
       {{ if $aboutDesktop }}
       {{ $aboutDesktopProcessed := $aboutDesktop.Resize "568x400 webp q80" }}
-      <img src="{{ $aboutDesktopProcessed.RelPermalink }}"
-        alt="Про нас - українська компанія високотехнологічного виробництва" width="568" height="400"
+      <img src="{{ $aboutDesktopProcessed.RelPermalink }}" alt="{{ i18n " about.alt" }}" width="568" height="400"
         class="w-full h-[400px] rounded-tr-[8px] object-cover shadow-lg" loading="lazy" />
       {{ else }}
-      <img src="/img/about.png" alt="Про нас - українська компанія високотехнологічного виробництва" width="568"
-        height="400" class="w-full h-[400px] rounded-t-[8px] object-cover shadow-lg" />
+      <img src="/img/about.png" alt="{{ i18n " about.alt" }}" width="568" height="400"
+        class="w-full h-[400px] rounded-t-[8px] object-cover shadow-lg" />
       {{ end }}
     </div>
 
@@ -116,20 +100,14 @@
       <div class="max-w-[649px]">
         <h3
           class="text-[24px] md:text-[32px] lg:text-[40px] font-['Unbounded'] text-[#020303] font-medium mb-[10px] text-left">
-          <span class="text-[#ba0108]">П</span>РО НАС
+          <span class="text-[#ba0108]">{{ i18n "about.brand" }}</span>{{ i18n "about.subtitle" }}
         </h3>
         <div class="space-y-6 mb-[60px]">
           <p class="text-[clamp(16px,2vw,20px)] font-normal font-['Montserrat'] leading-[120%]  text-left">
-            Ми — українська компанія, що спеціалізується на розробці та
-            виробництві високотехнологічної техніки для сучасного світу. Наше
-            виробництво поєднує іновації, точну інженерію та найсучасніше
-            обладнання, щоб створювати надійні рішення для промисловості,
-            енергетики, агросектору та оборонної сфери.
+            {{ i18n "about.paragraph-one" }}
           </p>
           <p class="text-[clamp(16px,2vw,20px)] font-normal font-['Montserrat'] leading-[120%]  text-left">
-            Ми впроваджуємо повний цикл: від ідеї та прототипу — до серійного
-            виробництва. Усе — на українських потужностях, з дотриманням
-            міжнародних стандартів якості.
+            {{ i18n "about.paragraph-two" }}
           </p>
         </div>
       </div>
