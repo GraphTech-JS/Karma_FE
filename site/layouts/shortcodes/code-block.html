@@ -1,0 +1,37 @@
+{{ $language := .Get "language" | lower }}
+
+<div class="code-block" data-language="{{ $language }}" hidden>
+    {{ highlight .Inner $language "" }}
+</div>
+
+
+<script>
+    function initializeCodeGroups() {
+            const codeGroups = document.querySelectorAll('.code-group');
+            codeGroups.forEach(group => {
+                const buttons = group.querySelectorAll('.code-tab-button');
+                const codeBlocks = group.querySelectorAll('.code-block');
+                if (codeBlocks.length > 0) {
+                    codeBlocks[0].removeAttribute('hidden');
+                }
+                buttons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const language = button.dataset.language;
+                        buttons.forEach(btn => {
+                            btn.classList.remove('active', 'bg-white', 'text-gray-900', 'shadow-sm');
+                            btn.classList.add('bg-transparent', 'text-gray-600', 'hover:bg-gray-200');
+                        });
+                        codeBlocks.forEach(block => block.setAttribute('hidden', ''));
+
+                        button.classList.add('active', 'bg-white', 'text-gray-900', 'shadow-sm');
+                        button.classList.remove('bg-transparent', 'text-gray-600', 'hover:bg-gray-200');
+                        const blockToShow = group.querySelector(`.code-block[data-language="${language}"]`);
+                        if (blockToShow) {
+                            blockToShow.removeAttribute('hidden');
+                        }
+                    });
+                });
+            });
+        }
+        document.addEventListener('DOMContentLoaded', initializeCodeGroups);
+</script>

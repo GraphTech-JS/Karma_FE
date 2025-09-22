@@ -5,8 +5,7 @@ backend:
 # Editorial workflow for content approval
 publish_mode: editorial_workflow
 
-local_backend:
-  url: http://localhost:8082
+local_backend: true
 
 media_folder: "site/static/img"
 public_folder: "/img"
@@ -230,32 +229,112 @@ collections:
                   { label: "Text", name: "text", widget: "text", i18n: true },
                 ],
             }
-  - name: "faq"
+  - name: "faq_pages"
     label: "FAQ"
     folder: "site/content/faq"
-    create: true
+    create: false
     i18n: true
+    slug: "{{slug}}"
     fields:
       - {
-          label: "Питання (Заголовок)",
+          label: "Головний заголовок сторінки",
           name: "title",
           widget: "string",
           i18n: true,
         }
       - {
-          label: "Дата",
-          name: "date",
-          widget: "datetime",
-          required: false,
-          i18n: "duplicate",
+          label: "Опис під заголовком",
+          name: "description",
+          widget: "text",
+          i18n: true,
         }
-      - {
-          label: "Порядок сортування (Weight)",
-          name: "weight",
-          widget: "number",
-          min: 1,
-          default: 100,
-          i18n: "duplicate",
-          hint: "Чим менше число, тим вище питання буде у списку.",
-        }
-      - { label: "Відповідь", name: "body", widget: "markdown", i18n: true }
+
+      # --- General Questions ---
+      - label: "Група 'Загальні питання'"
+        name: "general_questions"
+        widget: "object"
+        i18n: true
+        fields:
+          - {
+              label: "Заголовок групи",
+              name: "title",
+              widget: "string",
+              i18n: true,
+            }
+          - label: "Список питань"
+            name: "questions"
+            widget: "list"
+            i18n: true
+            fields:
+              - {
+                  label: "Питання",
+                  name: "question",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Відповідь",
+                  name: "answer",
+                  widget: "markdown",
+                  i18n: true,
+                }
+
+      # --- Common Questions ---
+      - label: "Група 'Поширені питання'"
+        name: "common_questions"
+        widget: "object"
+        i18n: true
+        fields:
+          - {
+              label: "Заголовок групи",
+              name: "title",
+              widget: "string",
+              i18n: true,
+            }
+          - label: "Список питань"
+            name: "questions"
+            widget: "list"
+            i18n: true
+            fields:
+              - {
+                  label: "Питання",
+                  name: "question",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Відповідь",
+                  name: "answer",
+                  widget: "markdown",
+                  i18n: true,
+                }
+
+      # --- Stack Questions ---
+      - label: "Група 'Найпоширеніші запитання про політичні стеки'"
+        name: "stack_questions"
+        widget: "object"
+        i18n: true
+        fields:
+          - {
+              label: "Заголовок групи",
+              name: "title",
+              widget: "string",
+              i18n: true,
+            }
+          - label: "Список питань"
+            name: "questions"
+            widget: "list"
+            i18n: true
+            fields:
+              - {
+                  label: "Питання",
+                  name: "question",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Відповідь",
+                  name: "answer",
+                  widget: "markdown",
+                  i18n: true,
+                }

@@ -55,10 +55,15 @@
     {{ end }}
 
     <div class="max-w-[1055px] w-full mx-auto pt-[100px] md:pt-[80px] px-[20px]">
+      {{ if $title }}
+      {{ $firstLetter := substr $title 0 1 }}
+      {{ $restOfTitle := substr $title 1 }}
+      
       <h1 id="faq-hero-heading"
         class="title hero-title !text-[clamp(24px,4vw,48px)] font-medium font-[Unbounded] text-[#fefefe] !mb-[30px] !md:mb-[35px] !lg:mb-[15px]">
-        <span>П</span>{{ $title }}
+        <span class="text-[#ba0108]">{{ $firstLetter }}</span>{{ $restOfTitle }}
       </h1>
+      {{ end }}
       <h3
         class="max-w-[min(1155px,85vw)] mx-auto text-[#fefefe] text-[clamp(16px,2vw,20px)] font-[Montserrat] font-normal">
         {{ $subtitle }}
@@ -76,14 +81,5 @@
       background-position: center;
       margin-bottom: 20px;
       margin-top: -1px !important;
-    }
-
-    .title {
-      font-family: 'Unbounded', sans-serif;
-      font-weight: 600;
-    }
-
-    .title span {
-      color: #ba0108;
     }
   </style>

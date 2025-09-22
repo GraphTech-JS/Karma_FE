@@ -1,0 +1,49 @@
+{{ define "main" }}
+
+{{- $currentProduct := dict
+"id" (.Params.product_id | default "2233")
+"name" .Title
+"image" (.Params.image | default "/img/our-product1.png")
+"alt" .Title
+"price" (.Params.price | default 2500)
+"currency" (.Params.currency | default "грн")
+"in_stock" (.Params.in_stock | default true)
+-}}
+
+{{- $category := dict "name" "Політні стеки" -}}
+
+<!-- Product Hero Section -->
+{{ partial "product-hero-detailed" (dict "context" . "product" $currentProduct "category" $category) }}
+
+<!-- Product Specifications Section -->
+{{ partial "product-specifications" . }}
+
+<!-- Product Features Section -->
+{{ partial "product-features-section" . }}
+
+
+<!-- Product Cost Calculation Section -->
+{{ partial "product-cost-calculation" . }}
+
+<!-- Product Instructions Section -->
+{{ partial "product-instructions" . }}
+
+<!-- Product Catalog Section -->
+{{ partial "product-catalog-section" . }}
+
+<!-- FAQ Section -->
+<div class="bg-white py-[80px]">
+    <div class="max-w-[1440px] mx-auto px-4">
+        {{ with site.GetPage "/faq" }}
+        {{ with .Params.stack_questions }}
+        {{ partial "accordion" (dict "context" $ "className" "mb-[48px]" "title" .title "items" .questions
+        "titleClassName" "!text-[48px] !text-center !uppercase !font-medium ![font-family:var(--font-unbounded)]") }}
+        {{ end }}
+        {{ end }}
+    </div>
+</div>
+
+<!-- Contact Form Section -->
+{{ partial "contact-form-section" . }}
+
+{{ end }}

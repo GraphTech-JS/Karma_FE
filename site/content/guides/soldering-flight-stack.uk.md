@@ -33,7 +33,7 @@ slug: "How to properly solder a flight stack. Instructions"
 
 Охолодження. Після пайки дайте компонентам охолонути природним шляхом. Не видувайте повітря на місце пайки, бо це може призвести до утворення "холодної пайки".
 
-<section class="bg-gray">
+{{< grayblock >}}
 
 ## Інструкція
 
@@ -41,8 +41,7 @@ slug: "How to properly solder a flight stack. Instructions"
 2.  Встановіть температуру паяльника відповідно до типу припою. Для свинцевого припою зазвичай вистачає 300-350°C, для безсвинцевого – 350-400°C.
 3.  Встановіть температуру паяльника відповідно до типу припою. Для свинцевого припою зазвичай вистачає 300-350°C, для безсвинцевого – 350-400°C.
 4.  Встановіть температуру паяльника відповідно до типу припою. Для свинцевого припою зазвичай вистачає 300-350°C, для безсвинцевого – 350-400°C.
-
-</section>
+    {{< /grayblock >}}
 
 ## Рекомендації
 
@@ -54,10 +53,27 @@ slug: "How to properly solder a flight stack. Instructions"
 
 Почніть з паяння простих компонентів, таких як дрібні резистори чи конденсатори, на старій або тестовій платі. Це допоможе вам відчути температуру і кількість припою.
 
-<section class="shadow">
+{{< code-group languages="Python, Java, JavaScript" >}}
 
-## Markdown
+{{< code-block language="python" >}}
+def say_hello():
+print("Hello!")
+{{< /code-block >}}
 
-![Markdown](/img/markdown.png)
+{{< code-block language="java" >}}
+class Soldering {
+public static void main(String[] args) {
+System.out.println("Connecting red wire to VCC...");
+System.out.println("Connecting black wire to GND...");
+}
+}
+{{< /code-block >}}
 
-</section>
+{{< code-block language="javascript" >}}
+function connectWires() {
+console.log("Connecting red wire to VCC...");
+console.log("Connecting black wire to GND...");
+}
+{{< /code-block >}}
+
+{{< /code-group >}}

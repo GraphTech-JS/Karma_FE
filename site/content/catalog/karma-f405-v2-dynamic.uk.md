@@ -20,7 +20,7 @@ specs:
   - label: Роз'єм живлення
     value: XT-60
 draft: false
-layout: catalog
+layout: product
 currency: грн
 in_stock: true
 ---
@@ -48,6 +48,7 @@ in_stock: true
 ## Застосування
 
 Рекомендується для:
+
 - Професійних FPV дронів
 - Важких 5-7 дюймових квадрокоптерів
 - Дронів для змагань

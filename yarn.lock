@@ -2263,6 +2263,11 @@
   resolved "https://registry.npmjs.org/@ungap/structured-clone/-/structured-clone-1.3.0.tgz"
   integrity sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==
 
+"@uploadcare/cname-prefix@^6.16.2":
+  version "6.17.0"
+  resolved "https://registry.npmjs.org/@uploadcare/cname-prefix/-/cname-prefix-6.17.0.tgz"
+  integrity sha512-UqomH1TtegTmltLhwnKTN4fPNzUlXx6LQZj0YNIkiA726ih+ao6oPS9ER1rvz/XX4e5EOl7/aj+AHHIscLPncQ==
+
 "@vercel/stega@^0.1.2":
   version "0.1.2"
   resolved "https://registry.npmjs.org/@vercel/stega/-/stega-0.1.2.tgz"
@@ -3904,7 +3909,7 @@ create-mixin@^3.0.0:
   resolved "https://registry.npmjs.org/create-mixin/-/create-mixin-3.0.0.tgz"
   integrity sha512-LkdMqnWT9LaqBN4huqpUnMz56Yr1mVSoCduAd2xXefgH/YZP2sXCMAyztXjk4q8hTF/TlcDa+zQW2aTgGdjjKQ==
 
-create-react-class@^15.5.1:
+create-react-class@^15.5.1, create-react-class@^15.7.0:
   version "15.7.0"
   resolved "https://registry.npmjs.org/create-react-class/-/create-react-class-15.7.0.tgz"
   integrity sha512-QZv4sFWG9S5RUvkTYWbflxeZX+JG7Cz0Tn33rQBJ+WFQTqTfUTjMjiv9tnfXazjsO5r0KhPs+AqCjyrQX6h2ng==
@@ -4362,7 +4367,7 @@ decamelize@^1.1.2:
   resolved "https://registry.npmjs.org/decamelize/-/decamelize-1.2.0.tgz"
   integrity sha512-z2S+W9X73hAUUki+N+9Za2lBlun89zigOyGrsax+KUQ6wKW4ZoWpEYBkGhQjwAjjDCkWxhY0VKEhk8wzY7F5cA==
 
-decap-cms-app@^3.0.2:
+decap-cms-app@^3.0.2, decap-cms-app@^3.8.3:
   version "3.8.3"
   resolved "https://registry.npmjs.org/decap-cms-app/-/decap-cms-app-3.8.3.tgz"
   integrity sha512-89Ia2gN4blEsQjZTDSI+VbQTAN8B6qa8S+2ffzDv48/poeZDyF94lLn/akfckZVSnmSIur4TTP14BRiiEjVUVw==
@@ -4595,6 +4600,19 @@ decap-cms-locales@^3.4.0:
   resolved "https://registry.npmjs.org/decap-cms-locales/-/decap-cms-locales-3.4.0.tgz"
   integrity sha512-CWTXt/72zrVTnIQvMTnFmwMPhotn600m88MkFcLEFxWf7QYTpPgpEpxrtTnxiuKJTyi5fQ7fpVzGYu72O5aowA==
 
+decap-cms-media-library-cloudinary@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.npmjs.org/decap-cms-media-library-cloudinary/-/decap-cms-media-library-cloudinary-3.1.0.tgz"
+  integrity sha512-dPBxCTi2PhSpuOMqa1fHmQzQXb/yEg0Djn80v15fnqjaLkCh/ByueB8V0l+WmyzViZXeStiQqhuIOhIttfsGiQ==
+
+decap-cms-media-library-uploadcare@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.npmjs.org/decap-cms-media-library-uploadcare/-/decap-cms-media-library-uploadcare-3.0.2.tgz"
+  integrity sha512-nBgA3Mx3z4rEhbuu5XFfOt8/PQ/LXYU/FnwR0bpYcsCXdWQUogp9F+gHrGoYF6UiDrkSPlUUFSTn3Jcfyn0xXQ==
+  dependencies:
+    uploadcare-widget "^3.7.0"
+    uploadcare-widget-tab-effects "^1.4.0"
+
 decap-cms-ui-auth@^3.0.0, decap-cms-ui-auth@^3.2.3:
   version "3.2.3"
   resolved "https://registry.npmjs.org/decap-cms-ui-auth/-/decap-cms-ui-auth-3.2.3.tgz"
@@ -4740,6 +4758,21 @@ decap-cms-widget-text@^3.2.0:
   integrity sha512-dUZzNW1YQwbrylGMLu+bDSfvLOsMlpCMb1AoOEeHgTyNvKS5/x+7t0vVh8Insz78i+z2eSv4uM9j31z4VzZfPg==
   dependencies:
     react-textarea-autosize "^8.0.0"
+
+decap-cms@^3.8.3:
+  version "3.8.3"
+  resolved "https://registry.npmjs.org/decap-cms/-/decap-cms-3.8.3.tgz"
+  integrity sha512-gB3sBnbue1CKnBA5+2rCNTAcKck1nJgaTL+vK4o3qVXN0+9xWInXO35YeXM5jWr7BM7vmitJ1BAzU7WOOoriBQ==
+  dependencies:
+    codemirror "^5.46.0"
+    create-react-class "^15.7.0"
+    decap-cms-app "^3.8.3"
+    decap-cms-media-library-cloudinary "^3.1.0"
+    decap-cms-media-library-uploadcare "^3.0.2"
+    file-loader "^6.2.0"
+    react "^19.1.0"
+    react-dom "^19.1.0"
+    svgo-loader "^3.0.3"
 
 decap-server@^3.3.1:
   version "3.3.1"
@@ -7651,6 +7684,11 @@ jpegtran-bin@^5.0.0:
     bin-wrapper "^4.0.0"
     logalot "^2.0.0"
 
+jquery@^3.7.1:
+  version "3.7.1"
+  resolved "https://registry.npmjs.org/jquery/-/jquery-3.7.1.tgz"
+  integrity sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==
+
 js-base64@^3.0.0:
   version "3.7.8"
   resolved "https://registry.npmjs.org/js-base64/-/js-base64-3.7.8.tgz"
@@ -8115,7 +8153,7 @@ loader-utils@^1.0.0:
     emojis-list "^3.0.0"
     json5 "^1.0.1"
 
-loader-utils@^2.0.0, loader-utils@^2.0.4:
+loader-utils@^2.0.0, loader-utils@^2.0.3, loader-utils@^2.0.4:
   version "2.0.4"
   resolved "https://registry.npmjs.org/loader-utils/-/loader-utils-2.0.4.tgz"
   integrity sha512-xXqpXoINfFhgua9xiqD8fPFHgkoq1mmmpE92WlDbm9rNRd/EbRb+Gqf908T2DMfuHjjJlksiK2RbHVOdD/MqSw==
@@ -12819,6 +12857,14 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
+svgo-loader@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.npmjs.org/svgo-loader/-/svgo-loader-3.0.3.tgz"
+  integrity sha512-6YdWYge3h0aCb8xHvPhGP4hofIU1OWfZm0I8bteab7hddeRN4fl3aIkN8Z/ZB/ji9QrMOd6C8wT8F1p31GUwuQ==
+  dependencies:
+    loader-utils "^2.0.3"
+    svgo "^2.8.0"
+
 svgo@^0.6.0:
   version "0.6.6"
   resolved "https://registry.npmjs.org/svgo/-/svgo-0.6.6.tgz"
@@ -12833,6 +12879,19 @@ svgo@^0.6.0:
     whet.extend "~0.9.9"
 
 svgo@^2.7.0:
+  version "2.8.0"
+  resolved "https://registry.npmjs.org/svgo/-/svgo-2.8.0.tgz"
+  integrity sha512-+N/Q9kV1+F+UeWYoSiULYo4xYSDQlTgb+ayMobAXPwMnLvop7oxKMo9OzIrX5x3eS4L4f2UHhc9axXwY8DpChg==
+  dependencies:
+    "@trysound/sax" "0.2.0"
+    commander "^7.2.0"
+    css-select "^4.1.3"
+    css-tree "^1.1.3"
+    csso "^4.2.0"
+    picocolors "^1.0.0"
+    stable "^0.1.8"
+
+svgo@^2.8.0:
   version "2.8.0"
   resolved "https://registry.npmjs.org/svgo/-/svgo-2.8.0.tgz"
   integrity sha512-+N/Q9kV1+F+UeWYoSiULYo4xYSDQlTgb+ayMobAXPwMnLvop7oxKMo9OzIrX5x3eS4L4f2UHhc9axXwY8DpChg==
@@ -13537,6 +13596,20 @@ update-browserslist-db@^1.1.3:
   dependencies:
     escalade "^3.2.0"
     picocolors "^1.1.1"
+
+uploadcare-widget-tab-effects@^1.4.0:
+  version "1.7.2"
+  resolved "https://registry.npmjs.org/uploadcare-widget-tab-effects/-/uploadcare-widget-tab-effects-1.7.2.tgz"
+  integrity sha512-56IxhR5TueGRv9ZUReAZTycV4iWBZ421L1KlMGpK7kCJs/vyQMDY+iQTr3WLtEUmq2Jl9v6H6EA471s3jjpGYQ==
+
+uploadcare-widget@^3.7.0, uploadcare-widget@3.x:
+  version "3.23.3"
+  resolved "https://registry.npmjs.org/uploadcare-widget/-/uploadcare-widget-3.23.3.tgz"
+  integrity sha512-Ch/MZdAaYqqm/nKg3uoW1VEJ2V/Wr8vsrx8qU20Uo/f/PRshK15KwkmZokbEoq/NAbW3+xAGzwW2BJWi+pnMpw==
+  dependencies:
+    "@uploadcare/cname-prefix" "^6.16.2"
+    escape-html "^1.0.3"
+    jquery "^3.7.1"
 
 uri-js@^4.2.2:
   version "4.4.1"

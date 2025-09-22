@@ -449,7 +449,11 @@
   }
 
   h3 {
-    @apply font-[Montserrat] text-[18px] font-normal mb-3 mt-6;
+    @apply font-[Montserrat] text-[18px] font-normal mb-3 mt-6 ;
+  }
+
+  h4 { 
+    @apply font-[Montserrat] text-[16px] font-normal mb-3 mt-6 border-b border-[#ba0108] pb-3 ;
   }
 
   p {
@@ -473,7 +477,7 @@
   }
 
   ul {
-    @apply list-disc pl-5 space-y-2 text-[#333] mb-4;
+    @apply list-disc pl-5 space-y-4 text-[#333] mb-4;
 
     li {
       @apply text-[16px] font-normal font-[Montserrat];
@@ -512,8 +516,7 @@
     section.shadow {
       @apply max-w-[694px] h-auto p-6 my-10 rounded-lg shadow-lg;
     }
-  
-    /* Стили для текста, который вы выделили в MD */
+
     .text-red {
       @apply text-[#ba0108];
     }
@@ -534,8 +537,12 @@
     }
   }
 
+    .code-tab-button{
+      @apply bg-[#F0F0F0] text-[#000000];
+    }
+
     .code-tab-button.active {
-      @apply bg-gray-800 text-white;
+      @apply bg-[#E3E3E3] text-[#000000];
     }
   
     .code-block {
@@ -547,5 +554,17 @@
         margin-bottom: 0;
       }
     }
+        .text-left {
+          text-align: left;
+        }
+    
+        .text-center {
+          text-align: center;
+        }
+    
+        .text-right {
+          text-align: right;
+        }
+    
 }
 

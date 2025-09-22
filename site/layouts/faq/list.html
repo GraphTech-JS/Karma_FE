@@ -1,6 +1,7 @@
 {{ define "main" }}
-{{ partial "faq-hero" (dict "title" "ОШИРЕНІ ПИТАННЯ" "subtitle" "Якщо Ви не знайшли інформації, яка вас цікавить, Виможете відправити нам запит за допомогою форми зворотнього зв'язку.") }}
-
+{{ with .Params.hero }}
+{{ partial "faq-hero" (dict "title" .title "subtitle" .description) }}
+{{ end }}
 {{ with .Params.general_questions }}
 {{ partial "accordion.html" (dict "title" .title "items" .questions "mode" "faq" "isFirst" true) }}
 {{ end }}

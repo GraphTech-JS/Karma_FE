@@ -1,0 +1,20 @@
+{{ $languagesStr := .Get "languages" }}
+{{ $languagesArray := split $languagesStr ", " }}
+
+<div class="code-group">
+    <div class="code-tabs not-prose  p-2 flex flex-wrap gap-2">
+        {{ range $index, $lang := $languagesArray }}
+        <button class="code-tab-button flex-1 text-center rounded-[10px] bg-[#F0F0F0] w-full py-[6px] text-[16px]
+                     {{ if eq $index 0 }}
+                       active bg-[#E3E3E3]
+                     {{ else }}
+                       bg-[#E3E3E3]
+                     {{ end }}" data-language="{{ $lang | lower }}">
+            {{ $lang }}
+        </button>
+        {{ end }}
+    </div>
+    <div class="code-blocks-container mt-[20ox] px-[20px] bg-[#FEFEFE] rounded-[10px] shadow-md">
+        {{ .Inner }}
+    </div>
+</div>
