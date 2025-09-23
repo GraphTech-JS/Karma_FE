@@ -765,6 +765,9 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
+      if (window.location.pathname.startsWith('/admin')) {
+        return;
+      }
 
       const dropdownParents = document.querySelectorAll('.dropdown-parent');
       dropdownParents.forEach(parent => {
