@@ -479,8 +479,6 @@
   <link rel="preload" as="image" href="/img/stack.png" media="(min-width: 1024px)">
   <!-- DNS prefetch for external domains -->
 
-  <link rel="dns-prefetch" href="https://identity.netlify.com" />
-
 
   <!-- Optimized Google Fonts loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -502,8 +500,6 @@
   <link rel="stylesheet" href="http://localhost:3000/main.css" />
   {{- end -}}
 
-  <!-- Netlify Identity Widget - loaded asynchronously -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" async></script>
 
   <!-- Enhanced Structured Data for SEO -->
   {{ if .IsHome }}
@@ -702,16 +698,6 @@
     // Also run after a short delay to catch dynamically loaded content
     setTimeout(addCopyButtons, 500);
 
-    // Netlify Identity Widget initialization
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
   </script>
 
 
