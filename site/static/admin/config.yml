@@ -1,21 +1,13 @@
 backend:
-  name: github
-  repo: GraphTech-JS/Karma_FE
+  name: git-gateway
   branch: main
-  auth_type: token
-  token: $GITHUB_TOKEN
 
+#publish_mode: editorial_workflow # Розкоментуйте, якщо потрібна модерація
 
-publish_mode: editorial_workflow
-
-local_backend: false
+# local_backend: true
 
 media_folder: "site/static/img"
 public_folder: "/img"
-
-# Site URL for proper preview - UPDATE WITH YOUR ACTUAL NETLIFY URL
-site_url: https://karma-fe.pages.dev
-display_url: https://karma-fe.pages.dev
 
 i18n:
   structure: multiple_files
