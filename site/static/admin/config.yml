@@ -7,7 +7,7 @@ backend:
 # Editorial workflow for content approval
 publish_mode: editorial_workflow
 
-local_backend: true
+local_backend: false
 
 media_folder: "site/static/img"
 public_folder: "/img"
