@@ -1,8 +1,9 @@
 ---
 title: "ПОЛІТНИЙ СТЕК KARMA F405 V1 (Dynamic)"
+slug: "politniy-stek-karma-f405-v1-dynamic"
 description: "Компактна та продуктивна інтегрована система для дронів з мікроконтролером STM32F405"
 date: 2024-08-25T00:00:00Z
-layout: "catalog"
+layout: "product"
 category: "politni-steky"
 product_id: "2233"
 image: "/img/our-product1.png"
@@ -48,6 +49,7 @@ draft: false
 ## Застосування
 
 Ідеально підходить для:
+
 - FPV дронів 3-5 дюймів
 - Гоночних квадрокоптерів
 - Фрістайл дронів

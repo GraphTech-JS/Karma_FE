@@ -22,6 +22,7 @@
 {{ $categoryProducts = where $products "Params.category" "in" $possibleCategories }}
 {{ $category = $categorySlug }}
 {{ end }}
+
 <section class="relative flex flex-col justify-center items-center gap-[20px] overflow-hidden">
   {{ if $context.IsHome }}
   <div
