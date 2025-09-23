@@ -11,81 +11,90 @@
 {{ $productImageResource = resources.Get "img/Stack-product.png" }}
 {{ end }}
 
-<section class="overflow-hidden relative bg-white">
+<section class="relative overflow-hidden bg-white">
   {{ with resources.Get "img/bg-el-1.png" }}
-    {{ $bgEl1Mobile := .Resize "200x185 webp q70" }}
-    {{ $bgEl1Desktop := .Resize "325x298 webp q80" }}
-    <picture>
-      <source media="(max-width:767px)" srcset="{{ $bgEl1Mobile.RelPermalink }}" type="image/webp">
-      <source media="(min-width:768px)" srcset="{{ $bgEl1Desktop.RelPermalink }}" type="image/webp">
-      <img src="{{ $bgEl1Desktop.RelPermalink }}" alt="" aria-hidden="true"
-           class="absolute z-[1] right-[-40px] lg:right-[-14px] xl:right-0 top-[-42px] md:top-[-65px] lg:top-[-60px] xl:top-0 w-[201px] h-[185px] md:w-[325px] md:h-[298px]"
-           loading="lazy" decoding="async" width="325" height="298"/>
-    </picture>
+  {{ $bgEl1Mobile := .Resize "200x185 webp q70" }}
+  {{ $bgEl1Desktop := .Resize "325x298 webp q80" }}
+  <picture>
+    <source media="(max-width:767px)" srcset="{{ $bgEl1Mobile.RelPermalink }}" type="image/webp">
+    <source media="(min-width:768px)" srcset="{{ $bgEl1Desktop.RelPermalink }}" type="image/webp">
+    <img src="{{ $bgEl1Desktop.RelPermalink }}" alt="" aria-hidden="true"
+      class="absolute z-[1] right-[-40px] lg:right-[-14px] xl:right-0 top-[-42px] md:top-[-65px] lg:top-[-60px] xl:top-0 w-[201px] h-[185px] md:w-[325px] md:h-[298px]"
+      loading="lazy" decoding="async" width="325" height="298" />
+  </picture>
   {{ end }}
 
   {{ with resources.Get "img/bg-el-2.png" }}
-    {{ $bgEl2Mobile := .Resize "171x199 webp q70" }}
-    {{ $bgEl2Desktop := .Resize "340x360 webp q80" }}
-    <picture>
-      <source media="(max-width:767px)" srcset="{{ $bgEl2Mobile.RelPermalink }}" type="image/webp">
-      <source media="(min-width:768px)" srcset="{{ $bgEl2Desktop.RelPermalink }}" type="image/webp">
-      <img src="{{ $bgEl2Desktop.RelPermalink }}" alt="" aria-hidden="true"
-           class="absolute z-[1] hidden md:block bottom-0 left-0 w-[171px] h-[199px] md:w-[217px] md:h-[253px] lg:w-[266px] lg:h-[310px] xl:w-[340px] xl:h-[360px]"
-           loading="lazy" decoding="async" width="340" height="360"/>
-    </picture>
+  {{ $bgEl2Mobile := .Resize "171x199 webp q70" }}
+  {{ $bgEl2Desktop := .Resize "340x360 webp q80" }}
+  <picture>
+    <source media="(max-width:767px)" srcset="{{ $bgEl2Mobile.RelPermalink }}" type="image/webp">
+    <source media="(min-width:768px)" srcset="{{ $bgEl2Desktop.RelPermalink }}" type="image/webp">
+    <img src="{{ $bgEl2Desktop.RelPermalink }}" alt="" aria-hidden="true"
+      class="absolute z-[1] hidden md:block bottom-0 left-0 w-[171px] h-[199px] md:w-[217px] md:h-[253px] lg:w-[266px] lg:h-[310px] xl:w-[340px] xl:h-[360px]"
+      loading="lazy" decoding="async" width="340" height="360" />
+  </picture>
   {{ end }}
 
-  <div class="w-full max-w-[1280px] flex flex-col mx-auto px-[clamp(20px,4vw,40px)] pt-[20px] md:pt-[40px] relative z-[2]">
+  <div
+    class="w-full max-w-[1280px] flex flex-col mx-auto px-[clamp(20px,4vw,40px)] pt-[20px] md:pt-[40px] relative z-[2]">
 
     {{/* breadcrumbs */}}
     <nav aria-label="Breadcrumb navigation"
-         class="flex flex-row items-start font-[Montserrat] gap-[clamp(8px,2vw,16px)] mb-[40px]">
+      class="flex flex-row items-start font-[Montserrat] gap-[clamp(8px,2vw,16px)] mb-[40px]">
       <ol class="flex flex-wrap items-center">
-        <li><a href="/" class="font-[Montserrat] text-[16px] lg:text-[20px] font-normal text-[#ba0108] leading-[120%]">Головна</a></li>
+        <li><a href="/"
+            class="font-[Montserrat] text-[16px] lg:text-[20px] font-normal text-[#ba0108] leading-[120%]">Головна</a>
+        </li>
         <li class="text-[#ba0108] px-[5px]" aria-hidden="true">&rarr;</li>
-        <li><a href="/catalog/{{ $context.Params.category | default "politni-steky" }}/" class="font-[Montserrat] text-[16px] lg:text-[20px] font-normal text-[#ba0108] leading-[120%]">{{ $categoryName }}</a></li>
+        <li><a href="/catalog/{{ $context.Params.category | default " politni-steky" }}/"
+            class="font-[Montserrat] text-[16px] lg:text-[20px] font-normal text-[#ba0108] leading-[120%]">{{
+            $categoryName }}</a></li>
         <li class="text-[#ba0108] px-[5px]" aria-hidden="true">&rarr;</li>
-        <li><span class="font-[Montserrat] text-[16px] lg:text-[20px] font-normal text-[#ba0108] leading-[120%]">{{ $productName }}</span></li>
+        <li><span class="font-[Montserrat] text-[16px] lg:text-[20px] font-normal text-[#ba0108] leading-[120%]">{{
+            $productName }}</span></li>
       </ol>
     </nav>
 
     <div class="flex flex-col gap-[clamp(24px,4vw,48px)] sm:flex-row md:items-start items-center">
 
-      <div class="flex relative flex-col items-center mb-6 w-full md:flex-row">
+      <div class="relative flex flex-col items-center w-full mb-6 md:flex-row">
 
         {{ with $productImageResource }}
-          {{ $productImageMobile  := .Resize "320x240 webp q75" }}
-          {{ $productImageTablet  := .Resize "480x360 webp q80" }}
-          {{ $productImageDesktop := .Resize "550x367 webp q85" }}
+        {{ $productImageMobile := .Resize "320x240 webp q75" }}
+        {{ $productImageTablet := .Resize "480x360 webp q80" }}
+        {{ $productImageDesktop := .Resize "550x367 webp q85" }}
 
-          <picture>
-            <source media="(max-width:767px)" srcset="{{ $productImageMobile.RelPermalink }}" type="image/webp">
-            <source media="(max-width:1023px)" srcset="{{ $productImageTablet.RelPermalink }}" type="image/webp">
-            <source media="(min-width:1024px)" srcset="{{ $productImageDesktop.RelPermalink }}" type="image/webp">
-            <img src="{{ $productImageDesktop.RelPermalink }}" alt="{{ $productName }}"
-                 class="object-contain max-w-none relative z-10 w-[clamp(350px,40vw,550px)] h-[clamp(230px,25vw,367px)]"
-                 width="550" height="367" loading="eager" fetchpriority="high" decoding="async"/>
-          </picture>
+        <picture>
+          <source media="(max-width:767px)" srcset="{{ $productImageMobile.RelPermalink }}" type="image/webp">
+          <source media="(max-width:1023px)" srcset="{{ $productImageTablet.RelPermalink }}" type="image/webp">
+          <source media="(min-width:1024px)" srcset="{{ $productImageDesktop.RelPermalink }}" type="image/webp">
+          <img src="{{ $productImageDesktop.RelPermalink }}" alt="{{ $productName }}"
+            class="object-contain max-w-none relative z-10 w-[clamp(350px,40vw,550px)] h-[clamp(230px,25vw,367px)]"
+            width="550" height="367" loading="eager" fetchpriority="high" decoding="async" />
+        </picture>
         {{ end }}
 
-        <div class="pointer-events-none absolute bottom-19 left-[20%] sm:left-[22%] md:left-[8%] lg:left-[4%]
-             w-[clamp(120px,15vw,410px)] h-[clamp(15px,2vw,80px)] rounded-full bg-black/15 blur-[34px] z-0 hidden sm:block"/>
+        <div
+          class="pointer-events-none absolute bottom-19 left-[20%] sm:left-[22%] md:left-[8%] lg:left-[4%]
+             w-[clamp(120px,15vw,410px)] h-[clamp(15px,2vw,80px)] rounded-full bg-black/15 blur-[34px] z-0 hidden sm:block" />
       </div>
 
-      <div class="flex flex-col items-center md:items-start lg:items-start pt-[43px] max-w-full md:max-w-[519px] lg:max-w-[531px] xl:max-w-[578px]">
-        <h1 class="font-[Unbounded] text-[#ba0108] uppercase font-medium leading-[1.1] text-[32px] md:text-[48px] w-full text-center md:text-left lg:text-left mb-2 ">
+      <div
+        class="flex flex-col items-center md:items-start lg:items-start pt-[43px] max-w-full md:max-w-[519px] lg:max-w-[531px] xl:max-w-[578px]">
+        <h1
+          class="font-[Unbounded] text-[#ba0108] uppercase font-medium leading-[1.1] text-[32px] md:text-[48px] w-full text-center md:text-left lg:text-left mb-2 ">
           ПОЛІТНИЙ СТЕК<br><span class="text-black">KARMA F405 V1</span>
         </h1>
         <p class="font-[Montserrat] text-[16px] lg:text-[20px] text-[#020303] leading-[120%]">
-          {{ $context.Params.description | default "Політний стек спрощує монтаж та підключення електроніки в дроні,..." }}
+          {{ $context.Params.description | default "Політний стек спрощує монтаж та підключення електроніки в дроні,..."
+          }}
         </p>
         <p class="font-[Montserrat] text-[16px] lg:text-[20px] text-[#020303] mt-5 mb-14 leading-[120%]">
           Він забезпечує стабільний політ, точне керування та ефективне розподілення потужності до моторів.
         </p>
-        <button onclick="window.openContactModal()"
-                aria-label="Отримати комерційну пропозицію для {{ $productName }}"
-                class="product-hero-button text-[16px] md:text-[24px] cursor-pointer font-medium text-white bg-[#ba0108] hover:bg-[#e39599] transition-colors w-full max-w-[458px] h-[58px] md:h-[70px] rounded-[20px] shadow">
+        <button onclick="window.openContactModal()" aria-label="Отримати комерційну пропозицію для {{ $productName }}"
+          class="product-hero-button text-[16px] md:text-[24px] cursor-pointer font-medium text-white bg-[#ba0108] hover:bg-[#e39599] transition-colors w-full max-w-[458px] h-[58px] md:h-[70px] rounded-[20px] shadow">
           Отримати пропозицію
         </button>
       </div>
