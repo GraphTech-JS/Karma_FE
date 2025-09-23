@@ -3,7 +3,7 @@ backend:
   repo: GraphTech-JS/Karma_FE
   branch: main
   auth_type: token
-  token: "{{GITHUB_TOKEN}}"
+  token: $GITHUB_TOKEN
 
 
 publish_mode: editorial_workflow
