@@ -1,6 +1,8 @@
 backend:
   name: github
-  branch: main
+  repo: "GraphTech-JS/Karma_FE" 
+  branch: "main"
+  auth_token: ${GITHUB_TOKEN}
 
 # Editorial workflow for content approval
 publish_mode: editorial_workflow
@@ -11,8 +13,8 @@ media_folder: "site/static/img"
 public_folder: "/img"
 
 # Site URL for proper preview - UPDATE WITH YOUR ACTUAL NETLIFY URL
-site_url: https://karma-fe.netlify.app
-display_url: https://karma-fe.netlify.app
+site_url: https://karma-fe.pages.dev
+display_url: https://karma-fe.pages.dev
 
 i18n:
   structure: multiple_files
