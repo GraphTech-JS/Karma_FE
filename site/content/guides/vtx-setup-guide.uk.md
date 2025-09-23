@@ -3,13 +3,16 @@ title: Налаштування VTX2
 description: Повний посібник по налаштуванню відеопередавача для FPV дрона
 date: 2024-01-03
 category: Відеопередавачі
+categorySlug: videoperedavachi-vtx
 tags:
   - VTX
   - відеопередавач
   - налаштування
   - FPV
 draft: false
-slug: Vtx2 settings
+slug: vtx2-settings
+translationKey: vtx2-settings
+
 ---
 
 

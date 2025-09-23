@@ -1,6 +1,5 @@
 {{ define "main" }}
 <section class="relative z-10 bg-white">
-  <!-- ИСПРАВЛЕНО: position: absolute заменен на position: fixed -->
   {{ $bgEl10 := resources.Get "img/bg-el-10.png" }}
   {{ if $bgEl10 }}
   {{ $bgEl10Desktop := $bgEl10.Resize "295x270 webp q80" }}
@@ -50,7 +49,7 @@
       {{ $guides := where .Site.RegularPages "Section" "guides" }}
       {{ range $index, $category := $categories }}
       {{ $categoryGuides := where $guides ".Params.category" $category }}
-      <details {{ if eq $index 0 }}open{{ end }} class="knowledge-section group overflow-hidden">
+      <details {{ if eq $index 0 }}open{{ end }} class="overflow-hidden knowledge-section group">
         <summary
           class="section-header bg-[#4a4a4a] text-white rounded-none cursor-pointer list-none outline-none select-none">
           <div
@@ -62,12 +61,12 @@
             </svg>
           </div>
         </summary>
-        <div class="section-content bg-white">
+        <div class="bg-white section-content">
           <div class="section-content-inner">
             {{ if $categoryGuides }}
             {{ range $categoryGuides }}
             <div class="knowledge-item mx-auto max-w-[1280px] px-0 lg:px-[20px] pr-[20px]">
-              <a href="{{ .RelPermalink}}" class="block py-4 lg:px-8 lg:py-6 hover:bg-gray-50 transition-colors">
+              <a href="{{ .RelPermalink}}" class="block py-4 transition-colors lg:px-8 lg:py-6 hover:bg-gray-50">
                 <div class="flex flex-1 gap-[11px] md:gap-[15px] items-start space-x-4">
                   <img src="/img/point.svg" alt="point" class="py-[5px] md:py-[10px]" />
                   <div class="flex-1">

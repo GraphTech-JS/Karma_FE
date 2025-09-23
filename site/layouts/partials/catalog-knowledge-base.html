@@ -1,28 +1,41 @@
-{{ $category := .Params.category | default "politni-steky" }}
-{{ $categoryData := index .Site.Data.products.categories $category }}
+{{- $ctx := .context | default . -}}
+{{- $category := .category | default $ctx.Params.category | default "politni-steky" -}}
+{{- $categoryName := i18n (printf "catalog.category.%s" $category) -}}
 
-{{/* Get guides from content files */}}
-{{ $guides := where .Site.RegularPages "Section" "guides" }}
-{{ $categoryGuides := slice }}
+{{- $guidesCurrent := where $ctx.Site.RegularPages "Section" "guides" -}}
 
-{{ if eq $category "politni-steky" }}
-{{ $categoryGuides = where $guides ".Params.category" "Політні стеки" }}
-{{ else if eq $category "videoperedavachi-vtx" }}
-{{ $categoryGuides = where $guides ".Params.category" "Відеопередавачі" }}
-{{ else if eq $category "esc" }}
-{{ $categoryGuides = where $guides ".Params.category" "ESC" }}
-{{ else }}
-{{ $categoryGuides = $guides }}
-{{ end }}
+{{- $catCandidates := dict
+"politni-steky" (slice "Політні стеки" "Flight Stacks")
+"videoperedavachi-vtx" (slice "Відеопередавачі" "Video transmitters" "Video transmitters VTX" "Відеопередавачі VTX")
+"esc" (slice "ESC")
+-}}
+{{- $names := index $catCandidates $category | default (slice $categoryName $category) -}}
 
-<div class="flex justify-center items-center flex-col max-w-[1280px] w-full mx-auto my-[60px] lg:my-[80px]  px-[20px]">
+{{- $bySlug := where $guidesCurrent ".Params.categorySlug" $category -}}
+{{- $byName := where $guidesCurrent ".Params.category" "in" $names -}}
+{{- $categoryGuides := cond (gt (len $bySlug) 0) $bySlug $byName -}}
+
+{{- if eq (len $categoryGuides) 0 -}}
+{{- $allGuides := slice -}}
+{{- range site.Sites -}}
+{{- range where .RegularPages "Section" "guides" -}}
+{{- $allGuides = $allGuides | append . -}}
+{{- end -}}
+{{- end -}}
+{{- $bySlugAll := where $allGuides ".Params.categorySlug" $category -}}
+{{- $byNameAll := where $allGuides ".Params.category" "in" $names -}}
+{{- $categoryGuides = cond (gt (len $bySlugAll) 0) $bySlugAll $byNameAll -}}
+{{- end -}}
+
+<div class="flex justify-center items-center flex-col max-w-[1280px] w-full mx-auto my-[60px] lg:my-[80px] px-[20px]">
     <h3
-        class="title hero-title text-black !text-[clamp(24px,3vw,40px)] text-center font-[Unbounded] font-medium mb-[20px] md:mb-[30px]">
-        <span class="text-[#ba0108]">Б</span>аза знань. {{ $categoryData.name }}
+        class="title hero-title text-black !text-[clamp(24px,3vw,40px)] uppercase text-center font-[Unbounded] font-medium mb-[20px] md:mb-[30px]">
+        <span class="text-[#ba0108]">{{ i18n "catalog.kb.title.brand" }}</span>{{ i18n "catalog.kb.title" }}. {{
+        $categoryName }}
     </h3>
 
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-[20px] md:gap-[24px] lg:gap-[21px] ">
-        {{ range $categoryGuides | first 3 }}
+        {{ range (first 3 (sort $categoryGuides "Date" "desc")) }}
         <div class="kb-card relative flex flex-col gap-[clamp(5px,2vw,10px)] w-full">
             {{ if .Params.image }}
             {{ $guideImage := resources.Get .Params.image }}
@@ -30,14 +43,13 @@
             {{ $guideImg200 := $guideImage.Resize "200x webp q65" }}
             {{ $guideImg300 := $guideImage.Resize "300x webp q65" }}
             {{ $guideImg400 := $guideImage.Resize "400x webp q65" }}
-            <img src="{{ $guideImg300.RelPermalink }}" srcset="{{ $guideImg200.RelPermalink }} 200w,
-                      {{ $guideImg300.RelPermalink }} 300w,
-                      {{ $guideImg400.RelPermalink }} 400w" sizes="(max-width: 480px) 200px,
-                     (max-width: 768px) 300px,
-                     400px" alt="{{ .Title }}" class="rounded-lg w-full h-[238px] object-contain" loading="lazy" />
+            <img src="{{ $guideImg300.RelPermalink }}"
+                srcset="{{ $guideImg200.RelPermalink }} 200w, {{ $guideImg300.RelPermalink }} 300w, {{ $guideImg400.RelPermalink }} 400w"
+                sizes="(max-width: 480px) 200px, (max-width: 768px) 300px, 400px" alt="{{ .Title }}"
+                class="rounded-lg w-full h-[238px] object-contain" loading="lazy" />
             {{ else }}
             <img src="{{ .Params.image }}" alt="{{ .Title }}" width="400"
-                class="rounded-lg  md:w-[300px] lg:w-[400px] w-full h-[238px]  object-contain" />
+                class="rounded-lg md:w-[300px] lg:w-[400px] w-full h-[238px] object-contain" />
             {{ end }}
             {{ else }}
             {{ $defaultImage := resources.Get "img/card-img-1.png" }}
@@ -45,20 +57,20 @@
             {{ $defaultImg200 := $defaultImage.Resize "200x webp q65" }}
             {{ $defaultImg300 := $defaultImage.Resize "300x webp q65" }}
             {{ $defaultImg400 := $defaultImage.Resize "400x webp q65" }}
-            <img src="{{ $defaultImg300.RelPermalink }}" srcset="{{ $defaultImg200.RelPermalink }} 200w,
-                      {{ $defaultImg300.RelPermalink }} 300w,
-                      {{ $defaultImg400.RelPermalink }} 400w" sizes="(max-width: 480px) 200px,
-                     (max-width: 768px) 300px,
-                     400px" alt="{{ .Title }}" class="rounded-lg w-full h-[238px] object-contain" loading="lazy" />
+            <img src="{{ $defaultImg300.RelPermalink }}"
+                srcset="{{ $defaultImg200.RelPermalink }} 200w, {{ $defaultImg300.RelPermalink }} 300w, {{ $defaultImg400.RelPermalink }} 400w"
+                sizes="(max-width: 480px) 200px, (max-width: 768px) 300px, 400px" alt="{{ .Title }}"
+                class="rounded-lg w-full h-[238px] object-contain" loading="lazy" />
             {{ else }}
             <img src="/img/card-img-1.png" alt="{{ .Title }}" width="400"
-                class="rounded-lg md:w-[300px] lg:w-[400px] w-full h-[238px]  object-contain" />
+                class="rounded-lg md:w-[300px] lg:w-[400px] w-full h-[238px] object-contain" />
             {{ end }}
             {{ end }}
+
             <div class="flex flex-col gap-[10px] max-[450px]:h-auto justify-between relative z-[1]">
                 <h4
                     class="text-[clamp(20px,2vw,24px)] max-[450px]:text-[18px] font-[Montserrat] font-medium max-[450px]:leading-tight">
-                    <span class="kb-title transition-colors duration-200">{{ .Title }}</span>
+                    <span class="transition-colors duration-200 kb-title">{{ .Title }}</span>
                 </h4>
                 <p
                     class="text-[clamp(16px,2vw,20px)] max-[450px]:text-[14px] font-[Montserrat] font-normal max-[450px]:leading-relaxed">
@@ -72,15 +84,15 @@
 
         {{ if lt (len $categoryGuides) 1 }}
         <div class="text-center">
-            <p class="text-[clamp(16px,2vw,20px)] font-[Montserrat] font-normal text-gray-500">Поки що немає статей для
-                цієї категорії. Додайте їх через CMS.</p>
+            <p class="text-[clamp(16px,2vw,20px)] font-[Montserrat] font-normal text-gray-500">
+                {{ i18n "catalog.kb.empty" }}
+            </p>
         </div>
         {{ end }}
     </div>
 </div>
 
 <style>
- 
     .kb-card:hover .kb-title {
         color: #ba0108;
     }
