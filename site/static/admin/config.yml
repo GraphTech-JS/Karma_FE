@@ -3,8 +3,9 @@ backend:
   repo: "GraphTech-JS/Karma_FE" 
   branch: "main"
   auth_token: ${GITHUB_TOKEN}
+  auth_type: "token"
 
-# Editorial workflow for content approval
+
 publish_mode: editorial_workflow
 
 local_backend: false
