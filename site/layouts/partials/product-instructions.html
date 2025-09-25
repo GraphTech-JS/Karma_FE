@@ -1,131 +1,147 @@
+{{- $t := printf "%T" . -}}
+{{- $isMap := in $t "map" -}}
+
+{{- $ctx := . -}}
+{{- $product := dict -}}
+
+{{- if $isMap -}}
+{{- with index . "context" }}{{ $ctx = . }}{{ end -}}
+{{- with index . "product" }}{{ $product = . }}{{ end -}}
+{{- else -}}
+{{- $product = .Params -}}
+{{- end -}}
+
+{{- $productName := $product.name | default $ctx.Title | default (i18n "product.hero.title.fallback") -}}
+{{- $code := $product.product_code | default $product.code | default $ctx.Params.product_code | default "KARMAF405V1"
+-}}
+
+{{- $dates := dict
+"bf450" "2025-08-10"
+"bf451" "2024-08-02"
+"inav" "2025-08-10"
+"ac" "2025-08-10"
+"ap" "2025-08-10"
+"price" "2024-09-16"
+-}}
+
 <section class="overflow-hidden relative py-[60px] md:py-[70px] lg:py-[80px]" aria-labelledby="instructions-heading">
   <div class="max-w-[1280px] mx-auto relative z-[2] px-[clamp(16px,4vw,32px)]">
     <h2 id="instructions-heading"
       class="font-['Unbounded'] text-[24px] md:text-[32px] lg:text-[48px] font-medium text-center mb-[25px] uppercase">
-      ІНСТРУКЦІЇ
+      {{ i18n "product.instructions.title" }}
     </h2>
 
     <div class="space-y-[30px] md:space-y-[21px]" role="list"
-      aria-label="Список інструкцій та документації для політного стеку">
-      <!-- Instruction Item 1 -->
-      <article
-        class="flex flex-col justify-between items-start sm:flex-row sm:items-center"
-        role="listitem">
+      aria-label='{{ i18n "product.instructions.aria.list" (dict "product" $productName) }}'>
+
+      <article class="flex flex-col justify-between items-start sm:flex-row sm:items-center" role="listitem">
         <div class="flex-1 w-full text-center sm:w-auto sm:text-left">
-          <h3 class="font-['Montserrat'] text-[16px] lg:text-[20px] xl:text-[24px] font-semibold text-[#404040] mb-[15px] md:mb-0">
-            Інструкція користувача (PDF)
+          <h3
+            class="font-['Montserrat'] text-[16px] lg:text-[20px] xl:text-[24px] font-semibold text-[#404040] mb-[15px] md:mb-0">
+            {{ i18n "product.instructions.item1.title" }}
           </h3>
         </div>
-        <button aria-label="Завантажити інструкцію користувача в форматі PDF"
-          class="border border-black text-[#ba0108] hover:text-white !font-['Montserrat'] text-[20px] lg:text-[24px] font-semibold w-full sm:w-auto md:w-[315px] lg:w-[477px]  h-[58px] px-[clamp(16px,3vw,40px)] rounded-[5px] cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#ba0107d5] hover:border-none">
-          Завантажити
+        <button aria-label='{{ i18n "product.instructions.item1.aria" }}'
+          class="border border-black text-[#ba0108] hover:text-white !font-['Montserrat'] text-[20px] lg:text-[24px] font-semibold w-full sm:w-auto md:w-[315px] lg:w-[477px] h-[58px] px-[clamp(16px,3vw,40px)] rounded-[5px] cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#ba0107d5] hover:border-none">
+          {{ i18n "product.instructions.download" }}
         </button>
       </article>
 
-      <!-- Instruction Item 2 -->
-      <article
-        class="flex flex-col justify-between items-start sm:flex-row sm:items-center"
-        role="listitem">
+      <article class="flex flex-col justify-between items-start sm:flex-row sm:items-center" role="listitem">
         <div class="flex-1 w-full text-center sm:w-auto sm:text-left">
-          <h3 class="font-['Montserrat'] text-[16px] lg:text-[20px] xl:text-[24px] font-semibold text-[#404040] mb-[15px] md:mb-0">
-            Рекомендації по збірці (PDF)
+          <h3
+            class="font-['Montserrat'] text-[16px] lg:text-[20px] xl:text-[24px] font-semibold text-[#404040] mb-[15px] md:mb-0">
+            {{ i18n "product.instructions.item2.title" }}
           </h3>
         </div>
-        <button aria-label="Завантажити рекомендації по збірці в форматі PDF"
-          class=" border border-black text-[#ba0108] hover:text-white !font-['Montserrat'] text-[20px] lg:text-[24px] font-semibold w-full sm:w-auto md:w-[315px] lg:w-[477px] h-[58px] px-[clamp(16px,3vw,40px)] rounded-[5px] cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#ba0107d5] hover:border-none">
-          Завантажити
+        <button aria-label='{{ i18n "product.instructions.item2.aria" }}'
+          class="border border-black text-[#ba0108] hover:text-white !font-['Montserrat'] text-[20px] lg:text-[24px] font-semibold w-full sm:w-auto md:w-[315px] lg:w-[477px] h-[58px] px-[clamp(16px,3vw,40px)] rounded-[5px] cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#ba0107d5] hover:border-none">
+          {{ i18n "product.instructions.download" }}
         </button>
       </article>
 
-      <!-- Instruction Item 3 -->
-      <article
-        class="flex flex-col justify-between items-start sm:flex-row sm:items-center"
-        role="listitem">
+        <article class="flex flex-col justify-between items-start sm:flex-row sm:items-center" role="listitem">
         <div class="flex-1 w-full text-center sm:w-auto sm:text-left">
-          <h3 class="font-['Montserrat'] text-[16px] lg:text-[20px] xl:text-[24px] font-semibold text-[#404040] mb-[15px] md:mb-0">
-            BetaFlight 4.5.0 KARMAF405V1 (2025-08-10) (hex)
+          <h3
+            class="font-['Montserrat'] text-[16px] lg:text-[20px] xl:text-[24px] font-semibold text-[#404040] mb-[15px] md:mb-0">
+            {{ i18n "product.instructions.item3.title" (dict "code" $code "date" (index $dates "bf450")) }}
           </h3>
         </div>
-        <button aria-label="Завантажити BetaFlight 4.5.0 KARMAF405V1 прошивку"
-          class=" border border-black text-[#ba0108] hover:text-white !font-['Montserrat'] text-[20px] lg:text-[24px] font-semibold w-full sm:w-auto md:w-[315px] lg:w-[477px]  h-[58px] px-[clamp(16px,3vw,40px)] rounded-[5px] cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#ba0107d5] hover:border-none">
-          Завантажити
+        <button
+          aria-label='{{ i18n "product.instructions.item3.aria" (dict "code" $code "version" "BetaFlight 4.5.0") }}'
+          class="border border-black text-[#ba0108] hover:text-white !font-['Montserrat'] text-[20px] lg:text-[24px] font-semibold w-full sm:w-auto md:w-[315px] lg:w-[477px] h-[58px] px-[clamp(16px,3vw,40px)] rounded-[5px] cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#ba0107d5] hover:border-none">
+          {{ i18n "product.instructions.download" }}
         </button>
       </article>
 
-      <!-- Instruction Item 4 -->
-      <article
-        class="flex flex-col justify-between items-start sm:flex-row sm:items-center"
-        role="listitem">
+      <article class="flex flex-col justify-between items-start sm:flex-row sm:items-center" role="listitem">
         <div class="flex-1 w-full text-center sm:w-auto sm:text-left">
-          <h3 class="font-['Montserrat'] text-[16px] lg:text-[20px] xl:text-[24px] font-semibold text-[#404040] mb-[15px] md:mb-0">
-            BetaFlight 4.5.1 KARMAF405V1 (2024-08-02) (hex)
+          <h3
+            class="font-['Montserrat'] text-[16px] lg:text-[20px] xl:text-[24px] font-semibold text-[#404040] mb-[15px] md:mb-0">
+            {{ i18n "product.instructions.item4.title" (dict "code" $code "date" (index $dates "bf451")) }}
           </h3>
         </div>
-        <button aria-label="Завантажити BetaFlight 4.5.1 KARMAF405V1 прошивку"
-          class=" border border-black text-[#ba0108] hover:text-white !font-['Montserrat'] text-[20px] lg:text-[24px] font-semibold w-full sm:w-auto md:w-[315px] lg:w-[477px]  h-[58px] px-[clamp(16px,3vw,40px)] rounded-[5px] cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#ba0107d5] hover:border-none">
-          Завантажити
+        <button
+          aria-label='{{ i18n "product.instructions.item4.aria" (dict "code" $code "version" "BetaFlight 4.5.1") }}'
+          class="border border-black text-[#ba0108] hover:text-white !font-['Montserrat'] text-[20px] lg:text-[24px] font-semibold w-full sm:w-auto md:w-[315px] lg:w-[477px] h-[58px] px-[clamp(16px,3vw,40px)] rounded-[5px] cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#ba0107d5] hover:border-none">
+          {{ i18n "product.instructions.download" }}
         </button>
       </article>
 
-      <!-- Instruction Item 5 -->
-      <article
-        class="flex flex-col justify-between items-start sm:flex-row sm:items-center"
-        role="listitem">
+      <article class="flex flex-col justify-between items-start sm:flex-row sm:items-center" role="listitem">
         <div class="flex-1 w-full text-center sm:w-auto sm:text-left">
-          <h3 class="font-['Montserrat'] text-[16px] lg:text-[20px] xl:text-[24px] font-semibold text-[#404040] mb-[15px] md:mb-0">
-            INAV 8.0.1 KARMAF405V1 (2025-08-10) (hex)
+          <h3
+            class="font-['Montserrat'] text-[16px] lg:text-[20px] xl:text-[24px] font-semibold text-[#404040] mb-[15px] md:mb-0">
+            {{ i18n "product.instructions.item5.title" (dict "code" $code "date" (index $dates "inav")) }}
           </h3>
         </div>
-        <button aria-label="Завантажити INAV 8.0.1 KARMAF405V1 прошивку"
-          class=" border border-black text-[#ba0108] hover:text-white !font-['Montserrat'] text-[20px] lg:text-[24px] font-semibold w-full sm:w-auto md:w-[315px] lg:w-[477px]  h-[58px] px-[clamp(16px,3vw,40px)] rounded-[5px] cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#ba0107d5] hover:border-none">
-          Завантажити
+        <button aria-label='{{ i18n "product.instructions.item5.aria" (dict "code" $code "version" "INAV 8.0.1") }}'
+          class="border border-black text-[#ba0108] hover:text-white !font-['Montserrat'] text-[20px] lg:text-[24px] font-semibold w-full sm:w-auto md:w-[315px] lg:w-[477px] h-[58px] px-[clamp(16px,3vw,40px)] rounded-[5px] cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#ba0107d5] hover:border-none">
+          {{ i18n "product.instructions.download" }}
         </button>
       </article>
 
-      <!-- Instruction Item 6 -->
-      <article
-        class="flex flex-col justify-between items-start sm:flex-row sm:items-center"
-        role="listitem">
+      <article class="flex flex-col justify-between items-start sm:flex-row sm:items-center" role="listitem">
         <div class="flex-1 w-full text-center sm:w-auto sm:text-left">
-          <h3 class="font-['Montserrat'] text-[16px] lg:text-[20px] xl:text-[24px] font-semibold text-[#404040] mb-[15px] md:mb-0">
-            ArduCopter 4.6.1b1 KARMAF405V1 (2025-08-10) (hex)
+          <h3
+            class="font-['Montserrat'] text-[16px] lg:text-[20px] xl:text-[24px] font-semibold text-[#404040] mb-[15px] md:mb-0">
+            {{ i18n "product.instructions.item6.title" (dict "code" $code "date" (index $dates "ac")) }}
           </h3>
         </div>
-        <button aria-label="Завантажити ArduCopter 4.6.1b1 KARMAF405V1 прошивку"
-          class=" border border-black text-[#ba0108] hover:text-white !font-['Montserrat'] text-[20px] lg:text-[24px] font-semibold w-full sm:w-auto md:w-[315px] lg:w-[477px]  h-[58px] px-[clamp(16px,3vw,40px)] rounded-[5px] cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#ba0107d5] hover:border-none">
-          Завантажити
+        <button
+          aria-label='{{ i18n "product.instructions.item6.aria" (dict "code" $code "version" "ArduCopter 4.6.1b1") }}'
+          class="border border-black text-[#ba0108] hover:text-white !font-['Montserrat'] text-[20px] lg:text-[24px] font-semibold w-full sm:w-auto md:w-[315px] lg:w-[477px] h-[58px] px-[clamp(16px,3vw,40px)] rounded-[5px] cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#ba0107d5] hover:border-none">
+          {{ i18n "product.instructions.download" }}
         </button>
       </article>
 
-      <!-- Instruction Item 7 -->
-      <article
-        class="flex flex-col justify-between items-start sm:flex-row sm:items-center"
-        role="listitem">
+      <article class="flex flex-col justify-between items-start sm:flex-row sm:items-center" role="listitem">
         <div class="flex-1 w-full text-center sm:w-auto sm:text-left">
-          <h3 class="font-['Montserrat'] text-[16px] lg:text-[20px] xl:text-[24px] font-semibold text-[#404040] mb-[15px] md:mb-0">
-            ArduPlane 4.6.1b1 KARMAF405V1 (2025-08-10) (hex)
+          <h3
+            class="font-['Montserrat'] text-[16px] lg:text-[20px] xl:text-[24px] font-semibold text-[#404040] mb-[15px] md:mb-0">
+            {{ i18n "product.instructions.item7.title" (dict "code" $code "date" (index $dates "ap")) }}
           </h3>
         </div>
-        <button aria-label="Завантажити ArduPlane 4.6.1b1 KARMAF405V1 прошивку"
-          class=" border border-black text-[#ba0108] hover:text-white !font-['Montserrat'] text-[20px] lg:text-[24px] font-semibold w-full sm:w-auto md:w-[315px] lg:w-[477px]  h-[58px] px-[clamp(16px,3vw,40px)] rounded-[5px] cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#ba0107d5] hover:border-none">
-          Завантажити
+        <button
+          aria-label='{{ i18n "product.instructions.item7.aria" (dict "code" $code "version" "ArduPlane 4.6.1b1") }}'
+          class="border border-black text-[#ba0108] hover:text-white !font-['Montserrat'] text-[20px] lg:text-[24px] font-semibold w-full sm:w-auto md:w-[315px] lg:w-[477px] h-[58px] px-[clamp(16px,3vw,40px)] rounded-[5px] cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#ba0107d5] hover:border-none">
+          {{ i18n "product.instructions.download" }}
         </button>
       </article>
 
-      <!-- Instruction Item 8 -->
-      <article
-        class="flex flex-col justify-between items-start sm:flex-row sm:items-center"
-        role="listitem">
+      <article class="flex flex-col justify-between items-start sm:flex-row sm:items-center" role="listitem">
         <div class="flex-1 w-full text-center sm:w-auto sm:text-left">
-          <h3 class="font-['Montserrat'] text-[16px] lg:text-[20px] xl:text-[24px] font-semibold text-[#404040] mb-[15px] md:mb-0">
-            Ціноутворення (2024-09-16)
+          <h3
+            class="font-['Montserrat'] text-[16px] lg:text-[20px] xl:text-[24px] font-semibold text-[#404040] mb-[15px] md:mb-0">
+            {{ i18n "product.instructions.item8.title" (dict "date" (index $dates "price")) }}
           </h3>
         </div>
-        <button aria-label="Завантажити ціноутворення від 2024-09-16"
-          class=" border border-black text-[#ba0108] hover:text-white !font-['Montserrat'] text-[20px] lg:text-[24px] font-semibold  w-full sm:w-auto md:w-[315px] lg:w-[477px]  h-[58px] px-[clamp(16px,3vw,40px)] rounded-[5px] cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#ba0107d5] hover:border-none">
-          Завантажити
+        <button aria-label='{{ i18n "product.instructions.item8.aria" (dict "date" (index $dates "price")) }}'
+          class="border border-black text-[#ba0108] hover:text-white !font-['Montserrat'] text-[20px] lg:text-[24px] font-semibold w-full sm:w-auto md:w-[315px] lg:w-[477px] h-[58px] px-[clamp(16px,3vw,40px)] rounded-[5px] cursor-pointer transition-all duration-300 ease-in-out hover:bg-[#ba0107d5] hover:border-none">
+          {{ i18n "product.instructions.download" }}
         </button>
       </article>
+
     </div>
   </div>
 </section>

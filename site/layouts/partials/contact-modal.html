@@ -2,26 +2,31 @@
   <div class="modal-container">
     <div class="modal-content">
       <!-- Close Button -->
-      <button class="cursor-pointer modal-close" id="closeModal" aria-label="Close modal">
-      <img src="/img/close.svg" alt="Close" width="24" height="24" />
+      <button class="cursor-pointer modal-close" id="closeContactModal" aria-label="{{ i18n " aria.modal.close" }}">
+        <img src="/img/close.svg" alt="{{ i18n " aria.modal.close" }}" width="24" height="24" />
       </button>
+
       <!-- Modal Header -->
       <div class="modal-header">
-        <h2 id="contactModalTitle" class="modal-title font-['Unbounded'] ">
-          <span class="title-highlight">З</span>алиште свій запит і ми
-          зв'яжемось з Вами <br /> та повідомимо про актуальні ціни
+        <h2 id="contactModalTitle" class="modal-title font-['Unbounded']">
+          <span class="title-highlight">{{ i18n "contact.modal.title.brand" }}</span>{{ i18n "contact.modal.title" }}
         </h2>
       </div>
-      <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
+
+      <!-- Toasts inside modal -->
+      <div class="toast-stack" id="modalToastStack" data-toast-stack="modal" aria-live="polite" aria-atomic="true">
+      </div>
+
       <!-- Contact Form -->
       <form class="contact-form" id="contactForm" novalidate>
         <div class="form-row">
           <div class="form-group">
-            <input type="text" id="userName" name="userName" placeholder="Ваше ім'я" class="form-input" required />
+            <input type="text" id="userName" name="userName" placeholder="{{ i18n "contact.form.name.placeholder" }}"
+              class="form-input" required />
           </div>
           <div class="form-group">
-            <input type="tel" id="userPhone" name="userPhone" placeholder="+380" class="form-input" inputmode="tel"
-              autocomplete="tel" required />
+            <input type="tel" id="userPhone" name="userPhone" placeholder="{{ i18n "contact.form.phone.placeholder" }}"
+              class="form-input" inputmode="tel" autocomplete="tel" required />
           </div>
         </div>
 
@@ -29,33 +34,39 @@
           <div class="custom-dropdown" id="quantityDropdown" role="button" aria-haspopup="listbox" aria-expanded="false"
             tabindex="0">
             <div class="dropdown-selected" id="quantitySelected">
-              <span class="placeholder">Кількість стеків, яку плануєте замовити</span>
+              <span class="placeholder">{{ i18n "contact.form.quantity.placeholder" }}</span>
             </div>
             <div class="dropdown-options" id="quantityOptions" role="listbox" tabindex="-1">
-              <div class="dropdown-option" role="option" data-value="0-20">0 - 20</div>
-              <div class="dropdown-option" role="option" data-value="20-100">20 - 100</div>
-              <div class="dropdown-option" role="option" data-value="100-1000">100 - 1 000</div>
-              <div class="dropdown-option" role="option" data-value="3000-10000">3 000 - 10 000</div>
-              <div class="dropdown-option" role="option" data-value="10000+">>10 000</div>
+              <div class="dropdown-option" role="option" data-value="0-20">{{ i18n "contact.form.quantity.0_20" }}</div>
+              <div class="dropdown-option" role="option" data-value="20-100">{{ i18n "contact.form.quantity.20_100" }}
+              </div>
+              <div class="dropdown-option" role="option" data-value="100-1000">{{ i18n "contact.form.quantity.100_1000"
+                }}</div>
+              <div class="dropdown-option" role="option" data-value="3000-10000">{{ i18n
+                "contact.form.quantity.3000_10000" }}</div>
+              <div class="dropdown-option" role="option" data-value="10000+">{{ i18n "contact.form.quantity.10000_plus"
+                }}</div>
             </div>
             <input type="hidden" id="quantity" name="quantity" required />
           </div>
         </div>
 
         <div class="form-group">
-          <textarea id="message" name="message" placeholder="Ваше повідомлення" class="form-textarea"
-            rows="4"></textarea>
+          <textarea id="message" name="message" placeholder="{{ i18n " contact.form.message.placeholder" |
+            default "Ваше повідомлення" }}" class="form-textarea" rows="4"></textarea>
         </div>
 
         <div class="contact-info">
           <div class="contact-wrapper">
-            <p class="contact-label">Наші контакти для зв'язку:</p>
+            <p class="contact-label">{{ i18n "contact.modal.contactsLabel" }}</p>
             <div class="contact-details">
-              <a href="tel:+380956156713" class="contact-phone"> +380 95 61 56713 </a>
-              <a href="mailto:info@karma.flights" class="contact-email"> info@karma.flights </a>
+              <a href="tel:+380956156713" class="contact-phone"> {{ i18n "contact.form.phone" | default
+                "+380956156713"}} </a>
+              <a href="mailto:info@karma.flights" class="contact-email"> {{ i18n "contact.form.email" | default
+                "info@karma.flights" }} </a>
             </div>
           </div>
-          <button type="submit" class="cursor-pointer submit-button-modal">Відправити</button>
+          <button type="submit" class="cursor-pointer submit-button-modal">{{ i18n "contact.form.submit" }}</button>
         </div>
       </form>
     </div>
@@ -75,7 +86,6 @@
     align-items: center;
     width: min(92%, 560px);
     pointer-events: none;
-
   }
 
   .toast {
@@ -86,7 +96,7 @@
     font-family: 'Montserrat', sans-serif;
     font-size: clamp(14px, 1.6vw, 16px);
     font-weight: 400;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .18);
     opacity: 0;
     max-width: 400px !important;
     width: 100% !important;
@@ -113,7 +123,6 @@
     border-color: transparent !important;
   }
 
-  /* Custom Dropdown Styles */
   .custom-dropdown {
     position: relative;
     display: flex;
@@ -126,7 +135,7 @@
     color: black;
     background: #f0f1f5;
     box-sizing: border-box;
-    transition: border-color 0.3s ease, border-radius 0.3s ease;
+    transition: border-color .3s ease, border-radius .3s ease;
     cursor: pointer;
     height: 65px;
   }
@@ -142,7 +151,7 @@
 
   .submit-button-modal {
     background: #ba0108 !important;
-    font-size: 20px!important;
+    font-size: 20px !important;
     font-family: 'Montserrat', sans-serif !important;
     font-weight: 400 !important;
     color: #fefefe !important;
@@ -151,7 +160,7 @@
     width: 465px !important;
     cursor: pointer !important;
     border-radius: 20px !important;
-    transition: background-color 0.2s ease !important;
+    transition: background-color .2s ease !important;
   }
 
   .submit-button-modal:hover {
@@ -163,7 +172,7 @@
   }
 
   .submit-button-modal:disabled {
-    opacity: 0.7;
+    opacity: .7;
     cursor: not-allowed !important;
   }
 
@@ -177,7 +186,7 @@
     align-items: center;
     font-size: 14px;
     color: #7e7e7e;
-    transition: all 0.2s ease;
+    transition: all .2s ease;
     width: 100%;
     pointer-events: none;
   }
@@ -202,11 +211,7 @@
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
-    transition:
-      max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-      opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-      transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-      visibility 0.5s ease;
+    transition: max-height .5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity .5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform .5s cubic-bezier(0.25, 0.46, 0.45, 0.94), visibility .5s ease;
     width: calc(100% + 2px);
   }
 
@@ -218,7 +223,7 @@
 
   .dropdown-option {
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color .2s ease;
     font-size: 14px;
     font-weight: 400;
     font-family: 'Montserrat', sans-serif;
@@ -226,7 +231,7 @@
     padding: 20px 34px !important;
     text-align: center;
     background: #eaeaec;
-    border-bottom: 1px solid rgba(64, 64, 64, 0.1);
+    border-bottom: 1px solid rgba(64, 64, 64, .1);
   }
 
   .dropdown-option:hover {
@@ -245,7 +250,7 @@
   .custom-dropdown.input-error,
   .form-textarea.input-error {
     border-color: #ba0108 !important;
-    box-shadow: 0 0 0 2px rgba(195, 51, 51, 0.08);
+    box-shadow: 0 0 0 2px rgba(195, 51, 51, .08);
     background: #fff6f6;
   }
 
@@ -253,12 +258,6 @@
     .submit-button-modal {
       width: 322px !important;
     }
-  }
-
-  @media (max-width: 1000px) {
-    
-
-
   }
 
   @media (max-width: 768px) {
@@ -313,8 +312,9 @@
 
   @media (max-width: 480px) {
     .contact-info {
-     padding-bottom: 40px !important;
+      padding-bottom: 40px !important;
     }
+
     .custom-dropdown {
       display: flex;
       padding: 14px 16px !important;
@@ -349,7 +349,6 @@
     }
   }
 
-  /* Focus and accessibility improvements */
   .custom-dropdown:focus-within {
     outline: 2px solid #4A90E2;
     outline-offset: 2px;
@@ -359,7 +358,46 @@
     background: #d0d0d0;
     outline: none;
   }
+
+  /* Перекриваємо глобальні стилі з контактної форми */
+  #contactModal .toast {
+    opacity: 0 !important;
+    transform: translateY(-8px) !important;
+  }
+
+  #contactModal .toast.toast--show,
+  #contactModal .toast.show {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    z-index: 99999;
+  }
+
+  #contactModal .toast.error {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
+    color: #fff !important;
+    border-color: transparent !important;
+  }
+
+  #contactModal .toast.success {
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%) !important;
+    color: #fff !important;
+    border-color: transparent !important;
+  }
 </style>
+
+<!-- I18n for JS -->
+<script>
+  window.I18NContact = {
+    submitting: {{i18n "contact.form.submitting" | plainify}},
+  submit: {{i18n "contact.form.submit" | plainify}},
+  success: {{i18n "contact.form.success" | plainify }},
+  errorGeneric: {{i18n "contact.form.error.submit" | default "Виникла помилка при відправці. Спробуйте ще раз." | plainify}},
+  errorName: {{i18n "contact.form.error.name" | plainify}},
+  errorPhone: {{i18n "contact.form.error.phone" | plainify}},
+  errorQuantity: {{i18n "contact.form.error.quantity" | plainify}},
+  quantityPlaceholder: {{i18n "contact.form.quantity.placeholder" | plainify}}
+  };
+</script>
 
 <script>
   (function () {
@@ -369,7 +407,7 @@
       constructor() {
         this.modal = document.getElementById('contactModal');
         this.openBtn = document.getElementById('openModal');
-        this.closeBtn = document.getElementById('closeModal');
+        this.closeBtn = document.getElementById('closeContactModal');
         this.form = document.getElementById('contactForm');
 
         this.quantityDropdown = document.getElementById('quantityDropdown');
@@ -377,8 +415,7 @@
         this.quantityOptions = document.getElementById('quantityOptions');
         this.quantityInput = document.getElementById('quantity');
 
-        this.toastStack = document.getElementById('toastStack');
-
+        this.toastStack = document.getElementById('modalToastStack');
         this.phoneInput = document.getElementById('userPhone');
 
         this.init();
@@ -390,17 +427,10 @@
         if (this.openBtn) this.openBtn.addEventListener('click', () => this.open());
         if (this.closeBtn) this.closeBtn.addEventListener('click', () => this.close());
 
-        this.modal.addEventListener('click', (e) => {
-          if (e.target === this.modal) this.close();
-        });
+        this.modal.addEventListener('click', (e) => { if (e.target === this.modal) this.close(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !this.modal.classList.contains('hidden')) this.close(); });
 
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' && !this.modal.classList.contains('hidden')) this.close();
-        });
-
-        if (this.form) {
-          this.form.addEventListener('submit', (e) => this.handleSubmit(e));
-        }
+        if (this.form) this.form.addEventListener('submit', (e) => this.handleSubmit(e));
 
         if (this.phoneInput) {
           this.phoneInput.addEventListener('input', (e) => this.formatPhoneInput(e));
@@ -427,17 +457,11 @@
           }
         });
 
-        document.addEventListener('click', (e) => {
-          if (!this.quantityDropdown.contains(e.target)) this.closeDropdown();
-        });
+        document.addEventListener('click', (e) => { if (!this.quantityDropdown.contains(e.target)) this.closeDropdown(); });
 
         this.quantityDropdown.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            this.toggleDropdown();
-          } else if (e.key === 'Escape') {
-            this.closeDropdown();
-          }
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.toggleDropdown(); }
+          else if (e.key === 'Escape') { this.closeDropdown(); }
         });
 
         this.quantityDropdown.setAttribute('tabindex', '0');
@@ -445,8 +469,7 @@
 
       toggleDropdown() {
         const isOpen = this.quantityOptions.classList.contains('show');
-        if (isOpen) this.closeDropdown();
-        else this.openDropdown();
+        if (isOpen) this.closeDropdown(); else this.openDropdown();
       }
 
       openDropdown() {
@@ -470,13 +493,8 @@
         this.quantityOptions.classList.remove('show');
         this.quantityDropdown.setAttribute('aria-expanded', 'false');
 
-        requestAnimationFrame(() => {
-          this.quantityOptions.style.maxHeight = '0px';
-        });
-
-        setTimeout(() => {
-          this.quantityDropdown.classList.remove('dropdown-open');
-        }, 300);
+        requestAnimationFrame(() => { this.quantityOptions.style.maxHeight = '0px'; });
+        setTimeout(() => { this.quantityDropdown.classList.remove('dropdown-open'); }, 300);
       }
 
       getOptionHeight() {
@@ -494,12 +512,11 @@
         this.quantityInput.value = value;
 
         this.closeDropdown();
-
         setTimeout(() => this.quantityDropdown.focus(), 250);
       }
 
       resetDropdown() {
-        this.quantitySelected.querySelector('span').textContent = 'Кількість стеків, яку плануєте замовити';
+        this.quantitySelected.querySelector('span').textContent = (window.I18NContact?.quantityPlaceholder) || 'Кількість';
         this.quantitySelected.querySelector('span').classList.add('placeholder');
         this.quantityInput.value = '';
         this.closeDropdown();
@@ -525,18 +542,15 @@
         }
       }
 
+      /* ========== Phone formatting ========== */
       formatPhoneInput(e) {
         const input = e.target;
         const raw = input.value || '';
         const trimmed = raw.trim();
         const hasLeadingPlus = trimmed.startsWith('+');
-
         let digits = raw.replace(/\D/g, '');
 
-        if (digits.length === 0) {
-          input.value = hasLeadingPlus ? '' : '';
-          return;
-        }
+        if (digits.length === 0) { input.value = hasLeadingPlus ? '' : ''; return; }
 
         if (hasLeadingPlus) {
           if (digits.startsWith('380')) {
@@ -587,10 +601,7 @@
         const input = e.target;
         if ((input.value || '').trim() === '') {
           input.value = '+380 ';
-          try {
-            const pos = input.value.length;
-            input.setSelectionRange(pos, pos);
-          } catch (_) { }
+          try { const pos = input.value.length; input.setSelectionRange(pos, pos); } catch (_) { }
         }
       }
 
@@ -599,7 +610,6 @@
         const raw = (input.value || '').trim();
         const digits = raw.replace(/\D/g, '');
         const startsWithPlus = raw.startsWith('+');
-
 
         if (startsWithPlus) {
           if (digits.length < 4 || (digits.startsWith('380') && digits.length === 3)) {
@@ -613,18 +623,12 @@
 
       normalizePhoneToUA(value) {
         const digits = (value || '').replace(/\D/g, '');
-
-        if (digits.length === 12 && digits.startsWith('380')) {
-          return '+' + digits;
-        }
-
-        if (digits.length === 10 && digits.startsWith('0')) {
-          return '+38' + digits;
-        }
-
+        if (digits.length === 12 && digits.startsWith('380')) return '+' + digits;
+        if (digits.length === 10 && digits.startsWith('0')) return '+38' + digits;
         return null;
       }
 
+      /* ========== Submit ========== */
       handleSubmit(e) {
         e.preventDefault();
         this.clearFieldErrors();
@@ -640,32 +644,26 @@
         let hasError = false;
         if (!data.name) {
           this.markFieldError('#userName');
-          this.showError("Будь ласка, введіть ваше ім'я");
+          this.showError(window.I18NContact?.errorName || "Будь ласка, введіть ваше ім'я");
           hasError = true;
         }
 
         const normalizedPhone = this.normalizePhoneToUA(data.phoneRaw);
         if (!normalizedPhone) {
           this.markFieldError('#userPhone');
-          this.showError('Будь ласка, введіть коректний номер телефону');
+          this.showError(window.I18NContact?.errorPhone || 'Будь ласка, введіть коректний номер телефону');
           hasError = true;
         }
 
         if (!data.quantity) {
           this.markDropdownError();
-          this.showError('Будь ласка, оберіть кількість стеків');
+          this.showError(window.I18NContact?.errorQuantity || 'Будь ласка, оберіть кількість');
           hasError = true;
         }
 
         if (hasError) return;
 
-        const payload = {
-          name: data.name,
-          phone: normalizedPhone,
-          quantity: data.quantity,
-          message: data.message,
-        };
-
+        const payload = { name: data.name, phone: normalizedPhone, quantity: data.quantity, message: data.message };
         this.submitForm(payload);
       }
 
@@ -673,76 +671,51 @@
         const submitBtn = this.form.querySelector('.submit-button-modal');
         const originalText = submitBtn.textContent;
 
-        submitBtn.textContent = 'Відправляємо...';
+        submitBtn.textContent = window.I18NContact?.submitting || 'Відправляємо...';
         submitBtn.disabled = true;
 
         try {
           await new Promise((resolve) => setTimeout(resolve, 1200));
 
-          await this.showSuccess(
-            "Дякуємо! Ваш запит успішно відправлено. Ми зв'яжемось з вами найближчим часом.");
-
+          await this.showSuccess(window.I18NContact?.success || "Повідомлення успішно відправлено!\nМи зв'яжемося з вами найближчим часом.");
           this.close();
         } catch (error) {
-          this.showError('Виникла помилка при відправці. Спробуйте ще раз.');
+          this.showError(window.I18NContact?.errorGeneric || 'Виникла помилка при відправці. Спробуйте ще раз.');
         } finally {
           submitBtn.textContent = originalText;
           submitBtn.disabled = false;
         }
       }
 
-      clearToasts() {
-        if (!this.toastStack) return;
-        this.toastStack.innerHTML = '';
-      }
+      /* ========== Toasts & errors ========== */
+      clearToasts() { if (!this.toastStack) return; this.toastStack.innerHTML = ''; }
 
       showToast(message, type = 'success', autoHideMs = 2000) {
         if (!this.toastStack) return Promise.resolve();
-
         const toast = document.createElement('div');
         toast.className = `toast toast--${type}`;
         toast.textContent = message;
         this.toastStack.appendChild(toast);
-
         requestAnimationFrame(() => toast.classList.add('toast--show'));
-
         const wait = Math.max(1200, autoHideMs);
-
         return new Promise((resolve) => {
           setTimeout(() => {
             toast.classList.remove('toast--show');
-            setTimeout(() => {
-              toast.remove();
-              resolve();
-            }, 220);
+            setTimeout(() => { toast.remove(); resolve(); }, 220);
           }, wait);
         });
       }
 
-      showError(message) {
-        return this.showToast(message, 'error', 4000);
-      }
+      showError(message) { return this.showToast(message, 'error', 4000); }
+      showSuccess(message) { return this.showToast(message, 'success', 2000); }
 
-      showSuccess(message) {
-        return this.showToast(message, 'success', 2000);
-      }
-
-      markFieldError(selector) {
-        const el = this.form.querySelector(selector);
-        if (el) el.classList.add('input-error');
-      }
-      markDropdownError() {
-        this.quantityDropdown.classList.add('input-error');
-      }
-      clearFieldErrors() {
-        this.form.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
-      }
+      markFieldError(selector) { const el = this.form.querySelector(selector); if (el) el.classList.add('input-error'); }
+      markDropdownError() { this.quantityDropdown.classList.add('input-error'); }
+      clearFieldErrors() { this.form.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error')); }
     }
 
     window.openContactModal = function () {
-      if (!modalInstance) {
-        modalInstance = new ContactModal();
-      }
+      if (!modalInstance) { modalInstance = new ContactModal(); }
       modalInstance.open();
     };
 
@@ -752,10 +725,7 @@
       }
     }
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initModal);
-    } else {
-      initModal();
-    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initModal);
+    else initModal();
   })();
 </script>

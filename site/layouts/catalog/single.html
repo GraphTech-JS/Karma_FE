@@ -8,6 +8,8 @@
 "price" (.Params.price | default 2500)
 "currency" (.Params.currency | default "грн")
 "in_stock" (.Params.in_stock | default true)
+"category" (.Params.category | default "")
+"categorySlug" (.Params.categorySlug | default "")
 -}}
 
 {{- $category := dict "name" "Політні стеки" -}}
@@ -16,10 +18,10 @@
 {{ partial "product-hero-detailed" (dict "context" . "product" $currentProduct "category" $category) }}
 
 <!-- Product Specifications Section -->
-{{ partial "product-specifications" . }}
+{{ partial "product-specifications" (dict "context" . "product" $currentProduct) }}
 
 <!-- Product Features Section -->
-{{ partial "product-features-section" . }}
+{{ partial "product-features-section" (dict "context" . "product" $currentProduct) }}
 
 <!-- Product Cost Calculation Section -->
 {{ partial "product-cost-calculation" . }}

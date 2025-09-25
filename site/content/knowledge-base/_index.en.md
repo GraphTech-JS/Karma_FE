@@ -1,12 +1,12 @@
 ---
-title: "База знань"
+title: "Knowledge Base"
 date: 2023-01-01
 draft: false
 sections:
-  - title: "БПЛА"
+  - title: "UAV"
     isFirst: true
     items: []
-  - title: "ВІДЕОПЕРЕДАВАЧІ"
+  - title: "VIDEO TRANSMITTERS"
     isFirst: false
     items: []
   - title: "ESC"

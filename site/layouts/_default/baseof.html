@@ -459,21 +459,24 @@
   </style>
 
   <!-- Preload critical resources -->
+  {{- $cssHref := "" -}}
   {{- if and $assets $assets.css -}}
-  <link rel="preload" href="{{ relURL $assets.css }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  {{- $cssHref = $assets.css -}}
+  {{- if not (hasPrefix $cssHref "/") -}}{{- $cssHref = printf "/%s" $cssHref -}}{{- end -}}
+  <link rel="preload" href="{{ $cssHref }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
-    <link rel="stylesheet" href="{{ relURL $assets.css }}">
+    <link rel="stylesheet" href="{{ $cssHref }}">
   </noscript>
   {{- else if .Site.IsServer -}}
-  <!-- DEV fallback CSS -->
   <link rel="stylesheet" href="http://localhost:3000/main.css">
   {{- end -}}
 
+  {{- $jsHref := "" -}}
   {{- if and $assets $assets.js -}}
-  <link rel="preload" href="{{ relURL $assets.js }}" as="script">
+  {{- $jsHref = $assets.js -}}
+  {{- if not (hasPrefix $jsHref "/") -}}{{- $jsHref = printf "/%s" $jsHref -}}{{- end -}}
+  <link rel="preload" href="{{ $jsHref }}" as="script">
   {{- end -}}
-
-
 
   <!-- Preload LCP image -->
   <link rel="preload" as="image" href="/img/stack.png" media="(min-width: 1024px)">
@@ -494,11 +497,10 @@
       rel="stylesheet" />
   </noscript>
 
-  <!-- Final stylesheet include (dup із preload для надійності) -->
-  {{- if and $assets $assets.css -}}
-  <link rel="stylesheet" href="{{ relURL $assets.css }}" />
+  <!-- Final stylesheet include -->
+  {{- if $cssHref -}}
+  <link rel="stylesheet" href="{{ $cssHref }}" />
   {{- else if .Site.IsServer -}}
-  <!-- DEV fallback CSS -->
   <link rel="stylesheet" href="http://localhost:3000/main.css" />
   {{- end -}}
 
@@ -565,14 +567,6 @@
     }
   }
   </script>
-
-
-<!-- 
-  <link rel="preload" href="{{ " js/swiper-bundle.min.css" | relURL }}" as="style"
-    onload="this.onload=null;this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="{{ " js/swiper-bundle.min.css" | relURL }}">
-  </noscript> -->
   {{ end }}
 </head>
 
@@ -589,15 +583,11 @@
   {{ block "footer" . }}{{ partial "footer" . }}{{end}}
   {{ partial "contact-modal" . }}
 
-  {{ $script := .Site.Data.webpack.main }}
-  {{ if and $script $script.js }}
-  <script defer src="{{ relURL $script.js }}"></script>
+  {{- if $jsHref -}}
+  <script defer src="{{ $jsHref }}"></script>
   {{- else if .Site.IsServer -}}
-  <!-- DEV fallback JS -->
   <script src="http://localhost:3000/main.js"></script>
   {{- end -}}
-
-
 
   <script>
     // Global function for opening contact modal
@@ -713,8 +703,6 @@
       });
     }
   </script>
-
-
 
   <script>
     function toggleMobileMenu() {

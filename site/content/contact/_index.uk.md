@@ -1,4 +1,4 @@
 ---
 title: "Контакти"
-description: "Зв'яжіться з нами"
---- 
+type: "contact"
+---

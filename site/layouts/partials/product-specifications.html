@@ -1,7 +1,12 @@
+{{- $product := .product | default dict -}}
+{{- $context := .context | default . -}}
+{{- $productName := $product.name | default $context.Title | default (i18n "product.hero.title.fallback") -}}
+
 <section class="bg-white my-[60px] lg:mb-[80px] lg:mt-[70px] relative overflow-hidden spec-section"
   aria-labelledby="specifications-heading">
+
   <!-- Background Element -->
-  <div class="absolute bottom-0 right-0 z-[1] hidden md:block">
+  <div class="absolute bottom-0 right-0 z-[1] hidden md:block" aria-hidden="true">
     {{ $bgEl7 := resources.Get "img/bg-el-7.png" }}
     {{ if $bgEl7 }}
     {{ $bgEl7Mobile := $bgEl7.Resize "200x240 webp q70" }}
@@ -9,21 +14,20 @@
     <picture>
       <source media="(max-width: 767px)" srcset="{{ $bgEl7Mobile.RelPermalink }}" type="image/webp">
       <source media="(min-width: 768px)" srcset="{{ $bgEl7Desktop.RelPermalink }}" type="image/webp">
-      <img src="{{ $bgEl7Desktop.RelPermalink }}" alt="" aria-hidden="true"
+      <img src="{{ $bgEl7Desktop.RelPermalink }}" alt=""
         class="w-[clamp(200px,25vw,250px)] h-[clamp(80px,12vw,298px)] opacity-60" loading="lazy" decoding="async"
         width="250" height="298" />
     </picture>
     {{ else }}
-    <img src="/img/bg-el-7.png" alt="" aria-hidden="true"
-      class="w-[clamp(200px,25vw,250px)] h-[clamp(80px,12vw,298px)] opacity-60" loading="lazy" decoding="async"
-      width="250" height="298" />
+    <img src="/img/bg-el-7.png" alt="" class="w-[clamp(200px,25vw,250px)] h-[clamp(80px,12vw,298px)] opacity-60"
+      loading="lazy" decoding="async" width="250" height="298" />
     {{ end }}
   </div>
 
   <div class="w-full max-w-[1280px] mx-auto relative z-[2] px-[20px]">
     <h2 id="specifications-heading"
       class="font-[Unbounded] text-[clamp(24px,4vw,48px)] font-medium text-black text-center mb-[25px] uppercase">
-      ХАРАКТЕРИСТИКА
+      {{i18n "product.specs.title" (dict "product" $productName)}}
     </h2>
 
     <!-- Mobile Layout -->
@@ -32,63 +36,72 @@
       <div class="flex justify-center mb-[60px] w-full">
         <table
           class="max-w-[500px] md:max-w-[410px] w-full border-separate border-spacing-0 border border-black rounded-[5px] overflow-hidden"
-          role="table" aria-label="Технічні характеристики KARMA F405 V1 - основні параметри">
+          role="table" aria-label="{{i18n " product.specs.aria.left" (dict "product" $productName)}}">
           <caption class="sr-only">
-            Основні технічні характеристики політного стеку KARMA F405 V1
+            {{i18n "product.specs.caption.left" (dict "product" $productName)}}
           </caption>
           <tbody>
             <tr>
               <td
-                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px] border-b border-black text-center">
-                MCU<br /><span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
+                class="font-[Inter] text-[16px] font-medium text-[#020303] h-[51px] px-[clamp(16px,3vw,20px)] py-[8px] border-b border-black text-center">
+                {{i18n "product.specs.field.mcu"}}<br />
+                <span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]  border-b border-black text-center">
-                MCU<br /><span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
+                class="font-[Inter] text-[16px] font-medium text-[#020303] h-[51px] px-[clamp(16px,3vw,20px)] py-[8px] border-b border-black text-center">
+                {{i18n "product.specs.field.mcu"}}<br />
+                <span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]   border-b border-black text-center">
-                MCU<br /><span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
+                class="font-[Inter] text-[16px] font-medium text-[#020303] h-[51px] px-[clamp(16px,3vw,20px)] py-[8px] border-b border-black text-center">
+                {{i18n "product.specs.field.mcu"}}<br />
+                <span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]  border-b border-black text-center">
-                MCU<br /><span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
+                class="font-[Inter] text-[16px] font-medium text-[#020303] h-[51px] px-[clamp(16px,3vw,20px)] py-[8px] border-b border-black text-center">
+                {{i18n "product.specs.field.mcu"}}<br />
+                <span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]  border-b border-black text-center">
-                MCU<br /><span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
+                class="font-[Inter] text-[16px] font-medium text-[#020303] h-[51px] px-[clamp(16px,3vw,20px)] py-[8px] border-b border-black text-center">
+                {{i18n "product.specs.field.mcu"}}<br />
+                <span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]  border-b border-black text-center">
-                MCU<br /><span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
+                class="font-[Inter] text-[16px] font-medium text-[#020303] h-[51px] px-[clamp(16px,3vw,20px)] py-[8px] border-b border-black text-center">
+                {{i18n "product.specs.field.mcu"}}<br />
+                <span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]  border-b border-black text-center">
-                MCU<br /><span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
+                class="font-[Inter] text-[16px] font-medium text-[#020303] h-[51px] px-[clamp(16px,3vw,20px)] py-[8px] border-b border-black text-center">
+                {{i18n "product.specs.field.mcu"}}<br />
+                <span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]  border-b border-black text-center">
-                MCU<br /><span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
+                class="font-[Inter] text-[16px] font-medium text-[#020303] h-[51px] px-[clamp(16px,3vw,20px)] py-[8px] border-b border-black text-center">
+                {{i18n "product.specs.field.mcu"}}<br />
+                <span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]  text-center">
-                Дозволений струм від батареї<br /><span class="font-normal text-[20px] font-[Montserrat]">2.4 A</span>
+                class="font-[Inter] text-[16px] font-medium text-[#020303] h-[51px] px-[clamp(16px,3vw,20px)] py-[8px] text-center">
+                {{i18n "product.specs.field.allowedBatteryCurrent"}}<br />
+                <span class="font-normal text-[20px] font-[Montserrat]">2.4 A</span>
               </td>
             </tr>
           </tbody>
@@ -99,58 +112,58 @@
       <div class="flex justify-center mb-[60px] w-full">
         <table
           class="max-w-[500px] md:max-w-[410px] w-full border-separate border-spacing-0 border border-black rounded-[5px] overflow-hidden"
-          role="table" aria-label="Технічні характеристики KARMA F405 V1 - живлення та кріплення">
+          role="table" aria-label="{{ i18n " product.specs.aria.right" (dict "product" $productName) }}">
           <caption class="sr-only">
-            Параметри живлення та кріплення політного стеку KARMA F405 V1
+            {{i18n "product.specs.caption.right" (dict "product" $productName)}}
           </caption>
           <tbody>
             <tr>
               <td
-                class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px]  border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
-                Живлення
+                class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
+                {{i18n "product.specs.field.power"}}
               </td>
               <td
-                class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px]  border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
+                class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
                 4s-6s
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Unbounded] text-[16px]  text-[#020303] h-[44px] pl-[30px] py-[8px]  border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
-                Струм
+                class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
+                {{i18n "product.specs.field.current"}}
               </td>
               <td
-                class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px]  border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
+                class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
                 4x50A
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Unbounded] text-[16px]  text-[#020303] h-[44px] pl-[30px] py-[8px]  border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
-                MCU
+                class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
+                {{i18n "product.specs.field.mcu"}}
               </td>
               <td
-                class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px]  border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
+                class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
                 72Mhz 32Bit
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Unbounded] text-[16px]  text-[#020303] h-[44px] pl-[30px] py-[8px]  border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
-                Прошивка
+                class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
+                {{i18n "product.specs.field.firmware"}}
               </td>
               <td
-                class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px]  border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
+                class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
                 AM32
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Unbounded] text-[16px]  text-[#020303] h-[44px] pl-[30px] py-[8px]  border-r border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
-                Кріплення
+                class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
+                {{i18n "product.specs.field.mount"}}
               </td>
               <td
-                class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px]  w-[clamp(120px,35vw,175px)] text-start md:text-center">
+                class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] w-[clamp(120px,35vw,175px)] text-start md:text-center">
                 30.5 x 30.5
               </td>
             </tr>
@@ -167,14 +180,11 @@
         <picture>
           <source media="(max-width: 480px)" srcset="{{ $mob.RelPermalink }}" type="image/webp">
           <source media="(min-width: 481px)" srcset="{{ $tab.RelPermalink }}" type="image/webp">
-          <img src="{{ $tab.RelPermalink }}"
-            alt="Детальний вигляд політного стеку KARMA F405 V1 з технічними характеристиками" class="object-contain"
-            loading="lazy" decoding="async" width="480" height="270" />
+          <img src="{{ $tab.RelPermalink }}" alt="{{i18n "product.specs.alt.details" (dict "product" $productName)}}"
+            class="object-contain" loading="lazy" decoding="async" width="480" height="270" />
         </picture>
         {{ else }}
-        <img src="/img/product-details-v2.png"
-          alt="Детальний вигляд політного стеку KARMA F405 V1 з технічними характеристиками" class="object-contain"
-          loading="lazy" decoding="async" width="480" height="270" />
+        <img src="/img/product-details-v2.png" alt="{{i18n "product.specs.alt.details" (dict "product" $productName)}}" class="object-contain" loading="lazy" decoding="async" width="480" height="270" />
         {{ end }}
       </div>
     </div>
@@ -185,98 +195,98 @@
       <div class="flex-1 w-full">
         <table
           class="w-full h-[588px] border-separate border-spacing-0 border border-black rounded-[5px] overflow-hidden"
-          role="table" aria-label="Технічні характеристики KARMA F405 V1 - основні параметри">
+          role="table" aria-label="{{i18n "product.specs.aria.left" (dict "product" $productName)}}">
           <caption class="sr-only">
-            Основні технічні характеристики політного стеку KARMA F405 V1
+            {{i18n "product.specs.caption.left" (dict "product" $productName)}}
           </caption>
           <tbody>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black border-b border-black ">
-                MCU
+                class="font-[Inter] text-[20px] font-medium text-[#020303] h-[51px] px-[19px] lg:px-[34px] border-r border-black border-b border-black">
+                {{i18n "product.specs.field.mcu"}}
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]   px-[19px] lg:px-[34px] border-b border-black">
+                class="font-[Montserrat] text-[20px] text-[#020303] h-[51px] px-[19px] lg:px-[34px] border-b border-black">
                 STM32F405
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
-                MCU
+                class="font-[Inter] text-[20px] font-medium text-[#020303] h-[51px] px-[19px] lg:px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
+                {{i18n "product.specs.field.mcu"}}
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
+                class="font-[Montserrat] text-[20px] text-[#020303] h-[51px] px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
                 STM32F405
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
-                MCU
+                class="font-[Inter] text-[20px] font-medium text-[#020303] h-[51px] px-[19px] lg:px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
+                {{i18n "product.specs.field.mcu"}}
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
+                class="font-[Montserrat] text-[20px] text-[#020303] h-[51px] px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
                 STM32F405
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
-                MCU
+                class="font-[Inter] text-[20px] font-medium text-[#020303] h-[51px] px-[19px] lg:px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
+                {{i18n "product.specs.field.mcu"}}
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
+                class="font-[Montserrat] text-[20px] text-[#020303] h-[51px] px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
                 STM32F405
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
-                MCU
+                class="font-[Inter] text-[20px] font-medium text-[#020303] h-[51px] px-[19px] lg:px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
+                {{i18n "product.specs.field.mcu"}}
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
+                class="font-[Montserrat] text-[20px] text-[#020303] h-[51px] px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
                 STM32F405
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
-                MCU
+                class="font-[Inter] text-[20px] font-medium text-[#020303] h-[51px] px-[19px] lg:px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
+                {{i18n "product.specs.field.mcu"}}
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
+                class="font-[Montserrat] text-[20px] text-[#020303] h-[51px] px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
                 STM32F405
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
-                MCU
+                class="font-[Inter] text-[20px] font-medium text-[#020303] h-[51px] px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
+                {{i18n "product.specs.field.mcu"}}
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
+                class="font-[Montserrat] text-[20px] text-[#020303] h-[51px] px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
                 STM32F405
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
-                MCU
+                class="font-[Inter] text-[20px] font-medium text-[#020303] h-[51px] px-[19px] lg:px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
+                {{i18n "product.specs.field.mcu"}}
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
+                class="font-[Montserrat] text-[20px] text-[#020303] h-[51px] px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
                 STM32F405
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Montserrat] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black w-[clamp(200px,20vw,255px)]">
-                Дозволений струм від батареї
+                class="font-[Montserrat] text-[20px] font-medium text-[#020303] h-[51px] px-[19px] lg:px-[34px] border-r border-black w-[clamp(200px,20vw,255px)]">
+                {{i18n "product.specs.field.allowedBatteryCurrent"}}
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)]">
+                class="font-[Montserrat] text-[20px] text-[#020303] h-[51px] px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)]">
                 2.4 A
               </td>
             </tr>
@@ -288,58 +298,58 @@
       <div class="flex-1 w-full">
         <table
           class="w-full border-separate border-spacing-0 border border-black mb-[clamp(20px,4vw,32px)] rounded-[5px] overflow-hidden"
-          role="table" aria-label="Технічні характеристики KARMA F405 V1 - живлення та кріплення">
+          role="table" aria-label="{{i18n "product.specs.aria.right" (dict "product" $productName)}}">
           <caption class="sr-only">
-            Параметри живлення та кріплення політного стеку KARMA F405 V1
+            {{i18n "product.specs.caption.right" (dict "product" $productName)}}
           </caption>
           <tbody>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[44px]  px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
-                Живлення
+                class="font-[Inter] text-[20px] font-medium text-[#020303] h-[44px] px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
+                {{i18n "product.specs.field.power"}}
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[44px]  px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black">
+                class="font-[Montserrat] text-[20px] text-[#020303] h-[44px] px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black">
                 4s-6s
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[44px]  px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
-                Струм
+                class="font-[Inter] text-[20px] font-medium text-[#020303] h-[44px] px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
+                {{i18n "product.specs.field.current"}}
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[44px]  px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black">
+                class="font-[Montserrat] text-[20px] text-[#020303] h-[44px] px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black">
                 4x50A
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[44px]  px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
-                MCU
+                class="font-[Inter] text-[20px] font-medium text-[#020303] h-[44px] px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
+                {{i18n "product.specs.field.mcu"}}
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[44px]  px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black">
+                class="font-[Montserrat] text-[20px] text-[#020303] h-[44px] px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black">
                 72Mhz 32Bit
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[44px]  px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
-                Прошивка
+                class="font-[Inter] text-[20px] font-medium text-[#020303] h-[44px] px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
+                {{i18n "product.specs.field.firmware"}}
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[44px]  px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black">
+                class="font-[Montserrat] text-[20px] text-[#020303] h-[44px] px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black">
                 AM32
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[44px]  px-[34px]  border-r border-black w-[clamp(200px,20vw,255px)]">
-                Кріплення
+                class="font-[Inter] text-[20px] font-medium text-[#020303] h-[44px] px-[34px] border-r border-black w-[clamp(200px,20vw,255px)]">
+                {{i18n "product.specs.field.mount"}}
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[44px]  px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)]">
+                class="font-[Montserrat] text-[20px] text-[#020303] h-[44px] px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)]">
                 30.5 x 30.5
               </td>
             </tr>
@@ -355,14 +365,10 @@
           <picture>
             <source media="(max-width: 1199px)" srcset="{{ $desktop.RelPermalink }}" type="image/webp">
             <source media="(min-width: 1200px)" srcset="{{ $large.RelPermalink }}" type="image/webp">
-            <img src="{{ $large.RelPermalink }}"
-              alt="Детальний вигляд політного стеку KARMA F405 V1 з технічними характеристиками"
-              class="object-contain w-full h-auto" loading="lazy" decoding="async" width="768" height="432" />
+            <img src="{{ $large.RelPermalink }}" alt="{{i18n "product.specs.alt.details" (dict "product" $productName)}}" class="object-contain w-full h-auto" loading="lazy" decoding="async" width="768" height="432" />
           </picture>
           {{ else }}
-          <img src="/img/product-details-v2.png"
-            alt="Детальний вигляд політного стеку KARMA F405 V1 з технічними характеристиками"
-            class="object-contain w-full h-auto" loading="lazy" decoding="async" width="768" height="432" />
+          <img src="/img/product-details-v2.png" alt="{{i18n "product.specs.alt.details" (dict "product" $productName)}}" class="object-contain w-full h-auto" loading="lazy" decoding="async" width="768" height="432" />
           {{ end }}
         </div>
       </div>

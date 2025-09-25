@@ -1,30 +1,44 @@
+{{- /* Підтримує dict (context/product) або Page */ -}}
+{{- $t := printf "%T" . -}}
+{{- $isMap := in $t "map" -}}
+
+{{- $ctx := . -}}
+{{- $product := dict -}}
+{{- if $isMap -}}
+{{- with index . "context" }}{{ $ctx = . }}{{ end -}}
+{{- with index . "product" }}{{ $product = . }}{{ end -}}
+{{- else -}}
+{{- $product = .Params -}}
+{{- end -}}
+
+{{- $productName := $product.name | default $ctx.Title | default (i18n "product.hero.title.fallback") -}}
+
 <section class="overflow-hidden relative pt-[60px] lg:pt-[80px]" aria-labelledby="cost-calculation-heading">
   <div class="max-w-7xl relative z-[2] px-4 sm:px-6 lg:px-8 lg:mx-auto">
     <h2 id="cost-calculation-heading"
       class="font-[Unbounded] text-[24px] lg:text-[48px] font-medium text-center mb-[25px] uppercase text-black">
-      РОЗРАХУНОК ВАРТОСТІ
+      {{ i18n "product.cost.title" }}
     </h2>
 
     <!-- Single Adaptive Layout -->
     <div class="grid grid-cols-1 gap-[40px] md:gap-[20px] mb-[40px] md:mb-[54px] sm:grid-cols-2 lg:grid-cols-3"
-      role="list" aria-label="Таблиці розрахунку вартості політного стеку">
+      role="list" aria-label='{{ i18n "product.cost.aria.list" (dict "product" $productName) }}'>
+
       <!-- Table 1 -->
       <article class="bg-white rounded-[5px] overflow-hidden w-full h-[439px] mx-auto lg:h-auto"
         style="box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1)" role="listitem">
-        <div class="flex flex-col h-full p-4 lg:p-6">
+        <div class="flex flex-col p-4 h-full lg:p-6">
           <h3
             class="font-[Montserrat] text-[24px] md:text-[16px] lg:text-[24px] font-semibold text-[#404040] text-center mb-4 lg:mb-6">
-            Відносно обсягів та
-            <br />
-            шляхів придбання
+            {{ i18n "product.cost.table.title" | safeHTML }}
           </h3>
 
-          <div class="flex items-center justify-center flex-1 lg:block">
+          <div class="flex flex-1 justify-center items-center lg:block">
             <table
               class="w-full h-[305px] border-separate border-spacing-0 border border-black rounded-[5px] overflow-hidden lg:h-auto"
-              role="table" aria-label="Таблиця знижок залежно від обсягів замовлення">
+              role="table" aria-label='{{ i18n "product.cost.table1.aria" }}'>
               <caption class="sr-only">
-                Таблиця знижок для різних обсягів замовлення політного стеку
+                {{ i18n "product.cost.table1.caption" (dict "product" $productName) }}
               </caption>
               <thead>
                 <tr>
@@ -33,11 +47,11 @@
                   </th>
                   <th
                     class="font-[Inter] text-[16px] font-medium text-center border-r border-black border-b border-black w-[100px] text-[#020303]">
-                    Склад
+                    {{ i18n "product.cost.table.warehouse" }}
                   </th>
                   <th
                     class="font-[Inter] text-[16px] font-medium text-center border-b border-black w-[100px] text-[#020303]">
-                    Контрак-тування
+                    {{ i18n "product.cost.table.contracting" }}
                   </th>
                 </tr>
               </thead>
@@ -45,12 +59,10 @@
                 <tr>
                   <td
                     class="font-[Inter] text-[16px] font-medium border-r border-black border-b border-black w-[100px] text-center text-[#020303]">
-                    1+
-                  </td>
+                    1+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    100%
-                  </td>
+                    100%</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal py-2 px-2 text-center border-b border-black w-[100px]">
                   </td>
@@ -58,56 +70,45 @@
                 <tr>
                   <td
                     class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">
-                    100+
-                  </td>
+                    100+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    93%
-                  </td>
+                    93%</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">
-                    80%
-                  </td>
+                    80%</td>
                 </tr>
                 <tr>
                   <td
                     class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">
-                    1000+
-                  </td>
+                    1000+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    85%
-                  </td>
+                    85%</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">
-                    75%
-                  </td>
+                    75%</td>
                 </tr>
                 <tr>
                   <td
                     class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">
-                    3000+
-                  </td>
+                    3000+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    78%
-                  </td>
+                    78%</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">
-                    70%
-                  </td>
+                    70%</td>
                 </tr>
                 <tr>
                   <td
                     class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black w-[100px] text-center text-[#020303]">
-                    10 000+
-                  </td>
+                    10 000+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal py-2 px-2 text-center border-r border-black w-[100px]">
                   </td>
                   <td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center w-[100px]">
-                    65%
-                  </td>
+                    65%</td>
                 </tr>
               </tbody>
             </table>
@@ -118,20 +119,18 @@
       <!-- Table 2 -->
       <article class="bg-white rounded-[5px] overflow-hidden w-full h-[439px] mx-auto lg:h-auto"
         style="box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1)" role="listitem">
-        <div class="flex flex-col h-full p-4 lg:p-6">
+        <div class="flex flex-col p-4 h-full lg:p-6">
           <h3
             class="font-[Montserrat] text-[24px] md:text-[16px] lg:text-[24px] font-semibold text-[#404040] text-center mb-4 lg:mb-6">
-            Відносно обсягів та
-            <br />
-            шляхів придбання
+            {{ i18n "product.cost.table.title" | safeHTML }}
           </h3>
 
-          <div class="flex items-center justify-center flex-1 lg:block">
+          <div class="flex flex-1 justify-center items-center lg:block">
             <table
               class="w-full h-[305px] border-separate border-spacing-0 border border-black rounded-[5px] overflow-hidden lg:h-auto"
-              role="table" aria-label="Таблиця знижок для оптових замовлень">
+              role="table" aria-label='{{ i18n "product.cost.table2.aria" }}'>
               <caption class="sr-only">
-                Таблиця знижок для оптових замовлень політного стеку
+                {{ i18n "product.cost.table2.caption" (dict "product" $productName) }}
               </caption>
               <thead>
                 <tr>
@@ -140,11 +139,11 @@
                   </th>
                   <th
                     class="font-[Inter] text-[16px] font-medium text-center border-r border-black border-b border-black w-[100px] text-[#020303]">
-                    Склад
+                    {{ i18n "product.cost.table.warehouse" }}
                   </th>
                   <th
                     class="font-[Inter] text-[16px] font-medium text-center border-b border-black w-[100px] text-[#020303]">
-                    Контрак-тування
+                    {{ i18n "product.cost.table.contracting" }}
                   </th>
                 </tr>
               </thead>
@@ -152,12 +151,10 @@
                 <tr>
                   <td
                     class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">
-                    1+
-                  </td>
+                    1+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    100%
-                  </td>
+                    100%</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal py-2 px-2 text-center border-b border-black w-[100px]">
                   </td>
@@ -165,56 +162,45 @@
                 <tr>
                   <td
                     class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">
-                    100+
-                  </td>
+                    100+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    93%
-                  </td>
+                    93%</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">
-                    80%
-                  </td>
+                    80%</td>
                 </tr>
                 <tr>
                   <td
                     class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">
-                    1000+
-                  </td>
+                    1000+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    85%
-                  </td>
+                    85%</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">
-                    75%
-                  </td>
+                    75%</td>
                 </tr>
                 <tr>
                   <td
                     class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">
-                    3000+
-                  </td>
+                    3000+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    78%
-                  </td>
+                    78%</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">
-                    70%
-                  </td>
+                    70%</td>
                 </tr>
                 <tr>
                   <td
                     class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black w-[100px] text-center text-[#020303]">
-                    10 000+
-                  </td>
+                    10 000+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal py-2 px-2 text-center border-r border-black w-[100px]">
                   </td>
                   <td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center w-[100px]">
-                    65%
-                  </td>
+                    65%</td>
                 </tr>
               </tbody>
             </table>
@@ -225,20 +211,18 @@
       <!-- Table 3 -->
       <article class="bg-white rounded-[5px] overflow-hidden w-full h-[439px] mx-auto lg:h-auto"
         style="box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1)" role="listitem">
-        <div class="flex flex-col h-full p-4 lg:p-6">
+        <div class="flex flex-col p-4 h-full lg:p-6">
           <h3
             class="font-[Montserrat] text-[24px] md:text-[16px] lg:text-[24px] font-semibold text-[#404040] text-center mb-4 lg:mb-6">
-            Відносно обсягів та
-            <br />
-            шляхів придбання
+            {{ i18n "product.cost.table.title" | safeHTML }}
           </h3>
 
-          <div class="flex items-center justify-center flex-1 lg:block">
+          <div class="flex flex-1 justify-center items-center lg:block">
             <table
               class="w-full h-[305px] border-separate border-spacing-0 border border-black rounded-[5px] overflow-hidden lg:h-auto"
-              role="table" aria-label="Таблиця знижок для великих замовлень">
+              role="table" aria-label='{{ i18n "product.cost.table3.aria" }}'>
               <caption class="sr-only">
-                Таблиця знижок для великих замовлень політного стеку
+                {{ i18n "product.cost.table3.caption" (dict "product" $productName) }}
               </caption>
               <thead>
                 <tr>
@@ -247,11 +231,11 @@
                   </th>
                   <th
                     class="font-[Inter] text-[16px] font-medium text-left border-r border-black border-b border-black w-[100px] text-[#020303]">
-                    Склад
+                    {{ i18n "product.cost.table.warehouse" }}
                   </th>
                   <th
                     class="font-[Inter] text-[16px] font-medium text-center border-b border-black w-[100px] text-[#020303]">
-                    Контрак-тування
+                    {{ i18n "product.cost.table.contracting" }}
                   </th>
                 </tr>
               </thead>
@@ -259,12 +243,10 @@
                 <tr>
                   <td
                     class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">
-                    1+
-                  </td>
+                    1+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    100%
-                  </td>
+                    100%</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal py-2 px-2 text-center border-b border-black w-[100px]">
                   </td>
@@ -272,56 +254,45 @@
                 <tr>
                   <td
                     class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">
-                    100+
-                  </td>
+                    100+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    93%
-                  </td>
+                    93%</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">
-                    80%
-                  </td>
+                    80%</td>
                 </tr>
                 <tr>
                   <td
                     class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">
-                    1000+
-                  </td>
+                    1000+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    85%
-                  </td>
+                    85%</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">
-                    75%
-                  </td>
+                    75%</td>
                 </tr>
                 <tr>
                   <td
                     class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">
-                    3000+
-                  </td>
+                    3000+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    78%
-                  </td>
+                    78%</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">
-                    70%
-                  </td>
+                    70%</td>
                 </tr>
                 <tr>
                   <td
                     class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black w-[100px] text-center text-[#020303]">
-                    10 000+
-                  </td>
+                    10 000+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal py-2 px-2 text-center border-r border-black w-[100px]">
                   </td>
                   <td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center w-[100px]">
-                    65%
-                  </td>
+                    65%</td>
                 </tr>
               </tbody>
             </table>
@@ -333,13 +304,12 @@
     <!-- Bottom text and button -->
     <div class="text-center">
       <p class="font-[Montserrat] text-[16px] md:text-[20px] mb-[25px] text-center text-black">
-        Ми прагнемо зробити прозору систему ціноутворення. Ціни залежать від
-        обсягів та шляхів придбання
+        {{ i18n "product.cost.note" }}
       </p>
 
-      <button aria-label="Отримати комерційну пропозицію з розрахунком вартості"
+      <button aria-label='{{ i18n "product.cost.aria.cta" }}'
         class="product-hero-button cursor-pointer !font-[Montserrat] text-[20px] lg:text-[24px] !text-white bg-[#ba0108] hover:bg-[#e39599] transition-colors w-full md:w-[549px] lg:w-[586px] h-[71px] lg:h-[55px] rounded-[5px] md:rounded-[20px]">
-        <a href="/contact/"> Отримати пропозицію </a>
+        <a href='{{ "/contact/" | relLangURL }}'>{{ i18n "product.cost.cta" }}</a>
       </button>
     </div>
   </div>

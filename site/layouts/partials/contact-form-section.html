@@ -1,7 +1,7 @@
 <section id="contact-form-section"
   class=" relative flex justify-center items-center px-4 pt-[100px] md:pt-[60px] lg:pt-[80px] {{ if not (eq .RelPermalink "/contact/") }}pb-[60px] lg:pb-[80px]{{ end }}">
 
-{{ if eq .RelPermalink "/contact/" }}
+  {{ if eq .RelPermalink "/contact/" }}
   {{ $bgEl1 := resources.Get "img/bg-el-1.png" }}
   {{ if $bgEl1 }}
   {{ $bgEl1Processed := $bgEl1.Resize "420x webp q80" }}
@@ -11,15 +11,15 @@
   <img src="/img/bg-el-1.png" alt="Декоративний фоновий елемент" aria-hidden="true"
     class="absolute md:hidden block  z-[1] right-[-45px] top-[-70px] w-[201px] h-auto" />
   {{ end }}
-{{ $bgEl2 := resources.Get "img/bg-el-1.png" }}
-{{ if $bgEl2 }}
-{{ $bgEl2Processed := $bgEl2.Resize "420x webp q80" }}
-<img src="{{ $bgEl2Processed.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
-  class="absolute md:hidden block  z-[1] left-[-45px] top-[-70px]  w-[201px] h-auto -scale-x-100" />
-{{ else }}
-<img src="/img/bg-el-2.png" alt="Декоративний фоновий елемент" aria-hidden="true"
-  class="absolute md:hidden block z-[1] left-[-45px] top-[-70px] w-[201px] h-auto -scale-x-100" />
-{{ end }}
+  {{ $bgEl2 := resources.Get "img/bg-el-1.png" }}
+  {{ if $bgEl2 }}
+  {{ $bgEl2Processed := $bgEl2.Resize "420x webp q80" }}
+  <img src="{{ $bgEl2Processed.RelPermalink }}" alt="Декоративний фоновий елемент" aria-hidden="true"
+    class="absolute md:hidden block  z-[1] left-[-45px] top-[-70px]  w-[201px] h-auto -scale-x-100" />
+  {{ else }}
+  <img src="/img/bg-el-2.png" alt="Декоративний фоновий елемент" aria-hidden="true"
+    class="absolute md:hidden block z-[1] left-[-45px] top-[-70px] w-[201px] h-auto -scale-x-100" />
+  {{ end }}
   {{ end }}
 
   <div class="hidden lg:block absolute right-[-12%]  top-0">
@@ -36,7 +36,7 @@
 
 
   <div id="toast-container"
-    class="absolute z-50 w-full max-w-md px-4 space-y-2 transform -translate-x-1/2 top-8 left-1/2"></div>
+    class="absolute top-8 left-1/2 z-50 px-4 space-y-2 w-full max-w-md transform -translate-x-1/2"></div>
 
   <div
     class="w-full max-w-[1237px] mx-auto relative z-10 flex flex-col md:flex-col xl:flex-row xl:justify-between xl:items-center lg:gap-[clamp(20px,4vw,32px)]">
@@ -50,13 +50,13 @@
 
       <form id="contact-form" class="flex flex-col font-['Montserrat'] w-full" novalidate>
         <div class="flex flex-col gap-[23px]  md:flex-row xl:flex-row mb-[23px]">
-            <input type="text" id="name" placeholder="{{ i18n "contact.form.name.placeholder" }}" required name="name"
+          <input type="text" id="name" placeholder="{{ i18n "contact.form.name.placeholder" }}" required name="name"
             class="contact-input w-full  xl:w-[373px] xl:flex-none px-5 py-4 h-[65px] placeholder:text-[#999] border border-[#404040] rounded-[5px] text-normal bg-white transition-all duration-300 ease-in-out" />
           <input type="tel" id="phone" placeholder="{{ i18n "contact.form.phone.placeholder" }}" required name="phone"
             class="contact-input w-full xl:w-[373px] xl:flex-none px-5 py-4 h-[65px] placeholder:text-[#999] border border-[#404040] rounded-[5px] text-normal bg-white transition-all duration-300 ease-in-out" />
         </div>
 
-          <textarea id="message" name="message" placeholder="{{ i18n "contact.form.message.placeholder" }}" rows="5"
+        <textarea id="message" name="message" placeholder="{{ i18n "contact.form.message.placeholder" }}" rows="5"
           class="contact-textarea w-full  xl:w-[770px] px-5 py-4 placeholder:text-[#999] border border-[#404040] rounded-[5px] text-normal bg-white resize-y min-h-[120px] transition-all duration-300 ease-in-out font-['Montserrat']"></textarea>
 
         <button type="submit" id="submit-btn"
@@ -69,7 +69,7 @@
       class="flex flex-col max-[640px]:gap-0 max-[1025px]:gap-5 justify-center items-center mt-8 text-center sm:flex-row sm:items-center sm:text-left md:flex-row lg:flex-row lg:items-center lg:justify-center lg:text-center xl:flex-col xl:items-start xl:text-left xl:mt-0">
       <h4
         class="text-[clamp(16px,2vw,20px)] font-light sm:font-normal text-[#000] font-['Montserrat'] mb-3 sm:mb-0 lg:mb-0 xl:mb-3 leading-[120%]">
-        {{ i18n   "contact.department" }}
+        {{ i18n "contact.department" }}
       </h4>
       <div class="flex flex-col gap-[10px] max-[450px]:gap-1 lg:gap-0 xl:gap-0">
         <a href="tel:+380956156713" class="block text-[clamp(24px,3vw,36px)] font-normal text-[#ba0108] 
@@ -186,7 +186,7 @@
     border-radius: inherit;
     background: rgba(255, 255, 255, 0.08);
     pointer-events: none;
-    
+
   }
 </style>
 
