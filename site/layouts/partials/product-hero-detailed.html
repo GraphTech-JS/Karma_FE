@@ -8,7 +8,6 @@
 {{- $firstTwo := first 2 $words -}}
 {{- $rest := after 2 $words -}}
 
-{{/* Category slug -> i18n name */}}
 {{- $rawCategory := $context.Params.category | default $product.category | default "politni-steky" -}}
 {{- $slugMap := dict
 "Політні стеки" "politni-steky"
@@ -25,7 +24,6 @@
 {{- $categoryI18n := i18n $catKey -}}
 {{- $categoryData := index $context.Site.Data.products.categories $categorySlug -}}
 
-{{/* Обираємо назву категорії коректно (без cond із мапою) */}}
 {{- $categoryName := $rawCategory -}}
 {{- if ne $categoryI18n $catKey -}}
 {{- $categoryName = $categoryI18n -}}
@@ -37,7 +35,6 @@
 {{- end -}}
 {{- end -}}
 
-{{/* Тільки для breadcrumbs — перша літера велика */}}
 {{- $categoryNameBreadcrumb := $categoryName -}}
 {{- if gt (len $categoryNameBreadcrumb) 0 -}}
 {{- $categoryNameBreadcrumb = printf "%s%s" (upper (substr $categoryNameBreadcrumb 0 1)) (substr $categoryNameBreadcrumb
@@ -71,7 +68,6 @@
 
     <!-- Product Hero -->
     <div class="flex flex-col gap-[clamp(24px,4vw,48px)] sm:flex-row md:items-start items-center">
-      <!-- Product Image -->
       <div class="flex relative flex-col items-center mb-6 w-full md:flex-row">
         {{- $productImage := ($product.image | default "/img/Stack-product.png") | strings.TrimPrefix "/" -}}
         {{- $productImageResource := resources.Get $productImage -}}
@@ -90,27 +86,22 @@
         {{- end -}}
       </div>
 
-      <!-- Product Text -->
       <div
         class="flex flex-col items-center md:items-start lg:items-start pt-[43px] max-w-full md:max-w-[519px] lg:max-w-[531px] xl:max-w-[578px]">
-        <!-- Product Name -->
         <h1
           class="font-[Unbounded] uppercase font-medium leading-[1.1] text-[32px] md:text-[48px] w-full text-center md:text-left lg:text-left mb-2">
           <span class="text-[#ba0108]">{{ delimit $firstTwo " " }}</span>
           {{ if gt (len $rest) 0 }}<span class="text-black"> {{ delimit $rest " " }}</span>{{ end }}
         </h1>
 
-        <!-- Product Description -->
         <p class="font-[Montserrat] text-[16px] lg:text-[20px] text-[#020303] leading-[120%]">
           {{ $description }}
         </p>
 
-        <!-- Optional Extra Text -->
         <p class="font-[Montserrat] text-[16px] lg:text-[20px] text-[#020303] mt-5 mb-14 leading-[120%]">
           {{ i18n "product.hero.text.extra" }}
         </p>
 
-        <!-- Call to Action -->
         <button onclick="window.openContactModal()" aria-label="{{ printf " %s %s" (i18n "product.hero.aria.ctaPrefix" )
           $productName }}"
           class="product-hero-button text-[16px] md:text-[24px] cursor-pointer font-medium text-white bg-[#ba0108] hover:bg-[#e39599] transition-colors w-full max-w-[458px] h-[58px] md:h-[70px] rounded-[20px] shadow">
