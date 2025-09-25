@@ -1,8 +1,24 @@
+{{- /* Підтримує dict (context/product) або Page */ -}}
+{{- $t := printf "%T" . -}}
+{{- $isMap := in $t "map" -}}
+
+{{- $ctx := . -}}
+{{- $product := dict -}}
+
+{{- if $isMap -}}
+{{- with index . "context" }}{{ $ctx = . }}{{ end -}}
+{{- with index . "product" }}{{ $product = . }}{{ end -}}
+{{- else -}}
+{{- $product = .Params -}}
+{{- end -}}
+
+{{- $productName := $product.name | default $ctx.Title | default (i18n "product.hero.title.fallback") -}}
+
 <section
   class="overflow-hidden relative h-[776px] md:h-[490px] pt-[43px] md:pt-[75px] lg:pt-[60px] pb-[65px] md:pb-[128px] lg:pb-[99px]"
   aria-labelledby="features-heading">
   <!-- Background image -->
-  <div class="absolute inset-0">
+  <div class="absolute inset-0" aria-hidden="true">
     {{ $benefitsBg := resources.Get "img/benefits-bg.png" }}
     {{ if $benefitsBg }}
     {{ $benefitsBgMobile := $benefitsBg.Resize "768x490 webp q75" }}
@@ -10,79 +26,53 @@
     <picture>
       <source media="(max-width: 767px)" srcset="{{ $benefitsBgMobile.RelPermalink }}" type="image/webp">
       <source media="(min-width: 768px)" srcset="{{ $benefitsBgDesktop.RelPermalink }}" type="image/webp">
-      <img src="{{ $benefitsBgDesktop.RelPermalink }}" alt="" aria-hidden="true" class="object-cover w-full h-full"
-        loading="lazy" />
+      <img src="{{ $benefitsBgDesktop.RelPermalink }}" alt="" class="object-cover w-full h-full" loading="lazy" />
     </picture>
     {{ else }}
-    <img src="/img/benefits-bg.png" alt="" aria-hidden="true" class="object-cover w-full h-full" loading="lazy" />
+    <img src="/img/benefits-bg.png" alt="" class="object-cover w-full h-full" loading="lazy" />
     {{ end }}
   </div>
 
   <div class="w-full max-w-[1440px] mx-auto relative z-[2] px-[clamp(20px,4vw,40px)]">
     <div class="relative mb-[52px] md:mb-[80px] text-center">
       <h2 id="features-heading"
-        class="mb-[clamp(24px,4vw,48px)] text-[24px] md:text-[32px]  lg:text-[40px] xl:text-[48px] font-medium text-white uppercase font-['Unbounded']">
-        ОСОБЛИВОСТІ
+        class="mb-[clamp(24px,4vw,48px)] text-[24px] md:text-[32px] lg:text-[40px] xl:text-[48px] font-medium text-white uppercase font-['Unbounded']">
+        {{ i18n "product.features.title" }}
       </h2>
 
-      <div class="hidden absolute top-4 lg:top-10 md:block left-[calc(44%-224px-40px)] lg:left-[calc(36%-224px-40px)]">
-        <img src="/img/left-arrow-feat.svg" alt="" aria-hidden="true" class="w-32 h-[76px] md:w-[130px] lg:w-[183px]" />
+      <div class="hidden absolute top-4 lg:top-10 md:block left-[calc(44%-224px-40px)] lg:left-[calc(36%-224px-40px)]"
+        aria-hidden="true">
+        <img src="/img/left-arrow-feat.svg" alt="" class="w-32 h-[76px] md:w-[130px] lg:w-[183px]" />
       </div>
 
-      <div class="absolute hidden transform -translate-x-1/2 left-1/2 xl:top-23 lg:top-20 md:top-13 md:block">
-        <img src="/img/line-center.svg" alt="" aria-hidden="true"
-          class="w-8 h-12 md:w-12 md:h-[52px] lg:w-16 lg:h-[52px]" />
+      <div class="hidden absolute left-1/2 transform -translate-x-1/2 xl:top-23 lg:top-20 md:top-13 md:block"
+        aria-hidden="true">
+        <img src="/img/line-center.svg" alt="" class="w-8 h-12 md:w-12 md:h-[52px] lg:w-16 lg:h-[52px]" />
       </div>
 
-      <div
-        class="hidden absolute top-4  lg:top-10 md:block right-[calc(44%-224px-40px)] lg:right-[calc(36%-224px-40px)]">
-        <img src="/img/right-arrow-feat.svg" alt="" aria-hidden="true"
-          class="w-32 h-[76px] md:w-[130px] lg:w-[183px]" />
+      <div class="hidden absolute top-4 lg:top-10 md:block right-[calc(44%-224px-40px)] lg:right-[calc(36%-224px-40px)]"
+        aria-hidden="true">
+        <img src="/img/right-arrow-feat.svg" alt="" class="w-32 h-[76px] md:w-[130px] lg:w-[183px]" />
       </div>
     </div>
+
     <div class="grid relative grid-cols-1 gap-[67px] md:grid-cols-3 lg:grid-cols-3 md:gap-[28px] lg:gap-[67px]"
-      role="list" aria-label="Особливості політного стеку KARMA F405 V1">
-      <!-- Features -->
-      <article class="text-center relative z-[3]" role="listitem">
-        <h3
-          class="mb-[20px] text-[20px] lg:text-[24px] font-bold text-white font-['Montserrat'] feature-title flex items-center justify-center">
-          Висока продуктивність
-        </h3>
-        <p
-          class="mx-auto max-w-[min(400px,85vw)] text-[16px]  lg:text-[16px] xl:text-[20px] font-normal leading-[100%] text-white font-['Montserrat']">
-          Сучасні контролери польоту оснащені потужними мікроконтролерами
-          (наприклад, F4, F7, H7), які здатні обробляти дані з датчиків з
-          високою частотою.
-        </p>
-      </article>
+      role="list" aria-label='{{ i18n "product.features.aria.list" (dict "product" $productName) }}'>
 
-      <!-- Feature 2 -->
-      <article class="text-center relative z-[3]" role="listitem">
-        <h3
-          class="mb-[20px] text-[20px]  lg:text-[24px] font-bold text-white font-['Montserrat'] feature-title flex items-center justify-center whitespace-nowrap">
-          Гнучкість у налаштуваннях
-        </h3>
-        <p
-          class="mx-auto max-w-[min(400px,85vw)] text-[16px]  lg:text-[16px] xl:text-[20px] font-normal leading-[100%] text-white font-['Montserrat']">
-          Можливість налаштовувати PID-коефіцієнти, фільтри, режими польоту,
-          відео стабілізацію, GPS-режими, функцію OSD (On-Screen Display) та
-          багато іншого. Оптимізувати поведінка дрона.
-        </p>
-      </article>
+      {{- $titleBase := "mb-[20px] text-[20px] lg:text-[24px] font-bold text-white font-['Montserrat'] feature-title flex items-center justify-center" -}}
 
-      <!-- Feature 3-->
+      {{- range $n, $item := (slice 1 2 3) }}
+      {{- $title := i18n (printf "product.features.items.%d.title" $item) -}}
+      {{- $text := i18n (printf "product.features.items.%d.text" $item) -}}
+
       <article class="text-center relative z-[3]" role="listitem">
-        <h3
-          class="mb-[20px] text-[20px] lg:text-[24px] font-bold text-white font-['Montserrat'] feature-title flex items-center justify-center">
-          Легке встановлення
-        </h3>
+        <h3 class='{{ $titleBase }}{{ if eq $item 2 }} whitespace-nowrap{{ end }}'>{{ $title }}</h3>
         <p
           class="mx-auto max-w-[min(400px,85vw)] text-[16px] lg:text-[16px] xl:text-[20px] font-normal leading-[100%] text-white font-['Montserrat']">
-          Політні стеки об'єднують контролер польоту та ESC на одній платі або в
-          єдиному модулі. Це значно зменшує кількість проводів, спрощує монтаж
-          та зменшує загальну вагу та розмір системи.
+          {{ $text }}
         </p>
       </article>
+      {{- end }}
     </div>
   </div>
 </section>

@@ -1,10 +1,18 @@
 {{ define "main" }}
-{{ $categorySlug := "" }}
-{{ if .File }}
-{{ $categorySlug = .File.BaseFileName }}
-{{ else }}
-{{ $categorySlug = .Section }}
-{{ end }}
+{{- $categorySlug := .Params.categorySlug -}}
+{{- if not $categorySlug -}}
+{{- $rel := strings.TrimSuffix "/" .RelPermalink -}}
+{{- $categorySlug = path.Base $rel -}}
+{{- end -}}
+{{- if or (eq $categorySlug "") (eq $categorySlug "_index") (eq $categorySlug "index") (eq $categorySlug "catalog") -}}
+{{- with .File }}
+{{- $categorySlug = path.Base .Dir -}} 
+{{- end -}}
+{{- end -}}
+{{- if or (eq $categorySlug "") (eq $categorySlug "_index") (eq $categorySlug "index") -}}
+{{- $categorySlug = "politni-steky" -}} 
+{{- end -}}
+
 {{- $categoryData := index .Site.Data.products.categories $categorySlug -}}
 
 <!-- Hero Section -->
@@ -13,10 +21,10 @@
 {{ partial "our-products-section" . }}
 
 <!-- Why Choose Section -->
-{{ partial "catalog-why-choose" . }}
+{{ partial "catalog-why-choose" (dict "context" . "category" $categorySlug) }}
 
 <!-- Knowledge Base Section -->
-{{ partial "catalog-knowledge-base" . }}
+{{ partial "catalog-knowledge-base" (dict "context" . "category" $categorySlug) }}
 
 <!-- FAQ Section -->
 <div class="bg-white py-[80px]">
@@ -29,6 +37,4 @@
         {{ end }}
     </div>
 </div>
-
-
 {{ end }}

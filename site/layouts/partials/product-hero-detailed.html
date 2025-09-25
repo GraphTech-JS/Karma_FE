@@ -1,13 +1,14 @@
 {{- $product := .product | default dict -}}
 {{- $context := .context | default . -}}
 
-{{- $productName := $product.name | default $context.Title | default "Назва продукту" -}}
-{{- $description := $context.Params.description | default "Політний стек спрощує монтаж та підключення електроніки в дроні, забезпечує стабільний політ та ефективне розподілення потужності до моторів." -}}
+{{- $productName := $product.name | default $context.Title | default (i18n "product.hero.title.fallback") -}}
+{{- $description := $context.Params.description | default (i18n "product.hero.description.fallback") -}}
 
 {{- $words := split $productName " " -}}
 {{- $firstTwo := first 2 $words -}}
 {{- $rest := after 2 $words -}}
 
+{{/* Category slug -> i18n name */}}
 {{- $rawCategory := $context.Params.category | default $product.category | default "politni-steky" -}}
 {{- $slugMap := dict
 "Політні стеки" "politni-steky"
@@ -26,24 +27,31 @@
 {{- $categoryName := cond (ne $categoryI18n $catKey) $categoryI18n (cond $categoryData $categoryData.name $rawCategory)
 -}}
 
+{{/* Тільки для breadcrumbs — перша літера велика */}}
+{{- $categoryNameBreadcrumb := $categoryName -}}
+{{- if gt (len $categoryNameBreadcrumb) 0 -}}
+{{- $categoryNameBreadcrumb = printf "%s%s" (upper (substr $categoryNameBreadcrumb 0 1)) (substr $categoryNameBreadcrumb
+1) -}}
+{{- end -}}
+
 <section class="overflow-hidden relative bg-white">
   <div
     class="w-full max-w-[1280px] flex flex-col mx-auto px-[clamp(20px,4vw,40px)] pt-[20px] md:pt-[40px] relative z-[2]">
 
     <!-- Breadcrumbs -->
-    <nav aria-label="{{ i18n " catalog.hero.aria.breadcrumb" }}"
+    <nav aria-label="{{ i18n " product.hero.aria.breadcrumb" }}"
       class="flex flex-row items-start font-[Montserrat] gap-[clamp(8px,2vw,16px)] mb-[40px]">
       <ol class="flex flex-wrap items-center">
         <li>
           <a href="{{ " /" | relLangURL }}" class="text-[#ba0108] font-normal text-[16px] lg:text-[20px]">
-            {{ i18n "catalog.hero.breadcrumb.home" }}
+            {{ i18n "product.hero.breadcrumb.home" }}
           </a>
         </li>
         <li class="text-[#ba0108] px-[5px]" aria-hidden="true">&rarr;</li>
         <li>
           <a href="{{ (printf " /catalog/%s/" $categorySlug) | relLangURL }}"
             class="text-[#ba0108] font-normal text-[16px] lg:text-[20px]">
-            {{ $categoryName }}
+            {{ $categoryNameBreadcrumb }}
           </a>
         </li>
         <li class="text-[#ba0108] px-[5px]" aria-hidden="true">&rarr;</li>
@@ -89,13 +97,14 @@
 
         <!-- Optional Extra Text -->
         <p class="font-[Montserrat] text-[16px] lg:text-[20px] text-[#020303] mt-5 mb-14 leading-[120%]">
-          Він забезпечує стабільний політ, точне керування та ефективне розподілення потужності до моторів.
+          {{ i18n "product.hero.text.extra" }}
         </p>
 
         <!-- Call to Action -->
-        <button onclick="window.openContactModal()" aria-label="Отримати комерційну пропозицію для {{ $productName }}"
+        <button onclick="window.openContactModal()" aria-label="{{ i18n " product.hero.aria.ctaPrefix" }} {{
+          $productName }}"
           class="product-hero-button text-[16px] md:text-[24px] cursor-pointer font-medium text-white bg-[#ba0108] hover:bg-[#e39599] transition-colors w-full max-w-[458px] h-[58px] md:h-[70px] rounded-[20px] shadow">
-          Отримати пропозицію
+          {{ i18n "product.hero.cta" }}
         </button>
       </div>
     </div>

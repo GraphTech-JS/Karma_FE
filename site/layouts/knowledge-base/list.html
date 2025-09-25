@@ -1,106 +1,278 @@
 {{ define "main" }}
-{{ if eq .Layout "knowledge-base" }}
-  {{ partial "knowledge-base-content.html" . }}
-{{ else }}
-<section class="py-8 bg-white">
-  <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-    <!-- Breadcrumbs -->
-    <div class="flex items-center mb-8 text-sm">
-      <a href="/" class="text-[#ba0108] hover:text-[#9a0106] transition-colors">Головна</a>
-      <span class="mx-2 text-[#ba0108]">→</span>
-      <span class="text-[#ba0108]">База знань</span>
+<section class="relative z-10 bg-white">
+  {{ $bgEl10 := resources.Get "img/bg-el-10.png" }}
+  {{ if $bgEl10 }}
+  {{ $bgEl10Desktop := $bgEl10.Resize "295x270 webp q80" }}
+  <img fetchpriority="high" src="{{ $bgEl10Desktop.RelPermalink }}" alt="{{ i18n "kb.aria.bg" }}" aria-hidden="true"
+    class="fixed hidden md:block z-[1] top-0 lg:top-[-2%] left-0 w-[191px] lg:w-[295px] h-auto" />
+  {{ else }}
+  <img fetchpriority="high" src="/img/bg-el-1.png" alt="{{ i18n "kb.aria.bg" }}" aria-hidden="true"
+    class="fixed hidden md:block z-[1] top-0 lg:top-[-2%] left-0 w-[191px] lg:w-[295px] h-auto" />
+  {{ end }}
+
+  {{ $bgEl1 := resources.Get "img/bg-el-1.png" }}
+  {{ if $bgEl1 }}
+  {{ $bgEl1Processed := $bgEl1.Resize "201x webp q80" }}
+  <img fetchpriority="high" src="{{ $bgEl1Processed.RelPermalink }}" alt="{{ i18n "kb.aria.bg" }}" aria-hidden="true"
+    class="fixed block md:hidden z-[1] right-[-20%] top-0 w-[201px] h-auto opacity-50" />
+  {{ else }}
+  <img fetchpriority="high" src="/img/bg-el-1.png" alt="{{ i18n "kb.aria.bg" }}" aria-hidden="true"
+    class="fixed block md:hidden z-[1] right-[-20%] top-0 w-[201px] h-auto opacity-50" />
+  {{ end }}
+
+  <div class="py-[36px] md:py-8 pb-[60px] w-full">
+    <div
+      class="flex flex-col gap-4 mb-[25px] md:mb-[35px] lg:mb-[50px] lg:flex-row lg:items-center lg:justify-between max-w-[1280px] mx-auto px-[20px]">
+      <div class="flex items-center justify-start font-[Montserrat]">
+        <a class="text-[16px] lg:text-[20px] font-normal text-[#ba0108]" href="{{ " /" | relLangURL }}">{{ i18n
+          "catalog.hero.breadcrumb.home" }}</a>
+        <span class="text-[#ba0108] px-[5px]">→</span>
+        <a class="text-[16px] lg:text-[20px] font-normal text-[#ba0108]" href="{{ " /knowledge-base/" | relLangURL
+          }}">{{ i18n "nav.knowledge" }}</a>
+      </div>
+
+      <div class="hidden items-center max-w-md lg:flex">
+        <div class="relative flex-1">
+          <input type="text" placeholder='{{ i18n "kb.search.placeholder" }}'
+            class="h-[47px] w-full !rounded-[20px] font-[Montserrat] border border-[#E0E0E0] pl-4 pr-[120px] text-xl outline-none focus:border-[#ba0108] bg-white"
+            id="knowledge-search" />
+          <button
+            class="absolute z-10 right-0 top-1/2 -translate-y-1/2 w-[99px] h-[47px] rounded-[20px] bg-[#ba0108] flex items-center justify-center cursor-pointer hover:bg-[#a00007] transition-colors"
+            aria-label="{{ i18n " kb.search.button.aria" }}">
+            <img src="/img/search-icon.svg" alt="{{ i18n " kb.search.icon.alt" }}" width="48" height="48"
+              class="filter brightness-0 invert" />
+          </button>
+        </div>
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 gap-8 lg:grid-cols-4">
-      <!-- Sidebar -->
-      <div class="lg:col-span-1">
-        <div class="p-6 bg-gray-50 rounded-xl shadow-sm">
-          <h2 class="mb-4 text-xl font-semibold text-gray-900">Категорії</h2>
-          <nav class="space-y-2">
-            {{ range .Site.Taxonomies.categories }}
-            <a href="{{ .Page.Permalink }}" class="block px-4 py-2 rounded-lg hover:bg-gray-100 text-gray-700 hover:text-[#ba0108] transition-colors">
-              {{ .Page.Title }} ({{ .Count }})
-            </a>
-            {{ end }}
-          </nav>
-        </div>
-      </div>
+    <div id="search-message-container" class="max-w-[1280px] mx-auto px-[20px]"></div>
 
-      <!-- Main Content -->
-      <div class="lg:col-span-3">
-        <div class="mb-8">
-          <h2 class="mb-2 text-3xl font-bold text-gray-900">База знань</h2>
-          <p class="text-gray-600">Корисні статті та довідкова інформація про нашу продукцію</p>
-        </div>
+    <div class="relative z-20 space-y-0 w-full max-w-[1600px] mx-auto">
+      {{- $categorySlugs := slice "uav" "videoperedavachi-vtx" "esc" "politni-steky" -}}
+      {{- $categories := slice -}}
+      {{- range $categorySlugs }}
+      {{- $label := i18n (printf "guides.category.%s" .) | default . -}}
+      {{- $categories = $categories | append (dict "slug" . "label" $label) -}}
+      {{- end -}}
 
-        <!-- Search -->
-        <div class="mb-8">
-          <div class="relative">
-            <input type="text" placeholder="Пошук у базі знань..." class="w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#ba0108] focus:border-transparent">
-            <svg class="absolute left-3 top-3.5 w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      {{- $guides := where .Site.RegularPages "Section" "guides" -}}
+      {{- if eq (len $guides) 0 -}}
+      {{- $all := slice -}}
+      {{- range site.Sites -}}
+      {{- $all = $all | append (where .RegularPages "Section" "guides") -}}
+      {{- end -}}
+      {{- $guides = $all -}}
+      {{- end -}}
+
+      {{ range $index, $cat := $categories }}
+      {{- $bySlug := where $guides ".Params.categorySlug" $cat.slug -}}
+      {{- $byName := where $guides ".Params.category" "in" (slice $cat.label) -}}
+      {{- $categoryGuides := cond (gt (len $bySlug) 0) $bySlug $byName -}}
+
+      <details {{ if eq $index 0 }}open{{ end }} class="overflow-hidden knowledge-section group">
+        <summary
+          class="section-header bg-[#4a4a4a] text-white rounded-none cursor-pointer list-none outline-none select-none">
+          <div
+            class="flex justify-between items-center w-full h-[67px] md:h-[71px] lg:h-[86px] max-w-[1280px] px-[20px] mx-auto">
+            <h2 class="text-[clamp(24px,3vw,40px)] font-bold font-['Unbounded'] tracking-wide">{{ $cat.label }}</h2>
+            <svg class="accordion-arrow w-[45px] h-auto transition-transform duration-300 transform" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
           </div>
-        </div>
+        </summary>
 
-        <!-- Articles Grid -->
-        <div class="grid gap-6 md:grid-cols-2">
-          {{ range .Pages }}
-          <article class="overflow-hidden bg-white rounded-xl border border-gray-100 shadow-sm transition-shadow duration-300 group hover:shadow-md">
-            {{ if .Params.image }}
-            <div class="overflow-hidden h-48">
-              <img src="{{ .Params.image }}" alt="{{ .Title }}" class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105">
+        <div class="bg-white section-content">
+          <div class="section-content-inner">
+            {{ if $categoryGuides }}
+            {{ range $categoryGuides }}
+            <div class="knowledge-item mx-auto max-w-[1280px] px-0 lg:px-[20px] pr-[20px]">
+              <a href="{{ .RelPermalink }}" class="block py-4 transition-colors lg:px-8 lg:py-6 hover:bg-gray-50">
+                <div class="flex flex-1 gap-[11px] md:gap-[15px] items-start space-x-4">
+                  <img src="/img/point.svg" alt="{{ i18n "kb.list.item.bullet" }}" class="py-[5px] md:py-[10px]" />
+                  <div class="flex-1">
+                    <h3 class="text-[16px] md:text-[24px] font-semibold font-['Montserrat'] mb-[10px]">{{ .Title }}</h3>
+                    {{ if .Params.description }}
+                    <p class="text-[16px] leading-relaxed font-['Montserrat']">
+                      {{ .Params.description }} <span class="text-[#ba0108]">&gt;&gt;</span>
+                    </p>
+                    {{ end }}
+                  </div>
+                </div>
+              </a>
             </div>
             {{ end }}
-            <div class="p-6">
-              <div class="flex items-center mb-2 text-sm text-gray-500">
-                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02.01.2006" }}</time>
-                <span class="mx-2">•</span>
-                <span>{{ .ReadingTime }} хв. читання</span>
-              </div>
-              <h2 class="mb-2 text-xl font-semibold text-gray-900">
-                <a href="{{ .RelPermalink }}" class="hover:text-[#ba0108] transition-colors">
-                  {{ .Title }}
-                </a>
-              </h2>
-              <p class="mb-4 text-gray-600">{{ .Summary | truncate 120 }}</p>
-              <div class="flex flex-wrap gap-2">
-                {{ range .Params.tags }}
-                <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium text-gray-800 bg-gray-100 rounded-full">
-                  {{ . }}
-                </span>
-                {{ end }}
-              </div>
+            {{ else }}
+            <div class="px-6 py-8 text-center text-gray-500 lg:px-8 lg:py-12">
+              <p class="text-[clamp(16px,2vw,20px)] font-['Montserrat']">{{i18n "kb.content.soon"}}</p>
             </div>
-          </article>
-          {{ end }}
-        </div>
-
-        <!-- Pagination -->
-        {{ if gt .Paginator.TotalPages 1 }}
-        <div class="flex justify-center mt-10">
-          <nav class="flex items-center space-x-2">
-            {{ if .Paginator.HasPrev }}
-            <a href="{{ .Paginator.Prev.URL }}" class="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50">
-              &larr; Назад
-            </a>
             {{ end }}
-            
-            <span class="px-4 py-2 text-gray-700">
-              Сторінка {{ .Paginator.PageNumber }} з {{ .Paginator.TotalPages }}
-            </span>
-            
-            {{ if .Paginator.HasNext }}
-            <a href="{{ .Paginator.Next.URL }}" class="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50">
-              Вперед &rarr;
-            </a>
-            {{ end }}
-          </nav>
+          </div>
         </div>
-        {{ end }}
-      </div>
+      </details>
+      {{ end }}
     </div>
   </div>
 </section>
-{{ end }}
+
+<style>
+  .knowledge-section summary {
+    list-style: none;
+  }
+
+  .knowledge-section summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .knowledge-section.is-open>.section-header {
+    background-color: #ba0108 !important;
+  }
+
+  .section-content {
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .section-content-inner {
+    border-left: 1px solid #e5e7eb;
+    border-right: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .knowledge-item:hover h3 {
+    color: #ba0108;
+  }
+
+  .knowledge-item.hidden {
+    display: none;
+  }
+
+  .knowledge-item.highlighted {
+    background-color: #fef2f2;
+  }
+</style>
+
+<script>
+  window.I18NKB = {
+    "notFoundTpl": {{i18n "kb.search.notFound.tpl" | plainify | jsonify }}
+  };
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const allSections = document.querySelectorAll('.knowledge-section');
+    const searchInput = document.getElementById('knowledge-search');
+    const searchButton = searchInput?.nextElementSibling;
+
+    function initAnimatedAccordion() {
+      allSections.forEach(section => {
+        const summary = section.querySelector('summary');
+        const content = section.querySelector('.section-content');
+        const arrow = summary.querySelector('.accordion-arrow');
+
+        if (section.hasAttribute('open')) {
+          section.classList.add('is-open'); arrow.classList.add('rotate-90');
+          content.style.maxHeight = content.scrollHeight + 'px';
+        } else {
+          content.style.maxHeight = '0px'; section.classList.remove('is-open'); arrow.classList.remove('rotate-90');
+        }
+
+        let isAnimating = false;
+        summary.addEventListener('click', e => {
+          e.preventDefault();
+          if (isAnimating) return;
+          isAnimating = true;
+
+          if (section.classList.contains('is-open')) {
+            arrow.classList.remove('rotate-90');
+            section.classList.remove('is-open');
+            content.style.maxHeight = content.scrollHeight + 'px';
+            requestAnimationFrame(() => { content.style.maxHeight = '0px'; });
+            setTimeout(() => { section.removeAttribute('open'); isAnimating = false; }, 400);
+          } else {
+            arrow.classList.add('rotate-90');
+            section.setAttribute('open', '');
+            section.classList.add('is-open');
+            content.style.maxHeight = content.scrollHeight + 'px';
+            setTimeout(() => { if (section.classList.contains('is-open')) content.style.maxHeight = 'none'; isAnimating = false; }, 400);
+          }
+        });
+      });
+    }
+
+    function showSearchMessage(message) {
+      const container = document.getElementById('search-message-container');
+      if (container) container.innerHTML = `<div class="text-center pb-[20px] text-gray-500 font-[Montserrat]">${message}</div>`;
+    }
+    function hideSearchMessage() {
+      const container = document.getElementById('search-message-container');
+      if (container) container.innerHTML = '';
+    }
+
+    function searchInContent(query) {
+      if (!query) { resetSearch(); return; }
+      let isAnyResultFound = false;
+      allSections.forEach(section => {
+        const items = section.querySelectorAll('.knowledge-item');
+        let sectionHasMatch = false;
+        items.forEach(item => {
+          const title = item.querySelector('h3')?.textContent.toLowerCase() || '';
+          const description = item.querySelector('p')?.textContent.toLowerCase() || '';
+          if (title.includes(query) || description.includes(query)) {
+            item.classList.remove('hidden');
+            item.classList.add('highlighted');
+            sectionHasMatch = true; isAnyResultFound = true;
+          } else {
+            item.classList.add('hidden');
+            item.classList.remove('highlighted');
+          }
+        });
+
+        const content = section.querySelector('.section-content');
+        const arrow = section.querySelector('.accordion-arrow');
+        if (sectionHasMatch) {
+          section.setAttribute('open', ''); section.classList.add('is-open'); arrow.classList.add('rotate-90');
+          content.style.maxHeight = 'none';
+        } else {
+          section.removeAttribute('open'); section.classList.remove('is-open'); arrow.classList.remove('rotate-90');
+          content.style.maxHeight = '0px';
+        }
+      });
+
+      if (!isAnyResultFound) {
+        const t = window.I18NKB || {};
+        const tpl = t.notFoundTpl || 'Нічого не знайдено за запитом: {query}';
+        showSearchMessage(tpl.replace('{query}', query));
+      } else {
+        hideSearchMessage();
+      }
+    }
+
+    function resetSearch() {
+      allSections.forEach((section, index) => {
+        section.querySelectorAll('.knowledge-item').forEach(item => item.classList.remove('hidden', 'highlighted'));
+        const content = section.querySelector('.section-content');
+        const arrow = section.querySelector('.accordion-arrow');
+        if (index === 0) {
+          section.setAttribute('open', ''); section.classList.add('is-open'); arrow.classList.add('rotate-90');
+          content.style.maxHeight = 'none';
+        } else {
+          section.removeAttribute('open'); section.classList.remove('is-open'); arrow.classList.remove('rotate-90');
+          content.style.maxHeight = '0px';
+        }
+      });
+      hideSearchMessage();
+    }
+
+    initAnimatedAccordion();
+
+    if (searchInput && searchButton) {
+      const performSearch = () => searchInContent(searchInput.value.trim().toLowerCase());
+      searchButton.addEventListener('click', performSearch);
+      searchInput.addEventListener('keypress', e => { if (e.key === 'Enter') performSearch(); });
+      searchInput.addEventListener('input', () => { if (searchInput.value.trim() === '') resetSearch(); });
+    }
+  });
+</script>
 {{ end }}

@@ -55,8 +55,8 @@ about.alt: "About us - Ukrainian high-tech manufacturing company"
 
 
 # Results Section
-results.customers: Satisfied<br class=\"xl:hidden\">customers
-results.locations: Manufacturing<br class=\"xl:hidden\">locations
+results.customers: 'Satisfied<br class=\"xl:hidden\">customers'
+results.locations: 'Manufacturing<br class=\"xl:hidden\">locations'
 results.destroyed: "<span class=\"block md:inline\">Destroyed enemy</span><br class=\"hidden md:block xl:block\"><span class=\"block md:inline md:pl-0\">equipment</span>"
 
 
@@ -65,7 +65,7 @@ catalog.brand: "С"
 catalog.title: "ATALOG"
 catalog.stacks: "Flight Stacks"
 catalog.vtx: "Video transmitters VTX"
-catalog.esc: "ESC" 
+catalog.esc: "ESC"
 
 # Advantages Section
 advantages.title: "HY US?"
@@ -101,6 +101,8 @@ contact.form.success: "Message sent successfully!\nWe will contact you soon."
 contact.form.error.name: "Please enter your name"
 contact.form.error.phone: "Please enter a valid phone number"
 contact.department: "Contact department"
+contact.form.phone: "+380 95 61 56713"
+contact.form.email: "Info@karma.flights"
 
 # Footer
 footer.contact.title: "Contacts"
@@ -142,7 +144,7 @@ catalog.hero.aria.stack.rotate: "Karma Flights - high-tech Ukrainian manufacturi
 catalog.why.title:
   other: "Why choose {{ .category }} from Karma?"
 
-# Category names (used inside the title)
+# Category names 
 catalog.category.politni-steky:
   other: "Flight Stacks"
 catalog.category.videoperedavachi-vtx:
@@ -193,3 +195,232 @@ guides.category.videoperedavachi-vtx:
   other: "Video transmitters"
 guides.category.esc:
   other: "ESC"
+
+
+# -- Contact Modal --
+aria.modal.close:
+  other: "Close modal"
+
+# Modal title
+contact.modal.title.brand:
+  other: "L"
+contact.modal.title:
+  other: "eave your request and we will contact you  and share current prices"
+
+# Contacts label
+contact.modal.contactsLabel:
+  other: "Our contact details:"
+
+# Quantity dropdown
+contact.form.quantity.placeholder:
+  other: "Quantity of stacks you plan to order"
+contact.form.quantity.0_20:
+  other: "0 - 20"
+contact.form.quantity.20_100:
+  other: "20 - 100"
+contact.form.quantity.100_1000:
+  other: "100 - 1,000"
+contact.form.quantity.3000_10000:
+  other: "3,000 - 10,000"
+contact.form.quantity.10000_plus:
+  other: ">10,000"
+
+# Errors 
+contact.form.error.quantity:
+  other: "Please select the quantity"
+contact.form.error.submit:
+  other: "An error occurred while sending. Please try again."
+
+# -- Product page --
+
+# Product Hero Section
+product.hero.aria.breadcrumb:
+  other: "Breadcrumb navigation"
+product.hero.breadcrumb.home:
+  other: "Home"
+
+product.hero.title.fallback:
+  other: "Product name"
+product.hero.description.fallback:
+  other: "The flight stack simplifies mounting and wiring in a drone, ensures stable flight and efficient power distribution to the motors."
+product.hero.text.extra:
+  other: "It provides stable flight, precise control, and efficient power distribution to the motors."
+
+product.hero.cta:
+  other: "Get proposal"
+product.hero.aria.ctaPrefix:
+  other: "Get commercial proposal for"
+
+# Product Specifications Section
+product.specs.title:
+  other: "SPECIFICATIONS"
+
+product.specs.aria.left:
+  other: "Technical specifications of {{ .product }} — main parameters"
+product.specs.caption.left:
+  other: "Main technical specifications of {{ .product }}"
+
+product.specs.aria.right:
+  other: "Technical specifications of {{ .product }} — power and mounting"
+product.specs.caption.right:
+  other: "Power and mounting parameters of {{ .product }}"
+
+product.specs.field.mcu:
+  other: "MCU"
+product.specs.field.power:
+  other: "Power"
+product.specs.field.current:
+  other: "Current"
+product.specs.field.firmware:
+  other: "Firmware"
+product.specs.field.mount:
+  other: "Mounting"
+product.specs.field.allowedBatteryCurrent:
+  other: "Allowed battery current"
+
+product.specs.alt.details:
+  other: "Detailed view of {{ .product }} with technical specifications"
+
+# Product Features Section  
+product.features.title:
+  other: "FEATURES"
+product.features.aria.list:
+  other: "Features of {{ .product }}"
+
+product.features.items.1.title:
+  other: "High performance"
+product.features.items.1.text:
+  other: "Modern flight controllers are equipped with powerful MCUs (e.g., F4, F7, H7) capable of processing sensor data at high rates."
+
+product.features.items.2.title:
+  other: "Flexible configuration"
+product.features.items.2.text:
+  other: "You can finely tune PID coefficients, filters, flight modes (acro, stabilization, GPS modes), OSD features (On‑Screen Display) and more. The drone’s behavior is optimized."
+
+product.features.items.3.title:
+  other: "Easy installation"
+product.features.items.3.text:
+  other: "Flight stacks combine the flight controller and ESC on a single board or in one module. This greatly reduces wiring, simplifies assembly, and lowers overall weight and size."
+
+# Product Cost Calculation Section
+
+product.cost.title:
+  other: "COST CALCULATION"
+product.cost.aria.list:
+  other: "Cost calculation tables for {{ .product }}"
+
+product.cost.table.title:
+  other: "Depending on volumes and<br />procurement channels"
+product.cost.table.warehouse:
+  other: "Warehouse"
+product.cost.table.contracting:
+  other: "Contracting"
+
+product.cost.table1.aria:
+  other: "Discount table by order volume"
+product.cost.table1.caption:
+  other: "Discounts for different order volumes of {{ .product }}"
+
+product.cost.table2.aria:
+  other: "Discount table for wholesale orders"
+product.cost.table2.caption:
+  other: "Discounts for wholesale orders of {{ .product }}"
+
+product.cost.table3.aria:
+  other: "Discount table for large orders"
+product.cost.table3.caption:
+  other: "Discounts for large orders of {{ .product }}"
+
+product.cost.note:
+  other: "We aim to make pricing transparent. Prices depend on order volumes and procurement channels"
+product.cost.cta:
+  other: "Get proposal"
+product.cost.aria.cta:
+  other: "Get a commercial proposal with cost calculation"
+
+# Product Instructions Section
+
+product.instructions.title:
+  other: "INSTRUCTIONS"
+product.instructions.aria.list:
+  other: "List of instructions and documentation for {{ .product }}"
+product.instructions.download:
+  other: "Download"
+
+product.instructions.item1.title:
+  other: "User manual (PDF)"
+product.instructions.item1.aria:
+  other: "Download the user manual PDF"
+
+product.instructions.item2.title:
+  other: "Assembly recommendations (PDF)"
+product.instructions.item2.aria:
+  other: "Download assembly recommendations PDF"
+
+product.instructions.item3.title:
+  other: "BetaFlight 4.5.0 {{ .code }} ({{ .date }}) (hex)"
+product.instructions.item3.aria:
+  other: "Download {{ .version }} firmware for {{ .code }}"
+
+product.instructions.item4.title:
+  other: "BetaFlight 4.5.1 {{ .code }} ({{ .date }}) (hex)"
+product.instructions.item4.aria:
+  other: "Download {{ .version }} firmware for {{ .code }}"
+
+product.instructions.item5.title:
+  other: "INAV 8.0.1 {{ .code }} ({{ .date }}) (hex)"
+product.instructions.item5.aria:
+  other: "Download {{ .version }} firmware for {{ .code }}"
+
+product.instructions.item6.title:
+  other: "ArduCopter 4.6.1b1 {{ .code }} ({{ .date }}) (hex)"
+product.instructions.item6.aria:
+  other: "Download {{ .version }} firmware for {{ .code }}"
+
+product.instructions.item7.title:
+  other: "ArduPlane 4.6.1b1 {{ .code }} ({{ .date }}) (hex)"
+product.instructions.item7.aria:
+  other: "Download {{ .version }} firmware for {{ .code }}"
+
+product.instructions.item8.title:
+  other: "Pricing ({{ .date }})"
+product.instructions.item8.aria:
+  other: "Download pricing dated {{ .date }}"
+# -- Product page --
+
+
+# -- Knowledge Base page --
+kb.aria.bg:
+  other: "Decorative background element"
+kb.search.placeholder:
+  other: "Type your text"
+kb.search.button.aria:
+  other: "Start search"
+kb.search.icon.alt:
+  other: "search"
+kb.search.notFound.tpl:
+  other: "Nothing found for: \"{query}\""
+kb.content.soon:
+  other: "Content will be added soon"
+
+# Categories (labels used in Knowledge Base)
+guides.category.uav:
+  other: "UAV"
+guides.category.videoperedavachi-vtx:
+  other: "Video transmitters"
+guides.category.esc:
+  other: "ESC"
+guides.category.politni-steky:
+  other: "Flight Stacks"
+
+# -- Knowledge Base page --
+
+
+# -- 404 page --
+404.title: "Page not found"
+404.heading: "Page not found"
+404.description: "Looks like the parts got lost! The page you're looking for doesn't exist or was moved."
+404.cta: "Go to homepage"
+404.alt.decor: "Decorative element"
+404.alt.drone: "Drone animation"
+# -- 404 page --

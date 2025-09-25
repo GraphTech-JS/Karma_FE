@@ -55,8 +55,8 @@ about.paragraph-two: "Ми впроваджуємо повний цикл: ві�
 about.alt: "Про нас - українська компанія високотехнологічного виробництва"
 
 # Results Section
-results.customers: Задоволених<br class=\"xl:hidden\">клієнтів
-results.locations: Виробничих<br class=\"xl:hidden\">локацій
+results.customers: 'Задоволених<br class=\"xl:hidden\">клієнтів'
+results.locations: 'Виробничих<br class=\"xl:hidden\">локацій'
 results.destroyed: "<span class=\"block md:inline\">Знищеної ворожої</span><br class=\"hidden md:block xl:block\"><span class=\"block md:inline md:pl-0\">техніки</span>"
 
 # Product catalog section
@@ -192,6 +192,41 @@ guides.category.videoperedavachi-vtx:
   other: "Відеопередавачі"
 guides.category.esc:
   other: "ESC"
+
+# Contact Modal
+
+aria.modal.close:
+  other: "Закрити модальне вікно"
+
+# Modal title
+contact.modal.title.brand:
+  other: "З"
+contact.modal.title:
+  other: "алиште свій запит і ми зв'яжемось з Вами  та повідомимо про актуальні ціни"
+
+# Contacts label в модалці
+contact.modal.contactsLabel:
+  other: "Наші контакти для зв'язку:"
+
+# Quantity dropdown
+contact.form.quantity.placeholder:
+  other: "Кількість стеків, яку плануєте замовити"
+contact.form.quantity.0_20:
+  other: "0 - 20"
+contact.form.quantity.20_100:
+  other: "20 - 100"
+contact.form.quantity.100_1000:
+  other: "100 - 1 000"
+contact.form.quantity.3000_10000:
+  other: "3 000 - 10 000"
+contact.form.quantity.10000_plus:
+  other: ">10 000"
+
+# Errors 
+contact.form.error.quantity:
+  other: Будь ласка, оберіть кількість стеків
+contact.form.error.submit:
+  other: Виникла помилка при відправці. Спробуйте ще раз.
 # -- Catalog page --
 
 
@@ -199,3 +234,195 @@ guides.category.esc:
 
 # Product Hero Section
 
+product.hero.aria.breadcrumb:
+  other: "Навігація breadcrumb"
+product.hero.breadcrumb.home:
+  other: "Головна"
+
+product.hero.title.fallback:
+  other: "Назва продукту"
+product.hero.description.fallback:
+  other: "Політний стек спрощує монтаж та підключення електроніки в дроні, забезпечує стабільний політ та ефективне розподілення потужності до моторів."
+product.hero.text.extra:
+  other: "Він забезпечує стабільний політ, точне керування та ефективне розподілення потужності до моторів."
+
+product.hero.cta:
+  other: "Отримати пропозицію"
+product.hero.aria.ctaPrefix:
+  other: "Отримати комерційну пропозицію для"
+
+
+# Product Specifications Section
+
+product.specs.title:
+  other: "ХАРАКТЕРИСТИКИ"
+
+product.specs.aria.left:
+  other: "Технічні характеристики {{ .product }} — основні параметри"
+product.specs.caption.left:
+  other: "Основні технічні характеристики {{ .product }}"
+
+product.specs.aria.right:
+  other: "Технічні характеристики {{ .product }} — живлення та кріплення"
+product.specs.caption.right:
+  other: "Параметри живлення та кріплення {{ .product }}"
+
+product.specs.field.mcu:
+  other: "MCU"
+product.specs.field.power:
+  other: "Живлення"
+product.specs.field.current:
+  other: "Струм"
+product.specs.field.firmware:
+  other: "Прошивка"
+product.specs.field.mount:
+  other: "Кріплення"
+product.specs.field.allowedBatteryCurrent:
+  other: "Дозволений струм від батареї"
+
+product.specs.alt.details:
+  other: "Детальний вигляд {{ .product }} з технічними характеристиками"
+
+# Product Features Section
+product.features.title:
+  other: "ОСОБЛИВОСТІ"
+product.features.aria.list:
+  other: "Особливості {{ .product }}"
+
+product.features.items.1.title:
+  other: "Висока продуктивність"
+product.features.items.1.text:
+  other: "Сучасні контролери польоту оснащені потужними мікроконтролерами (наприклад, F4, F7, H7), які здатні обробляти дані з датчиків з високою частотою."
+
+product.features.items.2.title:
+  other: "Гнучкість у налаштуваннях"
+product.features.items.2.text:
+  other: "Можна тонко налаштовувати PID-коефіцієнти, фільтри, режими польоту (акро, стабілізація, GPS-режими), функції OSD (On‑Screen Display) та багато іншого. Оптимізована поведінка дрона."
+
+product.features.items.3.title:
+  other: "Легке встановлення"
+product.features.items.3.text:
+  other: "Польотні стеки об'єднують контролер польоту та ESC на одній платі або в єдиному модулі. Це значно зменшує кількість проводів, спрощує монтаж та зменшує загальну вагу і розмір системи."
+
+# Product Cost Calculation Section
+
+product.cost.title:
+  other: "РОЗРАХУНОК ВАРТОСТІ"
+product.cost.aria.list:
+  other: "Таблиці розрахунку вартості для {{ .product }}"
+
+product.cost.table.title:
+  other: "Відносно обсягів та<br />шляхів придбання"
+product.cost.table.warehouse:
+  other: "Склад"
+product.cost.table.contracting:
+  other: "Контрак-тування"
+
+product.cost.table1.aria:
+  other: "Таблиця знижок залежно від обсягів замовлення"
+product.cost.table1.caption:
+  other: "Таблиця знижок для різних обсягів замовлення {{ .product }}"
+
+product.cost.table2.aria:
+  other: "Таблиця знижок для оптових замовлень"
+product.cost.table2.caption:
+  other: "Таблиця знижок для оптових замовлень {{ .product }}"
+
+product.cost.table3.aria:
+  other: "Таблиця знижок для великих замовлень"
+product.cost.table3.caption:
+  other: "Таблиця знижок для великих замовлень {{ .product }}"
+
+product.cost.note:
+  other: "Ми прагнемо зробити прозору систему ціноутворення. Ціни залежать від обсягів та шляхів придбання"
+product.cost.cta:
+  other: "Отримати пропозицію"
+product.cost.aria.cta:
+  other: "Отримати комерційну пропозицію з розрахунком вартості"
+
+
+# Product Instructions Section
+product.instructions.title:
+  other: "ІНСТРУКЦІЇ"
+product.instructions.aria.list:
+  other: "Список інструкцій та документації для {{ .product }}"
+product.instructions.download:
+  other: "Завантажити"
+
+product.instructions.item1.title:
+  other: "Інструкція користувача (PDF)"
+product.instructions.item1.aria:
+  other: "Завантажити інструкцію користувача у форматі PDF"
+
+product.instructions.item2.title:
+  other: "Рекомендації по збірці (PDF)"
+product.instructions.item2.aria:
+  other: "Завантажити рекомендації по збірці у форматі PDF"
+
+product.instructions.item3.title:
+  other: "BetaFlight 4.5.0 {{ .code }} ({{ .date }}) (hex)"
+product.instructions.item3.aria:
+  other: "Завантажити прошивку {{ .version }} для {{ .code }}"
+
+product.instructions.item4.title:
+  other: "BetaFlight 4.5.1 {{ .code }} ({{ .date }}) (hex)"
+product.instructions.item4.aria:
+  other: "Завантажити прошивку {{ .version }} для {{ .code }}"
+
+product.instructions.item5.title:
+  other: "INAV 8.0.1 {{ .code }} ({{ .date }}) (hex)"
+product.instructions.item5.aria:
+  other: "Завантажити прошивку {{ .version }} для {{ .code }}"
+
+product.instructions.item6.title:
+  other: "ArduCopter 4.6.1b1 {{ .code }} ({{ .date }}) (hex)"
+product.instructions.item6.aria:
+  other: "Завантажити прошивку {{ .version }} для {{ .code }}"
+
+product.instructions.item7.title:
+  other: "ArduPlane 4.6.1b1 {{ .code }} ({{ .date }}) (hex)"
+product.instructions.item7.aria:
+  other: "Завантажити прошивку {{ .version }} для {{ .code }}"
+
+product.instructions.item8.title:
+  other: "Ціноутворення ({{ .date }})"
+product.instructions.item8.aria:
+  other: "Завантажити ціноутворення від {{ .date }}"
+
+# -- Product page --
+
+# -- Knowledge Base page --
+kb.aria.bg:
+  other: "Декоративний фоновий елемент"
+kb.search.placeholder:
+  other: "Введіть текст"
+kb.search.button.aria:
+  other: "Почати пошук"
+kb.search.icon.alt:
+  other: "пошук"
+kb.search.notFound.tpl:
+  other: "Нічого не знайдено за запитом: \"{query}\""
+kb.content.soon:
+  other: "Контент скоро буде додано"
+
+guides.category.uav:
+  other: "БПЛА"
+guides.category.videoperedavachi-vtx:
+  other: "Відеопередавачі"
+guides.category.esc:
+  other: "ESC"
+guides.category.politni-steky:
+  other: "Політні стеки"
+
+# -- Knowledge Base page --
+
+
+
+# -- 404 page --
+404.title: "Сторінку не знайдено"
+404.heading: "Сторінку не знайдено"
+404.description: "Схоже, що комплектуючі заблукали! Сторінку, яку ви шукаєте, не існує або була переміщена."
+404.cta: "На головну"
+404.alt.decor: "Декоративний елемент"
+404.alt.drone: "Дрон анімація"
+# -- 404 page --
