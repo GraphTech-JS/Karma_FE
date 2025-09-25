@@ -24,8 +24,18 @@
 {{- $catKey := printf "catalog.category.%s" $categorySlug -}}
 {{- $categoryI18n := i18n $catKey -}}
 {{- $categoryData := index $context.Site.Data.products.categories $categorySlug -}}
-{{- $categoryName := cond (ne $categoryI18n $catKey) $categoryI18n (cond $categoryData $categoryData.name $rawCategory)
--}}
+
+{{/* Обираємо назву категорії коректно (без cond із мапою) */}}
+{{- $categoryName := $rawCategory -}}
+{{- if ne $categoryI18n $catKey -}}
+{{- $categoryName = $categoryI18n -}}
+{{- else -}}
+{{- with $categoryData -}}
+{{- with .name -}}
+{{- $categoryName = . -}}
+{{- end -}}
+{{- end -}}
+{{- end -}}
 
 {{/* Тільки для breadcrumbs — перша літера велика */}}
 {{- $categoryNameBreadcrumb := $categoryName -}}
@@ -43,7 +53,7 @@
       class="flex flex-row items-start font-[Montserrat] gap-[clamp(8px,2vw,16px)] mb-[40px]">
       <ol class="flex flex-wrap items-center">
         <li>
-          <a href="{{ " /" | relLangURL }}" class="text-[#ba0108] font-normal text-[16px] lg:text-[20px]">
+          <a href="{{ .Site.Home.RelPermalink }}" class="text-[#ba0108] font-normal text-[16px] lg:text-[20px]">
             {{ i18n "product.hero.breadcrumb.home" }}
           </a>
         </li>
@@ -101,7 +111,7 @@
         </p>
 
         <!-- Call to Action -->
-        <button onclick="window.openContactModal()" aria-label="{{ i18n " product.hero.aria.ctaPrefix" }} {{
+        <button onclick="window.openContactModal()" aria-label="{{ printf " %s %s" (i18n "product.hero.aria.ctaPrefix" )
           $productName }}"
           class="product-hero-button text-[16px] md:text-[24px] cursor-pointer font-medium text-white bg-[#ba0108] hover:bg-[#e39599] transition-colors w-full max-w-[458px] h-[58px] md:h-[70px] rounded-[20px] shadow">
           {{ i18n "product.hero.cta" }}
