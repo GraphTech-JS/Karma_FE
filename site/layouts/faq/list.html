@@ -3,11 +3,11 @@
 {{ partial "faq-hero" (dict "title" .title "subtitle" .description) }}
 {{ end }}
 {{ with .Params.general_questions }}
-{{ partial "accordion.html" (dict "title" .title "items" .questions "mode" "faq" "isFirst" true) }}
+{{ partial "accordion.html" (dict "title" .title "items" .questions "mode" "faq" ) }}
 {{ end }}
 
 {{ with .Params.common_questions }}
-{{ partial "accordion.html" (dict "title" .title "items" .questions "mode" "faq") }}
+{{ partial "accordion.html" (dict "title" .title "items" .questions "mode" "faq" "isFirst" true ) }}
 {{ end }}
 
 {{ partial "faq-trusted" . }}

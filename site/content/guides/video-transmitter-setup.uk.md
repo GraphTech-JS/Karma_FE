@@ -4,8 +4,10 @@ description: "Покрокова інструкція з налаштуванн�
 date: 2024-01-15
 draft: false
 category: "Відеопередавачі"
+categorySlug: videoperedavachi-vtx
 tags: ["FPV", "відеопередавач", "налаштування", "частоти"]
-slug: "Video Transmitter Setup for FPV"
+slug: "vtx2-settings"
+translationKey: vtx2-settings
 ---
 
 

@@ -137,3 +137,59 @@ catalog.hero.aria.bg2: "Decorative background element"
 catalog.hero.aria.stack.left: "Stack element left"
 catalog.hero.aria.stack.right: "Stack element right"
 catalog.hero.aria.stack.rotate: "Karma Flights - high-tech Ukrainian manufacturing"
+
+# Catalog Why Choose Section
+catalog.why.title:
+  other: "Why choose {{ .category }} from Karma?"
+
+# Category names (used inside the title)
+catalog.category.politni-steky:
+  other: "Flight Stacks"
+catalog.category.videoperedavachi-vtx:
+  other: "Video Transmitters VTX"
+catalog.category.esc:
+  other: "ESC"
+
+catalog.why.items.politni-steky.1:
+  other: "Compactness and integration"
+catalog.why.items.politni-steky.2:
+  other: "High performance and versatility"
+catalog.why.items.politni-steky.3:
+  other: "Rich functionality and ease of use"
+
+catalog.why.items.videoperedavachi-vtx.1:
+  other: "Stable signal and high quality"
+catalog.why.items.videoperedavachi-vtx.2:
+  other: "Long-range transmission"
+catalog.why.items.videoperedavachi-vtx.3:
+  other: "Professional quality and reliability"
+
+catalog.why.items.esc.1:
+  other: "Smooth speed control"
+catalog.why.items.esc.2:
+  other: "High precision and reliability"
+catalog.why.items.esc.3:
+  other: "Support for various firmware"
+
+catalog.why.icon.alt.1:
+  other: "List item 1"
+catalog.why.icon.alt.2:
+  other: "List item 2"
+catalog.why.icon.alt.3:
+  other: "List item 3"
+
+
+# Catalog Knowledge Base Section
+catalog.kb.title.brand:
+  other: "K"
+catalog.kb.title:
+  other: "NOWLEDGE BASE"
+catalog.kb.empty:
+  other: "There are no articles for this category yet. Add them via CMS."
+
+guides.category.politni-steky:
+  other: "Flight Stacks"
+guides.category.videoperedavachi-vtx:
+  other: "Video transmitters"
+guides.category.esc:
+  other: "ESC"

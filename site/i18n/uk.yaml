@@ -139,4 +139,63 @@ catalog.hero.aria.stack.left: "Елемент стеку зліва"
 catalog.hero.aria.stack.right: "Елемент стеку справа"
 catalog.hero.aria.stack.rotate: "Karma Flights - високотехнологічне українське виробництво"
 
+# Catalog Why Choose Section
+catalog.why.title:
+  other: "Чому варто обрати {{ .category }} від Karma?"
+
+catalog.category.politni-steky:
+  other: "Політні стеки"
+catalog.category.videoperedavachi-vtx:
+  other: "Відеопередавачі VTX"
+catalog.category.esc:
+  other: "ESC"
+
+catalog.why.items.politni-steky.1:
+  other: "Компактність та інтеграція"
+catalog.why.items.politni-steky.2:
+  other: "Висока продуктивність та універсальність"
+catalog.why.items.politni-steky.3:
+  other: "Багатий функціонал та зручність використання"
+
+catalog.why.items.videoperedavachi-vtx.1:
+  other: "Стабільний сигнал та висока якість"
+catalog.why.items.videoperedavachi-vtx.2:
+  other: "Велика дальність передачі"
+catalog.why.items.videoperedavachi-vtx.3:
+  other: "Професійна якість та надійність"
+
+catalog.why.items.esc.1:
+  other: "Плавне керування швидкістю"
+catalog.why.items.esc.2:
+  other: "Висока точність та надійність"
+catalog.why.items.esc.3:
+  other: "Підтримка різних прошивок"
+
+catalog.why.icon.alt.1:
+  other: "Іконка списку 1"
+catalog.why.icon.alt.2:
+  other: "Іконка списку 3"
+catalog.why.icon.alt.3:
+  other: "Іконка списку 3"
+
+# Catalog Knowledge Base Section
+catalog.kb.title.brand:
+  other: "Б"
+catalog.kb.title:
+  other: "АЗА ЗНАНЬ"
+catalog.kb.empty:
+  other: "Поки що немає статей для цієї категорії. Додайте їх через CMS."
+
+guides.category.politni-steky:
+  other: "Політні стеки"
+guides.category.videoperedavachi-vtx:
+  other: "Відеопередавачі"
+guides.category.esc:
+  other: "ESC"
+# -- Catalog page --
+
+
+# -- Product page --
+
+# Product Hero Section
 

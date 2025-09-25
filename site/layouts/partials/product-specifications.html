@@ -1,34 +1,28 @@
-<section
-  class="bg-white my-[60px] lg:mb-[80px] lg:mt-[70px] relative overflow-hidden spec-section"
-  aria-labelledby="specifications-heading"
->
+<section class="bg-white my-[60px] lg:mb-[80px] lg:mt-[70px] relative overflow-hidden spec-section"
+  aria-labelledby="specifications-heading">
   <!-- Background Element -->
-<div class="absolute bottom-0 right-0 z-[1] hidden md:block">
-  {{ $bgEl7 := resources.Get "img/bg-el-7.png" }}
-  {{ if $bgEl7 }}
-  {{ $bgEl7Mobile := $bgEl7.Resize "200x240 webp q70" }}
-  {{ $bgEl7Desktop := $bgEl7.Resize "250x298 webp q80" }}
-  <picture>
-    <source media="(max-width: 767px)" srcset="{{ $bgEl7Mobile.RelPermalink }}" type="image/webp">
-    <source media="(min-width: 768px)" srcset="{{ $bgEl7Desktop.RelPermalink }}" type="image/webp">
-    <img src="{{ $bgEl7Desktop.RelPermalink }}" alt="" aria-hidden="true"
+  <div class="absolute bottom-0 right-0 z-[1] hidden md:block">
+    {{ $bgEl7 := resources.Get "img/bg-el-7.png" }}
+    {{ if $bgEl7 }}
+    {{ $bgEl7Mobile := $bgEl7.Resize "200x240 webp q70" }}
+    {{ $bgEl7Desktop := $bgEl7.Resize "250x298 webp q80" }}
+    <picture>
+      <source media="(max-width: 767px)" srcset="{{ $bgEl7Mobile.RelPermalink }}" type="image/webp">
+      <source media="(min-width: 768px)" srcset="{{ $bgEl7Desktop.RelPermalink }}" type="image/webp">
+      <img src="{{ $bgEl7Desktop.RelPermalink }}" alt="" aria-hidden="true"
+        class="w-[clamp(200px,25vw,250px)] h-[clamp(80px,12vw,298px)] opacity-60" loading="lazy" decoding="async"
+        width="250" height="298" />
+    </picture>
+    {{ else }}
+    <img src="/img/bg-el-7.png" alt="" aria-hidden="true"
       class="w-[clamp(200px,25vw,250px)] h-[clamp(80px,12vw,298px)] opacity-60" loading="lazy" decoding="async"
       width="250" height="298" />
-  </picture>
-  {{ else }}
-  <img src="/img/bg-el-7.png" alt="" aria-hidden="true"
-    class="w-[clamp(200px,25vw,250px)] h-[clamp(80px,12vw,298px)] opacity-60" loading="lazy" decoding="async"
-    width="250" height="298" />
-  {{ end }}
-</div>
+    {{ end }}
+  </div>
 
-  <div
-    class="w-full max-w-[1280px] mx-auto relative z-[2] px-[20px]"
-  >
-    <h2
-      id="specifications-heading"
-      class="font-[Unbounded] text-[clamp(24px,4vw,48px)] font-medium text-black text-center mb-[25px] uppercase"
-    >
+  <div class="w-full max-w-[1280px] mx-auto relative z-[2] px-[20px]">
+    <h2 id="specifications-heading"
+      class="font-[Unbounded] text-[clamp(24px,4vw,48px)] font-medium text-black text-center mb-[25px] uppercase">
       ХАРАКТЕРИСТИКА
     </h2>
 
@@ -38,76 +32,63 @@
       <div class="flex justify-center mb-[60px] w-full">
         <table
           class="max-w-[500px] md:max-w-[410px] w-full border-separate border-spacing-0 border border-black rounded-[5px] overflow-hidden"
-          role="table"
-          aria-label="Технічні характеристики KARMA F405 V1 - основні параметри"
-        >
+          role="table" aria-label="Технічні характеристики KARMA F405 V1 - основні параметри">
           <caption class="sr-only">
             Основні технічні характеристики політного стеку KARMA F405 V1
           </caption>
           <tbody>
             <tr>
               <td
-                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px] border-b border-black text-center"
-              >
+                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px] border-b border-black text-center">
                 MCU<br /><span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]  border-b border-black text-center"
-              >
+                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]  border-b border-black text-center">
                 MCU<br /><span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]   border-b border-black text-center"
-              >
+                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]   border-b border-black text-center">
                 MCU<br /><span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]  border-b border-black text-center"
-              >
+                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]  border-b border-black text-center">
                 MCU<br /><span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]  border-b border-black text-center"
-              >
+                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]  border-b border-black text-center">
                 MCU<br /><span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]  border-b border-black text-center"
-              >
+                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]  border-b border-black text-center">
                 MCU<br /><span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]  border-b border-black text-center"
-              >
+                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]  border-b border-black text-center">
                 MCU<br /><span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]  border-b border-black text-center"
-              >
+                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]  border-b border-black text-center">
                 MCU<br /><span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]  text-center"
-              >
-                Дозволений струм від батареї<br /><span class="font-normal text-[20px] font-[Montserrat]"
-                  >2.4 A</span
-                >
+                class="font-[Inter] text-[16px] font-medium text-[#020303]  h-[51px]  px-[clamp(16px,3vw,20px)] py-[8px]  text-center">
+                Дозволений струм від батареї<br /><span class="font-normal text-[20px] font-[Montserrat]">2.4 A</span>
               </td>
             </tr>
           </tbody>
@@ -118,70 +99,58 @@
       <div class="flex justify-center mb-[60px] w-full">
         <table
           class="max-w-[500px] md:max-w-[410px] w-full border-separate border-spacing-0 border border-black rounded-[5px] overflow-hidden"
-          role="table"
-          aria-label="Технічні характеристики KARMA F405 V1 - живлення та кріплення"
-        >
+          role="table" aria-label="Технічні характеристики KARMA F405 V1 - живлення та кріплення">
           <caption class="sr-only">
             Параметри живлення та кріплення політного стеку KARMA F405 V1
           </caption>
           <tbody>
             <tr>
               <td
-                class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px]  border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center"
-              >
+                class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px]  border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
                 Живлення
               </td>
               <td
-                class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px]  border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center"
-              >
+                class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px]  border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
                 4s-6s
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Unbounded] text-[16px]  text-[#020303] h-[44px] pl-[30px] py-[8px]  border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center"
-              >
+                class="font-[Unbounded] text-[16px]  text-[#020303] h-[44px] pl-[30px] py-[8px]  border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
                 Струм
               </td>
               <td
-                class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px]  border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center"
-              >
+                class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px]  border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
                 4x50A
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Unbounded] text-[16px]  text-[#020303] h-[44px] pl-[30px] py-[8px]  border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center"
-              >
+                class="font-[Unbounded] text-[16px]  text-[#020303] h-[44px] pl-[30px] py-[8px]  border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
                 MCU
               </td>
               <td
-                class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px]  border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center"
-              >
+                class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px]  border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
                 72Mhz 32Bit
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Unbounded] text-[16px]  text-[#020303] h-[44px] pl-[30px] py-[8px]  border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center"
-              >
+                class="font-[Unbounded] text-[16px]  text-[#020303] h-[44px] pl-[30px] py-[8px]  border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
                 Прошивка
               </td>
               <td
-                class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px]  border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center"
-              >
+                class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px]  border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
                 AM32
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Unbounded] text-[16px]  text-[#020303] h-[44px] pl-[30px] py-[8px]  border-r border-black w-[clamp(120px,35vw,175px)] text-start md:text-center"
-              >
+                class="font-[Unbounded] text-[16px]  text-[#020303] h-[44px] pl-[30px] py-[8px]  border-r border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
                 Кріплення
               </td>
               <td
-                class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px]  w-[clamp(120px,35vw,175px)] text-start md:text-center"
-              >
+                class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px]  w-[clamp(120px,35vw,175px)] text-start md:text-center">
                 30.5 x 30.5
               </td>
             </tr>
@@ -208,128 +177,106 @@
           loading="lazy" decoding="async" width="480" height="270" />
         {{ end }}
       </div>
-      </div>
+    </div>
 
     <!-- Desktop Layout -->
-    <div
-      class="hidden md:flex flex-row justify-between items-start gap-[clamp(40px,6vw,80px)]"
-    >
+    <div class="hidden md:flex flex-row justify-between items-start gap-[clamp(40px,6vw,80px)]">
       <!-- Left Table -->
       <div class="flex-1 w-full">
         <table
           class="w-full h-[588px] border-separate border-spacing-0 border border-black rounded-[5px] overflow-hidden"
-          role="table"
-          aria-label="Технічні характеристики KARMA F405 V1 - основні параметри"
-        >
+          role="table" aria-label="Технічні характеристики KARMA F405 V1 - основні параметри">
           <caption class="sr-only">
             Основні технічні характеристики політного стеку KARMA F405 V1
           </caption>
           <tbody>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black border-b border-black "
-              >
+                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black border-b border-black ">
                 MCU
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]   px-[19px] lg:px-[34px] border-b border-black"
-              >
+                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]   px-[19px] lg:px-[34px] border-b border-black">
                 STM32F405
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]"
-              >
+                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
                 MCU
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black"
-              >
+                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
                 STM32F405
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]"
-              >
+                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
                 MCU
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black"
-              >
+                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
                 STM32F405
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]"
-              >
+                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
                 MCU
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black"
-              >
+                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
                 STM32F405
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]"
-              >
+                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
                 MCU
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black"
-              >
+                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
                 STM32F405
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]"
-              >
+                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
                 MCU
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black"
-              >
+                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
                 STM32F405
               </td>
             </tr>
             <tr>
               <td
-                  class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]"
-                >
+                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
                 MCU
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black"
-              >
+                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
                 STM32F405
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]"
-              >
+                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
                 MCU
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black"
-              >
+                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
                 STM32F405
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Montserrat] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black w-[clamp(200px,20vw,255px)]"
-              >
+                class="font-[Montserrat] text-[20px] font-medium text-[#020303]  h-[51px]  px-[19px] lg:px-[34px]  border-r border-black w-[clamp(200px,20vw,255px)]">
                 Дозволений струм від батареї
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)]"
-              >
+                class="font-[Montserrat] text-[20px] text-[#020303]  h-[51px]  px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)]">
                 2.4 A
               </td>
             </tr>
@@ -341,70 +288,58 @@
       <div class="flex-1 w-full">
         <table
           class="w-full border-separate border-spacing-0 border border-black mb-[clamp(20px,4vw,32px)] rounded-[5px] overflow-hidden"
-          role="table"
-          aria-label="Технічні характеристики KARMA F405 V1 - живлення та кріплення"
-        >
+          role="table" aria-label="Технічні характеристики KARMA F405 V1 - живлення та кріплення">
           <caption class="sr-only">
             Параметри живлення та кріплення політного стеку KARMA F405 V1
           </caption>
           <tbody>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[44px]  px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]"
-              >
+                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[44px]  px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
                 Живлення
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[44px]  px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black"
-              >
+                class="font-[Montserrat] text-[20px] text-[#020303]  h-[44px]  px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black">
                 4s-6s
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[44px]  px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]"
-              >
+                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[44px]  px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
                 Струм
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[44px]  px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black"
-              >
+                class="font-[Montserrat] text-[20px] text-[#020303]  h-[44px]  px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black">
                 4x50A
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[44px]  px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]"
-              >
+                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[44px]  px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
                 MCU
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[44px]  px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black"
-              >
+                class="font-[Montserrat] text-[20px] text-[#020303]  h-[44px]  px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black">
                 72Mhz 32Bit
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[44px]  px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]"
-              >
+                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[44px]  px-[34px]  border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
                 Прошивка
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[44px]  px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black"
-              >
+                class="font-[Montserrat] text-[20px] text-[#020303]  h-[44px]  px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black">
                 AM32
               </td>
             </tr>
             <tr>
               <td
-                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[44px]  px-[34px]  border-r border-black w-[clamp(200px,20vw,255px)]"
-              >
+                class="font-[Inter] text-[20px] font-medium text-[#020303]  h-[44px]  px-[34px]  border-r border-black w-[clamp(200px,20vw,255px)]">
                 Кріплення
               </td>
               <td
-                class="font-[Montserrat] text-[20px] text-[#020303]  h-[44px]  px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)]"
-              >
+                class="font-[Montserrat] text-[20px] text-[#020303]  h-[44px]  px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)]">
                 30.5 x 30.5
               </td>
             </tr>
@@ -413,27 +348,23 @@
 
         <!-- Product Image -->
         <div class="flex justify-center">
-        {{ $productDetailsDesktop := resources.Get "img/product-details-v2.png" }}
-        {{ if $productDetailsDesktop }}
+          {{ $productDetailsDesktop := resources.Get "img/product-details-v2.png" }}
+          {{ if $productDetailsDesktop }}
           {{ $desktop := $productDetailsDesktop.Resize "576x324 webp q80" }}
-          {{ $large   := $productDetailsDesktop.Resize "768x432 webp q85" }}
+          {{ $large := $productDetailsDesktop.Resize "768x432 webp q85" }}
           <picture>
             <source media="(max-width: 1199px)" srcset="{{ $desktop.RelPermalink }}" type="image/webp">
             <source media="(min-width: 1200px)" srcset="{{ $large.RelPermalink }}" type="image/webp">
             <img src="{{ $large.RelPermalink }}"
-                 alt="Детальний вигляд політного стеку KARMA F405 V1 з технічними характеристиками"
-                 class="object-contain w-full h-auto"
-                 loading="lazy" decoding="async"
-                 width="768" height="432"/>
+              alt="Детальний вигляд політного стеку KARMA F405 V1 з технічними характеристиками"
+              class="object-contain w-full h-auto" loading="lazy" decoding="async" width="768" height="432" />
           </picture>
-        {{ else }}
+          {{ else }}
           <img src="/img/product-details-v2.png"
-               alt="Детальний вигляд політного стеку KARMA F405 V1 з технічними характеристиками"
-               class="object-contain w-full h-auto"
-               loading="lazy" decoding="async"
-               width="768" height="432"/>
-        {{ end }}
-      </div>
+            alt="Детальний вигляд політного стеку KARMA F405 V1 з технічними характеристиками"
+            class="object-contain w-full h-auto" loading="lazy" decoding="async" width="768" height="432" />
+          {{ end }}
+        </div>
       </div>
     </div>
   </div>

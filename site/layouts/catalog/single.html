@@ -21,27 +21,20 @@
 <!-- Product Features Section -->
 {{ partial "product-features-section" . }}
 
-
 <!-- Product Cost Calculation Section -->
 {{ partial "product-cost-calculation" . }}
 
 <!-- Product Instructions Section -->
 {{ partial "product-instructions" . }}
 
-<!-- Product Catalog Section -->
-{{ partial "product-catalog-section" . }}
-
 <!-- FAQ Section -->
-<div class="bg-white py-[80px]">
-    <div class="max-w-[1440px] mx-auto px-4">
-        {{ with site.GetPage "/faq" }}
-        {{ with .Params.stack_questions }}
-        {{ partial "accordion" (dict "context" $ "className" "mb-[48px]" "title" .title "items" .questions
-        "titleClassName" "!text-[48px] !text-center !uppercase !font-medium ![font-family:var(--font-unbounded)]") }}
-        {{ end }}
-        {{ end }}
-    </div>
-</div>
+{{ with site.GetPage "/faq" }}
+{{ with .Params.stack_questions }}
+{{ partial "accordion.html" (dict
+"title" .title "items" .questions "className" "bg-white pb-[60px] lg:pb-[128px] pl-[15px] pr-[20px] lg:px-[20px]"
+"titleClassName" "hero-title font-[Unbounded] font-medium !text-[24px] md:!text-[32px] lg:!text-[48px] !text-center text-[#020303] mb-[clamp(20px,3vw,24px)] uppercase" "icon" "/img/arrow.svg" "titleAlign" "center") }}
+{{ end }}
+{{ end }}
 
 <!-- Contact Form Section -->
 {{ partial "contact-form-section" . }}

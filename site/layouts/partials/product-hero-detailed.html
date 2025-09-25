@@ -1,26 +1,51 @@
-{{ $product := .product | default dict }}
-{{ $context := .context | default . }}
+{{- $product := .product | default dict -}}
+{{- $context := .context | default . -}}
 
-{{ $productName := $product.name | default $context.Title | default "Назва продукту" }}
-{{ $description := $context.Params.description | default "Політний стек спрощує монтаж та підключення електроніки в дроні, забезпечує стабільний політ та ефективне розподілення потужності до моторів." }}
+{{- $productName := $product.name | default $context.Title | default "Назва продукту" -}}
+{{- $description := $context.Params.description | default "Політний стек спрощує монтаж та підключення електроніки в дроні, забезпечує стабільний політ та ефективне розподілення потужності до моторів." -}}
 
-{{ $words := split $productName " " }}
-{{ $firstTwo := first 2 $words }}
-{{ $rest := after 2 $words }}
+{{- $words := split $productName " " -}}
+{{- $firstTwo := first 2 $words -}}
+{{- $rest := after 2 $words -}}
 
+{{- $rawCategory := $context.Params.category | default $product.category | default "politni-steky" -}}
+{{- $slugMap := dict
+"Політні стеки" "politni-steky"
+"Flight Stacks" "politni-steky"
+"Відеопередавачі" "videoperedavachi-vtx"
+"Відеопередавачі VTX" "videoperedavachi-vtx"
+"Video transmitters" "videoperedavachi-vtx"
+"Video Transmitters" "videoperedavachi-vtx"
+"ESC" "esc"
+-}}
+{{- $categorySlug := $context.Params.categorySlug | default (index $slugMap $rawCategory) | default $rawCategory -}}
+
+{{- $catKey := printf "catalog.category.%s" $categorySlug -}}
+{{- $categoryI18n := i18n $catKey -}}
+{{- $categoryData := index $context.Site.Data.products.categories $categorySlug -}}
+{{- $categoryName := cond (ne $categoryI18n $catKey) $categoryI18n (cond $categoryData $categoryData.name $rawCategory)
+-}}
 
 <section class="overflow-hidden relative bg-white">
   <div
     class="w-full max-w-[1280px] flex flex-col mx-auto px-[clamp(20px,4vw,40px)] pt-[20px] md:pt-[40px] relative z-[2]">
 
     <!-- Breadcrumbs -->
-    <nav aria-label="Breadcrumb navigation"
+    <nav aria-label="{{ i18n " catalog.hero.aria.breadcrumb" }}"
       class="flex flex-row items-start font-[Montserrat] gap-[clamp(8px,2vw,16px)] mb-[40px]">
       <ol class="flex flex-wrap items-center">
-        <li><a href="/" class="text-[#ba0108] font-normal text-[16px] lg:text-[20px]">Головна</a></li>
+        <li>
+          <a href="{{ " /" | relLangURL }}" class="text-[#ba0108] font-normal text-[16px] lg:text-[20px]">
+            {{ i18n "catalog.hero.breadcrumb.home" }}
+          </a>
+        </li>
         <li class="text-[#ba0108] px-[5px]" aria-hidden="true">&rarr;</li>
-        <li><a href="/catalog/{{ $context.Params.category | default " politni-steky" }}/"
-            class="text-[#ba0108] font-normal text-[16px] lg:text-[20px]">{{ $context.Params.category | default "Політні стеки" }}</a></li>
+        <li>
+          <a href="{{ (printf " /catalog/%s/" $categorySlug) | relLangURL }}"
+            class="text-[#ba0108] font-normal text-[16px] lg:text-[20px]">
+            {{ $categoryName }}
+          </a>
+        </li>
         <li class="text-[#ba0108] px-[5px]" aria-hidden="true">&rarr;</li>
         <li><span class="text-[#ba0108] font-normal text-[16px] lg:text-[20px]">{{ $productName }}</span></li>
       </ol>
@@ -28,15 +53,14 @@
 
     <!-- Product Hero -->
     <div class="flex flex-col gap-[clamp(24px,4vw,48px)] sm:flex-row md:items-start items-center">
-
       <!-- Product Image -->
       <div class="flex relative flex-col items-center mb-6 w-full md:flex-row">
-        {{ $productImage := ($product.image | default "/img/Stack-product.png") | strings.TrimPrefix "/" }}
-        {{ $productImageResource := resources.Get $productImage }}
-        {{ if $productImageResource }}
-        {{ $imgMobile := $productImageResource.Resize "320x240 webp q75" }}
-        {{ $imgTablet := $productImageResource.Resize "480x360 webp q80" }}
-        {{ $imgDesktop := $productImageResource.Resize "550x367 webp q85" }}
+        {{- $productImage := ($product.image | default "/img/Stack-product.png") | strings.TrimPrefix "/" -}}
+        {{- $productImageResource := resources.Get $productImage -}}
+        {{- if $productImageResource -}}
+        {{- $imgMobile := $productImageResource.Resize "320x240 webp q75" -}}
+        {{- $imgTablet := $productImageResource.Resize "480x360 webp q80" -}}
+        {{- $imgDesktop := $productImageResource.Resize "550x367 webp q85" -}}
         <picture>
           <source media="(max-width:767px)" srcset="{{ $imgMobile.RelPermalink }}" type="image/webp">
           <source media="(max-width:1023px)" srcset="{{ $imgTablet.RelPermalink }}" type="image/webp">
@@ -45,20 +69,18 @@
             class="object-contain max-w-none relative z-10 w-[clamp(350px,40vw,550px)] h-[clamp(230px,25vw,367px)]"
             width="550" height="367" loading="eager" decoding="async" />
         </picture>
-        {{ end }}
+        {{- end -}}
       </div>
 
       <!-- Product Text -->
       <div
         class="flex flex-col items-center md:items-start lg:items-start pt-[43px] max-w-full md:max-w-[519px] lg:max-w-[531px] xl:max-w-[578px]">
         <!-- Product Name -->
-    <h1
-      class="font-[Unbounded] uppercase font-medium leading-[1.1] text-[32px] md:text-[48px] w-full text-center md:text-left lg:text-left mb-2">
-      <span class="text-[#ba0108]">{{ delimit $firstTwo " " }}</span>
-      {{ if gt (len $rest) 0 }}
-      <span class="text-black"> {{ delimit $rest " " }}</span>
-      {{ end }}
-    </h1>
+        <h1
+          class="font-[Unbounded] uppercase font-medium leading-[1.1] text-[32px] md:text-[48px] w-full text-center md:text-left lg:text-left mb-2">
+          <span class="text-[#ba0108]">{{ delimit $firstTwo " " }}</span>
+          {{ if gt (len $rest) 0 }}<span class="text-black"> {{ delimit $rest " " }}</span>{{ end }}
+        </h1>
 
         <!-- Product Description -->
         <p class="font-[Montserrat] text-[16px] lg:text-[20px] text-[#020303] leading-[120%]">
@@ -76,7 +98,6 @@
           Отримати пропозицію
         </button>
       </div>
-
     </div>
   </div>
 </section>
