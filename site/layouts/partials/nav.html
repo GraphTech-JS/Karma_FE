@@ -99,7 +99,7 @@
 
         <a href="{{ $url }}" lang="{{ $l.Lang }}" hreflang="{{ $l.Lang }}"
           class="font-['Montserrat'] text-xl font-normal cursor-pointer hover:text-[#ba0108] transition-colors{{ if $isCurrent }} !text-[#ba0108] !font-bold font-['Inter']{{ else }} text-[#fefefe]{{ end }}">
-          {{ upper $l.Lang }}
+          {{ if eq $l.Lang "uk" }}UA{{ else }}{{ upper $l.Lang }}{{ end }}
         </a>
         {{ if lt (add $i 1) (len $langs) }}
         <div class="w-px h-6 bg-white/50" aria-hidden="true"></div>
@@ -247,8 +247,8 @@
           {{ end }}
 
           <a href="{{ $url }}" lang="{{ $l.Lang }}" hreflang="{{ $l.Lang }}"
-            class="font-['Unbounded'] text-xl !font-normal cursor-pointer hover:text-[#ba0108]{{ if $isCurrent }} !text-[#ba0108] {{ else }} !text-[#fefefe]{{ end }}">
-            {{ upper $l.Lang }}
+            class="font-['Montserrat'] text-xl font-normal cursor-pointer hover:text-[#ba0108] transition-colors{{ if $isCurrent }} !text-[#ba0108] !font-bold font-['Inter']{{ else }} text-[#fefefe]{{ end }}">
+            {{ if eq $l.Lang "uk" }}UA{{ else }}{{ upper $l.Lang }}{{ end }}
           </a>
             {{ if lt (add $i 1) (len $langs) }}
             <div class="w-px h-6 bg-white/50" aria-hidden="true"></div>
