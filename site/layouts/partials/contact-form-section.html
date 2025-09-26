@@ -1,6 +1,5 @@
 <section id="contact-form-section"
-  class=" relative flex justify-center items-center px-4 pt-[100px] md:pt-[60px] lg:pt-[80px] {{ if not (eq .RelPermalink "/contact/") }}{{ end }}">
-
+  class=" relative flex justify-center items-center px-4 pt-[100px] md:pt-[60px] lg:pt-[80px] pb-[80px] {{ if not (eq .RelPermalink "/contact/") }}{{ end }}">
   {{ if eq .RelPermalink "/contact/" }}
   {{ $bgEl1 := resources.Get "img/bg-el-1.png" }}
   {{ if $bgEl1 }}
