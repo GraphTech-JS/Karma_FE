@@ -1,5 +1,5 @@
 ---
-title: Політний стек KARMA F405 V1. Інструкція користувача
+title: Політний стек KARMA FLIGHTS. Інструкції користувача.
 description: >-
   Компактна та продуктивна інтегрована система для дронів з мікроконтролером
   STM32F405.
@@ -117,7 +117,7 @@ margin-top: 30px;
   margin-top: 12px;
   padding: 10px 14px;
   border-radius: 10px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #ba0108;
   background: #fff;
   cursor: pointer;
   font-weight: 600;
