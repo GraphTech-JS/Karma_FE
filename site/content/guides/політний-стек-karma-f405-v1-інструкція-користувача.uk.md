@@ -73,7 +73,222 @@ text-align: center;
 margin-top: 30px;
 }
 </style>
+<style>
+:root{
+  --rm-duration: 300ms;
+  --rm-ease: cubic-bezier(.2,.6,.2,1);
+  --rm-fade-height: 54px; /* висота напівпрозорого затемнення */
+}
 
+/* .post{
+  max-width: 720px;
+  margin: 24px auto;
+  padding: 0 16px;
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+*/
+.readmore{
+  position: relative;
+}
+
+/* Контейнер з контентом, який анімуємо по max-height */
+.readmore__content{
+  overflow: hidden;
+  max-height: 0; /* ініціалізація, JS виставить start height */
+  transition: max-height var(--rm-duration) var(--rm-ease);
+}
+
+/* Напівпрозорий градієнт знизу, поки блок згорнуто */
+.readmore__fade{
+  pointer-events: none;
+  position: absolute;
+  left: 0; right: 0; bottom: 42px; /* місце під кнопку */
+  height: var(--rm-fade-height);
+  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+  opacity: 1;
+  transition: opacity 160ms ease-in-out;
+}
+
+/* Кнопка */
+.readmore__toggle{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+.readmore__toggle:hover{ box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.readmore__toggle:active{ transform: translateY(1px); }
+
+/* Стан розгорнуто */
+.readmore.is-expanded .readmore__fade{ opacity: 0; }
+
+/* Повага до користувачів з обмеженням анімації */
+@media (prefers-reduced-motion: reduce){
+  .readmore__content{ transition: none; }
+  .readmore__fade{ transition: none; }
+  .readmore__toggle{ transition: none; }
+}
+
+</style>
+<!-- Кожен такий блок — окремий компонент "читати далі" -->
+<article class="post">
+  <h2>Заголовок статті</h2>
+
+  <div class="readmore" data-collapsed-height="180">
+    <div class="readmore__content" id="rm-1" aria-hidden="true">
+      <p>Короткий вступ статті... Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, dolore.</p>
+      <p>Це основний текст, який буде приховано до кліку. Розкриваючись, блок плавно збільшує висоту. Тут може бути будь-який HTML: зображення, списки, заголовки тощо.</p>
+      <ul>
+        <li>Пункт 1</li>
+        <li>Пункт 2</li>
+        <li>Пункт 3</li>
+      </ul>
+      <p>Фінальний абзац для перевірки плавності анімації та роботи з довгим контентом.</p>
+    </div>
+
+    <!-- Кнопка керування -->
+    <button class="readmore__toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="rm-1">
+      Читати далі
+    </button>
+
+    <!-- Легка візуальна підказка, що є ще текст -->
+    <div class="readmore__fade" aria-hidden="true"></div>
+  </div>
+</article>
+
+<!-- Другий приклад використання (демо, можна копіювати/розмножувати) -->
+<article class="post">
+  <h2>Ще одна стаття</h2>
+
+  <div class="readmore" data-collapsed-height="140">
+    <div class="readmore__content" id="rm-2" aria-hidden="true">
+      <p>Тут інший вміст для перевірки мультиекземплярності.</p>
+      <p>Додатковий текст, щоб показати роботу анімації при різній висоті контенту.</p>
+    </div>
+
+    <button class="readmore__toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="rm-2">
+      Читати далі
+    </button>
+
+    <div class="readmore__fade" aria-hidden="true"></div>
+  </div>
+</article>
+
+
+<script>
+(function(){
+  /**
+   * Головна ідея:
+   * 1) У згорнутому стані тримаємо max-height = data-collapsed-height (px).
+   * 2) При відкритті тимчасово ставимо max-height = scrollHeight для плавної анімації,
+   *    після завершення — прибираємо обмеження (max-height = none), щоб контент міг рости.
+   * 3) При закритті робимо зворотну анімацію: з 'none' повертаємо до конкретного px.
+   */
+
+  const components = document.querySelectorAll('.readmore');
+
+  components.forEach((root, idx) => {
+    const content = root.querySelector('.readmore__content');
+    const btn     = root.querySelector('.readmore__toggle');
+    const fade    = root.querySelector('.readmore__fade');
+    const collapsed = Math.max(
+      0,
+      parseInt(root.getAttribute('data-collapsed-height') || '160', 10)
+    );
+
+    // Ініціалізація згорнутого стану
+    content.style.maxHeight = collapsed + 'px';
+    content.setAttribute('aria-hidden', 'true');
+    btn.setAttribute('aria-expanded', 'false');
+
+    const labelOpen  = 'Читати далі';
+    const labelClose = 'Згорнути';
+    btn.textContent = labelOpen;
+
+    let isAnimating = false;
+    let expanded = false;
+
+    const open = () => {
+      if (isAnimating || expanded) return;
+      isAnimating = true;
+      root.classList.add('is-expanded');
+
+      // Початок: з поточного (collapsed px) до фактичної висоти контенту
+      const startHeight = content.offsetHeight;
+      content.style.maxHeight = startHeight + 'px'; // фіксуємо, щоб плавно перейти
+      // У наступному кадрі виставимо кінцеве значення
+      requestAnimationFrame(() => {
+        const target = content.scrollHeight;
+        content.style.maxHeight = target + 'px';
+      });
+
+      const onEnd = (e) => {
+        if (e.propertyName !== 'max-height') return;
+        content.style.maxHeight = 'none'; // знімаємо обмеження після анімації
+        content.removeEventListener('transitionend', onEnd);
+        btn.setAttribute('aria-expanded', 'true');
+        content.setAttribute('aria-hidden', 'false');
+        btn.textContent = labelClose;
+        isAnimating = false;
+        expanded = true;
+      };
+      content.addEventListener('transitionend', onEnd);
+    };
+
+    const close = () => {
+      if (isAnimating || !expanded) return;
+      isAnimating = true;
+      root.classList.remove('is-expanded');
+
+      // З none → в конкретне число: спочатку зафіксуємо поточну висоту
+      const startHeight = content.scrollHeight;
+      content.style.maxHeight = startHeight + 'px';
+
+      // У наступному кадрі стиснемо до collapsed px
+      requestAnimationFrame(() => {
+        content.style.maxHeight = collapsed + 'px';
+      });
+
+      const onEnd = (e) => {
+        if (e.propertyName !== 'max-height') return;
+        content.removeEventListener('transitionend', onEnd);
+        btn.setAttribute('aria-expanded', 'false');
+        content.setAttribute('aria-hidden', 'true');
+        btn.textContent = labelOpen;
+        isAnimating = false;
+        expanded = false;
+      };
+      content.addEventListener('transitionend', onEnd);
+    };
+
+    btn.addEventListener('click', () => (expanded ? close() : open()));
+
+    // Підтримка ресайзу: якщо блок розгорнутий, оновлюємо max-height до актуального scrollHeight
+    let resizeRaf = null;
+    window.addEventListener('resize', () => {
+      if (!expanded || isAnimating) return;
+      if (resizeRaf) cancelAnimationFrame(resizeRaf);
+      resizeRaf = requestAnimationFrame(() => {
+        // Під час розгорнутого стану стоїть 'none' — коротко повернемо px, щоб анімовано адаптуватись
+        content.style.maxHeight = content.scrollHeight + 'px';
+      });
+    });
+  });
+})();
+</script>
 <ol>
 
 <li>Номер 1</li>
