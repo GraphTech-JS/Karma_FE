@@ -1,0 +1,7 @@
+# SEO redirects
+/catalog/catalog/* /catalog/:splat 301
+/guides/guides/* /guides/:splat 301
+
+# Asset redirects (CSS/JS)
+ /css/* /:splat 200
+ /js/* /:splat 200
