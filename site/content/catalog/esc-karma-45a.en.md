@@ -1,26 +1,26 @@
 ---
-title: "ESC KARMA 45A BLHeli_S"
-description: "Electronic speed controller for brushless motors with BLHeli_S firmware"
-date: 2024-08-25T00:00:00Z
-category: "esc"
+title: ESC KARMA 45A BLHeli_S
+description: Electronic speed controller for brushless motors with BLHeli_S firmware
+date: 2024-08-25T00:00:00.000Z
+category: esc
 product_id: "4001"
-image: "/img/Stack-product.png"
+image: /img/catalog_product2.png
 price: 800
-currency: "UAH"
+currency: UAH
 in_stock: true
 specs:
-  - label: "Current"
-    value: "45A"
-  - label: "Firmware"
-    value: "BLHeli_S"
-  - label: "Input Voltage"
-    value: "2–6S LiPo"
-  - label: "Dimensions"
-    value: "30x30mm"
-  - label: "Weight"
-    value: "8g"
-  - label: "PWM Frequency"
-    value: "48kHz"
+  - label: Current
+    value: 45A
+  - label: Firmware
+    value: BLHeli_S
+  - label: Input Voltage
+    value: 2–6S LiPo
+  - label: Dimensions
+    value: 30x30mm
+  - label: Weight
+    value: 8g
+  - label: PWM Frequency
+    value: 48kHz
 draft: false
 ---
 

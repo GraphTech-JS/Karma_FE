@@ -32,7 +32,7 @@
         {{ with site.GetPage "/faq" }}
         {{ with .Params.stack_questions }}
         {{ partial "accordion" (dict "context" $ "className" "mb-[48px]" "title" .title "items" .questions
-        "titleClassName" "!text-[48px] !text-center !uppercase !font-medium ![font-family:var(--font-unbounded)]") }}
+        "titleClassName" "!text-[48px] !text-center !uppercase !font-medium !font-[Unbounded]") }}
         {{ end }}
         {{ end }}
     </div>

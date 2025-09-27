@@ -1,26 +1,27 @@
 ---
-title: "ESC KARMA 45A BLHeli_S"
-description: "Електронний регулятор швидкості для безколекторних двигунів з прошивкою BLHeli_S"
-date: 2024-08-25T00:00:00Z
-category: "esc"
+title: ESC KARMA 45A BLHeli_S
+description: Електронний регулятор швидкості для безколекторних двигунів з
+  прошивкою BLHeli_S
+date: 2024-08-25T00:00:00.000Z
+category: esc
 product_id: "4001"
-image: "/img/Stack-product.png"
+image: /img/catalog_product2.png
 price: 800
-currency: "грн"
+currency: грн
 in_stock: true
 specs:
-  - label: "Струм"
-    value: "45A"
-  - label: "Прошивка"
-    value: "BLHeli_S"
-  - label: "Живлення"
-    value: "2-6S LiPo"
-  - label: "Розмір"
-    value: "30x30mm"
-  - label: "Вага"
-    value: "8г"
-  - label: "Частота ШІМ"
-    value: "48kHz"
+  - label: Струм
+    value: 45A
+  - label: Прошивка
+    value: BLHeli_S
+  - label: Живлення
+    value: 2-6S LiPo
+  - label: Розмір
+    value: 30x30mm
+  - label: Вага
+    value: 8г
+  - label: Частота ШІМ
+    value: 48kHz
 draft: false
 ---
 

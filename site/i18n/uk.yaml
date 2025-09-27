@@ -55,8 +55,8 @@ about.paragraph-two: "Ми впроваджуємо повний цикл: ві�
 about.alt: "Про нас - українська компанія високотехнологічного виробництва"
 
 # Results Section
-results.customers: 'Задоволених<br class=\"xl:hidden\">клієнтів'
-results.locations: 'Виробничих<br class=\"xl:hidden\">локацій'
+results.customers: 'Задоволених<br class="block lg:hidden">&nbsp;клієнтів'
+results.locations: 'Виробничих<br class="block lg:hidden">&nbsp;локацій'
 results.destroyed: "<span class=\"block md:inline\">Знищеної ворожої</span><br class=\"hidden md:block xl:block\"><span class=\"block md:inline md:pl-0\">техніки</span>"
 
 # Product catalog section

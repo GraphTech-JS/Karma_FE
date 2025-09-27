@@ -99,7 +99,7 @@
 
         <a href="{{ $url }}" lang="{{ $l.Lang }}" hreflang="{{ $l.Lang }}"
           class="font-['Montserrat'] text-xl font-normal cursor-pointer hover:text-[#ba0108] transition-colors{{ if $isCurrent }} !text-[#ba0108] !font-bold font-['Inter']{{ else }} text-[#fefefe]{{ end }}">
-          {{ upper $l.Lang }}
+          {{ if eq $l.Lang "uk" }}UA{{ else }}{{ upper $l.Lang }}{{ end }}
         </a>
         {{ if lt (add $i 1) (len $langs) }}
         <div class="w-px h-6 bg-white/50" aria-hidden="true"></div>
@@ -160,84 +160,101 @@
     </div>
 
     <nav class="flex flex-col flex-1 items-center px-6 pt-[119px] space-y-6" role="navigation" aria-label="{{ i18n "aria.nav.mobile" }}">
-      <div class="relative">
-        <button onclick="toggleMobileCatalog()"
-          class="w-full flex justify-center items-center text-[#fefefe] font-['Unbounded'] text-xl font-normal py-2 cursor-pointer"
-          aria-expanded="false" aria-controls="mobile-catalog-submenu" aria-label="{{ i18n "aria.catalog.mobile.toggle"}}">
-          <span class="font-['Unbounded'] text-xl font-normal text-[#fefefe]">{{ i18n "nav.catalog" }}</span>
-          <svg class="w-5 h-5 transition-transform transform mobile-catalog-arrow" fill="none" stroke="currentColor"
-            viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-          </svg>
-        </button>
-        <div class="overflow-hidden max-h-0 opacity-0 transition-all duration-300 ease-in-out mobile-catalog-menu"
-          id="mobile-catalog-submenu">
-          <div class="flex flex-col items-center pl-4 mt-2 space-y-2">
-            {{ $stacksURL := "catalog/politni-steky/" | relLangURL }}
-            {{ $vtxURL := "catalog/videoperedavachi-vtx/" | relLangURL }}
-            {{ $escURL := "catalog/esc/" | relLangURL }}
+      <!-- Navigation links in the center -->
+      <div class="flex flex-col items-center space-y-6">
+        <div class="relative">
+          <button onclick="toggleMobileCatalog()"
+            class="w-full flex justify-center items-center text-[#fefefe] font-['Unbounded'] text-xl font-normal py-2 cursor-pointer"
+            aria-expanded="false" aria-controls="mobile-catalog-submenu" aria-label="{{ i18n "aria.catalog.mobile.toggle"}}">
+            <span class="font-['Unbounded'] text-xl font-normal text-[#fefefe]">{{ i18n "nav.catalog" }}</span>
+            <svg class="w-5 h-5 transition-transform transform mobile-catalog-arrow" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="overflow-hidden max-h-0 opacity-0 transition-all duration-300 ease-in-out mobile-catalog-menu"
+            id="mobile-catalog-submenu">
+            <div class="flex flex-col items-center pl-4 mt-2 space-y-2">
+              {{ $stacksURL := "catalog/politni-steky/" | relLangURL }}
+              {{ $vtxURL := "catalog/videoperedavachi-vtx/" | relLangURL }}
+              {{ $escURL := "catalog/esc/" | relLangURL }}
 
-            <a href="{{ $stacksURL }}"
-              class="block text-[#fefefe]/80 font-['Unbounded'] text-lg py-2 hover:text-[#ba0108] transition-colors">{{i18n "catalog.stacks" }}</a>
-            <a href="{{ $vtxURL }}"
-              class="block text-[#fefefe]/80 font-['Unbounded'] text-lg py-2 hover:text-[#ba0108] transition-colors">{{i18n "catalog.vtx" }}</a>
-            <a href="{{ $escURL }}"
-              class="block text-[#fefefe]/80 font-['Unbounded'] text-lg py-2 hover:text-[#ba0108] transition-colors">{{i18n "catalog.esc" }}</a>
+              <a href="{{ $stacksURL }}"
+                class="block text-[#fefefe]/80 font-['Unbounded'] text-lg py-2 hover:text-[#ba0108] transition-colors">{{i18n
+                "catalog.stacks" }}</a>
+              <a href="{{ $vtxURL }}"
+                class="block text-[#fefefe]/80 font-['Unbounded'] text-lg py-2 hover:text-[#ba0108] transition-colors">{{i18n
+                "catalog.vtx" }}</a>
+              <a href="{{ $escURL }}"
+                class="block text-[#fefefe]/80 font-['Unbounded'] text-lg py-2 hover:text-[#ba0108] transition-colors">{{i18n
+                "catalog.esc" }}</a>
+            </div>
           </div>
         </div>
+
+        {{ $faqBase := "faq/" | relLangURL }}
+        <a href="{{ $faqBase }}"
+          class="text-[#fefefe] font-['Unbounded'] text-xl font-normal hover:text-[#ba0108] transition-colors">{{i18n "nav.faq" }}</a>
+
+        {{ $kbBase := "knowledge-base/" | relLangURL }}
+        <a href="{{ $kbBase }}"
+          class="text-[#fefefe] font-['Unbounded'] text-xl font-normal hover:text-[#ba0108] transition-colors">{{i18n "nav.knowledge" }}</a>
+
+        {{ $contactBase := "contact/" | relLangURL }}
+        <a href="{{ $contactBase }}"
+          class="text-[#fefefe] font-['Unbounded'] text-xl font-normal hover:text-[#ba0108] transition-colors">{{i18n "nav.contacts" }}</a>
       </div>
 
-      {{ $faqBase := "faq/" | relLangURL }}
-      <a href="{{ $faqBase }}"
-        class="text-[#fefefe] font-['Unbounded'] text-xl font-normal hover:text-[#ba0108] transition-colors">{{i18n "nav.faq" }}</a>
-
-      {{ $kbBase := "knowledge-base/" | relLangURL }}
-      <a href="{{ $kbBase }}"
-        class="text-[#fefefe] font-['Unbounded'] text-xl font-normal hover:text-[#ba0108] transition-colors">{{i18n "nav.knowledge" }}</a>
-
-      {{ $contactBase := "contact/" | relLangURL }}
-      <a href="{{ $contactBase }}"
-        class="text-[#fefefe] font-['Unbounded'] text-xl font-normal hover:text-[#ba0108] transition-colors">{{i18n "nav.contacts" }}</a>
-
-      <!-- Mobile language switcher -->
-      <div class="flex gap-3 items-center text-2xl text-[#fefefe]">
-        {{ $page := . }}
-        {{ $currentLang := $page.Site.Language.Lang }}
-        {{ $langs := site.Languages }}
-        {{ $trans := $page.AllTranslations }}
-        {{ $currRel := $page.RelPermalink }}
-        {{ $currHome := $page.Site.Home.RelPermalink }}
-
-        {{ range $i, $l := $langs }}
-        {{ $isCurrent := eq $l.Lang $currentLang }}
-        {{ $tr := first 1 (where $trans "Lang" $l.Lang) }}
-        {{ $url := "" }}
-
-        {{ if gt (len $tr) 0 }}
-        {{ $url = (index $tr 0).RelPermalink }}
-        {{ else }}
-        {{ $targetSite := first 1 (where site.Sites "Language.Lang" $l.Lang) }}
-        {{ $targetHome := "" }}
-        {{ if gt (len $targetSite) 0 }}
-        {{ $targetHome = (index $targetSite 0).Home.RelPermalink }}
-        {{ end }}
-
-        {{ $suffix := strings.TrimPrefix $currRel $currHome }}
-
-        {{ $altCurr := printf "/%s/" $currentLang }}
-        {{ if hasPrefix $suffix $altCurr }}
-        {{ $suffix = strings.TrimPrefix $suffix $altCurr }}
-        {{ end }}
-
-        {{ $url = printf "%s%s" $targetHome $suffix }}
-        {{ end }}
-
-        <a href="{{ $url }}" lang="{{ $l.Lang }}" hreflang="{{ $l.Lang }}"
-          class="font-['Unbounded'] text-xl !font-normal cursor-pointer hover:text-[#ba0108]{{ if $isCurrent }} !text-[#ba0108] {{ else }} !text-[#fefefe]{{ end }}">
-          {{ upper $l.Lang }}
+      <!-- Phone and language switcher at the bottom -->
+      <div class="flex flex-col items-center pb-8 mt-auto space-y-4">
+        <!-- Mobile phone number -->
+        <a href="tel:(067) 298-29-29"
+          class="text-[#fefefe] font-['Montserrat'] text-[20px] font-[400]">
+          (067) 298-29-29
         </a>
-        {{ if lt (add $i 1) (len $langs) }}<span aria-hidden="true">|</span>{{ end }}
-        {{ end }}
+
+        <!-- Mobile language switcher -->
+        <div class="flex gap-3 items-center text-2xl text-[#fefefe]">
+          {{ $page := . }}
+          {{ $currentLang := $page.Site.Language.Lang }}
+          {{ $langs := site.Languages }}
+          {{ $trans := $page.AllTranslations }}
+          {{ $currRel := $page.RelPermalink }}
+          {{ $currHome := $page.Site.Home.RelPermalink }}
+
+          {{ range $i, $l := $langs }}
+          {{ $isCurrent := eq $l.Lang $currentLang }}
+          {{ $tr := first 1 (where $trans "Lang" $l.Lang) }}
+          {{ $url := "" }}
+
+          {{ if gt (len $tr) 0 }}
+          {{ $url = (index $tr 0).RelPermalink }}
+          {{ else }}
+          {{ $targetSite := first 1 (where site.Sites "Language.Lang" $l.Lang) }}
+          {{ $targetHome := "" }}
+          {{ if gt (len $targetSite) 0 }}
+          {{ $targetHome = (index $targetSite 0).Home.RelPermalink }}
+          {{ end }}
+
+          {{ $suffix := strings.TrimPrefix $currRel $currHome }}
+
+          {{ $altCurr := printf "/%s/" $currentLang }}
+          {{ if hasPrefix $suffix $altCurr }}
+          {{ $suffix = strings.TrimPrefix $suffix $altCurr }}
+          {{ end }}
+
+          {{ $url = printf "%s%s" $targetHome $suffix }}
+          {{ end }}
+
+          <a href="{{ $url }}" lang="{{ $l.Lang }}" hreflang="{{ $l.Lang }}"
+            class="font-['Montserrat'] text-xl font-normal cursor-pointer hover:text-[#ba0108] transition-colors{{ if $isCurrent }} !text-[#ba0108] !font-bold font-['Inter']{{ else }} text-[#fefefe]{{ end }}">
+            {{ if eq $l.Lang "uk" }}UA{{ else }}{{ upper $l.Lang }}{{ end }}
+          </a>
+            {{ if lt (add $i 1) (len $langs) }}
+            <div class="w-px h-6 bg-white/50" aria-hidden="true"></div>
+          {{ end }}
+          {{ end }}
+        </div>
       </div>
     </nav>
   </div>
