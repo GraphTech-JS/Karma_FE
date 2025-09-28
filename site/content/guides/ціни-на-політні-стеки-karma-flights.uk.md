@@ -56,10 +56,12 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 <article class="post"> <h2>Ціни на політний стек KARMA F405 V1. </h2>
 <div class="readmore" data-collapsed-height="180"> <div class="readmore__content" id="rm-1" aria-hidden="true"> 
 <div class="article">
-<h3 class="text-center">Рекомендована ціна BOX (упаковка 1шт.)&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;      
-<strong>70 USD</strong></h3>
-<h3 class="text-center">Рекомендована ціна OEM (упаковка 20шт.)&nbsp;&nbsp;&nbsp;       <strong>67 USD</strong></h3>
+<h4 class="text-center">Рекомендована ціна BOX (упаковка 1шт.)&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;      
+<strong>70 USD</strong></h4>
+<h4 class="text-center">Рекомендована ціна OEM (упаковка 20шт.)&nbsp;&nbsp;&nbsp;       <strong>67 USD</strong></h4>
 <h3 class="text-center">ТАБЛИЦІ РОЗРАХУНКУ ВАРТОСТІ ПОЛІТНИХ СТЕКІВ </h3>
+
+<div class="text-center">
 
 ![таблиця 1: ціни на політні стеки ](/img/price-1.jpg "вартість польотників")
 
@@ -67,7 +69,11 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 
 ![таблиця 3: Ціни на політні стеки](/img/price-3.jpg "вартість політних стеків")
 
-<p class="taxt-center"> Всі ціни вказані з урахуванням ПДВ.</p>
+
+
+<p> Всі ціни вказані з урахуванням ПДВ.</p>
+
+</div>
 
 </div>
 <div class="text-center"><button class="readmore\_\_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
