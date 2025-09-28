@@ -24,17 +24,25 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 
 <style>
 
- :root{ --rm-duration: 300ms;
+:root{
+  --rm-duration: 300ms;
+  --rm-ease: cubic-bezier(.2,.6,.2,1);
+  --rm-fade-height: 54px; /* висота напівпрозорого затемнення */
+}
 
-\--rm-ease: cubic-bezier(.2,.6,.2,1);
 
-\--rm-fade-height: 54px; /\* висота напівпрозорого затемнення \*/ } 
 
 /*
 
  .post{ max-width: 720px; margin: 24px auto; padding: 0 16px; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; } */ 
 
-.readmore{ position: relative; } /\* Контейнер з контентом, який анімуємо по max-height \*/ .readmore\_\_content{ overflow: hidden; max-height: 0; /\* ініціалізація, JS виставить start height \*/ transition: max-height var(--rm-duration) var(--rm-ease); } /\* Напівпрозорий градієнт знизу, поки блок згорнуто \*/ .readmore\_\_fade{ pointer-events: none; position: absolute; left: 0; right: 0; bottom: 42px; /\* місце під кнопку \*/ height: var(--rm-fade-height); background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1)); opacity: 1; transition: opacity 160ms ease-in-out; } /\* Кнопка \*/ .readmore\_\_toggle{ display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; padding: 10px 14px; border-radius: 10px; border: 1px solid #ba0108; background: #fff; cursor: pointer; font-weight: 600; transition: transform 120ms ease, box-shadow 120ms ease; } .readmore\_\_toggle:hover{ box-shadow: 0 2px 10px rgba(0,0,0,.06); } .readmore\_\_toggle:active{ transform: translateY(1px); } /\* Стан розгорнуто \*/ .readmore.is-expanded .readmore\_\_fade{ opacity: 0; } /\* Повага до користувачів з обмеженням анімації \*/ @media (prefers-reduced-motion: reduce){ .readmore\_\_content{ transition: none; } .readmore\_\_fade{ transition: none; } .readmore__toggle{ transition: none; } } </style>
+.readmore{ position: relative; }  
+.readmore__content{ overflow: hidden; max-height: 0; transition: max-height var(--rm-duration) var(--rm-ease); } 
+.readmore__fade{ pointer-events: none; position: absolute; left: 0; right: 0; bottom: 42px;  height: var(--rm-fade-height); background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1)); opacity: 1; transition: opacity 160ms ease-in-out; } 
+.readmore__toggle{ display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; padding: 10px 14px; border-radius: 10px; border: 1px solid #ba0108; background: #fff; cursor: pointer; font-weight: 600; transition: transform 120ms ease, box-shadow 120ms ease; } 
+.readmore__toggle:hover{ box-shadow: 0 2px 10px rgba(0,0,0,.06); } .readmore__toggle:active{ transform: translateY(1px); } 
+.readmore.is-expanded .readmore__fade{ opacity: 0; } 
+ @media (prefers-reduced-motion: reduce){ .readmore__content{ transition: none; } .readmore__fade{ transition: none; } .readmore__toggle{ transition: none; } } </style>
 
 <article class="post"> <h2>Заголовок статті</h2>
 
