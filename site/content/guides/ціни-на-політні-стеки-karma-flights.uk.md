@@ -34,8 +34,8 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
  .post{ max-width: 720px; margin: 24px auto; padding: 0 16px;}
 .post h2{margin-top:30px;font-weight:bold;}
 .readmore{ position: relative; }  
-.readmore__content{ overflow: hidden; max-height: 0; transition: max-height var(--rm-duration) var(--rm-ease); } 
-.readmore__fade{
+.readmore_content{ overflow: hidden; max-height: 0; transition: max-height var(--rm-duration) var(--rm-ease); } 
+.readmore_fade{
   pointer-events: none;
   position: absolute;
   left: 0; right: 0; bottom: 42px; 
@@ -45,16 +45,16 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
   transition: opacity 160ms ease-in-out;
 }
 
-.readmore__toggle{ display: inline-flex; align-items: center; gap: 8px; margin-top: 12px !important; padding: 10px 14px !important; border-radius: 10px; border: 1px solid #ba0108 !important; background: #fff; cursor: pointer; font-weight: 600; transition: transform 120ms ease, box-shadow 120ms ease; } 
-.readmore__toggle:hover{ box-shadow: 0 2px 10px rgba(0,0,0,.06); } .readmore__toggle:active{ transform: translateY(1px); } 
-.readmore.is-expanded .readmore__fade{ opacity: 0; } 
- @media (prefers-reduced-motion: reduce){ .readmore__content{ transition: none; } .readmore__fade{ transition: none; } .readmore__toggle{ transition: none; } } </style>
+.readmore_toggle{ display: inline-flex; align-items: center; gap: 8px; margin-top: 12px !important; padding: 10px 14px !important; border-radius: 10px; border: 1px solid #ba0108 !important; background: #fff; cursor: pointer; font-weight: 600; transition: transform 120ms ease, box-shadow 120ms ease; } 
+.readmore_toggle:hover{ box-shadow: 0 2px 10px rgba(0,0,0,.06); } .readmore_toggle:active{ transform: translateY(1px); } 
+.readmore.is-expanded .readmore_fade{ opacity: 0; } 
+ @media (prefers-reduced-motion: reduce){ .readmore_content{ transition: none; } .readmore_fade{ transition: none; } .readmore_toggle{ transition: none; } } </style>
 
 <p>Ми прагнемо зробити прозору систему цінового утворення, цей довідник перший
 крок на цьому шляху який допоможе вам зі стратегічним плануванням та оцінкою
 ціноутворення вашої продукці.</p>
 <article class="post"> <h2>Ціни на політний стек KARMA F405 V1. </h2>
-<div class="readmore" data-collapsed-height="180"> <div class="readmore__content" id="rm-1" aria-hidden="true"> 
+<div class="readmore" data-collapsed-height="180"> <div class="readmore_content" id="rm-1" aria-hidden="true"> 
 <div class="article">
 <h4 class="text-center">Рекомендована ціна BOX (упаковка 1шт.)&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;      
 <strong>70 USD</strong></h4>
@@ -76,22 +76,22 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 </div>
 
 </div>
-<div class="text-center"><button class="readmore\_\_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
-<div class="readmore\_\_fade" aria-hidden="true"></div>
+<div class="text-center"><button class="readmore_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
+<div class="readmore_fade" aria-hidden="true"></div>
 </div> 
 </div>
 </article>
 <article class="post"> <h2>Ціни на політний стек KARMA F405 V1.1.</h2>
 <div class="readmore" data-collapsed-height="140"> 
-<div class="readmore__content" id="rm-1" aria-hidden="true"> 
+<div class="readmore_content" id="rm-1" aria-hidden="true"> 
 <div class="article">
 <h3 class="text-center">Рекомендована ціна BOX (упаковка 1шт.)&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;      
 <strong>73 USD</strong></h3>
 <h3 class="text-center">Рекомендована ціна OEM (упаковка 20шт.)&nbsp;&nbsp;&nbsp;       <strong>70 USD</strong></h3>
 <h3 class="text-center">ТАБЛИЦІ РОЗРАХУНКУ ВАРТОСТІ </h3>
  </div>
-<div class="text-center"><button class="readmore\_\_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
-<div class="readmore\_\_fade" aria-hidden="true"></div>
+<div class="text-center"><button class="readmore_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
+<div class="readmore_fade" aria-hidden="true"></div>
 </div> 
 </div>
 </article>
@@ -109,9 +109,9 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 ;(function(){
   const components = document.querySelectorAll('.readmore');
   components.forEach((root, idx) => { 
-    const content = root.querySelector('.readmore__content'); 
-    const btn = root.querySelector('.readmore__toggle'); 
-    const fade = root.querySelector('.readmore__fade'); 
+    const content = root.querySelector('.readmore_content'); 
+    const btn = root.querySelector('.readmore_toggle'); 
+    const fade = root.querySelector('.readmore_fade'); 
     const collapsed = Math.max( 
       0, 
       parseInt(root.getAttribute('data-collapsed-height') || '160', 10) 
@@ -184,5 +184,5 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
     });
   });
 })();
-; // <-- Добавлена точка с запятой в конце
+; 
 </script>
