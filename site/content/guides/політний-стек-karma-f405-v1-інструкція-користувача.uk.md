@@ -32,14 +32,21 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 
 
 
-/*
-
- .post{ max-width: 720px; margin: 24px auto; padding: 0 16px; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; } */ 
+ .post{ max-width: 720px; margin: 24px auto; padding: 0 16px;}
 
 .readmore{ position: relative; }  
 .readmore__content{ overflow: hidden; max-height: 0; transition: max-height var(--rm-duration) var(--rm-ease); } 
-.readmore__fade{ pointer-events: none; position: absolute; left: 0; right: 0; bottom: 42px;  height: var(--rm-fade-height); background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1)); opacity: 1; transition: opacity 160ms ease-in-out; } 
-.readmore__toggle{ display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; padding: 10px 14px; border-radius: 10px; border: 1px solid #ba0108; background: #fff; cursor: pointer; font-weight: 600; transition: transform 120ms ease, box-shadow 120ms ease; } 
+.readmore__fade{
+  pointer-events: none;
+  position: absolute;
+  left: 0; right: 0; bottom: 42px; 
+  height: var(--rm-fade-height);
+  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+  opacity: 1;
+  transition: opacity 160ms ease-in-out;
+}
+
+.readmore__toggle{ display: inline-flex; align-items: center; gap: 8px; margin-top: 12px !important; padding: 10px 14px !important; border-radius: 10px; border: 1px solid #ba0108 !important; background: #fff; cursor: pointer; font-weight: 600; transition: transform 120ms ease, box-shadow 120ms ease; } 
 .readmore__toggle:hover{ box-shadow: 0 2px 10px rgba(0,0,0,.06); } .readmore__toggle:active{ transform: translateY(1px); } 
 .readmore.is-expanded .readmore__fade{ opacity: 0; } 
  @media (prefers-reduced-motion: reduce){ .readmore__content{ transition: none; } .readmore__fade{ transition: none; } .readmore__toggle{ transition: none; } } </style>
@@ -58,9 +65,11 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 
 <div class="readmore" data-collapsed-height="140"> <div class="readmore__content" id="rm-2" aria-hidden="true"> <p>Тут інший вміст для перевірки мультиекземплярності.</p> <p>Додатковий текст, щоб показати роботу анімації при різній висоті контенту.</p> </div>
 
-<button class="readmore__toggle"  type="button" aria-expanded="false" aria-controls="rm-2">Читати далі</button>
+<div><button class="readmore__toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
+
 
 <div class="readmore__fade" aria-hidden="true"></div>
+
 
 </div> </article>
 
