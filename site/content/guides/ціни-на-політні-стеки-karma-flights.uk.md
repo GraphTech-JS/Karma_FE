@@ -64,8 +64,8 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 ![ціна на політні стеки](/img/price.jpg "вартість політних стеків Карма")
 
 </div>
-<div class="text-center"><button class="readmore\_\_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
-<div class="readmore\_\_fade" aria-hidden="true"></div>
+<div class="text-center"><button class="readmore__toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
+<div class="readmore__fade" aria-hidden="true"></div>
 </div> 
 </div>
 </article>
@@ -73,13 +73,13 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 <div class="readmore" data-collapsed-height="140"> 
 <div class="readmore__content" id="rm-1" aria-hidden="true"> 
 <div class="article">
- <p>Удосконалений політний стек. Ще потужніший, ще витриваліший.</p>
- <p>
-KARMA F405V1.1 - другий крок у пошуках досконалості.
-</p>
+<h3 class="text-center">Рекомендована ціна BOX (упаковка 1шт.)&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;      
+<strong>73 USD</strong></h3>
+<h3 class="text-center">Рекомендована ціна OEM (упаковка 20шт.)&nbsp;&nbsp;&nbsp;       <strong>70 USD</strong></h3>
+<h3 class="text-center">ТАБЛИЦІ РОЗРАХУНКУ ВАРТОСТІ </h3>
  </div>
-<div class="text-center"><button class="readmore\_\_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
-<div class="readmore\_\_fade" aria-hidden="true"></div>
+<div class="text-center"><button class="readmore__toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
+<div class="readmore__fade" aria-hidden="true"></div>
 </div> 
 </div>
 </article>
