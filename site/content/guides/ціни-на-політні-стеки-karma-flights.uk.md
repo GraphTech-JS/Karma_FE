@@ -20,6 +20,7 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 .article h3{ font-family: Montserrat; font-size: 18px; line-height: 18px; font-weight: bold !important; text-align: center; margin-top: 30px; } 
 
 </style>
+
 <style>
 
 :root{
@@ -48,6 +49,7 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 .readmore__toggle:hover{ box-shadow: 0 2px 10px rgba(0,0,0,.06); } .readmore__toggle:active{ transform: translateY(1px); } 
 .readmore.is-expanded .readmore__fade{ opacity: 0; } 
  @media (prefers-reduced-motion: reduce){ .readmore__content{ transition: none; } .readmore__fade{ transition: none; } .readmore__toggle{ transition: none; } } </style>
+
 <p>Ми прагнемо зробити прозору систему цінового утворення, цей довідник перший
 крок на цьому шляху який допоможе вам зі стратегічним плануванням та оцінкою
 ціноутворення вашої продукці.</p>
@@ -57,34 +59,14 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 <h3 class="text-center">Рекомендована ціна BOX (упаковка 1шт.)&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;      
 <strong>70 USD</strong></h3>
 <h3 class="text-center">Рекомендована ціна OEM (упаковка 20шт.)&nbsp;&nbsp;&nbsp;       <strong>67 USD</strong></h3>
-<h2>ТАБЛИЦІ РОЗРАХУНКУ ВАРТОСТІ </h2>
-<section class="overflow-hidden relative pt-[60px] lg:pt-[80px]" aria-labelledby=cost-calculation-heading>
-<div class="max-w-7xl relative z-[2] px-4 sm:px-6 lg:px-8 lg:mx-auto"><h2 id=cost-calculation-heading class="font-[Unbounded] text-[24px] lg:text-[48px] font-medium text-center mb-[25px] uppercase text-black">РОЗРАХУНОК ВАРТОСТІ</h2>
+<h3 class="text-center">ТАБЛИЦІ РОЗРАХУНКУ ВАРТОСТІ </h3>
 
-<div class="grid grid-cols-1 gap-[40px] md:gap-[20px] mb-[40px] md:mb-[54px] sm:grid-cols-2 lg:grid-cols-3" role=list aria-label='Таблиці розрахунку вартості для ПОЛІТНИЙ СТЕК KARMA F405 V1 (60A)'>
-
-<h3 class="font-[Montserrat] text-[24px] md:text-[16px] lg:text-[24px] font-semibold text-[#404040] text-center mb-4 lg:mb-6">Відносно обсягів та<br>шляхів придбання</h3><div class="flex flex-1 justify-center items-center lg:block">
-
-<table class="w-full h-[305px] border-separate border-spacing-0 border border-black rounded-[5px] overflow-hidden lg:h-auto" role=table aria-label='Таблиця знижок залежно від обсягів замовлення'><caption class=sr-only>Таблиця знижок для різних обсягів замовлення ПОЛІТНИЙ СТЕК KARMA F405 V1 (60A)</caption><thead>
-<tr><th class="font-[Inter] text-[16px] font-medium text-left border-r border-black border-b border-black w-[100px]"></th><th class="font-[Inter] text-[16px] font-medium text-center border-r border-black border-b border-black w-[100px] text-[#020303]">Склад</th><th class="font-[Inter] text-[16px] font-medium text-center border-b border-black w-[100px] text-[#020303]">Контрактування</th></tr></thead><tbody><tr><td class="font-[Inter] text-[16px] font-medium border-r border-black border-b border-black w-[100px] text-center text-[#020303]">1+</td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">100%</td><td class="font-[Montserrat] text-[16px] font-normal py-2 px-2 text-center border-b border-black w-[100px]"></td></tr><tr><td class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">100+</td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">93%</td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">80%</td></tr><tr><td class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">1000+</td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">85%</td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">75%</td></tr><tr><td class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">3000+</td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">78%</td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">70%</td></tr><tr><td class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black w-[100px] text-center text-[#020303]">10 000+</td><td class="font-[Montserrat] text-[16px] font-normal py-2 px-2 text-center border-r border-black w-[100px]"></td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center w-[100px]">65%</td></tr></tbody></table>
-</div>
-
-<div class="flex flex-col p-4 h-full lg:p-6"><h3 class="font-[Montserrat] text-[24px] md:text-[16px] lg:text-[24px] font-semibold text-[#404040] text-center mb-4 lg:mb-6">OEM. В абсолютних 
-значеннях відносно рекомендованої ціни</h3>
-<div class="flex flex-1 justify-center items-center lg:block">
-<h3 class="font-[Montserrat] text-[24px] md:text-[16px] lg:text-[24px] font-semibold text-[#404040] text-center mb-4 lg:mb-6">BOX. В абсолютних значеннях відносно рекомендованої ціни</h3><div class="flex flex-1 justify-center items-center lg:block">
-<table class="w-full h-[305px] border-separate border-spacing-0 border border-black rounded-[5px] overflow-hidden lg:h-auto" role=table aria-label='Таблиця знижок для оптових замовлень'><caption class=sr-only>Таблиця знижок для оптових замовлень ПОЛІТНИЙ СТЕК KARMA F405 V1 (60A)</caption><thead><tr><th class="font-[Inter] text-[16px] font-medium text-left border-r border-black border-b border-black w-[100px]"></th><th class="font-[Inter] text-[16px] font-medium text-center border-r border-black border-b border-black w-[100px] text-[#020303]">Склад</th><th class="font-[Inter] text-[16px] font-medium text-center border-b border-black w-[100px] text-[#020303]">Контрактування</th></tr></thead><tbody><tr><td class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">1+</td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">70.00</td><td class="font-[Montserrat] text-[16px] font-normal py-2 px-2 text-center border-b border-black w-[100px]"></td></tr><tr><td class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">100+</td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">65.10</td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">56.00</td></tr><tr><td class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">1000+</td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">59.50</td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">52.50</td></tr><tr><td class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">3000+</td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">54.60</td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">на запит</td></tr><tr><td class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black w-[100px] text-center text-[#020303]">10 000+</td><td class="font-[Montserrat] text-[16px] font-normal py-2 px-2 text-center border-r border-black w-[100px]"></td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center w-[100px]">на запит</td></tr></tbody></table></div></div>
-
-<div class="flex flex-col p-4 h-full lg:p-6"><h3 class="font-[Montserrat] text-[24px] md:text-[16px] lg:text-[24px] font-semibold text-[#404040] text-center mb-4 lg:mb-6">OEM. В абсолютних 
-значеннях відносно рекомендованої ціни</h3>
-<div class="flex flex-1 justify-center items-center lg:block">
-<table class="w-full h-[305px] border-separate border-spacing-0 border border-black rounded-[5px] overflow-hidden lg:h-auto" role=table aria-label='Таблиця знижок для великих замовлень'><caption class=sr-only>Таблиця знижок для великих замовлень ПОЛІТНИЙ СТЕК KARMA F405 V1 (60A)</caption><thead><tr><th class="font-[Inter] text-[16px] font-medium text-center border-r border-black border-b border-black w-[100px]"></th><th class="font-[Inter] text-[16px] font-medium text-center border-r border-black border-b border-black w-[100px] text-[#020303]">Склад</th><th class="font-[Inter] text-[16px] font-medium text-center border-b border-black w-[100px] text-[#020303]">Контрактування</th></tr></thead><tbody><tr><td class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">20+</td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">67.00</td><td class="font-[Montserrat] text-[16px] font-normal py-2 px-2 text-center border-b border-black w-[100px]"></td></tr><tr><td class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">100+</td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">62.31</td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">53.60</td></tr><tr><td class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">1000+</td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">56.95</td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">50.25</td></tr><tr><td class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">3000+</td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">52.26</td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">46.90</td></tr><tr><td class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black w-[100px] text-center text-[#020303]">10 000+</td><td class="font-[Montserrat] text-[16px] font-normal py-2 px-2 text-center border-r border-black w-[100px]"></td><td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center w-[100px]">43.55</td></tr></tbody></table></div></div>
+![ціна на політні стеки](/img/price.jpg "вартість політних стеків Карма")
 
 </div>
-
-<div class=text-center><p class="font-[Montserrat] text-[16px] md:text-[20px] mb-[25px] text-center text-black">Ми прагнемо зробити прозору систему ціноутворення. Ціни залежать від обсягів та шляхів придбання</p></div><
-</section>
-</div>
+<div class="text-center"><button class="readmore\_\_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
+<div class="readmore\_\_fade" aria-hidden="true"></div>
+</div> 
 </div>
 </article>
 <article class="post"> <h2>Ціни на політний стек KARMA F405 V1.1.</h2>
@@ -96,8 +78,8 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 KARMA F405V1.1 - другий крок у пошуках досконалості.
 </p>
  </div>
-<div class="text-center"><button class="readmore__toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
-<div class="readmore__fade" aria-hidden="true"></div>
+<div class="text-center"><button class="readmore\_\_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
+<div class="readmore\_\_fade" aria-hidden="true"></div>
 </div> 
 </div>
 </article>
