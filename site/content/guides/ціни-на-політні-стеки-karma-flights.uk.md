@@ -59,13 +59,19 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 <h3 class="text-center">Рекомендована ціна BOX (упаковка 1шт.)&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;      
 <strong>70 USD</strong></h3>
 <h3 class="text-center">Рекомендована ціна OEM (упаковка 20шт.)&nbsp;&nbsp;&nbsp;       <strong>67 USD</strong></h3>
-<h3 class="text-center">ТАБЛИЦІ РОЗРАХУНКУ ВАРТОСТІ </h3>
+<h3 class="text-center">ТАБЛИЦІ РОЗРАХУНКУ ВАРТОСТІ ПОЛІТНИХ СТЕКІВ </h3>
 
-![ціна на політні стеки](/img/price.jpg "вартість політних стеків Карма")
+![таблиця 1: ціни на політні стеки ](/img/price-1.jpg "вартість польотників")
+
+![Ціни на політні стеки](/img/price-2.jpg "вартість польотних стеків")
+
+![таблиця 3: Ціни на політні стеки](/img/price-3.jpg "вартість політних стеків")
+
+<p class="taxt-center"> Всі ціни вказані з урахуванням ПДВ.</p>
 
 </div>
-<div class="text-center"><button class="readmore__toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
-<div class="readmore__fade" aria-hidden="true"></div>
+<div class="text-center"><button class="readmore\_\_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
+<div class="readmore\_\_fade" aria-hidden="true"></div>
 </div> 
 </div>
 </article>
@@ -78,11 +84,21 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 <h3 class="text-center">Рекомендована ціна OEM (упаковка 20шт.)&nbsp;&nbsp;&nbsp;       <strong>70 USD</strong></h3>
 <h3 class="text-center">ТАБЛИЦІ РОЗРАХУНКУ ВАРТОСТІ </h3>
  </div>
-<div class="text-center"><button class="readmore__toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
-<div class="readmore__fade" aria-hidden="true"></div>
+<div class="text-center"><button class="readmore\_\_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
+<div class="readmore\_\_fade" aria-hidden="true"></div>
 </div> 
 </div>
 </article>
+<div class="bg-[#F5F5F5] px-[30px] pr-[35px] py-4">
+<p id="інструкція" class="text-center"><strong>Базовий термін виготовлення обладнання за контрактуванням складає 45 днів.
+ Товар відвантажується частинами в період з 30-го по 45-ий дні з моменту оплати.
+ Доступна опція контрактування з оплатою двома платежами.
+ 75% аванс + 25% перед початком відвантажень.</strong></p>
+    
+<ol><li>Для підприємств дистрибюторів з вартості продукції може бути виключена частина бюджету на проведення погоджених маркетингових активностей.  </li><li>Формується система лояльності для підприємств, що надають зворотній звязок і прямо впливають на покращення нашої продукції.</li>
+<li>Надаються безкоштовні взірці для проектів, створення яких може розширити діапазон застосування обладнання, за умови надання зворотнього зв’язку.</li>
+</ol></div>
+<p id="інструкція" class="text-center"><strong>ДЯКУЄМО ЗА ДОВІРУ!</strong></p>
 <script>
 ;(function(){
   const components = document.querySelectorAll('.readmore');
