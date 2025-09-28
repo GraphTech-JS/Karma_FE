@@ -56,9 +56,14 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 <article class="post"> <h2>Ціни на політний стек KARMA F405 V1. </h2>
 <div class="readmore" data-collapsed-height="180"> <div class="readmore_content" id="rm-1" aria-hidden="true"> 
 <div class="article">
-<h4 class="text-center">Рекомендована ціна BOX (упаковка 1шт.)&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;      
-<strong>70 USD</strong></h4>
-<h4 class="text-center">Рекомендована ціна OEM (упаковка 20шт.)&nbsp;&nbsp;&nbsp;       <strong>67 USD</strong></h4>
+<h4 class="text-center">
+<strong>
+Рекомендована ціна BOX (упаковка 1шт.)&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;      
+70 USD</strong></h4>
+<h4 class="text-center">
+<strong>
+
+Рекомендована ціна OEM (упаковка 20шт.)&nbsp;&nbsp;&nbsp;       67 USD</strong></h4>
 <h3 class="text-center">ТАБЛИЦІ РОЗРАХУНКУ ВАРТОСТІ ПОЛІТНИХ СТЕКІВ </h3>
 
 <div class="text-center">
@@ -68,8 +73,6 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 ![Ціни на політні стеки](/img/price-2.jpg "вартість польотних стеків")
 
 ![таблиця 3: Ціни на політні стеки](/img/price-3.jpg "вартість політних стеків")
-
-
 
 <p> Всі ціни вказані з урахуванням ПДВ.</p>
 
@@ -85,9 +88,10 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 <div class="readmore" data-collapsed-height="140"> 
 <div class="readmore_content" id="rm-1" aria-hidden="true"> 
 <div class="article">
-<h3 class="text-center">Рекомендована ціна BOX (упаковка 1шт.)&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;      
-<strong>73 USD</strong></h3>
-<h3 class="text-center">Рекомендована ціна OEM (упаковка 20шт.)&nbsp;&nbsp;&nbsp;       <strong>70 USD</strong></h3>
+<h4 class="text-center"><strong>Рекомендована ціна BOX (упаковка 1шт.)&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;      
+73 USD</strong></h4>
+<h4 class="text-center">
+<strong>Рекомендована ціна OEM (упаковка 20шт.)&nbsp;&nbsp;&nbsp;       70 USD</strong></h4>
 <h3 class="text-center">ТАБЛИЦІ РОЗРАХУНКУ ВАРТОСТІ </h3>
  </div>
 <div class="text-center"><button class="readmore_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
