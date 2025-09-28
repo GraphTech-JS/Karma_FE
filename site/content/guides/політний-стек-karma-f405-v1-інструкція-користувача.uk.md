@@ -68,7 +68,87 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 
 </div> </article>
 
-<script> (function(){ const components = document.querySelectorAll('.readmore'); components.forEach((root, idx) => { const content = root.querySelector('.readmore__content'); const btn = root.querySelector('.readmore__toggle'); const fade = root.querySelector('.readmore__fade'); const collapsed = Math.max( 0, parseInt(root.getAttribute('data-collapsed-height') || '160', 10) ); // Ініціалізація згорнутого стану content.style.maxHeight = collapsed + 'px'; content.setAttribute('aria-hidden', 'true'); btn.setAttribute('aria-expanded', 'false'); const labelOpen = 'Читати далі'; const labelClose = 'Згорнути'; btn.textContent = labelOpen; let isAnimating = false; let expanded = false; const open = () => { if (isAnimating || expanded) return; isAnimating = true; root.classList.add('is-expanded'); // Початок: з поточного (collapsed px) до фактичної висоти контенту const startHeight = content.offsetHeight; content.style.maxHeight = startHeight + 'px'; // фіксуємо, щоб плавно перейти // У наступному кадрі виставимо кінцеве значення requestAnimationFrame(() => { const target = content.scrollHeight; content.style.maxHeight = target + 'px'; }); const onEnd = (e) => { if (e.propertyName !== 'max-height') return; content.style.maxHeight = 'none'; // знімаємо обмеження після анімації content.removeEventListener('transitionend', onEnd); btn.setAttribute('aria-expanded', 'true'); content.setAttribute('aria-hidden', 'false'); btn.textContent = labelClose; isAnimating = false; expanded = true; }; content.addEventListener('transitionend', onEnd); }; const close = () => { if (isAnimating || !expanded) return; isAnimating = true; root.classList.remove('is-expanded'); // З none → в конкретне число: спочатку зафіксуємо поточну висоту const startHeight = content.scrollHeight; content.style.maxHeight = startHeight + 'px'; // У наступному кадрі стиснемо до collapsed px requestAnimationFrame(() => { content.style.maxHeight = collapsed + 'px'; }); const onEnd = (e) => { if (e.propertyName !== 'max-height') return; content.removeEventListener('transitionend', onEnd); btn.setAttribute('aria-expanded', 'false'); content.setAttribute('aria-hidden', 'true'); btn.textContent = labelOpen; isAnimating = false; expanded = false; }; content.addEventListener('transitionend', onEnd); }; btn.addEventListener('click', () => (expanded ? close() : open())); // Підтримка ресайзу: якщо блок розгорнутий, оновлюємо max-height до актуального scrollHeight let resizeRaf = null; window.addEventListener('resize', () => { if (!expanded || isAnimating) return; if (resizeRaf) cancelAnimationFrame(resizeRaf); resizeRaf = requestAnimationFrame(() => { // Під час розгорнутого стану стоїть 'none' — коротко повернемо px, щоб анімовано адаптуватись content.style.maxHeight = content.scrollHeight + 'px'; }); }); }); })(); </script>
+<script>
+;(function(){
+  const components = document.querySelectorAll('.readmore');
+  components.forEach((root, idx) => { 
+    const content = root.querySelector('.readmore__content'); 
+    const btn = root.querySelector('.readmore__toggle'); 
+    const fade = root.querySelector('.readmore__fade'); 
+    const collapsed = Math.max( 
+      0, 
+      parseInt(root.getAttribute('data-collapsed-height') || '160', 10) 
+    ); 
+    // Ініціалізація згорнутого стану 
+    content.style.maxHeight = collapsed + 'px'; 
+    content.setAttribute('aria-hidden', 'true'); 
+    btn.setAttribute('aria-expanded', 'false'); 
+    const labelOpen = 'Читати далі'; 
+    const labelClose = 'Згорнути'; 
+    btn.textContent = labelOpen; 
+    let isAnimating = false; 
+    let expanded = false; 
+    const open = () => { 
+      if (isAnimating || expanded) return; 
+      isAnimating = true; 
+      root.classList.add('is-expanded'); 
+      // Початок: з поточного (collapsed px) до фактичної висоти контенту 
+      const startHeight = content.offsetHeight; 
+      content.style.maxHeight = startHeight + 'px'; // фіксуємо, щоб плавно перейти 
+      // У наступному кадрі виставимо кінцеве значення 
+      requestAnimationFrame(() => { 
+        const target = content.scrollHeight; 
+        content.style.maxHeight = target + 'px'; 
+      }); 
+      const onEnd = (e) => { 
+        if (e.propertyName !== 'max-height') return; 
+        content.style.maxHeight = 'none'; // знімаємо обмеження після анімації 
+        content.removeEventListener('transitionend', onEnd); 
+        btn.setAttribute('aria-expanded', 'true'); 
+        content.setAttribute('aria-hidden', 'false'); 
+        btn.textContent = labelClose; 
+        isAnimating = false; 
+        expanded = true; 
+      }; 
+      content.addEventListener('transitionend', onEnd); 
+    }; 
+    const close = () => { 
+      if (isAnimating || !expanded) return; 
+      isAnimating = true; 
+      root.classList.remove('is-expanded'); 
+      // З none → в конкретне число: спочатку зафіксуємо поточну висоту 
+      const startHeight = content.scrollHeight; 
+      content.style.maxHeight = startHeight + 'px'; 
+      // У наступному кадрі стиснемо до collapsed px 
+      requestAnimationFrame(() => { 
+        content.style.maxHeight = collapsed + 'px'; 
+      }); 
+      const onEnd = (e) => { 
+        if (e.propertyName !== 'max-height') return; 
+        content.removeEventListener('transitionend', onEnd); 
+        btn.setAttribute('aria-expanded', 'false'); 
+        content.setAttribute('aria-hidden', 'true'); 
+        btn.textContent = labelOpen; 
+        isAnimating = false; 
+        expanded = false; 
+      }; 
+      content.addEventListener('transitionend', onEnd); 
+    }; 
+    btn.addEventListener('click', () => (expanded ? close() : open())); 
+    // Підтримка ресайзу: якщо блок розгорнутий, оновлюємо max-height до актуального scrollHeight 
+    let resizeRaf = null; 
+    window.addEventListener('resize', () => { 
+      if (!expanded || isAnimating) return; 
+      if (resizeRaf) cancelAnimationFrame(resizeRaf); 
+      resizeRaf = requestAnimationFrame(() => { 
+        // Під час розгорнутого стану стоїть 'none' — коротко повернемо px, щоб анімовано адаптуватись 
+        content.style.maxHeight = content.scrollHeight + 'px'; 
+      });
+    });
+  });
+})();
+; // <-- Добавлена точка с запятой в конце
+</script>
 
 <ol>
 
@@ -188,7 +268,3 @@ md:text-left">
 <td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">4 шт.</td></tr>
 </tbody></table>
 </div>
-
-![](<>)
-
-![](<>)

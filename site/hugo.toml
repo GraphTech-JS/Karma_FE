@@ -75,6 +75,7 @@ enableGitInfo = true
   themeColor = "#1f2937"
   favicon = "img/favicon.ico"
   appleTouchIcon = "img/apple-touch-icon.png"
+  
 
 [build]
   writeStats = true
