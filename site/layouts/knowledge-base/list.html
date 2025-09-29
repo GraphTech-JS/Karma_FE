@@ -27,8 +27,7 @@
         <a class="text-[16px] lg:text-[20px] font-normal text-[#ba0108]" href="{{ " /" | relLangURL }}">{{ i18n
           "catalog.hero.breadcrumb.home" }}</a>
         <span class="text-[#ba0108] px-[5px]">→</span>
-        <a class="text-[16px] lg:text-[20px] font-normal text-[#ba0108]" href="{{ " /knowledge-base/" | relLangURL
-          }}">{{ i18n "nav.knowledge" }}</a>
+        <span class="text-[16px] lg:text-[20px] font-normal text-[#ba0108]">{{ i18n "nav.knowledge" }}</span>
       </div>
 
       <div class="hidden items-center max-w-md lg:flex">
@@ -155,8 +154,7 @@
 
 <script>
   window.I18NKB = {
-    "notFoundTpl": {{i18n "kb.search.notFound.tpl" | plainify | jsonify }}
-  };
+    "notFoundTpl": {{i18n "kb.search.notFound.tpl" | plainify | jsonify}}};
 </script>
 
 <script>

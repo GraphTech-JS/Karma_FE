@@ -11,6 +11,7 @@ category: Політні стеки
 tags: []
 image: /img/product-details-v2.png
 draft: false
+slug: KARMA F405 V1 Flight Stack. User Manual
 ---
 <style> 
 

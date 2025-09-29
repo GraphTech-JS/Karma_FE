@@ -7,6 +7,7 @@ description: |-
 date: 2025-09-28T17:16:00.000+03:00
 category: Політні стеки
 draft: false
+slug: Prices for KARMA FLIGHTS flight stacks
 ---
 <style> 
 
