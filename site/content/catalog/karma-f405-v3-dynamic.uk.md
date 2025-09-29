@@ -23,6 +23,7 @@ draft: false
 layout: product
 currency: грн
 in_stock: true
+slug: KARMA F405 V2 FLIGHT STACK
 ---
 
 # ПОЛІТНИЙ СТЕК KARMA F405 V2

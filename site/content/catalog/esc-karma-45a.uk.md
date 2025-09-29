@@ -9,6 +9,8 @@ image: /img/catalog_product2.png
 price: 800
 currency: грн
 in_stock: true
+in_stock: true
+slug: ESC KARMA 45A BLHeli_S
 specs:
   - label: Струм
     value: 45A

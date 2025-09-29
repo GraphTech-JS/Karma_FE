@@ -24,6 +24,7 @@ draft: false
 layout: product
 currency: грн
 in_stock: true
+slug: FLIGHT STACK KARMA F405 V2 (60A)
 ---
 
 # ПОЛІТНИЙ СТЕК KARMA F405 V2
