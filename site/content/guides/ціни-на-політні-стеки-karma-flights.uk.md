@@ -79,7 +79,7 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 
 </div>
 
-</div>
+
 <div class="text-center"><button class="readmore_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
 <div class="readmore_fade" aria-hidden="true"></div>
 </div> 
@@ -97,7 +97,6 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
  </div>
 <div class="text-center"><button class="readmore_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
 </div>
-
 
 <div class="readmore_fade" aria-hidden="true"></div>
 </div> 
