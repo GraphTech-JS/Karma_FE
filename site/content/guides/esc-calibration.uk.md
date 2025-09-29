@@ -9,7 +9,6 @@ tags:
   - мотори
   - Betaflight
 draft: false
-slug: "ESC calibration of speed controls"
 ---
 
 

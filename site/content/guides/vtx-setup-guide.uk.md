@@ -10,7 +10,6 @@ tags:
   - налаштування
   - FPV
 draft: false
-slug: vtx2-settings
 translationKey: vtx2-settings
 
 ---

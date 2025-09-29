@@ -5,7 +5,6 @@ date: 2024-01-20
 draft: false
 category: "UAV"
 tags: ["UAV", "assembly", "FPV", "drone", "guide"]
-slug: "Complete guide to assembling a FPV drone"
 ---
 
 Assembling an FPV drone is an exciting process that requires attention to detail and the right approach. This guide will help you build a reliable and efficient drone from scratch.
