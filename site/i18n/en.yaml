@@ -415,7 +415,17 @@ guides.category.politni-steky:
 
 # -- Knowledge Base page --
 
-
+# -- Guides page --
+guides.breadcrumb.home: "Home"
+guides.breadcrumb.knowledge: "Knowledge base"
+guides.back: "Back"
+guides.search.placeholder: "Enter text"
+guides.toc.title: "On this page"
+guides.categories.uav: "UAV"
+guides.categories.stacks: "Flight Stacks"
+guides.categories.vtx: "Video transmitters"
+guides.categories.esc: "ESC"
+# -- Guides page -
 # -- 404 page --
 404.title: "Page not found"
 404.heading: "Page not found"
