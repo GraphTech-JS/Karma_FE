@@ -11,6 +11,7 @@ price: 2500
 currency: "грн"
 in_stock: true
 weight: 10
+slug: Flight Stack KARMA F405 V1
 specs:
   - label: "Гіроскоп/акселерометр"
     value: "ICM-42688-P"

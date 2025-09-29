@@ -9,6 +9,7 @@ image: "/img/our-product1.png"
 price: 2500
 currency: "UAH"
 in_stock: true
+slug: FLIGHT STACK KARMA F405 V1 (Dynamic)
 specs:
   - label: "Gyroscope/Accelerometer"
     value: "ICM-42688-P"
