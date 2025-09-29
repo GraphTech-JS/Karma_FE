@@ -1,11 +1,17 @@
 ---
-title: "Complete FPV Drone Assembly Guide"
-description: "A detailed step-by-step guide to assembling an FPV drone from scratch to its first flight"
+title: Complete FPV Drone Assembly Guide
+description: A detailed step-by-step guide to assembling an FPV drone from
+  scratch to its first flight
 date: 2024-01-20
+category: БПЛА
+tags:
+  - UAV
+  - assembly
+  - FPV
+  - drone
+  - guide
 draft: false
-category: "UAV"
-tags: ["UAV", "assembly", "FPV", "drone", "guide"]
-slug: "Complete guide to assembling a FPV drone"
+slug: Complete guide to assembling a FPV drone
 ---
 
 Assembling an FPV drone is an exciting process that requires attention to detail and the right approach. This guide will help you build a reliable and efficient drone from scratch.
