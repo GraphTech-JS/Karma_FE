@@ -7,7 +7,7 @@ description: |-
   KARMA F405V1 перший крок у пошуках досконалості.
 date: 2025-09-29T22:11:00.000+03:00
 category: Політні стеки
-image: /img/politni-steki.jpg
+image: /img/catalog_product3.png
 draft: false
 ---
 <style> 
