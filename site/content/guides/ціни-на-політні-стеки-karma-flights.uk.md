@@ -64,6 +64,7 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 <strong>
 
 Рекомендована ціна OEM (упаковка 20шт.)&nbsp;&nbsp;&nbsp;       67 USD</strong></h4>
+
 <h3 class="text-center">ТАБЛИЦІ РОЗРАХУНКУ ВАРТОСТІ ПОЛІТНИХ СТЕКІВ </h3>
 
 <div class="text-center">
@@ -95,6 +96,9 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 <h3 class="text-center">ТАБЛИЦІ РОЗРАХУНКУ ВАРТОСТІ </h3>
  </div>
 <div class="text-center"><button class="readmore_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
+</div>
+
+
 <div class="readmore_fade" aria-hidden="true"></div>
 </div> 
 </div>
