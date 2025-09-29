@@ -10,12 +10,12 @@
         </a>
         <span class="text-[#ba0108] sm:inline px-[5px]">&rarr;</span>
         <a class="font-[Montserrat] text-[16px] lg:text-[20px]  font-normal text-[#ba0108] hover:underline leading-[120%]"
-          href="{{ " /knowledge-base/" | relLangURL }}">
+          href="{{ "/knowledge-base/" | relLangURL }}">
           {{ i18n "guides.breadcrumb.knowledge" }}
         </a>
         <span class="text-[#ba0108] sm:inline px-[5px]">&rarr;</span>
         <span
-          class="font-[Montserrat] text-[16px] lg:text-[20px] font-light md:font-normal text-[#ba0108] hover:underline break-words hyphens-auto leading-[120%]">
+          class="font-[Montserrat] text-[16px] lg:text-[20px] font-light md:font-normal text-[#ba0108] break-words hyphens-auto leading-[120%]">
           {{ .Title }}
         </span>
       </div>
@@ -90,7 +90,7 @@
         <div class="hidden lg:flex relative max-w-[min(691px,90vw)] justify-center items-center mb-[28px]">
           <div class="flex flex-1 items-center">
             <div class="relative flex-1 rounded-[20px]">
-              <input type="text" placeholder="Введіть текст"
+              <input type="text" placeholder="{{ i18n "guides.placeholder" }}"
                 class="h-[clamp(40px,6vw,47px)] w-full !rounded-[20px] border border-black pl-[clamp(12px,2vw,16px)] pr-[clamp(100px,15vw,120px)] text-[16px] outline-none focus:border-[#ba0108] bg-white" />
               <button
                 class="absolute z-10 right-0 top-1/2 -translate-y-1/2 w-[clamp(80px,12vw,99px)] h-[clamp(40px,6vw,47px)] rounded-[20px] bg-[#ba0108] flex items-center justify-center cursor-pointer hover:bg-[#a00007] transition-colors">

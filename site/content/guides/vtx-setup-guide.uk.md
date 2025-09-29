@@ -11,6 +11,7 @@ tags:
   - FPV
 draft: false
 translationKey: vtx2-settings
+slug: VTX2 Setup
 
 ---
 

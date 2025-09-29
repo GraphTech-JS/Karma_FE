@@ -424,6 +424,7 @@ guides.categories.uav: "БПЛА"
 guides.categories.stacks: "Політні стеки"
 guides.categories.vtx: "Відеопередавачі"
 guides.categories.esc: "ESC"
+guides.placeholder: "Введіть текст"
 # -- Guides page --
 
 # -- 404 page --

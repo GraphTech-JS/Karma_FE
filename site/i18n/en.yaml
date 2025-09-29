@@ -425,6 +425,7 @@ guides.categories.uav: "UAV"
 guides.categories.stacks: "Flight Stacks"
 guides.categories.vtx: "Video transmitters"
 guides.categories.esc: "ESC"
+guides.placeholder: "Enter text"
 # -- Guides page -
 # -- 404 page --
 404.title: "Page not found"

@@ -32,6 +32,7 @@ defaultContentLanguageInSubdir = false
 # Enable RSS for better SEO
 enableRobotsTXT = true
 enableGitInfo = true
+removePathAccents = true
 
 # SEO and performance optimizations
 [minify]
@@ -54,12 +55,15 @@ enableGitInfo = true
   tag = "tags"
 
 [permalinks]
+  post = "/:slug/"
   blog = "/blog/:slug/"
   guides = "/guides/:slug/"
   catalog = "/catalog/:slug/"
 
 [slug]
   transliterate = true
+  transliterateFrom = "uk"
+  transliterateTo = "en"
 
 # Sitemap configuration
 [sitemap]
@@ -72,6 +76,7 @@ enableGitInfo = true
   getenv = ['^HUGO_', '^CI$', '^CONTEXT$', '^NETLIFY']
 
 [params]
+  autoSlug = true
   author = "Karma"
   images = ["img/og-image.jpg"]
   ogImage = "img/og-image.jpg"

@@ -10,7 +10,8 @@ public_folder: "/img"
 
 i18n:
   structure: multiple_files
-  locales: [uk, en]
+  locales: [en, uk]
+  default_locale: "en"
 
 collections:
   - name: "products"
@@ -18,7 +19,7 @@ collections:
     folder: "site/content/catalog"
     create: true
     i18n: true
-    slug: "{{slug}}"
+    slug: "{{fields.title | slugify}}"
     fields:
       - { label: "Назва товару", name: "title", widget: "string", i18n: true }
       - { label: "Опис", name: "description", widget: "text", i18n: true }
@@ -88,7 +89,8 @@ collections:
     folder: "site/content/guides"
     create: true
     i18n: true
-    slug: "{{slug}}"
+    slug: "{{fields.title | slugify}}"
+    path: "{{slug}}/index"
     fields:
       - { label: "Назва", name: "title", widget: "string", i18n: true }
       - { label: "Опис", name: "description", widget: "text", i18n: true }
@@ -228,7 +230,7 @@ collections:
     folder: "site/content/faq"
     create: false
     i18n: true
-    slug: "{{slug}}"
+    slug: "{{fields.title | slugify}}"
     fields:
       - {
           label: "Головний заголовок сторінки",
