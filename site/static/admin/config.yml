@@ -1,18 +1,12 @@
 backend:
-  name: git-gateway
-  branch: main
+  name: test-repo
 
-# Editorial workflow for content approval
-publish_mode: editorial_workflow
+#publish_mode: editorial_workflow # Розкоментуйте, якщо потрібна модерація
 
-local_backend: true
+# local_backend: true
 
 media_folder: "site/static/img"
 public_folder: "/img"
-
-# Site URL for proper preview - UPDATE WITH YOUR ACTUAL NETLIFY URL
-site_url: https://karma-fe.netlify.app
-display_url: https://karma-fe.netlify.app
 
 i18n:
   structure: multiple_files

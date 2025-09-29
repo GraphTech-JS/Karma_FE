@@ -5,7 +5,6 @@ date: 2024-01-21
 category: "UAV"
 tags: ["UAV", "FPV", "flight", "training", "beginners"]
 draft: false
-slug: "Basics of FPV flight for beginners: part 1"
 ---
 
 FPV (First Person View) flight is an exciting experience that allows you to see the world from the drone's perspective. This guide will help beginners master the basics of FPV flight.

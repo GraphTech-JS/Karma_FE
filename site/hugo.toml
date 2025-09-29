@@ -54,9 +54,12 @@ enableGitInfo = true
   tag = "tags"
 
 [permalinks]
-  catalog = "/catalog/:slug/"
-  guides = "/guides/:slug/"
   blog = "/blog/:slug/"
+  guides = "/guides/:slug/"
+  catalog = "/catalog/:slug/"
+
+[slug]
+  transliterate = true
 
 # Sitemap configuration
 [sitemap]

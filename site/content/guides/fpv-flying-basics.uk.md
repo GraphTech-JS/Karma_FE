@@ -10,7 +10,6 @@ tags:
   - навчання
   - початківці
 draft: false
-slug: "Basics of FPV flight for beginners: part 1"
 ---
 
 FPV (First Person View) політ - це захоплюючий досвід, який дозволяє побачити світ з перспективи дрона. Цей посібник допоможе початківцям освоїти основи FPV польоту.
