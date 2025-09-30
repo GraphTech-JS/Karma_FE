@@ -6,7 +6,7 @@
   HUGO_ENABLEGITINFO = "true"
 
 [build]
-  command = "yarn build:webpack && hugo --gc --minify -s site -c site/config.toml -d ../dist"
+  command = "yarn build"
   publish = "dist"
 
 # Enable Git Gateway for DecapCMS

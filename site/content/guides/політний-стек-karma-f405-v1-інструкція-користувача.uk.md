@@ -26,18 +26,37 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 
 </style>
 
-<ol>
+<style>
 
-<li>Номер 1</li>
+:root{
+  --rm-duration: 300ms;
+  --rm-ease: cubic-bezier(.2,.6,.2,1);
+  --rm-fade-height: 54px; /* висота напівпрозорого затемнення */
+}
 
-<li>Номер 2</li>
 
-<li>Номер 3</li>
 
-<li>Номер 4</li>
-<li>Номер 5</li>
-</ol>
+ .post{ max-width: 720px; margin: 24px auto; padding: 0 16px;}
+.post h2{margin-top:30px;font-weight:bold;}
+.readmore{ position: relative; }  
+.readmore_content{ overflow: hidden; max-height: 0; transition: max-height var(--rm-duration) var(--rm-ease); } 
+.readmore_fade{
+  pointer-events: none;
+  position: absolute;
+  left: 0; right: 0; bottom: 42px; 
+  height: var(--rm-fade-height);
+  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+  opacity: 1;
+  transition: opacity 160ms ease-in-out;
+}
 
+.readmore_toggle{ display: inline-flex; align-items: center; gap: 8px; margin-top: 12px !important; padding: 10px 14px !important; border-radius: 10px; border: 1px solid #ba0108 !important; background: #fff; cursor: pointer; font-weight: 600; transition: transform 120ms ease, box-shadow 120ms ease; } 
+.readmore__toggle:hover{ box-shadow: 0 2px 10px rgba(0,0,0,.06); } .readmore_toggle:active{ transform: translateY(1px); } 
+.readmore.is-expanded .readmore__fade{ opacity: 0; } 
+ @media (prefers-reduced-motion: reduce){ .readmore_content{ transition: none; } .readmore_fade{ transition: none; } .readmore_toggle{ transition: none; } } </style>
+
+<article class="post"> <h2>Політний стек KARMA F405 V1. Інструкція користувача. </h2>
+<div class="readmore" data-collapsed-height="180"> <div class="readmore_content" id="rm-1" aria-hidden="true"> 
 <div class="article">
 <p class="text-[15px] md:text-[16px] font-[Montserrat]" style="padding-top:10px; padding-bottom:10px;">Польотний стек, розроблений з метою удосконалення,
 де це можливо, від надійних і ефективних технічних
@@ -52,18 +71,42 @@ KARMA F405V1 перший крок у пошуках досконалості.
 <tr><td class="font-[Inter] text-[20px] font-medium text-[#020303] h-[51px] px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">LC-фільтр
 живлення VTX</td><td class="font-[Montserrat] text-[20px] text-[#020303] h-[51px] px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">так</td></tr>
 <tr><td class="font-[Montserrat] text-[20px] font-medium text-[#020303] h-[51px] px-[19px] lg:px-[34px] border-r border-black w-[clamp(200px,20vw,255px)]">Дозволений струм від батареї</td><td class="font-[Montserrat] text-[20px] text-[#020303] h-[51px] px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)]">2.4 A</td></tr></tbody></table>
-<h3>РЕГУЛЯТОР ОБЕРТІВ</h3>
-<table class="max-w-\\\\\\\\\\\[500px] md:max-w-\\\\\\\\\\\[410px] w-full border-separate border-spacing-0 border border-black rounded-\\\\\\\\\\\[5px] overflow-hidden" role="table" aria-label="Технічні характеристики KARMA F405 V1 - живлення та кріплення"><caption class="sr-only">Параметри живлення та кріплення політного стеку KARMA F405 V1</caption><tbody><tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">Живлення</td><td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">4s-6s</td></tr><tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">Струм</td><td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">4x50A</td></tr><tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">MCU</td><td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">72Mhz 32Bit</td></tr><tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">Прошивка</td><td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">AM32</td></tr><tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">Кріплення</td><td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] w-[clamp(120px,35vw,175px)] text-start md:text-center">30.5 x 30.5</td></tr></tbody></table>
+<h3  class="text-center">РЕГУЛЯТОР ОБЕРТІВ</h3>
+<table class="max-w-\\\\\\\\\\\\\\\\\\\\\\[500px] md:max-w-\\\\\\\\\\\\\\\\\\\\\\[410px] w-full border-separate border-spacing-0 border border-black rounded-\\\\\\\\\\\\\\\\\\\\\\[5px] overflow-hidden" role="table" aria-label="Технічні характеристики KARMA F405 V1 - живлення та кріплення"><caption class="sr-only">Параметри живлення та кріплення політного стеку KARMA F405 V1</caption><tbody><tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">Живлення</td><td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">4s-6s</td></tr><tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">Струм</td><td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">4x50A</td></tr><tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">MCU</td><td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">72Mhz 32Bit</td></tr><tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">Прошивка</td><td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">AM32</td></tr><tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">Кріплення</td><td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] w-[clamp(120px,35vw,175px)] text-start md:text-center">30.5 x 30.5</td></tr></tbody></table>
+<h3 class="text-center">РОЗМІРИ</h3>
 
-<h3>РОЗМІРИ</h3>
+![розміри політних стеків](/img/size.jpg "розміри ESC FC")
 
-![розміри  політних стеків](/img/karma-f405-v1_2.jpg)
+<h3 class="text-center">ПІДКЛЮЧЕННЯ ПЕРИФЕРІЇ</h3>
 
-<h2>КОМПЛЕКТАЦІЯ ПОЛІТНИХ СТЕКІВ</h2>
+![ПІДКЛЮЧЕННЯ ПЕРИФЕРІЇ політного стеку Карма](/img/steki-instruction-1.jpg "Підключення політног стеку Карма")
+
+<h3 class="text-center">ЕЛЕМЕНТИ</h3>
+
+![Елементи політного стеку](/img/steki-instruction-2.jpg "Елементи політного стеку Карма")
+
+<h3 class="text-center">ІНДИКАЦІЯ</h3>
+
+![Індикація - політний стек КАРМА](/img/steki-instruction-3.jpg)
+
+<h3 class="text-center">ДІАГРАМА ПІДКЛЮЧЕННЯ</h3>
+
+![Діаграма підключення політного стеку КАРМА](/img/steki-instruction-4.jpg "Політний стек Карма. Діаграма підключення")
+
+<p>
+<strong>ВІДОМІ НЕДОЛІКИ</strong><br>
+ Користувацькі сигнальні лінії не споряджені 
+струмообмежувальними опорами. У разі замикання лінії під час 
+монтажу з подальшим увімкненням пристрою, можливий вихід з 
+ладу мікро-контролера на платі FC. Необхідна додаткова увага з 
+контролю якості пайки. Виправлення заплановане у версії v1.1
+</p>
 
 
-<table class="max-w-\\\\\\\\\\\[500px] md:max-w-\\\\\\\\\\\[410px] w-full border-separate border-spacing-0 border border-black rounded-\\\\\\\\\\\[5px] overflow-hidden" role="table" aria-label="Технічні характеристики KARMA F405 V1 - живлення та кріплення"><caption class="sr-only">Параметри живлення та кріплення політного стеку KARMA F405 V1</caption><tbody><tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-left">
 
+![Комплектація політних стеків КАРМА](/img/komplektacia.jpg "Комплектація польотних стеків")
+
+<table class="max-w-\\\\\\\\\\\\\\\\\\\\\\[500px] md:max-w-\\\\\\\\\\\\\\\\\\\\\\[410px] w-full border-separate border-spacing-0 border border-black rounded-\\\\\\\\\\\\\\\\\\\\\\[5px] overflow-hidden" role="table" aria-label="Технічні характеристики KARMA F405 V1 - живлення та кріплення"><caption class="sr-only">Параметри живлення та кріплення політного стеку KARMA F405 V1</caption><tbody><tr><td class="font-[Unbounded] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-r border-black border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-left">
 <img width="35" height="35" src="/img/list-guide-one.png" alt="" style="filter: none; box-shadow: none; float:left;line-height:1.8;" />
 &nbsp;&nbsp;Контролер польоту
 </td><td class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
@@ -110,29 +153,29 @@ md:text-left">
 </tbody></table>
 </div>
 </div>
-<div class="text-center"><button class="readmore__toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
-<div class="readmore__fade" aria-hidden="true"></div>
+<div class="text-center"><button class="readmore_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
+<div class="readmore_fade" aria-hidden="true"></div>
 </div> </article>
 <article class="post"> <h2>Політний стек KARMA F405 V1.1. Інструкція користувача. </h2>
 <div class="readmore" data-collapsed-height="140"> 
-<div class="readmore__content" id="rm-1" aria-hidden="true"> 
+<div class="readmore_content" id="rm-1" aria-hidden="true"> 
 <div class="article">
  <p>Удосконалений політний стек. Ще потужніший, ще витриваліший.</p>
  <p>
 KARMA F405V1.1 - другий крок у пошуках досконалості.
 </p>
  </div>
-<div class="text-center"><button class="readmore__toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
-<div class="readmore__fade" aria-hidden="true"></div>
+<div class="text-center"><button class="readmore_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
+<div class="readmore_fade" aria-hidden="true"></div>
 </div> 
 </article>
 <script>
 ;(function(){
   const components = document.querySelectorAll('.readmore');
   components.forEach((root, idx) => { 
-    const content = root.querySelector('.readmore__content'); 
-    const btn = root.querySelector('.readmore__toggle'); 
-    const fade = root.querySelector('.readmore__fade'); 
+    const content = root.querySelector('.readmore_content'); 
+    const btn = root.querySelector('.readmore_toggle'); 
+    const fade = root.querySelector('.readmore_fade'); 
     const collapsed = Math.max( 
       0, 
       parseInt(root.getAttribute('data-collapsed-height') || '160', 10) 
