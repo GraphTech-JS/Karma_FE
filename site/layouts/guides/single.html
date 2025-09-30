@@ -10,7 +10,7 @@
         </a>
         <span class="text-[#ba0108] sm:inline px-[5px]">&rarr;</span>
         <a class="font-[Montserrat] text-[16px] lg:text-[20px]  font-normal text-[#ba0108] hover:underline leading-[120%]"
-          href="{{ "/knowledge-base/" | relLangURL }}">
+          href="{{ " /knowledge-base/" | relLangURL }}">
           {{ i18n "guides.breadcrumb.knowledge" }}
         </a>
         <span class="text-[#ba0108] sm:inline px-[5px]">&rarr;</span>
@@ -24,8 +24,10 @@
       <div class="flex justify-end items-center sm:hidden">
         <button
           class="font-[Montserrat] text-[clamp(16px,2vw,18px)] font-normal text-black flex items-center gap-[clamp(8px,2vw,8px)] cursor-pointer">
-          <span class="text-black">&lt;</span>
-          {{ i18n "guides.back" }}
+        <a href="{{ "/knowledge-base/" | relLangURL }}">
+            <span class="text-black">&lt;</span>
+            {{ i18n "guides.back" }}
+        </a>
         </button>
       </div>
 
@@ -90,7 +92,7 @@
         <div class="hidden lg:flex relative max-w-[min(691px,90vw)] justify-center items-center mb-[28px]">
           <div class="flex flex-1 items-center">
             <div class="relative flex-1 rounded-[20px]">
-              <input type="text" placeholder="{{ i18n "guides.placeholder" }}"
+              <input type="text" placeholder="{{ i18n " guides.placeholder" }}"
                 class="h-[clamp(40px,6vw,47px)] w-full !rounded-[20px] border border-black pl-[clamp(12px,2vw,16px)] pr-[clamp(100px,15vw,120px)] text-[16px] outline-none focus:border-[#ba0108] bg-white" />
               <button
                 class="absolute z-10 right-0 top-1/2 -translate-y-1/2 w-[clamp(80px,12vw,99px)] h-[clamp(40px,6vw,47px)] rounded-[20px] bg-[#ba0108] flex items-center justify-center cursor-pointer hover:bg-[#a00007] transition-colors">
@@ -104,19 +106,17 @@
         <div class="relative overflow-hidden rounded-xl border border-[#E5E5E5]">
           {{ $customImage := resources.Get .Params.image }} {{ if $customImage
           }} {{ $desktop1x := $customImage.Resize "900x webp q80" }} {{
-          $desktop2x := $customImage.Resize "1800x webp q80" }}
+          $desktop2x := $customImage.Resize "1800x webp q80" }} {{ $mobile1x :=
+          $customImage.Resize "480x webp q80" }} {{ $mobile2x :=
+          $customImage.Resize "960x webp q80" }}
           <img src="{{ $desktop1x.RelPermalink }}"
             srcset="{{ $desktop1x.RelPermalink }} 1x, {{ $desktop2x.RelPermalink }} 2x" alt="{{ .Title }}"
             class="hidden w-full h-auto sm:block" width="{{ $customImage.Width }}" height="{{ $customImage.Height }}"
             loading="lazy" decoding="async" />
-          {{ end }} {{ $droneManMobile := resources.Get
-          "img/drone-man-mobile.png" }} {{ if $droneManMobile }} {{ $mobile1x :=
-          $droneManMobile.Resize "480x webp q80" }} {{ $mobile2x :=
-          $droneManMobile.Resize "960x webp q80" }}
           <img src="{{ $mobile1x.RelPermalink }}"
             srcset="{{ $mobile1x.RelPermalink }} 1x, {{ $mobile2x.RelPermalink }} 2x" alt="{{ .Title }}"
-            class="w-full h-auto sm:hidden" width="{{ $droneManMobile.Width }}" height="{{ $droneManMobile.Height }}"
-            decoding="async" />
+            class="w-full h-auto sm:hidden" width="{{ $customImage.Width }}" height="{{ $customImage.Height }}"
+            loading="lazy" decoding="async" />
           {{ end }}
         </div>
         {{ end }}
