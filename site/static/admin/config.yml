@@ -91,7 +91,6 @@ collections:
     create: true
     i18n: true
     slug: "{{fields.title | slugify}}"
-    path: "{{slug}}/index"
     fields:
       - { label: "Назва", name: "title", widget: "string", i18n: true }
       - { label: "Опис", name: "description", widget: "text", i18n: true }
@@ -132,7 +131,6 @@ collections:
   - name: "post"
     label: "Post"
     folder: "site/content/post"
-    path: "{{slug}}/index"
     create: true
     i18n: true
     fields:
