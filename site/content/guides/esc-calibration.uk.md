@@ -3,13 +3,13 @@ title: Калібрування ESC регуляторів швидкості
 description: Детальна інструкція з калібрування ESC для оптимальної роботи моторів дрона
 date: 2024-01-20
 category: ESC
+slug: ESC Speed Controller Calibration
 tags:
   - ESC
   - калібрування
   - мотори
   - Betaflight
 draft: false
-slug: "ESC calibration of speed controls"
 ---
 
 

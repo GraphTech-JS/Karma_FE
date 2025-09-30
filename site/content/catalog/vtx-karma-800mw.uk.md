@@ -22,6 +22,7 @@ specs:
   - label: "Вага"
     value: "12г"
 draft: false
+slug: VTX KARMA 5.8GHz 800mW
 ---
 
 # VTX KARMA 5.8GHz 800mW

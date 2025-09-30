@@ -1,22 +1,17 @@
 backend:
-  name: git-gateway
-  branch: main
+  name: test-repo
 
-# Editorial workflow for content approval
-publish_mode: editorial_workflow
+#publish_mode: editorial_workflow # Розкоментуйте, якщо потрібна модерація
 
-local_backend: true
+# local_backend: true
 
 media_folder: "site/static/img"
 public_folder: "/img"
 
-# Site URL for proper preview - UPDATE WITH YOUR ACTUAL NETLIFY URL
-site_url: https://karma-fe.netlify.app
-display_url: https://karma-fe.netlify.app
-
 i18n:
   structure: multiple_files
-  locales: [uk, en]
+  locales: [en, uk]
+  default_locale: "en"
 
 collections:
   - name: "products"
@@ -24,7 +19,7 @@ collections:
     folder: "site/content/catalog"
     create: true
     i18n: true
-    slug: "{{slug}}"
+    slug: "{{fields.title | slugify}}"
     fields:
       - { label: "Назва товару", name: "title", widget: "string", i18n: true }
       - { label: "Опис", name: "description", widget: "text", i18n: true }
@@ -94,7 +89,8 @@ collections:
     folder: "site/content/guides"
     create: true
     i18n: true
-    slug: "{{slug}}"
+    slug: "{{fields.title | slugify}}"
+    path: "{{slug}}/index"
     fields:
       - { label: "Назва", name: "title", widget: "string", i18n: true }
       - { label: "Опис", name: "description", widget: "text", i18n: true }
@@ -234,7 +230,7 @@ collections:
     folder: "site/content/faq"
     create: false
     i18n: true
-    slug: "{{slug}}"
+    slug: "{{fields.title | slugify}}"
     fields:
       - {
           label: "Головний заголовок сторінки",

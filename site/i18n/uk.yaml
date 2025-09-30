@@ -414,9 +414,18 @@ guides.category.esc:
 guides.category.politni-steky:
   other: "Політні стеки"
 
-# -- Knowledge Base page --
-
-
+# -- Guides page --
+guides.breadcrumb.home: "Головна"
+guides.breadcrumb.knowledge: "База знань"
+guides.back: "Назад"
+guides.search.placeholder: "Введіть текст"
+guides.toc.title: "На цій сторінці"
+guides.categories.uav: "БПЛА"
+guides.categories.stacks: "Політні стеки"
+guides.categories.vtx: "Відеопередавачі"
+guides.categories.esc: "ESC"
+guides.placeholder: "Введіть текст"
+# -- Guides page --
 
 # -- 404 page --
 404.title: "Сторінку не знайдено"
