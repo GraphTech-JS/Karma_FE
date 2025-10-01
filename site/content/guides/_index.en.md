@@ -1,7 +1,7 @@
 ---
 title: About Flight Stacks test
 description: A useful article about flight stacks
-date: 2025-08-25T17:05:00.000+03:00
+date: 2025-10-01T13:33:00.000+03:00
 category: Flight Stacks
 tags:
   - tag
