@@ -1,6 +1,5 @@
 <section id="contact-form-section"
-  class=" relative flex justify-center items-center px-4 pt-[100px] md:pt-[60px] lg:pt-[80px] pb-[80px] {{ if not (eq .RelPermalink "
-  /contact/") }}{{ end }}">
+  class=" relative flex justify-center items-center px-4 pt-[100px] md:pt-[60px] lg:pt-[80px] pb-[80px] {{ if not (eq .RelPermalink "/contact/") }}{{ end }}">
   {{ if eq .RelPermalink "/contact/" }}
   {{ $bgEl1 := resources.Get "img/bg-el-1.png" }}
   {{ if $bgEl1 }}
@@ -48,21 +47,23 @@
         {{ i18n "contact.subtitle" }}
       </p>
 
-      <form id="contact-form" class="flex flex-col font-['Montserrat'] w-full" novalidate netlify name="contact"
-        method="POST" data-netlify="true">
-        <input type="hidden" name="form-name" value="contact" />
+      <form id="contact-form" class="flex flex-col font-['Montserrat'] w-full" novalidate
+        action="https://formsubmit.co/contact@karma.flights" method="POST">
+        <input type="hidden" name="_template" value="box">
+        <input type="hidden" name="_replyto" value="email">
+        
         <div class="flex flex-col gap-[23px]  md:flex-row xl:flex-row mb-[23px]">
-          <input type="text" id="name" placeholder="{{ i18n " contact.form.name.placeholder" }}" required name="name"
+          <input type="text" id="name" placeholder="{{ i18n "contact.form.name.placeholder" }}" required name="name"
             class="contact-input w-full  xl:w-[373px] xl:flex-none px-5 py-4 h-[65px] placeholder:text-[#999] border border-[#404040] rounded-[5px] text-normal bg-white transition-all duration-300 ease-in-out" />
-          <input type="tel" id="phone" placeholder="{{ i18n " contact.form.phone.placeholder" }}" required name="phone"
+          <input type="tel" id="phone" placeholder="{{ i18n "contact.form.phone.placeholder" }}" required name="phone"
             class="contact-input w-full xl:w-[373px] xl:flex-none px-5 py-4 h-[65px] placeholder:text-[#999] border border-[#404040] rounded-[5px] text-normal bg-white transition-all duration-300 ease-in-out" />
         </div>
 
-        <textarea id="message" name="message" placeholder="{{ i18n " contact.form.message.placeholder" }}" rows="5"
+        <textarea id="message" name="message" placeholder="{{ i18n "contact.form.message.placeholder" }}" rows="5"
           class="contact-textarea w-full  xl:w-[770px] px-5 py-4 placeholder:text-[#999] border border-[#404040] rounded-[5px] text-normal bg-white resize-y min-h-[120px] transition-all duration-300 ease-in-out font-['Montserrat']"></textarea>
 
         <button type="submit" id="submit-btn"
-          class="bg-[#ba0108] hover:bg-[#e39599] !font-['Montserrat'] text-[#fff] border-[none] px-[40px] py-[18px] rounded-[20px] cursor-pointer text-2xl font-[300] [transition:background-color_0.3s_ease] mt-[23px] w-full xl:w-[770px]">
+          class="contact-button !mt-[50px] md:!mt-[27px] w-full  xl:w-[770px] bg-[#ba0108] hover:bg-[#e39599] transition-colors text-white border-none px-10 h-[65px] md:h-[70px] lg:h-auto lg:py-5 rounded-2xl cursor-pointer text-[clamp(16px,2vw,24px)] font-light lg:font-normal font-['Montserrat'] duration-300 ease-in-out">
           {{ i18n "contact.form.submit" }}
         </button>
       </form>
@@ -339,7 +340,6 @@
 
     if (form) {
       form.addEventListener('submit', function (e) {
-        e.preventDefault();
 
         if (!validateForm()) {
           const firstInvalid = form.querySelector('.error');

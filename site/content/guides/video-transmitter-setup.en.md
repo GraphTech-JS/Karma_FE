@@ -7,6 +7,7 @@ category: "Video Transmitters"
 categorySlug: videoperedavachi-vtx
 tags: ["FPV", "video transmitter", "setup", "frequencies"]
 translationKey: vtx2-settings
+slug: Video transmitter settings for FPV
 ---
 
 
