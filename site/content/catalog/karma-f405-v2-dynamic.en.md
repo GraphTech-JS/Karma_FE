@@ -5,7 +5,7 @@ description: >-
   technical solutions to improved assembly ergonomics.
 
   KARMA F405V1 (60A) second step in the pursuit of excellence
-date: 2025-10-02T21:13:00.000+03:00
+date: 2025-10-02T22:12:00.000+03:00
 category: politni-steky
 product_id: "3231"
 image: /img/product.png
@@ -27,4 +27,4 @@ specs:
     value: "4s-6s "
 draft: false
 ---
-   
+  
