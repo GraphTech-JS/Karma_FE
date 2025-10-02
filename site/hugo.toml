@@ -57,13 +57,17 @@ removePathAccents = true
 [permalinks]
   post = "/:slug/"
   blog = "/blog/:slug/"
-  guides = "/guides/:slug/"
+  guides = "/guides/:filename/"
   catalog = "/catalog/:slug/"
+  categories = "/categories/:slug/"
+
+  [frontmatter]
+  slug = ["slug", "title"]
 
 [slug]
   transliterate = true
-  transliterateFrom = "uk"
-  transliterateTo = "en"
+  translitFrom = "uk"
+  translitTo = "en"
 
 # Sitemap configuration
 [sitemap]

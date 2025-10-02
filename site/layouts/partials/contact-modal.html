@@ -18,7 +18,7 @@
       </div>
 
       <!-- Contact Form -->
-      <form class="contact-form" id="contactForm" novalidate>
+      <form class="contact-form" id="contactForm" action="https://formsubmit.co/contact@karma.flights" method="POST" novalidate>
         <div class="form-row">
           <div class="form-group">
             <input type="text" id="userName" name="userName" placeholder="{{ i18n "contact.form.name.placeholder" }}"
@@ -44,15 +44,15 @@
                 }}</div>
               <div class="dropdown-option" role="option" data-value="3000-10000">{{ i18n
                 "contact.form.quantity.3000_10000" }}</div>
-              <div class="dropdown-option" role="option" data-value="10000+">{{ i18n "contact.form.quantity.10000_plus"
-                }}</div>
+              <div class="dropdown-option" role="option" data-value="10000+">{{ i18n
+                "contact.form.quantity.10000_plus"}}</div>
             </div>
             <input type="hidden" id="quantity" name="quantity" required />
           </div>
         </div>
 
         <div class="form-group">
-          <textarea id="message" name="message" placeholder="{{ i18n "contact.form.message.placeholder" |
+          <textarea id="message" name="message" placeholder="{{ i18n " contact.form.message.placeholder" |
             default "Ваше повідомлення" }}" class="form-textarea" rows="4"></textarea>
         </div>
 
@@ -389,12 +389,11 @@
   window.I18NContact = {
     submitting: {{i18n "contact.form.submitting" | plainify}},
   submit: {{i18n "contact.form.submit" | plainify}},
-  success: {{i18n "contact.form.success" | plainify }},
+  success: {{i18n "contact.form.success" | plainify}},
   errorGeneric: {{i18n "contact.form.error.submit" | default "Виникла помилка при відправці. Спробуйте ще раз." | plainify}},
   errorName: {{i18n "contact.form.error.name" | plainify}},
   errorPhone: {{i18n "contact.form.error.phone" | plainify}},
-  errorQuantity: {{i18n "contact.form.error.quantity" | plainify}},
-  quantityPlaceholder: {{i18n "contact.form.quantity.placeholder" | plainify}}
+  errorQuantity: {{i18n "contact.form.error.quantity" | plainify}}
   };
 </script>
 
@@ -629,7 +628,6 @@
 
       /* ========== Submit ========== */
       handleSubmit(e) {
-        e.preventDefault();
         this.clearFieldErrors();
 
         const formData = new FormData(this.form);

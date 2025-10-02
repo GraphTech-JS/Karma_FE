@@ -10,6 +10,7 @@ image: "/img/our-product1.png"
 price: 2500
 currency: "грн"
 in_stock: true
+
 specs:
   - label: "Гіроскоп/акселерометр"
     value: "ICM-42688-P"

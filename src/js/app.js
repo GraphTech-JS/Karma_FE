@@ -5,16 +5,14 @@ import "./css/main.scss";
 const loadNonCriticalJS = () => {
   import("./modal.js");
   import("./accessibility.js");
+  import("./forms.js"); // Додаємо обробку форм
 };
 
 // Load non-critical JS after page load
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", () => {
-    // Load after a short delay to prioritize critical rendering
-    setTimeout(loadNonCriticalJS, 100);
-  });
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadNonCriticalJS);
 } else {
-  setTimeout(loadNonCriticalJS, 100);
+  loadNonCriticalJS();
 }
 
 if (window.netlifyIdentity) {

@@ -208,8 +208,7 @@
       <!-- Phone and language switcher at the bottom -->
       <div class="flex flex-col items-center pb-8 mt-auto space-y-4">
         <!-- Mobile phone number -->
-        <a href="tel:(067) 298-29-29"
-          class="text-[#fefefe] font-['Montserrat'] text-[20px] font-[400]">
+        <a href="tel:(067) 298-29-29" class="text-[#fefefe] font-['Montserrat'] text-[20px] font-[400]">
           (067) 298-29-29
         </a>
 
@@ -250,8 +249,8 @@
             class="font-['Montserrat'] text-xl font-normal cursor-pointer hover:text-[#ba0108] transition-colors{{ if $isCurrent }} !text-[#ba0108] !font-bold font-['Inter']{{ else }} text-[#fefefe]{{ end }}">
             {{ if eq $l.Lang "uk" }}UA{{ else }}{{ upper $l.Lang }}{{ end }}
           </a>
-            {{ if lt (add $i 1) (len $langs) }}
-            <div class="w-px h-6 bg-white/50" aria-hidden="true"></div>
+          {{ if lt (add $i 1) (len $langs) }}
+          <div class="w-px h-6 bg-white/50" aria-hidden="true"></div>
           {{ end }}
           {{ end }}
         </div>

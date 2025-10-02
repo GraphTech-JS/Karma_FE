@@ -47,7 +47,11 @@
         {{ i18n "contact.subtitle" }}
       </p>
 
-      <form id="contact-form" class="flex flex-col font-['Montserrat'] w-full" novalidate>
+      <form id="contact-form" class="flex flex-col font-['Montserrat'] w-full" novalidate
+        action="https://formsubmit.co/contact@karma.flights" method="POST">
+        <input type="hidden" name="_template" value="box">
+        <input type="hidden" name="_replyto" value="email">
+        
         <div class="flex flex-col gap-[23px]  md:flex-row xl:flex-row mb-[23px]">
           <input type="text" id="name" placeholder="{{ i18n "contact.form.name.placeholder" }}" required name="name"
             class="contact-input w-full  xl:w-[373px] xl:flex-none px-5 py-4 h-[65px] placeholder:text-[#999] border border-[#404040] rounded-[5px] text-normal bg-white transition-all duration-300 ease-in-out" />
@@ -336,7 +340,6 @@
 
     if (form) {
       form.addEventListener('submit', function (e) {
-        e.preventDefault();
 
         if (!validateForm()) {
           const firstInvalid = form.querySelector('.error');

@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: main
 
-#publish_mode: editorial_workflow # Розкоментуйте, якщо потрібна модерація
+#publish_mode: editorial_workflow # Увімкнути за потреби модерації
 
 # local_backend: true
 
@@ -15,6 +15,27 @@ i18n:
   default_locale: "en"
 
 collections:
+  # 🆕 Категорії
+  - name: "categories"
+    label: "Категорії"
+    folder: "site/content/categories"
+    create: true
+    i18n: true
+    slug: "{{fields.title | slugify}}"   # 👈 лише по title
+    fields:
+      - { label: "Назва категорії", name: "title", widget: "string", i18n: true }
+      - label: "URL (англійською)"
+        name: "slug"
+        widget: "string"
+        required: false
+        i18n: "duplicate"
+        hint: "Залиште пустим щоб Hugo сам згенерував (латиниця)"
+        pattern: ["^[a-z0-9-]*$", "Лише латиниця, цифри та -"]
+      - { label: "Опис", name: "description", widget: "text", i18n: true }
+      - { label: "Альтернативні назви", name: "aliases", widget: "list", required: false, i18n: true }
+      - { label: "Вага сортування", name: "weight", widget: "number", default: 1, i18n: "duplicate" }
+
+  # 🛒 Товари
   - name: "products"
     label: "Товари"
     folder: "site/content/catalog"
@@ -23,48 +44,28 @@ collections:
     slug: "{{fields.title | slugify}}"
     fields:
       - { label: "Назва товару", name: "title", widget: "string", i18n: true }
+      - label: "URL (англійською)"
+        name: "slug"
+        widget: "string"
+        required: false
+        i18n: "duplicate"
+        hint: "Залиште пустим щоб Hugo сам згенерував"
+        pattern: ["^[a-z0-9-]*$", "Лише латиниця, цифри та -"]
       - { label: "Опис", name: "description", widget: "text", i18n: true }
-      - {
-          label: "Дата створення",
-          name: "date",
-          widget: "datetime",
-          i18n: "duplicate",
-        }
-      - {
-          label: "Категорія",
-          name: "category",
-          widget: "select",
-          options: ["politni-steky", "videoperedavachi-vtx", "esc"],
-          i18n: true,
-        }
-      - {
-          label: "ID товару",
-          name: "product_id",
-          widget: "string",
-          i18n: "duplicate",
-        }
-      - {
-          label: "Зображення",
-          name: "image",
-          widget: "image",
-          i18n: "duplicate",
-        }
+      - { label: "Дата створення", name: "date", widget: "datetime", i18n: "duplicate" }
+      - label: "Категорія"
+        name: "category"
+        widget: "relation"
+        collection: "categories"
+        search_fields: ["title"]
+        value_field: "slug"
+        display_fields: ["title"]
+        i18n: true
+      - { label: "ID товару", name: "product_id", widget: "string", i18n: "duplicate" }
+      - { label: "Зображення", name: "image", widget: "image", i18n: "duplicate" }
       - { label: "Ціна", name: "price", widget: "number", i18n: "duplicate" }
-      - {
-          label: "Валюта",
-          name: "currency",
-          widget: "select",
-          options: ["грн", "USD", "EUR"],
-          default: "грн",
-          i18n: "duplicate",
-        }
-      - {
-          label: "В наявності",
-          name: "in_stock",
-          widget: "boolean",
-          default: true,
-          i18n: "duplicate",
-        }
+      - { label: "Валюта", name: "currency", widget: "select", options: ["грн", "USD", "EUR"], default: "грн", i18n: "duplicate" }
+      - { label: "В наявності", name: "in_stock", widget: "boolean", default: true, i18n: "duplicate" }
       - label: "Характеристики"
         name: "specs"
         widget: "list"
@@ -72,19 +73,10 @@ collections:
         fields:
           - { label: "Назва", name: "label", widget: "string", i18n: true }
           - { label: "Значення", name: "value", widget: "string", i18n: true }
-      - {
-          label: "Детальний опис",
-          name: "body",
-          widget: "markdown",
-          i18n: true,
-        }
-      - {
-          label: "Чернетка",
-          name: "draft",
-          widget: "boolean",
-          default: false,
-          i18n: true,
-        }
+      - { label: "Детальний опис", name: "body", widget: "markdown", i18n: true }
+      - { label: "Чернетка", name: "draft", widget: "boolean", default: false, i18n: true }
+
+  # 📚 База знань
   - name: "knowledge-base"
     label: "База знань"
     folder: "site/content/guides"
@@ -93,63 +85,55 @@ collections:
     slug: "{{fields.title | slugify}}"
     fields:
       - { label: "Назва", name: "title", widget: "string", i18n: true }
+      - label: "URL (англійською)"
+        name: "slug"
+        widget: "string"
+        required: false
+        i18n: "duplicate"
+        hint: "Залиште пустим щоб Hugo сам згенерував"
+        pattern: ["^[a-z0-9-]*$", "Лише латиниця, цифри та -"]
       - { label: "Опис", name: "description", widget: "text", i18n: true }
-      - {
-          label: "Дата публікації",
-          name: "date",
-          widget: "datetime",
-          i18n: "duplicate",
-        }
-      - {
-          label: "Категорія",
-          name: "category",
-          widget: "select",
-          options: ["БПЛА", "Політні стеки", "Відеопередавачі", "ESC"],
-          i18n: true,
-        }
+      - { label: "Дата публікації", name: "date", widget: "datetime", i18n: "duplicate" }
+      - label: "Категорія"
+        name: "category"
+        widget: "relation"
+        collection: "categories"
+        search_fields: ["title"]
+        value_field: "slug"
+        display_fields: ["title"]
+        i18n: true
       - label: "Теги"
         name: "tags"
         widget: "list"
         i18n: true
         required: false
         field: { label: "Тег", name: "tag", widget: "string", i18n: true }
-      - {
-          label: "Зображення",
-          name: "image",
-          widget: "image",
-          required: false,
-          i18n: true,
-        }
-      - {
-          label: "Чернетка",
-          name: "draft",
-          widget: "boolean",
-          default: false,
-          i18n: true,
-        }
+      - { label: "Зображення", name: "image", widget: "image", required: false, i18n: true }
+      - { label: "Чернетка", name: "draft", widget: "boolean", default: false, i18n: true }
       - { label: "Контент", name: "body", widget: "markdown", i18n: true }
+
+  # 📝 Пост
   - name: "post"
     label: "Post"
     folder: "site/content/post"
     create: true
     i18n: true
+    slug: "{{fields.title | slugify}}"
     fields:
       - { label: "Title", name: "title", widget: "string", i18n: true }
+      - label: "URL (англійською)"
+        name: "slug"
+        widget: "string"
+        required: false
+        i18n: "duplicate"
+        hint: "Залиште пустим щоб Hugo сам згенерував"
+        pattern: ["^[a-z0-9-]*$", "Лише латиниця, цифри та -"]
       - { label: "Publish Date", name: "date", widget: "datetime", i18n: true }
-      - {
-          label: "Intro Blurb",
-          name: "description",
-          widget: "text",
-          i18n: true,
-        }
-      - {
-          label: "Image",
-          name: "image",
-          widget: "image",
-          required: false,
-          i18n: "duplicate",
-        }
+      - { label: "Intro Blurb", name: "description", widget: "text", i18n: true }
+      - { label: "Image", name: "image", widget: "image", required: false, i18n: "duplicate" }
       - { label: "Body", name: "body", widget: "markdown", i18n: true }
+
+  # 🏠 Сторінки
   - name: "pages"
     label: "Pages"
     files:
@@ -160,176 +144,62 @@ collections:
           - { label: Title, name: title, widget: string, i18n: true }
           - { label: Subtitle, name: subtitle, widget: string, i18n: true }
           - { label: Image, name: image, widget: image, i18n: "duplicate" }
-          - {
-              label: "Blurb",
-              name: blurb,
-              widget: object,
-              i18n: true,
-              fields:
-                [
-                  {
-                    label: "Heading",
-                    name: "heading",
-                    widget: string,
-                    i18n: true,
-                  },
-                  { label: "Text", name: "text", widget: "text", i18n: true },
-                ],
-            }
-          - {
-              label: "Intro",
-              name: intro,
-              widget: object,
-              i18n: true,
-              fields:
-                [
-                  {
-                    label: "Heading",
-                    name: "heading",
-                    widget: string,
-                    i18n: true,
-                  },
-                  { label: "Text", name: "text", widget: "text", i18n: true },
-                ],
-            }
-          - {
-              label: "Products",
-              name: products,
-              widget: list,
-              i18n: true,
-              fields:
-                [
-                  {
-                    label: "Image",
-                    name: "image",
-                    widget: "image",
-                    i18n: "duplicate",
-                  },
-                  { label: "Text", name: "text", widget: "text", i18n: true },
-                ],
-            }
-          - {
-              label: "Values",
-              name: "values",
-              widget: "object",
-              i18n: true,
-              fields:
-                [
-                  {
-                    label: "Heading",
-                    name: "heading",
-                    widget: string,
-                    i18n: true,
-                  },
-                  { label: "Text", name: "text", widget: "text", i18n: true },
-                ],
-            }
+          - label: "Blurb"
+            name: blurb
+            widget: object
+            i18n: true
+            fields:
+              - { label: "Heading", name: heading, widget: string, i18n: true }
+              - { label: "Text", name: text, widget: "text", i18n: true }
+          - label: "Intro"
+            name: intro
+            widget: object
+            i18n: true
+            fields:
+              - { label: "Heading", name: heading, widget: string, i18n: true }
+              - { label: "Text", name: text, widget: "text", i18n: true }
+          - label: "Products"
+            name: products
+            widget: list
+            i18n: true
+            fields:
+              - { label: "Image", name: image, widget: image, i18n: "duplicate" }
+              - { label: "Text", name: text, widget: "text", i18n: true }
+          - label: "Values"
+            name: values
+            widget: object
+            i18n: true
+            fields:
+              - { label: "Heading", name: heading, widget: string, i18n: true }
+              - { label: "Text", name: text, widget: "text", i18n: true }
+
+  # ❓ FAQ
   - name: "faq_pages"
     label: "FAQ"
     folder: "site/content/faq"
-    create: false
+    create: true
     i18n: true
     slug: "{{fields.title | slugify}}"
     fields:
-      - {
-          label: "Головний заголовок сторінки",
-          name: "title",
-          widget: "string",
-          i18n: true,
-        }
-      - {
-          label: "Опис під заголовком",
-          name: "description",
-          widget: "text",
-          i18n: true,
-        }
-
-      # --- General Questions ---
+      - { label: "Головний заголовок сторінки", name: "title", widget: "string", i18n: true }
+      - label: "URL (англійською)"
+        name: "slug"
+        widget: "string"
+        required: false
+        i18n: "duplicate"
+        hint: "Залиште пустим щоб Hugo сам згенерував"
+        pattern: ["^[a-z0-9-]*$", "Лише латиниця, цифри та -"]
+      - { label: "Опис під заголовком", name: "description", widget: "text", i18n: true }
       - label: "Група 'Загальні питання'"
         name: "general_questions"
         widget: "object"
         i18n: true
         fields:
-          - {
-              label: "Заголовок групи",
-              name: "title",
-              widget: "string",
-              i18n: true,
-            }
+          - { label: "Заголовок групи", name: "title", widget: "string", i18n: true }
           - label: "Список питань"
             name: "questions"
             widget: "list"
             i18n: true
             fields:
-              - {
-                  label: "Питання",
-                  name: "question",
-                  widget: "string",
-                  i18n: true,
-                }
-              - {
-                  label: "Відповідь",
-                  name: "answer",
-                  widget: "markdown",
-                  i18n: true,
-                }
-
-      # --- Common Questions ---
-      - label: "Група 'Поширені питання'"
-        name: "common_questions"
-        widget: "object"
-        i18n: true
-        fields:
-          - {
-              label: "Заголовок групи",
-              name: "title",
-              widget: "string",
-              i18n: true,
-            }
-          - label: "Список питань"
-            name: "questions"
-            widget: "list"
-            i18n: true
-            fields:
-              - {
-                  label: "Питання",
-                  name: "question",
-                  widget: "string",
-                  i18n: true,
-                }
-              - {
-                  label: "Відповідь",
-                  name: "answer",
-                  widget: "markdown",
-                  i18n: true,
-                }
-
-      # --- Stack Questions ---
-      - label: "Група 'Найпоширеніші запитання про політичні стеки'"
-        name: "stack_questions"
-        widget: "object"
-        i18n: true
-        fields:
-          - {
-              label: "Заголовок групи",
-              name: "title",
-              widget: "string",
-              i18n: true,
-            }
-          - label: "Список питань"
-            name: "questions"
-            widget: "list"
-            i18n: true
-            fields:
-              - {
-                  label: "Питання",
-                  name: "question",
-                  widget: "string",
-                  i18n: true,
-                }
-              - {
-                  label: "Відповідь",
-                  name: "answer",
-                  widget: "markdown",
-                  i18n: true,
-                }
+              - { label: "Питання", name: "question", widget: "string", i18n: true }
+              - { label: "Відповідь", name: "answer", widget: "markdown", i18n: true }

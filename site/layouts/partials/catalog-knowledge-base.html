@@ -4,15 +4,13 @@
 
 {{- $guidesCurrent := where $ctx.Site.RegularPages "Section" "guides" -}}
 
-{{- $catCandidates := dict
-"politni-steky" (slice "Політні стеки" "Flight Stacks")
-"videoperedavachi-vtx" (slice "Відеопередавачі" "Video transmitters" "Video transmitters VTX" "Відеопередавачі VTX")
-"esc" (slice "ESC")
--}}
-{{- $names := index $catCandidates $category | default (slice $categoryName $category) -}}
+{{- $categories := where $ctx.Site.RegularPages "Section" "categories" -}}
+{{- $filteredCategories := where $categories ".File.BaseFileName" $category -}}
+{{- $currentCategory := index $filteredCategories 0 -}}
+{{- $categoryTitle := cond $currentCategory $currentCategory.Title $categoryName -}}
 
 {{- $bySlug := where $guidesCurrent ".Params.categorySlug" $category -}}
-{{- $byName := where $guidesCurrent ".Params.category" "in" $names -}}
+{{- $byName := where $guidesCurrent ".Params.category" "in" (slice $category $categoryTitle $categoryName) -}}
 {{- $categoryGuides := cond (gt (len $bySlug) 0) $bySlug $byName -}}
 
 {{- if eq (len $categoryGuides) 0 -}}
@@ -23,7 +21,7 @@
 {{- end -}}
 {{- end -}}
 {{- $bySlugAll := where $allGuides ".Params.categorySlug" $category -}}
-{{- $byNameAll := where $allGuides ".Params.category" "in" $names -}}
+{{- $byNameAll := where $allGuides ".Params.category" "in" (slice $category $categoryTitle $categoryName) -}}
 {{- $categoryGuides = cond (gt (len $bySlugAll) 0) $bySlugAll $byNameAll -}}
 {{- end -}}
 

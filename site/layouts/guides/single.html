@@ -24,10 +24,10 @@
       <div class="flex justify-end items-center sm:hidden">
         <button
           class="font-[Montserrat] text-[clamp(16px,2vw,18px)] font-normal text-black flex items-center gap-[clamp(8px,2vw,8px)] cursor-pointer">
-        <a href="{{ "/knowledge-base/" | relLangURL }}">
+          <a href="{{ " /knowledge-base/" | relLangURL }}">
             <span class="text-black">&lt;</span>
             {{ i18n "guides.back" }}
-        </a>
+          </a>
         </button>
       </div>
 
@@ -52,15 +52,18 @@
           <div class="p-0">
             <nav id="left-category-nav" class="pt-[8px] fixed space-y-[20px]"
               style="width: 285px; max-height: calc(100vh - 200px); overflow-y: auto;">
-              {{ $categories := slice (i18n "guides.categories.uav") (i18n "guides.categories.stacks") (i18n
-              "guides.categories.vtx") (i18n "guides.categories.esc") }}
+              {{ $categories := where .Site.RegularPages "Section" "categories" }}
               {{ $guides := where .Site.RegularPages "Section" "guides" }}
-              {{ range $index, $category := $categories }}
-              {{ $categoryGuides := where $guides ".Params.category" $category }}
-              <details class="asideDetails" {{ if eq $category $.Params.category }}open{{ end }}>
+              {{ range $index, $cat := $categories }}
+              {{- $searchTerms := slice $cat.File.BaseFileName $cat.Title -}}
+              {{- if $cat.Params.aliases -}}
+              {{- $searchTerms = $searchTerms | append $cat.Params.aliases -}}
+              {{- end -}}
+              {{ $categoryGuides := where $guides ".Params.category" "in" $searchTerms }}
+              <details class="asideDetails" {{ if in $searchTerms $.Params.category }}open{{ end }}>
                 <summary class="flex justify-between items-center px-[25px]">
                   <span class="font-[Montserrat] font-normal text-[20px] text-[#404040]">
-                    {{ $category }}
+                    {{ $cat.Title }}
                   </span>
                   <img src="/img/arrow.svg" alt="" width="18" height="18" class="asideIcon" />
                 </summary>
