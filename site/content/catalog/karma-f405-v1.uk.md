@@ -27,8 +27,6 @@ specs:
     value: 30.5 x 30.5 мм
   - label: Живлення
     value: "4s-6s "
-  - label: Роз'єм живлення
-    value: XT-60
 weight: 10
 in_stock: true
 ---
