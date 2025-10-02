@@ -1,28 +1,28 @@
 ---
-title: "VTX KARMA 5.8GHz 800mW"
-description: "Високоякісний відеопередавач для FPV дронів з потужністю 800mW"
-date: 2024-08-25T00:00:00Z
-category: "videoperedavachi-vtx"
+title: VTX KARMA 5.8GHz 800mW
+description: Високоякісний відеопередавач для FPV дронів з потужністю 800mW
+date: 2024-08-25T00:00:00.000Z
+category: videoperedavachi-vtx
 product_id: "3001"
-image: "/img/Stack-product.png"
-price: 1200
-currency: "грн"
-in_stock: true
+image: /img/Stack-product.png
+price: 1500
 specs:
-  - label: "Частота"
-    value: "5.8GHz"
-  - label: "Потужність"
-    value: "800mW"
-  - label: "Канали"
-    value: "48 каналів"
-  - label: "Живлення"
-    value: "7-26V"
-  - label: "Розмір"
-    value: "36 x 36 мм"
-  - label: "Вага"
-    value: "12г"
+  - label: Частота
+    value: 5.8GHz
+  - label: Потужність
+    value: 800mW
+  - label: Канали
+    value: 48 каналів
+  - label: Живлення
+    value: 7-26V
+  - label: Розмір
+    value: 36 x 36 мм
+  - label: Вага
+    value: 12г
 draft: false
 slug: VTX KARMA 5.8GHz 800mW
+currency: грн
+in_stock: true
 ---
 
 # VTX KARMA 5.8GHz 800mW
