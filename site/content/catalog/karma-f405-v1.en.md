@@ -1,30 +1,34 @@
 ---
-title: "Flight Stack KARMA F405 V1"
-description: "The flight stack simplifies the installation and connection of drone electronics, making it an ideal solution for both experienced pilots and beginners."
+title: Flight Stack KARMA F405 V1
+description: |-
+  Flight stack, designed to improve, where possible, from
+  reliable and effective technical solutions to improved
+  assembly ergonomics.
+  KARMA F405V1 first step in the pursuit of excellence.
 date: 2024-01-01
-draft: false
-slug: "karma-f405-v1"
-layout: "catalog"
-category: "politni-steky"
+category: politni-steky
 product_id: "2233"
-image: "/img/Stack-product.png"
+image: /img/Stack-product.png
 price: 2500
-currency: "UAH"
-in_stock: true
-weight: 10
+currency: UAH
+draft: false
+layout: catalog
+slug: karma-f405-v1
 specs:
-  - label: "Gyroscope/Accelerometer"
-    value: "ICM-42688-P"
-  - label: "Continuous Current"
-    value: "50A"
-  - label: "Dimensions"
-    value: "48.5 x 40 mm"
-  - label: "Mounting Holes"
-    value: "30.5 x 30.5 mm"
-  - label: "Peak Current"
-    value: "60A"
-  - label: "Power Connector"
-    value: "XT-60"
+  - label: MCU
+    value: STM32F405
+  - label: Gyroscope/Accelerometer
+    value: ICM-42688-P
+  - label: Current
+    value: 50A
+  - label: Dimensions
+    value: 48.5 x 40 mm
+  - label: BEC
+    value: 5V 4A
+  - label: Powering
+    value: "4s-6s "
+weight: 10
+in_stock: true
 ---
 
 Compact and powerful flight stack for FPV drones with integrated ESC and advanced stabilization features.

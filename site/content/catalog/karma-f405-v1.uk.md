@@ -1,30 +1,36 @@
 ---
-title: "Політний стек KARMA F405 V1"
-description: "Політний стек спрощує монтаж та підключення електроніки в дроні, роблячи його ідеальним рішенням як для досвідчених пілотів, так і для початківців."
+title: Політний стек KARMA F405 V1
+description: |-
+  Польотний стек, розроблений з метою удосконалення,
+  де це можливо, від надійних і ефективних технічних
+  рішень до покращеної ергономіки складання.
+  KARMA F405V1 перший крок у пошуках досконалості.
 date: 2024-01-01
+category: politni-steky
+product_id: "2233"
+image: /img/Stack-product.png
+price: 2500
+currency: грн
 draft: false
 layout: product
-category: "politni-steky"
-product_id: "2233"
-image: "/img/Stack-product.png"
-price: 2500
-currency: "грн"
-in_stock: true
-weight: 10
 slug: Flight Stack KARMA F405 V1
 specs:
-  - label: "Гіроскоп/акселерометр"
-    value: "ICM-42688-P"
-  - label: "Робочий струм"
-    value: "50А"
-  - label: "Розмір"
-    value: "48.5 x 40 мм"
-  - label: "Монтажні отвори"
-    value: "30.5 x 30.5 мм"
-  - label: "Піковий струм"
-    value: "60А"
-  - label: "Роз'єм живлення"
-    value: "XT-60"
+  - label: MCU
+    value: STM32F405
+  - label: Гіроскоп/акселерометр
+    value: ICM-42688-P
+  - label: Робочий струм
+    value: 50А
+  - label: Розмір
+    value: 48.5 x 40 мм
+  - label: BEC
+    value: 30.5 x 30.5 мм
+  - label: Живлення
+    value: "4s-6s "
+  - label: Роз'єм живлення
+    value: XT-60
+weight: 10
+in_stock: true
 ---
 
 Компактний та потужний політний стек для FPV дронів з інтегрованим ESC та передовими функціями стабілізації.
