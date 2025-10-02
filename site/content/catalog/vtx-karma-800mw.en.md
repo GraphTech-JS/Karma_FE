@@ -20,7 +20,7 @@ specs:
   - label: Dimensions
     value: 36 x 36 mm
   - label: Weight
-    value: 12g
+    value: 20g
 draft: false
 ---
 
