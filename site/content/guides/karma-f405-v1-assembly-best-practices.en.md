@@ -57,7 +57,6 @@ draft: false
 
 </p>
 
-
 <h2>ПІДСИЛЕНЕ ЖИВЛЕННЯ FC</h2>
 
 <p>
@@ -70,15 +69,11 @@ JST SH має паспортний струм 1А а провід товщино
 особливо коли напруга батареї падає а струм відповідно піднімається.
 </p>
 
-
 <p><strong>
 Встановлюйте шлейф надлишкового живлення з метою підвищення 
 надійності кінцевої збірки. 
 
 </strong></p>
-
-
-
 
 <h2>
 ПІДКЛЮЧЕННЯ МОТОРІВ 
@@ -95,7 +90,6 @@ JST SH має паспортний струм 1А а провід товщино
 
 </p>
 
-
 <p>
 На фото нижче приведений приклад ситуацій яких треба обов’язково уникати. 
 У наведеному прикладі видно декілька витків сигнальних проводів що при 
@@ -107,23 +101,18 @@ FC є відстань і завади передаються помірно, т
 
 </p>
 
-
 <div class="text-center">
-
 
 ![AN EXAMPLE OF A SETUP TO AVOID](/img/bad_montaze-en.jpg)
 
 ![AN EXAMPLE OF A SUCCESSFUL INSTALLATION PERFORMED BY THE CLIENT ](/img/good_montaz-en.jpg)
-
 
 <p><strong>
 Будь ласка, не проводьте моторні кабелі між платами стеку. 
 
 </strong></p>
 
-
 </div>
-
 
 <h2>
 ВСТАНОВЛЕННЯ КОНТРОЛЕРА ПОЛЬОТУ
@@ -136,12 +125,7 @@ FC є відстань і завади передаються помірно, т
 
 </p>
 
-
-
 ![AN EXAMPLE OF DIRECT CONTACT BETWEEN SOLID ELEMENTS THAT WILL RESULT IN A HIGH NOISE LEVEL](/img/kontroler-bad-en.jpg)
-
-
-
 
 ![EXAMPLE OF EXPECTED DISTANCE WITH CORRECT INSTALLATION](/img/kontroler-good.jpg)
 
@@ -162,14 +146,29 @@ FC є відстань і завади передаються помірно, т
 
 <div class="text-center">
 
-
-
 ![ TYPICAL INSTALLATION ERROR (LEFT) COMPARED TO A CORRECT ONE (RIGHT).](/img/montaz-stekiv-no-en.jpg)
 
-
-
-
 ![GYROSCOPE DATA FOR BOTH MOUNTING OPTIONS](/img/giroskop-en.jpg)
+
+
+
+
+<p class="text-center">
+<br>
+
+<a href="https://karma-karma.netlify.app/catalog/%D0%BF%D0%BE%D0%BB%D1%96%D1%82%D0%BD%D0%B8%D0%B9-%D1%81%D1%82%D0%B5%D0%BA-karma-f405-v1/">
+
+Замовити політні стеки  KARMA F405 V1
+</a><br>
+
+<a href="https://karma.flights/assets/Karma_best_practices_UA.pdf">
+
+Завантажити рекомедації по збірці (PDF)</a>
+
+</p>
+
+
+
 
 
 
