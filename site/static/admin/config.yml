@@ -1,9 +1,9 @@
 backend:
-  name: test-repo
-
+ name: git-gateway
+  branch: main
 #publish_mode: editorial_workflow # Розкоментуйте, якщо потрібна модерація
 
-# local_backend: true
+local_backend: true
 
 media_folder: "site/static/img"
 public_folder: "/img"
