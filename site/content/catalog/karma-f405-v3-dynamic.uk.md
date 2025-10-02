@@ -1,29 +1,29 @@
 ---
-title: "ПОЛІТНИЙ СТЕК KARMA F405 V2 "
-description: Удосконалена версія політного стеку з покращеними характеристиками
-date: 2024-08-25T00:00:00.000Z
+title: ПОЛІТНИЙ СТЕК KARMA F405 V2  (НЕЗАБАРОМ)
+description: Удосконалена версія політного стеку з покращеними характеристиками.
+date: 2025-10-02T21:35:00.000+03:00
 category: politni-steky
 product_id: "2234"
-image: /img/our-product2.png
+image: /img/flight-stack-fpv.png
 price: 2800
+currency: грн
+draft: false
+layout: product
+slug: KARMA F405 V2 FLIGHT STACK
+in_stock: true
 specs:
   - label: Гіроскоп/акселерометр
-    value: ICM-42688-P
+    value: "  "
   - label: Робочий струм
-    value: 55А
+    value: "  "
   - label: Розмір
-    value: 48.5 x 40 мм
+    value: ""
   - label: Монтажні отвори
     value: 30.5 x 30.5 мм
   - label: Піковий струм
-    value: 65А
-  - label: Роз'єм живлення
-    value: XT-60
-draft: false
-layout: product
-currency: грн
-in_stock: true
-slug: KARMA F405 V2 FLIGHT STACK
+    value: "  "
+  - label: Живлення
+    value: ""
 ---
 
 # ПОЛІТНИЙ СТЕК KARMA F405 V2
