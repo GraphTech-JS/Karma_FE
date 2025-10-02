@@ -1,5 +1,5 @@
 ---
-title: FLIGHT STACK KARMA F405 V1
+title: FLIGHT STACK KARMA F405 V1 (60A)
 description: >-
   Flight stack, designed to improve, where possible, from reliable and effective
   technical solutions to improved assembly ergonomics.
