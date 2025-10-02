@@ -4,7 +4,7 @@ backend:
 
 #publish_mode: editorial_workflow # Увімкнути за потреби модерації
 
-# local_backend: true
+local_backend: true
 
 media_folder: "site/static/img"
 public_folder: "/img"
@@ -15,7 +15,6 @@ i18n:
   default_locale: "en"
 
 collections:
-  # 🆕 Категорії
   - name: "categories"
     label: "Категорії"
     folder: "site/content/categories"
@@ -35,7 +34,6 @@ collections:
       - { label: "Альтернативні назви", name: "aliases", widget: "list", required: false, i18n: true }
       - { label: "Вага сортування", name: "weight", widget: "number", default: 1, i18n: "duplicate" }
 
-  # 🛒 Товари
   - name: "products"
     label: "Товари"
     folder: "site/content/catalog"
@@ -76,7 +74,6 @@ collections:
       - { label: "Детальний опис", name: "body", widget: "markdown", i18n: true }
       - { label: "Чернетка", name: "draft", widget: "boolean", default: false, i18n: true }
 
-  # 📚 База знань
   - name: "knowledge-base"
     label: "База знань"
     folder: "site/content/guides"
@@ -112,7 +109,6 @@ collections:
       - { label: "Чернетка", name: "draft", widget: "boolean", default: false, i18n: true }
       - { label: "Контент", name: "body", widget: "markdown", i18n: true }
 
-  # 📝 Пост
   - name: "post"
     label: "Post"
     folder: "site/content/post"
@@ -133,7 +129,7 @@ collections:
       - { label: "Image", name: "image", widget: "image", required: false, i18n: "duplicate" }
       - { label: "Body", name: "body", widget: "markdown", i18n: true }
 
-  # 🏠 Сторінки
+
   - name: "pages"
     label: "Pages"
     files:
@@ -173,7 +169,6 @@ collections:
               - { label: "Heading", name: heading, widget: string, i18n: true }
               - { label: "Text", name: text, widget: "text", i18n: true }
 
-  # ❓ FAQ
   - name: "faq_pages"
     label: "FAQ"
     folder: "site/content/faq"
