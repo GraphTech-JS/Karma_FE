@@ -1,26 +1,26 @@
 ---
-title: "VTX KARMA 5.8GHz 800mW"
-description: "High‑quality FPV video transmitter with 800mW output power"
-date: 2024-08-25T00:00:00Z
-category: "videoperedavachi-vtx"
+title: VTX KARMA 5.8GHz 800mW
+description: High‑quality FPV video transmitter with 800mW output power
+date: 2024-08-25T00:00:00.000Z
+category: videoperedavachi-vtx
 product_id: "3001"
-image: "/img/Stack-product.png"
-price: 1200
-currency: "UAH"
+image: /img/Stack-product.png
+price: 1500
+currency: UAH
 in_stock: true
 specs:
-  - label: "Frequency"
-    value: "5.8GHz"
-  - label: "Power"
-    value: "800mW"
-  - label: "Channels"
+  - label: Frequency
+    value: 5.8GHz
+  - label: Power
+    value: 800mW
+  - label: Channels
     value: "48"
-  - label: "Input Voltage"
-    value: "7–26V"
-  - label: "Dimensions"
-    value: "36 x 36 mm"
-  - label: "Weight"
-    value: "12g"
+  - label: Input Voltage
+    value: 7–26V
+  - label: Dimensions
+    value: 36 x 36 mm
+  - label: Weight
+    value: 20g
 draft: false
 ---
 

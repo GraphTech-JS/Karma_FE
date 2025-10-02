@@ -5,7 +5,7 @@ date: 2024-08-25T00:00:00.000Z
 category: esc
 product_id: "4001"
 image: /img/catalog_product2.png
-price: 800
+price: 1000
 currency: UAH
 in_stock: true
 specs:
@@ -18,7 +18,7 @@ specs:
   - label: Dimensions
     value: 30x30mm
   - label: Weight
-    value: 8g
+    value: 10g
   - label: PWM Frequency
     value: 48kHz
 draft: false
