@@ -18,7 +18,7 @@ specs:
   - label: Dimensions
     value: 30x30mm
   - label: Weight
-    value: 8g
+    value: 10g
   - label: PWM Frequency
     value: 48kHz
 draft: false
