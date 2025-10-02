@@ -8,6 +8,19 @@ image: /img/flight-stack-fpv.png
 price: 2800
 currency: грн
 in_stock: true
-draft: true
+specs:
+  - label: MCU
+    value: " "
+  - label: IMU
+    value: " "
+  - label: Current
+    value: " "
+  - label: BEC
+    value: " "
+  - label: Fastening
+    value: " "
+  - label: "Powering "
+    value: " "
+draft: false
 ---
 FLIGHT STACK KARMA F405 V2

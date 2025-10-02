@@ -12,16 +12,16 @@ layout: product
 slug: KARMA F405 V2 FLIGHT STACK
 in_stock: true
 specs:
+  - label: MCU
+    value: ""
   - label: Гіроскоп/акселерометр
     value: "  "
   - label: Робочий струм
     value: "  "
-  - label: Розмір
+  - label: BEC
     value: ""
   - label: Монтажні отвори
-    value: 30.5 x 30.5 мм
-  - label: Піковий струм
-    value: "  "
+    value: ""
   - label: Живлення
     value: ""
 ---
