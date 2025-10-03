@@ -1,8 +1,9 @@
 ---
 title: test1
+slug: null
 description: Тестовий опис сторінки
 date: 2025-09-18T18:11:00.000+03:00
-category: ESC
+category: ""
 tags:
   - tag1
   - tag2
