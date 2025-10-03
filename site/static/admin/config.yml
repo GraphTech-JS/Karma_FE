@@ -11,7 +11,7 @@ public_folder: "/img"
 
 i18n:
   structure: multiple_files
-  locales: [en, uk]
+  locales: [uk, en]
   default_locale: "en"
 
 collections:
@@ -20,7 +20,7 @@ collections:
     folder: "site/content/categories"
     create: true
     i18n: true
-    slug: "{{fields.title | slugify}}"   # 👈 лише по title
+    slug: "{{fields.title | slugify}}"  
     fields:
       - { label: "Назва категорії", name: "title", widget: "string", i18n: true }
       - label: "URL (англійською)"

@@ -1,0 +1,22 @@
+{{- $id := .Get "id" -}}
+{{- $caption := .Get "caption" -}}
+{{- $width := .Get "width" | default "100%" -}}
+{{- $height := .Get "height" | default "100%" -}}
+
+{{ if $id }}
+<figure style="width: {{ $width }}; max-width: 100%;">
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+        <iframe src="https://www.youtube.com/embed/{{ $id }}"
+            style="position: absolute; top: 0; left: 0; width: {{ $width }}; height: {{ $height }}; border: 0;"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen title="YouTube video player">
+        </iframe>
+    </div>
+    {{ if $caption }}
+    <figcaption style="margin-top: 4px; text-align: center; color: #6b7280; font-size: 0.875rem;">{{ $caption }}
+    </figcaption>
+    {{ end }}
+</figure>
+{{ end }}

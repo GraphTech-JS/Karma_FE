@@ -1,89 +1,152 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Content Manager</title>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  </head>
-  <body>
-    <!-- Include the script that builds the page and powers Decap CMS -->
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    <script src="/admin/config.js" type="module"></script>
-    
-    <!-- Netlify Identity Widget -->
-    <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Manager</title>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+
+<body>
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script src="/admin/config.js" type="module"></script>
+
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+
+    const getYouTubeId = (url) => {
+      if (!url || typeof url !== 'string') return ''; 
+      const regExp = /^.*(?:youtu.be\/|v\/|e\/|watch\?v=|\&v=|\/embed\/)([^"&?\/\s]{11}).*$/;
+      const match = url.match(regExp);
+      return (match && match[1].length === 11) ? match[1] : '';
+    };
+
+    CMS.registerEditorComponent({
+      id: "figure",
+      label: "Figure Image",
+      fields: [
+        { name: "src", label: "Image", widget: "image" },
+        { name: "alt", label: "Alt Text", widget: "string" },
+        { name: "caption", label: "Caption", widget: "string", required: false },
+        { name: "align", label: "Align", widget: "select", options: ["left", "right", "center"], default: "right" },
+        { name: "width", label: "Container Width", widget: "string", required: false, default: "40%", hint: "e.g. 40%" },
+        { name: "img_width", label: "Image Width", widget: "string", required: false, default: "100%", hint: "e.g. 100%" },
+        { name: "class", label: "Extra CSS classes", widget: "string", required: false }
+      ],
+      pattern: /^\{\{< figure src="([^"]+)"(?: alt="([^"]*)")?(?: caption="([^"]*)")?(?: align="([^"]*)")?(?: width="([^"]*)")?(?: img_width="([^"]*)")?(?: class="([^"]*)")? >\}\}$/,
+      fromBlock: function (match) {
+        return {
+          src: match[1],
+          alt: match[2],
+          caption: match[3],
+          align: match[4],
+          width: match[5],
+          img_width: match[6],
+          class: match[7]
+        };
+      },
+      toBlock: function (obj) {
+        let shortcode = `{{< figure src="${obj.src}"`;
+        if (obj.alt) shortcode += ` alt="${obj.alt}"`;
+        if (obj.caption) shortcode += ` caption="${obj.caption}"`;
+        if (obj.align) shortcode += ` align="${obj.align}"`;
+        if (obj.width) shortcode += ` width="${obj.width}"`;
+        if (obj.img_width) shortcode += ` img_width="${obj.img_width}"`;
+        if (obj.class) shortcode += ` class="${obj.class}"`;
+        shortcode += " >}}";
+        return shortcode;
+      },
+      toPreview: function (obj) {
+        let figureStyle = `margin: 10px; width: ${obj.width || '40%'};`;
+        if (obj.align === 'left' || obj.align === 'right') {
+          figureStyle += ` float: ${obj.align};`;
+        } else if (obj.align === 'center') {
+          figureStyle += ` display: block; margin-left: auto; margin-right: auto;`;
+        }
+
+        const imgStyle = `max-width: 100%; width: ${obj.img_width || '100%'}; margin-bottom: 8px; object-fit: contain; display: inline-block;`;
+
+        return `
+          <figure style="${figureStyle}">
+            <img src="${obj.src}" alt="${obj.alt || ''}" style="${imgStyle}">
+            ${obj.caption ? `<figcaption style="margin-top: 4px; font-size: 0.875rem; text-align: center; color: #6b7280;">${obj.caption}</figcaption>` : ''}
+          </figure>
+        `;
       }
+    });
 
-      
-        CMS.registerEditorComponent({
-          // Унікальний ID
-          id: "figure",
-          // Назва у випадаючому меню
-          label: "Figure Image",
-          // Поля у формі в адмінці
-          fields: [
-            { name: "src", label: "Image", widget: "image" },
-            { name: "alt", label: "Alt Text", widget: "string" },
-            { name: "caption", label: "Caption", widget: "string", required: false },
-            { name: "align", label: "Align", widget: "select", options: ["left", "right", "center"], default: "right" },
-            { name: "width", label: "Container Width", widget: "string", required: false, default: "40%", hint: "e.g. 40%" },
-            { name: "img_width", label: "Image Width", widget: "string", required: false, default: "100%", hint: "e.g. 100%" },
-            { name: "class", label: "Extra CSS classes", widget: "string", required: false }
-          ],
-          // Як CMS розпізнає цей блок у Markdown файлі
-          pattern: /^\{\{< figure src="([^"]+)"(?: alt="([^"]*)")?(?: caption="([^"]*)")?(?: align="([^"]*)")?(?: width="([^"]*)")?(?: img_width="([^"]*)")?(?: class="([^"]*)")? >\}\}$/,
-          fromBlock: function (match) {
-            return {
-              src: match[1],
-              alt: match[2],
-              caption: match[3],
-              align: match[4],
-              width: match[5],
-              img_width: match[6],
-              class: match[7]
-            };
-          },
-          // Як CMS генерує Markdown
-          toBlock: function (obj) {
-            let shortcode = `{{< figure src="${obj.src}"`;
-            if (obj.alt) shortcode += ` alt="${obj.alt}"`;
-            if (obj.caption) shortcode += ` caption="${obj.caption}"`;
-            if (obj.align) shortcode += ` align="${obj.align}"`;
-            if (obj.width) shortcode += ` width="${obj.width}"`;
-            if (obj.img_width) shortcode += ` img_width="${obj.img_width}"`;
-            if (obj.class) shortcode += ` class="${obj.class}"`;
-            shortcode += " >}}";
-            return shortcode;
-          },
-          // Генерація прев'ю
-          toPreview: function (obj) {
-            let figureStyle = `margin: 10px; width: ${obj.width || '40%'};`;
-            if (obj.align === 'left' || obj.align === 'right') {
-              figureStyle += ` float: ${obj.align};`;
-            } else if (obj.align === 'center') {
-              figureStyle += ` display: block; margin-left: auto; margin-right: auto;`;
-            }
+    CMS.registerEditorComponent({
+      id: "youtube",
+      label: "YouTube Video",
+      fields: [
+        {
+          name: "url", 
+          label: "Посилання на відео YouTube",
+          widget: "string",
+          required: true,
+          hint: "Вставте повне посилання на відео YouTube"
+        },
+        { name: "caption", label: "Підпис", widget: "string", required: false, hint: "Додатковий підпис, що відображатиметься під відео." },
+        { name: "width", label: "Ширина контейнера", widget: "string", required: false, default: "100%", hint: "Наприклад, 100% або 640px" }
+      ],
+      pattern: /^\{\{< youtube id="([^"]+)"(?: caption="([^"]*)")?(?: width="([^"]*)")? >\}\}$/,
 
-            const imgStyle = `max-width: 100%; width: ${obj.img_width || '100%'}; margin-bottom: 8px; object-fit: contain; display: inline-block;`;
+      fromBlock: function (match) {
+        const youtubeId = match[1];
+        return {
+          url: youtubeId ? `https://www.youtube.com/watch?v=${youtubeId}` : '', 
+          caption: match[2],
+          width: match[3],
+        };
+      },
 
-            return (
-              '<figure style="' + figureStyle + '">' +
-              '<img src="' + obj.src + '" alt="' + (obj.alt || '') + '" style="' + imgStyle + '">' +
-              (obj.caption ? '<figcaption style="margin-top: 4px; font-size: 0.875rem; text-align: center; color: #6b7280;">' + obj.caption + '</figcaption>' : '') +
-              '</figure>'
-            );
-          }
-        });
-    </script>
+      toBlock: function (obj) {
+        const videoId = getYouTubeId(obj.url); 
+
+        if (!videoId) {
+          console.warn("Decap CMS: Недійсне посилання на YouTube відео. Shortcode не буде згенеровано.");
+          return '';
+        }
+
+        let shortcode = `{{< youtube id="${videoId}"`;
+        if (obj.caption) shortcode += ` caption="${obj.caption}"`;
+        if (obj.width && obj.width !== "100%") shortcode += ` width="${obj.width}"`;
+        shortcode += " >}}";
+        return shortcode;
+      },
+
+      toPreview: function (obj) {
+        const videoId = getYouTubeId(obj.url);
+
+        if (!videoId) {
+          return `<div style="padding: 10px; background-color: #ffe0e0; border: 1px solid #ffaaaa; color: #cc0000; text-align: center;">Недійсне посилання на YouTube відео.</div>`;
+        }
+
+        const widthStyle = obj.width ? `width: ${obj.width}; max-width: 100%;` : `width: 100%; max-width: 100%;`;
+        const videoContainerStyle = `position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 8px;`;
+        const iframeStyle = `position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;`;
+
+        return `
+          <figure style="${widthStyle}">
+            <div style="${videoContainerStyle}">
+              <iframe src="https://www.youtube.com/embed/${videoId}" style="${iframeStyle}" allowfullscreen title="YouTube video player" loading="lazy"></iframe>
+            </div>
+            ${obj.caption ? `<figcaption style="margin-top: 4px; font-size: 0.875rem; text-align: center; color: #6b7280;">${obj.caption}</figcaption>` : ''}
+          </figure>
+        `;
+      }
+    });
+
+  </script>
 
 </body>
 
