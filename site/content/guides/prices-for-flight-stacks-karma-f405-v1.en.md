@@ -1,5 +1,6 @@
 ---
 title: Prices for flight stacks KARMA F405 V1
+slug: ""
 description: |-
   We strive to make a transparent system of price formation. This guide
   is the first step on that path to help you with strategic planning
