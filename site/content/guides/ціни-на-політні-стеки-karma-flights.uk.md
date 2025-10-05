@@ -1,13 +1,13 @@
 ---
 title: Ціни на політні стеки KARMA FLIGHTS
+slug: Prices for KARMA FLIGHTS flight stacks
 description: |-
   Ми прагнемо зробити прозору систему цінового утворення, цей довідник перший
   крок на цьому шляху який допоможе вам зі стратегічним плануванням та оцінкою
   ціноутворення вашої продукці.
-date: 2025-09-28T17:16:00.000+03:00
+date: 2025-10-05T19:57:00.000+03:00
 category: Політні стеки
 draft: false
-slug: Prices for KARMA FLIGHTS flight stacks
 ---
 <style> 
 
@@ -85,6 +85,7 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 <div class="readmore_fade" aria-hidden="true"></div>
 </div> 
 </div>
+</div>
 </article>
 <article class="post"> <h2>Ціни на політний стек KARMA F405 V1.1.</h2>
 <div class="readmore" data-collapsed-height="140"> 
@@ -101,6 +102,7 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 
 <div class="readmore_fade" aria-hidden="true"></div>
 </div> 
+</div>
 </div>
 </article>
 <div class="bg-[#F5F5F5] px-[30px] pr-[35px] py-4">
