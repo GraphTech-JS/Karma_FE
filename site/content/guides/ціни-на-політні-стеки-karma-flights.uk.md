@@ -79,12 +79,12 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 <p> Всі ціни вказані з урахуванням ПДВ.</p>
 
 </div>
-
-
+</div>
+</div>
 <div class="text-center"><button class="readmore_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
 <div class="readmore_fade" aria-hidden="true"></div>
-</div> 
-</div>
+ 
+
 </div>
 </article>
 <article class="post"> <h2>Ціни на політний стек KARMA F405 V1.1.</h2>
@@ -97,12 +97,13 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 <strong>Рекомендована ціна OEM (упаковка 20шт.)&nbsp;&nbsp;&nbsp;       70 USD</strong></h4>
 <h3 class="text-center">ТАБЛИЦІ РОЗРАХУНКУ ВАРТОСТІ </h3>
  </div>
+</div> 
+</div>
 <div class="text-center"><button class="readmore_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
 </div>
 
 <div class="readmore_fade" aria-hidden="true"></div>
-</div> 
-</div>
+
 </div>
 </article>
 <div class="bg-[#F5F5F5] px-[30px] pr-[35px] py-4">

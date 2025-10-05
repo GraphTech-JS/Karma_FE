@@ -8,70 +8,30 @@ date: 2025-10-05T19:57:00.000+03:00
 category: flight-stacks
 draft: false
 ---
-←
-Writing in База знань collection
-Unsaved Changes
-Delete entry
+<style> 
 
+body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:10px; } .article ol { list-style-type: none; counter-reset: num; margin: 0 0 0 45px; padding: 15px 0 5px 0; font-size: 16px; } .article ol li { position: relative; margin: 0 0 0 0; padding: 0 0 10px 0; line-height: 1.9; } .article ol li:before { content: counter(num); counter-increment: num; display: inline-block; position: absolute; top: -8px; left: -38px; width: 28px; height: 28px; background: #fff; color: #000; text-align: center; line-height: 28px; font-size: 18px; border-radius: 50%; border: 1px solid #ba0108; } .article h1{ font-family:Unbounded; font-size: 32px !important; line-height: 32px; padding-top:10px; padding-bottom:10px; } 
 
-
-Назва
-Ціни на політні стеки KARMA FLIGHTS
-URL (англійською) (optional)
-Залиште пустим щоб Hugo сам згенерував
-
-Опис
-Ми прагнемо зробити прозору систему цінового утворення, цей довідник перший
-крок на цьому шляху який допоможе вам зі стратегічним плануванням та оцінкою
-ціноутворення вашої продукці.
-Дата публікації
-
-05.10.2025 19:57
-Категорія
-Теги (optional)
-
-0 теги
-Add теги
-Зображення (optional)
-Choose an image
-Insert from URL
-Чернетка
-
-Контент
-
-
-
-
-
-
-
-Rich Text
-
-Markdown
-<style> 
-﻿
-body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:10px; } .article ol { list-style-type: none; counter-reset: num; margin: 0 0 0 45px; padding: 15px 0 5px 0; font-size: 16px; } .article ol li { position: relative; margin: 0 0 0 0; padding: 0 0 10px 0; line-height: 1.9; } .article ol li:before { content: counter(num); counter-increment: num; display: inline-block; position: absolute; top: -8px; left: -38px; width: 28px; height: 28px; background: #fff; color: #000; text-align: center; line-height: 28px; font-size: 18px; border-radius: 50%; border: 1px solid #ba0108; } .article h1{ font-family:Unbounded; font-size: 32px !important; line-height: 32px; padding-top:10px; padding-bottom:10px; } 
-﻿
 .article h2{ font-family: Montserrat; border-bottom:1px solid #ba0108; font-size: 24px; text-align: left; margin-top: 35px !important;
  font-weight: bold !important; 
-﻿
- } 
-﻿
-.article h3{ font-family: Montserrat; font-size: 18px; line-height: 18px; font-weight: bold !important; text-align: center; margin-top: 30px; } 
-﻿
+
+ } 
+
+.article h3{ font-family: Montserrat; font-size: 18px; line-height: 18px; font-weight: bold !important; text-align: center; margin-top: 30px; } 
+
 </style>
-﻿
+
 <style>
-﻿
+
 :root{
   --rm-duration: 300ms;
   --rm-ease: cubic-bezier(.2,.6,.2,1);
   --rm-fade-height: 54px; /* висота напівпрозорого затемнення */
 }
-﻿
-﻿
-﻿
- .post{ max-width: 720px; margin: 24px auto; padding: 0 16px;}
+
+
+
+ .post{ max-width: 720px; margin: 24px auto; padding: 0 16px;}
 .post h2{margin-top:30px;font-weight:bold;}
 .readmore{ position: relative; }  
 .readmore_content{ overflow: hidden; max-height: 0; transition: max-height var(--rm-duration) var(--rm-ease); } 
@@ -84,12 +44,12 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
   opacity: 1;
   transition: opacity 160ms ease-in-out;
 }
-﻿
+
 .readmore_toggle{ display: inline-flex; align-items: center; gap: 8px; margin-top: 12px !important; padding: 10px 14px !important; border-radius: 10px; border: 1px solid #ba0108 !important; background: #fff; cursor: pointer; font-weight: 600; transition: transform 120ms ease, box-shadow 120ms ease; } 
 .readmore_toggle:hover{ box-shadow: 0 2px 10px rgba(0,0,0,.06); } .readmore_toggle:active{ transform: translateY(1px); } 
 .readmore.is-expanded .readmore_fade{ opacity: 0; } 
  @media (prefers-reduced-motion: reduce){ .readmore_content{ transition: none; } .readmore_fade{ transition: none; } .readmore_toggle{ transition: none; } } </style>
-﻿
+
 <p>Ми прагнемо зробити прозору систему цінового утворення, цей довідник перший
 крок на цьому шляху який допоможе вам зі стратегічним плануванням та оцінкою
 ціноутворення вашої продукці.</p>
@@ -102,27 +62,28 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 70 USD</strong></h4>
 <h4 class="text-center">
 <strong>
-﻿
+
 Рекомендована ціна OEM (упаковка 20шт.)&nbsp;&nbsp;&nbsp;       67 USD</strong></h4>
-﻿
+
 <h3 class="text-center">ТАБЛИЦІ РОЗРАХУНКУ ВАРТОСТІ ПОЛІТНИХ СТЕКІВ </h3>
-﻿
+
 <div class="text-center">
-﻿
+
 ![таблиця 1: ціни на політні стеки ](/img/price-1.jpg "вартість польотників")
-﻿
+
 ![Ціни на політні стеки](/img/price-2.jpg "вартість польотних стеків")
-﻿
+
 ![таблиця 3: Ціни на політні стеки](/img/price-3.jpg "вартість політних стеків")
-﻿
+
 <p> Всі ціни вказані з урахуванням ПДВ.</p>
-﻿
+
 </div>
-﻿
-﻿
-<div class="text-center"><button class="readmore_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
+</div>
+</div>
+<div class="text-center"><button class="readmore_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
 <div class="readmore_fade" aria-hidden="true"></div>
-</div> 
+ 
+
 </div>
 </article>
 <article class="post"> <h2>Ціни на політний стек KARMA F405 V1.1.</h2>
@@ -135,11 +96,13 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 <strong>Рекомендована ціна OEM (упаковка 20шт.)&nbsp;&nbsp;&nbsp;       70 USD</strong></h4>
 <h3 class="text-center">ТАБЛИЦІ РОЗРАХУНКУ ВАРТОСТІ </h3>
  </div>
-<div class="text-center"><button class="readmore_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
-</div>
-﻿
-<div class="readmore_fade" aria-hidden="true"></div>
 </div> 
+</div>
+<div class="text-center"><button class="readmore_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
+</div>
+
+<div class="readmore_fade" aria-hidden="true"></div>
+
 </div>
 </article>
 <div class="bg-[#F5F5F5] px-[30px] pr-[35px] py-4">
@@ -233,13 +196,4 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 })();
 ; 
 </script>
-﻿
-Назва
-PRICES FOR FLIGHT STACKS
-URL (англійською) (optional)
-Залиште пустим щоб Hugo сам згенерував
 
-Опис
-We strive to make a transparent system of price formation. This guide
-is the first step on that path to help you with strategic planning
-and pricing for your products.
