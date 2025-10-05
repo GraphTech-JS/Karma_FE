@@ -79,7 +79,7 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 
 </div>
 </div>
-</div>
+
 <div class="text-center"><button class="readmore_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
 <div class="readmore_fade" aria-hidden="true"></div>
  
@@ -97,7 +97,7 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 <h3 class="text-center">ТАБЛИЦІ РОЗРАХУНКУ ВАРТОСТІ </h3>
  </div>
 </div> 
-</div>
+
 <div class="text-center"><button class="readmore_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
 
 
