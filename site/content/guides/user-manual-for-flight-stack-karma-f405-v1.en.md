@@ -1,16 +1,15 @@
 ---
 title: User Manual for flight stack KARMA F405 V1
-slug: null
 description: |-
   Flight stack, designed to improve, where possible, from
   reliable and effective technical solutions to improved
   assembly ergonomics.
   KARMA F405V1 first step in the pursuit of excellence
-date: 2025-10-06T10:32:00.000+03:00
-category: Flight Stacks
+date: 2025-10-05T21:20:00.000+03:00
+category: flight-stacks
 tags:
   - manual
-image: /img/steki-instruction-2.jpg
+image: /img/steki-instructio.jpg
 draft: false
 ---
 <p class="text-center"><strong>Flight stack, designed to improve, where possible, from
