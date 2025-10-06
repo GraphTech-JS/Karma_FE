@@ -6,11 +6,11 @@ description: |-
   де це можливо, від надійних і ефективних технічних
   рішень до покращеної ергономіки складання.
   KARMA F405V1 перший крок у пошуках досконалості.
-date: 2025-10-06T14:17:00.000+03:00
-category: politni-steky
+date: 2025-10-05T21:20:00.000+03:00
+category: flight-stacks
 tags:
   - manual
-image: /img/photo_2025-10-06_09-45-03.jpg
+image: /img/steki-instructio.jpg
 draft: false
 ---
 <p class="text-center"><strong>Польотний стек, розроблений з метою удосконалення,
@@ -50,7 +50,7 @@ font-weight:bold;
 
 </h3>
 
-<table style="width:100%;font-size:26px;font-family: Montserrat;">
+<table style="width:100%;font-size:22px;font-family: Montserrat;">
 <tr><td><strong>MCU</strong></td><td>STM32F405</td></tr>
 <tr><td><strong>IMU</strong></td><td>ICM-42688-P</td></tr>
 <tr><td><strong>Барометр</strong></td><td>BMP280</td></tr>
@@ -80,7 +80,7 @@ font-weight:bold;
 РЕГУЛЯТОР ОБЕРТІВ
 
 </h3>
-<table style="width:100%;font-size:26px;font-family: Montserrat;">
+<table style="width:100%;font-size:22px;font-family: Montserrat;">
 <tr><td><strong>Живлення</strong></td><td>4s-6s</td></tr>
 <tr><td><strong>Струм</strong></td><td>150A</td></tr>
 <tr><td><strong>MCU</strong></td><td>72Mhz 32Bit</td></tr>
@@ -134,7 +134,7 @@ font-weight:bold;
 
 ![Комплектація політних стеків](/img/komplektacii.jpg "Комплектація політників")
 
-<table style="width:100%;font-size:26px;font-family: Montserrat;">
+<table style="width:100%;font-size:22px;font-family: Montserrat;">
 <tr><td><img width="35" height="35" src="/img/list-guide-one.png" alt="" style="filter:none;box-shadow:none; float:left;">&nbsp;
 &nbsp;<strong>Контролер польоту</strong></td><td>
 1 шт.</td></tr>
@@ -172,5 +172,6 @@ font-weight:bold;
 4 шт.</td></tr>
 
 </table>
-
+<p><a href="/catalog/flight-stack-karma-f405-v1/">Купити політні стеки KARMA F405 V1</a><br></p>
+<p><a href="/assets/Karma_F405F1_UA.pdf">Завантажити інструкцію користувача (PDF)</a></p>
 </div>
