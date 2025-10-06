@@ -21,12 +21,12 @@ KARMA F405V1 перший крок у пошуках досконалості.</
 
 <style>
 body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:10px; } 
- h3{ font-family: Montserrat; font-size: 24px; line-height: 30px; font-weight: bold !important; text-align: center; margin-top: 30px !important;
+ h3{ font-family: Montserrat; font-size: 24px !important; line-height: 30px; font-weight: bold !important; text-align: center; margin-top: 30px !important;
  } 
 table {
    
 border-collapse: collapse !important;
-font-size:30px !important;
+font-size:26px !important;
 
 
 }
@@ -50,7 +50,7 @@ font-weight:bold;
 
 </h3>
 
-<table style="width:100%;font-size:30px;">
+<table style="width:100%;font-size:26px;font-family: Montserrat;">
 <tr><td><strong>MCU</strong></td><td>STM32F405</td></tr>
 <tr><td><strong>IMU</strong></td><td>ICM-42688-P</td></tr>
 <tr><td><strong>Барометр</strong></td><td>BMP280</td></tr>
@@ -69,7 +69,9 @@ font-weight:bold;
 </table>
 <br>
 <br>
-![контролер польоту](/img/kontroler_polotu.png "політний контролер")
+
+
+![Контролер польоту](/img/kontroler_polotu.png "Політний контролер")
 
 <br>
 <br>
@@ -78,7 +80,7 @@ font-weight:bold;
 РЕГУЛЯТОР ОБЕРТІВ
 
 </h3>
-<table style="width:100%;font-size:30px;">
+<table style="width:100%;font-size:26px;font-family: Montserrat;">
 <tr><td><strong>Живлення</strong></td><td>4s-6s</td></tr>
 <tr><td><strong>Струм</strong></td><td>150A</td></tr>
 <tr><td><strong>MCU</strong></td><td>72Mhz 32Bit</td></tr>
@@ -88,49 +90,35 @@ font-weight:bold;
 </table>
 <br>
 <br>
-![регулятор обертів КАРМА](/img/regulator_obertiv.png "регулятор обертів Карма")
 
+
+![Регулятор обертів](/img/regulator_obertiv.png "регулятор обертів")
 
 <br>
 <br>
 <h3>РОЗМІРИ ПОЛІТНИХ СТЕКІВ</h3>
 
-
-
 ![розміри політних стеків](/img/rozmiri.jpg "розміри польотників")
-
 
 <h3>ПІДКЛЮЧЕННЯ ПЕРИФЕРІЇ</h3>
 
-
 ![Підключення периферії](/img/pidkluchennia_stekiv.jpg "Підключення периферії")
-
 
 <h3>ЕЛЕМЕНТИ</h3>
 
-
-
-
 ![Елементи політних стеків](/img/photo_2025-10-06_09-45-03.jpg "Елементи політників")
-
 
 <h3>ІНДИКАЦІЯ</h3>
 
-
-
 ![індикація політних стеків](/img/indikacia.jpg)
 
-
 <h3>ДІАГРАМА ПІДКЛЮЧЕННЯ</h3>
-
-
 
 ![Діаграма підключення](/img/diagrama_pidkluchennya.jpg "діаграма підключення політних стеків")
 
 <p>
  <strong>ВІДОМІ НЕДОЛІКИ</strong>
 </p>
-
 
 <p>
 
@@ -142,16 +130,11 @@ font-weight:bold;
 
 </p>
 
-
 <h3>КОМПЛЕКТАЦІЯ ПОЛІТНИХ СТЕКІВ KARMA FLIGHTS</h3>
-
 
 ![Комплектація політних стеків](/img/komplektacii.jpg "Комплектація політників")
 
-
-
-
-<table style="width:100%;font-size:30px;">
+<table style="width:100%;font-size:26px;font-family: Montserrat;">
 <tr><td><img width="35" height="35" src="/img/list-guide-one.png" alt="" style="filter:none;box-shadow:none; float:left;">&nbsp;
 &nbsp;<strong>Контролер польоту</strong></td><td>
 1 шт.</td></tr>
@@ -189,10 +172,5 @@ font-weight:bold;
 4 шт.</td></tr>
 
 </table>
-
-
-
-
-
 
 </div>
