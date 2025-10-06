@@ -43,13 +43,13 @@ font-weight:bold;
 }
 
 </style>
-
+<div class="text-center">
 <h3>
 КОНТРОЛЕР ПОЛЬОТУ
 
 </h3>
 <div  id="instruction1">
-<table>
+<table style="width:80%">
 <tr><td><strong>MCU</strong></td><td>STM32F405</td></tr>
 <tr><td><strong>IMU</strong></td><td>ICM-42688-P</td></tr>
 <tr><td><strong>Барометр</strong></td><td>BMP280</td></tr>
@@ -66,11 +66,11 @@ font-weight:bold;
 <tr><td><strong>Дозволений
 струм від батареї</strong></td><td>2.4А</td></tr>
 </table>
-<div class="text-center">
+
 
 ![](/img/stack-feature.png)
 
-</div>
+
 
 <h3>
 РЕГУЛЯТОР ОБЕРТІВ
@@ -86,3 +86,4 @@ font-weight:bold;
 </table>
 
 ![](/img/5_.png)
+</div>
