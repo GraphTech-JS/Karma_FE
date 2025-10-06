@@ -23,12 +23,36 @@
       });
     }
 
-    const getYouTubeId = (url) => {
-      if (!url || typeof url !== 'string') return '';
-      const regExp = /^.*(?:youtu.be\/|v\/|e\/|watch\?v=|\&v=|\/embed\/)([^"&?\/\s]{11}).*$/;
-      const match = url.match(regExp);
-      return (match && match[1].length === 11) ? match[1] : '';
-    };
+
+    function slugify(str) {
+      return str
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "") 
+        .replace(/[^a-zA-Z0-9\s-]/g, "") 
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, "-");
+    }
+
+
+    CMS.registerEventListener({
+      name: "preSave",
+      handler: ({ entry }) => {
+        const data = entry.get("data");
+        const collection = entry.get("collection");
+
+        if (collection === "categories") {
+          const title = data.getIn(["title", "en"]) || data.get("title") || "";
+          if (title) {
+            const newSlug = slugify(title);
+            entry = entry.setIn(["data", "slug"], newSlug);
+            console.log("Slug згенеровано:", newSlug);
+          }
+        }
+
+        return entry;
+      },
+    });
 
     CMS.registerEditorComponent({
       id: "figure",
@@ -38,8 +62,8 @@
         { name: "alt", label: "Alt Text", widget: "string" },
         { name: "caption", label: "Caption", widget: "string", required: false },
         { name: "align", label: "Align", widget: "select", options: ["left", "right", "center"], default: "right" },
-        { name: "width", label: "Container Width", widget: "string", required: false, default: "40%", hint: "e.g. 40%" },
-        { name: "img_width", label: "Image Width", widget: "string", required: false, default: "100%", hint: "e.g. 100%" },
+        { name: "width", label: "Container Width", widget: "string", required: false, default: "40%" },
+        { name: "img_width", label: "Image Width", widget: "string", required: false, default: "100%" },
         { name: "class", label: "Extra CSS classes", widget: "string", required: false }
       ],
       pattern: /^\{\{< figure src="([^"]+)"(?: alt="([^"]*)")?(?: caption="([^"]*)")?(?: align="([^"]*)")?(?: width="([^"]*)")?(?: img_width="([^"]*)")?(?: class="([^"]*)")? >\}\}$/,
@@ -84,70 +108,51 @@
       }
     });
 
+
+    const getYouTubeId = (url) => {
+      if (!url || typeof url !== 'string') return '';
+      const regExp = /^.*(?:youtu.be\/|v\/|e\/|watch\?v=|\&v=|\/embed\/)([^"&?\/\s]{11}).*$/;
+      const match = url.match(regExp);
+      return (match && match[1].length === 11) ? match[1] : '';
+    };
+
     CMS.registerEditorComponent({
       id: "youtube",
       label: "YouTube Video",
       fields: [
-        {
-          name: "url",
-          label: "Посилання на відео YouTube",
-          widget: "string",
-          required: true,
-          hint: "Вставте повне посилання на відео YouTube"
-        },
-        { name: "caption", label: "Підпис", widget: "string", required: false, hint: "Додатковий підпис, що відображатиметься під відео." },
-        { name: "width", label: "Ширина контейнера", widget: "string", required: false, default: "100%", hint: "Наприклад, 100% або 640px" }
+        { name: "url", label: "Посилання на YouTube", widget: "string", required: true },
+        { name: "caption", label: "Підпис", widget: "string", required: false },
+        { name: "width", label: "Ширина", widget: "string", required: false, default: "100%" }
       ],
       pattern: /^\{\{< youtube id="([^"]+)"(?: caption="([^"]*)")?(?: width="([^"]*)")? >\}\}$/,
-
-      fromBlock: function (match) {
-        const youtubeId = match[1];
-        return {
-          url: youtubeId ? `https://www.youtube.com/watch?v=${youtubeId}` : '',
-          caption: match[2],
-          width: match[3],
-        };
-      },
-
-      toBlock: function (obj) {
+      fromBlock: match => ({
+        url: match[1] ? `https://www.youtube.com/watch?v=${match[1]}` : '',
+        caption: match[2],
+        width: match[3],
+      }),
+      toBlock: obj => {
         const videoId = getYouTubeId(obj.url);
-
-        if (!videoId) {
-          console.warn("Decap CMS: Недійсне посилання на YouTube відео. Shortcode не буде згенеровано.");
-          return '';
-        }
-
+        if (!videoId) return '';
         let shortcode = `{{< youtube id="${videoId}"`;
         if (obj.caption) shortcode += ` caption="${obj.caption}"`;
         if (obj.width && obj.width !== "100%") shortcode += ` width="${obj.width}"`;
         shortcode += " >}}";
         return shortcode;
       },
-
-      toPreview: function (obj) {
+      toPreview: obj => {
         const videoId = getYouTubeId(obj.url);
-
-        if (!videoId) {
-          return `<div style="padding: 10px; background-color: #ffe0e0; border: 1px solid #ffaaaa; color: #cc0000; text-align: center;">Недійсне посилання на YouTube відео.</div>`;
-        }
-
-        const widthStyle = obj.width ? `width: ${obj.width}; max-width: 100%;` : `width: 100%; max-width: 100%;`;
-        const videoContainerStyle = `position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 8px;`;
-        const iframeStyle = `position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;`;
-
+        if (!videoId) return `<div>❌ Недійсне посилання</div>`;
         return `
-          <figure style="${widthStyle}">
-            <div style="${videoContainerStyle}">
-              <iframe src="https://www.youtube.com/embed/${videoId}" style="${iframeStyle}" allowfullscreen title="YouTube video player" loading="lazy"></iframe>
+          <figure style="width: ${obj.width || '100%'}; max-width: 100%;">
+            <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+              <iframe src="https://www.youtube.com/embed/${videoId}" style="position: absolute; top:0; left:0; width:100%; height:100%;" allowfullscreen></iframe>
             </div>
-            ${obj.caption ? `<figcaption style="margin-top: 4px; font-size: 0.875rem; text-align: center; color: #6b7280;">${obj.caption}</figcaption>` : ''}
+            ${obj.caption ? `<figcaption style="text-align:center;">${obj.caption}</figcaption>` : ''}
           </figure>
         `;
       }
     });
-
   </script>
-
 </body>
 
 </html>

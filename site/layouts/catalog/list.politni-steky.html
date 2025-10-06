@@ -6,11 +6,11 @@
 {{- end -}}
 {{- if or (eq $categorySlug "") (eq $categorySlug "_index") (eq $categorySlug "index") (eq $categorySlug "catalog") -}}
 {{- with .File }}
-{{- $categorySlug = path.Base .Dir -}} 
+{{- $categorySlug = path.Base .Dir -}}
 {{- end -}}
 {{- end -}}
 {{- if or (eq $categorySlug "") (eq $categorySlug "_index") (eq $categorySlug "index") -}}
-{{- $categorySlug = "politni-steky" -}} 
+{{- $categorySlug = "politni-steky" -}}
 {{- end -}}
 
 {{- $categoryData := index .Site.Data.products.categories $categorySlug -}}
@@ -29,8 +29,8 @@
 <!-- FAQ Section -->
 <div class="bg-white py-[80px]">
     <div class="max-w-[1440px] mx-auto px-4">
-        {{ with site.GetPage "/faq" }}
-        {{ with .Params.stack_questions }}
+        {{ with site.GetPage "/faq/frequently-asked-questions-about-flight-stacks" }}
+        {{ with .Params.general_questions }}
         {{ partial "accordion" (dict "context" $ "className" "mb-[48px]" "title" .title "items" .questions
         "titleClassName" "!text-[48px] !text-center !uppercase !font-medium !font-[Unbounded]") }}
         {{ end }}

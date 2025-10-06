@@ -28,7 +28,7 @@ aria.search.field: "Поле для пошуку"
 aria.search.button: "Почати пошук"
 aria.menu.toggle: "Відкрити мобільне меню"
 aria.menu.close: "Закрити мобільне меню"
-aria.phone.alt: "Зателефонувати за номером (067) 298-29-29"
+aria.phone.alt: "Зателефонувати за номером +380 63 202 57 77"
 aria.lang.ua: "Перемкнути на українську мову"
 aria.lang.en: "Перемкнути на англійську мову"
 aria.menu.dialog: "Мобільне меню"
@@ -55,9 +55,9 @@ about.paragraph-two: "Ми впроваджуємо повний цикл: ві�
 about.alt: "Про нас - українська компанія високотехнологічного виробництва"
 
 # Results Section
-results.customers: 'Задоволених<br class="block lg:hidden">&nbsp;клієнтів'
-results.locations: 'Виробничих<br class="block lg:hidden">&nbsp;локацій'
-results.destroyed: "<span class=\"block md:inline\">Знищеної ворожої</span><br class=\"hidden md:block xl:block\"><span class=\"block md:inline md:pl-0\">техніки</span>"
+results.customers: 'Постійних<br class="block lg:hidden">&nbsp;клієнтів'
+results.locations: 'Виробничих<br class="block lg:hidden">&nbsp;потужностей'
+results.destroyed: "<span class=\"block md:inline\">Технологічних</span><br class=\"hidden md:block xl:block\"><span class=\"block md:inline md:pl-0\">ліній</span>"
 
 # Product catalog section
 catalog.brand: "К"
@@ -100,12 +100,12 @@ contact.form.success: "Повідомлення успішно відправл�
 contact.form.error.name: "Будь ласка, введіть ваше ім'я"
 contact.form.error.phone: "Будь ласка, введіть коректний номер телефону"
 contact.department: "Контактний відділ"
-contact.form.phone: "+380 95 61 56713"
-contact.form.email: "Info@karma.flights"
+contact.form.phone: "+380 63 202 57 77"
+contact.form.email: "Contact@karma.flights"
 
 # Footer
 footer.contact.title: "Контакти"
-footer.contact.phone: "+380 95 61 56713"
+footer.contact.phone: "+380 63 202 57 77"
 footer.contact.phone.label: "Контактний відділ"
 footer.menu.title: "Меню"
 footer.menu.catalog: "Каталог"

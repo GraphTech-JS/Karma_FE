@@ -30,10 +30,10 @@
 {{ partial "product-instructions" . }}
 
 <!-- FAQ Section -->
-{{ with site.GetPage "/faq" }}
-{{ with .Params.stack_questions }}
+{{ with site.GetPage "/faq/frequently-asked-questions-about-flight-stacks" }}
+{{ with .Params.general_questions }}
 {{ partial "accordion.html" (dict
-"title" .title "items" .questions "className" "bg-white   pl-[15px] pr-[20px] lg:px-[20px]"
+"title" .title "items" .questions "className" "bg-white pl-[15px] pr-[20px] lg:px-[20px]"
 "titleClassName" "hero-title font-[Unbounded] font-medium !text-[24px] md:!text-[32px] lg:!text-[48px] !text-center text-[#020303] mb-[clamp(20px,3vw,24px)] uppercase" "icon" "/img/arrow.svg" "titleAlign" "center") }}
 {{ end }}
 {{ end }}

@@ -1,19 +1,19 @@
 ---
 title: Політний стек KARMA F405 V1
+slug: Flight Stack KARMA F405 V1
 description: |-
   Польотний стек, розроблений з метою удосконалення,
   де це можливо, від надійних і ефективних технічних
   рішень до покращеної ергономіки складання.
   KARMA F405V1 перший крок у пошуках досконалості.
-date: 2024-01-01
+date: 2025-10-06T17:16:00.000+03:00
 category: politni-steky
 product_id: "2233"
-image: /img/Stack-product.png
+image: /img/Generative Fill.png
 price: 2500
-currency: грн
 draft: false
 layout: product
-slug: Flight Stack KARMA F405 V1
+currency: грн
 specs:
   - label: MCU
     value: STM32F405
@@ -23,8 +23,8 @@ specs:
     value: 50А
   - label: Розмір
     value: 48.5 x 40 мм
-  - label: BEC
-    value: 30.5 x 30.5 мм
+  - label: ВАГА
+    value: 5V 4A
   - label: Живлення
     value: "4s-6s "
 weight: 10
