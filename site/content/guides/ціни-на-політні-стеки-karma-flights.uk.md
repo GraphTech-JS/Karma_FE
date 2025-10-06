@@ -1,13 +1,13 @@
 ---
 title: Ціни на політні стеки KARMA FLIGHTS
+slug: Prices for KARMA FLIGHTS flight stacks
 description: |-
   Ми прагнемо зробити прозору систему цінового утворення, цей довідник перший
   крок на цьому шляху який допоможе вам зі стратегічним плануванням та оцінкою
   ціноутворення вашої продукці.
-date: 2025-09-28T17:16:00.000+03:00
+date: 2025-10-05T19:57:00.000+03:00
 category: Політні стеки
 draft: false
-slug: Prices for KARMA FLIGHTS flight stacks
 ---
 <style> 
 
@@ -79,11 +79,12 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 <p> Всі ціни вказані з урахуванням ПДВ.</p>
 
 </div>
-
-
+</div>
+</div>
 <div class="text-center"><button class="readmore_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
 <div class="readmore_fade" aria-hidden="true"></div>
-</div> 
+ 
+
 </div>
 </article>
 <article class="post"> <h2>Ціни на політний стек KARMA F405 V1.1.</h2>
@@ -96,11 +97,13 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 <strong>Рекомендована ціна OEM (упаковка 20шт.)&nbsp;&nbsp;&nbsp;       70 USD</strong></h4>
 <h3 class="text-center">ТАБЛИЦІ РОЗРАХУНКУ ВАРТОСТІ </h3>
  </div>
+</div> 
+
 <div class="text-center"><button class="readmore_toggle"  type="button"  aria-expanded="false" aria-controls="rm-1">Читати далі</button></div>
-</div>
+
 
 <div class="readmore_fade" aria-hidden="true"></div>
-</div> 
+
 </div>
 </article>
 <div class="bg-[#F5F5F5] px-[30px] pr-[35px] py-4">
@@ -194,3 +197,5 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 })();
 ; 
 </script>
+
+

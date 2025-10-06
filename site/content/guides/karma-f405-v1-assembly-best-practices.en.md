@@ -11,20 +11,24 @@ category: Політні стеки
 image: /img/our-product1.png
 draft: false
 ---
-<h2>Монтаж проводу живлення</h2>
-<p>У будь-якому ESC зона від точки підключення проводів живлення до
-струмо-вимірних шунтів є точкою найвищої щільності струму, а отже і
-найбільшою точкою нагріву. Правильний монтаж проводів прямо впливає на
-здатність ESC витримувати заявлені характеристики або навіть виходити за їх
-межі. Це пов’язано з цілим переліком факторів. </p>
+<p class="text-center">High-quality installation of equipment, without enlargement, has a
+significant role in the reliability of the final product. We have made
+a list of the most important aspects when assembling unmanned
+systems using Karma equipment and will continue to
+systematically add to this list.</p>
+<h2>POWER-WIRE CONNECTION</h2>
+<p>In any ESC, the zone from the point of connection of the battery wires to the
+current-measuring shunts has the highest current density and, therefore, the
+greatest heating. Proper wiring has a direct impact on the ESC's ability to meet
+or exceed its characteristics. This is due to a whole list of factors.  </p>
 
 <ol>
-<li>Струм що має можливість проходити з обидвох боків буде рівномірніше
-розподілений у внутрішні шари плати, відповідно, струм до різних шарів
-може проходити через один і той самий перехід різними шляхами, в рази
-зменшуючи нагрів.</li>
-<li>Опір припою зовсім трохи але додає (приблизно 1oz) в еквіваленті міді, хоч це і не значний фактор,  але він також має вплив.</li>
-<li>Припій грає гарну тепловідвідну роль, саме там де це потрібно.</li>
+<li>The current that can pass from both sides will be more evenly distributed into
+internal board layers, accordingly, the current to different layers can pass
+through the same transition in different ways, reducing heating several times.</li>
+<li>Solder resistance adds a minor (about 1oz) to the copper equivalent, although
+this is not a significant factor but it does have an effect. </li>
+<li>Solder plays a good heat-dissipating role, exactly where it is needed</li>
 </ol>
 <div class="text-center">
 
@@ -35,7 +39,7 @@ draft: false
 </div>
 
 <h2>
-ДОДАТКОВИЙ КОНДЕНСАТОР
+ADDITIONAL CAPACITOR
 
 </h2>
 
@@ -46,61 +50,54 @@ draft: false
 </div>
 
 <p>
-<strong>Для навантажених режимів з постійним високими або взривними
-показниками струму необхідно встановлення додаткового конденсатору.</strong>
-Немає необхідності для модифікації ніжок, лише встановлення додаткової
-ємності безпосередньо підключеної до плати ESC. При монтажі двох
-конденсаторів рекомендується їх підключення на різні сторони плати, це
-дозволить розподілити струм різними шляхами і матиме незначний вплив на
-температурні показники в зоні підключення. Встановлення збільшеної ємності
-також має позитивний вплив на відчуття від пілотування.
+<strong>For current-intensive modes with constant high or explosive currentindicators, it is crucial to install an additional capacitor.</strong>
+
+No need to modify the legs, just install an additional capacitor directly connected to
+the ESC board. When installing two capacitors, it is recommended to connect them
+to different sides of the board, this will allow the current to be distributed in
+different ways and will have a minor effect on the temperature indicators in the
+connection area. Installing an increased capacity also has a positive effect on the
+feeling of piloting. 
 
 </p>
 
-<h2>ПІДСИЛЕНЕ ЖИВЛЕННЯ FC</h2>
+<h2>ENHANCED FC POWER LINE</h2>
 
 <p>
-В комплекті передбачений додатковий шлейф надлишкового живлення, що 
-збільшує дозволену ємність струму FC по лінії BATT до 2.4А. Стандартний роз’єм 
-JST SH має паспортний струм 1А а провід товщиною 28AWG близько 0.8A 
-(силіконові 30AWG 0.5A). Споживання контролера польоту в залежності від 
-встановленого обладнання (Servo, VTX, тощо) може значно виходити за ці 
-показники, трапляються випадки втрати живлення до польотного контролеру, 
-особливо коли напруга батареї падає а струм відповідно піднімається.
+The kit includes an additional power supply wire, which increases the permitted FC
+current capacity on the BATT line to 2.4A. A standard JST SH connector has a rated
+current of 1A, and a 28AWG wire is about 0.8A (silicone 30AWG 0.5A). The flight
+controller's power consumption, depending on the installed equipment (Servo,
+VTX, etc.), can significantly exceed these numbers. There are cases of loss of power
+to the flight controller, especially when the battery voltage drops and the current
+rises accordingly. 
 </p>
 
 <p><strong>
-Встановлюйте шлейф надлишкового живлення з метою підвищення 
-надійності кінцевої збірки. 
+Do install the wire to increase the reliability of the final assembly.
 
 </strong></p>
 
 <h2>
-ПІДКЛЮЧЕННЯ МОТОРІВ 
+MOTORS CONNECTION  
 
 </h2>
 
-<p>
-Проводи моторів є основними джерелами перешкод які впливають не лише на 
-якість зображення відеосигналу, але і можуть призвести до втрати борта, 
-безвідносно до того який стек і якого бренду ви використовуєте. В ESC 
-описаного стеку площадки підключення моторів в більшому розмірі не тільки з 
-метою покращення ергономіки збірки, а також щоб спонукати інженерів до 
-“менш шумних збірок”. 
-
-</p>
 
 <p>
-На фото нижче приведений приклад ситуацій яких треба обов’язково уникати. 
-У наведеному прикладі видно декілька витків сигнальних проводів що при 
-змонтованому польотному контролері лежать безпосередньо на закручених 
-проводах від моторів. У випадку якщо від проводів моторів до безпосередньо 
-FC є відстань і завади передаються помірно, то в наведеному прикладі майже 
-побудований підвищуючий трансформатор від моторних проводів до 
-сигнальних проводів ERLS.
 
+Motor wires are the main sources of interference that affect not only the image
+quality of the video signal but can also lead to the loss of the drone, regardless of
+which stack and which brand you use. In the ESC described stack, the platform for
+connecting motors of a larger size is not only to improve the ergonomics of the
+assembly but also to encourage engineers to "less noisy assemblies."
 </p>
-
+<p>The photo below shows an example of situations that must be avoided. In the given
+example, you can see several turns of signal wires that lie directly on the twisted
+wires from the motors when the flight controller is mounted. If there is a distance
+from the motor wires to the FC directly and interference is transmitted moderately,
+then in the example given, a step-up transformer from the motor wires to the ERLS
+signal wires is almost built. </p>
 <div class="text-center">
 
 ![AN EXAMPLE OF A SETUP TO AVOID](/img/bad_montaze-en.jpg)
@@ -108,20 +105,19 @@ FC є відстань і завади передаються помірно, т
 ![AN EXAMPLE OF A SUCCESSFUL INSTALLATION PERFORMED BY THE CLIENT ](/img/good_montaz-en.jpg)
 
 <p><strong>
-Будь ласка, не проводьте моторні кабелі між платами стеку. 
+Please do not run motor cables between stack boards. 
 
 </strong></p>
 
 </div>
 
 <h2>
-ВСТАНОВЛЕННЯ КОНТРОЛЕРА ПОЛЬОТУ
+INSTALLATION OF FLIGHT CONTROLLER
 </h2>
 <p>
-Для забезпечення стабільної роботи гіроскопа на платі, обов’язково треба 
-уникати дотиків елементів FC до будь-яких твердих конструкцій, інакше ви 
-отримаєте надзвичайно великий рівень шумів, безвідносно до того, контролер 
-якого вендора використовується. 
+To ensure stable operation of the gyroscope on the board, it's crucial to avoid
+touching the FC elements to any solid structures. Otherwise, you'll experience
+extremely high noise levels, regardless of the controller vendor.
 
 </p>
 
@@ -130,18 +126,19 @@ FC є відстань і завади передаються помірно, т
 ![EXAMPLE OF EXPECTED DISTANCE WITH CORRECT INSTALLATION](/img/kontroler-good.jpg)
 
 <p>
-В комплект постачання контролерів Karma Flights входять силіконові 
-демпфери які не тільки мають гарні поглинаючі властивості але і забезпечують 
-правильну висоту монтажу від FC до ESC, унеможливлюючи удари роз’ємами 
-між FC і ESC під час польоту. У разі заміни вказаних демпферів на будь які інші, 
-переконайтесь що відстань між роз’ємами обидвох плат не менше ніж 1мм.
 
+Included in the Karma Flights controller package are silicone dampers. These not
+only possess excellent shock-absorbing properties but also ensure the correct
+mounting height of the FC (Flight Controller) to the ESC (Electronic Speed
+Controller), preventing connector impacts between the FC and ESC during flight. If
+you replace these dampers with any others, make sure that the distance between
+the connectors of both boards is at least 1mm.
 </p>
 
 <p>
-Типова помилка при монтажі, це занадто сильно затиснуті гайки політного 
-стека, що зводить амортизаційну здатність демпферних поглиначів нанівець.
 
+A common installation mistake is over-tightening the nuts on the flight stack, which
+completely negates the shock-absorbing capabilities of the damping mounts.
 </p>
 
 <div class="text-center">
@@ -158,12 +155,12 @@ FC є відстань і завади передаються помірно, т
 
 <a href="https://karma-karma.netlify.app/catalog/%D0%BF%D0%BE%D0%BB%D1%96%D1%82%D0%BD%D0%B8%D0%B9-%D1%81%D1%82%D0%B5%D0%BA-karma-f405-v1/">
 
-Замовити політні стеки  KARMA F405 V1
+Order flight stacks KARMA F405 V1
 </a><br>
 
-<a href="https://karma.flights/assets/Karma_best_practices_UA.pdf">
+<a href="https://karma.flights/assets/Karma_best_practices_en.pdf">
 
-Завантажити рекомедації по збірці (PDF)</a>
+Download assembly best practices (PDF)</a>
 
 </p>
 
