@@ -153,12 +153,12 @@ completely negates the shock-absorbing capabilities of the damping mounts.
 <p class="text-center">
 <br>
 
-<a href="https://karma-karma.netlify.app/catalog/%D0%BF%D0%BE%D0%BB%D1%96%D1%82%D0%BD%D0%B8%D0%B9-%D1%81%D1%82%D0%B5%D0%BA-karma-f405-v1/">
+<a href="/en/catalog/karma-f405-v1/">
 
 Order flight stacks KARMA F405 V1
 </a><br>
 
-<a href="https://karma.flights/assets/Karma_best_practices_en.pdf">
+<a href="/assets/Karma_best_practices_en.pdf">
 
 Download assembly best practices (PDF)</a>
 

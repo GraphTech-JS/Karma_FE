@@ -158,17 +158,26 @@ FC є відстань і завади передаються помірно, т
 <p class="text-center">
 <br>
 
-<a href="https://karma-karma.netlify.app/catalog/%D0%BF%D0%BE%D0%BB%D1%96%D1%82%D0%BD%D0%B8%D0%B9-%D1%81%D1%82%D0%B5%D0%BA-karma-f405-v1/">
+<a href="/catalog/flight-stack-karma-f405-v1/">
 
 Замовити політні стеки  KARMA F405 V1
 </a><br>
 
-<a href="https://karma.flights/assets/Karma_best_practices_UA.pdf">
+<a href="/assets/Karma_best_practices_UA.pdf">
 
 Завантажити рекомедації по збірці (PDF)</a>
 
 </p>
-
+<img src="/img/stack.png" style="float:left; margin:10px;" />
+<p>Простий пристрій як наведено 
+на картинці нижче, вартує на 
+порядок менше вартості стека і 
+допоможе не вивести остаточно 
+пристрій з ладу, при наявності 
+помилки збирання чи дефекту в 
+якомусь з елементів.
+ Будь-ласка, не нехтуйте його 
+використанням.</p>
 
 
 
