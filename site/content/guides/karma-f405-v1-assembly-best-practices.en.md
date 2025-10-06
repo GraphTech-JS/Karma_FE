@@ -146,8 +146,18 @@ completely negates the shock-absorbing capabilities of the damping mounts.
 ![ TYPICAL INSTALLATION ERROR (LEFT) COMPARED TO A CORRECT ONE (RIGHT).](/img/montaz-stekiv-no-en.jpg)
 
 ![GYROSCOPE DATA FOR BOTH MOUNTING OPTIONS](/img/giroskop-en.jpg)
-
-
+<h2>USE SMOKE STOPPER
+</h2>
+<img src="/img/stopper.jpg" style="float:left; margin-right:10px; " />
+<p style="text-align:left;">A simple device, as shown in the
+image below, costs significantly
+less than the entire flight stack and
+can prevent complete failure of the
+device in case of assembly errors or
+defects in any of the components.
+<br>
+ <strong>Please, don't neglect using it.</strong>
+</p>
 
 
 <p class="text-center">
