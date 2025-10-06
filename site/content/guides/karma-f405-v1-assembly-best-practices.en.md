@@ -148,7 +148,7 @@ completely negates the shock-absorbing capabilities of the damping mounts.
 ![GYROSCOPE DATA FOR BOTH MOUNTING OPTIONS](/img/giroskop-en.jpg)
 <h2>USE SMOKE STOPPER
 </h2>
-<img src="/img/stopper.jpg" style="float:left; margin-right:10px; " />
+<img src="/img/stopper.jpg" style="float:left; margin-right:10px;width:400px; " />
 <p style="text-align:left;">A simple device, as shown in the
 image below, costs significantly
 less than the entire flight stack and
@@ -160,7 +160,7 @@ defects in any of the components.
 </p>
 
 
-<p class="text-center">
+<p class="text-center" style="clear:both;">
 <br>
 
 <a href="/en/catalog/karma-f405-v1/">

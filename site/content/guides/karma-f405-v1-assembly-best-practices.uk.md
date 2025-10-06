@@ -152,7 +152,7 @@ FC є відстань і завади передаються помірно, т
 
 ![](/img/giroskop.jpg)
 <h2> ВИКОРИСТОВУЙТЕ SMOKE STOPPER</h2>
-<img src="/img/stopper.jpg" style="float:left; margin-right:10px; " />
+<img src="/img/stopper.jpg" style="float:left; margin-right:10px; width:400px;" />
 <p style="text-align:left;">Простий пристрій як наведено 
 на картинці нижче, вартує на 
 порядок менше вартості стека і 
@@ -163,8 +163,9 @@ FC є відстань і завади передаються помірно, т
  <strong>Будь-ласка, не нехтуйте його 
 використанням.</strong></p>
 
-<p class="text-center">
+<p class="text-center" style="clear:both;">
 <br>
+
 
 <a href="/catalog/flight-stack-karma-f405-v1/">
 
