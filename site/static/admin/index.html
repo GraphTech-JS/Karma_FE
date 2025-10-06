@@ -24,7 +24,7 @@
     }
 
     const getYouTubeId = (url) => {
-      if (!url || typeof url !== 'string') return ''; 
+      if (!url || typeof url !== 'string') return '';
       const regExp = /^.*(?:youtu.be\/|v\/|e\/|watch\?v=|\&v=|\/embed\/)([^"&?\/\s]{11}).*$/;
       const match = url.match(regExp);
       return (match && match[1].length === 11) ? match[1] : '';
@@ -89,7 +89,7 @@
       label: "YouTube Video",
       fields: [
         {
-          name: "url", 
+          name: "url",
           label: "Посилання на відео YouTube",
           widget: "string",
           required: true,
@@ -103,14 +103,14 @@
       fromBlock: function (match) {
         const youtubeId = match[1];
         return {
-          url: youtubeId ? `https://www.youtube.com/watch?v=${youtubeId}` : '', 
+          url: youtubeId ? `https://www.youtube.com/watch?v=${youtubeId}` : '',
           caption: match[2],
           width: match[3],
         };
       },
 
       toBlock: function (obj) {
-        const videoId = getYouTubeId(obj.url); 
+        const videoId = getYouTubeId(obj.url);
 
         if (!videoId) {
           console.warn("Decap CMS: Недійсне посилання на YouTube відео. Shortcode не буде згенеровано.");

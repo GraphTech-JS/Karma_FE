@@ -24,7 +24,7 @@
       <div class="flex justify-end items-center sm:hidden">
         <button
           class="font-[Montserrat] text-[clamp(16px,2vw,18px)] font-normal text-black flex items-center gap-[clamp(8px,2vw,8px)] cursor-pointer">
-          <a href="{{ "/knowledge-base/" | relLangURL }}">
+          <a href="{{ " /knowledge-base/" | relLangURL }}">
             <span class="text-black">&lt;</span>
             {{ i18n "guides.back" }}
           </a>
@@ -52,15 +52,74 @@
           <div class="p-0">
             <nav id="left-category-nav" class="pt-[8px] fixed space-y-[20px]"
               style="width: 285px; max-height: calc(100vh - 200px); overflow-y: auto;">
-              {{ $categories := where .Site.RegularPages "Section" "categories" }}
-              {{ $guides := where .Site.RegularPages "Section" "guides" }}
-              {{ range $index, $cat := $categories }}
-              {{- $searchTerms := slice $cat.File.BaseFileName $cat.Title -}}
-              {{- if $cat.Params.aliases -}}
-              {{- $searchTerms = $searchTerms | append $cat.Params.aliases -}}
+              {{- /* Категорії: крос-мовний список з пріоритетом поточної мови */ -}}
+              {{- $currentLang := .Site.Language.Lang -}}
+              {{- $allCats := slice -}}
+              {{- range site.Sites -}}
+              {{- $allCats = $allCats | append (where .RegularPages "Section" "categories") -}}
               {{- end -}}
-              {{ $categoryGuides := where $guides ".Params.category" "in" $searchTerms }}
-              <details class="asideDetails" {{ if in $searchTerms $.Params.category }}open{{ end }}>
+              {{- $byBase := dict -}}
+              {{- range $allCats -}}
+              {{- $base := .File.TranslationBaseName -}}
+              {{- $existing := index $byBase $base -}}
+              {{- if not $existing -}}
+              {{- $byBase = merge $byBase (dict $base .) -}}
+              {{- else if eq .Lang $currentLang -}}
+              {{- $byBase = merge $byBase (dict $base .) -}}
+              {{- end -}}
+              {{- end -}}
+              {{- $categories := slice -}}
+              {{- range $k, $v := $byBase -}}
+              {{- $categories = $categories | append $v -}}
+              {{- end -}}
+              {{- $categories = sort $categories "Params.weight" "asc" "Title" "asc" -}}
+
+              {{- /* Гіди: крос-мовний список з пріоритетом поточної мови */ -}}
+              {{- $allGuides := slice -}}
+              {{- range site.Sites -}}
+              {{- $allGuides = $allGuides | append (where .RegularPages "Section" "guides") -}}
+              {{- end -}}
+              {{- $byGuideBase := dict -}}
+              {{- range $allGuides -}}
+              {{- $gbase := .File.TranslationBaseName -}}
+              {{- $gexisting := index $byGuideBase $gbase -}}
+              {{- if not $gexisting -}}
+              {{- $byGuideBase = merge $byGuideBase (dict $gbase .) -}}
+              {{- else if eq .Lang $currentLang -}}
+              {{- $byGuideBase = merge $byGuideBase (dict $gbase .) -}}
+              {{- end -}}
+              {{- end -}}
+              {{- $guides := slice -}}
+              {{- range $k, $v := $byGuideBase -}}
+              {{- $guides = $guides | append $v -}}
+              {{- end -}}
+
+              {{ range $index, $cat := $categories }}
+              {{- $categorySlug := $cat.File.TranslationBaseName -}}
+              {{- $categoryTitle := $cat.Title -}}
+
+              {{- $bySlug := where $guides ".Params.category" $categorySlug -}}
+              {{- $byTitle := where $guides ".Params.category" $categoryTitle -}}
+              {{- $byCategorySlug := where $guides ".Params.category" $cat.Params.slug -}}
+
+              {{- $searchTerms := slice $categoryTitle $categorySlug -}}
+              {{- if $cat.Params.slug -}}
+              {{- $searchTerms = $searchTerms | append $cat.Params.slug -}}
+              {{- end -}}
+              {{- if $cat.Params.aliases -}}
+              {{- range $cat.Params.aliases -}}
+              {{- $alias := . -}}
+              {{- $searchTerms = $searchTerms | append $alias -}}
+              {{- if not (hasPrefix $alias "-") -}}
+              {{- $searchTerms = $searchTerms | append (printf "-%s" $alias) -}}
+              {{- end -}}
+              {{- end -}}
+              {{- end -}}
+              {{- $byAliases := where $guides ".Params.category" "in" $searchTerms -}}
+
+              {{- $categoryGuides := union $bySlug (union $byTitle (union $byCategorySlug $byAliases)) -}}
+              <details class="asideDetails" {{ if or (eq $.Params.category $categorySlug) (eq $.Params.category
+                $categoryTitle) (in $searchTerms $.Params.category) }}open{{ end }}>
                 <summary class="flex justify-between items-center px-[25px]">
                   <span class="font-[Montserrat] font-normal text-[20px] text-[#404040]">
                     {{ $cat.Title }}
@@ -95,7 +154,7 @@
         <div class="hidden lg:flex relative max-w-[min(691px,90vw)] justify-center items-center mb-[28px]">
           <div class="flex flex-1 items-center">
             <div class="relative flex-1 rounded-[20px]">
-              <input type="text" placeholder="{{ i18n "guides.placeholder" }}"
+              <input type="text" placeholder="{{ i18n " guides.placeholder" }}"
                 class="h-[clamp(40px,6vw,47px)] w-full !rounded-[20px] border border-black pl-[clamp(12px,2vw,16px)] pr-[clamp(100px,15vw,120px)] text-[16px] outline-none focus:border-[#ba0108] bg-white" />
               <button
                 class="absolute z-10 right-0 top-1/2 -translate-y-1/2 w-[clamp(80px,12vw,99px)] h-[clamp(40px,6vw,47px)] rounded-[20px] bg-[#ba0108] flex items-center justify-center cursor-pointer hover:bg-[#a00007] transition-colors">
@@ -196,7 +255,7 @@
     height: 0;
   }
 
-  .bg-\[\#fafafa\] {
+  .bg-```math \#fafafa``` {
     overflow: hidden;
   }
 
