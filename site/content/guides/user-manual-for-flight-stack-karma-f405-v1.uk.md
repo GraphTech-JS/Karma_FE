@@ -29,17 +29,19 @@ KARMA F405V1 перший крок у пошуках досконалості.</
 <table class="w-full border-separate border-spacing-0 border border-black mb-\[clamp(20px,4vw,32px)] rounded-\[5px] overflow-hidden" role="table" aria-label="Технічні характеристики Політний стек KARMA F405 V1 — живлення та кріплення"><caption class="sr-only">Параметри живлення та кріплення Політний стек KARMA F405 V1</caption><tbody><tr><td class="font-[Inter] text-[20px] font-medium text-[#020303] h-[44px] px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">Живлення</td><td class="font-[Montserrat] text-[20px] text-[#020303] h-[44px] px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black">4s-6s</td></tr><tr><td class="font-[Inter] text-[20px] font-medium text-[#020303] h-[44px] px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">Струм</td><td class="font-[Montserrat] text-[20px] text-[#020303] h-[44px] px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black">4x50A</td></tr><tr><td class="font-[Inter] text-[20px] font-medium text-[#020303] h-[44px] px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">MCU</td><td class="font-[Montserrat] text-[20px] text-[#020303] h-[44px] px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black">72Mhz 32Bit</td></tr><tr><td class="font-[Inter] text-[20px] font-medium text-[#020303] h-[44px] px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">Прошивка</td><td class="font-[Montserrat] text-[20px] text-[#020303] h-[44px] px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black">AM32</td></tr><tr><td class="font-[Inter] text-[20px] font-medium text-[#020303] h-[44px] px-[34px] border-r border-black w-[clamp(200px,20vw,255px)]">Кріплення</td><td class="font-[Montserrat] text-[20px] text-[#020303] h-[44px] px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)]">30.5 x 30.5</td></tr></tbody></table><div class="flex justify-center"><picture><source media="(max-width: 1199px)" srcset="/img/product-details-v2_hu_49ef0eaf12153636.webp" type="image/webp"><source media="(min-width: 1200px)" srcset="/img/product-details-v2_hu_9800bd6f70695b0b.webp" type="image/webp"><img src="/img/product-details-v2_hu_9800bd6f70695b0b.webp" alt="Детальний вигляд Політний стек KARMA F405 V1 з технічними характеристиками" class="object-contain w-full h-auto" loading="lazy" decoding="async" width="768" height="432"></picture></div></div></div>
 
 <style>
+body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:10px; } 
+ h3{ font-family: Montserrat; font-size: 18px; line-height: 18px; font-weight: bold !important; text-align: center; margin-top: 30px; } 
 table.insrtuction {
     width: 80%;
 border-collapse: collapse;
 }
 table.insrtuction, th, td {
-    border: 1px solid black;
+    border: 1px solid black !important;
 }
 th, td {
     padding: 15px;
     text-align: left;
-height:50px;
+     height:50px;
 }
 th{
 font-weight:bold;
@@ -47,19 +49,19 @@ font-weight:bold;
 </style>
 <h3>Контролер польоту</h3>
 <table  class="insrtuction">
-<tr><td>MCU</td><td>STM32F405</td></tr>
-<tr><td>IMU</td><td>ICM-42688-P</td></tr>
-<tr><td>Барометр</td><td>BMP280</td></tr>
-<tr><td>BEC</td><td>5V 4A</td></tr>
-<tr><td>Кріплення</td><td>30.5 х 30.5</td></tr>
-<tr><td>Розміри</td><td>48.5 х 40</td></tr>
-<tr><td>CamSwitch</td><td>так</td></tr>
-<tr><td>Blackbox</td><td>MicroSD</td></tr>
-<tr><td>LC-фільтр<br>
-живлення камер
+<tr><td><strong>MCU</strong></td><td>STM32F405</td></tr>
+<tr><td><strong>IMU</strong></td><td>ICM-42688-P</td></tr>
+<tr><td><strong>Барометр</strong></td><td>BMP280</td></tr>
+<tr><td><strong>BEC</strong></td><td>5V 4A</td></tr>
+<tr><td><strong>Кріплення</strong></td><td>30.5 х 30.5</td></tr>
+<tr><td><strong>Розміри</strong></td><td>48.5 х 40</td></tr>
+<tr><td><strong>CamSwitch</strong></td><td>так</td></tr>
+<tr><td><strong>Blackbox</strong></td><td>MicroSD</td></tr>
+<tr><td><strong>LC-фільтр<br>
+живлення камер</strong>
 </td><td>так</td></tr>
-<tr><td>LC-фільтр<br>
-живлення VTX</td><td>так</td></tr>
-<tr><td>Дозволений
-струм від батареї</td><td>2.4А</td></tr>
+<tr><td><strong>LC-фільтр<br>
+живлення VTX</strong></td><td>так</td></tr>
+<tr><td><strong>Дозволений
+струм від батареї</strong></td><td>2.4А</td></tr>
 </table>
