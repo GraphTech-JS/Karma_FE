@@ -48,27 +48,73 @@
     <div id="search-message-container" class="max-w-[1280px] mx-auto px-[20px]"></div>
 
     <div class="relative z-20 space-y-0 w-full max-w-[1600px] mx-auto">
-      {{- $categories := where .Site.RegularPages "Section" "categories" -}}
-
-      {{- $guides := where .Site.RegularPages "Section" "guides" -}}
-      {{- if eq (len $guides) 0 -}}
-      {{- $all := slice -}}
+      {{- /* Категорії: беремо з усіх мов і віддаємо поточну, якщо є, інакше EN */ -}}
+      {{- $currentLang := .Site.Language.Lang -}}
+      {{- $allCats := slice -}}
       {{- range site.Sites -}}
-      {{- $all = $all | append (where .RegularPages "Section" "guides") -}}
+      {{- $allCats = $allCats | append (where .RegularPages "Section" "categories") -}}
       {{- end -}}
-      {{- $guides = $all -}}
+      {{- $byBase := dict -}}
+      {{- range $allCats -}}
+      {{- $base := .File.TranslationBaseName -}}
+      {{- $existing := index $byBase $base -}}
+      {{- if not $existing -}}
+      {{- $byBase = merge $byBase (dict $base .) -}}
+      {{- else if eq .Lang $currentLang -}}
+      {{- $byBase = merge $byBase (dict $base .) -}}
+      {{- end -}}
+      {{- end -}}
+      {{- $categories := slice -}}
+      {{- range $k, $v := $byBase -}}
+      {{- $categories = $categories | append $v -}}
+      {{- end -}}
+      {{- $categories = sort $categories "Params.weight" "asc" "Title" "asc" -}}
+
+      {{- /* Гіди: так само з усіх мов, пріоритет поточній */ -}}
+      {{- $allGuides := slice -}}
+      {{- range site.Sites -}}
+      {{- $allGuides = $allGuides | append (where .RegularPages "Section" "guides") -}}
+      {{- end -}}
+      {{- $byGuideBase := dict -}}
+      {{- range $allGuides -}}
+      {{- $gbase := .File.TranslationBaseName -}}
+      {{- $gexisting := index $byGuideBase $gbase -}}
+      {{- if not $gexisting -}}
+      {{- $byGuideBase = merge $byGuideBase (dict $gbase .) -}}
+      {{- else if eq .Lang $currentLang -}}
+      {{- $byGuideBase = merge $byGuideBase (dict $gbase .) -}}
+      {{- end -}}
+      {{- end -}}
+      {{- $guides := slice -}}
+      {{- range $k, $v := $byGuideBase -}}
+      {{- $guides = $guides | append $v -}}
       {{- end -}}
 
       {{ range $index, $cat := $categories }}
-      {{- $categorySlug := $cat.File.BaseFileName -}}
+      {{- $categorySlug := $cat.File.TranslationBaseName -}}
       {{- $categoryTitle := $cat.Title -}}
-      {{- $bySlug := where $guides ".Params.categorySlug" $categorySlug -}}
+
+      {{- $bySlug := where $guides ".Params.category" $categorySlug -}}
+      {{- $byTitle := where $guides ".Params.category" $categoryTitle -}}
+      {{- $byCategorySlug := where $guides ".Params.category" $cat.Params.slug -}}
+
+      {{- /* Шукаємо за aliases */ -}}
       {{- $searchTerms := slice $categoryTitle $categorySlug -}}
-      {{- if $cat.Params.aliases -}}
-      {{- $searchTerms = $searchTerms | append $cat.Params.aliases -}}
+      {{- if $cat.Params.slug -}}
+      {{- $searchTerms = $searchTerms | append $cat.Params.slug -}}
       {{- end -}}
-      {{- $byName := where $guides ".Params.category" "in" $searchTerms -}}
-      {{- $categoryGuides := cond (gt (len $bySlug) 0) $bySlug $byName -}}
+      {{- if $cat.Params.aliases -}}
+      {{- range $cat.Params.aliases -}}
+      {{- $alias := . -}}
+      {{- $searchTerms = $searchTerms | append $alias -}}
+      {{- if not (hasPrefix $alias "-") -}}
+      {{- $searchTerms = $searchTerms | append (printf "-%s" $alias) -}}
+      {{- end -}}
+      {{- end -}}
+      {{- end -}}
+      {{- $byAliases := where $guides ".Params.category" "in" $searchTerms -}}
+
+      {{- $categoryGuides := union $bySlug (union $byTitle (union $byCategorySlug $byAliases)) -}}
 
       <details {{ if eq $index 0 }}open{{ end }} class="overflow-hidden knowledge-section group">
         <summary

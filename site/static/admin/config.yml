@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: main
 
-#publish_mode: editorial_workflow # Увімкнути за потреби модерації
+# publish_mode: editorial_workflow # Увімкнути за потреби модерації
 
 local_backend: true
 
@@ -12,7 +12,7 @@ public_folder: "/img"
 i18n:
   structure: multiple_files
   locales: [uk, en]
-  default_locale: "en"
+  default_locale: "en" 
 
 collections:
   - name: "categories"
@@ -20,18 +20,18 @@ collections:
     folder: "site/content/categories"
     create: true
     i18n: true
-    slug: "{{fields.title | slugify}}"  
+    slug: "{{fields.title}}" 
     fields:
       - { label: "Назва категорії", name: "title", widget: "string", i18n: true }
-      - label: "URL (англійською)"
-        name: "slug"
-        widget: "string"
-        required: false
-        i18n: "duplicate"
-        hint: "Залиште пустим щоб Hugo сам згенерував (латиниця)"
-        pattern: ["^[a-z0-9-]*$", "Лише латиниця, цифри та -"]
+      - { label: "URL (автоматично)", name: "slug", widget: "hidden", required: false, i18n: "duplicate" }
       - { label: "Опис", name: "description", widget: "text", i18n: true }
-      - { label: "Альтернативні назви", name: "aliases", widget: "list", required: false, i18n: true }
+      - label: "Альтернативні назви"
+        name: "aliases"
+        widget: "list"
+        required: false
+        i18n: true
+        hint: "Додайте альтернативні назви для пошуку (мінімум 1)"
+        field: { label: "Альтернативна назва", name: "alias", widget: "string", i18n: true }
       - { label: "Вага сортування", name: "weight", widget: "number", default: 1, i18n: "duplicate" }
 
   - name: "products"
@@ -39,24 +39,18 @@ collections:
     folder: "site/content/catalog"
     create: true
     i18n: true
-    slug: "{{fields.title | slugify}}"
+    slug: "{{fields.title}}" 
     fields:
       - { label: "Назва товару", name: "title", widget: "string", i18n: true }
-      - label: "URL (англійською)"
-        name: "slug"
-        widget: "string"
-        required: false
-        i18n: "duplicate"
-        hint: "Залиште пустим щоб Hugo сам згенерував"
-        pattern: ["^[a-z0-9-]*$", "Лише латиниця, цифри та -"]
+      - { label: "URL (автоматично)", name: "slug", widget: "hidden", required: false, i18n: "duplicate" }
       - { label: "Опис", name: "description", widget: "text", i18n: true }
       - { label: "Дата створення", name: "date", widget: "datetime", i18n: "duplicate" }
       - label: "Категорія"
         name: "category"
         widget: "relation"
         collection: "categories"
-        search_fields: ["title"]
-        value_field: "slug"
+        search_fields: ["title", "aliases"]  
+        value_field: "{{slug}}"              
         display_fields: ["title"]
         i18n: true
       - { label: "ID товару", name: "product_id", widget: "string", i18n: "duplicate" }
@@ -79,24 +73,18 @@ collections:
     folder: "site/content/guides"
     create: true
     i18n: true
-    slug: "{{fields.title | slugify}}"
+    slug: "{{fields.title}}"
     fields:
       - { label: "Назва", name: "title", widget: "string", i18n: true }
-      - label: "URL (англійською)"
-        name: "slug"
-        widget: "string"
-        required: false
-        i18n: "duplicate"
-        hint: "Залиште пустим щоб Hugo сам згенерував"
-        pattern: ["^[a-z0-9-]*$", "Лише латиниця, цифри та -"]
+      - { label: "URL (автоматично)", name: "slug", widget: "hidden", required: false, i18n: "duplicate" }
       - { label: "Опис", name: "description", widget: "text", i18n: true }
       - { label: "Дата публікації", name: "date", widget: "datetime", i18n: "duplicate" }
       - label: "Категорія"
         name: "category"
         widget: "relation"
         collection: "categories"
-        search_fields: ["title"]
-        value_field: "slug"
+        search_fields: ["title", "aliases"]   
+        value_field: "{{slug}}"               
         display_fields: ["title"]
         i18n: true
       - label: "Теги"
@@ -114,21 +102,14 @@ collections:
     folder: "site/content/post"
     create: true
     i18n: true
-    slug: "{{fields.title | slugify}}"
+    slug: "{{fields.title}}"
     fields:
       - { label: "Title", name: "title", widget: "string", i18n: true }
-      - label: "URL (англійською)"
-        name: "slug"
-        widget: "string"
-        required: false
-        i18n: "duplicate"
-        hint: "Залиште пустим щоб Hugo сам згенерував"
-        pattern: ["^[a-z0-9-]*$", "Лише латиниця, цифри та -"]
+      - { label: "URL (автоматично)", name: "slug", widget: "hidden", required: false, i18n: "duplicate" }
       - { label: "Publish Date", name: "date", widget: "datetime", i18n: true }
       - { label: "Intro Blurb", name: "description", widget: "text", i18n: true }
       - { label: "Image", name: "image", widget: "image", required: false, i18n: "duplicate" }
       - { label: "Body", name: "body", widget: "markdown", i18n: true }
-
 
   - name: "pages"
     label: "Pages"
@@ -174,16 +155,10 @@ collections:
     folder: "site/content/faq"
     create: true
     i18n: true
-    slug: "{{fields.title | slugify}}"
+    slug: "{{fields.title}}" 
     fields:
       - { label: "Головний заголовок сторінки", name: "title", widget: "string", i18n: true }
-      - label: "URL (англійською)"
-        name: "slug"
-        widget: "string"
-        required: false
-        i18n: "duplicate"
-        hint: "Залиште пустим щоб Hugo сам згенерував"
-        pattern: ["^[a-z0-9-]*$", "Лише латиниця, цифри та -"]
+      - { label: "URL (автоматично)", name: "slug", widget: "hidden", required: false, i18n: "duplicate" }
       - { label: "Опис під заголовком", name: "description", widget: "text", i18n: true }
       - label: "Група 'Загальні питання'"
         name: "general_questions"
