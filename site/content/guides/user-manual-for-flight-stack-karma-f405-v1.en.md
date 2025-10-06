@@ -6,7 +6,7 @@ description: |-
   assembly ergonomics.
   KARMA F405V1 first step in the pursuit of excellence
 date: 2025-10-05T21:20:00.000+03:00
-category: flight-stacks
+category: politni-steky
 tags:
   - manual
 image: /img/steki-instructio.jpg
