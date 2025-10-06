@@ -1,19 +1,19 @@
 ---
 title: Flight Stack KARMA F405 V1
+slug: karma-f405-v1
 description: |-
   Flight stack, designed to improve, where possible, from
   reliable and effective technical solutions to improved
   assembly ergonomics.
   KARMA F405V1 first step in the pursuit of excellence.
-date: 2024-01-01
+date: 2025-10-06T17:16:00.000+03:00
 category: politni-steky
 product_id: "2233"
-image: /img/Stack-product.png
+image: /img/Generative Fill.png
 price: 2500
-currency: UAH
 draft: false
 layout: catalog
-slug: karma-f405-v1
+currency: UAH
 specs:
   - label: MCU
     value: STM32F405
@@ -23,7 +23,7 @@ specs:
     value: 50A
   - label: Dimensions
     value: 48.5 x 40 mm
-  - label: BEC
+  - label: WEIGHT
     value: 5V 4A
   - label: Powering
     value: "4s-6s "

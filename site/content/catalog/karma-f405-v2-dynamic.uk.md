@@ -7,7 +7,7 @@ description: >-
 date: 2025-10-02T22:12:00.000+03:00
 category: politni-steky
 product_id: "3231"
-image: /img/product.png
+image: /img/Generative Fill.png
 price: 1
 currency: грн
 draft: false

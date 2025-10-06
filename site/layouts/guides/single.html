@@ -10,8 +10,7 @@
         </a>
         <span class="text-[#ba0108] sm:inline px-[5px]">&rarr;</span>
         <a class="font-[Montserrat] text-[16px] lg:text-[20px]  font-normal text-[#ba0108] hover:underline leading-[120%]"
-          href="{{ " /knowledge-base/" | relLangURL }}">
-          {{ i18n "guides.breadcrumb.knowledge" }}
+          href="{{ "/knowledge-base/" | relLangURL }}">{{ i18n "guides.breadcrumb.knowledge" }}
         </a>
         <span class="text-[#ba0108] sm:inline px-[5px]">&rarr;</span>
         <span
@@ -47,12 +46,12 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-[1fr_250px] lg:grid-cols-[280px_1fr_220px] gap-[clamp(20px,4vw,24px)]">
+      <!-- Left sidebar - Categories -->
       <div class="bg-[#F6F6F6] max-w-[285px] h-full rounded-[5px] hidden lg:block">
         <aside class="relative pt-0 pr-0 pl-0">
           <div class="p-0">
             <nav id="left-category-nav" class="pt-[8px] fixed space-y-[20px]"
               style="width: 285px; max-height: calc(100vh - 200px); overflow-y: auto;">
-              {{- /* Категорії: крос-мовний список з пріоритетом поточної мови */ -}}
               {{- $currentLang := .Site.Language.Lang -}}
               {{- $allCats := slice -}}
               {{- range site.Sites -}}
@@ -74,7 +73,6 @@
               {{- end -}}
               {{- $categories = sort $categories "Params.weight" "asc" "Title" "asc" -}}
 
-              {{- /* Гіди: крос-мовний список з пріоритетом поточної мови */ -}}
               {{- $allGuides := slice -}}
               {{- range site.Sites -}}
               {{- $allGuides = $allGuides | append (where .RegularPages "Section" "guides") -}}
@@ -154,7 +152,7 @@
         <div class="hidden lg:flex relative max-w-[min(691px,90vw)] justify-center items-center mb-[28px]">
           <div class="flex flex-1 items-center">
             <div class="relative flex-1 rounded-[20px]">
-              <input type="text" placeholder="{{ i18n " guides.placeholder" }}"
+              <input type="text" placeholder="{{ i18n "guides.placeholder" }}"
                 class="h-[clamp(40px,6vw,47px)] w-full !rounded-[20px] border border-black pl-[clamp(12px,2vw,16px)] pr-[clamp(100px,15vw,120px)] text-[16px] outline-none focus:border-[#ba0108] bg-white" />
               <button
                 class="absolute z-10 right-0 top-1/2 -translate-y-1/2 w-[clamp(80px,12vw,99px)] h-[clamp(40px,6vw,47px)] rounded-[20px] bg-[#ba0108] flex items-center justify-center cursor-pointer hover:bg-[#a00007] transition-colors">
@@ -166,19 +164,20 @@
         </div>
         {{ if .Params.image }}
         <div class="relative overflow-hidden rounded-xl border border-[#E5E5E5]">
-          {{ $customImage := resources.Get .Params.image }} {{ if $customImage
-          }} {{ $desktop1x := $customImage.Resize "900x webp q80" }} {{
-          $desktop2x := $customImage.Resize "1800x webp q80" }} {{ $mobile1x :=
-          $customImage.Resize "480x webp q80" }} {{ $mobile2x :=
-          $customImage.Resize "960x webp q80" }}
+          {{ $customImage := resources.Get .Params.image }}
+          {{ if $customImage }}
+          {{ $desktop1x := $customImage.Fill "690x400 webp q85" }}
+          {{ $desktop2x := $customImage.Fill "1380x800 webp q85" }}
+          {{ $mobile1x := $customImage.Fill "480x300 webp q85" }}
+          {{ $mobile2x := $customImage.Fill "960x600 webp q85" }}
           <img src="{{ $desktop1x.RelPermalink }}"
             srcset="{{ $desktop1x.RelPermalink }} 1x, {{ $desktop2x.RelPermalink }} 2x" alt="{{ .Title }}"
-            class="hidden w-full h-auto sm:block" width="{{ $customImage.Width }}" height="{{ $customImage.Height }}"
-            loading="lazy" decoding="async" />
+            class="hidden w-full h-auto sm:block" width="690" height="400" loading="lazy" decoding="async" />
           <img src="{{ $mobile1x.RelPermalink }}"
             srcset="{{ $mobile1x.RelPermalink }} 1x, {{ $mobile2x.RelPermalink }} 2x" alt="{{ .Title }}"
-            class="w-full h-auto sm:hidden" width="{{ $customImage.Width }}" height="{{ $customImage.Height }}"
-            loading="lazy" decoding="async" />
+            class="w-full h-auto sm:hidden" width="480" height="300" loading="lazy" decoding="async" />
+          {{ else }}
+          <img src="{{ .Params.image }}" alt="{{ .Title }}" class="w-full h-auto" loading="lazy" decoding="async" />
           {{ end }}
         </div>
         {{ end }}
@@ -189,19 +188,20 @@
         <div class="markdown-content">{{ .Content }}</div>
       </div>
 
-      <aside class="hidden relative md:block pt-0 lg:pt-[27px]">
-        <nav>
-          <div class="h-full">
-            <nav id="right-toc-nav" class="fixed"
-              style="width: 200px; max-height: calc(100vh - 200px); overflow-y: auto;">
-              <h4 class="font-[Montserrat] text-[16px] font-medium text-[#ba0108] mb-[20px]">
-                {{ i18n "guides.toc.title" }}
-              </h4>
-              <ul class="space-y-[20px] text-[16px] font-normal font-[Montserrat]" id="page-toc">
-                <!-- Table of contents will be generated by JavaScript -->
-              </ul>
-            </nav>
-          </div>
+      <!-- Right sidebar - TOC -->
+      <aside class="hidden lg:block pt-0 lg:pt-[27px]" style="width:220px;">
+        <nav id="right-toc-nav" style="
+          position: fixed;
+          top: 172px;                 
+          right: calc((100% - 1280px) / 2);  
+          width: 220px;
+          max-height: calc(100vh - 160px);
+          overflow-y: auto;
+        ">
+          <h4 class="font-[Montserrat] text-[16px] font-medium text-[#ba0108] mb-[20px]">
+            {{ i18n "guides.toc.title" }}
+          </h4>
+          <ul class="space-y-[20px] text-[16px] font-normal font-[Montserrat]" id="page-toc"></ul>
         </nav>
       </aside>
     </div>

@@ -52,11 +52,11 @@ collections:
         value_field: "{{slug}}"
         display_fields: ["title"]
         i18n: true
-      - { label: "ID товару", name: "product_id", widget: "string", i18n: "duplicate" }
-      - { label: "Зображення", name: "image", widget: "image", i18n: "duplicate" }
-      - { label: "Ціна", name: "price", widget: "number", i18n: "duplicate" }
-      - { label: "Валюта", name: "currency", widget: "select", options: ["грн", "USD", "EUR"], default: "грн", i18n: "duplicate" }
-      - { label: "В наявності", name: "in_stock", widget: "boolean", default: true, i18n: "duplicate" }
+      - { label: "ID товару", name: "product_id", widget: "string", i18n: true }
+      - { label: "Зображення", name: "image", widget: "image", i18n: true }
+      - { label: "Ціна", name: "price", widget: "number", i18n: true }
+      - { label: "Валюта", name: "currency", widget: "select", options: ["грн", "USD", "EUR"], default: "грн", i18n: true }
+      - { label: "В наявності", name: "in_stock", widget: "boolean", default: true, i18n: true }
       - label: "Характеристики"
         name: "specs"
         widget: "list"

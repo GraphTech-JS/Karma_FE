@@ -8,7 +8,7 @@ description: >-
 date: 2025-10-02T22:12:00.000+03:00
 category: politni-steky
 product_id: "3231"
-image: /img/product.png
+image: /img/Generative Fill.png
 price: 1
 currency: грн
 in_stock: true
@@ -21,7 +21,7 @@ specs:
     value: 60А
   - label: Dimensions
     value: 48.5 х 40
-  - label: BEC
+  - label: ВАГА
     value: 5V 4A
   - label: Powering
     value: "4s-6s "

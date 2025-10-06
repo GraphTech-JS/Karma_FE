@@ -6,11 +6,11 @@ description: |-
   де це можливо, від надійних і ефективних технічних
   рішень до покращеної ергономіки складання.
   KARMA F405V1 перший крок у пошуках досконалості.
-date: 2025-10-05T21:20:00.000+03:00
-category: flight-stacks
+date: 2025-10-06T14:17:00.000+03:00
+category: politni-steky
 tags:
   - manual
-image: /img/steki-instructio.jpg
+image: /img/photo_2025-10-06_09-45-03.jpg
 draft: false
 ---
 <p class="text-center"><strong>Польотний стек, розроблений з метою удосконалення,

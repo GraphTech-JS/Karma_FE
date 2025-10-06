@@ -55,9 +55,9 @@ about.alt: "About us - Ukrainian high-tech manufacturing company"
 
 
 # Results Section
-results.customers: 'Satisfied<br class="block lg:hidden">&nbspcustomers'
-results.locations: 'Manufacturing<br class="block lg:hidden">&nbsplocations'
-results.destroyed: "<span class=\"block md:inline\">Destroyed enemy</span><br class=\"hidden md:block xl:block\"><span class=\"block md:inline md:pl-0\">equipment</span>"
+results.customers: 'Regular<br class="block lg:hidden">&nbspcustomers'
+results.locations: 'Production <br class="block lg:hidden">&nbspcapacity'
+results.destroyed: "<span class=\"block md:inline\">Technological </span><br class=\"hidden md:block xl:block\"><span class=\"block md:inline md:pl-0\">lines</span>"
 
 
 # Product catalog section
@@ -101,12 +101,12 @@ contact.form.success: "Message sent successfully!\nWe will contact you soon."
 contact.form.error.name: "Please enter your name"
 contact.form.error.phone: "Please enter a valid phone number"
 contact.department: "Contact department"
-contact.form.phone: "+380 95 61 56713"
+contact.form.phone: "+380 63 202 57 77"
 contact.form.email: "Info@karma.flights"
 
 # Footer
 footer.contact.title: "Contacts"
-footer.contact.phone: "+380 95 61 56713"
+footer.contact.phone: "+380 63 202 57 77"
 footer.contact.phone.label: "Contact department"
 footer.menu.title: "Menu"
 footer.menu.catalog: "Catalog"
