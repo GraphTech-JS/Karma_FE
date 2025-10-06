@@ -35,3 +35,25 @@
   margin-right: auto;
   margin-left: auto;
 }
+
+/* Background Line Elements */
+.line-left {
+  background-image: url('/line-left.svg');
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: contain;
+}
+
+.line-right {
+  background-image: url('/line-right.svg');
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: contain;
+}
+
+.line-center {
+  background-image: url('/line-center.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}

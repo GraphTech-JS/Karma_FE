@@ -42,11 +42,35 @@
 {{- end -}}
 
 <section class="overflow-hidden relative bg-white">
+  {{ with resources.Get "img/bg-el-1.png" }}
+  {{ $bgEl1Mobile := .Resize "200x185 webp q70" }}
+  {{ $bgEl1Desktop := .Resize "325x298 webp q80" }}
+  <picture>
+    <source media="(max-width:767px)" srcset="{{ $bgEl1Mobile.RelPermalink }}" type="image/webp">
+    <source media="(min-width:768px)" srcset="{{ $bgEl1Desktop.RelPermalink }}" type="image/webp">
+    <img src="{{ $bgEl1Desktop.RelPermalink }}" alt="" aria-hidden="true"
+      class="absolute z-[1] right-[-40px] lg:right-[-14px] xl:right-0 top-[-42px] md:top-[-65px] lg:top-[-60px] xl:top-0 w-[201px] h-[185px] md:w-[325px] md:h-[298px]"
+      loading="lazy" decoding="async" width="325" height="298" />
+  </picture>
+  {{ end }}
+
+  {{ with resources.Get "img/bg-el-2.png" }}
+  {{ $bgEl2Mobile := .Resize "171x199 webp q70" }}
+  {{ $bgEl2Desktop := .Resize "340x360 webp q80" }}
+  <picture>
+    <source media="(max-width:767px)" srcset="{{ $bgEl2Mobile.RelPermalink }}" type="image/webp">
+    <source media="(min-width:768px)" srcset="{{ $bgEl2Desktop.RelPermalink }}" type="image/webp">
+    <img src="{{ $bgEl2Desktop.RelPermalink }}" alt="" aria-hidden="true"
+      class="absolute z-[1] hidden md:block bottom-0 left-0 w-[171px] h-[199px] md:w-[217px] md:h-[253px] lg:w-[266px] lg:h-[310px] xl:w-[340px] xl:h-[360px]"
+      loading="lazy" decoding="async" width="340" height="360" />
+  </picture>
+  {{ end }}
+
   <div
     class="w-full max-w-[1280px] flex flex-col mx-auto px-[clamp(20px,4vw,40px)] pt-[20px] md:pt-[40px] relative z-[2]">
 
     <!-- Breadcrumbs -->
-    <nav aria-label="{{ i18n " product.hero.aria.breadcrumb" }}"
+    <nav aria-label="{{ i18n "product.hero.aria.breadcrumb" }}"
       class="flex flex-row items-start font-[Montserrat] gap-[clamp(8px,2vw,16px)] mb-[40px]">
       <ol class="flex flex-wrap items-center">
         <li>
