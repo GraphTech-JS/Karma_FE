@@ -16,7 +16,7 @@ draft: false
 reliable and effective technical solutions to improved
 assembly ergonomics.
 KARMA F405V1 first step in the pursuit of excellence.</strong></p>
-<h2>CHARACTERISTICS</h2>
+<h2>CHARACTERISTICS OF FLIGHT STACKS KARMA F405V1</h2>
 
 <style>
 body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:10px; } 

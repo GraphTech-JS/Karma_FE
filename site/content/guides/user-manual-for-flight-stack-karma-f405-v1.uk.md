@@ -17,7 +17,7 @@ draft: false
 де це можливо, від надійних і ефективних технічних
 рішень до покращеної ергономіки складання.
 KARMA F405V1 перший крок у пошуках досконалості.</strong></p>
-<h2>ХАРАКТЕРИСТИКИ</h2>
+<h2>ХАРАКТЕРИСТИКИ ПОЛІТНИХ СТЕКІВ KARMA F405V1</h2>
 
 <style>
 body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:10px; } 
