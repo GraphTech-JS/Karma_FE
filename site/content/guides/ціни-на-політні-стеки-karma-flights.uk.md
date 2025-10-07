@@ -69,7 +69,7 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 
 <h3 class="text-center">ТАБЛИЦІ РОЗРАХУНКУ ВАРТОСТІ ПОЛІТНИХ СТЕКІВ </h3>
 
-<div class="text-center">
+<div class="flex  items-center justify-center flex-col">
 
 ![таблиця 1: ціни на політні стеки ](/img/price-1.jpg "вартість польотників")
 
