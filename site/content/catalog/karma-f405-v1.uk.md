@@ -9,7 +9,7 @@ description: |-
 date: 2025-10-06T17:16:00.000+03:00
 category: politni-steky
 product_id: "2233"
-image: /img/Generative Fill.png
+image: /img/flight-stack-karma.png
 price: 2500
 draft: false
 layout: product
@@ -17,13 +17,15 @@ currency: грн
 specs:
   - label: MCU
     value: STM32F405
+  - label: IMU
+    value: ICM-42688-P
   - label: Гіроскоп/акселерометр
     value: ICM-42688-P
+  - label: Барометр
+    value: BMP280
   - label: Робочий струм
-    value: 50А
-  - label: Розмір
-    value: 48.5 x 40 мм
-  - label: ВАГА
+    value: 50A
+  - label: "BEC "
     value: 5V 4A
   - label: Живлення
     value: "4s-6s "
