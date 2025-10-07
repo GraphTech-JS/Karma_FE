@@ -2,6 +2,85 @@
 {{- $context := .context | default . -}}
 {{- $productName := $product.name | default $context.Title | default (i18n "product.hero.title.fallback") -}}
 
+{{- $productType := "v1" -}}
+{{- if strings.Contains (lower $productName) "v2" -}}
+{{- $productType = "v2" -}}
+{{- else if strings.Contains (lower $productName) "60a" -}}
+{{- $productType = "v1-60a" -}}
+{{- end -}}
+
+{{- $specsData := dict -}}
+{{- if eq $productType "v1" -}}
+{{- $specsData = dict
+"left" (dict
+"mcu" "STM32F405"
+"imu" "ICM-42688-P"
+"barometer" "BMP280"
+"bec" "5V 4A"
+"mount" "30.5 x 30.5"
+"dimensions" "48.5 x 40"
+"camSwitch" "так"
+"blackbox" "MicroSD"
+"lcFilterCam" "так"
+"lcFilterVtx" "так"
+"allowedBatteryCurrent" "2.4A"
+)
+"right" (dict
+"power" "4s-6s"
+"current" "4x50A (4x65A піковий)"
+"mcu" "72Mhz 32Bit"
+"firmware" "AM32"
+"mount" "30.5 x 30.5"
+)
+-}}
+{{- else if eq $productType "v2" -}}
+{{- $specsData = dict
+"left" (dict
+"mcu" "STM32F405"
+"imu" "ICM-42688-P"
+"barometer" "BMP280"
+"bec" "5V 4A"
+"mount" "30.5 x 30.5"
+"dimensions" "48.5 x 40"
+"camSwitch" "так"
+"blackbox" "MicroSD"
+"lcFilterCam" "так"
+"lcFilterVtx" "так"
+"allowedBatteryCurrent" "2.4A"
+)
+"right" (dict
+"power" "4s-6s"
+"current" "4x50A (4x65A піковий)"
+"mcu" "72Mhz 32Bit"
+"firmware" "AM32"
+"mount" "30.5 x 30.5"
+)
+-}}
+{{- else if eq $productType "v1-60a" -}}
+{{- $specsData = dict
+"left" (dict
+"mcu" "STM32F405"
+"imu" "ICM-42688-P"
+"barometer" "BMP280"
+"bec" "5V 4A"
+"mount" "30.5 x 30.5"
+"dimensions" "48.5 x 40"
+"camSwitch" "так"
+"blackbox" "MicroSD"
+"lcFilterCam" "так"
+"lcFilterVtx" "так"
+"allowedBatteryCurrent" "2.4A"
+)
+"right" (dict
+"power" "4s-6s"
+"current" "4x60A (4x75A піковий)"
+"mcu" "72Mhz 32Bit"
+"firmware" "AM32"
+"mount" "30.5 x 30.5"
+)
+-}}
+{{- end -}}
+
 <section class="bg-white my-[60px] lg:mb-[80px] lg:mt-[70px] relative overflow-hidden spec-section"
   aria-labelledby="specifications-heading">
 
@@ -25,14 +104,15 @@
   </div>
 
   <div class="w-full max-w-[1280px] mx-auto relative z-[2] px-[20px]">
-    <h2 id="specifications-heading"
-      class="font-[Unbounded] text-[clamp(24px,4vw,48px)] font-medium text-black text-center mb-[25px] uppercase">
-      {{i18n "product.specs.title" (dict "product" $productName)}}
-    </h2>
 
     <!-- Mobile Layout -->
     <div class="block md:hidden">
       <!-- Mobile Left Table -->
+      <div class="flex justify-center mb-[20px] w-full">
+        <h3 class="font-[Unbounded] text-[clamp(20px,3vw,32px)] font-medium text-black text-left uppercase">
+          {{i18n "product.specs.table.flightController"}}
+        </h3>
+      </div>
       <div class="flex justify-center mb-[60px] w-full">
         <table
           class="max-w-[500px] md:max-w-[410px] w-full border-separate border-spacing-0 border border-black rounded-[5px] overflow-hidden"
@@ -45,63 +125,78 @@
               <td
                 class="font-[Inter] text-[16px] font-medium text-[#020303] h-[51px] px-[clamp(16px,3vw,20px)] py-[8px] border-b border-black text-center">
                 {{i18n "product.specs.field.mcu"}}<br />
-                <span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
+                <span class="font-normal text-[20px] font-[Montserrat]">{{ index $specsData.left "mcu" }}</span>
               </td>
             </tr>
             <tr>
               <td
                 class="font-[Inter] text-[16px] font-medium text-[#020303] h-[51px] px-[clamp(16px,3vw,20px)] py-[8px] border-b border-black text-center">
-                {{i18n "product.specs.field.mcu"}}<br />
-                <span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
+                {{i18n "product.specs.field.imu"}}<br />
+                <span class="font-normal text-[20px] font-[Montserrat]">{{ index $specsData.left "imu" }}</span>
               </td>
             </tr>
             <tr>
               <td
                 class="font-[Inter] text-[16px] font-medium text-[#020303] h-[51px] px-[clamp(16px,3vw,20px)] py-[8px] border-b border-black text-center">
-                {{i18n "product.specs.field.mcu"}}<br />
-                <span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
+                {{i18n "product.specs.field.barometer"}}<br />
+                <span class="font-normal text-[20px] font-[Montserrat]">{{ index $specsData.left "barometer" }}</span>
               </td>
             </tr>
             <tr>
               <td
                 class="font-[Inter] text-[16px] font-medium text-[#020303] h-[51px] px-[clamp(16px,3vw,20px)] py-[8px] border-b border-black text-center">
-                {{i18n "product.specs.field.mcu"}}<br />
-                <span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
+                {{i18n "product.specs.field.bec"}}<br />
+                <span class="font-normal text-[20px] font-[Montserrat]">{{ index $specsData.left "bec" }}</span>
               </td>
             </tr>
             <tr>
               <td
                 class="font-[Inter] text-[16px] font-medium text-[#020303] h-[51px] px-[clamp(16px,3vw,20px)] py-[8px] border-b border-black text-center">
-                {{i18n "product.specs.field.mcu"}}<br />
-                <span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
+                {{i18n "product.specs.field.mount"}}<br />
+                <span class="font-normal text-[20px] font-[Montserrat]">{{ index $specsData.left "mount" }}</span>
               </td>
             </tr>
             <tr>
               <td
                 class="font-[Inter] text-[16px] font-medium text-[#020303] h-[51px] px-[clamp(16px,3vw,20px)] py-[8px] border-b border-black text-center">
-                {{i18n "product.specs.field.mcu"}}<br />
-                <span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
+                {{i18n "product.specs.field.dimensions"}}<br />
+                <span class="font-normal text-[20px] font-[Montserrat]">{{ index $specsData.left "dimensions" }}</span>
               </td>
             </tr>
             <tr>
               <td
                 class="font-[Inter] text-[16px] font-medium text-[#020303] h-[51px] px-[clamp(16px,3vw,20px)] py-[8px] border-b border-black text-center">
-                {{i18n "product.specs.field.mcu"}}<br />
-                <span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
+                {{i18n "product.specs.field.camSwitch"}}<br />
+                <span class="font-normal text-[20px] font-[Montserrat]">{{ index $specsData.left "camSwitch" }}</span>
               </td>
             </tr>
             <tr>
               <td
                 class="font-[Inter] text-[16px] font-medium text-[#020303] h-[51px] px-[clamp(16px,3vw,20px)] py-[8px] border-b border-black text-center">
-                {{i18n "product.specs.field.mcu"}}<br />
-                <span class="font-normal text-[20px] font-[Montserrat]">STM32F405</span>
+                {{i18n "product.specs.field.blackbox"}}<br />
+                <span class="font-normal text-[20px] font-[Montserrat]">{{ index $specsData.left "blackbox" }}</span>
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="font-[Inter] text-[16px] font-medium text-[#020303] h-[51px] px-[clamp(16px,3vw,20px)] py-[8px] border-b border-black text-center">
+                {{i18n "product.specs.field.lcFilterCam"}}<br />
+                <span class="font-normal text-[20px] font-[Montserrat]">{{ index $specsData.left "lcFilterCam" }}</span>
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="font-[Inter] text-[16px] font-medium text-[#020303] h-[51px] px-[clamp(16px,3vw,20px)] py-[8px] border-b border-black text-center">
+                {{i18n "product.specs.field.lcFilterVtx"}}<br />
+                <span class="font-normal text-[20px] font-[Montserrat]">{{ index $specsData.left "lcFilterVtx" }}</span>
               </td>
             </tr>
             <tr>
               <td
                 class="font-[Inter] text-[16px] font-medium text-[#020303] h-[51px] px-[clamp(16px,3vw,20px)] py-[8px] text-center">
                 {{i18n "product.specs.field.allowedBatteryCurrent"}}<br />
-                <span class="font-normal text-[20px] font-[Montserrat]">2.4 A</span>
+                <span class="font-normal text-[20px] font-[Montserrat]">{{ index $specsData.left "allowedBatteryCurrent"
+                  }}</span>
               </td>
             </tr>
           </tbody>
@@ -109,6 +204,11 @@
       </div>
 
       <!-- Mobile Right Table -->
+      <div class="flex justify-center mb-[20px] w-full">
+        <h3 class="font-[Unbounded] text-[clamp(20px,3vw,32px)] font-medium text-black text-left uppercase">
+          {{i18n "product.specs.table.speedController"}}
+        </h3>
+      </div>
       <div class="flex justify-center mb-[60px] w-full">
         <table
           class="max-w-[500px] md:max-w-[410px] w-full border-separate border-spacing-0 border border-black rounded-[5px] overflow-hidden"
@@ -124,7 +224,7 @@
               </td>
               <td
                 class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
-                4s-6s
+                {{ index $specsData.right "power" }}
               </td>
             </tr>
             <tr>
@@ -134,7 +234,7 @@
               </td>
               <td
                 class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
-                4x50A
+                {{ index $specsData.right "current" }}
               </td>
             </tr>
             <tr>
@@ -144,7 +244,7 @@
               </td>
               <td
                 class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
-                72Mhz 32Bit
+                {{ index $specsData.right "mcu" }}
               </td>
             </tr>
             <tr>
@@ -154,7 +254,7 @@
               </td>
               <td
                 class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] border-b border-black w-[clamp(120px,35vw,175px)] text-start md:text-center">
-                AM32
+                {{ index $specsData.right "firmware" }}
               </td>
             </tr>
             <tr>
@@ -164,7 +264,7 @@
               </td>
               <td
                 class="font-[Montserrat] text-[16px] text-[#020303] h-[44px] pl-[30px] py-[8px] w-[clamp(120px,35vw,175px)] text-start md:text-center">
-                30.5 x 30.5
+                {{ index $specsData.right "mount" }}
               </td>
             </tr>
           </tbody>
@@ -173,18 +273,19 @@
 
       <!-- Mobile Product Image -->
       <div class="flex justify-center">
-        {{ $productDetailsMobile := resources.Get "img/product-details-v2.png" }}
+        {{ $productDetailsMobile := resources.Get "img/flight-stack-Karma.png" }}
         {{ if $productDetailsMobile }}
         {{ $mob := $productDetailsMobile.Resize "372x211 webp q75" }}
         {{ $tab := $productDetailsMobile.Resize "480x270 webp q80" }}
         <picture>
           <source media="(max-width: 480px)" srcset="{{ $mob.RelPermalink }}" type="image/webp">
           <source media="(min-width: 481px)" srcset="{{ $tab.RelPermalink }}" type="image/webp">
-          <img src="{{ $tab.RelPermalink }}" alt="{{i18n "product.specs.alt.details" (dict "product" $productName)}}"
+          <img src="{{ $tab.RelPermalink }}" alt="{{i18n " product.specs.alt.details" (dict "product" $productName)}}"
             class="object-contain" loading="lazy" decoding="async" width="480" height="270" />
         </picture>
         {{ else }}
-        <img src="/img/product-details-v2.png" alt="{{i18n "product.specs.alt.details" (dict "product" $productName)}}" class="object-contain" loading="lazy" decoding="async" width="480" height="270" />
+        <img src="/img/flight-stack-Karma.png" alt="{{i18n " product.specs.alt.details" (dict "product" $productName)}}"
+          class="object-contain" loading="lazy" decoding="async" width="480" height="270" />
         {{ end }}
       </div>
     </div>
@@ -193,9 +294,12 @@
     <div class="hidden md:flex flex-row justify-between items-start gap-[clamp(40px,6vw,80px)]">
       <!-- Left Table -->
       <div class="flex-1 w-full">
+        <h3 class="font-[Unbounded] text-[clamp(20px,3vw,32px)] font-medium text-black text-left mb-[20px] uppercase">
+          {{i18n "product.specs.table.flightController"}}
+        </h3>
         <table
           class="w-full h-[588px] border-separate border-spacing-0 border border-black rounded-[5px] overflow-hidden"
-          role="table" aria-label="{{i18n "product.specs.aria.left" (dict "product" $productName)}}">
+          role="table" aria-label="{{i18n " product.specs.aria.left" (dict "product" $productName)}}">
           <caption class="sr-only">
             {{i18n "product.specs.caption.left" (dict "product" $productName)}}
           </caption>
@@ -207,77 +311,97 @@
               </td>
               <td
                 class="font-[Montserrat] text-[20px] text-[#020303] h-[51px] px-[19px] lg:px-[34px] border-b border-black">
-                STM32F405
+                {{ index $specsData.left "mcu" }}
               </td>
             </tr>
             <tr>
               <td
                 class="font-[Inter] text-[20px] font-medium text-[#020303] h-[51px] px-[19px] lg:px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
-                {{i18n "product.specs.field.mcu"}}
+                {{i18n "product.specs.field.imu"}}
               </td>
               <td
                 class="font-[Montserrat] text-[20px] text-[#020303] h-[51px] px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
-                STM32F405
+                {{ index $specsData.left "imu" }}
               </td>
             </tr>
             <tr>
               <td
                 class="font-[Inter] text-[20px] font-medium text-[#020303] h-[51px] px-[19px] lg:px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
-                {{i18n "product.specs.field.mcu"}}
+                {{i18n "product.specs.field.barometer"}}
               </td>
               <td
                 class="font-[Montserrat] text-[20px] text-[#020303] h-[51px] px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
-                STM32F405
+                {{ index $specsData.left "barometer" }}
               </td>
             </tr>
             <tr>
               <td
                 class="font-[Inter] text-[20px] font-medium text-[#020303] h-[51px] px-[19px] lg:px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
-                {{i18n "product.specs.field.mcu"}}
+                {{i18n "product.specs.field.bec"}}
               </td>
               <td
                 class="font-[Montserrat] text-[20px] text-[#020303] h-[51px] px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
-                STM32F405
+                {{ index $specsData.left "bec" }}
               </td>
             </tr>
             <tr>
               <td
                 class="font-[Inter] text-[20px] font-medium text-[#020303] h-[51px] px-[19px] lg:px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
-                {{i18n "product.specs.field.mcu"}}
+                {{i18n "product.specs.field.mount"}}
               </td>
               <td
                 class="font-[Montserrat] text-[20px] text-[#020303] h-[51px] px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
-                STM32F405
+                {{ index $specsData.left "mount" }}
               </td>
             </tr>
             <tr>
               <td
                 class="font-[Inter] text-[20px] font-medium text-[#020303] h-[51px] px-[19px] lg:px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
-                {{i18n "product.specs.field.mcu"}}
+                {{i18n "product.specs.field.dimensions"}}
               </td>
               <td
                 class="font-[Montserrat] text-[20px] text-[#020303] h-[51px] px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
-                STM32F405
+                {{ index $specsData.left "dimensions" }}
               </td>
             </tr>
             <tr>
               <td
                 class="font-[Inter] text-[20px] font-medium text-[#020303] h-[51px] px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
-                {{i18n "product.specs.field.mcu"}}
+                {{i18n "product.specs.field.camSwitch"}}
               </td>
               <td
                 class="font-[Montserrat] text-[20px] text-[#020303] h-[51px] px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
-                STM32F405
+                {{ index $specsData.left "camSwitch" }}
               </td>
             </tr>
             <tr>
               <td
                 class="font-[Inter] text-[20px] font-medium text-[#020303] h-[51px] px-[19px] lg:px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
-                {{i18n "product.specs.field.mcu"}}
+                {{i18n "product.specs.field.blackbox"}}
               </td>
               <td
                 class="font-[Montserrat] text-[20px] text-[#020303] h-[51px] px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
-                STM32F405
+                {{ index $specsData.left "blackbox" }}
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="font-[Inter] text-[20px] font-medium text-[#020303] h-[51px] px-[19px] lg:px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
+                {{i18n "product.specs.field.lcFilterCam"}}
+              </td>
+              <td
+                class="font-[Montserrat] text-[20px] text-[#020303] h-[51px] px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
+                {{ index $specsData.left "lcFilterCam" }}
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="font-[Inter] text-[20px] font-medium text-[#020303] h-[51px] px-[19px] lg:px-[34px] border-r border-black border-b border-black w-[clamp(200px,20vw,255px)]">
+                {{i18n "product.specs.field.lcFilterVtx"}}
+              </td>
+              <td
+                class="font-[Montserrat] text-[20px] text-[#020303] h-[51px] px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)] border-b border-black">
+                {{ index $specsData.left "lcFilterVtx" }}
               </td>
             </tr>
             <tr>
@@ -287,7 +411,7 @@
               </td>
               <td
                 class="font-[Montserrat] text-[20px] text-[#020303] h-[51px] px-[19px] lg:px-[34px] w-[clamp(200px,20vw,255px)]">
-                2.4 A
+                {{ index $specsData.left "allowedBatteryCurrent" }}
               </td>
             </tr>
           </tbody>
@@ -296,9 +420,12 @@
 
       <!-- Right Table -->
       <div class="flex-1 w-full">
+        <h3 class="font-[Unbounded] text-[clamp(20px,3vw,32px)] font-medium text-black text-left mb-[20px] uppercase">
+          {{i18n "product.specs.table.speedController"}}
+        </h3>
         <table
           class="w-full border-separate border-spacing-0 border border-black mb-[clamp(20px,4vw,32px)] rounded-[5px] overflow-hidden"
-          role="table" aria-label="{{i18n "product.specs.aria.right" (dict "product" $productName)}}">
+          role="table" aria-label="{{i18n " product.specs.aria.right" (dict "product" $productName)}}">
           <caption class="sr-only">
             {{i18n "product.specs.caption.right" (dict "product" $productName)}}
           </caption>
@@ -310,7 +437,7 @@
               </td>
               <td
                 class="font-[Montserrat] text-[20px] text-[#020303] h-[44px] px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black">
-                4s-6s
+                {{ index $specsData.right "power" }}
               </td>
             </tr>
             <tr>
@@ -320,7 +447,7 @@
               </td>
               <td
                 class="font-[Montserrat] text-[20px] text-[#020303] h-[44px] px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black">
-                4x50A
+                {{ index $specsData.right "current" }}
               </td>
             </tr>
             <tr>
@@ -330,7 +457,7 @@
               </td>
               <td
                 class="font-[Montserrat] text-[20px] text-[#020303] h-[44px] px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black">
-                72Mhz 32Bit
+                {{ index $specsData.right "mcu" }}
               </td>
             </tr>
             <tr>
@@ -340,7 +467,7 @@
               </td>
               <td
                 class="font-[Montserrat] text-[20px] text-[#020303] h-[44px] px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)] border-b border-black">
-                AM32
+                {{ index $specsData.right "firmware" }}
               </td>
             </tr>
             <tr>
@@ -350,7 +477,7 @@
               </td>
               <td
                 class="font-[Montserrat] text-[20px] text-[#020303] h-[44px] px-[clamp(40px,6vw,48px)] w-[clamp(200px,20vw,255px)]">
-                30.5 x 30.5
+                {{ index $specsData.right "mount" }}
               </td>
             </tr>
           </tbody>
@@ -358,17 +485,21 @@
 
         <!-- Product Image -->
         <div class="flex justify-center">
-          {{ $productDetailsDesktop := resources.Get "img/product-details-v2.png" }}
+          {{ $productDetailsDesktop := resources.Get "img/flight-stack-Karma.png" }}
           {{ if $productDetailsDesktop }}
           {{ $desktop := $productDetailsDesktop.Resize "576x324 webp q80" }}
           {{ $large := $productDetailsDesktop.Resize "768x432 webp q85" }}
           <picture>
             <source media="(max-width: 1199px)" srcset="{{ $desktop.RelPermalink }}" type="image/webp">
             <source media="(min-width: 1200px)" srcset="{{ $large.RelPermalink }}" type="image/webp">
-            <img src="{{ $large.RelPermalink }}" alt="{{i18n "product.specs.alt.details" (dict "product" $productName)}}" class="object-contain w-full h-auto" loading="lazy" decoding="async" width="768" height="432" />
+            <img src="{{ $large.RelPermalink }}" alt="{{i18n " product.specs.alt.details" (dict "product"
+              $productName)}}" class="object-contain w-full h-auto" loading="lazy" decoding="async" width="768"
+              height="432" />
           </picture>
           {{ else }}
-          <img src="/img/product-details-v2.png" alt="{{i18n "product.specs.alt.details" (dict "product" $productName)}}" class="object-contain w-full h-auto" loading="lazy" decoding="async" width="768" height="432" />
+          <img src="/img/flight-stack-Karma.png" alt="{{i18n " product.specs.alt.details" (dict "product"
+            $productName)}}" class="object-contain w-full h-auto" loading="lazy" decoding="async" width="768"
+            height="432" />
           {{ end }}
         </div>
       </div>

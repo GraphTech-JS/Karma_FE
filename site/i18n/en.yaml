@@ -277,6 +277,27 @@ product.specs.field.mount:
   other: "Mounting"
 product.specs.field.allowedBatteryCurrent:
   other: "Allowed battery current"
+product.specs.field.imu:
+  other: "IMU"
+product.specs.field.barometer:
+  other: "Barometer"
+product.specs.field.bec:
+  other: "BEC"
+product.specs.field.dimensions:
+  other: "Dimensions"
+product.specs.field.camSwitch:
+  other: "CamSwitch"
+product.specs.field.blackbox:
+  other: "Blackbox"
+product.specs.field.lcFilterCam:
+  other: "LC-filter camera power"
+product.specs.field.lcFilterVtx:
+  other: "LC-filter VTX power"
+
+product.specs.table.flightController:
+  other: "FLIGHT CONTROLLER"
+product.specs.table.speedController:
+  other: "SPEED CONTROLLER"
 
 product.specs.alt.details:
   other: "Detailed view of {{ .product }} with technical specifications"
@@ -312,7 +333,7 @@ product.cost.aria.list:
 product.cost.table.title:
   other: "Depending on volumes and<br />procurement channels"
 product.cost.table.warehouse:
-  other: "Warehouse"
+  other: "Stock"
 product.cost.table.contracting:
   other: "Contracting"
 
@@ -330,6 +351,13 @@ product.cost.table3.aria:
   other: "Discount table for large orders"
 product.cost.table3.caption:
   other: "Discounts for large orders of {{ .product }}"
+
+product.cost.table1.title:
+  other: "Regarding volumes and ways of acquisition"
+product.cost.table2.title:
+  other: "BOX. In absolute values relative to the recommended price"
+product.cost.table3.title:
+  other: "OEM. In absolute values relative to the recommended price"
 
 product.cost.note:
   other: "We aim to make pricing transparent. Prices depend on order volumes and procurement channels"

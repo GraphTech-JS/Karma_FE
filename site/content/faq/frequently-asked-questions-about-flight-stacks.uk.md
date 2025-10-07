@@ -7,28 +7,39 @@ general_questions:
   title: Найпоширеніші запитання про політні стеки
   questions:
     - question: Що входить у комплект політних стеків?
-      answer: |-
-        У комплект входять:
-
-        Контролер польоту
-
-        Регулятор обертів
-
-        Конденсатори 1500uF 50V - 2 шт.
-
-        Роз’єм XT60 -1 шт.
-
-        Проводи живлення 12AWG 10см - 2 шт.
-
-        Провід сигнальний FC<>ESC (JST SH 8p) - 1 шт.
-
-        Провід надлишкового живлення FC<>ESC (JST SH 4p) - 1 шт.
-
-        Силіконові поглиначі вібрації - 8 шт.
-
-        Гайка - 4 шт.
-
-        Гвинт - 4 шт.
+      answer: |
+        <div class="kit-container">
+        <div class="kit-title">У комплект входять:</div>
+        <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        <li class="kit-item">
+                Контролер польоту
+        </li>
+        <li class="kit-item">
+         Регулятор обертів
+         </li>
+        <li class="kit-item">
+         Конденсатори 1500uF 50V <span style="color: #6b7280; font-weight: 500;">(2 шт.)</span>
+        </li>
+        <li class="kit-item">
+         Роз'єм XT60 <span style="color: #6b7280; font-weight: 500;">(1 шт.)</span>
+        </li>
+        <li class="kit-item">
+         Проводи живлення 12AWG 10см <span style="color: #6b7280; font-weight: 500;">(2 шт.)</span>
+        </li>
+        <li class="kit-item">
+         Провід сигнальний FC↔ESC <span style="color: #6b7280; font-weight: 500;">(JST SH 8p, 1 шт.)</span>
+        </li>
+        <li class="kit-item">
+         Провід надлишкового живлення FC↔ESC <span style="color: #6b7280; font-weight: 500;">(JST SH 4p, 1 шт.)</span>
+        </li>
+        <li class="kit-item">
+         Силіконові поглиначі вібрації <span style="color: #6b7280; font-weight: 500;">(8 шт.)</span>
+        </li>
+        <li class="kit-item">
+         Кріплення: гайки та гвинти <span style="color: #6b7280; font-weight: 500;">(по 4 шт.)</span>
+        </li>
+        </ul>
+        </div>
     - question: Куди звертатись за тех.  допомогою якщо виникнуть питання?
       answer: В групі Signal ви можете завжди отримати консультацію від найкращих
         спеціалістів. Також можете звернутись до нас за номером (063) 202 57 77.

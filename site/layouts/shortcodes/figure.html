@@ -1,20 +1,27 @@
 {{ $align := .Get "align" | default "right" }}
 {{ $width := .Get "width" | default "40%" }}
-{{ $style := printf "margin: 10px; width: %s;" $width }}
 
-{{ if or (eq $align "left") (eq $align "right") }}
-  {{ $style = printf "float: %s; %s" $align $style }}
-{{ else if eq $align "center" }}
-  {{ $style = printf "display: block; margin-left: auto; margin-right: auto; %s" $style }}
-{{ end }}
+{{ if eq $align "center" }}
+<div style="text-align: center; margin: 20px 0;">
+  <figure style="display: inline-block; margin: 0; width: {{ $width }};">
+    <img src="{{ .Get "src" }}" alt="{{ .Get "alt" | default "Image" }}" style="max-width: 100%; width: {{ .Get "img_width" | default "100%" }}; margin-bottom: 8px; object-fit: contain; display: block;">
+    {{ if .Get "caption" }}
+    <figcaption style="margin-top: 4px; font-size: 0.875rem; text-align: center; color: #6b7280;">
+      {{ .Get "caption" }}
+    </figcaption>
+    {{ end }}
+  </figure>
+</div>
+{{ else }}
+{{ $style := printf "margin: 10px; width: %s;" $width }}
+{{ $style = printf "float: %s; %s" $align $style }}
 
 <figure style="{{ $style | safeCSS }}">
-  <img src="{{ .Get "src" }}" alt="{{ .Get "alt" | default "Image" }}"
-    style="max-width: 100%; width: {{ .Get "img_width" | default "100%" }}; margin-bottom: 8px; object-fit: contain; display: inline-block;">
+  <img src="{{ .Get "src" }}" alt="{{ .Get "alt" | default "Image" }}" style="max-width: 100%; width: {{ .Get "img_width" | default "100%" }}; margin-bottom: 8px; object-fit: contain; display: inline-block;">
   {{ if .Get "caption" }}
   <figcaption style="margin-top: 4px; font-size: 0.875rem; text-align: center; color: #6b7280;">
     {{ .Get "caption" }}
   </figcaption>
   {{ end }}
 </figure>
-
+{{ end }}

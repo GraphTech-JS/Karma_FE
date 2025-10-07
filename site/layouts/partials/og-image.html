@@ -1,0 +1,38 @@
+{{- $ogImage := "" -}}
+
+{{- if .Params.ogImage -}}
+{{- $ogImage = .Params.ogImage | absURL -}}
+{{- else if .Params.image -}}
+{{- $ogImage = .Params.image | absURL -}}
+{{- else -}}
+{{- $resources := .Resources.ByType "image" -}}
+{{- if $resources -}}
+{{- $featureImage := $resources.GetMatch "*feature*" -}}
+{{- if $featureImage -}}
+{{- $ogImage = $featureImage.RelPermalink | absURL -}}
+{{- else -}}
+{{- $coverImage := $resources.GetMatch "*cover*" -}}
+{{- if $coverImage -}}
+{{- $ogImage = $coverImage.RelPermalink | absURL -}}
+{{- else -}}
+{{- $firstImage := index $resources 0 -}}
+{{- if $firstImage -}}
+{{- $ogImage = $firstImage.RelPermalink | absURL -}}
+{{- end -}}
+{{- end -}}
+{{- end -}}
+{{- end -}}
+
+{{- if not $ogImage -}}
+{{- $contentImages := findRE `!\[.*?\]\((.*?)\)` .Content 1 -}}
+{{- if $contentImages -}}
+{{- $ogImage = index $contentImages 0 | absURL -}}
+{{- end -}}
+{{- end -}}
+
+{{- if not $ogImage -}}
+{{- $ogImage = .Site.Params.ogImage | absURL -}}
+{{- end -}}
+{{- end -}}
+
+{{- return $ogImage -}}

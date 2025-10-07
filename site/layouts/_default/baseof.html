@@ -27,8 +27,7 @@
     Karma{{ end }}{{ end }}">
   <meta property="og:description"
     content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.defaultDescription }}{{ end }}">
-  <meta property="og:image"
-    content="{{ with .Params.ogImage }}{{ . | absURL }}{{ else }}{{ .Site.Params.ogImage | absURL }}{{ end }}">
+  <meta property="og:image" content="{{ partial "og-image.html" . }}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="{{ .Site.Title }}">
@@ -41,8 +40,7 @@
     content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
   <meta property="twitter:description"
     content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.defaultDescription }}{{ end }}">
-  <meta property="twitter:image"
-    content="{{ with .Params.ogImage }}{{ . | absURL }}{{ else }}{{ .Site.Params.ogImage | absURL }}{{ end }}">
+  <meta property="twitter:image" content="{{ partial "og-image.html" . }}">
 
   <!-- Additional Meta Tags -->
   <meta name="theme-color" content="{{ .Site.Params.themeColor }}">
