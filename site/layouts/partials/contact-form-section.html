@@ -91,6 +91,109 @@
   </div>
 </section>
 
+<style>
+  .background-element1 {
+    position: absolute;
+    top: -107px;
+    left: -43px;
+    z-index: 0;
+  }
+
+
+  @media (max-width: 1279px) {
+    .background-element1 {
+      display: none;
+    }
+  }
+
+  #contact-form-section .contact-input,
+  #contact-form-section .contact-textarea {
+    color: #999;
+    border-color: #404040;
+  }
+
+  #contact-form-section .contact-input::placeholder,
+  #contact-form-section .contact-textarea::placeholder {
+    color: #999;
+  }
+
+  #contact-form-section .contact-input:focus,
+  #contact-form-section .contact-textarea:focus {
+    outline: none !important;
+    border-color: #ba0108 !important;
+  }
+
+  .contact-button:hover {
+    background-color: #e39599;
+  }
+
+  .contact-input.error,
+  .contact-textarea.error {
+    border-color: #dc2626 !important;
+    background-color: #fef2f2;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+  }
+
+  .contact-input.success,
+  .contact-textarea.success {
+    border-color: #16a34a !important;
+    background-color: #f0fdf4;
+  }
+
+  .contact-button:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+  }
+
+  .toast {
+    padding: 12px 16px !important;
+    border-radius: clamp(10px, 1.5vw, 12px) !important;
+    color: #fff !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: clamp(14px, 1.6vw, 16px) !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    transform: translateY(-20px) !important;
+    opacity: 0 !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    max-width: 400px !important;
+    width: 100% !important;
+    text-align: center !important;
+    position: relative !important;
+    white-space: pre-line !important;
+  }
+
+  .toast.show {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+  }
+
+  .toast.error {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
+  }
+
+  .toast.success {
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%) !important;
+  }
+
+  .toast.warning {
+    background: linear-gradient(135deg, #d97706 0%, #c2410c 100%) !important;
+  }
+
+  .toast::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+
+  }
+</style>
+
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('contact-form');
