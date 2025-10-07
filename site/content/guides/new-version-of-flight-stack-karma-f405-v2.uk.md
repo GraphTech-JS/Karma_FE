@@ -1,8 +1,9 @@
 ---
 title: Вийшла нова версія політного стеку KARMA F405 V2. Зустрічайте!
+slug: null
 description: "Новий політний стек KARMA F405 V2 вібрав у себе найкраще з
   попередньої версії, а також містить ряд оновлень, які продиктував ринок "
-date: 2025-10-07T10:06:00.000+03:00
+date: 2025-10-07T10:26:00.000+03:00
 category: politni-steky
 image: /img/Generative Fill.png
 draft: false
