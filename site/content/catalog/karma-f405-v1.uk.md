@@ -19,8 +19,6 @@ specs:
     value: STM32F405
   - label: IMU
     value: ICM-42688-P
-  - label: Гіроскоп/акселерометр
-    value: ICM-42688-P
   - label: Барометр
     value: BMP280
   - label: Робочий струм

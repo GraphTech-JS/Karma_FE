@@ -19,8 +19,6 @@ specs:
     value: STM32F405
   - label: IMU
     value: ICM-42688-P
-  - label: Gyroscope/Accelerometer
-    value: ICM-42688-P
   - label: Barometer
     value: BMP280
   - label: Current
