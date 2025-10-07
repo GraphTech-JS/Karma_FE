@@ -9,6 +9,7 @@ date: 2025-10-05T20:50:00.000+03:00
 category: flight-stacks
 tags:
   - price
+image: /img/price_flight_stack.png
 draft: false
 ---
 <style> 
