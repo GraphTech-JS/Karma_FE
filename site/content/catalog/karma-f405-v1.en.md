@@ -6,10 +6,10 @@ description: |-
   reliable and effective technical solutions to improved
   assembly ergonomics.
   KARMA F405V1 first step in the pursuit of excellence.
-date: 2025-10-06T17:16:00.000+03:00
+date: 2025-10-07T15:49:00.000+03:00
 category: politni-steky
 product_id: "2233"
-image: /img/flight-stack-karma.png
+image: /img/Generative Fill.png
 price: 2500
 draft: false
 layout: catalog

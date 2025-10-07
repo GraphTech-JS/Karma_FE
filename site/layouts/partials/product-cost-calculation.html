@@ -1,4 +1,3 @@
-{{- /* Підтримує dict (context/product) або Page */ -}}
 {{- $t := printf "%T" . -}}
 {{- $isMap := in $t "map" -}}
 
@@ -13,6 +12,89 @@
 
 {{- $productName := $product.name | default $ctx.Title | default (i18n "product.hero.title.fallback") -}}
 
+{{- $productType := "v1" -}}
+{{- if strings.Contains (lower $productName) "v2" -}}
+{{- $productType = "v2" -}}
+{{- else if strings.Contains (lower $productName) "60a" -}}
+{{- $productType = "v1-60a" -}}
+{{- end -}}
+
+{{- /* Дані для різних варіантів цін */ -}}
+{{- $pricingData := dict -}}
+{{- if eq $productType "v1" -}}
+{{- $pricingData = dict
+"table1" (dict
+"1+" (dict "warehouse" "100%" "contracting" "")
+"100+" (dict "warehouse" "93%" "contracting" "80%")
+"1000+" (dict "warehouse" "85%" "contracting" "75%")
+"3000+" (dict "warehouse" "78%" "contracting" "70%")
+"10000+" (dict "warehouse" "" "contracting" "65%")
+)
+"table2" (dict
+"1+" (dict "warehouse" "73.00" "contracting" "")
+"100+" (dict "warehouse" "68.10" "contracting" "59.00")
+"1000+" (dict "warehouse" "62.50" "contracting" "55.50")
+"3000+" (dict "warehouse" "57.60" "contracting" "на запит")
+"10000+" (dict "warehouse" "" "contracting" "на запит")
+)
+"table3" (dict
+"20+" (dict "warehouse" "70.00" "contracting" "")
+"100+" (dict "warehouse" "65.31" "contracting" "56.60")
+"1000+" (dict "warehouse" "59.95" "contracting" "53.25")
+"3000+" (dict "warehouse" "55.26" "contracting" "49.90")
+"10000+" (dict "warehouse" "" "contracting" "46.55")
+)
+-}}
+{{- else if eq $productType "v2" -}}
+{{- $pricingData = dict
+"table1" (dict
+"1+" (dict "warehouse" "100%" "contracting" "")
+"100+" (dict "warehouse" "93%" "contracting" "80%")
+"1000+" (dict "warehouse" "85%" "contracting" "75%")
+"3000+" (dict "warehouse" "78%" "contracting" "70%")
+"10000+" (dict "warehouse" "" "contracting" "65%")
+)
+"table2" (dict
+"1+" (dict "warehouse" "76.50" "contracting" "")
+"100+" (dict "warehouse" "71.15" "contracting" "61.95")
+"1000+" (dict "warehouse" "65.63" "contracting" "58.28")
+"3000+" (dict "warehouse" "60.48" "contracting" "на запит")
+"10000+" (dict "warehouse" "" "contracting" "на запит")
+)
+"table3" (dict
+"20+" (dict "warehouse" "73.50" "contracting" "")
+"100+" (dict "warehouse" "68.58" "contracting" "59.43")
+"1000+" (dict "warehouse" "62.95" "contracting" "55.91")
+"3000+" (dict "warehouse" "58.02" "contracting" "52.40")
+"10000+" (dict "warehouse" "" "contracting" "48.88")
+)
+-}}
+{{- else if eq $productType "v1-60a" -}}
+{{- $pricingData = dict
+"table1" (dict
+"1+" (dict "warehouse" "100%" "contracting" "")
+"100+" (dict "warehouse" "93%" "contracting" "80%")
+"1000+" (dict "warehouse" "85%" "contracting" "75%")
+"3000+" (dict "warehouse" "78%" "contracting" "70%")
+"10000+" (dict "warehouse" "" "contracting" "65%")
+)
+"table2" (dict
+"1+" (dict "warehouse" "80.00" "contracting" "")
+"100+" (dict "warehouse" "74.40" "contracting" "64.00")
+"1000+" (dict "warehouse" "68.00" "contracting" "60.00")
+"3000+" (dict "warehouse" "62.40" "contracting" "на запит")
+"10000+" (dict "warehouse" "" "contracting" "на запит")
+)
+"table3" (dict
+"20+" (dict "warehouse" "77.00" "contracting" "")
+"100+" (dict "warehouse" "71.81" "contracting" "62.26")
+"1000+" (dict "warehouse" "65.95" "contracting" "58.58")
+"3000+" (dict "warehouse" "60.79" "contracting" "54.89")
+"10000+" (dict "warehouse" "" "contracting" "51.21")
+)
+-}}
+{{- end -}}
+
 <section class="overflow-hidden relative pt-[60px] lg:pt-[80px]" aria-labelledby="cost-calculation-heading">
   <div class="max-w-7xl relative z-[2] px-4 sm:px-6 lg:px-8 lg:mx-auto">
     <h2 id="cost-calculation-heading"
@@ -21,21 +103,21 @@
     </h2>
 
     <!-- Single Adaptive Layout -->
-    <div class="grid grid-cols-1 gap-[40px] md:gap-[20px] mb-[40px] md:mb-[54px] sm:grid-cols-2 lg:grid-cols-3"
+    <div
+      class="grid grid-cols-1 gap-[40px] md:gap-[20px] mb-[40px] md:mb-[54px] sm:grid-cols-2 lg:grid-cols-3 items-stretch"
       role="list" aria-label='{{ i18n "product.cost.aria.list" (dict "product" $productName) }}'>
 
       <!-- Table 1 -->
-      <article class="bg-white rounded-[5px] overflow-hidden w-full h-[439px] mx-auto lg:h-auto"
+      <article class="bg-white rounded-[5px] overflow-hidden w-full mx-auto h-full"
         style="box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1)" role="listitem">
         <div class="flex flex-col p-4 h-full lg:p-6">
           <h3
-            class="font-[Montserrat] text-[24px] md:text-[16px] lg:text-[24px] font-semibold text-[#404040] text-center mb-4 lg:mb-6">
-            {{ i18n "product.cost.table.title" | safeHTML }}
+            class="font-[Montserrat] text-[24px] md:text-[16px] lg:text-[24px] font-semibold text-[#404040] text-center mb-[22px] md:mb-[22px] lg:mb-[22px] xl:mb-0 ">
+            {{ i18n "product.cost.table1.title" | safeHTML }}
           </h3>
 
-          <div class="flex flex-1 justify-center items-center lg:block">
-            <table
-              class="w-full h-[305px] border-separate border-spacing-0 border border-black rounded-[5px] overflow-hidden lg:h-auto"
+          <div class="flex flex-1 justify-center items-center lg:block xl:mt-[62px]">
+            <table class="w-full border-separate border-spacing-0 border border-black rounded-[5px] overflow-hidden"
               role="table" aria-label='{{ i18n "product.cost.table1.aria" }}'>
               <caption class="sr-only">
                 {{ i18n "product.cost.table1.caption" (dict "product" $productName) }}
@@ -43,7 +125,7 @@
               <thead>
                 <tr>
                   <th
-                    class="font-[Inter] text-[16px] font-medium text-left border-r border-black border-b border-black w-[100px]">
+                    class="font-[Inter] text-[16px] font-medium text-center border-r border-black border-b border-black w-[100px]">
                   </th>
                   <th
                     class="font-[Inter] text-[16px] font-medium text-center border-r border-black border-b border-black w-[100px] text-[#020303]">
@@ -62,10 +144,10 @@
                     1+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    100%</td>
+                    {{ index (index $pricingData.table1 "1+") "warehouse" }}</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal py-2 px-2 text-center border-b border-black w-[100px]">
-                  </td>
+                    {{ index (index $pricingData.table1 "1+") "contracting" }}</td>
                 </tr>
                 <tr>
                   <td
@@ -73,10 +155,10 @@
                     100+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    93%</td>
+                    {{ index (index $pricingData.table1 "100+") "warehouse" }}</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">
-                    80%</td>
+                    {{ index (index $pricingData.table1 "100+") "contracting" }}</td>
                 </tr>
                 <tr>
                   <td
@@ -84,10 +166,10 @@
                     1000+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    85%</td>
+                    {{ index (index $pricingData.table1 "1000+") "warehouse" }}</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">
-                    75%</td>
+                    {{ index (index $pricingData.table1 "1000+") "contracting" }}</td>
                 </tr>
                 <tr>
                   <td
@@ -95,10 +177,10 @@
                     3000+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    78%</td>
+                    {{ index (index $pricingData.table1 "3000+") "warehouse" }}</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">
-                    70%</td>
+                    {{ index (index $pricingData.table1 "3000+") "contracting" }}</td>
                 </tr>
                 <tr>
                   <td
@@ -106,9 +188,9 @@
                     10 000+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal py-2 px-2 text-center border-r border-black w-[100px]">
-                  </td>
+                    {{ index (index $pricingData.table1 "10000+") "warehouse" }}</td>
                   <td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center w-[100px]">
-                    65%</td>
+                    {{ index (index $pricingData.table1 "10000+") "contracting" }}</td>
                 </tr>
               </tbody>
             </table>
@@ -117,112 +199,19 @@
       </article>
 
       <!-- Table 2 -->
-      <article class="bg-white rounded-[5px] overflow-hidden w-full h-[439px] mx-auto lg:h-auto"
+      <article class="bg-white rounded-[5px] overflow-hidden w-full mx-auto h-full"
         style="box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1)" role="listitem">
         <div class="flex flex-col p-4 h-full lg:p-6">
           <h3
             class="font-[Montserrat] text-[24px] md:text-[16px] lg:text-[24px] font-semibold text-[#404040] text-center mb-4 lg:mb-6">
-            {{ i18n "product.cost.table.title" | safeHTML }}
+            {{ i18n "product.cost.table2.title" | safeHTML }}
           </h3>
 
           <div class="flex flex-1 justify-center items-center lg:block">
-            <table
-              class="w-full h-[305px] border-separate border-spacing-0 border border-black rounded-[5px] overflow-hidden lg:h-auto"
+            <table class="w-full border-separate border-spacing-0 border border-black rounded-[5px] overflow-hidden"
               role="table" aria-label='{{ i18n "product.cost.table2.aria" }}'>
               <caption class="sr-only">
                 {{ i18n "product.cost.table2.caption" (dict "product" $productName) }}
-              </caption>
-              <thead>
-                <tr>
-                  <th
-                    class="font-[Inter] text-[16px] font-medium text-left border-r border-black border-b border-black w-[100px]">
-                  </th>
-                  <th
-                    class="font-[Inter] text-[16px] font-medium text-center border-r border-black border-b border-black w-[100px] text-[#020303]">
-                    {{ i18n "product.cost.table.warehouse" }}
-                  </th>
-                  <th
-                    class="font-[Inter] text-[16px] font-medium text-center border-b border-black w-[100px] text-[#020303]">
-                    {{ i18n "product.cost.table.contracting" }}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td
-                    class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">
-                    1+</td>
-                  <td
-                    class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    100%</td>
-                  <td
-                    class="font-[Montserrat] text-[16px] font-normal py-2 px-2 text-center border-b border-black w-[100px]">
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">
-                    100+</td>
-                  <td
-                    class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    93%</td>
-                  <td
-                    class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">
-                    80%</td>
-                </tr>
-                <tr>
-                  <td
-                    class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">
-                    1000+</td>
-                  <td
-                    class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    85%</td>
-                  <td
-                    class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">
-                    75%</td>
-                </tr>
-                <tr>
-                  <td
-                    class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">
-                    3000+</td>
-                  <td
-                    class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    78%</td>
-                  <td
-                    class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">
-                    70%</td>
-                </tr>
-                <tr>
-                  <td
-                    class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black w-[100px] text-center text-[#020303]">
-                    10 000+</td>
-                  <td
-                    class="font-[Montserrat] text-[16px] font-normal py-2 px-2 text-center border-r border-black w-[100px]">
-                  </td>
-                  <td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center w-[100px]">
-                    65%</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </article>
-
-      <!-- Table 3 -->
-      <article class="bg-white rounded-[5px] overflow-hidden w-full h-[439px] mx-auto lg:h-auto"
-        style="box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1)" role="listitem">
-        <div class="flex flex-col p-4 h-full lg:p-6">
-          <h3
-            class="font-[Montserrat] text-[24px] md:text-[16px] lg:text-[24px] font-semibold text-[#404040] text-center mb-4 lg:mb-6">
-            {{ i18n "product.cost.table.title" | safeHTML }}
-          </h3>
-
-          <div class="flex flex-1 justify-center items-center lg:block">
-            <table
-              class="w-full h-[305px] border-separate border-spacing-0 border border-black rounded-[5px] overflow-hidden lg:h-auto"
-              role="table" aria-label='{{ i18n "product.cost.table3.aria" }}'>
-              <caption class="sr-only">
-                {{ i18n "product.cost.table3.caption" (dict "product" $productName) }}
               </caption>
               <thead>
                 <tr>
@@ -246,10 +235,10 @@
                     1+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    100%</td>
+                    {{ index (index $pricingData.table2 "1+") "warehouse" }}</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal py-2 px-2 text-center border-b border-black w-[100px]">
-                  </td>
+                    {{ index (index $pricingData.table2 "1+") "contracting" }}</td>
                 </tr>
                 <tr>
                   <td
@@ -257,10 +246,10 @@
                     100+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    93%</td>
+                    {{ index (index $pricingData.table2 "100+") "warehouse" }}</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">
-                    80%</td>
+                    {{ index (index $pricingData.table2 "100+") "contracting" }}</td>
                 </tr>
                 <tr>
                   <td
@@ -268,10 +257,10 @@
                     1000+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    85%</td>
+                    {{ index (index $pricingData.table2 "1000+") "warehouse" }}</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">
-                    75%</td>
+                    {{ index (index $pricingData.table2 "1000+") "contracting" }}</td>
                 </tr>
                 <tr>
                   <td
@@ -279,10 +268,10 @@
                     3000+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
-                    78%</td>
+                    {{ index (index $pricingData.table2 "3000+") "warehouse" }}</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">
-                    70%</td>
+                    {{ index (index $pricingData.table2 "3000+") "contracting" }}</td>
                 </tr>
                 <tr>
                   <td
@@ -290,9 +279,100 @@
                     10 000+</td>
                   <td
                     class="font-[Montserrat] text-[16px] font-normal py-2 px-2 text-center border-r border-black w-[100px]">
-                  </td>
+                    {{ index (index $pricingData.table2 "10000+") "warehouse" }}</td>
                   <td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center w-[100px]">
-                    65%</td>
+                    {{ index (index $pricingData.table2 "10000+") "contracting" }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- Table 3 -->
+      <article class="bg-white rounded-[5px] overflow-hidden w-full mx-auto h-full"
+        style="box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1)" role="listitem">
+        <div class="flex flex-col p-4 h-full lg:p-6">
+          <h3
+            class="font-[Montserrat] text-[24px] md:text-[16px] lg:text-[24px] font-semibold text-[#404040] text-center mb-4 lg:mb-6">
+            {{ i18n "product.cost.table3.title" | safeHTML }}
+          </h3>
+
+          <div class="flex flex-1 justify-center items-center lg:block">
+            <table class="w-full border-separate border-spacing-0 border border-black rounded-[5px] overflow-hidden"
+              role="table" aria-label='{{ i18n "product.cost.table3.aria" }}'>
+              <caption class="sr-only">
+                {{ i18n "product.cost.table3.caption" (dict "product" $productName) }}
+              </caption>
+              <thead>
+                <tr>
+                  <th
+                    class="font-[Inter] text-[16px] font-medium text-center border-r border-black border-b border-black w-[100px]">
+                  </th>
+                  <th
+                    class="font-[Inter] text-[16px] font-medium text-center border-r border-black border-b border-black w-[100px] text-[#020303]">
+                    {{ i18n "product.cost.table.warehouse" }}
+                  </th>
+                  <th
+                    class="font-[Inter] text-[16px] font-medium text-center border-b border-black w-[100px] text-[#020303]">
+                    {{ i18n "product.cost.table.contracting" }}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td
+                    class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">
+                    20+</td>
+                  <td
+                    class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
+                    {{ index (index $pricingData.table3 "20+") "warehouse" }}</td>
+                  <td
+                    class="font-[Montserrat] text-[16px] font-normal py-2 px-2 text-center border-b border-black w-[100px]">
+                    {{ index (index $pricingData.table3 "20+") "contracting" }}</td>
+                </tr>
+                <tr>
+                  <td
+                    class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">
+                    100+</td>
+                  <td
+                    class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
+                    {{ index (index $pricingData.table3 "100+") "warehouse" }}</td>
+                  <td
+                    class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">
+                    {{ index (index $pricingData.table3 "100+") "contracting" }}</td>
+                </tr>
+                <tr>
+                  <td
+                    class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">
+                    1000+</td>
+                  <td
+                    class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
+                    {{ index (index $pricingData.table3 "1000+") "warehouse" }}</td>
+                  <td
+                    class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">
+                    {{ index (index $pricingData.table3 "1000+") "contracting" }}</td>
+                </tr>
+                <tr>
+                  <td
+                    class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black border-b border-black w-[100px] text-center text-[#020303]">
+                    3000+</td>
+                  <td
+                    class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-r border-black border-b border-black w-[100px]">
+                    {{ index (index $pricingData.table3 "3000+") "warehouse" }}</td>
+                  <td
+                    class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center border-b border-black w-[100px]">
+                    {{ index (index $pricingData.table3 "3000+") "contracting" }}</td>
+                </tr>
+                <tr>
+                  <td
+                    class="font-[Inter] text-[16px] font-medium py-2 px-2 border-r border-black w-[100px] text-center text-[#020303]">
+                    10 000+</td>
+                  <td
+                    class="font-[Montserrat] text-[16px] font-normal py-2 px-2 text-center border-r border-black w-[100px]">
+                    {{ index (index $pricingData.table3 "10000+") "warehouse" }}</td>
+                  <td class="font-[Montserrat] text-[16px] font-normal text-[#404040] py-2 px-2 text-center w-[100px]">
+                    {{ index (index $pricingData.table3 "10000+") "contracting" }}</td>
                 </tr>
               </tbody>
             </table>

@@ -27,8 +27,8 @@
     function slugify(str) {
       return str
         .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "") 
-        .replace(/[^a-zA-Z0-9\s-]/g, "") 
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-zA-Z0-9\s-]/g, "")
         .trim()
         .toLowerCase()
         .replace(/\s+/g, "-");
@@ -90,21 +90,32 @@
         return shortcode;
       },
       toPreview: function (obj) {
-        let figureStyle = `margin: 10px; width: ${obj.width || '40%'};`;
-        if (obj.align === 'left' || obj.align === 'right') {
-          figureStyle += ` float: ${obj.align};`;
-        } else if (obj.align === 'center') {
-          figureStyle += ` display: block; margin-left: auto; margin-right: auto;`;
+        if (obj.align === 'center') {
+          const imgStyle = `max-width: 100%; width: ${obj.img_width || '100%'}; margin-bottom: 8px; object-fit: contain; display: block;`;
+
+          return `
+            <div style="text-align: center; margin: 20px 0;">
+              <figure style="display: inline-block; margin: 0; width: ${obj.width || '40%'};">
+                <img src="${obj.src}" alt="${obj.alt || ''}" style="${imgStyle}">
+                ${obj.caption ? `<figcaption style="margin-top: 4px; font-size: 0.875rem; text-align: center; color: #6b7280;">${obj.caption}</figcaption>` : ''}
+              </figure>
+            </div>
+          `;
+        } else {
+          let figureStyle = `margin: 10px; width: ${obj.width || '40%'};`;
+          if (obj.align === 'left' || obj.align === 'right') {
+            figureStyle += ` float: ${obj.align};`;
+          }
+
+          const imgStyle = `max-width: 100%; width: ${obj.img_width || '100%'}; margin-bottom: 8px; object-fit: contain; display: inline-block;`;
+
+          return `
+            <figure style="${figureStyle}">
+              <img src="${obj.src}" alt="${obj.alt || ''}" style="${imgStyle}">
+              ${obj.caption ? `<figcaption style="margin-top: 4px; font-size: 0.875rem; text-align: center; color: #6b7280;">${obj.caption}</figcaption>` : ''}
+            </figure>
+          `;
         }
-
-        const imgStyle = `max-width: 100%; width: ${obj.img_width || '100%'}; margin-bottom: 8px; object-fit: contain; display: inline-block;`;
-
-        return `
-          <figure style="${figureStyle}">
-            <img src="${obj.src}" alt="${obj.alt || ''}" style="${imgStyle}">
-            ${obj.caption ? `<figcaption style="margin-top: 4px; font-size: 0.875rem; text-align: center; color: #6b7280;">${obj.caption}</figcaption>` : ''}
-          </figure>
-        `;
       }
     });
 

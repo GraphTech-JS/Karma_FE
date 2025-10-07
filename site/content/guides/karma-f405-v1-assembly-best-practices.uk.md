@@ -5,8 +5,8 @@ description: |-
   Ми зробили перелік найбільш важливих аспектів при збиранні безпілотних
   систем з використанням обладнання KARMA і продовжимо
   системно доповнювати цей перелік.
-date: 2025-09-30T21:21:00.000+03:00
-category: Політні стеки
+date: 2025-10-07T12:43:00.000+03:00
+category: politni-steky
 image: /img/manual-flight-stacks.png
 draft: false
 ---
@@ -101,7 +101,7 @@ FC є відстань і завади передаються помірно, т
 
 </p>
 
-<div class="text-center">
+<div class="flex  items-center justify-center flex-col">
 
 ![Поганий монтаж стеків](/img/bad_montaz.jpg)
 
@@ -149,6 +149,7 @@ FC є відстань і завади передаються помірно, т
 ![ТИПОВА ПОМИЛКА МОНТАЖУ (ЗЛІВА), ВІДНОСНО КОРЕКТНОГО (ПРАВО). ](/img/momtaz-stekiv-no.jpg)
 
 ![](/img/giroskop.jpg)
+
 <h2> ВИКОРИСТОВУЙТЕ SMOKE STOPPER</h2>
 <img src="/img/stopper.jpg" style="float:left; margin-right:10px; width:400px;" />
 <p style="text-align:left;">Простий пристрій як наведено 
@@ -164,7 +165,6 @@ FC є відстань і завади передаються помірно, т
 <p class="text-center" style="clear:both;">
 <br>
 
-
 <a href="/catalog/flight-stack-karma-f405-v1/">
 
 Замовити політні стеки  KARMA F405 V1
@@ -175,8 +175,5 @@ FC є відстань і завади передаються помірно, т
 Завантажити рекомедації по збірці (PDF)</a>
 
 </p>
-
-
-
 
 </div>

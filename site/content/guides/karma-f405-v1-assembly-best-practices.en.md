@@ -4,8 +4,8 @@ description: |-
   We have made a list of the most important aspects when assembling unmanned
   systems using Karma equipment and will continue to
   systematically add to this list.
-date: 2025-09-30T21:21:00.000+03:00
-category: Політні стеки
+date: 2025-10-07T12:43:00.000+03:00
+category: politni-steky
 image: /img/manual-flight-stacks.png
 draft: false
 ---
@@ -81,7 +81,6 @@ MOTORS CONNECTION
 
 </h2>
 
-
 <p>
 
 Motor wires are the main sources of interference that affect not only the image
@@ -89,6 +88,7 @@ quality of the video signal but can also lead to the loss of the drone, regardle
 which stack and which brand you use. In the ESC described stack, the platform for
 connecting motors of a larger size is not only to improve the ergonomics of the
 assembly but also to encourage engineers to "less noisy assemblies."
+
 </p>
 <p>The photo below shows an example of situations that must be avoided. In the given
 example, you can see several turns of signal wires that lie directly on the twisted
@@ -96,7 +96,7 @@ wires from the motors when the flight controller is mounted. If there is a dista
 from the motor wires to the FC directly and interference is transmitted moderately,
 then in the example given, a step-up transformer from the motor wires to the ERLS
 signal wires is almost built. </p>
-<div class="text-center">
+<div class="flex  items-center justify-center flex-col">
 
 ![AN EXAMPLE OF A SETUP TO AVOID](/img/bad_montaze-en.jpg)
 
@@ -131,12 +131,14 @@ mounting height of the FC (Flight Controller) to the ESC (Electronic Speed
 Controller), preventing connector impacts between the FC and ESC during flight. If
 you replace these dampers with any others, make sure that the distance between
 the connectors of both boards is at least 1mm.
+
 </p>
 
 <p>
 
 A common installation mistake is over-tightening the nuts on the flight stack, which
 completely negates the shock-absorbing capabilities of the damping mounts.
+
 </p>
 
 <div class="text-center">
@@ -144,6 +146,7 @@ completely negates the shock-absorbing capabilities of the damping mounts.
 ![ TYPICAL INSTALLATION ERROR (LEFT) COMPARED TO A CORRECT ONE (RIGHT).](/img/montaz-stekiv-no-en.jpg)
 
 ![GYROSCOPE DATA FOR BOTH MOUNTING OPTIONS](/img/giroskop-en.jpg)
+
 <h2>USE SMOKE STOPPER
 </h2>
 <img src="/img/stopper.jpg" style="float:left; margin-right:10px;width:400px; " />
@@ -156,7 +159,6 @@ defects in any of the components.
 <br>
  <strong>Please, don't neglect using it.</strong>
 </p>
-
 
 <p class="text-center" style="clear:both;">
 <br>
@@ -171,11 +173,5 @@ Order flight stacks KARMA F405 V1
 Download assembly best practices (PDF)</a>
 
 </p>
-
-
-
-
-
-
 
 </div>

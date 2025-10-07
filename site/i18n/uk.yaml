@@ -279,6 +279,27 @@ product.specs.field.mount:
   other: "Кріплення"
 product.specs.field.allowedBatteryCurrent:
   other: "Дозволений струм від батареї"
+product.specs.field.imu:
+  other: "IMU"
+product.specs.field.barometer:
+  other: "Барометр"
+product.specs.field.bec:
+  other: "BEC"
+product.specs.field.dimensions:
+  other: "Розміри"
+product.specs.field.camSwitch:
+  other: "CamSwitch"
+product.specs.field.blackbox:
+  other: "Blackbox"
+product.specs.field.lcFilterCam:
+  other: "LC-фільтр живлення камер"
+product.specs.field.lcFilterVtx:
+  other: "LC-фільтр живлення VTX"
+
+product.specs.table.flightController:
+  other: "КОНТРОЛЕР ПОЛЬОТУ"
+product.specs.table.speedController:
+  other: "РЕГУЛЯТОР ОБЕРТІВ"
 
 product.specs.alt.details:
   other: "Детальний вигляд {{ .product }} з технічними характеристиками"
@@ -313,6 +334,7 @@ product.cost.aria.list:
 
 product.cost.table.title:
   other: "Відносно обсягів та<br />шляхів придбання"
+  
 product.cost.table.warehouse:
   other: "Склад"
 product.cost.table.contracting:
@@ -332,6 +354,13 @@ product.cost.table3.aria:
   other: "Таблиця знижок для великих замовлень"
 product.cost.table3.caption:
   other: "Таблиця знижок для великих замовлень {{ .product }}"
+
+product.cost.table1.title:
+  other: "Відносно обсягів та шляхів придбання"
+product.cost.table2.title:
+  other: "ВОХ. В абсолютних значеннях відносно рекомендованої ціни"
+product.cost.table3.title:
+  other: "ОЕМ. В абсолютних значеннях відносно рекомендованої ціни"
 
 product.cost.note:
   other: "Ми прагнемо зробити прозору систему ціноутворення. Ціни залежать від обсягів та шляхів придбання"
