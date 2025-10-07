@@ -8,6 +8,7 @@ tags:
   - flight stack
   - instructions
   - tips
+image: /img/drone-man.png
 draft: false
 ---
 

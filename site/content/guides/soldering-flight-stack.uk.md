@@ -1,14 +1,15 @@
 ---
 title: Як правильно паяти політний стек. Інструкція
+slug: How to Properly Solder a Flight Stack. Instructions
 description: Детальна інструкція по правильному паянню політного стека з порадами експертів
 date: 2024-01-01
 category: Політні стеки
-slug: How to Properly Solder a Flight Stack. Instructions
 tags:
   - паяння
   - політний стек
   - інструкція
   - поради
+image: /img/drone-man.png
 draft: false
 ---
 
