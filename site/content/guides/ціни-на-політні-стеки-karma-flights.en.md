@@ -5,7 +5,8 @@ description: |-
   is the first step on that path to help you with strategic planning
   and pricing for your products.
 date: 2025-10-05T19:57:00.000+03:00
-category: flight-stacks
+category: politni-steky
+image: /img/price_flight_stack.png
 draft: false
 ---
 <style> 

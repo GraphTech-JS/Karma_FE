@@ -6,7 +6,8 @@ description: |-
   крок на цьому шляху який допоможе вам зі стратегічним плануванням та оцінкою
   ціноутворення вашої продукці.
 date: 2025-10-05T19:57:00.000+03:00
-category: Політні стеки
+category: politni-steky
+image: /img/price_flight_stack.png
 draft: false
 ---
 <style> 
