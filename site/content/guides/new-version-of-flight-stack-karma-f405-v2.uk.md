@@ -8,4 +8,5 @@ category: politni-steky
 image: /img/Generative Fill.png
 draft: false
 ---
-Вийшла нова версія політного стеку KARMA F405 V2. Зустрічайте!
+<h2>Вийшла нова версія політного стеку KARMA F405 V2. Зустрічайте!</h2>
+

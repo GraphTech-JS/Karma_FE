@@ -7,4 +7,4 @@ category: politni-steky
 image: /img/Generative Fill.png
 draft: false
 ---
-The new KARMA F405 V2 flight stack takes the best from the previous version and also includes a number of updates dictated by the market
+<h2>The new KARMA F405 V2 flight stack takes the best from the previous version and also includes a number of updates dictated by the market</h2>
