@@ -1,14 +1,12 @@
 ---
 title: KARMA F405 V1. ASSEMBLY BEST PRACTICES.
 description: |-
-  High-quality installation of equipment, without enlargement, has a
-  significant role in the reliability of the final product. We have made
-  a list of the most important aspects when assembling unmanned
+  We have made a list of the most important aspects when assembling unmanned
   systems using Karma equipment and will continue to
   systematically add to this list.
 date: 2025-09-30T21:21:00.000+03:00
 category: Політні стеки
-image: /img/our-product1.png
+image: /img/manual-flight-stacks.png
 draft: false
 ---
 <p class="text-center">High-quality installation of equipment, without enlargement, has a
