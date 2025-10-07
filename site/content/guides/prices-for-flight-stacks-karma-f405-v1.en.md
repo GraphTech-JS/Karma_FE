@@ -44,14 +44,14 @@ Recommended OEM price (pack of 20)&nbsp;&nbsp;&nbsp;       67 USD</strong></h4>
 
 <h3 class="text-center">COST CALCULATION TABLES </h3>
 
-<div class="text-center">
+<div class="flex  items-center justify-center flex-col">
 
 ![таблиця 1: ціни на політні стеки ](/img/price-1.jpg "вартість польотників")
 
 ![Ціни на політні стеки](/img/price-2.jpg "вартість польотних стеків")
 
 ![таблиця 3: Ціни на політні стеки](/img/price-3.jpg "вартість політних стеків")
-
+</div>
 <p> All prices include VAT.</p>
 <div class="bg-[#F5F5F5] px-[30px] pr-[35px] py-4"><p id="інструкція" class="text-center"><strong>The basic production term for equipment under a contract is 45 days. The goods are
 shipped in parts between the 30th and 45th days from the moment of payment.
