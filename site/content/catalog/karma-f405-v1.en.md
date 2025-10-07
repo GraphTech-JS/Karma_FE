@@ -17,7 +17,7 @@ currency: UAH
 specs:
   - label: MCU
     value: STM32F405
-  - label: Gyroscope/Accelerometer
+  - label: IMU
     value: ICM-42688-P
   - label: Barometer
     value: BMP280

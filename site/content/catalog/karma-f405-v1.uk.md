@@ -17,7 +17,7 @@ currency: грн
 specs:
   - label: MCU
     value: STM32F405
-  - label: Гіроскоп/акселерометр
+  - label: IMU
     value: ICM-42688-P
   - label: Барометр
     value: BMP280
