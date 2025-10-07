@@ -2,8 +2,8 @@
   <div class="modal-container">
     <div class="modal-content">
       <!-- Close Button -->
-      <button class="cursor-pointer modal-close" id="closeContactModal" aria-label="{{i18n "aria.modal.close"}}">
-        <img src="/img/close.svg" alt="{{i18n "aria.modal.close"}}" width="24" height="24" />
+      <button class="cursor-pointer modal-close" id="closeContactModal" aria-label="{{i18n " aria.modal.close"}}">
+        <img src="/img/close.svg" alt="{{i18n " aria.modal.close"}}" width="24" height="24" />
       </button>
 
       <!-- Modal Header -->
@@ -13,13 +13,14 @@
         </h2>
       </div>
 
-      <!-- Toasts inside modal -->
       <div class="toast-stack" id="modalToastStack" data-toast-stack="modal" aria-live="polite" aria-atomic="true">
       </div>
 
-      <!-- Contact Form -->
-      <form class="contact-form" id="contactForm" action="https://formsubmit.co/Contact@karma.flights" method="POST"
-        novalidate>
+      <form class="contact-form" id="contactForm" name="contact-modal" method="POST" data-netlify="true"
+        netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="contact-modal" />
+        <p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+
         <div class="form-row">
           <div class="form-group">
             <input type="text" id="userName" name="userName" placeholder="{{i18n "contact.form.name.placeholder"}}"
@@ -41,29 +42,37 @@
               <div class="dropdown-option" role="option" data-value="0-20">{{i18n "contact.form.quantity.0_20"}}</div>
               <div class="dropdown-option" role="option" data-value="20-100">{{i18n "contact.form.quantity.20_100"}}
               </div>
-              <div class="dropdown-option" role="option" data-value="100-1000">{{i18n "contact.form.quantity.100_1000"}}</div>
-              <div class="dropdown-option" role="option" data-value="3000-10000">{{i18n "contact.form.quantity.3000_10000" }}</div>
-              <div class="dropdown-option" role="option" data-value="10000+">{{i18n "contact.form.quantity.10000_plus"}}</div>
+              <div class="dropdown-option" role="option" data-value="100-1000">{{i18n "contact.form.quantity.100_1000"}}
+              </div>
+              <div class="dropdown-option" role="option" data-value="3000-10000">{{i18n
+                "contact.form.quantity.3000_10000" }}</div>
+              <div class="dropdown-option" role="option" data-value="10000+">{{i18n "contact.form.quantity.10000_plus"}}
+              </div>
             </div>
             <input type="hidden" id="quantity" name="quantity" required />
           </div>
         </div>
 
         <div class="form-group">
-          <textarea id="message" name="message" placeholder="{{i18n "contact.form.message.placeholder" |  default "Ваше повідомлення"}}" class="form-textarea" rows="4"></textarea>
+          <textarea id="message" name="message" placeholder="{{i18n " contact.form.message.placeholder" |
+            default "Ваше повідомлення" }}" class="form-textarea" rows="4"></textarea>
         </div>
 
         <div class="contact-info">
           <div class="contact-wrapper">
             <p class="contact-label">{{i18n "contact.modal.contactsLabel"}}</p>
             <div class="contact-details">
-              <a href="tel:+380956156713" class="contact-phone"> {{i18n "contact.form.phone" | default
-                "+380956156713"}} </a>
-              <a href="mailto:info@karma.flights" class="contact-email"> {{i18n "contact.form.email" | default
-                "info@karma.flights"}} </a>
+              <a href="tel:+380956156713" class="contact-phone">
+                {{i18n "contact.form.phone" | default "+380956156713"}}
+              </a>
+              <a href="mailto:info@karma.flights" class="contact-email">
+                {{i18n "contact.form.email" | default "info@karma.flights"}}
+              </a>
             </div>
           </div>
-          <button type="submit" class="cursor-pointer submit-button-modal">{{i18n "contact.form.submit"}}</button>
+          <button type="submit" class="cursor-pointer submit-button-modal">
+            {{i18n "contact.form.submit"}}
+          </button>
         </div>
       </form>
     </div>
@@ -381,12 +390,11 @@
   }
 </style>
 
-<!-- I18n for JS -->
 <script>
   window.I18NContact = {
-    submitting: {{i18n "contact.form.submitting" | plainify}},
-  submit: {{i18n "contact.form.submit" | plainify}},
-  success: {{i18n "contact.form.success" | plainify}},
+    submitting: {{i18n "contact.form.submitting" | plainify }},
+  submit: {{i18n "contact.form.submit" | plainify }},
+  success: {{i18n "contact.form.success" | plainify }},
   errorGeneric: {{i18n "contact.form.error.submit" | default "Виникла помилка при відправці. Спробуйте ще раз." | plainify}},
   errorName: {{i18n "contact.form.error.name" | plainify}},
   errorPhone: {{i18n "contact.form.error.phone" | plainify}},
@@ -394,6 +402,7 @@
   };
 </script>
 
+<!-- ===== JS ===== -->
 <script>
   (function () {
     let modalInstance = null;
@@ -409,7 +418,6 @@
         this.quantitySelected = document.getElementById('quantitySelected');
         this.quantityOptions = document.getElementById('quantityOptions');
         this.quantityInput = document.getElementById('quantity');
-
         this.toastStack = document.getElementById('modalToastStack');
         this.phoneInput = document.getElementById('userPhone');
 
@@ -418,98 +426,75 @@
 
       init() {
         if (!this.modal) return;
-
         if (this.openBtn) this.openBtn.addEventListener('click', () => this.open());
         if (this.closeBtn) this.closeBtn.addEventListener('click', () => this.close());
+        this.modal.addEventListener('click', e => { if (e.target === this.modal) this.close(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && !this.modal.classList.contains('hidden')) this.close(); });
 
-        this.modal.addEventListener('click', (e) => { if (e.target === this.modal) this.close(); });
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !this.modal.classList.contains('hidden')) this.close(); });
-
-        if (this.form) this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+        if (this.form) this.form.addEventListener('submit', e => this.handleSubmit(e));
 
         if (this.phoneInput) {
-          this.phoneInput.addEventListener('input', (e) => this.formatPhoneInput(e));
-          this.phoneInput.addEventListener('focus', (e) => this.onPhoneFocus(e));
-          this.phoneInput.addEventListener('blur', (e) => this.onPhoneBlur(e));
+          this.phoneInput.addEventListener('input', e => this.formatPhoneInput(e));
+          this.phoneInput.addEventListener('focus', e => this.onPhoneFocus(e));
+          this.phoneInput.addEventListener('blur', e => this.onPhoneBlur(e));
         }
 
         this.initDropdown();
       }
 
-      /* ========== Dropdown ========== */
+      /* ===== Dropdown logic ===== */
       initDropdown() {
         if (!this.quantityDropdown) return;
-
-        this.quantityDropdown.addEventListener('click', (e) => {
-          e.stopPropagation();
-          this.toggleDropdown();
-        });
-
-        this.quantityOptions.addEventListener('click', (e) => {
+        this.quantityDropdown.addEventListener('click', e => { e.stopPropagation(); this.toggleDropdown(); });
+        this.quantityOptions.addEventListener('click', e => {
           if (e.target.classList.contains('dropdown-option')) {
             e.stopPropagation();
             this.selectOption(e.target);
           }
         });
-
-        document.addEventListener('click', (e) => { if (!this.quantityDropdown.contains(e.target)) this.closeDropdown(); });
-
-        this.quantityDropdown.addEventListener('keydown', (e) => {
+        document.addEventListener('click', e => { if (!this.quantityDropdown.contains(e.target)) this.closeDropdown(); });
+        this.quantityDropdown.addEventListener('keydown', e => {
           if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.toggleDropdown(); }
           else if (e.key === 'Escape') { this.closeDropdown(); }
         });
-
         this.quantityDropdown.setAttribute('tabindex', '0');
       }
-
       toggleDropdown() {
         const isOpen = this.quantityOptions.classList.contains('show');
-        if (isOpen) this.closeDropdown(); else this.openDropdown();
+        isOpen ? this.closeDropdown() : this.openDropdown();
       }
-
       openDropdown() {
-        const optionHeight = this.getOptionHeight();
-        const optionsCount = this.quantityOptions.children.length;
-        const totalHeight = optionHeight * optionsCount;
-
+        const h = this.getOptionHeight(), count = this.quantityOptions.children.length;
+        const total = h * count;
         this.quantityDropdown.classList.add('dropdown-open');
         this.quantityDropdown.setAttribute('aria-expanded', 'true');
-
         requestAnimationFrame(() => {
-          this.quantityOptions.style.maxHeight = totalHeight + 'px';
+          this.quantityOptions.style.maxHeight = total + 'px';
           this.quantityOptions.classList.add('show');
         });
-
         const firstOption = this.quantityOptions.querySelector('.dropdown-option');
         if (firstOption) setTimeout(() => firstOption.focus(), 150);
       }
-
       closeDropdown() {
         this.quantityOptions.classList.remove('show');
         this.quantityDropdown.setAttribute('aria-expanded', 'false');
-
         requestAnimationFrame(() => { this.quantityOptions.style.maxHeight = '0px'; });
         setTimeout(() => { this.quantityDropdown.classList.remove('dropdown-open'); }, 300);
       }
-
       getOptionHeight() {
         if (window.innerWidth <= 768) return 64;
         else if (window.innerWidth <= 1023) return 68;
         else return 72;
       }
-
       selectOption(option) {
         const value = option.dataset.value;
         const text = option.textContent;
-
         this.quantitySelected.querySelector('span').textContent = text;
         this.quantitySelected.querySelector('span').classList.remove('placeholder');
         this.quantityInput.value = value;
-
         this.closeDropdown();
         setTimeout(() => this.quantityDropdown.focus(), 250);
       }
-
       resetDropdown() {
         this.quantitySelected.querySelector('span').textContent = (window.I18NContact?.quantityPlaceholder) || 'Кількість';
         this.quantitySelected.querySelector('span').classList.add('placeholder');
@@ -520,102 +505,60 @@
       open() {
         this.modal.classList.remove('hidden');
         document.body.classList.add('modal-open');
-
         const firstInput = this.modal.querySelector('.form-input');
         if (firstInput) setTimeout(() => firstInput.focus(), 100);
       }
-
       close() {
         this.clearToasts();
         this.modal.classList.add('hidden');
         document.body.classList.remove('modal-open');
-
-        if (this.form) {
-          this.form.reset();
-          this.resetDropdown();
-          this.clearFieldErrors();
-        }
+        if (this.form) { this.form.reset(); this.resetDropdown(); this.clearFieldErrors(); }
       }
 
-      /* ========== Phone formatting ========== */
       formatPhoneInput(e) {
         const input = e.target;
         const raw = input.value || '';
         const trimmed = raw.trim();
         const hasLeadingPlus = trimmed.startsWith('+');
         let digits = raw.replace(/\D/g, '');
-
         if (digits.length === 0) { input.value = hasLeadingPlus ? '' : ''; return; }
-
         if (hasLeadingPlus) {
           if (digits.startsWith('380')) {
-            const d = digits.slice(0, 12);
-            const rest = d.slice(3);
-
-            let formatted = '+380';
+            const d = digits.slice(0, 12), rest = d.slice(3);
+            let f = '+380';
             if (rest.length > 0) {
-              const a = rest.slice(0, 2);
-              const b = rest.slice(2, 5);
-              const c = rest.slice(5, 7);
-              const d4 = rest.slice(7, 9);
-              if (a) formatted += ' ' + a;
-              if (b) formatted += ' ' + b;
-              if (c) formatted += ' ' + c;
-              if (d4) formatted += ' ' + d4;
+              const a = rest.slice(0, 2), b = rest.slice(2, 5), c = rest.slice(5, 7), d4 = rest.slice(7, 9);
+              if (a) f += ' ' + a; if (b) f += ' ' + b; if (c) f += ' ' + c; if (d4) f += ' ' + d4;
             }
-            input.value = formatted;
-          } else {
-            input.value = '+' + digits.slice(0, 15);
-          }
+            input.value = f;
+          } else input.value = '+' + digits.slice(0, 15);
           return;
         }
-
         if (digits.startsWith('0')) {
-          const d = digits.slice(0, 10);
-          const first = d.charAt(0);
-          const rest = d.slice(1);
-          let formatted = first;
+          const d = digits.slice(0, 10), first = d.charAt(0), rest = d.slice(1);
+          let f = first;
           if (rest.length > 0) {
-            const a = rest.slice(0, 2);
-            const b = rest.slice(2, 5);
-            const c = rest.slice(5, 7);
-            const d4 = rest.slice(7, 9);
-            if (a) formatted += a;
-            if (b) formatted += ' ' + b;
-            if (c) formatted += ' ' + c;
-            if (d4) formatted += ' ' + d4;
+            const a = rest.slice(0, 2), b = rest.slice(2, 5), c = rest.slice(5, 7), d4 = rest.slice(7, 9);
+            if (a) f += a; if (b) f += ' ' + b; if (c) f += ' ' + c; if (d4) f += ' ' + d4;
           }
-          input.value = formatted;
-          return;
+          input.value = f; return;
         }
-
         input.value = digits.slice(0, 12);
       }
-
       onPhoneFocus(e) {
         const input = e.target;
         if ((input.value || '').trim() === '') {
           input.value = '+380 ';
-          try { const pos = input.value.length; input.setSelectionRange(pos, pos); } catch (_) { }
+          try { input.setSelectionRange(input.value.length, input.value.length); } catch (_) { }
         }
       }
-
       onPhoneBlur(e) {
         const input = e.target;
         const raw = (input.value || '').trim();
         const digits = raw.replace(/\D/g, '');
-        const startsWithPlus = raw.startsWith('+');
-
-        if (startsWithPlus) {
-          if (digits.length < 4 || (digits.startsWith('380') && digits.length === 3)) {
-            input.value = '';
-            return;
-          }
-        }
-
+        if (raw.startsWith('+') && (digits.length < 4 || (digits.startsWith('380') && digits.length === 3))) input.value = '';
         this.formatPhoneInput({ target: input });
       }
-
       normalizePhoneToUA(value) {
         const digits = (value || '').replace(/\D/g, '');
         if (digits.length === 12 && digits.startsWith('380')) return '+' + digits;
@@ -623,67 +566,51 @@
         return null;
       }
 
-      /* ========== Submit ========== */
       handleSubmit(e) {
+        e.preventDefault();
         this.clearFieldErrors();
-
         const formData = new FormData(this.form);
-        const data = {
-          name: (formData.get('userName') || '').trim(),
-          phoneRaw: (formData.get('userPhone') || '').trim(),
-          quantity: (formData.get('quantity') || '').trim(),
-          message: (formData.get('message') || '').trim(),
-        };
+        const name = (formData.get('userName') || '').trim();
+        const phoneRaw = (formData.get('userPhone') || '').trim();
+        const quantity = (formData.get('quantity') || '').trim();
+        const message = (formData.get('message') || '').trim();
 
         let hasError = false;
-        if (!data.name) {
-          this.markFieldError('#userName');
-          this.showError(window.I18NContact?.errorName || "Будь ласка, введіть ваше ім'я");
-          hasError = true;
-        }
-
-        const normalizedPhone = this.normalizePhoneToUA(data.phoneRaw);
-        if (!normalizedPhone) {
-          this.markFieldError('#userPhone');
-          this.showError(window.I18NContact?.errorPhone || 'Будь ласка, введіть коректний номер телефону');
-          hasError = true;
-        }
-
-        if (!data.quantity) {
-          this.markDropdownError();
-          this.showError(window.I18NContact?.errorQuantity || 'Будь ласка, оберіть кількість');
-          hasError = true;
-        }
-
+        if (!name) { this.markFieldError('#userName'); this.showError(window.I18NContact?.errorName || "Будь ласка, введіть ім'я"); hasError = true; }
+        const normalizedPhone = this.normalizePhoneToUA(phoneRaw);
+        if (!normalizedPhone) { this.markFieldError('#userPhone'); this.showError(window.I18NContact?.errorPhone || "Введіть номер телефону"); hasError = true; }
+        if (!quantity) { this.markDropdownError(); this.showError(window.I18NContact?.errorQuantity || "Оберіть кількість"); hasError = true; }
         if (hasError) return;
 
-        const payload = { name: data.name, phone: normalizedPhone, quantity: data.quantity, message: data.message };
-        this.submitForm(payload);
+        this.submitForm({ name, phone: normalizedPhone, quantity, message });
       }
 
       async submitForm(data) {
         const submitBtn = this.form.querySelector('.submit-button-modal');
         const originalText = submitBtn.textContent;
-
         submitBtn.textContent = window.I18NContact?.submitting || 'Відправляємо...';
         submitBtn.disabled = true;
 
         try {
-          await new Promise((resolve) => setTimeout(resolve, 1200));
+          const formData = new FormData(this.form);
+          const body = new URLSearchParams(formData).toString();
+          await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body
+          });
 
-          await this.showSuccess(window.I18NContact?.success || "Повідомлення успішно відправлено!\nМи зв'яжемося з вами найближчим часом.");
+          await this.showSuccess(window.I18NContact?.success || "Повідомлення надіслано!");
           this.close();
-        } catch (error) {
-          this.showError(window.I18NContact?.errorGeneric || 'Виникла помилка при відправці. Спробуйте ще раз.');
+        } catch (err) {
+          this.showError(window.I18NContact?.errorGeneric || "Помилка надсилання. Спробуйте ще раз.");
         } finally {
           submitBtn.textContent = originalText;
           submitBtn.disabled = false;
         }
       }
 
-      /* ========== Toasts & errors ========== */
-      clearToasts() { if (!this.toastStack) return; this.toastStack.innerHTML = ''; }
-
+      clearToasts() { if (this.toastStack) this.toastStack.innerHTML = ''; }
       showToast(message, type = 'success', autoHideMs = 2000) {
         if (!this.toastStack) return Promise.resolve();
         const toast = document.createElement('div');
@@ -691,25 +618,23 @@
         toast.textContent = message;
         this.toastStack.appendChild(toast);
         requestAnimationFrame(() => toast.classList.add('toast--show'));
-        const wait = Math.max(1200, autoHideMs);
-        return new Promise((resolve) => {
+        const delay = Math.max(1200, autoHideMs);
+        return new Promise(resolve => {
           setTimeout(() => {
             toast.classList.remove('toast--show');
             setTimeout(() => { toast.remove(); resolve(); }, 220);
-          }, wait);
+          }, delay);
         });
       }
-
-      showError(message) { return this.showToast(message, 'error', 4000); }
-      showSuccess(message) { return this.showToast(message, 'success', 2000); }
-
-      markFieldError(selector) { const el = this.form.querySelector(selector); if (el) el.classList.add('input-error'); }
+      showError(msg) { return this.showToast(msg, 'error', 4000); }
+      showSuccess(msg) { return this.showToast(msg, 'success', 2000); }
+      markFieldError(sel) { const el = this.form.querySelector(sel); if (el) el.classList.add('input-error'); }
       markDropdownError() { this.quantityDropdown.classList.add('input-error'); }
       clearFieldErrors() { this.form.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error')); }
     }
 
     window.openContactModal = function () {
-      if (!modalInstance) { modalInstance = new ContactModal(); }
+      if (!modalInstance) modalInstance = new ContactModal();
       modalInstance.open();
     };
 

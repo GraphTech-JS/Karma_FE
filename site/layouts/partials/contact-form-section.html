@@ -47,10 +47,11 @@
         {{i18n "contact.subtitle"}}
       </p>
 
-      <form id="contact-form" class="flex flex-col font-['Montserrat'] w-full" novalidate
-        action="https://formsubmit.co/Contact@karma.flights" method="POST">
-        <input type="hidden" name="_template" value="box">
-        <input type="hidden" name="_replyto" value="email">
+      <!-- Netlify form -->
+      <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+        class="flex flex-col font-['Montserrat'] w-full" novalidate>
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="hidden"><label>Don’t fill this out if you’re human: <input name="bot-field" /></label></p>
 
         <div class="flex flex-col gap-[23px]  md:flex-row xl:flex-row mb-[23px]">
           <input type="text" id="name" placeholder="{{i18n "contact.form.name.placeholder"}}" required name="name"
@@ -90,109 +91,6 @@
   </div>
 </section>
 
-<style>
-  .background-element1 {
-    position: absolute;
-    top: -107px;
-    left: -43px;
-    z-index: 0;
-  }
-
-
-  @media (max-width: 1279px) {
-    .background-element1 {
-      display: none;
-    }
-  }
-
-  #contact-form-section .contact-input,
-  #contact-form-section .contact-textarea {
-    color: #999;
-    border-color: #404040;
-  }
-
-  #contact-form-section .contact-input::placeholder,
-  #contact-form-section .contact-textarea::placeholder {
-    color: #999;
-  }
-
-  #contact-form-section .contact-input:focus,
-  #contact-form-section .contact-textarea:focus {
-    outline: none !important;
-    border-color: #ba0108 !important;
-  }
-
-  .contact-button:hover {
-    background-color: #e39599;
-  }
-
-  .contact-input.error,
-  .contact-textarea.error {
-    border-color: #dc2626 !important;
-    background-color: #fef2f2;
-    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
-  }
-
-  .contact-input.success,
-  .contact-textarea.success {
-    border-color: #16a34a !important;
-    background-color: #f0fdf4;
-  }
-
-  .contact-button:disabled {
-    background-color: #9ca3af;
-    cursor: not-allowed;
-  }
-
-  .toast {
-    padding: 12px 16px !important;
-    border-radius: clamp(10px, 1.5vw, 12px) !important;
-    color: #fff !important;
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: clamp(14px, 1.6vw, 16px) !important;
-    font-weight: 500 !important;
-    line-height: 1.4 !important;
-    box-shadow: none !important;
-    -webkit-backdrop-filter: none !important;
-    backdrop-filter: none !important;
-    transform: translateY(-20px) !important;
-    opacity: 0 !important;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    max-width: 400px !important;
-    width: 100% !important;
-    text-align: center !important;
-    position: relative !important;
-    white-space: pre-line !important;
-  }
-
-  .toast.show {
-    transform: translateY(0) !important;
-    opacity: 1 !important;
-  }
-
-  .toast.error {
-    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
-  }
-
-  .toast.success {
-    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%) !important;
-  }
-
-  .toast.warning {
-    background: linear-gradient(135deg, #d97706 0%, #c2410c 100%) !important;
-  }
-
-  .toast::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: rgba(255, 255, 255, 0.08);
-    pointer-events: none;
-
-  }
-</style>
-
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('contact-form');
@@ -204,14 +102,11 @@
 
     function showToast(message, type = 'error', hideMs = 4000) {
       if (!toastContainer) return;
-
       const toast = document.createElement('div');
       toast.className = `toast ${type}`;
       toast.textContent = message;
       toastContainer.appendChild(toast);
-
       requestAnimationFrame(() => toast.classList.add('show'));
-
       setTimeout(() => {
         toast.classList.remove('show');
         setTimeout(() => toast.remove(), 350);
@@ -225,140 +120,46 @@
       return null;
     }
 
-    function formatPhoneInput(e) {
-      const input = e.target;
-      const raw = input.value || '';
-      const trimmed = raw.trim();
-      const hasLeadingPlus = trimmed.startsWith('+');
-      let digits = raw.replace(/\D/g, '');
-
-      if (digits.length === 0) {
-        input.value = hasLeadingPlus ? '' : '';
-        return;
-      }
-
-      if (hasLeadingPlus) {
-        if (digits.startsWith('380')) {
-          const d = digits.slice(0, 12);
-          const rest = d.slice(3);
-          let formatted = '+380';
-          if (rest.length > 0) {
-            const a = rest.slice(0, 2);
-            const b = rest.slice(2, 5);
-            const c = rest.slice(5, 7);
-            const d4 = rest.slice(7, 9);
-            if (a) formatted += ' ' + a;
-            if (b) formatted += ' ' + b;
-            if (c) formatted += ' ' + c;
-            if (d4) formatted += ' ' + d4;
-          }
-          input.value = formatted;
-        } else {
-          input.value = '+' + digits.slice(0, 15);
-        }
-        return;
-      }
-
-      if (digits.startsWith('0')) {
-        const d = digits.slice(0, 10);
-        const first = d.charAt(0);
-        const rest = d.slice(1);
-        let formatted = first;
-        if (rest.length > 0) {
-          const a = rest.slice(0, 2);
-          const b = rest.slice(2, 5);
-          const c = rest.slice(5, 7);
-          const d4 = rest.slice(7, 9);
-          if (a) formatted += a;
-          if (b) formatted += ' ' + b;
-          if (c) formatted += ' ' + c;
-          if (d4) formatted += ' ' + d4;
-        }
-        input.value = formatted;
-        return;
-      }
-
-      input.value = digits.slice(0, 12);
-    }
-
-    function onPhoneFocus(e) {
-      const input = e.target;
-      if ((input.value || '').trim() === '') {
-        input.value = '+380 ';
-        try {
-          input.setSelectionRange(input.value.length, input.value.length);
-        } catch (_) { }
-      }
-    }
-
-    function onPhoneBlur(e) {
-      const input = e.target;
-      const raw = (input.value || '').trim();
-      const digits = raw.replace(/\D/g, '');
-      const startsWithPlus = raw.startsWith('+');
-      if (startsWithPlus) {
-        if (digits.length < 4 || (digits.startsWith('380') && digits.length === 3)) {
-          input.value = '';
-          return;
-        }
-      }
-      formatPhoneInput({ target: input });
-    }
-
-    if (phoneInput) {
-      phoneInput.addEventListener('input', formatPhoneInput);
-      phoneInput.addEventListener('focus', onPhoneFocus);
-      phoneInput.addEventListener('blur', onPhoneBlur);
-    }
-
     function validateForm() {
       let valid = true;
-
-      [nameInput, phoneInput].forEach(el => el && el.classList.remove('error', 'success'));
-
-      // Ім'
+      [nameInput, phoneInput].forEach(el => el.classList.remove('error', 'success'));
       const nameVal = (nameInput.value || '').trim();
-      if (!nameVal) {
-        nameInput.classList.add('error');
-        showToast('{{i18n "contact.form.error.name"}}', 'error', 4000);
-        valid = false;
-      } else {
-        nameInput.classList.add('success');
-      }
-
+      if (!nameVal) { nameInput.classList.add('error'); showToast('{{i18n "contact.form.error.name"}}'); valid = false; }
+      else { nameInput.classList.add('success'); }
       const normalizedPhone = normalizePhoneToUA(phoneInput.value);
-      if (!normalizedPhone) {
-        phoneInput.classList.add('error');
-        showToast('{{i18n "contact.form.error.phone"}}', 'error', 4000);
-        valid = false;
-      } else {
-        phoneInput.classList.add('success');
-      }
-
+      if (!normalizedPhone) { phoneInput.classList.add('error'); showToast('{{i18n "contact.form.error.phone"}}'); valid = false; }
+      else { phoneInput.classList.add('success'); }
       return valid;
     }
 
-    if (form) {
-      form.addEventListener('submit', function (e) {
+    async function submitToNetlify(form) {
+      const formData = new FormData(form);
+      const body = new URLSearchParams(formData).toString();
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body
+      });
+    }
 
-        if (!validateForm()) {
-          const firstInvalid = form.querySelector('.error');
-          if (firstInvalid) firstInvalid.focus();
-          return;
-        }
+    if (form) {
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        if (!validateForm()) return;
 
         submitBtn.disabled = true;
         submitBtn.textContent = '{{i18n "contact.form.submitting"}}';
 
-        setTimeout(() => {
+        try {
+          await submitToNetlify(form);
+          showToast('{{i18n "contact.form.success"}}', 'success', 5000);
           form.reset();
+        } catch (err) {
+          showToast('Помилка надсилання форми', 'error');
+        } finally {
           submitBtn.disabled = false;
           submitBtn.textContent = '{{i18n "contact.form.submit"}}';
-
-          showToast('{{i18n "contact.form.success"}}', 'success', 5000);
-
-          [nameInput, phoneInput, messageInput].forEach(el => el && el.classList.remove('error', 'success'));
-        }, 2000);
+        }
       });
     }
   });
