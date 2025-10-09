@@ -13,7 +13,7 @@
   <meta name="keywords"
     content="{{ with .Params.keywords }}{{ . }}{{ else }}{{ .Site.Params.defaultKeywords }}{{ end }}">
   <meta name="author" content="{{ .Site.Params.author }}">
-  <meta name="robots" content="{{ with .Params.robots }}{{ . }}{{ else }}index, follow{{ end }}">
+  <meta name="robots" content="{{ with .Params.robots }}{{ . }}{{ else }}noindex, nofollow{{ end }}">
   <link rel="canonical" href="{{ .Permalink | absURL }}">
 
   <!-- Additional meta tags for specific pages -->
