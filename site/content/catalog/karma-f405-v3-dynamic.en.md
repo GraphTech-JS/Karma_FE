@@ -9,18 +9,18 @@ price: 2800
 currency: грн
 in_stock: true
 specs:
-- label: MCU
-  value: STM32F405
-- label: Gyroscope/Accelerometer
-  value: ICM-42688-P
-- label: Current
-  value: 50A
-- label: Dimensions
-  value: 48.5 x 40 mm
-- label: WEIGHT
-  value: 5V 4A
-- label: Powering
-  value: "4s-6s "
+  - label: MCU
+    value: STM32F405
+  - label: IMU
+    value: ...
+  - label: Barometr
+    value: ...
+  - label: Current
+    value: ...
+  - label: BEC
+    value: ...
+  - label: Powering
+    value: ...
 draft: false
 ---
 # KARMA F405 V2 FLIGHT STACK

@@ -13,17 +13,17 @@ currency: грн
 in_stock: true
 specs:
   - label: MCU
-    value: STM32F405
-  - label: Гіроскоп/акселерометр
-    value: ICM-42688-P
+    value: ...
+  - label: IMU
+    value: "... "
+  - label: Барометр
+    value: ...
   - label: Робочий струм
-    value: 50А
-  - label: Розмір
-    value: 48.5 x 40 мм
-  - label: ВАГА
-    value: 5V 4A
+    value: " ... "
+  - label: BEC
+    value: ...
   - label: Живлення
-    value: "4s-6s "
+    value: ...
 ---
 
 # ПОЛІТНИЙ СТЕК KARMA F405 V2
