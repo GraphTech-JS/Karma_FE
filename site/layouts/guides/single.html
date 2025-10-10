@@ -10,7 +10,7 @@
         </a>
         <span class="text-[#ba0108] sm:inline px-[5px]">&rarr;</span>
         <a class="font-[Montserrat] text-[16px] lg:text-[20px]  font-normal text-[#ba0108] hover:underline leading-[120%]"
-          href="{{ "/knowledge-base/" | relLangURL }}">{{ i18n "guides.breadcrumb.knowledge" }}
+          href="{{ " /knowledge-base/" | relLangURL }}">{{ i18n "guides.breadcrumb.knowledge" }}
         </a>
         <span class="text-[#ba0108] sm:inline px-[5px]">&rarr;</span>
         <span
@@ -35,9 +35,11 @@
         <div class="flex flex-1 items-center">
           <div class="relative flex-1 rounded-[20px]">
             <input type="text" placeholder="Введіть текст"
-              class="h-[41px] w-full !rounded-[20px] border border-black pl-[clamp(12px,2vw,16px)] pr-[clamp(100px,15vw,120px)] text-[clamp(14px,2vw,16px)] outline-none focus:border-[#ba0108] bg-white" />
+              class="h-[41px] w-full !rounded-[20px] border border-black pl-[clamp(12px,2vw,16px)] pr-[clamp(100px,15vw,120px)] text-[clamp(14px,2vw,16px)] outline-none focus:border-[#ba0108] bg-white"
+              id="tablet-search-input" />
             <button
-              class="absolute z-10 right-0 top-1/2 -translate-y-1/2 w-[70px] h-[41px] rounded-[20px] bg-[#ba0108] flex items-center justify-center cursor-pointer hover:bg-[#a00007] transition-colors">
+              class="absolute z-10 right-0 top-1/2 -translate-y-1/2 w-[70px] h-[41px] rounded-[20px] bg-[#ba0108] flex items-center justify-center cursor-pointer hover:bg-[#a00007] transition-colors"
+              id="tablet-search-button">
               <img src="/img/search-icon.svg" alt="search" width="30" height="30" class="filter brightness-0 invert" />
             </button>
           </div>
@@ -153,9 +155,11 @@
           <div class="flex flex-1 items-center">
             <div class="relative flex-1 rounded-[20px]">
               <input type="text" placeholder="{{ i18n "guides.placeholder" }}"
-                class="h-[clamp(40px,6vw,47px)] w-full !rounded-[20px] border border-black pl-[clamp(12px,2vw,16px)] pr-[clamp(100px,15vw,120px)] text-[16px] outline-none focus:border-[#ba0108] bg-white" />
+                class="h-[clamp(40px,6vw,47px)] w-full !rounded-[20px] border border-black pl-[clamp(12px,2vw,16px)] pr-[clamp(100px,15vw,120px)] text-[16px] outline-none focus:border-[#ba0108] bg-white"
+                id="desktop-search-input" />
               <button
-                class="absolute z-10 right-0 top-1/2 -translate-y-1/2 w-[clamp(80px,12vw,99px)] h-[clamp(40px,6vw,47px)] rounded-[20px] bg-[#ba0108] flex items-center justify-center cursor-pointer hover:bg-[#a00007] transition-colors">
+                class="absolute z-10 right-0 top-1/2 -translate-y-1/2 w-[clamp(80px,12vw,99px)] h-[clamp(40px,6vw,47px)] rounded-[20px] bg-[#ba0108] flex items-center justify-center cursor-pointer hover:bg-[#a00007] transition-colors"
+                id="desktop-search-button">
                 <img src="/img/search-icon.svg" alt="search" width="48" height="48"
                   class="filter brightness-0 invert" />
               </button>
@@ -185,7 +189,13 @@
         <h1 class="md:!text-[32px] !text-[24px] font-[Unbounded] !py-[10px] font-medium">
           {{ .Title }}
         </h1>
-        <div class="markdown-content">{{ .Content }}</div>
+
+        <!-- Search Results -->
+        <div id="search-results" class="hidden mb-6">
+          <div id="search-results-list" class="space-y-4"></div>
+        </div>
+
+        <div class="markdown-content" id="article-content">{{ .Content }}</div>
       </div>
 
       <!-- Right sidebar - TOC -->
@@ -380,6 +390,156 @@
 
     window.addEventListener("scroll", highlightActiveSection);
     highlightActiveSection();
+  });
+
+  // Article Content Search Functionality
+  document.addEventListener("DOMContentLoaded", function () {
+    const desktopSearchInput = document.getElementById('desktop-search-input');
+    const desktopSearchButton = document.getElementById('desktop-search-button');
+    const tabletSearchInput = document.getElementById('tablet-search-input');
+    const tabletSearchButton = document.getElementById('tablet-search-button');
+    const searchResults = document.getElementById('search-results');
+    const searchResultsList = document.getElementById('search-results-list');
+    const articleContent = document.getElementById('article-content');
+
+    let searchResultsData = [];
+
+    function clearSearch() {
+      if (searchResultsList) searchResultsList.innerHTML = '';
+      searchResultsData = [];
+
+      // Remove title if it exists
+      const existingTitle = searchResults.querySelector('h3');
+      if (existingTitle) {
+        existingTitle.remove();
+      }
+
+      document.querySelectorAll('span[id^="temp-search-result-"]').forEach(marker => {
+        if (marker.parentNode) marker.replaceWith(document.createTextNode(marker.textContent));
+      });
+      if (articleContent) articleContent.normalize();
+    }
+
+    function executeSearch() {
+      clearSearch();
+      if (!articleContent) return;
+
+      const query = (desktopSearchInput?.value || tabletSearchInput?.value || '').trim();
+      if (query.length < 2) {
+        searchResults.classList.add('hidden');
+        return;
+      }
+
+      const regex = new RegExp(`(${query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
+      let resultIndex = 0;
+
+      const walker = document.createTreeWalker(articleContent, NodeFilter.SHOW_TEXT, {
+        acceptNode: node => (node.parentNode.closest('script, style, header, #search-results') || !node.textContent.trim() || !regex.test(node.textContent)) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+      });
+
+      const nodesToProcess = [];
+      while (walker.nextNode()) nodesToProcess.push(walker.currentNode);
+
+      nodesToProcess.forEach(textNode => {
+        const fragment = document.createDocumentFragment();
+        let lastIndex = 0;
+        textNode.textContent.replace(regex, (match, ...args) => {
+          const offset = args[args.length - 2];
+          if (offset > lastIndex) fragment.appendChild(document.createTextNode(textNode.textContent.substring(lastIndex, offset)));
+          const markerSpan = document.createElement('span');
+          const resultId = `temp-search-result-${resultIndex++}`;
+          markerSpan.id = resultId;
+          markerSpan.textContent = match;
+          markerSpan.className = 'bg-yellow-200 font-semibold';
+          fragment.appendChild(markerSpan);
+          searchResultsData.push({ id: resultId, context: getContext(textNode.textContent, match, offset) });
+          lastIndex = offset + match.length;
+        });
+        if (lastIndex < textNode.textContent.length) fragment.appendChild(document.createTextNode(textNode.textContent.substring(lastIndex)));
+        textNode.parentNode.replaceChild(fragment, textNode);
+      });
+
+      displayResults();
+    }
+
+    function getContext(fullText, match, matchIndex) {
+      const contextLength = 60;
+      const start = Math.max(0, matchIndex - contextLength);
+      const end = Math.min(fullText.length, matchIndex + match.length + contextLength);
+      let context = (start > 0 ? '...' : '') + fullText.substring(start, end) + (end < fullText.length ? '...' : '');
+      return context.replace(new RegExp(`(${match})`, 'gi'), '<span class="text-[#ba0108] font-semibold">$1</span>');
+    }
+
+    function displayResults() {
+      if (!searchResultsList) return;
+      searchResultsList.innerHTML = '';
+
+      if (searchResultsData.length > 0) {
+        searchResults.classList.remove('hidden');
+
+        const titleElement = document.createElement('h3');
+        titleElement.className = 'font-[Montserrat] text-xl font-semibold mb-4 text-[#ba0108]';
+        titleElement.textContent = 'Результати пошуку:';
+        searchResults.insertBefore(titleElement, searchResultsList);
+
+        searchResultsData.forEach(result => {
+          const resultElement = document.createElement('div');
+          resultElement.className = 'block p-3 text-gray-800 bg-gray-50 hover:bg-gray-100 rounded-md my-1 text-sm cursor-pointer border-l-4 border-[#ba0108]';
+          resultElement.innerHTML = `<div>${result.context}</div>`;
+          resultElement.addEventListener('click', () => scrollToResult(result.id));
+          searchResultsList.appendChild(resultElement);
+        });
+      } else {
+        searchResults.classList.add('hidden');
+      }
+    }
+
+    function scrollToResult(resultId) {
+      const element = document.getElementById(resultId);
+      if (element) {
+        const parentBlock = element.closest('p, li, h1, h2, h3, h4, td, th, div:not(:empty)');
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (parentBlock) {
+          parentBlock.style.backgroundColor = 'rgba(186, 1, 8, 0.1)';
+          setTimeout(() => {
+            parentBlock.style.backgroundColor = '';
+            clearSearch();
+            if (desktopSearchInput) desktopSearchInput.value = '';
+            if (tabletSearchInput) tabletSearchInput.value = '';
+          }, 2000);
+        } else {
+          clearSearch();
+          if (desktopSearchInput) desktopSearchInput.value = '';
+          if (tabletSearchInput) tabletSearchInput.value = '';
+        }
+      }
+    }
+
+    if (desktopSearchInput && desktopSearchButton) {
+      desktopSearchButton.addEventListener('click', executeSearch);
+      desktopSearchInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') executeSearch();
+      });
+      desktopSearchInput.addEventListener('input', (event) => {
+        if (event.target.value.length === 0) {
+          clearSearch();
+          searchResults.classList.add('hidden');
+        }
+      });
+    }
+
+    if (tabletSearchInput && tabletSearchButton) {
+      tabletSearchButton.addEventListener('click', executeSearch);
+      tabletSearchInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') executeSearch();
+      });
+      tabletSearchInput.addEventListener('input', (event) => {
+        if (event.target.value.length === 0) {
+          clearSearch();
+          searchResults.classList.add('hidden');
+        }
+      });
+    }
   });
 </script>
 {{ end }}

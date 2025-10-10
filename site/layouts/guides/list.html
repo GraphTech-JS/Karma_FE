@@ -3,45 +3,29 @@
 
 <section class="py-6 bg-white">
   <div class="max-w-[1280px] mx-auto px-[20px]">
-    <div
-      class="mb-5 flex flex-col sm:flex-row sm:items-center sm:justify-between font-[Montserrat] gap-3"
-    >
+    <div class="mb-5 flex flex-col sm:flex-row sm:items-center sm:justify-between font-[Montserrat] gap-3">
       <div class="flex flex-wrap items-center">
-        <a
-          class="font-[Montserrat] text-[16px] lg:text-[20px] font-normal text-[#ba0108] hover:underline leading-[120%]"
-          href="/"
-        >
+        <a class="font-[Montserrat] text-[16px] lg:text-[20px] font-normal text-[#ba0108] hover:underline leading-[120%]"
+          href="/">
           Головна
         </a>
         <span class="text-[#ba0108] hidden sm:inline px-[5px]">&rarr;</span>
-        <span
-          class="font-[Montserrat] text-[16px] lg:text-[20px] font-normal text-[#ba0108] leading-[120%]"
-        >
+        <span class="font-[Montserrat] text-[16px] lg:text-[20px] font-normal text-[#ba0108] leading-[120%]">
           База знань
         </span>
       </div>
 
       <!-- Search for tablets -->
-      <div
-        class="flex relative max-w-[300px] justify-center items-center lg:hidden"
-      >
+      <div class="flex relative max-w-[300px] justify-center items-center lg:hidden">
         <div class="flex flex-1 items-center">
           <div class="relative flex-1 rounded-[20px]">
-            <input
-              type="text"
-              placeholder="Введіть текст"
+            <input type="text" placeholder="Введіть текст"
               class="h-[47px] w-full !rounded-[20px] border border-black pl-4 pr-[120px] text-[16px] outline-none focus:border-[#ba0108] bg-white"
-            />
+              id="tablet-search-input" />
             <button
               class="absolute z-10 right-0 top-1/2 -translate-y-1/2 w-[99px] h-[47px] rounded-[20px] bg-[#ba0108] flex items-center justify-center cursor-pointer hover:bg-[#e39599] transition-colors"
-            >
-              <img
-                src="/img/search-icon.svg"
-                alt="search"
-                width="30"
-                height="30"
-                class="filter brightness-0 invert"
-              />
+              id="tablet-search-button">
+              <img src="/img/search-icon.svg" alt="search" width="30" height="30" class="filter brightness-0 invert" />
             </button>
           </div>
         </div>
@@ -49,21 +33,15 @@
     </div>
 
     <div
-      class="grid grid-cols-1 md:grid-cols-[180px_1fr_200px] lg:grid-cols-[280px_1fr_220px] gap-[clamp(20px,4vw,24px)]"
-    >
-      <div
-        class="bg-[#fafafa] max-w-[285px] h-full rounded-2xl border border-[#eee] hidden md:block"
-      >
+      class="grid grid-cols-1 md:grid-cols-[180px_1fr_200px] lg:grid-cols-[280px_1fr_220px] gap-[clamp(20px,4vw,24px)]">
+      <div class="bg-[#fafafa] max-w-[285px] h-full rounded-2xl border border-[#eee] hidden md:block">
         <aside class="relative pt-0 pr-0 pl-0">
           <div class="p-0">
-            <nav
-              class="pt-[8px] fixed"
-              style="
+            <nav class="pt-[8px] fixed" style="
                 width: 285px;
                 max-height: calc(100vh - 200px);
                 overflow-y: auto;
-              "
-            >
+              ">
               {{ range $categories }} {{ $categoryGuides := where $guides
               ".Params.category" . }}
               <details class="asideDetails">
@@ -71,30 +49,19 @@
                   <span class="font-[Montserrat] font-normal text-[20px]">
                     {{ . }}
                   </span>
-                  <img
-                    src="/img/arrow.svg"
-                    alt=""
-                    width="18"
-                    height="18"
-                    class="asideIcon"
-                  />
+                  <img src="/img/arrow.svg" alt="" width="18" height="18" class="asideIcon" />
                 </summary>
                 {{ if $categoryGuides }}
-                <ul
-                  class="flex flex-col gap-[20px] b-l b-[#e0e0e0] ml-[36px] pr-[10px] max-w-[240px]"
-                  style="
+                <ul class="flex flex-col gap-[20px] b-l b-[#e0e0e0] ml-[36px] pr-[10px] max-w-[240px]" style="
                     border-left: 1px solid #e0e0e0;
                     margin-left: 36px;
                     padding-left: 16px;
                     padding-right: 10px;
-                  "
-                >
+                  ">
                   {{ range $categoryGuides }}
                   <li>
-                    <a
-                      href="{{ .RelPermalink  }}"
-                      class="block text-[16px] font-normal font-[Montserrat] hover:text-[#ba0108] transition-colors"
-                    >
+                    <a href="{{ .RelPermalink  }}"
+                      class="block text-[16px] font-normal font-[Montserrat] hover:text-[#ba0108] transition-colors">
                       {{ .Title }}
                     </a>
                   </li>
@@ -109,85 +76,58 @@
       </div>
 
       <div class="max-w-[min(693px,90vw)] min-h-0 pr-[clamp(8px,2vw,16px)]">
-        <div
-          class="hidden lg:flex relative max-w-[min(691px,90vw)] justify-center items-center mb-5"
-        >
+        <div class="hidden lg:flex relative max-w-[min(691px,90vw)] justify-center items-center mb-5">
           <div class="flex flex-1 items-center">
             <div class="relative flex-1 rounded-[20px]">
-              <input
-                type="text"
-                placeholder="Введіть текст"
+              <input type="text" placeholder="Введіть текст"
                 class="h-[47px] w-full !rounded-[20px] border border-black pl-4 pr-[120px] text-[20px] outline-none focus:border-[#ba0108] bg-white"
-              />
+                id="desktop-search-input" />
               <button
                 class="absolute z-10 right-0 top-1/2 -translate-y-1/2 w-[99px] h-[47px] rounded-[20px] bg-[#ba0108] flex items-center justify-center cursor-pointer hover:bg-[#e39599] transition-colors"
-              >
-                <img
-                  src="/img/search-icon.svg"
-                  alt="search"
-                  width="30"
-                  height="30"
-                  class="filter brightness-0 invert"
-                />
+                id="desktop-search-button">
+                <img src="/img/search-icon.svg" alt="search" width="30" height="30"
+                  class="filter brightness-0 invert" />
               </button>
             </div>
           </div>
         </div>
 
-        <div
-          class="relative overflow-hidden rounded-xl border border-[#E5E5E5] mb-8"
-        >
-          <img
-            src="/img/drone-man.png"
-            alt="База знань"
-            class="w-full h-auto"
-            width="900"
-            height="400"
-          />
+        <div class="relative overflow-hidden rounded-xl border border-[#E5E5E5] mb-8">
+          <img src="/img/drone-man.png" alt="База знань" class="w-full h-auto" width="900" height="400" />
         </div>
 
-        <h2
-          class="mt-4 font-[Montserrat] text-[clamp(20px,3vw,32px)] font-medium text-black mb-6"
-        >
+        <h2 class="mt-4 font-[Montserrat] text-[clamp(20px,3vw,32px)] font-medium text-black mb-6">
           {{ .Title }}
         </h2>
-        <p
-          class="mt-2 font-[Montserrat] text-[clamp(16px,2vw,18px)] font-normal mb-8"
-        >
+        <p class="mt-2 font-[Montserrat] text-[clamp(16px,2vw,18px)] font-normal mb-8">
           {{ .Content }}
         </p>
 
+        <!-- Search Results -->
+        <div id="search-results" class="hidden mb-6">
+          <h3 class="font-[Montserrat] text-xl font-semibold mb-4 text-[#ba0108]">Результати пошуку:</h3>
+          <div id="search-results-list" class="space-y-4"></div>
+        </div>
+
         <!-- All Guides Grid -->
-        <div class="grid grid-cols-1 gap-[clamp(20px,4vw,24px)] md:grid-cols-2">
+        <div id="guides-grid" class="grid grid-cols-1 gap-[clamp(20px,4vw,24px)] md:grid-cols-2">
           {{ range $guides }}
-          <article
-            class="p-6 bg-white rounded-lg border border-gray-200 transition-shadow hover:shadow-lg"
-          >
+          <article class="p-6 bg-white rounded-lg border border-gray-200 transition-shadow hover:shadow-lg">
             {{ if .Params.image }}
-            <img
-              src="{{ .Params.image }}"
-              alt="{{ .Title }}"
-              class="object-cover mb-4 w-full h-48 rounded-lg"
-            />
+            <img src="{{ .Params.image }}" alt="{{ .Title }}" class="object-cover mb-4 w-full h-48 rounded-lg" />
             {{ else }}
-            <div
-              class="flex justify-center items-center mb-4 w-full h-48 bg-gray-200 rounded-lg"
-            >
+            <div class="flex justify-center items-center mb-4 w-full h-48 bg-gray-200 rounded-lg">
               <span class="text-gray-500">{{ .Params.category }}</span>
             </div>
             {{ end }}
 
             <div class="mb-2">
-              <span
-                class="inline-block bg-[#ba0108] text-white px-3 py-1 rounded-full text-sm font-medium"
-              >
+              <span class="inline-block bg-[#ba0108] text-white px-3 py-1 rounded-full text-sm font-medium">
                 {{ .Params.category }}
               </span>
             </div>
 
-            <h2
-              class="font-[Montserrat] text-xl font-semibold mb-3 hover:text-[#ba0108] transition-colors"
-            >
+            <h2 class="font-[Montserrat] text-xl font-semibold mb-3 hover:text-[#ba0108] transition-colors">
               <a href="{{ .Permalink }}">{{ .Title }}</a>
             </h2>
 
@@ -199,10 +139,7 @@
               <time class="text-sm text-gray-500">
                 {{ .Date.Format "2 January 2006" }}
               </time>
-              <a
-                href="{{ .Permalink }}"
-                class="text-[#ba0108] hover:underline font-medium"
-              >
+              <a href="{{ .Permalink }}" class="text-[#ba0108] hover:underline font-medium">
                 Читати далі →
               </a>
             </div>
@@ -222,22 +159,15 @@
       <aside class="hidden relative lg:block">
         <nav>
           <div class="pt-0 h-full">
-            <nav
-              class="fixed pt-[8px]"
-              style="
+            <nav class="fixed pt-[8px]" style="
                 width: 220px;
                 max-height: calc(100vh - 200px);
                 overflow-y: auto;
-              "
-            >
-              <h4
-                class="mb-3 font-[Montserrat] text-[16px] lg:text-[18px] font-medium text-[#ba0108]"
-              >
+              ">
+              <h4 class="mb-3 font-[Montserrat] text-[16px] lg:text-[18px] font-medium text-[#ba0108]">
                 Категорії
               </h4>
-              <ul
-                class="space-y-2 text-[16px] lg:text-[18px] font-normal font-[Montserrat]"
-              >
+              <ul class="space-y-2 text-[16px] lg:text-[18px] font-normal font-[Montserrat]">
                 {{ range $categories }} {{ $categoryGuides := where $guides
                 ".Params.category" . }} {{ if $categoryGuides }}
                 <li>
@@ -275,8 +205,7 @@
   }
 
   .asideDetails[open] .asideIcon {
-    filter: brightness(0) saturate(100%) invert(8%) sepia(100%) saturate(7482%)
-      hue-rotate(357deg) brightness(95%) contrast(118%);
+    filter: brightness(0) saturate(100%) invert(8%) sepia(100%) saturate(7482%) hue-rotate(357deg) brightness(95%) contrast(118%);
   }
 
   .asideDetails[open] summary span {
@@ -374,6 +303,145 @@
 
     window.addEventListener("scroll", highlightActiveSection);
     highlightActiveSection();
+  });
+
+  // Guides Search Functionality
+  document.addEventListener("DOMContentLoaded", function () {
+    const desktopSearchInput = document.getElementById('desktop-search-input');
+    const desktopSearchButton = document.getElementById('desktop-search-button');
+    const tabletSearchInput = document.getElementById('tablet-search-input');
+    const tabletSearchButton = document.getElementById('tablet-search-button');
+    const searchResults = document.getElementById('search-results');
+    const searchResultsList = document.getElementById('search-results-list');
+    const guidesGrid = document.getElementById('guides-grid');
+
+    // Get all guides data
+    const guides = Array.from(document.querySelectorAll('#guides-grid article')).map(article => ({
+      title: article.querySelector('h2 a').textContent.trim(),
+      description: article.querySelector('p').textContent.trim(),
+      category: article.querySelector('span').textContent.trim(),
+      link: article.querySelector('h2 a').href,
+      element: article
+    }));
+
+    function performSearch(query) {
+      if (!query || query.length < 2) {
+        showAllGuides();
+        return;
+      }
+
+      const searchTerm = query.toLowerCase();
+      const matchingGuides = guides.filter(guide =>
+        guide.title.toLowerCase().includes(searchTerm) ||
+        guide.description.toLowerCase().includes(searchTerm) ||
+        guide.category.toLowerCase().includes(searchTerm)
+      );
+
+      if (matchingGuides.length > 0) {
+        showSearchResults(matchingGuides, query);
+      } else {
+        showNoResults();
+      }
+    }
+
+    function showSearchResults(matchingGuides, query) {
+      // Hide all guides
+      guides.forEach(guide => guide.element.style.display = 'none');
+
+      // Show search results
+      searchResults.classList.remove('hidden');
+      searchResultsList.innerHTML = '';
+
+      matchingGuides.forEach(guide => {
+        const resultElement = document.createElement('div');
+        resultElement.className = 'p-4 bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow';
+
+        const highlightedTitle = highlightText(guide.title, query);
+        const highlightedDescription = highlightText(guide.description, query);
+
+        resultElement.innerHTML = `
+          <div class="mb-2">
+            <span class="inline-block bg-[#ba0108] text-white px-3 py-1 rounded-full text-sm font-medium">
+              ${guide.category}
+            </span>
+          </div>
+          <h3 class="font-[Montserrat] text-lg font-semibold mb-2 hover:text-[#ba0108] transition-colors">
+            <a href="${guide.link}">${highlightedTitle}</a>
+          </h3>
+          <p class="mb-3 text-gray-600">${highlightedDescription}</p>
+          <a href="${guide.link}" class="text-[#ba0108] hover:underline font-medium">
+            Читати далі →
+          </a>
+        `;
+
+        searchResultsList.appendChild(resultElement);
+      });
+    }
+
+    function showNoResults() {
+      // Hide all guides
+      guides.forEach(guide => guide.element.style.display = 'none');
+
+      // Show no results message
+      searchResults.classList.remove('hidden');
+      searchResultsList.innerHTML = `
+        <div class="p-6 text-center text-gray-500">
+          <p class="text-lg">Нічого не знайдено за запитом</p>
+          <p class="mt-2 text-sm">Спробуйте інші ключові слова</p>
+        </div>
+      `;
+    }
+
+    function showAllGuides() {
+      // Show all guides
+      guides.forEach(guide => guide.element.style.display = 'block');
+
+      // Hide search results
+      searchResults.classList.add('hidden');
+    }
+
+    function highlightText(text, query) {
+      const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+      return text.replace(regex, '<span class="font-semibold bg-yellow-200">$1</span>');
+    }
+
+    // Event listeners for desktop search
+    if (desktopSearchInput && desktopSearchButton) {
+      desktopSearchButton.addEventListener('click', () => {
+        performSearch(desktopSearchInput.value);
+      });
+
+      desktopSearchInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          performSearch(desktopSearchInput.value);
+        }
+      });
+
+      desktopSearchInput.addEventListener('input', (event) => {
+        if (event.target.value.length === 0) {
+          showAllGuides();
+        }
+      });
+    }
+
+    // Event listeners for tablet search
+    if (tabletSearchInput && tabletSearchButton) {
+      tabletSearchButton.addEventListener('click', () => {
+        performSearch(tabletSearchInput.value);
+      });
+
+      tabletSearchInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          performSearch(tabletSearchInput.value);
+        }
+      });
+
+      tabletSearchInput.addEventListener('input', (event) => {
+        if (event.target.value.length === 0) {
+          showAllGuides();
+        }
+      });
+    }
   });
 </script>
 {{ end }}
