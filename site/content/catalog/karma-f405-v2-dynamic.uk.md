@@ -1,5 +1,6 @@
 ---
 title: ПОЛІТНИЙ СТЕК KARMA F405 V1 (60A)
+slug: FLIGHT STACK KARMA F405 V2 (60A)
 description: >-
   Удосконалена версія політного стеку з покращеними характеристиками.
 
@@ -9,21 +10,20 @@ category: politni-steky
 product_id: "3231"
 image: /img/Generative Fill.png
 price: 1
-currency: грн
 draft: false
 layout: product
-slug: FLIGHT STACK KARMA F405 V2 (60A)
+currency: грн
 in_stock: true
 specs:
   - label: MCU
     value: STM32F405
-  - label: Гіроскоп/акселерометр
+  - label: IMU
     value: ICM-42688-P
+  - label: Барометр
+    value: BMP280
   - label: Робочий струм
     value: 60А
-  - label: Розмір
-    value: 48.5 x 40 мм
-  - label: "BEC "
+  - label: BEC
     value: 5V 4A
   - label: Живлення
     value: "4s-6s "
