@@ -1,7 +1,9 @@
 ---
-title: "Політні стеки"
-slug: "flight-stacks"
-description: "Компактна та продуктивна інтегрована система для дронів"
-aliases: ["Flight Stacks", "politni-steky"]
-weight: 4
---- 
+title: Політні стеки
+slug: flight-stacks
+description: Компактна та продуктивна інтегрована система для дронів
+aliases:
+  - Flight Stacks
+  - politni-steky
+weight: 1
+---
