@@ -10,7 +10,7 @@
         </a>
         <span class="text-[#ba0108] sm:inline px-[5px]">&rarr;</span>
         <a class="font-[Montserrat] text-[16px] lg:text-[20px]  font-normal text-[#ba0108] hover:underline leading-[120%]"
-          href="{{ " /knowledge-base/" | relLangURL }}">{{ i18n "guides.breadcrumb.knowledge" }}
+          href="{{ "/knowledge-base/" | relLangURL }}">{{ i18n "guides.breadcrumb.knowledge" }}
         </a>
         <span class="text-[#ba0108] sm:inline px-[5px]">&rarr;</span>
         <span
@@ -18,33 +18,37 @@
           {{ .Title }}
         </span>
       </div>
+      <div class="flex justify-between items-center">
+        <div class="flex justify-end items-center sm:hidden">
+          <button
+            class="font-[Montserrat] text-[clamp(16px,2vw,18px)] font-normal text-black flex items-center gap-[clamp(8px,2vw,8px)] cursor-pointer">
+            <a href="{{ "/knowledge-base/" | relLangURL }}">
+              <span class="text-black">&lt;</span>
+              {{ i18n "guides.back" }}
+            </a>
+          </button>
+        </div>
 
-      <!-- Back button for mobile -->
-      <div class="flex justify-end items-center sm:hidden">
-        <button
-          class="font-[Montserrat] text-[clamp(16px,2vw,18px)] font-normal text-black flex items-center gap-[clamp(8px,2vw,8px)] cursor-pointer">
-          <a href="{{ "/knowledge-base/" | relLangURL }}">
-            <span class="text-black">&lt;</span>
-            {{ i18n "guides.back" }}
-          </a>
-        </button>
-      </div>
-
-      <!-- Search for tablets -->
-      <div class="hidden sm:flex relative max-w-[clamp(250px,30vw,300px)] justify-center items-center lg:hidden">
-        <div class="flex flex-1 items-center">
-          <div class="relative flex-1 rounded-[20px]">
-            <input type="text" placeholder="{{ i18n "guides.search.placeholder" }}"
-              class="h-[41px] w-full !rounded-[20px] border border-black pl-[clamp(12px,2vw,16px)] pr-[clamp(100px,15vw,120px)] text-[clamp(14px,2vw,16px)] outline-none focus:border-[#ba0108] bg-white"
-              id="tablet-search-input" />
-            <button
-              class="absolute z-10 right-0 top-1/2 -translate-y-1/2 w-[70px] h-[41px] rounded-[20px] bg-[#ba0108] flex items-center justify-center cursor-pointer hover:bg-[#a00007] transition-colors"
-              id="tablet-search-button">
-              <img src="/img/search-icon.svg" alt="search" width="30" height="30" class="filter brightness-0 invert" />
-            </button>
+        <!-- Search for tablets and mobile -->
+        <div class="flex relative max-w-[clamp(250px,30vw,300px)] justify-center items-center lg:hidden">
+          <div class="flex flex-1 items-center">
+            <div class="relative flex-1 rounded-[20px]">
+              <input type="text" placeholder="{{ i18n "guides.search.placeholder" }}"
+                class="h-[41px] w-full !rounded-[20px] border border-black pl-[clamp(12px,2vw,16px)] pr-[clamp(100px,15vw,120px)] text-[clamp(14px,2vw,16px)] outline-none focus:border-[#ba0108] bg-white"
+                id="tablet-search-input" />
+              <button
+                class="absolute z-10 right-0 top-1/2 -translate-y-1/2 w-[70px] h-[41px] rounded-[20px] bg-[#ba0108] flex items-center justify-center cursor-pointer hover:bg-[#a00007] transition-colors"
+                id="tablet-search-button">
+                <img src="/img/search-icon.svg" alt="search" width="30" height="30"
+                  class="filter brightness-0 invert" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- Back button for mobile -->
+
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-[1fr_250px] lg:grid-cols-[280px_1fr_220px] gap-[clamp(20px,4vw,24px)]">
@@ -400,7 +404,6 @@
     const tabletSearchButton = document.getElementById('tablet-search-button');
     const searchResults = document.getElementById('search-results');
     const searchResultsList = document.getElementById('search-results-list');
-    const articleContent = document.getElementById('article-content');
 
     let searchResultsData = [];
 
@@ -408,7 +411,6 @@
       if (searchResultsList) searchResultsList.innerHTML = '';
       searchResultsData = [];
 
-      // Remove title if it exists
       const existingTitle = searchResults.querySelector('h3');
       if (existingTitle) {
         existingTitle.remove();
@@ -417,12 +419,13 @@
       document.querySelectorAll('span[id^="temp-search-result-"]').forEach(marker => {
         if (marker.parentNode) marker.replaceWith(document.createTextNode(marker.textContent));
       });
-      if (articleContent) articleContent.normalize();
+
+      const mainContent = document.querySelector('main') || document.body;
+      if (mainContent) mainContent.normalize();
     }
 
     function executeSearch() {
       clearSearch();
-      if (!articleContent) return;
 
       const query = (desktopSearchInput?.value || tabletSearchInput?.value || '').trim();
       if (query.length < 2) {
@@ -433,8 +436,11 @@
       const regex = new RegExp(`(${query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
       let resultIndex = 0;
 
-      const walker = document.createTreeWalker(articleContent, NodeFilter.SHOW_TEXT, {
-        acceptNode: node => (node.parentNode.closest('script, style, header, #search-results') || !node.textContent.trim() || !regex.test(node.textContent)) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+      const mainContent = document.querySelector('main') || document.body;
+      if (!mainContent) return;
+
+      const walker = document.createTreeWalker(mainContent, NodeFilter.SHOW_TEXT, {
+        acceptNode: node => (node.parentNode.closest('script, style, header, footer, #search-results') || !node.textContent.trim() || !regex.test(node.textContent)) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
       });
 
       const nodesToProcess = [];
@@ -452,7 +458,10 @@
           markerSpan.textContent = match;
           markerSpan.className = 'bg-yellow-200 font-semibold';
           fragment.appendChild(markerSpan);
-          searchResultsData.push({ id: resultId, context: getContext(textNode.textContent, match, offset) });
+          searchResultsData.push({
+            id: resultId,
+            context: getContext(textNode.textContent, match, offset)
+          });
           lastIndex = offset + match.length;
         });
         if (lastIndex < textNode.textContent.length) fragment.appendChild(document.createTextNode(textNode.textContent.substring(lastIndex)));
@@ -486,7 +495,7 @@
           const resultElement = document.createElement('div');
           resultElement.className = 'block p-3 text-gray-800 bg-gray-50 hover:bg-gray-100 rounded-md my-1 text-sm cursor-pointer border-l-4 border-[#ba0108]';
           resultElement.innerHTML = `<div>${result.context}</div>`;
-          resultElement.addEventListener('click', () => scrollToResult(result.id));
+          resultElement.addEventListener('click', () => scrollToResultOrNavigate(result.id));
           searchResultsList.appendChild(resultElement);
         });
       } else {
@@ -494,11 +503,18 @@
       }
     }
 
-    function scrollToResult(resultId) {
+    function scrollToResultOrNavigate(resultId) {
       const element = document.getElementById(resultId);
-      if (element) {
+      if (!element) return;
+
+      const linkElement = element.closest('a');
+
+      if (linkElement && linkElement.href) {
+        window.location.href = linkElement.href;
+      } else {
         const parentBlock = element.closest('p, li, h1, h2, h3, h4, td, th, div:not(:empty)');
         element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
         if (parentBlock) {
           parentBlock.style.backgroundColor = 'rgba(186, 1, 8, 0.1)';
           setTimeout(() => {
@@ -515,15 +531,31 @@
       }
     }
 
+    function scrollToResult(resultId) {
+      scrollToResultOrNavigate(resultId);
+    }
+
+    function syncSearchInputs(sourceInput, targetInput) {
+      if (sourceInput && targetInput) {
+        sourceInput.addEventListener('input', (event) => {
+          targetInput.value = event.target.value;
+          if (event.target.value.length === 0) {
+            clearSearch();
+            searchResults.classList.add('hidden');
+          }
+        });
+      }
+    }
+
+    syncSearchInputs(desktopSearchInput, tabletSearchInput);
+    syncSearchInputs(tabletSearchInput, desktopSearchInput);
+
     if (desktopSearchInput && desktopSearchButton) {
       desktopSearchButton.addEventListener('click', executeSearch);
       desktopSearchInput.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') executeSearch();
-      });
-      desktopSearchInput.addEventListener('input', (event) => {
-        if (event.target.value.length === 0) {
-          clearSearch();
-          searchResults.classList.add('hidden');
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          executeSearch();
         }
       });
     }
@@ -531,12 +563,9 @@
     if (tabletSearchInput && tabletSearchButton) {
       tabletSearchButton.addEventListener('click', executeSearch);
       tabletSearchInput.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') executeSearch();
-      });
-      tabletSearchInput.addEventListener('input', (event) => {
-        if (event.target.value.length === 0) {
-          clearSearch();
-          searchResults.classList.add('hidden');
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          executeSearch();
         }
       });
     }
