@@ -30,15 +30,16 @@
         <span class="text-[16px] lg:text-[20px] font-normal text-[#ba0108]">{{ i18n "nav.knowledge" }}</span>
       </div>
 
-      <div class="hidden items-center max-w-md lg:flex">
-        <div class="relative flex-1">
+      <!-- Search for all devices -->
+      <div class="flex justify-center items-center max-w-[clamp(250px,90vw,400px)] lg:max-w-md">
+        <div class="flex relative">
           <input type="text" placeholder='{{i18n "kb.search.placeholder"}}'
-            class="h-[47px] w-full !rounded-[20px] font-[Montserrat] border border-[#E0E0E0] pl-4 pr-[120px] text-xl outline-none focus:border-[#ba0108] bg-white"
+            class="h-[41px] lg:h-[47px] max-[390px]:w-[250px] w-full !rounded-[20px] font-[Montserrat] border border-black pl-[clamp(12px,2vw,16px)] pr-[clamp(80px,15vw,120px)] text-[clamp(14px,2vw,20px)] outline-none focus:border-[#ba0108] bg-white"
             id="knowledge-search" />
           <button
-            class="absolute z-10 right-0 top-1/2 -translate-y-1/2 w-[99px] h-[47px] rounded-[20px] bg-[#ba0108] flex items-center justify-center cursor-pointer hover:bg-[#a00007] transition-colors"
-            aria-label="{{ i18n " kb.search.button.aria" }}">
-            <img src="/img/search-icon.svg" alt="{{ i18n " kb.search.icon.alt" }}" width="48" height="48"
+            class="absolute z-10 right-0 top-1/2 -translate-y-1/2 w-[clamp(70px,12vw,99px)] h-[41px] lg:h-[47px] rounded-[20px] bg-[#ba0108] flex items-center justify-center cursor-pointer hover:bg-[#a00007] transition-colors"
+            aria-label="{{ i18n "kb.search.button.aria" }}">
+            <img src="/img/search-icon.svg" alt="{{ i18n "kb.search.icon.alt" }}" width="30" height="30"
               class="filter brightness-0 invert" />
           </button>
         </div>
@@ -48,7 +49,6 @@
     <div id="search-message-container" class="max-w-[1280px] mx-auto px-[20px]"></div>
 
     <div class="relative z-20 space-y-0 w-full max-w-[1600px] mx-auto">
-      {{- /* Категорії: беремо з усіх мов і віддаємо поточну, якщо є, інакше EN */ -}}
       {{- $currentLang := .Site.Language.Lang -}}
       {{- $allCats := slice -}}
       {{- range site.Sites -}}
@@ -70,7 +70,6 @@
       {{- end -}}
       {{- $categories = sort $categories "Params.weight" "asc" "Title" "asc" -}}
 
-      {{- /* Гіди: так само з усіх мов, пріоритет поточній */ -}}
       {{- $allGuides := slice -}}
       {{- range site.Sites -}}
       {{- $allGuides = $allGuides | append (where .RegularPages "Section" "guides") -}}
@@ -98,7 +97,6 @@
       {{- $byTitle := where $guides ".Params.category" $categoryTitle -}}
       {{- $byCategorySlug := where $guides ".Params.category" $cat.Params.slug -}}
 
-      {{- /* Шукаємо за aliases */ -}}
       {{- $searchTerms := slice $categoryTitle $categorySlug -}}
       {{- if $cat.Params.slug -}}
       {{- $searchTerms = $searchTerms | append $cat.Params.slug -}}
@@ -136,7 +134,7 @@
             <div class="knowledge-item mx-auto max-w-[1280px] px-0 lg:px-[20px] pr-[20px]">
               <a href="{{ .RelPermalink }}" class="block py-4 transition-colors lg:px-8 lg:py-6 hover:bg-gray-50">
                 <div class="flex flex-1 gap-[11px] md:gap-[15px] items-start space-x-4">
-                  <img src="/img/point.svg" alt="{{ i18n " kb.list.item.bullet" }}" class="py-[5px] md:py-[10px]" />
+                  <img src="/img/point.svg" alt="•" class="py-[5px] md:py-[10px]" />
                   <div class="flex-1">
                     <h3 class="text-[16px] md:text-[24px] font-semibold font-['Montserrat'] mb-[10px]">{{ .Title }}</h3>
                     {{ if .Params.description }}
