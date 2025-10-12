@@ -1,25 +1,24 @@
 {{ define "main" }}
 <section class="pt-[20px] md:pt-[25px] lg:pt-[40px] bg-white relative">
-    {{ $bgEl10 := resources.Get "img/bg-el-10.png" }}
-    {{ if $bgEl10 }}
-    {{ $bgEl10Desktop := $bgEl10.Resize "295x270 webp q80" }}
-    <img fetchpriority="high" src="{{ $bgEl10Desktop.RelPermalink }}" alt="{{ i18n " kb.aria.bg" }}" aria-hidden="true"
-      class="absolute hidden md:block z-[1] top-0 lg:top-[-1%] left-0 w-[191px] lg:w-[295px] h-auto" />
-    {{ else }}
-    <img fetchpriority="high" src="/img/bg-el-1.png" alt="{{ i18n " kb.aria.bg" }}" aria-hidden="true"
-      class="absolute hidden md:block z-[1] top-0 lg:top-[-1%] left-0 w-[191px] lg:w-[295px] h-auto" />
-    {{ end }}
-    
-    {{ $bgEl1 := resources.Get "img/bg-el-1.png" }}
-    {{ if $bgEl1 }}
-    {{ $bgEl1Processed := $bgEl1.Resize "201x webp q80" }}
-    <img fetchpriority="high" src="{{ $bgEl1Processed.RelPermalink }}" alt="{{ i18n " kb.aria.bg" }}" aria-hidden="true"
-      class="absolute block md:hidden z-[1] right-[-18%] top-[-54px] w-[201px] h-auto opacity-50" />
-    {{ else }}
-    <img fetchpriority="high" src="/img/bg-el-1.png" alt="{{ i18n " kb.aria.bg" }}" aria-hidden="true"
-      class="absolute block md:hidden z-[1] right-[-18%] top-[-54px]  w-[201px] h-auto opacity-50" />
-    {{ end }}
+  {{ $bgEl10 := resources.Get "img/bg-el-10.png" }}
+  {{ if $bgEl10 }}
+  {{ $bgEl10Desktop := $bgEl10.Resize "295x270 webp q80" }}
+  <img fetchpriority="high" src="{{ $bgEl10Desktop.RelPermalink }}" alt="{{ i18n "kb.aria.bg" }}" aria-hidden="true"
+    class="absolute hidden md:block z-[1] top-0 lg:top-[-1%] left-0 w-[191px] lg:w-[295px] h-auto" />
+  {{ else }}
+  <img fetchpriority="high" src="/img/bg-el-1.png" alt="{{ i18n "kb.aria.bg" }}" aria-hidden="true"
+    class="absolute hidden md:block z-[1] top-0 lg:top-[-1%] left-0 w-[191px] lg:w-[295px] h-auto" />
+  {{ end }}
 
+  {{ $bgEl1 := resources.Get "img/bg-el-1.png" }}
+  {{ if $bgEl1 }}
+  {{ $bgEl1Processed := $bgEl1.Resize "201x webp q80" }}
+  <img fetchpriority="high" src="{{ $bgEl1Processed.RelPermalink }}" alt="{{ i18n " kb.aria.bg" }}" aria-hidden="true"
+    class="absolute block md:hidden z-[1] right-[-18%] top-[-54px] w-[201px] h-auto opacity-50" />
+  {{ else }}
+  <img fetchpriority="high" src="/img/bg-el-1.png" alt="{{ i18n "kb.aria.bg" }}" aria-hidden="true"
+    class="absolute block md:hidden z-[1] right-[-18%] top-[-54px]  w-[201px] h-auto opacity-50" />
+  {{ end }}
   <div class="max-w-[1280px] mx-auto px-[20px]">
     <div
       class="mb-[15px] md:mb-[33px] flex flex-col sm:flex-row sm:items-center sm:justify-between font-[Montserrat] gap-[7px]">
@@ -76,8 +75,7 @@
       <div class="bg-[#F6F6F6] max-w-[285px] h-full rounded-[5px] hidden lg:block">
         <aside class="relative pt-0 pr-0 pl-0">
           <div class="p-0">
-            <nav id="left-category-nav" class="pt-[20px] fixed space-y-[20px]"
-              style="width: 285px; max-height: calc(100vh - 200px); overflow-y: auto;">
+            <nav id="left-category-nav" class="pt-[20px] space-y-[20px]" style="width: 285px;">
               {{- $currentLang := .Site.Language.Lang -}}
               {{- $allCats := slice -}}
               {{- range site.Sites -}}
@@ -144,7 +142,7 @@
               {{- $categoryGuides := union $bySlug (union $byTitle (union $byCategorySlug $byAliases)) -}}
               <details class="asideDetails" {{ if or (eq $.Params.category $categorySlug) (eq $.Params.category
                 $categoryTitle) (in $searchTerms $.Params.category) }}open{{ end }}>
-                <summary class="flex justify-between items-center px-[25px]">
+                <summary class="flex justify-between items-center px-[25px] cursor-pointer">
                   <span class="font-[Montserrat] font-normal text-[20px] text-[#404040]">
                     {{ $cat.Title }}
                   </span>
@@ -178,7 +176,7 @@
         <div class="hidden lg:flex relative max-w-[min(691px,90vw)] justify-center items-center mb-[28px]">
           <div class="flex flex-1 items-center">
             <div class="relative flex-1 rounded-[20px]">
-              <input type="text" placeholder="{{ i18n " guides.placeholder" }}"
+              <input type="text" placeholder="{{ i18n "guides.search.placeholder" }}"
                 class="h-[clamp(40px,6vw,47px)] w-full !rounded-[20px] border border-black pl-[clamp(12px,2vw,16px)] pr-[clamp(100px,15vw,120px)] text-[16px] outline-none focus:border-[#ba0108] bg-white"
                 id="desktop-search-input" />
               <button
@@ -287,10 +285,6 @@
   .contentScrollable::-webkit-scrollbar {
     width: 0;
     height: 0;
-  }
-
-  .bg-```math \#fafafa``` {
-    overflow: hidden;
   }
 
   nav.fixed::-webkit-scrollbar {
@@ -416,7 +410,6 @@
     highlightActiveSection();
   });
 
-  // Article Content Search Functionality
   document.addEventListener("DOMContentLoaded", function () {
     const desktopSearchInput = document.getElementById('desktop-search-input');
     const desktopSearchButton = document.getElementById('desktop-search-button');
@@ -425,26 +418,300 @@
     const searchResults = document.getElementById('search-results');
     const searchResultsList = document.getElementById('search-results-list');
 
-    let searchResultsData = [];
+    let guidesIndex = [];
+    let contentCache = {};
+
+    function buildGuidesIndex() {
+      guidesIndex = [];
+
+      const categoryNav = document.getElementById('left-category-nav');
+      if (categoryNav) {
+        const categories = categoryNav.querySelectorAll('details.asideDetails');
+
+        categories.forEach(category => {
+          const categoryName = category.querySelector('summary span')?.textContent.trim() || '';
+          const links = category.querySelectorAll('ul a[href]');
+          links.forEach(link => {
+            const title = link.textContent.trim();
+            const url = link.getAttribute('href');
+
+            if (title && url && url.includes('/guides/')) {
+              guidesIndex.push({
+                title: title,
+                url: url,
+                category: categoryName
+              });
+            }
+          });
+        });
+      }
+
+    }
+
+    async function fetchArticleContent(url) {
+      try {
+        const u = new URL(url, window.location.origin);
+        u.hash = '';
+        u.search = '';
+        const urlWithSlash = u.pathname.endsWith('/') ? u.pathname : (u.pathname + '/');
+        const urlNoSlash = u.pathname.endsWith('/') ? u.pathname.slice(0, -1) : u.pathname;
+        const cacheKey = urlWithSlash;
+
+        if (contentCache[cacheKey]) {
+          return contentCache[cacheKey];
+        }
+
+        const fetchHtml = async (path) => {
+          const res = await fetch(path, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache' } });
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return await res.text();
+        };
+
+        let html = null;
+        try {
+          html = await fetchHtml(urlWithSlash);
+        } catch (_) {
+          try {
+            html = await fetchHtml(urlNoSlash);
+          } catch (e2) {
+            html = await fetchHtml(url);
+          }
+        }
+
+        if (!html) return null;
+
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const articleContent = doc.getElementById('article-content');
+        if (!articleContent) return null;
+
+        articleContent.querySelectorAll('script, style, noscript').forEach(el => el.remove());
+
+        let content = articleContent.textContent || articleContent.innerText || '';
+        content = content
+          .replace(/[\u2018\u2019]/g, "'")
+          .replace(/[\u201C\u201D]/g, '"')
+          .replace(/[\u2013\u2014]/g, '-')
+          .replace(/\u00A0/g, ' ')
+          .replace(/\s+/g, ' ')
+          .trim();
+
+        contentCache[cacheKey] = content;
+        return content;
+      } catch (error) {
+        console.error('Помилка завантаження статті:', url, error);
+        return null;
+      }
+    }
+
+    function findContextInText(text, query, isLongQuery) {
+      const normalizedText = text.includes('\n') ? text.replace(/\s+/g, ' ') : text;
+
+      let normalizedQuery = query
+        .replace(/[\u2018\u2019]/g, "'")
+        .replace(/[\u201C\u201D]/g, '"')
+        .replace(/[\u2013\u2014]/g, '-')
+        .replace(/\u00A0/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      let searchPattern = normalizedQuery.replace(/[-\/\\^$*+?()|\[\]{}]/g, '\\$&');
+      searchPattern = searchPattern.replace(/[\.,:;!?]/g, '[.,;:!?]?');
+      if (isLongQuery) {
+        searchPattern = searchPattern.replace(/\s+/g, '\\s+');
+      }
+
+      const regex = new RegExp(searchPattern, 'gi');
+      const match = regex.exec(normalizedText);
+
+      if (match) {
+        const matchLength = match[0].length;
+        const contextPadding = isLongQuery ? 80 : 50;
+        const start = Math.max(0, match.index - contextPadding);
+        const end = Math.min(normalizedText.length, match.index + matchLength + contextPadding);
+        let context = (start > 0 ? '...' : '') +
+          normalizedText.substring(start, end).trim() +
+          (end < normalizedText.length ? '...' : '');
+
+        const maxContextLength = isLongQuery ? 350 : 200;
+        if (matchLength < 100 && context.length > maxContextLength) {
+          context = context.substring(0, maxContextLength) + '...';
+        }
+
+        return {
+          context: context,
+          matchedText: match[0]
+        };
+      }
+
+      if (!match && !isLongQuery) {
+        const stopWords = ['це', 'для', 'всіх', 'або', 'при', 'що', 'який', 'яка', 'яке', 'які', 'може', 'буде', 'після', 'перед', 'через', 'під', 'над', 'від', 'до', 'на', 'за', 'та', 'із', 'зі', 'по', 'про', 'без', 'біля', 'коло', 'між', 'але', 'ще', 'вже', 'чи'];
+        const keywords = normalizedQuery.split(/\s+/)
+          .filter(w => w.length >= 3)
+          .filter(w => !stopWords.includes(w.toLowerCase()));
+
+        if (keywords.length > 0) {
+          const firstKeyword = keywords[0];
+          const keywordPattern = firstKeyword.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+          const keywordRegex = new RegExp(keywordPattern, 'gi');
+          const keywordMatch = keywordRegex.exec(normalizedText);
+
+          if (keywordMatch) {
+            const contextPadding = 80;
+            const start = Math.max(0, keywordMatch.index - contextPadding);
+            const end = Math.min(normalizedText.length, keywordMatch.index + keywordMatch[0].length + contextPadding);
+            let context = (start > 0 ? '...' : '') +
+              normalizedText.substring(start, end).trim() +
+              (end < normalizedText.length ? '...' : '');
+
+            if (context.length > 200) {
+              context = context.substring(0, 200) + '...';
+            }
+
+            return {
+              context: context,
+              matchedText: keywordMatch[0]
+            };
+          }
+        }
+      }
+
+      return null;
+    }
 
     function clearSearch() {
-      if (searchResultsList) searchResultsList.innerHTML = '';
-      searchResultsData = [];
+      if (searchResultsList) {
+        searchResultsList.innerHTML = '';
+      }
 
-      const existingTitle = searchResults.querySelector('h3');
+      const existingTitle = searchResults?.querySelector('h3');
       if (existingTitle) {
         existingTitle.remove();
       }
 
-      document.querySelectorAll('span[id^="temp-search-result-"]').forEach(marker => {
-        if (marker.parentNode) marker.replaceWith(document.createTextNode(marker.textContent));
+      document.querySelectorAll('span.search-highlight-yellow').forEach(span => {
+        const parent = span.parentNode;
+        if (parent) {
+          parent.replaceChild(document.createTextNode(span.textContent), span);
+          parent.normalize();
+        }
       });
-
-      const mainContent = document.querySelector('main') || document.body;
-      if (mainContent) mainContent.normalize();
     }
 
-    function executeSearch() {
+    function highlightTextInPage(query) {
+      const articleContent = document.getElementById('article-content');
+      const articleTitle = document.querySelector('h1');
+
+      if (!articleContent) {
+        return;
+      }
+
+      let normalizedQuery = query
+        .replace(/[\u2018\u2019]/g, "'")
+        .replace(/[\u201C\u201D]/g, '"')
+        .replace(/[\u2013\u2014]/g, '-')
+        .replace(/\u00A0/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      const wordCount = normalizedQuery.split(/\s+/).length;
+      const isLongQuery = normalizedQuery.length > 15 || wordCount >= 3;
+
+      let searchPattern = normalizedQuery.replace(/[-\/\\^$*+?()|\[\]{}]/g, '\\$&');
+      searchPattern = searchPattern.replace(/[\.,:;!?]/g, '[.,;:!?]?');
+
+      if (isLongQuery) {
+        searchPattern = searchPattern.replace(/\s+/g, '\\s+');
+      }
+      const regex = new RegExp(`(${searchPattern})`, 'gi');
+
+      const searchContainer = articleContent.parentElement;
+
+      const walker = document.createTreeWalker(
+        searchContainer,
+        NodeFilter.SHOW_TEXT,
+        {
+          acceptNode: node => {
+            if (node.parentNode.closest('script, style, #search-results')) {
+              return NodeFilter.FILTER_REJECT;
+            }
+            if (!node.textContent.trim()) {
+              return NodeFilter.FILTER_REJECT;
+            }
+
+            const normalizedNodeText = node.textContent
+              .replace(/[\u2018\u2019]/g, "'")
+              .replace(/[\u201C\u201D]/g, '"')
+              .replace(/[\u2013\u2014]/g, '-')
+              .replace(/\u00A0/g, ' ')
+              .replace(/\s+/g, ' ');
+
+            if (!regex.test(normalizedNodeText)) {
+              return NodeFilter.FILTER_REJECT;
+            }
+            return NodeFilter.FILTER_ACCEPT;
+          }
+        }
+      );
+
+      const nodesToProcess = [];
+      while (walker.nextNode()) {
+        nodesToProcess.push(walker.currentNode);
+      }
+
+      let totalHighlights = 0;
+
+      nodesToProcess.forEach((textNode, index) => {
+        const originalText = textNode.textContent;
+        const normalizedText = originalText
+          .replace(/[\u2018\u2019]/g, "'")
+          .replace(/[\u201C\u201D]/g, '"')
+          .replace(/[\u2013\u2014]/g, '-')
+          .replace(/\u00A0/g, ' ')
+          .replace(/\s+/g, ' ');
+
+        const fragment = document.createDocumentFragment();
+        let lastIndex = 0;
+        let highlightCount = 0;
+
+        normalizedText.replace(regex, (match, ...args) => {
+          const offset = args[args.length - 2];
+
+          if (offset > lastIndex) {
+            const originalPart = getOriginalTextPart(originalText, normalizedText, lastIndex, offset);
+            fragment.appendChild(document.createTextNode(originalPart));
+          }
+
+          const highlightSpan = document.createElement('span');
+          const originalMatch = getOriginalTextPart(originalText, normalizedText, offset, offset + match.length);
+          highlightSpan.textContent = originalMatch;
+          highlightSpan.className = 'search-highlight-yellow bg-yellow-200 font-semibold';
+          fragment.appendChild(highlightSpan);
+          highlightCount++;
+
+          lastIndex = offset + match.length;
+        });
+
+        if (lastIndex < normalizedText.length) {
+          const originalPart = getOriginalTextPart(originalText, normalizedText, lastIndex, normalizedText.length);
+          fragment.appendChild(document.createTextNode(originalPart));
+        }
+
+        if (fragment.childNodes.length > 0) {
+          const parent = textNode.parentNode;
+          if (parent) {
+            parent.replaceChild(fragment, textNode);
+            totalHighlights += highlightCount;
+          }
+        }
+      });
+    }
+
+    function getOriginalTextPart(originalText, normalizedText, start, end) {
+      return originalText.substring(start, end);
+    }
+
+    async function executeSearch() {
       clearSearch();
 
       const query = (desktopSearchInput?.value || tabletSearchInput?.value || '').trim();
@@ -453,57 +720,348 @@
         return;
       }
 
-      const regex = new RegExp(`(${query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
-      let resultIndex = 0;
+      highlightTextInPage(query);
 
-      const mainContent = document.querySelector('main') || document.body;
-      if (!mainContent) return;
+      if (guidesIndex.length === 0) {
+        buildGuidesIndex();
+      }
 
-      const walker = document.createTreeWalker(mainContent, NodeFilter.SHOW_TEXT, {
-        acceptNode: node => (node.parentNode.closest('script, style, header, footer, #search-results') || !node.textContent.trim() || !regex.test(node.textContent)) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
-      });
+      const wordCount = query.trim().split(/\s+/).length;
+      const isLongQuery = query.length > 15 || wordCount >= 3;
 
-      const nodesToProcess = [];
-      while (walker.nextNode()) nodesToProcess.push(walker.currentNode);
+      const stopWords = ['це', 'для', 'всіх', 'або', 'при', 'що', 'який', 'яка', 'яке', 'які', 'може', 'буде', 'після', 'перед', 'через', 'під', 'над', 'від', 'до', 'на', 'за', 'та', 'із', 'зі', 'по', 'про', 'без', 'біля', 'коло', 'між', 'але', 'ще', 'вже', 'чи'];
+      const queryWords = query.split(/\s+/)
+        .filter(w => w.length >= 3)
+        .filter(w => !stopWords.includes(w.toLowerCase()));
 
-      nodesToProcess.forEach(textNode => {
-        const fragment = document.createDocumentFragment();
-        let lastIndex = 0;
-        textNode.textContent.replace(regex, (match, ...args) => {
-          const offset = args[args.length - 2];
-          if (offset > lastIndex) fragment.appendChild(document.createTextNode(textNode.textContent.substring(lastIndex, offset)));
-          const markerSpan = document.createElement('span');
-          const resultId = `temp-search-result-${resultIndex++}`;
-          markerSpan.id = resultId;
-          markerSpan.textContent = match;
-          markerSpan.className = 'bg-yellow-200 font-semibold';
-          fragment.appendChild(markerSpan);
-          searchResultsData.push({
-            id: resultId,
-            context: getContext(textNode.textContent, match, offset)
+      const results = [];
+
+      const articleContent = document.getElementById('article-content');
+      const currentTitle = document.querySelector('h1')?.textContent.trim();
+
+      const currentUrl = window.location.pathname;
+      const currentArticle = guidesIndex.find(item => item.url === currentUrl);
+      const currentCategory = currentArticle ? currentArticle.category : 'Поточна стаття';
+
+      if (articleContent) {
+        const contextMatches = [];
+        let totalMatches = 0;
+
+        let searchPattern = query.replace(/[-\/\\^$*+?()|\[\]{}]/g, '\\$&');
+        searchPattern = searchPattern.replace(/[\.,:;!?]/g, '[.,;:!?]?');
+        if (isLongQuery) {
+          searchPattern = searchPattern.replace(/\s+/g, '\\s+');
+        }
+        const exactRegex = new RegExp(searchPattern, 'gi');
+
+        const titleMatch = currentTitle && exactRegex.test(currentTitle);
+
+        if (titleMatch) {
+          contextMatches.push({
+            context: currentTitle,
+            position: 0,
+            matchedText: currentTitle,
+            isExact: true,
+            isTitle: true
           });
-          lastIndex = offset + match.length;
-        });
-        if (lastIndex < textNode.textContent.length) fragment.appendChild(document.createTextNode(textNode.textContent.substring(lastIndex)));
-        textNode.parentNode.replaceChild(fragment, textNode);
-      });
+          totalMatches++;
+        }
 
-      displayResults();
+        exactRegex.lastIndex = 0;
+        const articleText = articleContent.textContent;
+        let match;
+
+        exactRegex.lastIndex = 0;
+        while ((match = exactRegex.exec(articleText)) !== null && contextMatches.length < 3) {
+          const matchLength = match[0].length;
+          const contextPadding = 30;
+
+          const start = Math.max(0, match.index - contextPadding);
+          const end = Math.min(articleText.length, match.index + matchLength + contextPadding);
+          let context = (start > 0 ? '...' : '') +
+            articleText.substring(start, end).trim() +
+            (end < articleText.length ? '...' : '');
+
+          if (matchLength < 100 && context.length > 200) {
+            context = context.substring(0, 200) + '...';
+          }
+
+          contextMatches.push({
+            context: context,
+            position: match.index,
+            matchedText: match[0],
+            isExact: true
+          });
+          totalMatches++;
+        }
+
+        if (contextMatches.length === 0 && queryWords.length > 0) {
+          const maxResults = isLongQuery ? 3 : 2;
+          queryWords.forEach(word => {
+            if (contextMatches.length >= maxResults) return;
+
+            const wordRegex = new RegExp(word.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'gi');
+            let wordMatch;
+
+            wordRegex.lastIndex = 0;
+
+            while ((wordMatch = wordRegex.exec(articleText)) !== null && contextMatches.length < maxResults) {
+              const start = Math.max(0, wordMatch.index - 50);
+              const end = Math.min(articleText.length, wordMatch.index + wordMatch[0].length + 50);
+              let context = (start > 0 ? '...' : '') +
+                articleText.substring(start, end).trim() +
+                (end < articleText.length ? '...' : '');
+
+              if (context.length > 150) {
+                context = context.substring(0, 150) + '...';
+              }
+
+              const isDuplicate = contextMatches.some(cm =>
+                Math.abs(cm.position - wordMatch.index) < 150
+              );
+
+              if (!isDuplicate) {
+                contextMatches.push({
+                  context: context,
+                  position: wordMatch.index,
+                  matchedText: wordMatch[0],
+                  isExact: false
+                });
+                totalMatches++;
+              }
+            }
+          });
+        }
+
+        if (contextMatches.length > 0) {
+          results.push({
+            title: currentTitle || 'Поточна стаття',
+            url: window.location.pathname,
+            category: currentCategory,
+            matches: contextMatches,
+            matchCount: totalMatches,
+            isCurrent: true
+          });
+        }
+      }
+
+      const currentPath = window.location.pathname;
+      const articlesToSearch = guidesIndex.filter(item => item.url !== currentPath);
+
+      if (articlesToSearch.length > 0) {
+        searchResults.classList.remove('hidden');
+        searchResultsList.innerHTML = '<div class="p-4 text-center text-gray-600"><div class="flex gap-2 justify-center items-center"><svg class="animate-spin h-5 w-5 text-[#ba0108]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><span>Пошук у всіх статтях...</span></div></div>';
+      }
+
+      let loadedCount = 0;
+      let foundCount = 0;
+
+      const contentSearchResults = await Promise.all(
+        articlesToSearch.map(async (item) => {
+          let searchPattern = query.replace(/[-\/\\^$*+?()|\[\]{}]/g, '\\$&');
+          searchPattern = searchPattern.replace(/[\.,:;!?]/g, '[.,;:!?]?');
+          if (isLongQuery) {
+            searchPattern = searchPattern.replace(/\s+/g, '\\s+');
+          }
+          const titleRegex = new RegExp(searchPattern, 'gi');
+
+          const titleMatch = titleRegex.test(item.title);
+          if (titleMatch) {
+            foundCount++;
+
+            return {
+              ...item,
+              matches: [{
+                context: item.title,
+                matchedText: item.title,
+                isExact: true,
+                isTitle: true
+              }],
+              matchCount: 1,
+              hasContentMatch: true
+            };
+          }
+
+          const content = await fetchArticleContent(item.url);
+          loadedCount++;
+
+          if (content) {
+            const contextResult = findContextInText(content, query, isLongQuery);
+
+            if (contextResult) {
+              foundCount++;
+
+              return {
+                ...item,
+                matches: [{
+                  context: contextResult.context,
+                  matchedText: contextResult.matchedText,
+                  isExact: true
+                }],
+                matchCount: 1,
+                hasContentMatch: true
+              };
+            }
+          }
+
+          return null;
+        })
+      );
+
+      const filteredResults = contentSearchResults.filter(r => r !== null && r.hasContentMatch);
+
+      results.push(...filteredResults.slice(0, 5));
+
+      displayResults(results, query);
     }
 
-    function getContext(fullText, match, matchIndex) {
-      const contextLength = 60;
-      const start = Math.max(0, matchIndex - contextLength);
-      const end = Math.min(fullText.length, matchIndex + match.length + contextLength);
-      let context = (start > 0 ? '...' : '') + fullText.substring(start, end) + (end < fullText.length ? '...' : '');
-      return context.replace(new RegExp(`(${match})`, 'gi'), '<span class="text-[#ba0108] font-semibold">$1</span>');
-    }
-
-    function displayResults() {
+    function displayResults(results, query) {
       if (!searchResultsList) return;
+
       searchResultsList.innerHTML = '';
 
-      if (searchResultsData.length > 0) {
+      if (results.length > 0) {
+        searchResults.classList.remove('hidden');
+
+        const MAX_TOTAL = 5;
+        const finalResults = [];
+
+        const currentRes = results.find(r => r.isCurrent && r.matches && r.matches.length > 0);
+        if (currentRes) {
+          finalResults.push({
+            ...currentRes,
+            matches: [currentRes.matches[0]]
+          });
+        }
+
+        for (const r of results) {
+          if (finalResults.length >= MAX_TOTAL) break;
+          if (r.isCurrent) continue;
+          if (r.hasContentMatch && r.matches && r.matches.length > 0) {
+            finalResults.push({
+              ...r,
+              matches: [r.matches[0]]
+            });
+          }
+        }
+
+        const titleElement = document.createElement('h3');
+        titleElement.className = 'font-[Montserrat] text-xl font-semibold mb-4 text-[#ba0108]';
+        titleElement.textContent = '{{ i18n "guides.search.results" }}' + ` (${finalResults.length})`;
+        searchResults.insertBefore(titleElement, searchResultsList);
+
+        finalResults.forEach(result => {
+          if (result.isCurrent && result.matches && result.matches.length > 0) {
+            result.matches.forEach(matchItem => {
+              const resultElement = document.createElement('div');
+              resultElement.className = 'block p-3 text-gray-800 bg-gray-50 hover:bg-gray-100 rounded-md my-1 text-sm border-l-4 border-[#ba0108]';
+              resultElement.style.cursor = 'pointer';
+
+              let highlightedContext = matchItem.context;
+              const wordCount = query.trim().split(/\s+/).length;
+              const isLongQuery = query.length > 15 || wordCount >= 3;
+
+              if (isLongQuery) {
+                const queryRegex = new RegExp(`(${query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
+                highlightedContext = highlightedContext.replace(
+                  queryRegex,
+                  '<span class="text-[#ba0108] font-semibold">$1</span>'
+                );
+              } else {
+                const queryWordsForHighlight = query.split(/\s+/).filter(w => w.length >= 2);
+                queryWordsForHighlight.forEach(word => {
+                  const wordRegex = new RegExp(`(${word.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
+                  highlightedContext = highlightedContext.replace(
+                    wordRegex,
+                    '<span class="text-[#ba0108] font-semibold">$1</span>'
+                  );
+                });
+              }
+
+              resultElement.innerHTML = `
+                <div class="font-[Montserrat] font-semibold text-sm mb-2 text-[#ba0108]">${result.title}</div>
+                <div class="mb-1 text-xs text-gray-500">
+                  <span class="inline-block px-2 py-0.5 mr-2 text-xs text-blue-800 bg-blue-100 rounded">На цій сторінці</span>
+                  ${result.category}
+                </div>
+                <div class="text-sm">${highlightedContext}</div>
+              `;
+
+              resultElement.addEventListener('click', () => {
+                searchResults.classList.add('hidden');
+
+                setTimeout(() => {
+                  const firstHighlight = document.querySelector('.search-highlight-yellow');
+
+                  if (firstHighlight) {
+                    let parentBlock = firstHighlight.parentElement;
+
+                    while (parentBlock && ['STRONG', 'EM', 'SPAN', 'A', 'CODE', 'B', 'I', 'U'].includes(parentBlock.tagName)) {
+                      parentBlock = parentBlock.parentElement;
+                    }
+
+                    if (!parentBlock || !['P', 'LI', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'TD', 'TH', 'DIV'].includes(parentBlock.tagName)) {
+                      parentBlock = firstHighlight.closest('p, li, h1, h2, h3, h4, h5, h6, td, th, div');
+                    }
+
+                    if (parentBlock) {
+                      parentBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                      parentBlock.style.backgroundColor = 'rgba(186, 1, 8, 0.1)';
+                      parentBlock.style.transition = 'background-color 0.3s';
+
+                      setTimeout(() => {
+                        parentBlock.style.backgroundColor = '';
+                      }, 3000);
+                    } else {
+                      firstHighlight.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                  }
+                }, 100);
+              });
+
+              searchResultsList.appendChild(resultElement);
+            });
+          } else if (result.hasContentMatch && result.matches && result.matches.length > 0) {
+            result.matches.forEach(matchItem => {
+              const resultElement = document.createElement('a');
+              const searchQuery = (desktopSearchInput?.value || tabletSearchInput?.value || '').trim();
+
+              resultElement.href = result.url + '?highlight=' + encodeURIComponent(searchQuery);
+              resultElement.className = 'block p-3 text-gray-800 bg-gray-50 hover:bg-gray-100 rounded-md my-1 text-sm border-l-4 border-[#ba0108] transition-colors';
+              resultElement.style.cursor = 'pointer';
+
+              let highlightedContext = matchItem.context;
+              const wordCount = query.trim().split(/\s+/).length;
+              const isLongQuery = query.length > 15 || wordCount >= 3;
+
+              if (isLongQuery) {
+                const queryRegex = new RegExp(`(${query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
+                highlightedContext = highlightedContext.replace(
+                  queryRegex,
+                  '<span class="text-[#ba0108] font-semibold">$1</span>'
+                );
+              } else {
+                const queryWordsForHighlight = query.split(/\s+/).filter(w => w.length >= 2);
+                queryWordsForHighlight.forEach(word => {
+                  const wordRegex = new RegExp(`(${word.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
+                  highlightedContext = highlightedContext.replace(
+                    wordRegex,
+                    '<span class="text-[#ba0108] font-semibold">$1</span>'
+                  );
+                });
+              }
+
+              resultElement.innerHTML = `
+                <div class="font-[Montserrat] font-semibold text-sm mb-2 text-[#ba0108]">${result.title}</div>
+                <div class="mb-1 text-xs text-gray-500">${result.category}</div>
+                <div class="text-sm">${highlightedContext}</div>
+              `;
+
+              searchResultsList.appendChild(resultElement);
+            });
+          }
+        });
+      } else {
         searchResults.classList.remove('hidden');
 
         const titleElement = document.createElement('h3');
@@ -511,48 +1069,11 @@
         titleElement.textContent = '{{ i18n "guides.search.results" }}';
         searchResults.insertBefore(titleElement, searchResultsList);
 
-        searchResultsData.forEach(result => {
-          const resultElement = document.createElement('div');
-          resultElement.className = 'block p-3 text-gray-800 bg-gray-50 hover:bg-gray-100 rounded-md my-1 text-sm cursor-pointer border-l-4 border-[#ba0108]';
-          resultElement.innerHTML = `<div>${result.context}</div>`;
-          resultElement.addEventListener('click', () => scrollToResultOrNavigate(result.id));
-          searchResultsList.appendChild(resultElement);
-        });
-      } else {
-        searchResults.classList.add('hidden');
+        const noResultsElement = document.createElement('div');
+        noResultsElement.className = 'p-4 text-gray-600 text-center';
+        noResultsElement.textContent = 'Нічого не знайдено';
+        searchResultsList.appendChild(noResultsElement);
       }
-    }
-
-    function scrollToResultOrNavigate(resultId) {
-      const element = document.getElementById(resultId);
-      if (!element) return;
-
-      const linkElement = element.closest('a');
-
-      if (linkElement && linkElement.href) {
-        window.location.href = linkElement.href;
-      } else {
-        const parentBlock = element.closest('p, li, h1, h2, h3, h4, td, th, div:not(:empty)');
-        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-        if (parentBlock) {
-          parentBlock.style.backgroundColor = 'rgba(186, 1, 8, 0.1)';
-          setTimeout(() => {
-            parentBlock.style.backgroundColor = '';
-            clearSearch();
-            if (desktopSearchInput) desktopSearchInput.value = '';
-            if (tabletSearchInput) tabletSearchInput.value = '';
-          }, 2000);
-        } else {
-          clearSearch();
-          if (desktopSearchInput) desktopSearchInput.value = '';
-          if (tabletSearchInput) tabletSearchInput.value = '';
-        }
-      }
-    }
-
-    function scrollToResult(resultId) {
-      scrollToResultOrNavigate(resultId);
     }
 
     function syncSearchInputs(sourceInput, targetInput) {
@@ -588,6 +1109,97 @@
           executeSearch();
         }
       });
+    }
+
+    buildGuidesIndex();
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const highlightQuery = urlParams.get('highlight');
+
+    if (highlightQuery) {
+
+      const attemptHighlight = (attemptNumber = 1, maxAttempts = 8) => {
+
+        const articleContent = document.getElementById('article-content');
+        if (!articleContent) {
+          if (attemptNumber < maxAttempts) {
+            setTimeout(() => attemptHighlight(attemptNumber + 1, maxAttempts), 500);
+          }
+          return;
+        }
+
+
+        highlightTextInPage(decodeURIComponent(highlightQuery));
+
+        setTimeout(() => {
+          const highlights = document.querySelectorAll('.search-highlight-yellow');
+
+          if (highlights.length > 0) {
+            const firstHighlight = highlights[0];
+
+            let parentBlock = firstHighlight.parentElement;
+
+            while (parentBlock && ['STRONG', 'EM', 'SPAN', 'A', 'CODE', 'B', 'I', 'U'].includes(parentBlock.tagName)) {
+              parentBlock = parentBlock.parentElement;
+            }
+
+            if (!parentBlock || !['P', 'LI', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'TD', 'TH', 'DIV'].includes(parentBlock.tagName)) {
+              parentBlock = firstHighlight.closest('p, li, h1, h2, h3, h4, h5, h6, td, th, div');
+            }
+
+            let hierarchy = [];
+            let elem = firstHighlight;
+            while (elem && elem !== document.body) {
+              hierarchy.push(`${elem.tagName}${elem.className ? '.' + elem.className : ''}`);
+              elem = elem.parentElement;
+            }
+
+            if (parentBlock) {
+
+              try {
+                parentBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                setTimeout(() => {
+                  const rect = parentBlock.getBoundingClientRect();
+                  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                  const elementTop = rect.top + scrollTop;
+                  const offset = elementTop - (window.innerHeight / 2) + (rect.height / 2);
+
+                  window.scrollTo({
+                    top: offset,
+                    behavior: 'smooth'
+                  });
+                }, 100);
+
+                parentBlock.style.backgroundColor = 'rgba(186, 1, 8, 0.1)';
+                parentBlock.style.transition = 'background-color 0.3s';
+
+                setTimeout(() => {
+                  parentBlock.style.backgroundColor = '';
+                }, 3000);
+              } catch (e) {
+                console.error('❌ Помилка скролу:', e);
+              }
+            } else {
+              firstHighlight.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            const url = new URL(window.location);
+            url.searchParams.delete('highlight');
+            window.history.replaceState({}, '', url);
+          } else if (attemptNumber < maxAttempts) {
+            setTimeout(() => attemptHighlight(attemptNumber + 1, maxAttempts), 400 * attemptNumber);
+          } else {
+
+
+            const url = new URL(window.location);
+            url.searchParams.delete('highlight');
+            window.history.replaceState({}, '', url);
+          }
+        }, 300);
+      };
+
+      setTimeout(() => attemptHighlight(), 600);
     }
   });
 </script>
