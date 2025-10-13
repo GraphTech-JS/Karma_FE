@@ -3,21 +3,21 @@
   {{ $bgEl10 := resources.Get "img/bg-el-10.png" }}
   {{ if $bgEl10 }}
   {{ $bgEl10Desktop := $bgEl10.Resize "295x270 webp q80" }}
-  <img fetchpriority="high" src="{{ $bgEl10Desktop.RelPermalink }}" alt="{{ i18n "kb.aria.bg" }}" aria-hidden="true"
-    class="absolute hidden md:block z-[1] top-0 lg:top-[-1%] left-0 w-[191px] lg:w-[295px] h-auto" />
+  <img fetchpriority="high" src="{{ $bgEl10Desktop.RelPermalink }}" alt="{{ i18n " kb.aria.bg" }}" aria-hidden="true"
+    class="absolute hidden md:block z-[1] top-0 lg:top-[-1%] left-0 w-[191px] lg:w-[295px] h-auto pointer-events-none" />
   {{ else }}
-  <img fetchpriority="high" src="/img/bg-el-1.png" alt="{{ i18n "kb.aria.bg" }}" aria-hidden="true"
-    class="absolute hidden md:block z-[1] top-0 lg:top-[-1%] left-0 w-[191px] lg:w-[295px] h-auto" />
+  <img fetchpriority="high" src="/img/bg-el-1.png" alt="{{ i18n " kb.aria.bg" }}" aria-hidden="true"
+    class="absolute hidden md:block z-[1] top-0 lg:top-[-1%] left-0 w-[191px] lg:w-[295px] h-auto pointer-events-none" />
   {{ end }}
 
   {{ $bgEl1 := resources.Get "img/bg-el-1.png" }}
   {{ if $bgEl1 }}
   {{ $bgEl1Processed := $bgEl1.Resize "201x webp q80" }}
   <img fetchpriority="high" src="{{ $bgEl1Processed.RelPermalink }}" alt="{{ i18n " kb.aria.bg" }}" aria-hidden="true"
-    class="absolute block md:hidden z-[1] right-[-18%] top-[-54px] w-[201px] h-auto opacity-50" />
+    class="absolute block md:hidden z-[1] right-[-18%] top-[-54px] w-[201px] h-auto opacity-50 pointer-events-none" />
   {{ else }}
-  <img fetchpriority="high" src="/img/bg-el-1.png" alt="{{ i18n "kb.aria.bg" }}" aria-hidden="true"
-    class="absolute block md:hidden z-[1] right-[-18%] top-[-54px]  w-[201px] h-auto opacity-50" />
+  <img fetchpriority="high" src="/img/bg-el-1.png" alt="{{ i18n " kb.aria.bg" }}" aria-hidden="true"
+    class="absolute block md:hidden z-[1] right-[-18%] top-[-54px] w-[201px] h-auto opacity-50 pointer-events-none" />
   {{ end }}
   <div class="max-w-[1280px] mx-auto px-[20px]">
     <div
@@ -73,9 +73,10 @@
     <div class="grid grid-cols-1 md:grid-cols-[1fr_250px] lg:grid-cols-[280px_1fr_220px] gap-[clamp(20px,4vw,24px)]">
       <!-- Left sidebar - Categories -->
       <div class="bg-[#F6F6F6] max-w-[285px] h-full rounded-[5px] hidden lg:block">
-        <aside class="relative pt-0 pr-0 pl-0">
+        <aside class="relative pt-0 pr-0 pl-0" style="min-height: 400px;">
           <div class="p-0">
-            <nav id="left-category-nav" class="pt-[20px] space-y-[20px]" style="width: 285px;">
+            <nav id="left-category-nav" class="pt-[20px] space-y-[20px]"
+              style="position: fixed; top: 172px; width: 285px; max-height: calc(100vh - 200px); ">
               {{- $currentLang := .Site.Language.Lang -}}
               {{- $allCats := slice -}}
               {{- range site.Sites -}}
@@ -296,6 +297,12 @@
     scrollbar-width: none;
   }
 
+  /* Плавний перехід для сайдбарів */
+  #left-category-nav,
+  #right-toc-nav {
+    transition: top 0.3s ease, position 0.3s ease;
+  }
+
   @media (max-width: 768px) {
     .grid {
       grid-template-columns: 1fr;
@@ -332,17 +339,20 @@
     if (footer && (leftSidebar || rightSidebar)) {
       const sidebarsToManage = [];
       if (leftSidebar) {
+        const leftParent = leftSidebar.closest("aside");
         sidebarsToManage.push({
           element: leftSidebar,
-          parent: leftSidebar.closest("aside"),
-          naturalTop: leftSidebar.getBoundingClientRect().top,
+          parent: leftParent,
+          naturalTop: 172,
+          isLeft: true
         });
       }
       if (rightSidebar) {
         sidebarsToManage.push({
           element: rightSidebar,
           parent: rightSidebar.closest("aside"),
-          naturalTop: rightSidebar.getBoundingClientRect().top,
+          naturalTop: 172,
+          isLeft: false
         });
       }
 
@@ -352,27 +362,48 @@
 
       const updateSidebarPositions = () => {
         const footerTop = footer.getBoundingClientRect().top;
-        sidebarsToManage.forEach((data) => {
-          const { element, parent, naturalTop } = data;
-          if (!parent) return;
-          const sidebarHeight = element.offsetHeight;
-          if (footerTop < naturalTop + sidebarHeight + bottomMargin) {
-            element.style.position = "absolute";
-            const parentTop = parent.getBoundingClientRect().top;
-            const newTop = footerTop - parentTop - sidebarHeight - bottomMargin;
+        const windowHeight = window.innerHeight;
 
-            element.style.top = `${newTop}px`;
+        sidebarsToManage.forEach((data) => {
+          const { element, parent, naturalTop, isLeft } = data;
+          if (!parent) return;
+
+          const sidebarHeight = element.offsetHeight;
+          const parentRect = parent.getBoundingClientRect();
+
+          // Перевіряємо, чи футер близько
+          if (footerTop < windowHeight && footerTop < naturalTop + sidebarHeight + bottomMargin) {
+            // Футер близько - робимо absolute
+            element.style.position = "absolute";
+            const parentTop = parentRect.top + window.pageYOffset;
+            const newTop = footerTop + window.pageYOffset - parentTop - sidebarHeight - bottomMargin;
+            element.style.top = `${Math.max(0, newTop)}px`;
             element.style.bottom = "auto";
           } else {
+            // Футер далеко - залишаємо fixed
             element.style.position = "fixed";
             element.style.top = `${naturalTop}px`;
             element.style.bottom = "auto";
           }
         });
       };
-      window.addEventListener("scroll", updateSidebarPositions);
-      window.addEventListener("resize", updateSidebarPositions);
-      updateSidebarPositions();
+
+      // Використовуємо requestAnimationFrame для плавності
+      let ticking = false;
+      const smoothUpdateSidebarPositions = () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            updateSidebarPositions();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
+
+      window.addEventListener("scroll", smoothUpdateSidebarPositions);
+      window.addEventListener("resize", smoothUpdateSidebarPositions);
+      // Викликаємо після завантаження сторінки
+      setTimeout(updateSidebarPositions, 100);
     }
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
     anchorLinks.forEach((link) => {
