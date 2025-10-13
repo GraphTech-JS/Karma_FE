@@ -73,10 +73,9 @@
     <div class="grid grid-cols-1 md:grid-cols-[1fr_250px] lg:grid-cols-[280px_1fr_220px] gap-[clamp(20px,4vw,24px)]">
       <!-- Left sidebar - Categories -->
       <div class="bg-[#F6F6F6] max-w-[285px] h-full rounded-[5px] hidden lg:block">
-        <aside class="relative pt-0 pr-0 pl-0" style="min-height: 400px;">
+        <aside class="relative pt-0 pr-0 pl-0">
           <div class="p-0">
-            <nav id="left-category-nav" class="pt-[20px] space-y-[20px]"
-              style="position: fixed; top: 172px; width: 285px; max-height: calc(100vh - 200px); ">
+            <nav id="left-category-nav" class="pt-[20px] fixed space-y-[20px]" style="width: 285px;">
               {{- $currentLang := .Site.Language.Lang -}}
               {{- $allCats := slice -}}
               {{- range site.Sites -}}
@@ -297,10 +296,15 @@
     scrollbar-width: none;
   }
 
-  /* Плавний перехід для сайдбарів */
+  #left-category-nav::-webkit-scrollbar,
+  #right-toc-nav::-webkit-scrollbar {
+    display: none;
+  }
+
   #left-category-nav,
   #right-toc-nav {
-    transition: top 0.3s ease, position 0.3s ease;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
   @media (max-width: 768px) {
@@ -339,20 +343,17 @@
     if (footer && (leftSidebar || rightSidebar)) {
       const sidebarsToManage = [];
       if (leftSidebar) {
-        const leftParent = leftSidebar.closest("aside");
         sidebarsToManage.push({
           element: leftSidebar,
-          parent: leftParent,
-          naturalTop: 172,
-          isLeft: true
+          parent: leftSidebar.closest("aside"),
+          naturalTop: leftSidebar.getBoundingClientRect().top,
         });
       }
       if (rightSidebar) {
         sidebarsToManage.push({
           element: rightSidebar,
           parent: rightSidebar.closest("aside"),
-          naturalTop: 172,
-          isLeft: false
+          naturalTop: rightSidebar.getBoundingClientRect().top,
         });
       }
 
@@ -362,48 +363,27 @@
 
       const updateSidebarPositions = () => {
         const footerTop = footer.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-
         sidebarsToManage.forEach((data) => {
-          const { element, parent, naturalTop, isLeft } = data;
+          const { element, parent, naturalTop } = data;
           if (!parent) return;
-
           const sidebarHeight = element.offsetHeight;
-          const parentRect = parent.getBoundingClientRect();
-
-          // Перевіряємо, чи футер близько
-          if (footerTop < windowHeight && footerTop < naturalTop + sidebarHeight + bottomMargin) {
-            // Футер близько - робимо absolute
+          if (footerTop < naturalTop + sidebarHeight + bottomMargin) {
             element.style.position = "absolute";
-            const parentTop = parentRect.top + window.pageYOffset;
-            const newTop = footerTop + window.pageYOffset - parentTop - sidebarHeight - bottomMargin;
-            element.style.top = `${Math.max(0, newTop)}px`;
+            const parentTop = parent.getBoundingClientRect().top;
+            const newTop = footerTop - parentTop - sidebarHeight - bottomMargin;
+
+            element.style.top = `${newTop}px`;
             element.style.bottom = "auto";
           } else {
-            // Футер далеко - залишаємо fixed
             element.style.position = "fixed";
             element.style.top = `${naturalTop}px`;
             element.style.bottom = "auto";
           }
         });
       };
-
-      // Використовуємо requestAnimationFrame для плавності
-      let ticking = false;
-      const smoothUpdateSidebarPositions = () => {
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            updateSidebarPositions();
-            ticking = false;
-          });
-          ticking = true;
-        }
-      };
-
-      window.addEventListener("scroll", smoothUpdateSidebarPositions);
-      window.addEventListener("resize", smoothUpdateSidebarPositions);
-      // Викликаємо після завантаження сторінки
-      setTimeout(updateSidebarPositions, 100);
+      window.addEventListener("scroll", updateSidebarPositions);
+      window.addEventListener("resize", updateSidebarPositions);
+      updateSidebarPositions();
     }
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
     anchorLinks.forEach((link) => {
