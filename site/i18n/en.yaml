@@ -454,8 +454,11 @@ guides.categories.stacks: "Flight Stacks"
 guides.categories.vtx: "Video transmitters"
 guides.categories.esc: "ESC"
 guides.placeholder: "Enter text"
-guides.search.results: "Search results:"
-# -- Guides page -
+guides.search.results: "Search results"
+guides.search.noResults: "Nothing found"
+guides.search.onThisPage: "On this page"
+guides.search.searching: "Searching all articles..."
+# -- Guides page --
 # -- 404 page --
 404.title: "Page not found"
 404.heading: "Page not found"

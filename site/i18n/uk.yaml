@@ -454,7 +454,10 @@ guides.categories.stacks: "Політні стеки"
 guides.categories.vtx: "Відеопередавачі"
 guides.categories.esc: "ESC"
 guides.placeholder: "Введіть текст"
-guides.search.results: "Результати пошуку:"
+guides.search.results: "Результати пошуку"
+guides.search.noResults: "Нічого не знайдено"
+guides.search.onThisPage: "На цій сторінці"
+guides.search.searching: "Пошук у всіх статтях..."
 # -- Guides page --
 
 # -- 404 page --

@@ -36,10 +36,10 @@
           <input type="text" placeholder='{{i18n "kb.search.placeholder"}}'
             class="h-[41px] lg:h-[47px] max-[390px]:w-[250px] w-full !rounded-[20px] font-[Montserrat] border border-black pl-[clamp(12px,2vw,16px)] pr-[clamp(80px,15vw,120px)] text-[clamp(14px,2vw,20px)] outline-none focus:border-[#ba0108] bg-white"
             id="knowledge-search" />
-          <button
+          <button id="knowledge-search-button"
             class="absolute z-10 right-0 top-1/2 -translate-y-1/2 w-[clamp(70px,12vw,99px)] h-[41px] lg:h-[47px] rounded-[20px] bg-[#ba0108] flex items-center justify-center cursor-pointer hover:bg-[#a00007] transition-colors"
-            aria-label="{{ i18n "kb.search.button.aria" }}">
-            <img src="/img/search-icon.svg" alt="{{ i18n "kb.search.icon.alt" }}" width="30" height="30"
+            aria-label="{{ i18n " kb.search.button.aria" }}">
+            <img src="/img/search-icon.svg" alt="{{ i18n " kb.search.icon.alt" }}" width="30" height="30"
               class="filter brightness-0 invert" />
           </button>
         </div>
@@ -48,7 +48,10 @@
 
     <div id="search-message-container" class="max-w-[1280px] mx-auto px-[20px]"></div>
 
-    <div class="relative z-20 space-y-0 w-full max-w-[1600px] mx-auto">
+    {{ partial "search-global.html" . }}
+
+    <div class="relative z-20 space-y-0 w-full max-w-[1600px] mx-auto" id="knowledge-content"
+      data-search-content="true">
       {{- $currentLang := .Site.Language.Lang -}}
       {{- $allCats := slice -}}
       {{- range site.Sites -}}
@@ -198,16 +201,8 @@
 </style>
 
 <script>
-  window.I18NKB = {
-    "notFoundTpl": "{{i18n "kb.search.notFound.tpl" | plainify}}"
-  };
-</script>
-
-<script>
   document.addEventListener('DOMContentLoaded', function () {
     const allSections = document.querySelectorAll('.knowledge-section');
-    const searchInput = document.getElementById('knowledge-search');
-    const searchButton = searchInput?.nextElementSibling;
 
     function initAnimatedAccordion() {
       allSections.forEach(section => {
@@ -245,78 +240,7 @@
       });
     }
 
-    function showSearchMessage(message) {
-      const container = document.getElementById('search-message-container');
-      if (container) container.innerHTML = `<div class="text-center pb-[20px] text-gray-500 font-[Montserrat]">${message}</div>`;
-    }
-    function hideSearchMessage() {
-      const container = document.getElementById('search-message-container');
-      if (container) container.innerHTML = '';
-    }
-
-    function searchInContent(query) {
-      if (!query) { resetSearch(); return; }
-      let isAnyResultFound = false;
-      allSections.forEach(section => {
-        const items = section.querySelectorAll('.knowledge-item');
-        let sectionHasMatch = false;
-        items.forEach(item => {
-          const title = item.querySelector('h3')?.textContent.toLowerCase() || '';
-          const description = item.querySelector('p')?.textContent.toLowerCase() || '';
-          if (title.includes(query) || description.includes(query)) {
-            item.classList.remove('hidden');
-            item.classList.add('highlighted');
-            sectionHasMatch = true; isAnyResultFound = true;
-          } else {
-            item.classList.add('hidden');
-            item.classList.remove('highlighted');
-          }
-        });
-
-        const content = section.querySelector('.section-content');
-        const arrow = section.querySelector('.accordion-arrow');
-        if (sectionHasMatch) {
-          section.setAttribute('open', ''); section.classList.add('is-open'); arrow.classList.add('rotate-90');
-          content.style.maxHeight = 'none';
-        } else {
-          section.removeAttribute('open'); section.classList.remove('is-open'); arrow.classList.remove('rotate-90');
-          content.style.maxHeight = '0px';
-        }
-      });
-
-      if (!isAnyResultFound) {
-        const t = window.I18NKB || {};
-        const tpl = t.notFoundTpl || 'Нічого не знайдено за запитом: {query}';
-        showSearchMessage(tpl.replace('{query}', query));
-      } else {
-        hideSearchMessage();
-      }
-    }
-
-    function resetSearch() {
-      allSections.forEach((section, index) => {
-        section.querySelectorAll('.knowledge-item').forEach(item => item.classList.remove('hidden', 'highlighted'));
-        const content = section.querySelector('.section-content');
-        const arrow = section.querySelector('.accordion-arrow');
-        if (index === 0) {
-          section.setAttribute('open', ''); section.classList.add('is-open'); arrow.classList.add('rotate-90');
-          content.style.maxHeight = 'none';
-        } else {
-          section.removeAttribute('open'); section.classList.remove('is-open'); arrow.classList.remove('rotate-90');
-          content.style.maxHeight = '0px';
-        }
-      });
-      hideSearchMessage();
-    }
-
     initAnimatedAccordion();
-
-    if (searchInput && searchButton) {
-      const performSearch = () => searchInContent(searchInput.value.trim().toLowerCase());
-      searchButton.addEventListener('click', performSearch);
-      searchInput.addEventListener('keypress', e => { if (e.key === 'Enter') performSearch(); });
-      searchInput.addEventListener('input', () => { if (searchInput.value.trim() === '') resetSearch(); });
-    }
   });
 </script>
 {{ end }}
