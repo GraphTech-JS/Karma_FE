@@ -71,9 +71,27 @@ System.out.println("Connecting black wire to GND...");
 {{< /code-block >}}
 
 {{< code-block language="javascript" >}}
-function connectWires() {
-console.log("Connecting red wire to VCC...");
-console.log("Connecting black wire to GND...");
+#include <Wire.h>
+#include <MPU6050.h>
+
+MPU6050 mpu;
+
+void setup() {
+  Serial.begin(9600);
+  Wire.begin();
+  mpu.initialize();
+  if (mpu.testConnection()) {
+    Serial.println("MPU6050 підключено!");
+  }
+}
+
+void loop() {
+  int16_t ax, ay, az;
+  mpu.getAcceleration(&ax, &ay, &az);
+  Serial.print("Ax: "); Serial.print(ax);
+  Serial.print(" Ay: "); Serial.print(ay);
+  Serial.print(" Az: "); Serial.println(az);
+  delay(500);
 }
 {{< /code-block >}}
 
