@@ -794,92 +794,582 @@
     `;
       document.head.appendChild(style);
 
-      let searchResultsData = [];
+      let pagesIndex = [];
+      let contentCache = {};
+      let isIndexBuilt = false;
+
+      function stripHtmlTags(text) {
+        return text.replace(/<[^>]*>/g, '');
+      }
+
+      async function buildPagesIndex() {
+        if (isIndexBuilt) return;
+
+        pagesIndex = [];
+        const seenUrls = new Set();
+
+        const mainSections = [
+          { url: '/guides/', title: 'Гайди' },
+          { url: '/faq/', title: 'FAQ' },
+          { url: '/catalog/', title: 'Каталог' },
+          { url: '/knowledge-base/', title: 'База знань' },
+          { url: '/contact/', title: 'Контакти' }
+        ];
+
+        mainSections.forEach(section => {
+          if (!seenUrls.has(section.url)) {
+            seenUrls.add(section.url);
+            pagesIndex.push(section);
+          }
+        });
+
+        const allLinks = document.querySelectorAll('a[href]');
+
+        allLinks.forEach(link => {
+          const url = link.getAttribute('href');
+          let title = link.textContent.trim();
+
+          if (url && url.startsWith('/') && !url.startsWith('/#') && title && !seenUrls.has(url)) {
+            const cleanUrl = url.trim();
+            if (cleanUrl === '/' || cleanUrl === '//' || cleanUrl.includes('%20/') || cleanUrl === ' ' || cleanUrl === ' /') {
+              return; 
+            }
+
+            if (!url.includes('/admin') && !url.includes('/tags/') && !url.includes('/categories/') && !url.includes('privacy-policy')) {
+              seenUrls.add(url);
+
+              if (!title || title.length < 2) {
+                const urlParts = url.split('/').filter(p => p);
+                title = urlParts[urlParts.length - 1] || title;
+              }
+
+              if (title && title.trim().length > 1) {
+                pagesIndex.push({
+                  title: title.trim(),
+                  url: url
+                });
+              }
+            }
+          }
+        });
+
+        const categoryNav = document.getElementById('left-category-nav');
+        if (categoryNav) {
+          const categories = categoryNav.querySelectorAll('details.asideDetails');
+          categories.forEach(category => {
+            const categoryName = category.querySelector('summary span')?.textContent.trim() || '';
+            const links = category.querySelectorAll('ul a[href]');
+            links.forEach(link => {
+              const title = link.textContent.trim();
+              const url = link.getAttribute('href');
+              if (title && url && url.includes('/guides/') && !seenUrls.has(url)) {
+                seenUrls.add(url);
+                pagesIndex.push({
+                  title: title,
+                  url: url,
+                  category: categoryName
+                });
+              }
+            });
+          });
+        }
+
+        const knowledgeSections = document.querySelectorAll('.knowledge-section');
+        if (knowledgeSections.length > 0) {
+          knowledgeSections.forEach((section) => {
+            const categoryName = section.querySelector('h2')?.textContent.trim() || '';
+            const items = section.querySelectorAll('.knowledge-item a[href]');
+            items.forEach(link => {
+              const title = link.querySelector('h3')?.textContent.trim();
+              const url = link.getAttribute('href');
+              if (title && url && url.includes('/guides/') && !seenUrls.has(url)) {
+                seenUrls.add(url);
+                pagesIndex.push({
+                  title: title,
+                  url: url,
+                  category: categoryName
+                });
+              }
+            });
+          });
+        }
+
+        try {
+          const sectionsToFetch = ['/guides/', '/catalog/', '/knowledge-base/'];
+
+          for (const sectionUrl of sectionsToFetch) {
+            try {
+              const res = await fetch(sectionUrl);
+              if (res.ok) {
+                const html = await res.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+
+                const leftNav = doc.getElementById('left-category-nav');
+                if (leftNav) {
+                  const categories = leftNav.querySelectorAll('details.asideDetails');
+                  categories.forEach(category => {
+                    const categoryName = category.querySelector('summary span')?.textContent.trim() || '';
+                    const links = category.querySelectorAll('ul a[href]');
+                    links.forEach(link => {
+                      const title = link.textContent.trim();
+                      const url = link.getAttribute('href');
+                      if (title && url && !seenUrls.has(url) && !url.includes('/admin') && !url.includes('/tags/') && !url.includes('/categories/')) {
+                        seenUrls.add(url);
+                        pagesIndex.push({
+                          title: title,
+                          url: url,
+                          category: categoryName
+                        });
+                      }
+                    });
+                  });
+                }
+
+                const knowledgeSects = doc.querySelectorAll('.knowledge-section');
+                if (knowledgeSects.length > 0) {
+                  knowledgeSects.forEach((section) => {
+                    const categoryName = section.querySelector('h2')?.textContent.trim() || '';
+                    const items = section.querySelectorAll('.knowledge-item a[href]');
+                    items.forEach(link => {
+                      const title = link.querySelector('h3')?.textContent.trim();
+                      const url = link.getAttribute('href');
+                      if (title && url && !seenUrls.has(url) && !url.includes('/admin') && !url.includes('/tags/') && !url.includes('/categories/')) {
+                        seenUrls.add(url);
+                        pagesIndex.push({
+                          title: title,
+                          url: url,
+                          category: categoryName
+                        });
+                      }
+                    });
+                  });
+                }
+
+                const sectionLinks = doc.querySelectorAll('a[href]');
+                sectionLinks.forEach(link => {
+                  const url = link.getAttribute('href');
+                  let title = link.textContent.trim();
+
+                  if (url && url.startsWith('/') && !url.startsWith('/#') && !seenUrls.has(url)) {
+                    if (!url.includes('/admin') && !url.includes('/tags/') && !url.includes('/categories/')) {
+                      seenUrls.add(url);
+
+                      if (!title || title.length < 2) {
+                        const urlParts = url.split('/').filter(p => p);
+                        title = urlParts[urlParts.length - 1] || 'Сторінка';
+                      }
+
+                      pagesIndex.push({
+                        title: title,
+                        url: url
+                      });
+                    }
+                  }
+                });
+              }
+            } catch (e) {
+            }
+          }
+        } catch (e) {
+          console.warn('Не вдалося побудувати повний індекс:', e);
+        }
+
+        isIndexBuilt = true;
+      }
+
+      async function fetchPageContent(url) {
+        try {
+          const u = new URL(url, window.location.origin);
+          u.hash = '';
+          u.search = '';
+          const urlWithSlash = u.pathname.endsWith('/') ? u.pathname : (u.pathname + '/');
+          const cacheKey = urlWithSlash;
+
+          if (contentCache[cacheKey]) {
+            return contentCache[cacheKey];
+          }
+
+          const fetchHtml = async (path) => {
+            const res = await fetch(path, {
+              cache: 'no-store',
+              headers: {
+                'Cache-Control': 'no-cache',
+                'Accept': 'text/html'
+              }
+            });
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            return await res.text();
+          };
+
+          let html = null;
+          try {
+            html = await fetchHtml(urlWithSlash);
+          } catch (_) {
+            try {
+              const urlNoSlash = u.pathname.endsWith('/') ? u.pathname.slice(0, -1) : u.pathname;
+              html = await fetchHtml(urlNoSlash);
+            } catch (e2) {
+              try {
+                html = await fetchHtml(url);
+              } catch (e3) {
+                return null;
+              }
+            }
+          }
+
+          if (!html) return null;
+
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+
+          const articleContent = doc.getElementById('article-content') ||
+            doc.querySelector('.markdown-content') ||
+            doc.querySelector('article') ||
+            doc.querySelector('main') ||
+            doc.querySelector('.content') ||
+            doc.querySelector('.post-content') ||
+            doc.querySelector('.page-content') ||
+            doc.querySelector('[role="main"]') ||
+            doc.body;
+
+          if (!articleContent) return null;
+
+          articleContent.querySelectorAll('script, style, noscript, header, nav, footer, .navigation, .nav, .menu, #mobile-search-panel, #mobile-search-results').forEach(el => el.remove());
+
+          let content = articleContent.textContent || articleContent.innerText || '';
+
+          content = content
+            .replace(/[\u2018\u2019]/g, "'")
+            .replace(/[\u201C\u201D]/g, '"')
+            .replace(/[\u2013\u2014]/g, '-')
+            .replace(/\u00A0/g, ' ')
+            .replace(/\u00AD/g, '')
+            .replace(/[\u200B-\u200D\uFEFF]/g, '')
+            .replace(/\s+/g, ' ')
+            .trim();
+
+          contentCache[cacheKey] = content;
+          return content;
+        } catch (error) {
+          console.warn('Помилка при завантаженні контенту:', url, error);
+          return null;
+        }
+      }
+
+      function findContextInText(text, query) {
+        const normalizedText = text.includes('\n') ? text.replace(/\s+/g, ' ') : text;
+
+        let normalizedQuery = stripHtmlTags(query)
+          .replace(/[\u2018\u2019]/g, "'")
+          .replace(/[\u201C\u201D]/g, '"')
+          .replace(/[\u2013\u2014]/g, '-')
+          .replace(/\u00A0/g, ' ')
+          .replace(/\s+/g, ' ')
+          .trim();
+
+        const wordCount = normalizedQuery.split(/\s+/).length;
+        const isLongQuery = normalizedQuery.length > 15 || wordCount >= 3;
+
+        let searchPattern = normalizedQuery.replace(/[-\/\\^$*+?()|\[\]{}]/g, '\\$&');
+        searchPattern = searchPattern.replace(/[\.,:;!?]/g, '[.,;:!?]?');
+
+        if (isLongQuery) {
+          searchPattern = searchPattern.replace(/\s+/g, '\\s+');
+        }
+
+        const regex = new RegExp(searchPattern, 'gi');
+        const match = regex.exec(normalizedText);
+
+        if (match) {
+          const matchLength = match[0].length;
+          const contextPadding = isLongQuery ? 80 : 50;
+          const start = Math.max(0, match.index - contextPadding);
+          const end = Math.min(normalizedText.length, match.index + matchLength + contextPadding);
+          let context = (start > 0 ? '...' : '') +
+            normalizedText.substring(start, end).trim() +
+            (end < normalizedText.length ? '...' : '');
+
+          if (context.length > 200) {
+            context = context.substring(0, 200) + '...';
+          }
+
+          return {
+            context: context,
+            matchedText: match[0]
+          };
+        }
+
+        return null;
+      }
 
       function clearSearch() {
         if (searchResults) searchResults.innerHTML = '';
-        searchResultsData = [];
-        document.querySelectorAll('span[id^="temp-search-result-"]').forEach(marker => {
-          if (marker.parentNode) marker.replaceWith(document.createTextNode(marker.textContent));
-        });
-        if (contentArea) contentArea.normalize();
       }
 
-      function executeSearch() {
+      function findTextOnPage(query) {
+        const searchArea = document.getElementById('article-content') ||
+          document.querySelector('.markdown-content') ||
+          document.querySelector('main') ||
+          document.querySelector('article') ||
+          document.querySelector('.content');
+
+        if (!searchArea) {
+          console.warn('❌ Контентна область не знайдена');
+          return { count: 0, firstElement: null };
+        }
+
+        let normalizedQuery = stripHtmlTags(query)
+          .replace(/[\u2018\u2019]/g, "'")
+          .replace(/[\u201C\u201D]/g, '"')
+          .replace(/[\u2013\u2014]/g, '-')
+          .replace(/\u00A0/g, ' ')
+          .replace(/\s+/g, ' ')
+          .trim();
+
+        const wordCount = normalizedQuery.split(/\s+/).length;
+        const isLongQuery = normalizedQuery.length > 15 || wordCount >= 3;
+
+        let searchPattern = normalizedQuery.replace(/[-\/\\^$*+?()|\[\]{}]/g, '\\$&');
+        searchPattern = searchPattern.replace(/[\.,:;!?]/g, '[.,;:!?]?');
+
+        if (isLongQuery) {
+          searchPattern = searchPattern.replace(/\s+/g, '\\s+');
+        }
+
+        const regex = new RegExp(searchPattern, 'gi');
+        let matchCount = 0;
+        let firstMatchElement = null;
+
+        const walker = document.createTreeWalker(searchArea, NodeFilter.SHOW_TEXT, {
+          acceptNode: node => {
+            const parent = node.parentNode;
+            if (!parent || parent.closest('script, style, noscript, #search-results')) {
+              return NodeFilter.FILTER_REJECT;
+            }
+
+            if (!node.textContent.trim()) {
+              return NodeFilter.FILTER_REJECT;
+            }
+
+            const normalizedNodeText = node.textContent
+              .replace(/[\u2018\u2019]/g, "'")
+              .replace(/[\u201C\u201D]/g, '"')
+              .replace(/[\u2013\u2014]/g, '-')
+              .replace(/\u00A0/g, ' ')
+              .replace(/\s+/g, ' ');
+
+            if (!regex.test(normalizedNodeText)) {
+              return NodeFilter.FILTER_REJECT;
+            }
+
+            return NodeFilter.FILTER_ACCEPT;
+          }
+        });
+
+        while (walker.nextNode()) {
+          const textNode = walker.currentNode;
+          const normalizedText = textNode.textContent
+            .replace(/[\u2018\u2019]/g, "'")
+            .replace(/[\u201C\u201D]/g, '"')
+            .replace(/[\u2013\u2014]/g, '-')
+            .replace(/\u00A0/g, ' ');
+
+          regex.lastIndex = 0;
+          let match;
+
+          while ((match = regex.exec(normalizedText)) !== null) {
+            matchCount++;
+
+            if (!firstMatchElement && textNode.parentNode) {
+              firstMatchElement = textNode.parentNode;
+            }
+          }
+        }
+
+        console.log('✓ Знайдено збігів:', matchCount);
+        return { count: matchCount, firstElement: firstMatchElement };
+      }
+
+      function highlightTextOnPage(query) {
+        const result = findTextOnPage(query);
+        return result.count;
+      }
+
+      async function executeSearch() {
         clearSearch();
-        if (!contentArea) return;
         const query = searchInput.value.trim();
         if (query.length < 2) return;
-        const regex = new RegExp(`(${query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
-        let resultIndex = 0;
-        const walker = document.createTreeWalker(contentArea, NodeFilter.SHOW_TEXT, {
-          acceptNode: node => (node.parentNode.closest('script, style, header, #mobile-search-panel') || !node.textContent.trim() || !regex.test(node.textContent)) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+
+        searchResults.innerHTML = `
+          <div class="p-4 text-center text-white/60">
+            <div class="flex gap-2 justify-center items-center">
+              <svg class="animate-spin h-5 w-5 text-[#ba0108]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              <span>Пошук...</span>
+            </div>
+          </div>
+        `;
+
+        console.log('🔍 Пошук за запитом:', query);
+
+        const currentPageMatches = highlightTextOnPage(query);
+        if (currentPageMatches > 0) {
+          console.log('✓ Знайдено на поточній сторінці:', currentPageMatches, 'збігів');
+        } else {
+          console.log('ℹ На поточній сторінці контент не знайдено (можливо це головна сторінка)');
+        }
+
+        if (pagesIndex.length === 0) {
+          await buildPagesIndex();
+          console.log('✓ Побудовано індекс:', pagesIndex.length, 'сторінок');
+        }
+
+        const currentUrl = window.location.pathname;
+        const otherPagesResults = [];
+
+        const pagesToSearch = pagesIndex.slice(0, 100);
+
+        for (const page of pagesToSearch) {
+          if (page.url === currentUrl) continue;
+
+          const normalizedTitle = page.title.toLowerCase();
+          const normalizedQuery = query.toLowerCase();
+
+          if (normalizedTitle.includes(normalizedQuery)) {
+            console.log('✓ Збіг у заголовку:', page.title, '->', page.url);
+            otherPagesResults.push({
+              ...page,
+              context: page.title,
+              hasMatch: true
+            });
+            if (otherPagesResults.length >= 15) break;
+            continue;
+          }
+
+          const content = await fetchPageContent(page.url);
+          if (content) {
+            const contextResult = findContextInText(content, query);
+            if (contextResult) {
+              console.log('✓ Збіг у контенті:', page.title, '->', page.url);
+              otherPagesResults.push({
+                ...page,
+                context: contextResult.context,
+                hasMatch: true
+              });
+              if (otherPagesResults.length >= 15) break;
+            }
+          }
+        }
+
+        console.log('✓ Знайдено результатів на інших сторінках:', otherPagesResults.length);
+
+        otherPagesResults.sort((a, b) => {
+          const aIsGuide = a.url.includes('/guides/');
+          const bIsGuide = b.url.includes('/guides/');
+
+          if (aIsGuide && !bIsGuide) return -1;
+          if (!aIsGuide && bIsGuide) return 1;
+          return 0;
         });
-        const nodesToProcess = [];
-        while (walker.nextNode()) nodesToProcess.push(walker.currentNode);
-        nodesToProcess.forEach(textNode => {
-          const fragment = document.createDocumentFragment();
-          let lastIndex = 0;
-          textNode.textContent.replace(regex, (match, ...args) => {
-            const offset = args[args.length - 2];
-            if (offset > lastIndex) fragment.appendChild(document.createTextNode(textNode.textContent.substring(lastIndex, offset)));
-            const markerSpan = document.createElement('span');
-            const resultId = `temp-search-result-${resultIndex++}`;
-            markerSpan.id = resultId;
-            markerSpan.textContent = match;
-            fragment.appendChild(markerSpan);
-            searchResultsData.push({ id: resultId, context: getContext(textNode.textContent, match, offset) });
-            lastIndex = offset + match.length;
-          });
-          if (lastIndex < textNode.textContent.length) fragment.appendChild(document.createTextNode(textNode.textContent.substring(lastIndex)));
-          textNode.parentNode.replaceChild(fragment, textNode);
-        });
-        displayResults();
+
+        displayResults(currentPageMatches, otherPagesResults, query);
       }
 
-      function getContext(fullText, match, matchIndex) {
-        const contextLength = 60;
-        const start = Math.max(0, matchIndex - contextLength);
-        const end = Math.min(fullText.length, matchIndex + match.length + contextLength);
-        let context = (start > 0 ? '...' : '') + fullText.substring(start, end) + (end < fullText.length ? '...' : '');
-        return context.replace(new RegExp(`(${match})`, 'gi'), '<span class="text-[#ba0108] font-semibold">$1</span>');
-      }
-
-      function displayResults() {
+      function displayResults(currentPageMatches, otherPagesResults, query) {
         if (!searchResults) return;
         searchResults.innerHTML = '';
-        if (searchResultsData.length > 0) {
-          searchResultsData.forEach(result => {
-            const resultElement = document.createElement('div');
-            resultElement.className = 'block p-3 text-white/90 bg-[#1a1a1a] hover:bg-[#2a2a2a] rounded-md my-1 text-sm cursor-pointer';
-            resultElement.innerHTML = `<div>${result.context}</div>`;
-            resultElement.addEventListener('click', () => scrollToResult(result.id));
+
+        const hasResults = currentPageMatches > 0 || otherPagesResults.length > 0;
+
+        if (hasResults) {
+          if (currentPageMatches > 0) {
+            const currentResultElement = document.createElement('div');
+            currentResultElement.className = 'block p-3 text-white/90 bg-[#1a1a1a] hover:bg-[#2a2a2a] rounded-md my-1 text-sm cursor-pointer border-l-4 border-blue-500 transition-colors';
+            currentResultElement.innerHTML = `
+              <div class="flex gap-2 items-start">
+                <img src="/img/point.svg" alt="" class="flex-shrink-0 mt-0.5 w-4 h-4" style="filter: brightness(0) invert(1);" />
+                <div class="flex-1">
+                  <div class="mb-2">
+                    <span class="inline-block px-2 py-0.5 text-xs text-blue-800 bg-blue-100 rounded">На цій сторінці</span>
+                  </div>
+                  <p class="text-sm text-white/80">Знайдено ${currentPageMatches} збігів</p>
+                </div>
+              </div>
+            `;
+            currentResultElement.addEventListener('click', () => {
+              closeSearchPanel();
+
+              setTimeout(() => {
+                const result = findTextOnPage(query);
+                if (result.firstElement) {
+                  const parentBlock = result.firstElement.closest('p, li, h1, h2, h3, h4, h5, h6, td, th, div, section, article, main');
+
+                  if (parentBlock) {
+                    parentBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                    setTimeout(() => {
+                      parentBlock.style.backgroundColor = 'rgba(186, 1, 8, 0.15)';
+                      parentBlock.style.transition = 'background-color 0.5s ease';
+                      parentBlock.style.borderRadius = '4px';
+
+                      setTimeout(() => {
+                        parentBlock.style.backgroundColor = '';
+                      }, 3000);
+                    }, 300);
+                  }
+                }
+              }, 100);
+            });
+            searchResults.appendChild(currentResultElement);
+          }
+
+          otherPagesResults.forEach(result => {
+            const resultElement = document.createElement('a');
+            resultElement.href = result.url + '?highlight=' + encodeURIComponent(query);
+            resultElement.className = 'block p-3 text-white/90 bg-[#1a1a1a] hover:bg-[#2a2a2a] rounded-md my-1 text-sm border-l-4 border-[#ba0108] transition-colors';
+
+            let highlightedContext = result.context;
+            const queryRegex = new RegExp(`(${query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
+            highlightedContext = highlightedContext.replace(
+              queryRegex,
+              '<span class="text-[#ba0108] font-semibold">$1</span>'
+            );
+
+            const isGuide = result.url.includes('/guides/');
+            const guideBadge = isGuide ? `<span class="inline-block px-2 py-0.5 mr-2 text-xs text-green-800 bg-green-100 rounded">База знань</span>` : '';
+
+            const categoryHtml = result.category ? `<div class="mb-1 text-xs text-white/50">${guideBadge}${result.category}</div>` : (guideBadge ? `<div class="mb-1 text-xs text-white/50">${guideBadge}</div>` : '');
+
+            resultElement.innerHTML = `
+              <div class="flex gap-2 items-start">
+                <img src="/img/point.svg" alt="" class="flex-shrink-0 mt-0.5 w-4 h-4" style="filter: brightness(0) invert(1);" />
+                <div class="flex-1">
+                  <h3 class="font-[Montserrat] font-semibold text-sm mb-2 text-[#ba0108]">${result.title}</h3>
+                  ${categoryHtml}
+                  <p class="text-sm text-white/80">${highlightedContext}</p>
+                </div>
+              </div>
+            `;
+
+            resultElement.addEventListener('click', () => {
+              closeSearchPanel();
+            });
+
             searchResults.appendChild(resultElement);
           });
         } else {
-          searchResults.innerHTML = `<div class="p-3 text-center text-white/60">Ничего не найдено</div>`;
+          searchResults.innerHTML = `<div class="p-3 text-center text-white/60">Нічого не знайдено</div>`;
         }
       }
 
-      function scrollToResult(resultId) {
-        const element = document.getElementById(resultId);
-        if (element) {
-          searchPanel.classList.remove('open');
-          searchToggleButton.setAttribute('aria-expanded', 'false');
-          const parentBlock = element.closest('p, li, h1, h2, h3, h4, td, th, div:not(:empty)');
-          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          if (parentBlock) {
-            parentBlock.classList.add('search-result-focus');
-            setTimeout(() => {
-              parentBlock.classList.remove('search-result-focus');
-              clearSearch();
-              searchInput.value = '';
-            }, 1500);
-          } else {
-            clearSearch();
-            searchInput.value = '';
-          }
-        }
+      function closeSearchPanel() {
+        searchPanel.classList.remove('open');
+        searchToggleButton.setAttribute('aria-expanded', 'false');
+        clearSearch();
+        searchInput.value = '';
       }
 
       function toggleSearchPanel() {
@@ -893,9 +1383,63 @@
         }
       }
 
+      const urlParams = new URLSearchParams(window.location.search);
+      const highlightQuery = urlParams.get('highlight');
+      if (highlightQuery) {
+        console.log('🔍 Отримано параметр highlight з URL:', highlightQuery);
+
+        setTimeout(() => {
+          console.log('🔍 Пошук тексту:', decodeURIComponent(highlightQuery));
+
+          const result = findTextOnPage(decodeURIComponent(highlightQuery));
+          console.log('✓ Знайдено збігів:', result.count);
+
+          if (result.count > 0 && result.firstElement) {
+            setTimeout(() => {
+              const parentBlock = result.firstElement.closest('p, li, h1, h2, h3, h4, h5, h6, td, th, div, section, article, main');
+
+              if (parentBlock) {
+                console.log('✓ Скролимо до блоку:', parentBlock.tagName);
+
+                parentBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                setTimeout(() => {
+                  parentBlock.style.backgroundColor = 'rgba(186, 1, 8, 0.15)';
+                  parentBlock.style.transition = 'background-color 0.5s ease';
+                  parentBlock.style.borderRadius = '4px';
+
+                  setTimeout(() => {
+                    parentBlock.style.backgroundColor = '';
+                  }, 3000);
+                }, 500);
+              }
+
+              const url = new URL(window.location);
+              url.searchParams.delete('highlight');
+              window.history.replaceState({}, '', url);
+            }, 800);
+          } else {
+            console.warn('❌ Не знайдено збігів для виділення');
+            const url = new URL(window.location);
+            url.searchParams.delete('highlight');
+            window.history.replaceState({}, '', url);
+          }
+        }, 1000);
+      }
+
       searchToggleButton.addEventListener('click', toggleSearchPanel);
       searchButton.addEventListener('click', executeSearch);
-      searchInput.addEventListener('keydown', (event) => { if (event.key === 'Enter') executeSearch(); });
+      searchInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          executeSearch();
+        }
+      });
+      searchInput.addEventListener('input', () => {
+        if (searchInput.value.trim().length === 0) {
+          clearSearch();
+        }
+      });
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && searchPanel.classList.contains('open')) closeSearchPanel(); });
       if (typeof switchLanguage === 'function') {
         switchLanguage(localStorage.getItem('selectedLanguage') || 'ua');
