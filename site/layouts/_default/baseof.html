@@ -832,7 +832,7 @@
           if (url && url.startsWith('/') && !url.startsWith('/#') && title && !seenUrls.has(url)) {
             const cleanUrl = url.trim();
             if (cleanUrl === '/' || cleanUrl === '//' || cleanUrl.includes('%20/') || cleanUrl === ' ' || cleanUrl === ' /') {
-              return; 
+              return;
             }
 
             if (!url.includes('/admin') && !url.includes('/tags/') && !url.includes('/categories/') && !url.includes('privacy-policy')) {
@@ -1187,13 +1187,24 @@
           }
         }
 
-        console.log('✓ Знайдено збігів:', matchCount);
         return { count: matchCount, firstElement: firstMatchElement };
       }
 
       function highlightTextOnPage(query) {
         const result = findTextOnPage(query);
         return result.count;
+      }
+
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
       }
 
       async function executeSearch() {
@@ -1213,18 +1224,13 @@
           </div>
         `;
 
-        console.log('🔍 Пошук за запитом:', query);
 
         const currentPageMatches = highlightTextOnPage(query);
         if (currentPageMatches > 0) {
-          console.log('✓ Знайдено на поточній сторінці:', currentPageMatches, 'збігів');
-        } else {
-          console.log('ℹ На поточній сторінці контент не знайдено (можливо це головна сторінка)');
         }
 
         if (pagesIndex.length === 0) {
           await buildPagesIndex();
-          console.log('✓ Побудовано індекс:', pagesIndex.length, 'сторінок');
         }
 
         const currentUrl = window.location.pathname;
@@ -1239,32 +1245,53 @@
           const normalizedQuery = query.toLowerCase();
 
           if (normalizedTitle.includes(normalizedQuery)) {
-            console.log('✓ Збіг у заголовку:', page.title, '->', page.url);
             otherPagesResults.push({
               ...page,
               context: page.title,
               hasMatch: true
             });
             if (otherPagesResults.length >= 15) break;
-            continue;
-          }
-
-          const content = await fetchPageContent(page.url);
-          if (content) {
-            const contextResult = findContextInText(content, query);
-            if (contextResult) {
-              console.log('✓ Збіг у контенті:', page.title, '->', page.url);
-              otherPagesResults.push({
-                ...page,
-                context: contextResult.context,
-                hasMatch: true
-              });
-              if (otherPagesResults.length >= 15) break;
-            }
           }
         }
 
-        console.log('✓ Знайдено результатів на інших сторінках:', otherPagesResults.length);
+        if (otherPagesResults.length < 15) {
+          const pagesToSearchContent = pagesToSearch
+            .filter(page => page.url !== currentUrl)
+            .filter(page => !otherPagesResults.find(r => r.url === page.url))
+            .slice(0, 50);
+
+          const batchSize = 10;
+          for (let i = 0; i < pagesToSearchContent.length; i += batchSize) {
+            if (otherPagesResults.length >= 15) break;
+
+            const batch = pagesToSearchContent.slice(i, i + batchSize);
+            const results = await Promise.allSettled(
+              batch.map(async (page) => {
+                const content = await fetchPageContent(page.url);
+                if (content) {
+                  const contextResult = findContextInText(content, query);
+                  if (contextResult) {
+                    return {
+                      ...page,
+                      context: contextResult.context,
+                      hasMatch: true
+                    };
+                  }
+                }
+                return null;
+              })
+            );
+
+            results.forEach(result => {
+              if (result.status === 'fulfilled' && result.value) {
+                otherPagesResults.push(result.value);
+              }
+            });
+
+            if (otherPagesResults.length >= 15) break;
+          }
+        }
+
 
         otherPagesResults.sort((a, b) => {
           const aIsGuide = a.url.includes('/guides/');
@@ -1386,20 +1413,16 @@
       const urlParams = new URLSearchParams(window.location.search);
       const highlightQuery = urlParams.get('highlight');
       if (highlightQuery) {
-        console.log('🔍 Отримано параметр highlight з URL:', highlightQuery);
 
         setTimeout(() => {
-          console.log('🔍 Пошук тексту:', decodeURIComponent(highlightQuery));
 
           const result = findTextOnPage(decodeURIComponent(highlightQuery));
-          console.log('✓ Знайдено збігів:', result.count);
 
           if (result.count > 0 && result.firstElement) {
             setTimeout(() => {
               const parentBlock = result.firstElement.closest('p, li, h1, h2, h3, h4, h5, h6, td, th, div, section, article, main');
 
               if (parentBlock) {
-                console.log('✓ Скролимо до блоку:', parentBlock.tagName);
 
                 parentBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
@@ -1427,6 +1450,8 @@
         }, 1000);
       }
 
+      const debouncedSearch = debounce(executeSearch, 300);
+
       searchToggleButton.addEventListener('click', toggleSearchPanel);
       searchButton.addEventListener('click', executeSearch);
       searchInput.addEventListener('keydown', (event) => {
@@ -1436,7 +1461,9 @@
         }
       });
       searchInput.addEventListener('input', () => {
-        if (searchInput.value.trim().length === 0) {
+        if (searchInput.value.trim().length >= 2) {
+          debouncedSearch();
+        } else {
           clearSearch();
         }
       });
