@@ -31,8 +31,7 @@
       </div>
 
       <!-- Search for all devices -->
-      <div class="flex justify-center items-center max-w-[clamp(250px,90vw,400px)] lg:max-w-md">
-        <div class="flex relative">
+<div class="knowledge-search-wrapper hidden justify-center items-center max-w-[clamp(250px,90vw,400px)] lg:max-w-md">        <div class="flex relative">
           <input type="text" placeholder='{{i18n "kb.search.placeholder"}}'
             class="h-[41px] lg:h-[47px] max-[390px]:w-[250px] w-full !rounded-[20px] font-[Montserrat] border border-black pl-[clamp(12px,2vw,16px)] pr-[clamp(80px,15vw,120px)] text-[clamp(14px,2vw,20px)] outline-none focus:border-[#ba0108] bg-white"
             id="knowledge-search" />
@@ -176,6 +175,16 @@
     background-color: #ba0108 !important;
   }
 
+  .knowledge-search-wrapper {
+  display: none;
+}
+
+@media (min-width: 810px) {
+  .knowledge-search-wrapper {
+    display: flex !important;
+  }
+}
+
   .section-content {
     overflow: hidden;
     transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -198,9 +207,12 @@
   .knowledge-item.highlighted {
     background-color: #fef2f2;
   }
+  
 </style>
 
 <script>
+
+  
   document.addEventListener('DOMContentLoaded', function () {
     const allSections = document.querySelectorAll('.knowledge-section');
 
