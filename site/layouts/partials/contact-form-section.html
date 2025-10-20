@@ -216,22 +216,35 @@
       }, hideMs);
     }
 
-    function normalizePhoneToUA(value) {
-      const digits = (value || '').replace(/\D/g, '');
-      if (digits.length === 12 && digits.startsWith('380')) return '+' + digits;
-      if (digits.length === 10 && digits.startsWith('0')) return '+38' + digits;
-      return null;
+    
+    function isValidInternationalPhone(value) {
+      const phoneNumber = (value || '').replace(/[\s\-\(\)]/g, '');
+
+      const internationalPhoneRegex = /^\+\d{7,15}$/;
+
+      return internationalPhoneRegex.test(phoneNumber);
     }
 
     function validateForm() {
       let valid = true;
       [nameInput, phoneInput].forEach(el => el.classList.remove('error', 'success'));
+
       const nameVal = (nameInput.value || '').trim();
-      if (!nameVal) { nameInput.classList.add('error'); showToast('{{i18n "contact.form.error.name"}}'); valid = false; }
-      else { nameInput.classList.add('success'); }
-      const normalizedPhone = normalizePhoneToUA(phoneInput.value);
-      if (!normalizedPhone) { phoneInput.classList.add('error'); showToast('{{i18n "contact.form.error.phone"}}'); valid = false; }
-      else { phoneInput.classList.add('success'); }
+      if (!nameVal) {
+        nameInput.classList.add('error');
+        showToast('{{i18n "contact.form.error.name"}}');
+        valid = false;
+      } else {
+        nameInput.classList.add('success');
+      }
+
+      if (!isValidInternationalPhone(phoneInput.value)) {
+        phoneInput.classList.add('error');
+        showToast('{{i18n "contact.form.error.phone"}}'); 
+      } else {
+        phoneInput.classList.add('success');
+      }
+
       return valid;
     }
 
@@ -257,6 +270,7 @@
           await submitToNetlify(form);
           showToast('{{i18n "contact.form.success"}}', 'success', 5000);
           form.reset();
+          [nameInput, phoneInput, messageInput].forEach(el => el.classList.remove('success', 'error'));
         } catch (err) {
           showToast('Помилка надсилання форми', 'error');
         } finally {
