@@ -54,7 +54,7 @@
         </div>
 
         <div class="form-group">
-          <textarea id="message" name="message" placeholder="{{i18n " contact.form.message.placeholder" |
+          <textarea id="message" name="message" placeholder="{{i18n "contact.form.message.placeholder" |
             default "Ваше повідомлення" }}" class="form-textarea" rows="4"></textarea>
         </div>
 
@@ -392,9 +392,9 @@
 
 <script>
   window.I18NContact = {
-    submitting: {{i18n "contact.form.submitting" | plainify }},
-  submit: {{i18n "contact.form.submit" | plainify }},
-  success: {{i18n "contact.form.success" | plainify }},
+    submitting: {{i18n "contact.form.submitting" | plainify}},
+  submit: {{i18n "contact.form.submit" | plainify}},
+  success: {{i18n "contact.form.success" | plainify}},
   errorGeneric: {{i18n "contact.form.error.submit" | default "Виникла помилка при відправці. Спробуйте ще раз." | plainify}},
   errorName: {{i18n "contact.form.error.name" | plainify}},
   errorPhone: {{i18n "contact.form.error.phone" | plainify}},
@@ -426,7 +426,7 @@
 
       init() {
         if (!this.modal) return;
-        if (this.openBtn) this.openBtn.addEventListener('click', () => this.open());
+        if (this.openBtn) this.openBtn.addEventListener('click', (e) => { e.preventDefault(); this.open(); });
         if (this.closeBtn) this.closeBtn.addEventListener('click', () => this.close());
         this.modal.addEventListener('click', e => { if (e.target === this.modal) this.close(); });
         document.addEventListener('keydown', e => { if (e.key === 'Escape' && !this.modal.classList.contains('hidden')) this.close(); });
@@ -503,52 +503,60 @@
       }
 
       open() {
-        this.modal.classList.remove('hidden');
+        this.scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Застосовуємо fixed до body ПЕРЕД показом модалки
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${this.scrollPosition}px`;
+        document.body.style.width = '100%';
+        document.body.style.left = '0';
         document.body.classList.add('modal-open');
+
+        // Тепер показуємо модалку
+        this.modal.classList.remove('hidden');
+        this.modal.scrollTop = 0;
+
         const firstInput = this.modal.querySelector('.form-input');
-        if (firstInput) setTimeout(() => firstInput.focus(), 100);
+        if (firstInput) setTimeout(() => firstInput.focus({ preventScroll: true }), 100);
       }
       close() {
         this.clearToasts();
         this.modal.classList.add('hidden');
         document.body.classList.remove('modal-open');
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.left = '';
+        if (this.scrollPosition !== undefined) {
+          window.scrollTo(0, this.scrollPosition);
+          this.scrollPosition = undefined;
+        }
         if (this.form) { this.form.reset(); this.resetDropdown(); this.clearFieldErrors(); }
       }
 
       formatPhoneInput(e) {
         const input = e.target;
         const raw = input.value || '';
-        const trimmed = raw.trim();
-        const hasLeadingPlus = trimmed.startsWith('+');
+        const hasLeadingPlus = raw.trim().startsWith('+');
         let digits = raw.replace(/\D/g, '');
-        if (digits.length === 0) { input.value = hasLeadingPlus ? '' : ''; return; }
-        if (hasLeadingPlus) {
-          if (digits.startsWith('380')) {
-            const d = digits.slice(0, 12), rest = d.slice(3);
-            let f = '+380';
-            if (rest.length > 0) {
-              const a = rest.slice(0, 2), b = rest.slice(2, 5), c = rest.slice(5, 7), d4 = rest.slice(7, 9);
-              if (a) f += ' ' + a; if (b) f += ' ' + b; if (c) f += ' ' + c; if (d4) f += ' ' + d4;
-            }
-            input.value = f;
-          } else input.value = '+' + digits.slice(0, 15);
+
+        if (digits.length === 0) {
+          input.value = hasLeadingPlus ? '+' : '';
           return;
         }
-        if (digits.startsWith('0')) {
-          const d = digits.slice(0, 10), first = d.charAt(0), rest = d.slice(1);
-          let f = first;
-          if (rest.length > 0) {
-            const a = rest.slice(0, 2), b = rest.slice(2, 5), c = rest.slice(5, 7), d4 = rest.slice(7, 9);
-            if (a) f += a; if (b) f += ' ' + b; if (c) f += ' ' + c; if (d4) f += ' ' + d4;
-          }
-          input.value = f; return;
+
+        // Для міжнародних номерів просто додаємо + та цифри
+        if (hasLeadingPlus) {
+          input.value = '+' + digits.slice(0, 15);
+        } else {
+          input.value = digits.slice(0, 15);
         }
-        input.value = digits.slice(0, 12);
       }
       onPhoneFocus(e) {
         const input = e.target;
-        if ((input.value || '').trim() === '') {
-          input.value = '+380 ';
+        const currentValue = (input.value || '').trim();
+        if (currentValue === '' || currentValue === '+') {
+          input.value = '+';
           try { input.setSelectionRange(input.value.length, input.value.length); } catch (_) { }
         }
       }
@@ -556,14 +564,13 @@
         const input = e.target;
         const raw = (input.value || '').trim();
         const digits = raw.replace(/\D/g, '');
-        if (raw.startsWith('+') && (digits.length < 4 || (digits.startsWith('380') && digits.length === 3))) input.value = '';
+        if (raw === '+' || digits.length === 0) input.value = '';
         this.formatPhoneInput({ target: input });
       }
-      normalizePhoneToUA(value) {
-        const digits = (value || '').replace(/\D/g, '');
-        if (digits.length === 12 && digits.startsWith('380')) return '+' + digits;
-        if (digits.length === 10 && digits.startsWith('0')) return '+38' + digits;
-        return null;
+      isValidInternationalPhone(value) {
+        const phoneNumber = (value || '').replace(/[\s\-\(\)]/g, '');
+        const internationalPhoneRegex = /^\+\d{7,15}$/;
+        return internationalPhoneRegex.test(phoneNumber);
       }
 
       handleSubmit(e) {
@@ -577,12 +584,11 @@
 
         let hasError = false;
         if (!name) { this.markFieldError('#userName'); this.showError(window.I18NContact?.errorName || "Будь ласка, введіть ім'я"); hasError = true; }
-        const normalizedPhone = this.normalizePhoneToUA(phoneRaw);
-        if (!normalizedPhone) { this.markFieldError('#userPhone'); this.showError(window.I18NContact?.errorPhone || "Введіть номер телефону"); hasError = true; }
+        if (!this.isValidInternationalPhone(phoneRaw)) { this.markFieldError('#userPhone'); this.showError(window.I18NContact?.errorPhone || "Введіть номер телефону"); hasError = true; }
         if (!quantity) { this.markDropdownError(); this.showError(window.I18NContact?.errorQuantity || "Оберіть кількість"); hasError = true; }
         if (hasError) return;
 
-        this.submitForm({ name, phone: normalizedPhone, quantity, message });
+        this.submitForm({ name, phone: phoneRaw, quantity, message });
       }
 
       async submitForm(data) {
