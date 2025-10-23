@@ -6,4 +6,5 @@ aliases:
   - Flight Stacks
   - politni-steky
 weight: 1
+robots: index,follow
 ---

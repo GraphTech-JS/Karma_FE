@@ -29,7 +29,7 @@
         </a>
         <span class="text-[#ba0108] sm:inline px-[5px]">&rarr;</span>
         <a class="font-[Montserrat] text-[16px] lg:text-[20px]  font-normal text-[#ba0108] hover:underline leading-[120%]"
-          href="{{ "/knowledge-base/" | relLangURL }}">{{ i18n "guides.breadcrumb.knowledge" }}
+          href="{{ " /knowledge-base/" | relLangURL }}">{{ i18n "guides.breadcrumb.knowledge" }}
         </a>
         <span class="text-[#ba0108] sm:inline px-[5px]">&rarr;</span>
         <span
@@ -41,7 +41,7 @@
         <div class="flex justify-end items-center sm:hidden">
           <button
             class="font-[Montserrat] text-[clamp(16px,2vw,18px)] font-normal text-black flex items-center gap-[clamp(8px,2vw,8px)] cursor-pointer">
-            <a href="{{ "/knowledge-base/" | relLangURL }}">
+            <a href="{{ " /knowledge-base/" | relLangURL }}">
               <span class="text-black">&lt;</span>
               {{ i18n "guides.back" }}
             </a>
@@ -49,7 +49,7 @@
         </div>
 
         <!-- Search for tablets and mobile -->
-     
+
       </div>
 
       <!-- Back button for mobile -->
@@ -58,7 +58,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-[1fr_250px] lg:grid-cols-[280px_1fr_220px] gap-[clamp(20px,4vw,24px)]">
       <!-- Left sidebar - Categories -->
-      <div class="bg-[#F6F6F6] max-w-[285px] h-full rounded-[5px] hidden lg:block">
+      <div class="bg-[#F6F6F6] max-w-[285px] h-full rounded-[5px] hidden lg:block z-[1]">
         <aside class="relative pt-0 pr-0 pl-0">
           <div class="p-0">
             <nav id="left-category-nav" class="pt-[20px] fixed space-y-[20px]"
@@ -160,9 +160,11 @@
       </div>
 
       <div class="max-w-[min(693px,90vw)] min-h-0 pb-[40px] pt-0 lg:pt-[27px] ">
-    <div class="desktop-search-wrapper hidden relative max-w-[min(691px,90vw)] justify-center items-center mb-[28px]">          <div class="flex flex-1 items-center">
+        <div
+          class="desktop-search-wrapper hidden relative max-w-[min(691px,90vw)] justify-center items-center mb-[28px]">
+          <div class="flex flex-1 items-center">
             <div class="relative flex-1 rounded-[20px] ">
-              <input type="text" placeholder="{{ i18n "guides.search.placeholder" }}"
+              <input type="text" placeholder="{{ i18n " guides.search.placeholder" }}"
                 class="h-[clamp(40px,6vw,47px)] w-full !rounded-[20px] border border-black pl-[clamp(12px,2vw,16px)] pr-[clamp(100px,15vw,120px)] text-[16px] outline-none focus:border-[#ba0108] bg-white"
                 id="desktop-search-input" />
               <button
@@ -210,7 +212,6 @@
         <nav id="right-toc-nav" style="
           position: fixed;
           top: 172px;                 
-          right: calc((100% - 1280px) / 2);  
           width: 220px;
           max-height: calc(100vh - 160px);
           overflow-y: auto;
@@ -227,14 +228,15 @@
 
 <style>
   .desktop-search-wrapper {
-  display: none !important;
-}
-
-@media (min-width: 810px) {
-  .desktop-search-wrapper {
-    display: flex !important;
+    display: none !important;
   }
-}
+
+  @media (min-width: 810px) {
+    .desktop-search-wrapper {
+      display: flex !important;
+    }
+  }
+
   .asideDetails summary {
     list-style: none;
   }
