@@ -216,12 +216,44 @@
       }, hideMs);
     }
 
-    
+    function formatPhoneInput(e) {
+      const input = e.target;
+      const raw = input.value || '';
+      const hasLeadingPlus = raw.trim().startsWith('+');
+      let digits = raw.replace(/\D/g, '');
+
+      if (digits.length === 0) {
+        input.value = hasLeadingPlus ? '+' : '';
+        return;
+      }
+
+      if (hasLeadingPlus) {
+        input.value = '+' + digits.slice(0, 15);
+      } else {
+        input.value = digits.slice(0, 15);
+      }
+    }
+
+    function onPhoneFocus(e) {
+      const input = e.target;
+      const currentValue = (input.value || '').trim();
+      if (currentValue === '' || currentValue === '+') {
+        input.value = '+';
+        try { input.setSelectionRange(input.value.length, input.value.length); } catch (_) { }
+      }
+    }
+
+    function onPhoneBlur(e) {
+      const input = e.target;
+      const raw = (input.value || '').trim();
+      const digits = raw.replace(/\D/g, '');
+      if (raw === '+' || digits.length === 0) input.value = '';
+      formatPhoneInput({ target: input });
+    }
+
     function isValidInternationalPhone(value) {
       const phoneNumber = (value || '').replace(/[\s\-\(\)]/g, '');
-
       const internationalPhoneRegex = /^\+\d{7,15}$/;
-
       return internationalPhoneRegex.test(phoneNumber);
     }
 
@@ -240,7 +272,7 @@
 
       if (!isValidInternationalPhone(phoneInput.value)) {
         phoneInput.classList.add('error');
-        showToast('{{i18n "contact.form.error.phone"}}'); 
+        showToast('{{i18n "contact.form.error.phone"}}');
       } else {
         phoneInput.classList.add('success');
       }
@@ -256,6 +288,12 @@
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body
       });
+    }
+
+    if (phoneInput) {
+      phoneInput.addEventListener('input', formatPhoneInput);
+      phoneInput.addEventListener('focus', onPhoneFocus);
+      phoneInput.addEventListener('blur', onPhoneBlur);
     }
 
     if (form) {
