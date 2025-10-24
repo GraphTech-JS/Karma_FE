@@ -94,7 +94,7 @@
                     class="text-[clamp(16px,2vw,20px)] max-[450px]:text-[14px] font-[Montserrat] font-normal max-[450px]:leading-relaxed">
                     {{ .Params.description | default .Summary }}
                     <a class="text-[#ba0108] ml-[clamp(4px,1vw,8px)]" 
-                        href="{{ .RelPermalink }}">&gt;&gt;</a>
+                        href="{{ .RelPermalink }}" rel = "nofollow">&gt;&gt;</a>
                 </p>
             </div>
             <a href="{{ .RelPermalink }}" aria-label="{{ .Title }}" rel="nofollow" class="absolute inset-0 z-[10]"></a>
