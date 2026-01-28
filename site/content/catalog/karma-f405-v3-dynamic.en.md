@@ -1,26 +1,26 @@
 ---
-title: FLIGHT STACK KARMA F405 V2
-description: Improved version of the flight stack with improved characteristics.
+title: FLIGHT STACK KARMA F435 V2
+description: The ultimate combination of innovative developments and proven solutions.
 date: 2025-10-02T21:35:00.000+03:00
 category: politni-steky
 product_id: "2234"
-image: /img/Generative Fill.png
+image: /img/v2.png
 price: 2800
 currency: грн
 in_stock: true
 specs:
   - label: MCU
-    value: STM32F405
+    value: AM32F435
   - label: IMU
-    value: ...
+    value: ICM-42688-P
   - label: Barometr
-    value: ...
+    value: SPA06-003
   - label: Current
-    value: ...
+    value: "4x65A (4х70A peak) "
   - label: BEC
-    value: ...
+    value: "5V 2A /12V 2A (3A peak) "
   - label: Powering
-    value: ...
+    value: 4s-6s
 draft: false
 ---
 # KARMA F405 V2 FLIGHT STACK

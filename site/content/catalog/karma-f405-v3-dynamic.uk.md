@@ -1,11 +1,12 @@
 ---
-title: ПОЛІТНИЙ СТЕК KARMA F405 V2
+title: ПОЛІТНИЙ СТЕК KARMA F435 V2
 slug: KARMA F405 V2 FLIGHT STACK
-description: Удосконалена версія політного стеку з покращеними характеристиками.
+description: Ультимативне поєднання інноваційних розробок та рішень, що себе
+  зарекомендували.
 date: 2025-10-02T21:35:00.000+03:00
 category: politni-steky
 product_id: "2234"
-image: /img/Generative Fill.png
+image: /img/v2.png
 price: 2800
 draft: false
 layout: product
@@ -13,17 +14,17 @@ currency: грн
 in_stock: true
 specs:
   - label: MCU
-    value: ...
+    value: AM32F435
   - label: IMU
-    value: "... "
+    value: ICM-42688-P
   - label: Барометр
-    value: ...
+    value: SPA06-003
   - label: Робочий струм
-    value: " ... "
+    value: "4x65A (4х70A піковий) "
   - label: BEC
-    value: ...
+    value: "5V 2A /12V 2A (3A пік) "
   - label: Живлення
-    value: ...
+    value: 4s-6s
 ---
 
 # ПОЛІТНИЙ СТЕК KARMA F405 V2
