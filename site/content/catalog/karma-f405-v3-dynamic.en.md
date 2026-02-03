@@ -21,9 +21,9 @@ specs:
     value: "5V 2A /12V 2A (3A peak) "
   - label: Powering
     value: 4s-6s
-draft: true
+draft: false
 ---
-# KARMA F405 V2 FLIGHT STACK
+# KARMA F435 V2 FLIGHT STACK
 
 An improved version of the popular flight stack with improved performance and additional features for professional pilots.
 
