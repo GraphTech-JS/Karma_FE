@@ -8,7 +8,7 @@ category: politni-steky
 product_id: "2234"
 image: /img/v2.png
 price: 2800
-draft: false
+draft: true
 layout: product
 currency: грн
 in_stock: true

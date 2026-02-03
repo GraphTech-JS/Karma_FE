@@ -21,7 +21,7 @@ specs:
     value: "5V 2A /12V 2A (3A peak) "
   - label: Powering
     value: 4s-6s
-draft: false
+draft: true
 ---
 # KARMA F405 V2 FLIGHT STACK
 
