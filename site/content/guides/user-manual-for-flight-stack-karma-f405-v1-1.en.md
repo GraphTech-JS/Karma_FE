@@ -1,5 +1,5 @@
 ---
-title: User Manual for flight stack KARMA F405 V1
+title: User Manual for flight stack KARMA F435 V2
 description: |-
   Flight stack, designed to improve, where possible, from
   reliable and effective technical solutions to improved
@@ -9,13 +9,14 @@ date: 2025-10-05T21:20:00.000+03:00
 category: politni-steky
 tags:
   - manual
+  - V2
 image: /img/steki-instructio.jpg
 draft: false
 ---
 <p class="text-center"><strong>Flight stack, designed to improve, where possible, from
 reliable and effective technical solutions to improved
 assembly ergonomics.
-KARMA F405V1 first step in the pursuit of excellence.</strong></p>
+KARMA F435 V2 first step in the pursuit of excellence.</strong></p>
 <h2>CHARACTERISTICS OF FLIGHT STACKS KARMA F405V1</h2>
 
 <style>
@@ -50,7 +51,7 @@ FLIGHT CONTROLLER
 </h3>
 
 <table style="width:100%;font-size:22px;font-family: Montserrat;">
-<tr><td><strong>MCU</strong></td><td>STM32F405</td></tr>
+<tr><td><strong>MCU</strong></td><td>AM32F435 </td></tr>
 <tr><td><strong>IMU</strong></td><td>ICM-42688-P</td></tr>
 <tr><td><strong>Barometer</strong></td><td>BMP280</td></tr>
 <tr><td><strong>BEC</strong></td><td>5V 4A</td></tr>
@@ -71,7 +72,6 @@ from the battery</strong></td><td>2.4А</td></tr>
 <br>
 <br>
 
-
 ![FLIGHT CONTROLLER](/img/kontroler_polotu.png "FLIGHT CONTROLLER")
 
 <br>
@@ -90,7 +90,6 @@ SPEED REGULATOR
 </table>
 <br>
 <br>
-
 
 ![FLIGHT CONTROLLER](/img/regulator_obertiv.png "FLIGHT CONTROLLER")
 
@@ -175,4 +174,3 @@ to solder quality control is required. A fix is planned for v1.1
 <p><a href="/en/catalog/karma-f405-v1/">Buy flight stacks KARMA F405 V1</a><br></p>
 <p><a href="/assets/Karma_F405F1_EN.pdf">Download User Manual (PDF)</a></p>
 </div>
-

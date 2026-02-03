@@ -1,5 +1,5 @@
 ---
-title: Інструкція на політний стек KARMA F405 V1
+title: Інструкція на політний стек KARMA F435 V2
 slug: null
 description: |-
   Польотний стек, розроблений з метою удосконалення,
@@ -7,16 +7,17 @@ description: |-
   рішень до покращеної ергономіки складання.
   KARMA F405V1 перший крок у пошуках досконалості.
 date: 2025-10-05T21:20:00.000+03:00
-category: flight-stacks
+category: politni-steky
 tags:
   - manual
+  - V2
 image: /img/steki-instructio.jpg
 draft: false
 ---
 <p class="text-center"><strong>Польотний стек, розроблений з метою удосконалення,
 де це можливо, від надійних і ефективних технічних
 рішень до покращеної ергономіки складання.
-KARMA F405V1 перший крок у пошуках досконалості.</strong></p>
+KARMA F435 V2 перший крок у пошуках досконалості.</strong></p>
 <h2>ХАРАКТЕРИСТИКИ ПОЛІТНИХ СТЕКІВ KARMA F405V1</h2>
 
 <style>
@@ -51,7 +52,7 @@ font-weight:bold;
 </h3>
 
 <table style="width:100%;font-size:22px;font-family: Montserrat;">
-<tr><td><strong>MCU</strong></td><td>STM32F405</td></tr>
+<tr><td><strong>MCU</strong></td><td>AM32F435 </td></tr>
 <tr><td><strong>IMU</strong></td><td>ICM-42688-P</td></tr>
 <tr><td><strong>Барометр</strong></td><td>BMP280</td></tr>
 <tr><td><strong>BEC</strong></td><td>5V 4A</td></tr>
@@ -69,7 +70,6 @@ font-weight:bold;
 </table>
 <br>
 <br>
-
 
 ![Контролер польоту](/img/kontroler_polotu.png "Політний контролер")
 
@@ -90,7 +90,6 @@ font-weight:bold;
 </table>
 <br>
 <br>
-
 
 ![Регулятор обертів](/img/regulator_obertiv.png "регулятор обертів")
 
