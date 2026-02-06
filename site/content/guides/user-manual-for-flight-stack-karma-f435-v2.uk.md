@@ -1,5 +1,6 @@
 ---
 title: Інструкція на політний стек KARMA F435 V2
+slug: null
 description: |-
   Польотний стек, розроблений з метою удосконалення,
   де це можливо, від надійних і ефективних технічних
@@ -10,7 +11,7 @@ category: politni-steky
 tags:
   - manual
   - V2
-image: /img/steki-instructio.jpg
+image: /img/v2.png
 draft: false
 ---
 <p class="text-center"><strong>Польотний стек, розроблений з метою удосконалення,

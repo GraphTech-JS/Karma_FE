@@ -10,7 +10,7 @@ category: politni-steky
 tags:
   - manual
   - V2
-image: /img/steki-instructio.jpg
+image: /img/v2.png
 draft: false
 ---
 <p class="text-center"><strong>Flight stack, designed to improve, where possible, from
