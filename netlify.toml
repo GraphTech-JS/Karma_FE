@@ -1,6 +1,6 @@
 [build.environment]
   NETLIFY_USE_YARN = "true"
-  YARN_VERSION = "1.22.17"
+  YARN_VERSION = "1.22.19"
   NODE_VERSION = "20"
   HUGO_VERSION = "0.149.0"
   HUGO_ENABLEGITINFO = "true"
