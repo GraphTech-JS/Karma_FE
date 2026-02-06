@@ -1,6 +1,5 @@
 ---
 title: Додавання ютуб відео тест
-slug: null
 description: Тестуємо додавання відео
 date: 2025-10-03T11:03:00.000+03:00
 category: test

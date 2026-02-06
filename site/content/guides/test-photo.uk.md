@@ -1,6 +1,5 @@
 ---
 title: Тест фото
-slug: null
 description: Тест фото
 date: 2025-10-07T14:53:00.000+03:00
 category: test
