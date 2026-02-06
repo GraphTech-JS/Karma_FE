@@ -1,13 +1,12 @@
 ---
 title: KARMA F405 V1. Рекомендації по збірці.
-slug: null
 description: |-
   Ми зробили перелік найбільш важливих аспектів при збиранні безпілотних
   систем з використанням обладнання KARMA і продовжимо
   системно доповнювати цей перелік.
 date: 2025-10-07T12:43:00.000+03:00
 category: politni-steky
-image: /img/manual-flight-stacks.png
+image: /img/manual-flight-stacks.png 
 draft: false
 ---
 <p class="text-center">Якісний монтаж обладнання, без перебільшення, має 

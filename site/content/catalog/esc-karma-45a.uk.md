@@ -1,6 +1,5 @@
 ---
 title: ESC KARMA 45A BLHeli_S
-slug: null
 date: 2024-08-25T00:00:00.000Z
 category: esc
 product_id: "4001"

@@ -1,6 +1,5 @@
 ---
 layout: list
-slug: null
 stack_questions:
   title: Найпоширеніші запитання про політні стеки
   questions:
