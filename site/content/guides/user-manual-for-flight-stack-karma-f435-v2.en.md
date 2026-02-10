@@ -157,12 +157,12 @@ ARM Cortex 32Bit<br>
 </strong></td><td>
 4 pieces</td></tr>
 </table>
-<h3>РЕСУРСИ</h3>
+<h3>RESOURCES</h3>
 <table style="width:100%;font-size:22px;font-family: Montserrat;">
 <tr>
-<td><strong>РЕСУРС</strong></td>
-<td><strong>ФУНКЦІЯ</strong></td>
-<td><strong>МОЖЛИВА<BR> ЗМІНА ФУНКЦІЇ</strong></td>
+<td><strong>RESOURCE</strong></td>
+<td><strong>FUNCTION</strong></td>
+<td><strong>POSSIBLE<BR> FUNCTION CHANGE</strong></td>
 <td><strong>NOTE</strong></td>
 </tr>
 <tr>
