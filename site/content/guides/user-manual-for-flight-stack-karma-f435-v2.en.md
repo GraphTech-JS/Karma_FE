@@ -157,6 +157,167 @@ ARM Cortex 32Bit<br>
 </strong></td><td>
 4 pieces</td></tr>
 </table>
+<h3>РЕСУРСИ</h3>
+<table style="width:100%;font-size:22px;font-family: Montserrat;">
+<tr>
+<td><strong>РЕСУРС</strong></td>
+<td><strong>ФУНКЦІЯ</strong></td>
+<td><strong>МОЖЛИВА<BR> ЗМІНА ФУНКЦІЇ</strong></td>
+<td><strong>NOTE</strong></td>
+</tr>
+<tr>
+<td>C13</td>
+<td>HI</td>
+<td></td>
+<td>HI/LO power output high pin</td>
+</tr>
+<tr>
+<td>C15</td>
+<td> LO</td>
+<td></td>
+<td>HI/LO power output low pin</td>
+</tr>
+<tr>
+<td>C00</td>
+<td>RSSI</td>
+<td> Yes</td>
+<td>RSSI signal from receiver</td>
+</tr>
+<tr>
+<td>C01</td>
+<td> VOLTAGE</td>
+<td></td>
+<td>Analog voltage level from ESC</td>
+</tr>
+<tr>
+<td>A00</td>
+<td>PA0</td>
+<td>Yes</td>
+<td>User pin PA0/digital/analog</td>
+</tr>
+<tr>
+<td>A01</td>
+<td>TELEMETRY</td>
+<td></td>
+<td>Telemetry signal from ESC <br>(external pull-up)</td>
+</tr>
+<tr>
+<td>A02</td>
+<td>USART2 TX</td>
+<td>Yes</td>
+<td>Serial TX 2</td>
+</tr>
+<tr>
+<td>A03</td>
+<td>USART2 RX</td>
+<td>Yes</td>
+<td>Serial RX 2</td>
+</tr>
+<tr>
+<td>C05</td>
+<td>IO 1</td>
+<td> </td>
+<td>User pin IO1/Receiver extension</td>
+</tr>
+<tr>
+<td> B01</td>
+<td>CURRENT</td>
+<td></td>
+<td>Analog current level from ESC</td>
+</tr>
+<tr>
+<td>B02</td>
+<td> CAMERA SWITCH</td>
+<td></td>
+<td> Camera switch signal<br>
+(external pull-up)</td>
+</tr>
+<tr>
+<td>B10</td>
+<td>FORCE ON</td>
+<td></td>
+<td>Forced wake up FC<br>
+(external pull-up)</td>
+</tr>
+<tr>
+<td>B11</td>
+<td>BEEPER</td>
+<td></td>
+<td>Signal to beeper</td>
+</tr>
+<tr>
+<td>B14</td>
+<td>SERVO 2</td>
+<td>Yes</td>
+<td>User pin S2</td>
+</tr>
+<tr>
+<td>B15</td>
+<td>SERVO 1</td>
+<td>Yes</td>
+<td>User pin S1</td>
+</tr>
+<tr>
+<td>C06</td>
+<td>USART6 TX</td>
+<td>Yes</td>
+<td> Serial TX 6</td>
+</tr>
+<tr>
+<td>C07</td>
+<td>USART6 RX</td>
+<td>Yes</td>
+<td>Serial RX 6</td>
+</tr>
+<tr>
+<td>A10</td>
+<td> CAMERA CONTROL</td>
+<td></td>
+<td>Signal to camera for parameters tuning</td>
+</tr>
+<tr>
+<td>A15</td>
+<td>VTX EN</td>
+<td></td>
+<td>VTX DC/DC power enable</td>
+</tr>
+<tr>
+<td>C10</td>
+<td>UASRT3 TX</td>
+<td>Yes</td>
+<td>Serial TX 3</td>
+</tr>
+<tr>
+<td>C11</td>
+<td>USART3 RX</td>
+<td>Yes</td>
+<td>Serial RX 3</td>
+</tr>
+<tr>
+<td>C12</td>
+<td> UART5 TX</td>
+<td>Yes</td>
+<td> Serial TX 5</td>
+</tr>
+<tr>
+<td>D02</td>
+<td>UART5 RX</td>
+<td>Yes</td>
+<td>Serial RX 5</td>
+</tr>
+<tr>
+<td>B06</td>
+<td> USART1 TX</td>
+<td>Yes</td>
+<td>Serial TX 1</td>
+</tr>
+<tr>
+<td>B07</td>
+<td> USART1 RX</td>
+<td>Yes</td>
+<td>Serial RX 1</td>
+</tr>
+</table>
 <p><a href="/en/catalog/karma-f435-v2/">Buy flight stacks KARMA F435 V2</a><br></p>
 <p><a href="/assets/Karma_F405F1_EN.pdf">Download User Manual (PDF)</a></p>
 </div>
