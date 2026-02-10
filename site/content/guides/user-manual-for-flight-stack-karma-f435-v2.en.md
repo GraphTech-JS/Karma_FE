@@ -123,7 +123,7 @@ ARM Cortex 32Bit<br>
 
 
 ![Комплектація політних стеків](/img/komplectaciya.png "Комплектація політників")
-<table style="width:100%;font-size:22px;font-family: Montserrat;">
+<table style="width:100%;font-size:20px;font-family: Montserrat;">
 <tr><td><img width="35" height="35" src="/img/list-guide-one.png" alt="" style="filter:none;box-shadow:none; float:left;">&nbsp;
 &nbsp;<strong>Flight controller</strong></td><td>
 1 piece</td></tr>
