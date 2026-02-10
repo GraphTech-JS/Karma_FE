@@ -85,44 +85,44 @@ ARM Cortex 32Bit<br>
 </table>
 <br>
 <br>
-!\\[SPEED REGULATOR](/img/fc.png "SPEED REGULATOR")
+![SPEED REGULATOR](/img/fc.png "SPEED REGULATOR")
 <br>
 <br>
 <h3>DIMENSIONS</h3>
 
-!\[розміри політних стеків](/img/dimentions.png "розміри польотників")
+![розміри політних стеків](/img/dimentions.png "розміри польотників")
 
 <h3>PERIPHERAL CONNECTION</h3>
 
 
-!\[Підключення периферії](/img/periferia.png "Підключення периферії")
+![Підключення периферії](/img/periferia.png "Підключення периферії")
 
 
 
 <h3>ELEMENTS</h3>
 
 
-!\[Елементи політних стеків](/img/elememts.png "Елементи політників")
+![Елементи політних стеків](/img/elememts.png "Елементи політників")
 
 
 
 <h3>INDICATION</h3>
 
 
-!\[індикація політних стеків](/img/indicaciya.png)
+![індикація політних стеків](/img/indicaciya.png)
 
 
 
 <h3>CONNECTION DIAGRAM</h3>
 
 
-!\[Діаграма підключення](/img/diagrama.png "діаграма підключення політних стеків")
+![Діаграма підключення](/img/diagrama.png "діаграма підключення політних стеків")
 
 
 <h3>COMPLETE SET of FLIGHT STACKS KARMA FLIGHTS</h3>
 
 
-!\[Комплектація політних стеків](/img/komplectaciya.png "Комплектація політників")
+![Комплектація політних стеків](/img/komplectaciya.png "Комплектація політників")
 <table style="width:100%;font-size:22px;font-family: Montserrat;">
 <tr><td><img width="35" height="35" src="/img/list-guide-one.png" alt="" style="filter:none;box-shadow:none; float:left;">&nbsp;
 &nbsp;<strong>Flight controller</strong></td><td>
