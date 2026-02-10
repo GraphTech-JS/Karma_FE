@@ -87,10 +87,15 @@ ARM Cortex 32Bit<br>
 </table>
 <br>
 <br>
-
+!\[SPEED REGULATOR](/img/fc.png "SPEED REGULATOR")
 <br>
 <br>
 <h3>DIMENSIONS</h3>
+
+
+!\[розміри політних стеків](/img/dimentions.png "розміри польотників")
+
+
 
 <h3>PERIPHERAL CONNECTION</h3>
 
