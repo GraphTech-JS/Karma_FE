@@ -1,11 +1,10 @@
 ---
-title: Інструкція на політний стек KARMA F435 V2
+title: Інструкція на політний стек KARMA F435 V2 REX EDITION
 slug: null
 description: |-
-  Польотний стек, розроблений з метою удосконалення,
-  де це можливо, від надійних і ефективних технічних
-  рішень до покращеної ергономіки складання.
-  KARMA F405V1 перший крок у пошуках досконалості.
+  Ультимативне поєднання 
+  інноваційних розробок та рішень, що 
+  себе зарекомендували. 
 date: 2025-10-05T21:20:00.000+03:00
 category: politni-steky
 tags:
@@ -14,11 +13,10 @@ tags:
 image: /img/v2.png
 draft: false
 ---
-<p class="text-center"><strong>Польотний стек, розроблений з метою удосконалення,
-де це можливо, від надійних і ефективних технічних
-рішень до покращеної ергономіки складання.
-KARMA F435 V2 перший крок у пошуках досконалості.</strong></p>
-<h2>ХАРАКТЕРИСТИКИ ПОЛІТНИХ СТЕКІВ KARMA F405V1</h2>
+<p class="text-center"><strong>Ультимативне поєднання інноваційних розробок та рішень, що себе зарекомендували. 
+ KARMA F435 V2 REX EDITION</strong></p>
+<h2>ХАРАКТЕРИСТИКИ ПОЛІТНИХ СТЕКІВ F435 V2 REX EDITION
+</h2>
 
 <style>
 body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:10px; } 
@@ -54,8 +52,14 @@ font-weight:bold;
 <table style="width:100%;font-size:22px;font-family: Montserrat;">
 <tr><td><strong>MCU</strong></td><td>AM32F435 </td></tr>
 <tr><td><strong>IMU</strong></td><td>ICM-42688-P</td></tr>
-<tr><td><strong>Барометр</strong></td><td>BMP280</td></tr>
-<tr><td><strong>BEC</strong></td><td>5V 4A</td></tr>
+<tr><td><strong>Барометр</strong></td><td>
+SPA06-003 
+</td></tr>
+<tr><td><strong>BEC</strong></td><td>
+5V 2A (3A пік) <br>
+5V 2A (3A пік) <br>
+12V 2A (3A пік)
+</td></tr>
 <tr><td><strong>Кріплення</strong></td><td>30.5 х 30.5</td></tr>
 <tr><td><strong>Розміри</strong></td><td>48.5 х 40</td></tr>
 <tr><td><strong>CamSwitch</strong></td><td>так</td></tr>
@@ -71,7 +75,7 @@ font-weight:bold;
 <br>
 <br>
 
-![Контролер польоту](/img/kontroler_polotu.png "Політний контролер")
+![Контролер польоту](/img/esc.png "Політний контролер")
 
 <br>
 <br>
