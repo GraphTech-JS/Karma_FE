@@ -86,8 +86,17 @@ SPA06-003
 </h3>
 <table style="width:100%;font-size:22px;font-family: Montserrat;">
 <tr><td><strong>Живлення</strong></td><td>4s-6s</td></tr>
-<tr><td><strong>Струм</strong></td><td>150A</td></tr>
-<tr><td><strong>MCU</strong></td><td>72Mhz 32Bit</td></tr>
+<tr><td><strong>Струм</strong></td><td>
+4x65A<br>
+(4х70A піковий) 
+
+</td></tr>
+<tr><td><strong>MCU</strong></td><td>
+ARM Cortex 32Bit<br>
+(з підтримкою робочої температури
+<br>
+до 105°С)
+</td></tr>
 <tr><td><strong>Прошивка</strong></td><td>AM32</td></tr>
 <tr><td><strong>Кріплення</strong></td><td>30.5 х 30.5</td></tr>
 
@@ -95,7 +104,7 @@ SPA06-003
 <br>
 <br>
 
-![Регулятор обертів](/img/regulator_obertiv.png "регулятор обертів")
+![Регулятор обертів](/img/fc.png "регулятор обертів")
 
 <br>
 <br>

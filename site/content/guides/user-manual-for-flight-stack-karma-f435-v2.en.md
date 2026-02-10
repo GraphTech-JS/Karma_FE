@@ -4,9 +4,10 @@ description: The ultimate combination of innovative developments and proven solu
 date: 2026-02-05T20:59:00.000+02:00
 category: politni-steky
 image: /img/v2.png
-draft: true
+draft: false
 ---
 # **User Manual for flight stack KARMA F435 V2**
+
 <p class="text-center"><strong>The ultimate combination of innovative developments and proven solutions.
  KARMA F435 V2 REX EDITION</strong></p>
 <h2>CHARACTERISTICS OF FLIGHT STACKS F435 V2 REX EDITION</h2>
@@ -18,7 +19,6 @@ table {
    
 border-collapse: collapse !important;
 font-size:26px !important;
-
 
 }
 table th, table td {
@@ -62,6 +62,8 @@ from the battery</strong></td><td>2.4А</td></tr>
 <br>
 <br>
 
+![Flight controller](/img/esc.png "Flight controller")
+
 <br>
 <br>
 <h3>
@@ -69,8 +71,17 @@ SPEED REGULATOR
 </h3>
 <table style="width:100%;font-size:22px;font-family: Montserrat;">
 <tr><td><strong>Powering </strong></td><td>4s-6s</td></tr>
-<tr><td><strong>Current</strong></td><td>150A</td></tr>
-<tr><td><strong>MCU</strong></td><td>72Mhz 32Bit</td></tr>
+<tr><td><strong>Current</strong></td><td>
+4x65A<br>
+(4х70A peak) 
+
+</td></tr>
+<tr><td><strong>MCU</strong></td><td>
+ARM Cortex 32Bit<br>
+(with operating temperature maintenance
+<br>
+ up to 105°С)
+</td></tr>
 <tr><td><strong>Firmware</strong></td><td>AM32</td></tr>
 <tr><td><strong>Fastening</strong></td><td>30.5 х 30.5</td></tr>
 </table>
