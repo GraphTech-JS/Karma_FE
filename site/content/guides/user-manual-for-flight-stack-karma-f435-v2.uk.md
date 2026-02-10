@@ -122,29 +122,17 @@ ARM Cortex 32Bit<br>
 
 <h3>ІНДИКАЦІЯ</h3>
 
-![індикація політних стеків](/img/indikacia.jpg)
+![індикація політних стеків](/img/indicaciya.png)
 
 <h3>ДІАГРАМА ПІДКЛЮЧЕННЯ</h3>
 
-![Діаграма підключення](/img/diagrama_pidkluchennya.jpg "діаграма підключення політних стеків")
+![Діаграма підключення](/img/diagrama.png "діаграма підключення політних стеків")
 
-<p>
- <strong>ВІДОМІ НЕДОЛІКИ</strong>
-</p>
 
-<p>
-
-Користувацькі сигнальні лінії не споряджені 
-струмообмежувальними опорами. У разі замикання лінії під час 
-монтажу з подальшим увімкненням пристрою, можливий вихід з 
-ладу мікро-контролера на платі FC. Необхідна додаткова увага з 
-контролю якості пайки. Виправлення заплановане у версії v1.1
-
-</p>
 
 <h3>КОМПЛЕКТАЦІЯ ПОЛІТНИХ СТЕКІВ KARMA FLIGHTS</h3>
 
-![Комплектація політних стеків](/img/komplektacii.jpg "Комплектація політників")
+![Комплектація політних стеків](/img/komplectaciya.png "Комплектація політників")
 
 <table style="width:100%;font-size:22px;font-family: Montserrat;">
 <tr><td><img width="35" height="35" src="/img/list-guide-one.png" alt="" style="filter:none;box-shadow:none; float:left;">&nbsp;
@@ -155,7 +143,7 @@ ARM Cortex 32Bit<br>
 1 шт.</td></tr>
 <tr><td><img width="35" height="35" src="/img/list-guide-three.png" alt="" style="filter:none;box-shadow:none; float:left;">&nbsp;
 &nbsp;<strong>Конденсатор 1500uF 50V</strong></td><td>
-2 шт.</td></tr>
+1 шт.</td></tr>
 <tr><td><img width="35" height="35" src="/img/list-guide-four.png" alt="" style="filter:none;box-shadow:none; float:left;">&nbsp;
 &nbsp;<strong> Роз’єм XT60
 </strong></td><td>
@@ -164,12 +152,11 @@ ARM Cortex 32Bit<br>
 &nbsp;<strong>Проводи живлення 12AWG 10см</strong></td><td>
 2 шт.</td></tr>
 <tr><td><img width="35" height="35" src="/img/list-guide-six.png" alt="" style="filter:none;box-shadow:none; float:left;">&nbsp;
-&nbsp;<strong Провід сигнальний FC<>ESC (JST SH 8p)</strong></td><td>
-1 шт.</td></tr>
-<tr><td><img width="35" height="35" src="/img/list-guide-seven.png" alt="" style="filter:none;box-shadow:none; float:left;">&nbsp;
-&nbsp;<strong> Провід надлишкового живлення FC<>ESC (JST SH 4p)
+&nbsp;<strong>
+Провід з'єднувальний FC<>ESC (JST SH 12p)
 </strong></td><td>
 1 шт.</td></tr>
+
 <tr><td><img width="35" height="35" src="/img/list-guide-eight.png" alt="" style="filter:none;box-shadow:none; float:left;">&nbsp;
 &nbsp;<strong> Силіконові поглиначі вібрації
 </strong></td><td>
@@ -184,6 +171,6 @@ ARM Cortex 32Bit<br>
 4 шт.</td></tr>
 
 </table>
-<p><a href="/catalog/flight-stack-karma-f405-v1/">Купити політні стеки KARMA F405 V1</a><br></p>
+<p><a href="/catalog/karma-f405-v2-flight-stack/">Купити політні стеки KARMA F435 V2</a><br></p>
 <p><a href="/assets/Karma_F405F1_UA.pdf">Завантажити інструкцію користувача (PDF)</a></p>
 </div>

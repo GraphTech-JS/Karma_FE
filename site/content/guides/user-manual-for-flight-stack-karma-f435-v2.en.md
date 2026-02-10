@@ -6,8 +6,6 @@ category: politni-steky
 image: /img/v2.png
 draft: false
 ---
-# **User Manual for flight stack KARMA F435 V2**
-
 <p class="text-center"><strong>The ultimate combination of innovative developments and proven solutions.
  KARMA F435 V2 REX EDITION</strong></p>
 <h2>CHARACTERISTICS OF FLIGHT STACKS F435 V2 REX EDITION</h2>
@@ -87,36 +85,44 @@ ARM Cortex 32Bit<br>
 </table>
 <br>
 <br>
-!\[SPEED REGULATOR](/img/fc.png "SPEED REGULATOR")
+!\\[SPEED REGULATOR](/img/fc.png "SPEED REGULATOR")
 <br>
 <br>
 <h3>DIMENSIONS</h3>
 
-
 !\[розміри політних стеків](/img/dimentions.png "розміри польотників")
-
-
 
 <h3>PERIPHERAL CONNECTION</h3>
 
+
+!\[Підключення периферії](/img/periferia.png "Підключення периферії")
+
+
+
 <h3>ELEMENTS</h3>
+
+
+!\[Елементи політних стеків](/img/elememts.png "Елементи політників")
+
+
 
 <h3>INDICATION</h3>
 
+
+!\[індикація політних стеків](/img/indicaciya.png)
+
+
+
 <h3>CONNECTION DIAGRAM</h3>
 
-<p>
- <strong>Known shortcomings
-</strong>
-</p>
-<p>
-Custom signal lines are not equipped with current limiting resistors. If
-the line is shorted during installation and then the device is turned
-on, the micro-controller on the FC board may fail. Additional attention
-to solder quality control is required. A fix is planned for v1.1
-</p>
+
+!\[Діаграма підключення](/img/diagrama.png "діаграма підключення політних стеків")
+
+
 <h3>COMPLETE SET of FLIGHT STACKS KARMA FLIGHTS</h3>
 
+
+!\[Комплектація політних стеків](/img/komplectaciya.png "Комплектація політників")
 <table style="width:100%;font-size:22px;font-family: Montserrat;">
 <tr><td><img width="35" height="35" src="/img/list-guide-one.png" alt="" style="filter:none;box-shadow:none; float:left;">&nbsp;
 &nbsp;<strong>Flight controller</strong></td><td>
@@ -126,7 +132,7 @@ to solder quality control is required. A fix is planned for v1.1
 1 piece</td></tr>
 <tr><td><img width="35" height="35" src="/img/list-guide-three.png" alt="" style="filter:none;box-shadow:none; float:left;">&nbsp;
 &nbsp;<strong>Capacitor 1500uF 50V</strong></td><td>
-2 pieces</td></tr>
+1 piece</td></tr>
 <tr><td><img width="35" height="35" src="/img/list-guide-four.png" alt="" style="filter:none;box-shadow:none; float:left;">&nbsp;
 &nbsp;<strong>XT60 connector
 </strong></td><td>
@@ -135,12 +141,9 @@ to solder quality control is required. A fix is planned for v1.1
 &nbsp;<strong>Power wires 12AWG 10cm</strong></td><td>
 2 pieces</td></tr>
 <tr><td><img width="35" height="35" src="/img/list-guide-six.png" alt="" style="filter:none;box-shadow:none; float:left;">&nbsp;
-&nbsp;<strong Signal wire FC<>ESC (JST SH 8p)</strong></td><td>
+&nbsp;<strong> Signal wire FC<>ESC (JST SH 12p)</strong></td><td>
 1 piece</td></tr>
-<tr><td><img width="35" height="35" src="/img/list-guide-seven.png" alt="" style="filter:none;box-shadow:none; float:left;">&nbsp;
-&nbsp;<strong>FC<>ESC Redundant Power Wire (JST SH 4p)
-</strong></td><td>
-1 piece</td></tr>
+
 <tr><td><img width="35" height="35" src="/img/list-guide-eight.png" alt="" style="filter:none;box-shadow:none; float:left;">&nbsp;
 &nbsp;<strong> Silicone vibration absorbers
 </strong></td><td>
@@ -154,6 +157,6 @@ to solder quality control is required. A fix is planned for v1.1
 </strong></td><td>
 4 pieces</td></tr>
 </table>
-<p><a href="/en/catalog/karma-f405-v1/">Buy flight stacks KARMA F405 V1</a><br></p>
+<p><a href="/en/catalog/karma-f435-v2/">Buy flight stacks KARMA F435 V2</a><br></p>
 <p><a href="/assets/Karma_F405F1_EN.pdf">Download User Manual (PDF)</a></p>
 </div>
