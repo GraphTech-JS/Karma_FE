@@ -10,20 +10,20 @@ currency: грн
 in_stock: true
 specs:
   - label: MCU
-    value: AM32F435
+    value: AT32F435
   - label: IMU
-    value: ICM-42688-P
+    value: DSV16X, DSV32X, BMI323
   - label: Barometr
     value: SPA06-003
   - label: Current
-    value: "4x65A (4х70A peak) "
+    value: "4x65A (4х75A peak) "
   - label: BEC
-    value: "5V 2A /12V 2A (3A peak) "
+    value: "5V 4A "
   - label: Powering
-    value: 4s-6s
+    value: "4s-6s\\8s "
 draft: false
 ---
-# KARMA F435 V2 FLIGHT STACK
+# KARMA F435 V1G FLIGHT STACK
 
 An improved version of the popular flight stack with improved performance and additional features for professional pilots.
 
