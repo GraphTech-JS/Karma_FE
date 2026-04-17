@@ -64,7 +64,7 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 <div class="text-center">
 <p id="інструкція" class="text-center"><strong>ДЯКУЄМО ЗА ДОВІРУ!</strong></p>
 
-<p><a href="/catalog/flight-stack-karma-f405-v1/">Замовити політні стеки KARMA F405 V1</a><br></p>
+<p><a href="/catalog/flight-stack-karma-f435-v1/">Замовити політні стеки KARMA F435 V1G</a><br></p>
 <p><a href="https://karma.flights/assets/Karma_best_practices_UA.pdf">Завантажити ціни на політні стеки (PDF)</a></p>
 </div>
 

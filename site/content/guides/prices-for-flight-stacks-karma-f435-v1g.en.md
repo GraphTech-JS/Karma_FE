@@ -63,7 +63,7 @@ and pricing for your products.</p>
 <div class="text-center">
 <p id="інструкція" class="text-center"><strong>THANK YOU FOR YOUR TRUST</strong></p>
 
-<p><a href="/en/catalog/karma-f405-v1/">Order flight stacks KARMA F405 V1</a><br></p>
+<p><a href="/en/catalog/karma-f435-v1/">Order flight stacks KARMA F435 V1G</a><br></p>
 <p><a href="/assets/Karma_price_EN.pdf">Download prices for flight stacks (PDF)</a></p>
 </div>
 
