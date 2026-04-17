@@ -9,7 +9,7 @@ tags:
   - instructions
   - tips
 image: /img/drone-man.png
-draft: false
+draft: true
 ---
 
 To successfully solder a flight stack, it is important to know the correct technique, avoid common mistakes, and follow certain recommendations. This process requires precision and patience to avoid damaging sensitive components.
