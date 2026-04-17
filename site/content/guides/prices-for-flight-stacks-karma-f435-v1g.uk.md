@@ -47,12 +47,12 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 </table>
 <p> Всі ціни вказані з урахуванням ПДВ.</p>
 </div>
+<div class="flex items-center justify-center flex-col">
+<img class="text-center" src="/img/price-1.jpg" style="width:400px;" />
 
+![](/img/price-2.jpg)
+</div>
 
-
-<img src="/img/price-1.jpg" style="float:left; margin-right:5px; width:400px;" />
-
-<div style="text-align:left;"><img src="/img/price-1.jpg"  style="float:right; margin-right:5px; width:400px;" /></div>
 {{< grayblock >}}
 <strong>Базовий термін виготовлення обладнання за контрактуванням складає 30 днів.
 За кожен тиждень, менший за базовий термін, до ціни додається +$2.<br>
