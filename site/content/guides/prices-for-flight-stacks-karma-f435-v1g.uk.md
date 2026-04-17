@@ -33,29 +33,23 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 <article class="post"> 
 
 <div class="article">
-<h2>МЕТОДОЛОГІЯ ЦІНОУТВОРЕННЯ</h2>
-<h4 class="text-center">
-<strong>
-Рекомендована ціна BOX (упаковка 1шт.)&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;      
-70 USD</strong></h4>
-<h4 class="text-center">
-<strong>
 
-Рекомендована ціна OEM (упаковка 20шт.)&nbsp;&nbsp;&nbsp;       67 USD</strong></h4>
+<h2 class="text-center">ТАБЛИЦЯ РОЗРАХУНКУ ВАРТОСТІ ПОЛІТНИХ СТЕКІВ </h2>
 
-<h3 class="text-center">ТАБЛИЦІ РОЗРАХУНКУ ВАРТОСТІ ПОЛІТНИХ СТЕКІВ </h3>
-
-<div class="flex  items-center justify-center flex-col">
-
-![таблиця 1: ціни на політні стеки ](/img/price-1.jpg "вартість польотників")
-
-![Ціни на політні стеки](/img/price-2.jpg "вартість польотних стеків")
-
-![таблиця 3: Ціни на політні стеки](/img/price-3.jpg "вартість політних стеків")
-
+<div class="flex  items-left justify-center flex-col">
+<table style="width:100%;font-size:22px;font-family: Montserrat;">
+<tr><td><strong>Кількість, тис</strong></td><td><strong>Ціна</strong></td></tr>
+<tr><td><strong>1+</strong></td><td>$ 50.00</td></tr>
+<tr><td><strong>10+</strong></td><td>$ 48.00</td></tr>
+<tr><td><strong>20+</strong></td><td>$ 46.00</td></tr>
+<tr><td><strong>50+</strong></td><td>$ 44.00</td></tr>
+<tr><td><strong>100+</strong></td><td>$ 40.00</td></tr>
+</table>
 <p> Всі ціни вказані з урахуванням ПДВ.</p>
 </div>
 {{< grayblock >}}
+
+![]()
 
 <strong>Базовий термін виготовлення обладнання за контрактуванням складає 45 днів.
 Товар відвантажується частинами в період з 30-го по 45-ий дні з моменту оплати.
@@ -73,6 +67,3 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 
 </div>
 </article>
-
-
-

@@ -32,25 +32,18 @@ and pricing for your products.</p>
 <article class="post">
 
 <div class="article">
-<h2>PRICING METHODOLOGY</h2>
-<h4 class="text-center">
-<strong>
-Recommended price BOX (packaging 1 pc.) &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;      
-70 USD</strong></h4>
-<h4 class="text-center">
-<strong>
 
-Recommended OEM price (pack of 20)&nbsp;&nbsp;&nbsp;       67 USD</strong></h4>
+<h2 class="text-center">COST CALCULATION TABLE</h2>
 
-<h3 class="text-center">COST CALCULATION TABLES </h3>
-
-<div class="flex  items-center justify-center flex-col">
-
-![таблиця 1: ціни на політні стеки ](/img/price-1.jpg "вартість польотників")
-
-![Ціни на політні стеки](/img/price-2.jpg "вартість польотних стеків")
-
-![таблиця 3: Ціни на політні стеки](/img/price-3.jpg "вартість політних стеків")
+<div class="flex  items-left justify-center flex-col">
+<table style="width:100%;font-size:22px;font-family: Montserrat;">
+<tr><td><strong>Quantity, ths.</strong></td><td><strong>Price</strong></td></tr>
+<tr><td><strong>1+</strong></td><td>$ 50.00</td></tr>
+<tr><td><strong>10+</strong></td><td>$ 48.00</td></tr>
+<tr><td><strong>20+</strong></td><td>$ 46.00</td></tr>
+<tr><td><strong>50+</strong></td><td>$ 44.00</td></tr>
+<tr><td><strong>100+</strong></td><td>$ 40.00</td></tr>
+</table>
 </div>
 <p> All prices include VAT.</p>
 <div class="bg-[#F5F5F5] px-[30px] pr-[35px] py-4"><p id="інструкція" class="text-center"><strong>The basic production term for equipment under a contract is 45 days. The goods are
