@@ -49,7 +49,10 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 </div>
 {{< grayblock >}}
 
-![]()
+
+<img src="/img/price-1.jpg" style="float:left; margin-right:10px; width:400px;" />
+
+<div style="text-align:left;"><img src="/img/price-1.jpg" /></div>
 
 <strong>Базовий термін виготовлення обладнання за контрактуванням складає 45 днів.
 Товар відвантажується частинами в період з 30-го по 45-ий дні з моменту оплати.
