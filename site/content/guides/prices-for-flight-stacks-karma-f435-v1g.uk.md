@@ -6,9 +6,10 @@ description: |-
   крок на цьому шляху який допоможе вам зі стратегічним плануванням та оцінкою
   ціноутворення вашої продукці.
 date: 2025-10-05T20:50:00.000+03:00
-category: flight-stacks
+category: politni-steky
 tags:
   - ціна
+  - KARMA F435 V1G
 image: /img/price_flight_stack.png
 draft: false
 ---
