@@ -4,7 +4,7 @@ description: The ultimate combination of innovative developments and proven solu
 date: 2026-02-05T20:59:00.000+02:00
 category: politni-steky
 image: /img/v2.png
-draft: false
+draft: true
 ---
 <p class="text-center"><strong>The ultimate combination of innovative developments and proven solutions.
  KARMA F435 V2 REX EDITION</strong></p>
