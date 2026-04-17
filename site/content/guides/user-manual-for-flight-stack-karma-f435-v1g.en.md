@@ -85,7 +85,7 @@ SPEED REGULATOR
 <br>
 <h3>DIMENSIONS</h3>
 
-![розміри політних стеків](/img/dimentions.png "розміри польотників")
+![розміри політних стеків](/img/dimentions435.png "розміри польотників")
 
 <h3>PERIPHERAL CONNECTION</h3>
 
