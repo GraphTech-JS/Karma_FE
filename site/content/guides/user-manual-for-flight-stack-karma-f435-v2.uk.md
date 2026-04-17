@@ -11,7 +11,7 @@ tags:
   - manual
   - V2
 image: /img/v2.png
-draft: false
+draft: true
 ---
 <p class="text-center"><strong>Ультимативне поєднання інноваційних розробок та рішень, що себе зарекомендували. 
  KARMA F435 V2 REX EDITION</strong></p>
