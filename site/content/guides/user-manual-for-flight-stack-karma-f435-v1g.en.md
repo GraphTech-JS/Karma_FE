@@ -58,8 +58,7 @@ from the battery</strong></td><td>2.4А</td></tr>
 </table>
 <br>
 <br>
-
-![Flight controller](/img/esc.png "Flight controller")
+![Flight controller](/img/product-details-v2.png)
 
 <br>
 <br>
@@ -81,7 +80,7 @@ SPEED REGULATOR
 </table>
 <br>
 <br>
-![SPEED REGULATOR](/img/fc.png "SPEED REGULATOR")
+![SPEED REGULATOR](/img/regulator_obertiv.png "SPEED REGULATOR")
 <br>
 <br>
 <h3>DIMENSIONS</h3>
