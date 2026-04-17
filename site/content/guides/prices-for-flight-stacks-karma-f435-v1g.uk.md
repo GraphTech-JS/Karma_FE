@@ -48,7 +48,7 @@ body{ font-family: Montserrat; font-size:16px; padding-top:10px; padding-bottom:
 <p> Всі ціни вказані з урахуванням ПДВ.</p>
 </div>
 <div class="flex items-center justify-center flex-col">
-<img class="text-center" src="/img/price-1.jpg" style="width:400px;" />
+<img class="text-center" src="/img/price-1.jpg" />
 
 ![](/img/price-2.jpg)
 </div>

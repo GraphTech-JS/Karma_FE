@@ -46,14 +46,21 @@ and pricing for your products.</p>
 </table>
 </div>
 <p> All prices include VAT.</p>
-<div class="bg-[#F5F5F5] px-[30px] pr-[35px] py-4"><p id="інструкція" class="text-center"><strong>The basic production term for equipment under a contract is 45 days. The goods are
-shipped in parts between the 30th and 45th days from the moment of payment.
-A contract option with two payments is available.
-75% advance payment + 25% before the start of shipments.</strong></p>
-<ol><li>For distributor companies, a part of the budget for carrying out agreed
-marketing activities may be excluded from the cost of products.</li><li>A loyalty system is formed for enterprises that providing of testing results feedback
-is mandatory.</li><li>Free samples are provided for projects, the creation of which can expand the
-application range of the equipment, provided feedback is provided.</li></ol></div>
+<div class="flex items-center justify-center flex-col">
+<img class="text-center" src="/img/price-1.jpg" />
+
+![](/img/price-2.jpg)
+</div>
+
+{{< grayblock >}}
+<strong>Базовий термін виготовлення обладнання за контрактуванням складає 30 днів.
+За кожен тиждень, менший за базовий термін, до ціни додається +$2.<br>
+Доступна опція контрактування з оплатою двома платежами:
+75% аванс + 25% перед початком відвантажень.</strong></p>
+
+<ol><li>Для підприємств дистрибюторів з вартості продукції може бути виключена частина бюджету на проведення погоджених маркетингових активностей.</li><li>Формується система лояльності для підприємств, що надають зворотній звязок і прямо впливають на покращення нашої продукції.</li><li>Надаються безкоштовні взірці для проектів, створення яких може розширити діапазон застосування обладнання, за умови надання зворотнього зв’язку.</li></ol>
+{{< /grayblock >}}
+<div class="text-center">
 <p id="інструкція" class="text-center"><strong>THANK YOU FOR YOUR TRUST</strong></p>
 
 <p><a href="/en/catalog/karma-f405-v1/">Order flight stacks KARMA F405 V1</a><br></p>
