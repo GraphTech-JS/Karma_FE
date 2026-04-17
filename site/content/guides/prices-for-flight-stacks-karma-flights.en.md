@@ -7,7 +7,7 @@ description: |-
 date: 2025-10-05T19:57:00.000+03:00
 category: politni-steky
 image: /img/price_flight_stack.png
-draft: false
+draft: true
 ---
 <style> 
 
