@@ -80,7 +80,7 @@ SPEED REGULATOR
 </table>
 <br>
 <br>
-![SPEED REGULATOR](/img/regulator_obertiv.png "SPEED REGULATOR")
+![Регулятор обертів](/img/regulator_obertiv_435-2.png "регулятор обертів")
 <br>
 <br>
 <h3>DIMENSIONS</h3>

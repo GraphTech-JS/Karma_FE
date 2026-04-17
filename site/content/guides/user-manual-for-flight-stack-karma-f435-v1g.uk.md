@@ -99,7 +99,7 @@ SPA06-003
 <br>
 <br>
 
-![Регулятор обертів](/img/regulator_obertiv.png "регулятор обертів")
+![Регулятор обертів](/img/regulator_obertiv_435-2.png "регулятор обертів")
 
 <br>
 <br>
