@@ -58,7 +58,7 @@ from the battery</strong></td><td>2.4А</td></tr>
 </table>
 <br>
 <br>
-![Flight controller](/img/product-details-v2.png)
+!\[Flight controller](/img/product-details-v2.png)
 
 <br>
 <br>
@@ -80,44 +80,33 @@ SPEED REGULATOR
 </table>
 <br>
 <br>
-![Регулятор обертів](/img/regulator_obertiv_435-2.png "регулятор обертів")
+!\[Регулятор обертів](/img/regulator_obertiv_435-2.png "регулятор обертів")
 <br>
 <br>
 <h3>DIMENSIONS</h3>
 
-![розміри політних стеків](/img/dimentions435.png "розміри польотників")
+![розміри політних стеків](/img/rozmiri.jpg "розміри польотників")
 
 <h3>PERIPHERAL CONNECTION</h3>
 
-
-![Підключення периферії](/img/periferia.png "Підключення периферії")
-
-
+![Підключення периферії](/img/periferiya_435.jpg "Підключення периферії")
 
 <h3>ELEMENTS</h3>
 
-
-![Елементи політних стеків](/img/elememts.png "Елементи політників")
-
-
+![Елементи політних стеків](/img/elements_435.jpg "Елементи політників")
 
 <h3>INDICATION</h3>
 
-
-![індикація політних стеків](/img/indicaciya.png)
-
-
+![індикація політних стеків](/img/indikaciya_435.jpg)
 
 <h3>CONNECTION DIAGRAM</h3>
 
-
-![Діаграма підключення](/img/diagrama.png "діаграма підключення політних стеків")
-
+![Діаграма підключення](/img/diagrama_pidkluchennya.jpg "діаграма підключення політних стеків")
 
 <h3>COMPLETE SET of FLIGHT STACKS KARMA FLIGHTS</h3>
 
+![Комплектація політних стеків](/img/komplektacii.jpg "Комплектація політників")
 
-![Комплектація політних стеків](/img/komplectaciya.png "Комплектація політників")
 <table style="width:100%;font-size:20px;font-family: Montserrat;">
 <tr><td><img width="35" height="35" src="/img/list-guide-one.png" alt="" style="filter:none;box-shadow:none; float:left;">&nbsp;
 &nbsp;<strong>Flight controller</strong></td><td>
