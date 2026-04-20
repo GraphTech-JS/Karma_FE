@@ -58,7 +58,7 @@ from the battery</strong></td><td>2.4А</td></tr>
 </table>
 <br>
 <br>
-!\[Flight controller](/img/product-details-v2.png)
+!\[контролер польоту](/img/product-details-v2.png)
 
 <br>
 <br>
