@@ -58,7 +58,9 @@ from the battery</strong></td><td>2.4А</td></tr>
 </table>
 <br>
 <br>
-!\[контролер польоту](/img/product-details-v2.png)
+
+
+![](/img/product-details-v2.png)
 
 <br>
 <br>
@@ -80,7 +82,11 @@ SPEED REGULATOR
 </table>
 <br>
 <br>
-!\[Регулятор обертів](/img/regulator_obertiv_435-2.png "регулятор обертів")
+
+
+![](/img/regulator_obertiv_435-2.png)
+
+
 <br>
 <br>
 <h3>DIMENSIONS</h3>
