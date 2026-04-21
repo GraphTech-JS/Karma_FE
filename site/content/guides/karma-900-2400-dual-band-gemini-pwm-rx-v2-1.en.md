@@ -39,7 +39,7 @@ ul li {text-align:left !important;}
 li::before {  content: "•"; 
 color: red;   
 display: inline-block;   
-width: 1em; 
+width: 2em; 
  margin-left: -1em;}
 
 
