@@ -1,5 +1,6 @@
 ---
 title: KARMA 900/2400 DUAL BAND GEMINI PWM RX V2.1
+slug: null
 description: Компактний високопродуктивний приймач, розроблений для стабільного
   та гнучкого керування у широкому частотному діапазоні. Оснащений сучасним
   ВЧ-чіпом Semtech LR1121, він забезпечує надійний зв’язок, що робить його
@@ -66,7 +67,7 @@ HB – 1900-2500МГц</td></tr>
 </td></tr>
 <tr><td><strong>Протоколи 
 </strong></td><td>Crossfire\ERLS</td></tr>
-<tr><td><strong>Габарити</strong></td><td>30\*19\*4 мм</td></tr>
+<tr><td><strong>Габарити</strong></td><td>30\\\\*19\\\\*4 мм</td></tr>
 </table>
 <br>
 <br>
@@ -93,7 +94,32 @@ HB – 1900-2500МГц</td></tr>
 
 ![СХЕМАТИЧНЕ ПІДКЛЮЧЕННЯ ДО V1 ТА V2](/img/rs_shema.jpg)
 
+<div class="flex items-center justify-center flex-col">
 
+<img class="text-center" src="/img/table_resiver.jpg">
+</div>
+<p>Для зміни режиму роботи RX на WiFi або Bind, необхідно 
+підключити живлення, та після проходження самодіагностики 
+RX, необхідно затиснути кнопку або замкнути піни “BUTTON” та 
+тримати в такому стані поки не зміниться індикація світлодіода 
+на відповідний необхідний режим. </p>
+
+<h3>БАЗОВА КОНФІГУРАЦІЯ BF</h3>
+<p>Для налаштування приймача в Betaflight необхідно: <br>
+1. У вкладці «Порти», обрати відповідний порт ,послідовний 
+Rx до якого підключено приймач.</p>
+<div class="flex items-center justify-center flex-col">
+
+<img class="text-center" src="/img/rf_konfig-.jpg">
+</div>
+<p>2. У вкладці «Приймач» обрати режим приймача та    
+    постачальника послідовного приймача</p>
+<div class="flex items-center justify-center flex-col">
+
+<img class="text-center" src="/img/rf_konfig2.jpg">
+
+
+</div>
 <p><a href="/catalog/karma-f405-v2-flight-stack/">Купити політні стеки KARMA F435 V1G</a><br></p>
 <p><a href="/assets/Karma_F435V1_UA.pdf">Завантажити інструкцію користувача (PDF)</a></p>
 </div>
