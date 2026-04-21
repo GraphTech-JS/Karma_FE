@@ -36,7 +36,7 @@ table th, table td {
 th{
 font-weight:bold;
 }
-
+ul li {text-align:left;}
 </style>
 
 <h3>КОРОТКИЙ ОПИС СИЛЬНИХ СТОРІН RX</h3>
