@@ -39,7 +39,7 @@ font-weight:bold;
 ul li {text-align:left;}
 
 
-li::before {  content: "•"; 
+#article-content li::before {  content: "•"; 
 
 color: red;   
 
