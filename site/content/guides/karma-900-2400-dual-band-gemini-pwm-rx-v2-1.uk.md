@@ -67,7 +67,7 @@ HB – 1900-2500МГц</td></tr>
 </td></tr>
 <tr><td><strong>Протоколи 
 </strong></td><td>Crossfire\ERLS</td></tr>
-<tr><td><strong>Габарити</strong></td><td>30\\\\*19\\\\*4 мм</td></tr>
+<tr><td><strong>Габарити</strong></td><td>30\*19\*4 мм</td></tr>
 </table>
 <br>
 <br>
@@ -117,7 +117,6 @@ Rx до якого підключено приймач.</p>
 <div class="flex items-center justify-center flex-col">
 
 <img class="text-center" src="/img/rf_konfig2.jpg">
-
 
 </div>
 <p><a href="/catalog/karma-f405-v2-flight-stack/">Купити політні стеки KARMA F435 V1G</a><br></p>
