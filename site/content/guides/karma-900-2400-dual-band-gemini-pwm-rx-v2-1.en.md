@@ -9,7 +9,6 @@ date: 2026-04-21T10:21:00.000+03:00
 category: politni-steky
 draft: false
 ---
-
 <p class="text-center"><strong>A compact, high-performance receiver designed for stable and flexible control across a wide frequency range. Despite its miniature form factor, the receiver supports up to 4 antennas, allowing optimized signal reception and ensuring reliable connectivity even in challenging RF environments.</strong></p>
 <h2>KARMA 900/2400 DUAL BAND GEMINI PWM RX V2.1
 </h2>
@@ -37,6 +36,10 @@ th{
 font-weight:bold;
 }
 ul li {text-align:left !important;}
+
+
+
+
 </style>
 
 <h3>КОРОТКИЙ ОПИС СИЛЬНИХ СТОРІН RX</h3>
@@ -67,7 +70,7 @@ HB – 1900-2500МГц</td></tr>
 </td></tr>
 <tr><td><strong>Протоколи 
 </strong></td><td>Crossfire\ERLS</td></tr>
-<tr><td><strong>Габарити</strong></td><td>30*19*4 мм</td></tr>
+<tr><td><strong>Габарити</strong></td><td>30\*19\*4 мм</td></tr>
 </table>
 <br>
 <br>
@@ -117,7 +120,6 @@ Rx до якого підключено приймач.</p>
 <div class="flex items-center justify-center flex-col">
 
 <img class="text-center" src="/img/rf_konfig2.jpg">
-
 
 </div>
 <p><a href="/catalog/karma-f405-v2-flight-stack/">Купити політні стеки KARMA F435 V1G</a><br></p>
