@@ -70,7 +70,7 @@ HB – 1900-2500МГц</td></tr>
 </td></tr>
 <tr><td><strong>Протоколи 
 </strong></td><td>Crossfire\ERLS</td></tr>
-<tr><td><strong>Габарити</strong></td><td>30\*19\*4 мм</td></tr>
+<tr><td><strong>Габарити</strong></td><td>30\\*19\\*4 мм</td></tr>
 </table>
 <br>
 <br>
