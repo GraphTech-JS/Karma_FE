@@ -126,6 +126,6 @@ Rx до якого підключено приймач.</p>
 <img class="text-center" src="/img/rf_konfig2.jpg">
 
 </div>
-<p><a href="/catalog/karma-f405-v2-flight-stack/">Купити політні стеки KARMA F435 V1G</a><br></p>
+<p><a href="/catalog/karma-f405-v2-flight-stack/">Купити KARMA 900/2400 DUAL BAND GEMINI PWM RX V2.1</a><br></p>
 <p><a href="/assets/Karma_F435V1_UA.pdf">Завантажити інструкцію користувача (PDF)</a></p>
 </div>
